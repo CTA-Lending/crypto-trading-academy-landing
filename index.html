@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>交易幣修課 — Bitfinex 自動放貸機器人 | 24/7 智能掛單</title>
+  <meta name="description" content="交易幣修課 CTA 自動放貸機器人，24/7 智能掛單、自動拆單、即時利率監控。讓你的 USDT 自動幫你賺利息。14 天免費試用。">
+  <meta name="keywords" content="Bitfinex,自動放貸,放貸機器人,USDT,加密貨幣,被動收入,融資,Funding,交易幣修課">
+  <link rel="canonical" href="https://crypto-trading-academy.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="交易幣修課 — Bitfinex 自動放貸機器人">
+  <meta property="og:description" content="24/7 智能掛單，讓你的 USDT 自動幫你賺利息。14 天免費試用。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "交易幣修課 自動放貸機器人",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "description": "Bitfinex 自動放貸 SaaS 工具，24/7 智能掛單、自動拆單、即時利率監控。",
+    "url": "https://crypto-trading-academy.com/",
+    "offers": [
+      { "@type": "Offer", "name": "入門版", "price": "13", "priceCurrency": "USD", "billingPeriod": "P1M" },
+      { "@type": "Offer", "name": "標準版", "price": "19", "priceCurrency": "USD", "billingPeriod": "P1M" },
+      { "@type": "Offer", "name": "專業版", "price": "49", "priceCurrency": "USD", "billingPeriod": "P1M" }
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    }
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* FAQ accordion — pure CSS */
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      float: right;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #fbbf24;
+      transition: transform .2s;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== 1. NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="text-xl font-bold text-amber-400">交易幣修課</a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+        <a href="#features" class="hover:text-white transition">功能</a>
+        <a href="#pricing" class="hover:text-white transition">方案</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+        <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition">
+          免費試用
+        </a>
+      </div>
+      <!-- mobile CTA -->
+      <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+         class="md:hidden bg-amber-400 text-slate-900 font-semibold text-sm px-4 py-2 rounded-lg">
+        免費試用
+      </a>
+    </div>
+  </nav>
+
+  <!-- spacer for fixed nav -->
+  <div class="h-16"></div>
+
+  <!-- ===== 2. HERO ===== -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 py-24 md:py-36 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+        讓你的 USDT<br class="hidden md:block">
+        <span class="text-amber-400">自動幫你賺利息</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+        交易幣修課 自動放貸機器人 — 24/7 智能掛單，歷史利率因市場而異，完全解放雙手
+      </p>
+      <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+         class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+        14 天免費試用 →
+      </a>
+      <!-- trust badges -->
+      <div class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          AES-256 加密
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          僅用融資權限
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          CEO 自有資金運行中
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. 痛點 ===== -->
+  <section class="bg-slate-900/50 py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">你是不是也有這些<span class="text-amber-400">困擾</span>？</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8">
+          <div class="text-4xl mb-4">💤</div>
+          <h3 class="text-xl font-bold mb-3">閒置資金沒在賺錢</h3>
+          <p class="text-slate-400">USDT 放在交易所只是躺著，每天都在浪費機會成本。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8">
+          <div class="text-4xl mb-4">⏰</div>
+          <h3 class="text-xl font-bold mb-3">手動掛單太累</h3>
+          <p class="text-slate-400">要盯利率、要算天數、要半夜起來操作，佔據你寶貴的時間。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8">
+          <div class="text-4xl mb-4">📉</div>
+          <h3 class="text-xl font-bold mb-3">不知道該掛多少利率</h3>
+          <p class="text-slate-400">掛太高沒人借，掛太低虧了機會。判斷利率需要經驗和數據。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. 解決方案 / 功能 ===== -->
+  <section id="features" class="py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">我們幫你<span class="text-amber-400">搞定一切</span></h2>
+      <p class="text-center text-slate-400 mb-14">四大核心功能，優化你的放貸效率</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- feature 1 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 hover:border-amber-400/40 transition">
+          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">WebSocket 即時監控</h3>
+          <p class="text-slate-400">全天候監控 Bitfinex 放貸市場，毫秒級偵測利率變化，不錯過任何高利行情。</p>
+        </div>
+        <!-- feature 2 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 hover:border-amber-400/40 transition">
+          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">24/7 自動放貸</h3>
+          <p class="text-slate-400">機器人全天候自動掛單，根據市場深度與 FRR 智能計算最佳利率。不睡覺、不請假。</p>
+        </div>
+        <!-- feature 3 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 hover:border-amber-400/40 transition">
+          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">智能拆單</h3>
+          <p class="text-slate-400">大額資金自動分批掛單，提高成交率。避免單筆過大吃不到好利率的問題。</p>
+        </div>
+        <!-- feature 4 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 hover:border-amber-400/40 transition">
+          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">風險控制</h3>
+          <p class="text-slate-400">API 僅開放融資權限，無法提領或交易。搭配 IP 白名單與 AES-256 加密，資金始終在你掌控。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. 運作流程 ===== -->
+  <section class="bg-slate-900/50 py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">三步驟<span class="text-amber-400">開始</span></h2>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="w-16 h-16 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">1</div>
+          <h3 class="text-lg font-bold mb-2">設定 API Key</h3>
+          <p class="text-slate-400">在 Bitfinex 建立只有融資權限的 API Key，安全又簡單。</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">2</div>
+          <h3 class="text-lg font-bold mb-2">選擇方案</h3>
+          <p class="text-slate-400">14 天免費試用，體驗完整功能後再決定適合的方案。</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">3</div>
+          <h3 class="text-lg font-bold mb-2">自動執行</h3>
+          <p class="text-slate-400">機器人 24/7 自動運作，每天推送收益報告到 Telegram。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. 方案價格 ===== -->
+  <section id="pricing" class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">選擇你的<span class="text-amber-400">方案</span></h2>
+      <p class="text-center text-slate-400 mb-14">所有方案皆含 14 天免費試用，試用期間享有完整功能</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Starter -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 flex flex-col">
+          <div class="text-sm text-slate-400 mb-2">入門版</div>
+          <div class="text-4xl font-bold mb-1">$13<span class="text-lg text-slate-400 font-normal">/月</span></div>
+          <div class="text-sm text-slate-500 mb-6">適合 $1K–5K</div>
+          <ul class="space-y-3 text-slate-300 text-sm flex-1">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              24/7 自動掛單
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              每日收益報告
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              智能利率計算
+            </li>
+          </ul>
+          <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+             class="mt-8 block text-center border border-amber-400 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+            開始試用
+          </a>
+        </div>
+        <!-- Standard -->
+        <div class="bg-slate-800 border-2 border-amber-400 rounded-2xl p-8 flex flex-col relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">推薦</div>
+          <div class="text-sm text-slate-400 mb-2">標準版</div>
+          <div class="text-4xl font-bold mb-1">$19<span class="text-lg text-slate-400 font-normal">/月</span></div>
+          <div class="text-sm text-slate-500 mb-6">適合 $5K–30K</div>
+          <ul class="space-y-3 text-slate-300 text-sm flex-1">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              入門版所有功能
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              每週策略分析報告
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              利率飆升即時警報
+            </li>
+          </ul>
+          <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+             class="mt-8 block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-xl hover:bg-amber-300 transition">
+            開始試用
+          </a>
+        </div>
+        <!-- Pro -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 flex flex-col">
+          <div class="text-sm text-slate-400 mb-2">專業版</div>
+          <div class="text-4xl font-bold mb-1">$49<span class="text-lg text-slate-400 font-normal">/月</span></div>
+          <div class="text-sm text-slate-500 mb-6">適合 $30K+</div>
+          <ul class="space-y-3 text-slate-300 text-sm flex-1">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              標準版所有功能
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              智能拆單（大額優化）
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              CSV 匯出
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              優先客服支援
+            </li>
+          </ul>
+          <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+             class="mt-8 block text-center border border-amber-400 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+            開始試用
+          </a>
+        </div>
+        <!-- Enterprise -->
+        <div class="bg-gradient-to-b from-slate-800 to-slate-800/60 border border-amber-400/30 rounded-2xl p-8 flex flex-col">
+          <div class="text-sm text-amber-400 mb-2">頂級客製版</div>
+          <div class="text-3xl font-bold mb-1">$300K+</div>
+          <div class="text-sm text-slate-500 mb-6">大額客戶專屬</div>
+          <ul class="space-y-3 text-slate-300 text-sm flex-1">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              專業版所有功能
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              專屬策略調校
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              1 對 1 VIP 服務
+            </li>
+          </ul>
+          <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+             class="mt-8 block text-center border border-amber-400/50 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+            聯繫我們
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. 安全信任 ===== -->
+  <section class="bg-slate-900/50 py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">你的資金，你<span class="text-amber-400">掌控</span></h2>
+      <p class="text-center text-slate-400 mb-14">僅用融資權限，不觸碰你的本金</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">AES-256 加密</h3>
+          <p class="text-slate-400 text-sm">API Key 以業界最高標準加密存儲</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">僅融資權限</h3>
+          <p class="text-slate-400 text-sm">API 無法提領、無法交易，只能放貸</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">IP 白名單</h3>
+          <p class="text-slate-400 text-sm">只有我們的伺服器能使用你的 API</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">資金在你帳戶</h3>
+          <p class="text-slate-400 text-sm">資金始終在你的 Bitfinex 帳戶，我們碰不到</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. FAQ ===== -->
+  <section id="faq" class="py-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">常見<span class="text-amber-400">問題</span></h2>
+      <div class="space-y-4">
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">放貸有風險嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">Bitfinex 放貸有平台擔保機制（保險基金），歷史上未發生過放貸方損失本金的情況。但任何投資都有風險，請閱讀我們的<a href="risk-disclosure.html" class="text-blue-400 hover:underline">風險揭露聲明</a>。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">我的 API Key 安全嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">API Key 只開「放貸」權限，無法提領或交易。以 AES-256 加密存儲，加上 IP 白名單，只有我們的伺服器能使用。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">放貸利率大約多少？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">放貸利率取決於市場供需，會持續波動。BTC 波動大時利率較高，平靜期則較低。歷史利率因市場而異，過往績效不代表未來表現。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">可以隨時停止嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">可以。取消訂閱後，到期前照常運作，到期後自動停止。已借出的資金會在到期後自然回收。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">支援哪些幣種？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">目前支援 USDT (fUST)。未來會擴展到 USD、BTC 等。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">最低本金是多少？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">Bitfinex 最低放貸門檻是 $50 USDT。建議至少 $1,000 以上以獲得更明顯的效果。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">如何付款？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">我們接受 TRC-20 USDT 付款。透過 Telegram Bot 完成付款流程，區塊鏈確認後即刻生效。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">CEO 自己也在用嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">是的。CEO 自有資金也在同一套系統上運行，與所有用戶使用完全相同的軟體。</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 9. CTA + FOOTER ===== -->
+  <section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">準備好讓 USDT<br><span class="text-amber-400">替你工作了嗎？</span></h2>
+      <p class="text-slate-400 mb-10 text-lg">14 天免費試用，體驗完整功能</p>
+      <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener"
+         class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-10 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+        立即開始 → @CTA_LendingBot
+      </a>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-slate-400 text-sm">
+          &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+        </div>
+        <div class="flex items-center gap-6 text-sm text-slate-400">
+          <a href="terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        本服務為自動化放貸軟體工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
