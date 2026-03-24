@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>課程體系 — 煉金術裸K交易系統 | 交易幣修課</title>
+  <meta name="description" content="煉金術三大裸K交易系統：順勢滾倉、逆勢當沖、順勢當沖。從新手到穩定獲利，搭配VIP指標與信號推播。">
+  <meta name="keywords" content="交易課程,裸K,系統化交易,順勢交易,逆勢交易,當沖,波段,滾倉,交易幣修課">
+  <link rel="canonical" href="https://crypto-trading-academy.com/course.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="課程體系 — 煉金術裸K交易系統 | 交易幣修課">
+  <meta property="og:description" content="三大交易系統，從新手到穩定獲利。搭配VIP指標與信號推播。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/course.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "煉金術 — 裸K交易系統",
+    "description": "三大裸K交易系統課程，順勢滾倉、逆勢當沖、順勢當沖，從新手到穩定獲利。",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    }
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { blue: '#1e3a5f', 'blue-light': '#2a5080' }
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
+              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.4); }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    }
+
+    .starfield { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .starfield::before { content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
+        radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 75% 70%, rgba(147,197,253,0.5), transparent);
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+
+    .grid-pattern {
+      background-image: linear-gradient(rgba(148,163,184,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(148,163,184,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: '+'; float: right; font-size: 1.25rem; font-weight: bold; color: #fbbf24; transition: transform .2s; }
+    details[open] summary::after { content: '\2212'; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="text-white font-semibold flex items-center gap-1">
+            交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
+          <span>&#x1F449;</span> 預約免費諮詢
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="course.html" class="block text-white font-semibold py-2">課程體系</a>
+      <a href="lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
+         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">預約免費諮詢</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <!-- ===== 1. HERO ===== -->
+  <section class="relative overflow-hidden hero-bg grid-pattern">
+    <div class="starfield"></div>
+    <div class="max-w-4xl mx-auto px-4 py-24 md:py-36 text-center relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+        煉金術<br class="hidden md:block">
+        <span class="text-amber-400">裸 K 交易系統</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+        三大交易系統，從新手到穩定獲利<br class="hidden md:block">
+        不靠消息面、不靠指標堆疊，回歸價格本質
+      </p>
+      <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
+         class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20 animate-glow-pulse">
+        預約免費體驗 &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 2. 痛點 ===== -->
+  <section class="py-20 reveal">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">你是不是也有這些<span class="text-amber-400">困擾</span>？</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 card-hover">
+          <div class="text-4xl mb-4">&#x1F3B2;</div>
+          <h3 class="text-xl font-bold mb-3">靠感覺下單，總是追高殺低？</h3>
+          <p class="text-slate-400">看到漲就追、看到跌就砍，結果永遠買在最高點、賣在最低點。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 card-hover">
+          <div class="text-4xl mb-4">&#x1F4E2;</div>
+          <h3 class="text-xl font-bold mb-3">被群組喊單左右？</h3>
+          <p class="text-slate-400">贏了不知道為什麼贏，輸了也不知道問題出在哪，更不知道該怎麼止損。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 card-hover">
+          <div class="text-4xl mb-4">&#x1F4CA;</div>
+          <h3 class="text-xl font-bold mb-3">學了一堆指標，越看越亂？</h3>
+          <p class="text-slate-400">MACD、RSI、布林帶全開，訊號互相矛盾，看盤看到頭痛卻還是虧損。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. 三大交易系統 ===== -->
+  <section class="bg-slate-900/50 py-20 reveal">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">煉金術<span class="text-amber-400">三大交易系統</span></h2>
+      <p class="text-center text-slate-400 mb-14">回歸裸K本質，用價格行為建立你的交易邏輯</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 順勢滾倉 -->
+        <div class="bg-gradient-to-b from-orange-900/20 to-slate-800/60 border border-orange-500/30 rounded-2xl p-8 card-hover">
+          <div class="text-5xl mb-5">&#x1F525;</div>
+          <h3 class="text-2xl font-bold mb-3 text-orange-400">順勢滾倉吃波段</h3>
+          <p class="text-slate-300 mb-4">順著趨勢、層層加碼、吃取大波段</p>
+          <ul class="space-y-2 text-slate-400 text-sm">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-orange-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              辨識主趨勢方向
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-orange-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              多層次加碼策略
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-orange-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              最大化波段利潤
+            </li>
+          </ul>
+        </div>
+        <!-- 逆勢當沖 -->
+        <div class="bg-gradient-to-b from-blue-900/20 to-slate-800/60 border border-blue-500/30 rounded-2xl p-8 card-hover">
+          <div class="text-5xl mb-5">&#x26A1;</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-400">逆勢當沖（逆煉金術）</h3>
+          <p class="text-slate-300 mb-4">逆勢操作、精準打擊、快進快出</p>
+          <ul class="space-y-2 text-slate-400 text-sm">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              捕捉超漲超跌反轉點
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              嚴格風控，快速止損
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              高勝率短線操作
+            </li>
+          </ul>
+        </div>
+        <!-- 順勢當沖 -->
+        <div class="bg-gradient-to-b from-emerald-900/20 to-slate-800/60 border border-emerald-500/30 rounded-2xl p-8 card-hover">
+          <div class="text-5xl mb-5">&#x1F3AF;</div>
+          <h3 class="text-2xl font-bold mb-3 text-emerald-400">順勢當沖</h3>
+          <p class="text-slate-300 mb-4">同向短線、日內完結、穩定複利</p>
+          <ul class="space-y-2 text-slate-400 text-sm">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              順勢而為不留倉
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              日內完結，降低隔夜風險
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              穩定複利累積
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. 輔助神兵利器 ===== -->
+  <section class="py-20 reveal">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">課程附帶<span class="text-amber-400">神兵利器</span></h2>
+      <p class="text-center text-slate-400 mb-14">不只教你交易邏輯，還給你實戰工具</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover text-center">
+          <div class="w-14 h-14 bg-amber-400/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">TradingView VIP 指標 V11.5</h3>
+          <p class="text-slate-400 text-sm">自動標記進出場點位，一目瞭然</p>
+        </div>
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover text-center">
+          <div class="w-14 h-14 bg-amber-400/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">TG + LINE 信號推播</h3>
+          <p class="text-slate-400 text-sm">24/7 即時通知，不錯過任何交易機會</p>
+        </div>
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover text-center">
+          <div class="w-14 h-14 bg-amber-400/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">每日早報 + 經濟日曆</h3>
+          <p class="text-slate-400 text-sm">金十市場快訊 + 重要經濟事件提醒</p>
+        </div>
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover text-center">
+          <div class="w-14 h-14 bg-amber-400/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="font-bold mb-2">VIP 群組行情解析</h3>
+          <p class="text-slate-400 text-sm">教練即時分析行情，學員互動討論</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. 課程體系 ===== -->
+  <section class="bg-slate-900/50 py-20 reveal">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">完整<span class="text-amber-400">課程體系</span></h2>
+      <p class="text-center text-slate-400 mb-14">從免費資源到進階特訓，每個階段都有最適合的方案</p>
+      <div class="space-y-6">
+        <!-- 免費 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-3xl">&#x1F193;</span>
+            <div>
+              <h3 class="text-xl font-bold">免費資源</h3>
+              <p class="text-slate-400 text-sm">零門檻開始學習</p>
+            </div>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm ml-14">
+            <li>&#x2022; YouTube 每週二策略之夜直播</li>
+            <li>&#x2022; Zoom 每週三逆煉金歐美盤演練</li>
+            <li>&#x2022; 錄影課程：有效啟動幣圈投資 / 辨別加密詐騙</li>
+          </ul>
+        </div>
+        <!-- VIP -->
+        <div class="bg-slate-800/60 border border-amber-400/30 rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-3xl">&#x2B50;</span>
+            <div>
+              <h3 class="text-xl font-bold">VIP 訂閱會員</h3>
+              <p class="text-slate-400 text-sm">解鎖專屬工具與社群</p>
+            </div>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm ml-14">
+            <li>&#x2022; TradingView VIP 指標 V11.5</li>
+            <li>&#x2022; TG + LINE 信號推播</li>
+            <li>&#x2022; 每日早報 + 經濟日曆提醒</li>
+            <li>&#x2022; VIP 群組行情解析</li>
+          </ul>
+        </div>
+        <!-- 煉金術 -->
+        <div class="bg-gradient-to-r from-orange-900/20 to-slate-800/60 border border-orange-500/30 rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-3xl">&#x1F525;</span>
+            <div>
+              <h3 class="text-xl font-bold text-orange-400">幣圈煉金術</h3>
+              <p class="text-slate-400 text-sm">一對一教練特訓</p>
+            </div>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm ml-14">
+            <li>&#x2022; 一對一教練指導</li>
+            <li>&#x2022; 三大裸K交易系統完整教學</li>
+            <li>&#x2022; 量身打造交易計劃</li>
+            <li>&#x2022; 實戰覆盤與心態調整</li>
+          </ul>
+        </div>
+        <!-- 百倍滾倉 -->
+        <div class="bg-gradient-to-r from-purple-900/20 to-slate-800/60 border border-purple-500/30 rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-3xl">&#x1F48E;</span>
+            <div>
+              <h3 class="text-xl font-bold text-purple-400">百倍滾倉術</h3>
+              <p class="text-slate-400 text-sm">進階課程</p>
+            </div>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm ml-14">
+            <li>&#x2022; 進階滾倉技巧</li>
+            <li>&#x2022; 資金管理與倉位控制</li>
+            <li>&#x2022; 多層次加碼策略</li>
+            <li>&#x2022; 大行情捕捉心法</li>
+          </ul>
+        </div>
+        <!-- 實戰列車班 -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-slate-800/60 border border-blue-500/30 rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-3xl">&#x1F684;</span>
+            <div>
+              <h3 class="text-xl font-bold text-blue-400">交易實戰列車班</h3>
+              <p class="text-slate-400 text-sm">學生限定</p>
+            </div>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm ml-14">
+            <li>&#x2022; 專為學生設計的入門課程</li>
+            <li>&#x2022; 低門檻開始學習系統化交易</li>
+            <li>&#x2022; 小資金操作策略</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
+           class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+          預約免費體驗 &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. 學員見證 ===== -->
+  <section class="py-20 reveal">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">學員<span class="text-amber-400">真實回饋</span></h2>
+      <p class="text-center text-slate-400 mb-14">來自交易幣修課學員的真實分享</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-slate-700 rounded-xl mb-4 flex items-center justify-center text-slate-500">
+            <span class="text-sm">學員見證圖片 1</span>
+          </div>
+          <p class="text-slate-300 text-sm italic">"上完課之後，終於知道怎麼看 K 棒了，不再亂追高。"</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-slate-700 rounded-xl mb-4 flex items-center justify-center text-slate-500">
+            <span class="text-sm">學員見證圖片 2</span>
+          </div>
+          <p class="text-slate-300 text-sm italic">"系統化交易讓我從每月虧損變成穩定獲利。"</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-slate-700 rounded-xl mb-4 flex items-center justify-center text-slate-500">
+            <span class="text-sm">學員見證圖片 3</span>
+          </div>
+          <p class="text-slate-300 text-sm italic">"教練很有耐心，一對一教學超值。"</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-slate-700 rounded-xl mb-4 flex items-center justify-center text-slate-500">
+            <span class="text-sm">學員見證圖片 4</span>
+          </div>
+          <p class="text-slate-300 text-sm italic">"VIP 指標真的很好用，進出場一目瞭然。"</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-slate-700 rounded-xl mb-4 flex items-center justify-center text-slate-500">
+            <span class="text-sm">學員見證圖片 5</span>
+          </div>
+          <p class="text-slate-300 text-sm italic">"本來只是想試試看，沒想到真的學到東西。"</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="w-full h-48 bg-slate-700 rounded-xl mb-4 flex items-center justify-center text-slate-500">
+            <span class="text-sm">學員見證圖片 6</span>
+          </div>
+          <p class="text-slate-300 text-sm italic">"逆煉金術的操作邏輯讓我大開眼界。"</p>
+        </div>
+      </div>
+      <p class="text-center text-xs text-slate-600 mt-6">以上為學員個人經驗分享，不代表保證獲利</p>
+    </div>
+  </section>
+
+  <!-- ===== 7. FAQ ===== -->
+  <section class="bg-slate-900/50 py-20 reveal">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">常見<span class="text-amber-400">問題</span></h2>
+      <div class="space-y-4">
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">我完全沒交易經驗可以學嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">當然可以！我們的課程就是為零基礎的學員設計的。從最基礎的 K 棒觀念開始教起，搭配大量圖表實例和實戰演練，讓你一步步建立自己的交易邏輯。很多學員都是從完全不懂開始學起的。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">課程怎麼上？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">課程採用線上教學模式，包含錄影課程（隨時回看）和即時直播（互動問答）。一對一教練特訓則會安排視訊通話，根據你的學習進度客製化教學內容。所有教材都在線上平台，手機電腦都能學。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">有沒有免費試聽？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">有的！我們每週二晚上 20:00 在 YouTube 有免費直播「策略之夜」，每週三晚上 20:00 有 Zoom「逆煉金歐美盤演練」。另外也有免費錄影課程可以領取。加 LINE@ 就能索取免費課程連結。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">指標好用嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">我們的 TradingView VIP 指標已經迭代到 V11.5 版，會自動標記進出場點位、趨勢方向和關鍵支撐壓力。搭配教練教學的裸K邏輯使用，能大幅降低看盤難度。不過指標是輔助工具，最重要的還是建立你自己的交易邏輯。</p>
+        </details>
+
+        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg">跟其他課程有什麼不同？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">最大的不同是我們專注「裸K交易」— 不堆疊一堆複雜指標，而是回歸價格行為的本質。教練有 8 年實戰經驗，自己也在做交易。我們不只教理論，更重視實戰演練和心態建設。另外我們還提供 VIP 指標、信號推播、每日早報等完整工具生態系。</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. 底部 CTA ===== -->
+  <section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">還在猶豫？<br><span class="text-amber-400">先領免費課程體驗看看</span></h2>
+      <p class="text-slate-400 mb-10 text-lg">不花一毛錢，先感受系統化交易的力量</p>
+      <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
+         class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-10 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+        加 LINE@ 索取免費課程 &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div>
+            <div class="font-bold text-white">交易幣修課</div>
+            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">LINE@</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+      </div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">
+        本網站提供交易教育課程，非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
+       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+      加 LINE@ 免費諮詢 &rarr;
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
