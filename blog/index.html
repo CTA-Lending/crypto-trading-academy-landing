@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章與教學 — 交易幣修課 | 加密貨幣放貸、交易策略與市場分析</title>
+  <meta name="description" content="交易幣修課部落格 — 深入了解加密貨幣放貸教學、裸K交易策略分析、Bitfinex 放貸機器人使用指南，幫助你從新手到穩定獲利。">
+  <meta name="keywords" content="加密貨幣教學,Bitfinex放貸,裸K交易,交易策略,放貸機器人,被動收入,交易幣修課">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="文章與教學 — 交易幣修課">
+  <meta property="og:description" content="深入了解加密貨幣放貸、交易策略與市場分析。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1e3a5f',
+              'blue-light': '#2a5080',
+            }
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
+              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(251,191,36,0.08);
+      border-color: rgba(251,191,36,0.4);
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(251, 191, 36, 0.04) 0%, transparent 40%);
+    }
+
+    .starfield {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .starfield::before,
+    .starfield::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+    .starfield::before {
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
+        radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 75% 70%, rgba(147,197,253,0.5), transparent);
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    .starfield::after {
+      background-image:
+        radial-gradient(1px 1px at 12% 28%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 28% 12%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 42% 72%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 58% 18%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 72% 48%, rgba(147,197,253,0.4), transparent),
+        radial-gradient(1px 1px at 88% 68%, rgba(255,255,255,0.6), transparent);
+      animation: twinkle 10s ease-in-out 2s infinite alternate-reverse;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">
+            交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login"
+           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
+          <span>&#x1F449;</span> 免費註冊
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login"
+         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
+        會員登入
+      </a>
+      <a href="https://app.crypto-trading-academy.com/register"
+         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">
+        免費註冊
+      </a>
+    </div>
+  </nav>
+
+  <!-- spacer for fixed nav -->
+  <div class="h-16"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative hero-bg py-20 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">文章與教學</h1>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">深入了解加密貨幣放貸、交易策略與市場分析</p>
+    </div>
+  </section>
+
+  <!-- ===== ARTICLES GRID ===== -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Article 1 -->
+        <a href="bitfinex-lending-guide.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
+          <h2 class="text-xl font-bold text-white mb-3">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">從零開始了解 Bitfinex 融資放貸市場，學會手動放貸與自動放貸的差別，並認識 CTA 放貸機器人如何幫你 24 小時自動化管理資金。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- Article 2 (placeholder) -->
+        <div class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal opacity-60">
+          <div class="text-sm text-slate-500 mb-2">即將推出</div>
+          <h2 class="text-xl font-bold text-white mb-3">放貸利率怎麼看？APR vs APY 完整解析</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">搞懂年化報酬率的計算方式，了解放貸利率波動的原因，學會在不同市場環境下調整放貸策略以最大化收益。</p>
+          <span class="text-slate-600 text-sm font-medium">敬請期待</span>
+        </div>
+
+        <!-- Article 3 (placeholder) -->
+        <div class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal opacity-60">
+          <div class="text-sm text-slate-500 mb-2">即將推出</div>
+          <h2 class="text-xl font-bold text-white mb-3">裸K交易入門：為什麼不需要指標也能判斷行情？</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">拋開繁雜的技術指標，回歸價格本身。了解裸K交易的核心邏輯，以及如何透過關鍵價位判斷市場方向。</p>
+          <span class="text-slate-600 text-sm font-medium">敬請期待</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="py-16 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-10">
+        <h2 class="text-2xl font-bold mb-3">想收到最新文章通知？</h2>
+        <p class="text-slate-400 mb-6">加入我們的 Telegram 頻道，第一時間獲得新文章、市場分析與放貸策略更新。</p>
+        <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener"
+           class="inline-block bg-amber-400 text-slate-900 font-semibold px-8 py-3 rounded-lg hover:bg-amber-300 transition">
+          加入 Telegram 頻道
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div>
+            <div class="font-bold text-white">交易幣修課</div>
+            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+      </div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">
+        本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="https://app.crypto-trading-academy.com/register"
+       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+      免費註冊 &rarr;
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>

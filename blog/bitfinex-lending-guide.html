@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitfinex 放貸完整教學：從開戶到第一筆自動放貸 — 交易幣修課</title>
+  <meta name="description" content="Bitfinex 放貸教學 — 從零開始了解融資放貸市場，學會開戶、KYC、API Key 設定，比較手動與自動放貸差異，認識 CTA 放貸機器人六大核心功能。">
+  <meta name="keywords" content="Bitfinex放貸教學,Bitfinex lending,融資放貸,放貸機器人,被動收入,加密貨幣放貸,CTA,自動放貸">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/bitfinex-lending-guide.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bitfinex 放貸完整教學：從開戶到第一筆自動放貸">
+  <meta property="og:description" content="從零開始了解 Bitfinex 融資放貸市場，學會手動與自動放貸的差別，認識 CTA 放貸機器人如何 24 小時自動管理資金。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/bitfinex-lending-guide.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="article:published_time" content="2026-04-08">
+  <meta property="article:author" content="交易幣修課">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitfinex 放貸完整教學：從開戶到第一筆自動放貸",
+    "description": "從零開始了解 Bitfinex 融資放貸市場，學會開戶、KYC、API Key 設定，比較手動與自動放貸差異，認識 CTA 放貸機器人六大核心功能。",
+    "datePublished": "2026-04-08",
+    "dateModified": "2026-04-08",
+    "author": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://crypto-trading-academy.com/blog/bitfinex-lending-guide.html"
+    },
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1e3a5f',
+              'blue-light': '#2a5080',
+            }
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
+              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    }
+
+    .starfield {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .starfield::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent);
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* Article prose styles */
+    .article-body h2 {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+    }
+    .article-body ul, .article-body ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+    .article-body ul li::marker {
+      color: #fbbf24;
+    }
+    .article-body ol li::marker {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">
+            交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login"
+           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
+          <span>&#x1F449;</span> 免費註冊
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login"
+         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
+        會員登入
+      </a>
+      <a href="https://app.crypto-trading-academy.com/register"
+         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">
+        免費註冊
+      </a>
+    </div>
+  </nav>
+
+  <!-- spacer for fixed nav -->
+  <div class="h-16"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <div class="max-w-3xl mx-auto px-4 py-4">
+    <nav class="text-sm text-slate-500">
+      <a href="../index.html" class="hover:text-white transition">首頁</a>
+      <span class="mx-2">&gt;</span>
+      <a href="../blog/" class="hover:text-white transition">文章</a>
+      <span class="mx-2">&gt;</span>
+      <span class="text-slate-300">Bitfinex 放貸完整教學</span>
+    </nav>
+  </div>
+
+  <!-- ===== ARTICLE HEADER ===== -->
+  <header class="relative hero-bg py-12 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h1>
+      <div class="flex items-center gap-4 text-sm text-slate-400">
+        <time datetime="2026-04-08">2026 年 4 月 8 日</time>
+        <span class="text-slate-600">|</span>
+        <span>閱讀時間約 8 分鐘</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== ARTICLE BODY ===== -->
+  <article class="py-12">
+    <div class="max-w-3xl mx-auto px-4 article-body text-slate-300 leading-relaxed">
+
+      <!-- 什麼是 Bitfinex 放貸？ -->
+      <h2 class="text-2xl font-bold text-white">什麼是 Bitfinex 放貸？</h2>
+
+      <p>如果你持有加密貨幣但不想頻繁交易，<strong class="text-white">融資放貸（Funding）</strong>是一種讓閒置資金產生收益的方式。簡單來說，Bitfinex 交易所上有一群使用槓桿交易的用戶，他們需要借入資金來開倉。而你，就是把錢借給這些交易者的人。</p>
+
+      <p>整個過程由 Bitfinex 平台撮合，你不需要知道錢借給了誰，也不用擔心對方不還錢。平台會透過<strong class="text-white">保證金機制</strong>確保借款人在虧損到一定程度時自動平倉，從而保護放貸方的本金安全。</p>
+
+      <p>你可以放貸的幣種包括 USD、UST（USDT）、BTC、ETH 等主流資產。其中以 USD 和 UST 的放貸需求最大、流動性最好。放貸利率由市場供需決定，當市場交易活躍、槓桿需求高時，利率會明顯上升；反之則下降。</p>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">核心概念</p>
+        <p class="mb-0">放貸本質上是「你把穩定幣借給做槓桿交易的人，賺取利息」。Bitfinex 作為中間人撮合交易，並透過保證金制度保護你的資金。</p>
+      </div>
+
+      <!-- 誰適合使用放貸？ -->
+      <h2 class="text-2xl font-bold text-white">誰適合使用放貸？</h2>
+
+      <p>放貸適合以下幾種人：</p>
+
+      <ul class="list-disc">
+        <li><strong class="text-white">持有穩定幣但暫時不交易的人</strong> — 與其讓 USDT 閒置在錢包裡，不如讓它每天產生利息。</li>
+        <li><strong class="text-white">追求被動收入的投資者</strong> — 放貸不需要盯盤、不需要判斷行情方向，是真正的「設定好就忘記」。</li>
+        <li><strong class="text-white">不想承受幣價波動風險的人</strong> — 放貸穩定幣（如 USDT）的本金不會因為幣價漲跌而改變。</li>
+        <li><strong class="text-white">想用自動化工具提升效率的人</strong> — 搭配放貸機器人，可以 24 小時不間斷地在最佳利率掛單。</li>
+      </ul>
+
+      <p>當然，放貸並非完全零風險（後面會詳細說明），但對於想要穩健增值的人來說，它是加密貨幣世界中風險相對較低的一種策略。</p>
+
+      <!-- 開始前的準備 -->
+      <h2 class="text-2xl font-bold text-white">開始前的準備</h2>
+
+      <h3 class="text-xl font-bold text-amber-400">第一步：註冊 Bitfinex 帳號</h3>
+
+      <p>前往 Bitfinex 官網註冊帳號。註冊過程需要提供電子信箱並設定密碼。建議開啟兩步驟驗證（2FA）以確保帳號安全。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">第二步：完成 KYC 身分驗證</h3>
+
+      <p>Bitfinex 要求用戶完成身分驗證才能使用完整功能。你需要準備：</p>
+
+      <ol class="list-decimal">
+        <li>有效的身分證件（護照或身分證）</li>
+        <li>地址證明文件（如銀行對帳單或水電帳單，三個月內）</li>
+        <li>自拍照片（手持身分證件）</li>
+      </ol>
+
+      <p>審核時間通常在數天到兩週之間。完成 KYC 後即可進行法幣入金或加密貨幣充值。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">第三步：將資金轉入 Funding Wallet</h3>
+
+      <p>Bitfinex 帳戶內有三個錢包：Exchange（交易）、Margin（保證金）和 <strong class="text-white">Funding（融資）</strong>。放貸必須使用 Funding Wallet，所以你需要在帳戶內將資金從其他錢包轉移到 Funding Wallet，這是站內即時轉帳，不需手續費。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">第四步：API Key 設定（使用機器人時需要）</h3>
+
+      <p>如果你打算使用 CTA 放貸機器人或其他自動化工具，需要建立 API Key：</p>
+
+      <ol class="list-decimal">
+        <li>進入 Bitfinex 的 API 管理頁面</li>
+        <li>建立新的 API Key</li>
+        <li>權限設定：只需開啟 <strong class="text-white">「Funding」相關的讀取與寫入權限</strong>，不要開啟提款權限</li>
+        <li>保存好 API Key 和 Secret — Secret 只會顯示一次</li>
+      </ol>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">安全提醒</p>
+        <p class="mb-0">建立 API Key 時，絕對不要開啟「提款」權限。只開放 Funding 相關權限，即使 API Key 外洩，你的資金也不會被轉走。</p>
+      </div>
+
+      <!-- 手動放貸 vs 自動放貸 -->
+      <h2 class="text-2xl font-bold text-white">手動放貸 vs 自動放貸</h2>
+
+      <p>了解完基本設定後，接下來面臨一個選擇：自己手動掛單，還是用機器人自動處理？</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700">
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">比較項目</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">手動放貸</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">自動放貸（機器人）</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">操作方式</td>
+              <td class="py-3 px-4">手動在 Bitfinex 掛單</td>
+              <td class="py-3 px-4">API 連接，全自動執行</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">掛單時間</td>
+              <td class="py-3 px-4">只有你在線時</td>
+              <td class="py-3 px-4">24 小時不間斷</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">利率最佳化</td>
+              <td class="py-3 px-4">依個人經驗判斷</td>
+              <td class="py-3 px-4">演算法即時分析最佳利率</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">資金利用率</td>
+              <td class="py-3 px-4">經常有閒置資金</td>
+              <td class="py-3 px-4">到期即重新掛單，利用率高</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">適合對象</td>
+              <td class="py-3 px-4">小額測試、想了解機制</td>
+              <td class="py-3 px-4">長期放貸、追求效率</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-white">每日花費時間</td>
+              <td class="py-3 px-4">15-30 分鐘</td>
+              <td class="py-3 px-4">幾乎為零</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>手動放貸的最大問題在於<strong class="text-white">時間成本</strong>和<strong class="text-white">資金閒置</strong>。每次放貸到期後，你需要手動重新掛單。如果你在睡覺或工作，資金就只能空轉。而自動放貸機器人會在到期的第一時間重新掛單，大幅提升資金利用率。</p>
+
+      <!-- CTA 放貸機器人如何運作 -->
+      <h2 class="text-2xl font-bold text-white">CTA 放貸機器人如何運作</h2>
+
+      <p>交易幣修課（CTA）開發的放貸機器人是一套 SaaS 工具，透過 API 連接你的 Bitfinex 帳戶，全自動管理放貸流程。以下是六大核心功能：</p>
+
+      <div class="space-y-4 my-6">
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">1. 智慧利率演算法</h4>
+          <p class="text-sm mb-0">機器人會即時分析市場上的放貸訂單簿（Order Book），結合歷史利率數據，自動計算當下最佳的掛單利率。不會掛太高導致成交不了，也不會掛太低讓你少賺。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">2. 自動續貸</h4>
+          <p class="text-sm mb-0">每筆放貸到期後，機器人在數秒內自動重新掛單，確保你的資金幾乎零閒置時間。這是手動操作很難做到的。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">3. 分散到期策略</h4>
+          <p class="text-sm mb-0">將資金分成多筆、不同天期的放貸單，避免所有資金同時到期造成利率風險集中。類似債券投資中的「階梯策略」。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">4. 最低利率保護</h4>
+          <p class="text-sm mb-0">你可以設定最低可接受利率，當市場利率低於門檻時，機器人會暫停掛單，等利率回升再出手，避免在低利率時段鎖定資金。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">5. 即時監控儀表板</h4>
+          <p class="text-sm mb-0">透過網頁後台即時查看目前的放貸狀態、累計收益、資金利用率、歷史利率曲線等關鍵數據，隨時掌握資金動態。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">6. 多幣種支援</h4>
+          <p class="text-sm mb-0">支援 USD、UST（USDT）等主流放貸幣種，可同時管理多個幣種的放貸，一個帳號統一操作。</p>
+        </div>
+      </div>
+
+      <!-- 風險與注意事項 -->
+      <h2 class="text-2xl font-bold text-white">風險與注意事項</h2>
+
+      <p>雖然放貸相較於交易風險較低，但並非完全沒有風險。在開始之前，你應該了解以下幾點：</p>
+
+      <h3 class="text-xl font-bold text-amber-400">平台風險</h3>
+      <p>你的資金存放在 Bitfinex 交易所上，如果交易所發生安全事件（如駭客攻擊、系統故障），你的資金可能受到影響。建議不要將所有資產都放在同一個平台上，做好資金分散配置。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">利率波動風險</h3>
+      <p>放貸利率由市場供需決定，沒有固定報酬。在市場冷淡時期，利率可能會低到接近零。不要把放貸收益當作保證的固定收入來做財務規劃。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">流動性鎖定風險</h3>
+      <p>放貸單在到期前無法提前取回。如果你掛了一筆 30 天的放貸單，這段期間資金就被鎖定。如果你可能需要隨時動用資金，建議選擇較短天期（如 2-7 天）的放貸。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">極端行情風險</h3>
+      <p>在極端市場波動下（如閃崩），借款人的保證金可能不足以覆蓋損失。雖然 Bitfinex 有自動平倉機制和保險基金，但在極端情況下仍有微小的損失可能。歷史上這種情況非常罕見，但並非不可能發生。</p>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">風險管理建議</p>
+        <ul class="list-disc text-sm space-y-1 mb-0">
+          <li>不要將全部資產投入放貸，保留足夠的流動資金</li>
+          <li>優先選擇主流幣種（USD、UST）進行放貸</li>
+          <li>設定合理的最低利率門檻，不要為了追求成交率而接受過低利率</li>
+          <li>定期檢視放貸收益和市場狀況</li>
+        </ul>
+      </div>
+
+      <!-- 常見問題 -->
+      <h2 class="text-2xl font-bold text-white">常見問題</h2>
+
+      <div class="space-y-6 my-6">
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：放貸的利息多久發放一次？</h3>
+          <p>利息在每筆放貸單到期時結算。例如你掛了一筆 2 天的放貸單，到期後利息就會自動入帳到你的 Funding Wallet。如果使用自動放貸機器人，到期的本金加利息會立即被重新掛單出去，產生複利效果。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：最少需要多少資金才能開始放貸？</h3>
+          <p>Bitfinex 的最低放貸金額約為 50 USD（或等值加密貨幣）。不過建議至少準備 500-1000 USD 以上，這樣機器人可以更靈活地分散掛單，利率最佳化的效果也更明顯。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：放貸需要繳手續費嗎？</h3>
+          <p>Bitfinex 會從放貸收益中收取 15% 作為平台手續費（直接從利息中扣除）。也就是說，如果你賺到 100 元利息，實際入帳是 85 元。使用 CTA 放貸機器人則有額外的 SaaS 服務費用，詳情請參考我們的方案頁面。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：使用 CTA 放貸機器人安全嗎？</h3>
+          <p>CTA 機器人僅透過 API 執行放貸操作，你的資金始終在你自己的 Bitfinex 帳戶中。只要你在建立 API Key 時不開放提款權限，機器人就無法將你的資金轉出。你隨時可以在 Bitfinex 後台撤銷 API Key 以中止機器人授權。</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/30 rounded-2xl p-8 md:p-10 text-center my-12">
+        <h2 class="text-2xl font-bold text-white mb-3">準備好開始了嗎？</h2>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">免費註冊交易幣修課帳號，連結你的 Bitfinex API，讓放貸機器人 24 小時為你工作。</p>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="inline-block bg-amber-400 text-slate-900 font-bold px-8 py-3 rounded-lg hover:bg-amber-300 transition text-lg">
+          免費註冊，開始放貸 &rarr;
+        </a>
+        <p class="text-xs text-slate-500 mt-4">本文僅為教學用途，不構成投資建議。放貸有風險，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ===== MORE ARTICLES ===== -->
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-white mb-6">更多文章</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 opacity-60">
+          <div class="text-sm text-slate-500 mb-1">即將推出</div>
+          <h3 class="text-base font-semibold text-white">放貸利率怎麼看？APR vs APY 完整解析</h3>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 opacity-60">
+          <div class="text-sm text-slate-500 mb-1">即將推出</div>
+          <h3 class="text-base font-semibold text-white">裸K交易入門：為什麼不需要指標也能判斷行情？</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div>
+            <div class="font-bold text-white">交易幣修課</div>
+            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+      </div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">
+        本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="https://app.crypto-trading-academy.com/register"
+       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+      免費註冊 &rarr;
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
