@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版） — 交易幣修課</title>
+  <meta name="description" content="2026 最新 Bitfinex 註冊教學 — 從零開始手把手帶你完成開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟讓你立即開始自動放貸。">
+  <meta name="keywords" content="Bitfinex註冊教學,Bitfinex開戶,Bitfinex KYC,Bitfinex API設定,Bitfinex入金,放貸機器人,加密貨幣放貸,CTA">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/bitfinex-register-api-setup.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）">
+  <meta property="og:description" content="從零開始手把手帶你完成 Bitfinex 開戶、KYC 驗證、入金到 API Key 設定，六步驟立即開始自動放貸。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/bitfinex-register-api-setup.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="article:published_time" content="2026-04-08">
+  <meta property="article:author" content="交易幣修課">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）",
+    "description": "從零開始手把手帶你完成 Bitfinex 開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟讓你立即開始自動放貸。",
+    "datePublished": "2026-04-08",
+    "dateModified": "2026-04-08",
+    "author": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://crypto-trading-academy.com/blog/bitfinex-register-api-setup.html"
+    },
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1e3a5f',
+              'blue-light': '#2a5080',
+            }
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
+              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    }
+
+    .starfield {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .starfield::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent);
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* Article prose styles */
+    .article-body h2 {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+    }
+    .article-body ul, .article-body ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+    .article-body ul li::marker {
+      color: #fbbf24;
+    }
+    .article-body ol li::marker {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">
+            交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login"
+           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
+          <span>&#x1F449;</span> 免費註冊
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login"
+         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
+        會員登入
+      </a>
+      <a href="https://app.crypto-trading-academy.com/register"
+         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">
+        免費註冊
+      </a>
+    </div>
+  </nav>
+
+  <!-- spacer for fixed nav -->
+  <div class="h-16"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <div class="max-w-3xl mx-auto px-4 py-4">
+    <nav class="text-sm text-slate-500">
+      <a href="../index.html" class="hover:text-white transition">首頁</a>
+      <span class="mx-2">&gt;</span>
+      <a href="../blog/" class="hover:text-white transition">文章</a>
+      <span class="mx-2">&gt;</span>
+      <span class="text-slate-300">Bitfinex 註冊開戶 + API 設定教學</span>
+    </nav>
+  </div>
+
+  <!-- ===== ARTICLE HEADER ===== -->
+  <header class="relative hero-bg py-12 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）</h1>
+      <div class="flex items-center gap-4 text-sm text-slate-400">
+        <time datetime="2026-04-08">2026 年 4 月 8 日</time>
+        <span class="text-slate-600">|</span>
+        <span>閱讀時間約 10 分鐘</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== ARTICLE BODY ===== -->
+  <article class="py-12">
+    <div class="max-w-3xl mx-auto px-4 article-body text-slate-300 leading-relaxed">
+
+      <p>這篇教學會帶你從零開始，一步一步完成 Bitfinex 的註冊、身分驗證（KYC）、入金、錢包設定，一直到建立 API Key 連接放貸機器人。不管你有沒有用過加密貨幣交易所，只要照著做，大約 10 分鐘就能完成所有設定（KYC 審核需額外等待 1-3 個工作天）。</p>
+
+      <p>為什麼選擇 Bitfinex？因為它是全球最大的加密貨幣融資放貸（Funding）市場，長期維持年化 12-17% 的穩定報酬。而要使用 CTA 放貸機器人幫你 24 小時自動掛單、複利滾存，第一步就是在 Bitfinex 上開好帳號並設定 API。</p>
+
+      <!-- Section 1 -->
+      <h2 class="text-2xl font-bold text-white">開始之前你需要準備什麼</h2>
+
+      <p>在正式開始註冊之前，請先把以下東西準備好，這樣整個流程可以一次搞定，不用中途停下來找文件：</p>
+
+      <ul class="list-disc">
+        <li><strong class="text-white">一個常用的 Email 信箱</strong> — Gmail、Outlook 都可以。建議用你平常在用的主要信箱，因為之後登入通知、安全警示都會寄到這裡。</li>
+        <li><strong class="text-white">身分證件（建議準備雙證件）</strong> — 護照是必備的（Bitfinex 以護照為主要身分文件），再加上一張身分證作為輔助。兩份證件上的姓名拼寫必須一致。</li>
+        <li><strong class="text-white">地址證明文件（90 天內，必須是英文或拉丁字母）</strong> — 這是很多人卡關的地方。Bitfinex 要求地址證明必須是英文版，純中文的文件不被接受。台灣用戶最簡單的方式是到你的銀行網銀下載英文版對帳單，或是去銀行臨櫃申請英文版存摺對帳。水電費帳單如果有英文版也可以，但台灣大多數公用事業帳單都是中文，所以銀行對帳單是最穩的選擇。</li>
+        <li><strong class="text-white">手機（用於 2FA 雙重驗證）</strong> — 需要安裝 Google Authenticator 或類似的驗證 App。iOS 和 Android 都有免費版本。</li>
+      </ul>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">預計所需時間</p>
+        <p class="mb-0">註冊 + 設定約 <strong class="text-white">10 分鐘</strong>，KYC 審核需要額外 <strong class="text-white">1-3 個工作天</strong>。建議趁現在有空就把資料送出，審核通過後就能馬上開始放貸。</p>
+      </div>
+
+      <!-- Section 2 -->
+      <h2 class="text-2xl font-bold text-white">第一步：註冊 Bitfinex 帳號</h2>
+
+      <h3 class="text-xl font-bold text-amber-400">建立帳號</h3>
+
+      <ol class="list-decimal">
+        <li>打開瀏覽器，前往 <strong class="text-white">bitfinex.com</strong></li>
+        <li>點擊頁面右上角的 <strong class="text-white">「Sign Up」</strong>（註冊）按鈕</li>
+        <li>輸入你的 <strong class="text-white">Email 地址</strong></li>
+        <li>設定密碼 — 密碼至少要 8 個字元以上，建議包含大小寫英文字母、數字和特殊符號（例如：<code class="bg-slate-800 px-2 py-0.5 rounded text-amber-300">MyBfx2026!Secure</code>）。不要使用跟其他網站相同的密碼</li>
+        <li>勾選服務條款後，點擊 <strong class="text-white">「Sign Up」</strong> 送出</li>
+        <li>到你的信箱收取 Bitfinex 的驗證信，點擊信件中的 <strong class="text-white">啟用連結</strong> 完成帳號啟用</li>
+      </ol>
+
+      <p>如果幾分鐘後沒收到驗證信，先檢查垃圾郵件匣。還是沒有的話，回到 Bitfinex 重新發送驗證信。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">設定 2FA 雙重驗證（強烈建議）</h3>
+
+      <p>帳號啟用後，第一件事就是開啟 2FA 雙重驗證。這不是選配，而是保護你資金安全的<strong class="text-white">必要步驟</strong>。就算有人知道了你的密碼，沒有 2FA 驗證碼也無法登入你的帳號。</p>
+
+      <ol class="list-decimal">
+        <li>在手機上下載 <strong class="text-white">Google Authenticator</strong>（iOS 到 App Store 搜尋，Android 到 Google Play 搜尋）</li>
+        <li>登入 Bitfinex 後，進入 <strong class="text-white">Account &gt; Security &gt; Two-Factor Authentication</strong></li>
+        <li>選擇 <strong class="text-white">Google Authenticator</strong> 作為你的 2FA 方式</li>
+        <li>畫面上會出現一組 <strong class="text-white">QR Code</strong>，打開手機上的 Google Authenticator App，點擊右下角的「+」號，選擇「掃描 QR 碼」來掃描它</li>
+        <li>App 會開始每 30 秒產生一組 6 位數的驗證碼，把當前顯示的驗證碼輸入到 Bitfinex 網頁上的欄位</li>
+        <li>點擊確認，完成設定</li>
+      </ol>
+
+      <div class="bg-red-900/30 border border-red-500/40 rounded-xl p-6 my-6">
+        <p class="text-red-400 font-semibold mb-2">極重要：備份恢復碼</p>
+        <p class="mb-0">設定 2FA 時，Bitfinex 會顯示一組<strong class="text-white">恢復碼（Recovery Code）</strong>。請你立刻把它抄寫在紙上，或存到密碼管理器裡。如果手機遺失、損壞或重置，這組恢復碼是你唯一能找回帳號的方式。沒有恢復碼 = 帳號可能永久鎖死。</p>
+      </div>
+
+      <!-- Section 3 -->
+      <h2 class="text-2xl font-bold text-white">第二步：完成 KYC 身分驗證</h2>
+
+      <h3 class="text-xl font-bold text-amber-400">為什麼要做 KYC？</h3>
+
+      <p>Bitfinex 的 KYC 驗證在業界是出了名的嚴格，但換個角度想，這其實代表平台對合規非常重視，也是對用戶資金安全的一種保障。沒通過 KYC 的帳號功能會受到嚴格限制，無法進行放貸操作。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">驗證等級說明</h3>
+
+      <p>Bitfinex 的身分驗證分為三個等級，功能權限不同：</p>
+
+      <ul class="list-disc">
+        <li><strong class="text-white">Basic Plus</strong> — 最基礎的驗證，只需填寫個人資料。但功能受限，不能放貸，不太實用。</li>
+        <li><strong class="text-white">Intermediate（中階驗證）</strong> — 需要上傳證件和地址證明。<strong class="text-white">要使用放貸功能，至少要完成這個等級。</strong>這是大多數用戶需要的等級。</li>
+        <li><strong class="text-white">Full（完整驗證）</strong> — 最高等級，可以使用法幣電匯出入金等完整功能。如果你未來打算用電匯入金大額資金，就需要升級到這個等級。</li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-amber-400">中階驗證步驟（共 6 步）</h3>
+
+      <p>登入 Bitfinex 後，進入 <strong class="text-white">Account &gt; Verification</strong>，選擇 Intermediate 驗證，然後按照以下步驟操作：</p>
+
+      <ol class="list-decimal">
+        <li>
+          <strong class="text-white">填寫個人資訊</strong> — 姓名、出生日期、居住地址。注意：所有欄位都要用<strong class="text-white">英文</strong>填寫。姓名拼寫必須和護照上完全一致，地址用英文填（例如：No. 123, Sec. 4, Zhongxiao E. Rd., Da'an Dist., Taipei City 106, Taiwan）。
+        </li>
+        <li>
+          <strong class="text-white">上傳證件照片</strong> — 上傳護照的照片頁（有照片和個人資訊那一頁），另外再上傳身分證正反面。拍照時確保四個角都完整入鏡，字體清晰可讀，光線充足不反光。
+        </li>
+        <li>
+          <strong class="text-white">自拍驗證</strong> — 這一步需要你拍一張自拍照，照片中必須包含：你本人的臉、手持護照（打開到照片頁）、以及一張手寫紙條。紙條上要寫上：當天的日期（例如 2026/04/08）和「Bitfinex」字樣。三個元素都要在同一張照片中清楚呈現。
+        </li>
+        <li>
+          <strong class="text-white">上傳地址證明</strong> — 上傳一份 90 天內開立的英文版地址證明文件。最推薦的是銀行英文對帳單（上面會有你的姓名和地址）。台灣的銀行網銀通常可以直接下載英文版 PDF，或是親自到銀行臨櫃申請。
+        </li>
+        <li>
+          <strong class="text-white">填寫財務問卷</strong> — Bitfinex 會問你幾個關於資金來源、年收入級距、投資經驗等問題。這不是考試，但請<strong class="text-white">如實填寫</strong>。這些資料會影響你之後的出入金額度上限，如果隨便亂填，後續可能會被要求補充資料。
+        </li>
+        <li>
+          <strong class="text-white">提交等待審核</strong> — 全部資料填完後，點擊送出。審核時間通常是 <strong class="text-white">1-3 個工作天</strong>，快的話隔天就通過，慢的話可能到一週。審核結果會透過 Email 通知你。
+        </li>
+      </ol>
+
+      <h3 class="text-xl font-bold text-amber-400">常見被退件原因與解決方式</h3>
+
+      <p>如果你的 KYC 被退件，不要緊張，通常只是資料問題，修正後重新送出就好。以下是最常見的退件原因：</p>
+
+      <ul class="list-disc">
+        <li><strong class="text-white">照片模糊或不完整</strong> — 用手機相機直接拍攝，確保對焦清晰。不要用螢幕截圖代替拍照，也不要裁切到證件的邊角。</li>
+        <li><strong class="text-white">地址證明不是英文</strong> — Bitfinex 只接受英文或拉丁字母的文件。台灣用戶最快的方式是到銀行網銀下載英文版對帳單。如果你的銀行沒有提供線上英文版，就到臨櫃申請一份。</li>
+        <li><strong class="text-white">姓名拼寫不一致</strong> — 你在表格中填的英文名字必須和護照上的拼寫完全相同。例如護照上是「WANG, HSIAO-MING」，就不要填成「Xiaoming Wang」。</li>
+        <li><strong class="text-white">自拍照不符合要求</strong> — 確保照片中同時出現你的臉、打開的護照照片頁、以及手寫紙條（紙條上寫當天日期 + "Bitfinex"）。三者都要清楚可辨識，不能被遮擋。</li>
+      </ul>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">小提醒</p>
+        <p class="mb-0">KYC 審核期間你可以先完成後面的 2FA 設定。等審核通過後就能立即進入入金和放貸環節，不浪費時間。</p>
+      </div>
+
+      <!-- Section 4 -->
+      <h2 class="text-2xl font-bold text-white">第三步：入金到 Bitfinex</h2>
+
+      <p>KYC 通過之後，下一步就是把資金轉進 Bitfinex。這裡介紹兩種方式，新手建議用第一種。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">方式一：加密貨幣入金（推薦新手用這個）</h3>
+
+      <p>這是最快、最方便的入金方式。整體流程是：先在台灣的交易所用台幣買 USDT，再把 USDT 轉到 Bitfinex。</p>
+
+      <ol class="list-decimal">
+        <li><strong class="text-white">在台灣交易所買 USDT</strong> — 如果你還沒有台灣交易所帳號，可以註冊 MAX 或幣託（BitoEX）。用台幣入金後，購買 USDT（泰達幣）。</li>
+        <li><strong class="text-white">在 Bitfinex 取得你的 USDT 入金地址</strong> — 登入 Bitfinex，點擊上方的 <strong class="text-white">Deposit（入金）</strong>，搜尋選擇 <strong class="text-white">USDT</strong>，然後選擇 <strong class="text-white">TRC-20（Tron）網路</strong>。頁面會顯示一組入金地址，把它複製下來。</li>
+        <li><strong class="text-white">從台灣交易所發送 USDT</strong> — 回到台灣交易所的提幣頁面，選擇 USDT，網路一定要選 <strong class="text-white">TRC-20</strong>（與 Bitfinex 那邊一致），貼上剛才複製的 Bitfinex 入金地址，輸入金額後送出。</li>
+        <li><strong class="text-white">等待區塊鏈確認</strong> — TRC-20 網路通常 1-5 分鐘就到帳，手續費大約只要 1 USDT，是所有網路中最便宜的。到帳後你會在 Bitfinex 的 Wallets 頁面看到餘額。</li>
+      </ol>
+
+      <div class="bg-red-900/30 border border-red-500/40 rounded-xl p-6 my-6">
+        <p class="text-red-400 font-semibold mb-2">轉帳前務必確認</p>
+        <ul class="list-disc text-sm space-y-1 mb-0">
+          <li>發送端和接收端的<strong class="text-white">網路必須一致</strong>（都選 TRC-20），選錯網路資金會遺失且無法找回</li>
+          <li>地址要用<strong class="text-white">複製貼上</strong>，不要手動輸入，一個字元打錯就會轉到別人的地址</li>
+          <li>第一次轉帳建議先<strong class="text-white">小額測試</strong>（例如 $20 USDT），確認流程沒問題再轉大額</li>
+        </ul>
+      </div>
+
+      <h3 class="text-xl font-bold text-amber-400">方式二：法幣電匯入金（大額用戶適用）</h3>
+
+      <p>如果你要轉入較大金額（例如 $10,000 USD 以上），可以考慮用國際電匯直接匯美元到 Bitfinex。這需要完成 Full 等級的 KYC 驗證，且電匯通常需要 2-5 個工作天才會到帳，手續費也比較高（銀行端收費約 $15-30 USD）。對新手來說，先用加密貨幣入金就好，等熟悉流程後再考慮電匯。</p>
+
+      <!-- Section 5 -->
+      <h2 class="text-2xl font-bold text-white">第四步：把資金轉到 Funding 錢包</h2>
+
+      <p>這一步很多新手會忘記做，但它非常重要。Bitfinex 的帳戶架構中有<strong class="text-white">三種錢包</strong>，各自用途不同：</p>
+
+      <ul class="list-disc">
+        <li><strong class="text-white">Exchange Wallet（交易錢包）</strong> — 用於現貨交易買賣</li>
+        <li><strong class="text-white">Margin Wallet（保證金錢包）</strong> — 用於槓桿交易</li>
+        <li><strong class="text-white">Funding Wallet（融資錢包）</strong> — 用於放貸，你的錢必須在這個錢包裡才能進行放貸</li>
+      </ul>
+
+      <p>入金後，你的資金預設會出現在 <strong class="text-white">Exchange Wallet</strong>。要做放貸，你必須手動把資金轉到 Funding Wallet。操作方式如下：</p>
+
+      <ol class="list-decimal">
+        <li>登入 Bitfinex，點擊上方的 <strong class="text-white">Wallets</strong></li>
+        <li>點擊 <strong class="text-white">Transfer（轉帳）</strong> 按鈕</li>
+        <li>「From」選擇 <strong class="text-white">Exchange</strong>，「To」選擇 <strong class="text-white">Funding</strong></li>
+        <li>選擇幣種（例如 USDT），輸入要轉的金額</li>
+        <li>點擊 <strong class="text-white">Transfer</strong> 確認 — 站內轉帳即時到帳、不需手續費</li>
+      </ol>
+
+      <h3 class="text-xl font-bold text-amber-400">進階技巧：把 USDT 換成 USD 賺更高利率</h3>
+
+      <p>如果你想追求更高的放貸收益，可以考慮把 USDT 換成 USD 來放貸。在 Bitfinex 上，USD 的平均放貸利率通常比 USDT 高出約 2 個百分點，而且 USD 的借貸需求量更大，你的資金被借出的速度也更快。</p>
+
+      <p>操作方式：在 Exchange Wallet 中，進入 <strong class="text-white">Trading</strong> 頁面，找到 <strong class="text-white">USDT/USD</strong> 交易對，把你的 USDT 以接近 1:1 的價格賣成 USD。完成後再把 USD 從 Exchange Wallet 轉到 Funding Wallet 即可。</p>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">USD vs USDT 放貸比較</p>
+        <ul class="list-disc text-sm space-y-1 mb-0">
+          <li>USD 平均年化利率約 <strong class="text-white">14-17%</strong>，USDT 約 <strong class="text-white">12-15%</strong></li>
+          <li>USD 的市場深度更大，資金更快被借出，閒置時間更短</li>
+          <li>兩者都由 CTA 機器人支援，切換幣種不影響自動化操作</li>
+        </ul>
+      </div>
+
+      <!-- Section 6 -->
+      <h2 class="text-2xl font-bold text-white">第五步：建立 API Key（使用 CTA 機器人的必要步驟）</h2>
+
+      <h3 class="text-xl font-bold text-amber-400">為什麼需要 API Key？</h3>
+
+      <p>API Key 就像是一把「有限權限的鑰匙」。你把這把鑰匙交給 CTA 放貸機器人，讓它可以代替你在 Bitfinex 上執行放貸掛單操作。有了 API Key，機器人就能 24 小時不間斷地幫你在最佳利率掛單、到期自動續掛、複利滾存，你完全不需要盯著螢幕。</p>
+
+      <p>重要的是，你可以精確控制這把鑰匙的權限範圍。我們只需要開放「放貸」相關權限，不開放提幣和交易權限，這樣即使 API Key 不慎外洩，任何人都無法動你帳戶裡的資金。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">API Key 建立步驟</h3>
+
+      <ol class="list-decimal">
+        <li>
+          <strong class="text-white">進入 API 管理頁面</strong> — 登入 Bitfinex 後，點擊右上角的帳戶圖示，進入 <strong class="text-white">Account &gt; API Keys</strong>（或直接在網址列輸入 setting/api）。
+        </li>
+        <li>
+          <strong class="text-white">點擊「Create New Key」</strong> — 開始建立一組新的 API 金鑰。
+        </li>
+        <li>
+          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。請嚴格按照以下設定：
+          <div class="bg-slate-800 rounded-xl p-5 my-4">
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-green-400 font-bold text-lg leading-none mt-0.5">&#10003;</span>
+                <div><strong class="text-white">Account History</strong> — 勾選 <strong class="text-green-400">Read</strong>（讓機器人讀取帳戶歷史紀錄）</div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-green-400 font-bold text-lg leading-none mt-0.5">&#10003;</span>
+                <div><strong class="text-white">Wallets</strong> — 勾選 <strong class="text-green-400">Read</strong>（讓機器人查看錢包餘額）</div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-green-400 font-bold text-lg leading-none mt-0.5">&#10003;</span>
+                <div><strong class="text-white">Margin Funding</strong> — 勾選 <strong class="text-green-400">Read</strong> 和 <strong class="text-green-400">Write</strong>（讓機器人建立和取消放貸掛單，這是核心權限）</div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-red-400 font-bold text-lg leading-none mt-0.5">&#10007;</span>
+                <div><strong class="text-white">Withdraw</strong> — <strong class="text-red-400">絕對不要勾選</strong>（這是提幣權限，不開 = 誰都不能把你的錢轉走）</div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-red-400 font-bold text-lg leading-none mt-0.5">&#10007;</span>
+                <div><strong class="text-white">Orders / Trading</strong> — <strong class="text-red-400">不要勾選</strong>（機器人只做放貸，不需要交易權限）</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <strong class="text-white">設定 IP 白名單（選填但建議）</strong> — 如果你知道 CTA 機器人伺服器的 IP 位址，可以填入作為額外的安全層。設定後，只有來自該 IP 的請求才能使用這組 API Key。不確定的話可以先跳過，之後再補設。
+        </li>
+        <li>
+          <strong class="text-white">輸入 2FA 驗證碼確認</strong> — 打開你的 Google Authenticator，輸入當前顯示的 6 位數驗證碼來確認建立。
+        </li>
+        <li>
+          <strong class="text-white">到信箱點擊確認連結</strong> — Bitfinex 會寄一封確認信到你的 Email，點擊信中的連結完成 API Key 的啟用。
+        </li>
+        <li>
+          <strong class="text-white">記下 API Key 和 API Secret</strong> — 啟用完成後，頁面會顯示你的 <strong class="text-white">API Key</strong> 和 <strong class="text-white">API Secret</strong>。這兩組字串非常重要，而且<strong class="text-white"> API Secret 只會顯示這一次</strong>，關掉頁面後就再也看不到了。請立即複製並安全保存（建議存在密碼管理器中，或寫在紙上鎖好）。
+        </li>
+      </ol>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">API Key 安全三原則</p>
+        <ul class="list-disc text-sm space-y-1 mb-0">
+          <li><strong class="text-white">只開 Funding 權限</strong> — 機器人只能幫你掛放貸單，不能交易、不能提幣</li>
+          <li><strong class="text-white">不開 Withdraw 權限</strong> — 即使 API Key 被洩露，沒有提幣權限就無法轉走你的資金</li>
+          <li><strong class="text-white">API Secret 只顯示一次</strong> — 如果忘記保存，只能刪除舊的 Key 重新建立</li>
+        </ul>
+      </div>
+
+      <!-- Section 7 -->
+      <h2 class="text-2xl font-bold text-white">第六步：連接 CTA 放貸機器人，開始自動放貸</h2>
+
+      <p>恭喜你完成了所有前置作業！現在只要把 API Key 連接到 CTA 放貸機器人，就能開始 24 小時自動賺取利息。</p>
+
+      <ol class="list-decimal">
+        <li><strong class="text-white">前往 CTA 官網免費註冊</strong> — 到 <a href="https://app.crypto-trading-academy.com/register" class="text-amber-400 hover:text-amber-300 underline">crypto-trading-academy.com</a> 建立帳號，只需要 Email 就能註冊。</li>
+        <li><strong class="text-white">在會員後台輸入 API Key 和 Secret</strong> — 登入後進入 API 設定頁面，把剛才記下的 API Key 和 API Secret 貼上去。</li>
+        <li><strong class="text-white">選擇方案</strong> — CTA 提供不同的方案等級，最低 $13/月起。根據你的資金規模選擇適合的方案。</li>
+        <li><strong class="text-white">機器人開始運作</strong> — 設定完成後，機器人會立即開始 24 小時不間斷運作，自動在最佳利率掛單、到期自動續掛、複利滾存。</li>
+        <li><strong class="text-white">每天收到 Telegram 收益報告</strong> — 連結 Telegram 後，機器人會每天自動推送你的放貸收益摘要，讓你隨時掌握獲利狀況。</li>
+      </ol>
+
+      <!-- Section 8 -->
+      <h2 class="text-2xl font-bold text-white">常見問題 FAQ</h2>
+
+      <div class="space-y-6 my-6">
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：KYC 審核需要多久？</h3>
+          <p>通常 1-3 個工作天。如果資料完整正確，有些用戶隔天就收到通過通知。假日期間或申請量大時可能會延長到 5-7 天。如果超過一週沒有消息，可以透過 Bitfinex 的客服信箱詢問進度。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：最低需要多少錢才能開始放貸？</h3>
+          <p>Bitfinex 的最低放貸金額約為 $150 USDT（或等值 USD）。不過建議至少準備 $500 以上，這樣機器人可以更靈活地分散掛單到不同利率和天期，收益最佳化的效果更明顯。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：放貸可以隨時停止嗎？</h3>
+          <p>可以。你可以隨時在 CTA 後台暫停機器人。不過要注意，已經被借出的放貸單要等到到期才能取回。尚未被借出的掛單可以立即取消。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：API Key 交給機器人安全嗎？</h3>
+          <p>只要你按照本文的設定方式，只開放 Funding（放貸）的讀取和寫入權限、不開放 Withdraw（提幣）權限，機器人就只能幫你掛放貸單，完全無法把你的錢轉走。你的資金始終在你自己的 Bitfinex 帳戶中。如果你想取消授權，隨時可以到 Bitfinex 後台刪除該組 API Key。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：台灣人可以使用 Bitfinex 嗎？</h3>
+          <p>可以。Bitfinex 並未限制台灣用戶註冊和使用。台灣用戶可以正常完成 KYC、入金和放貸操作。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：放貸收益需要繳稅嗎？</h3>
+          <p>加密貨幣的稅務規定在不同國家和地區有所不同，且法規持續在變動。建議你諮詢專業的稅務顧問，了解你所在地區對加密貨幣放貸收益的稅務要求。</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/30 rounded-2xl p-8 md:p-10 text-center my-12">
+        <h2 class="text-2xl font-bold text-white mb-3">API Key 設好了？</h2>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">到 CTA 官網免費註冊，輸入你的 API Key，讓放貸機器人 24 小時自動幫你掛單、複利滾存。</p>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="inline-block bg-amber-400 text-slate-900 font-bold px-8 py-3 rounded-lg hover:bg-amber-300 transition text-lg">
+          免費註冊，開始自動放貸 &rarr;
+        </a>
+        <p class="text-xs text-slate-500 mt-4">本文僅為教學用途，不構成投資建議。放貸有風險，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ===== MORE ARTICLES ===== -->
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-white mb-6">更多文章</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="bitfinex-lending-guide.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/40 transition">
+          <div class="text-sm text-slate-500 mb-1">2026-04-08</div>
+          <h3 class="text-base font-semibold text-white">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h3>
+        </a>
+        <a href="why-bitfinex-lending-rate-so-high.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/40 transition">
+          <div class="text-sm text-slate-500 mb-1">2026-04-08</div>
+          <h3 class="text-base font-semibold text-white">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div>
+            <div class="font-bold text-white">交易幣修課</div>
+            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+      </div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">
+        本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="https://app.crypto-trading-academy.com/register"
+       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+      免費註冊 &rarr;
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>

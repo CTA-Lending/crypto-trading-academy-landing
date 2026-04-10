@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Bitfinex 帳戶安全指南：避免被關戶的注意事項 | 交易幣修課</title>
+  <meta name="description" content="CTA 整理的 Bitfinex 帳戶安全注意事項，涵蓋常見風險情境與預防方式，幫助放貸用戶維護帳戶安全。">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bitfinex 帳戶安全指南 | 交易幣修課">
+  <meta property="og:description" content="在 Bitfinex 放貸前，這些帳戶安全知識你必須知道。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/bitfinex-account-guide.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/assets/og-image.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { blue: '#1e3a5f', 'blue-light': '#2a5080' }
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
+              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">
+            交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="blog/" class="hover:text-white transition">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login"
+           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
+          <span>&#x1F449;</span> 免費註冊
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="blog/" class="block text-slate-300 hover:text-white py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login"
+         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
+        會員登入
+      </a>
+      <a href="https://app.crypto-trading-academy.com/register"
+         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">放貸用戶必讀</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Bitfinex 帳戶安全指南</h1>
+      <p class="text-xl text-slate-400">在 Bitfinex 放貸前，這些帳戶安全知識你必須知道</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT ===== -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-4 space-y-16">
+
+      <!-- Section 1 -->
+      <div class="reveal">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">為什麼 Bitfinex KYC <span class="text-amber-400">這麼嚴格？</span></h2>
+        <div class="space-y-4 text-slate-300 leading-relaxed">
+          <p>如果你曾經在幣圈使用過多家交易所，你應該會注意到 Bitfinex 的身份驗證流程比多數平台更加細緻。這其實不是壞事。嚴謹的合規審查代表平台本身對法規的重視程度較高，相對而言，你的資金也在一個管理更為透明的環境中運作。</p>
+          <p>Bitfinex 從 2017 年起就持續強化其 KYC（認識你的客戶）與 AML（反洗錢）機制。目前他們與多國監管機構保持合作關係，這讓平台在全球交易所中的合規評級一直處於前段班。</p>
+          <p>不過，這種高標準的合規要求也帶來了一個副作用：<strong class="text-white">帳戶的維護需要比其他平台更加謹慎。</strong>一些在其他交易所不會有問題的操作，在 Bitfinex 上可能會觸發風控機制。接下來，我們就來具體說明哪些情況需要注意。</p>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="reveal">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8">三種常見的<span class="text-amber-400">帳戶風險情境</span></h2>
+
+        <!-- 情境一 -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 md:p-8 mb-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-amber-400/10 text-amber-400 font-bold text-lg w-10 h-10 rounded-full flex items-center justify-center shrink-0">1</span>
+            <h3 class="text-xl font-bold">在受限國家或地區登入帳戶</h3>
+          </div>
+          <div class="space-y-3 text-slate-300 leading-relaxed">
+            <p>Bitfinex 維護了一份無法提供服務的國家與地區清單，其中包含了美國、加拿大、英國、日本等主要經濟體。這份清單會根據各國法規變動而不定期調整。</p>
+            <p>這裡要特別注意的是：<strong class="text-white">即使你本身是台灣居民，當你出國旅行到這些受限國家時，如果使用當地的網路（飯店 WiFi、當地手機上網）登入 Bitfinex，平台的系統可能會依據你的 IP 位址判定你是該國的用戶。</strong>一旦系統做出這樣的判斷，你的帳戶可能會被暫時凍結甚至被要求關閉。</p>
+            <p class="text-slate-400"><strong class="text-amber-400">預防方式：</strong>出國期間盡量不要使用當地網路存取 Bitfinex。如果有必要操作帳戶，建議使用 VPN 連線到非受限國家的伺服器。出發前可以先確認目的地是否在 Bitfinex 的受限地區名單中。</p>
+            <p class="text-slate-400"><strong class="text-amber-400">已經觸發了怎麼辦？</strong>主動聯繫 Bitfinex 客服團隊，清楚說明你只是短期的旅遊或商務出差。提供你的台灣護照、返程機票等佐證資料，大多數情況下客服會協助解除限制。</p>
+          </div>
+        </div>
+
+        <!-- 情境二 -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 md:p-8 mb-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-amber-400/10 text-amber-400 font-bold text-lg w-10 h-10 rounded-full flex items-center justify-center shrink-0">2</span>
+            <h3 class="text-xl font-bold">異常的資金進出模式</h3>
+          </div>
+          <div class="space-y-3 text-slate-300 leading-relaxed">
+            <p>所有正規交易所都有反洗錢監控系統，Bitfinex 也不例外。當你的帳戶出現不尋常的資金流動模式時，系統就會自動標記並進入人工審查程序。</p>
+            <p>什麼樣的模式容易被標記呢？最典型的狀況是<strong class="text-white">大筆資金在短時間內反覆存入又提出</strong>，也就是所謂的「快進快出」。這類模式在反洗錢監控中屬於高度警示行為，因為它符合某些洗錢手法的特徵。</p>
+            <p>不過需要釐清一點：<strong class="text-white">金額大本身並不會造成問題，關鍵在於你的實際操作是否與你在 KYC 時提交的財務資訊相符。</strong>例如，你在開戶時的財務問卷中填寫年收入為一百萬台幣，結果帳戶裡突然出現等值五百萬的資金流動，這種不一致就容易觸發風控。</p>
+            <p class="text-slate-400"><strong class="text-amber-400">預防方式：</strong>最根本的做法是在 KYC 認證階段就如實填寫你的收入範圍與資金來源。如果你的財務狀況有所改變（例如收到一筆獎金或賣出資產），建議主動更新 KYC 資訊。寧可填高一點，也不要低估自己的財務能力。</p>
+            <p class="text-slate-400"><strong class="text-amber-400">被風控了怎麼辦？</strong>配合平台提供所需的資金來源證明文件。這可能包括銀行對帳單、薪資證明、資產處分紀錄等。只要你的資金來源合法且能提供佐證，通常都可以順利解除風控。</p>
+          </div>
+        </div>
+
+        <!-- 情境三 -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-amber-400/10 text-amber-400 font-bold text-lg w-10 h-10 rounded-full flex items-center justify-center shrink-0">3</span>
+            <h3 class="text-xl font-bold">帳戶操作規範</h3>
+          </div>
+          <div class="space-y-3 text-slate-300 leading-relaxed">
+            <p>Bitfinex 的服務條款明確規定，每個帳戶都必須由註冊的本人進行操作。這意味著<strong class="text-white">替家人朋友開設帳號，或是由他人代為操作你的帳戶，都屬於違反使用規範的行為。</strong></p>
+            <p>如果你有管理多筆資金的需求，正確的做法是利用 Bitfinex 提供的子帳號（Sub-account）功能。透過官方支援的子帳號架構，你可以在同一個主帳號下分別管理不同的資金池，完全合乎平台規範。</p>
+            <p>另外一個經常被忽略的細節是 <strong class="text-white">IP 位址的問題</strong>。如果多個不同的 Bitfinex 帳戶頻繁從同一個 IP 位址登入，系統會將這些帳戶關聯在一起並觸發審查。這在合租辦公室或家庭中多人各自持有帳戶的情境下特別容易發生。</p>
+            <p class="text-slate-400"><strong class="text-amber-400">預防方式：</strong>確保每個帳戶都由本人使用獨立的網路環境操作。如果家人各自都有帳戶，盡量避免在同一個 WiFi 下同時登入。需要管理多筆資金時，優先考慮使用官方的子帳號功能。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="reveal">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">收到帳戶異常通知<span class="text-amber-400">怎麼辦？</span></h2>
+        <div class="space-y-4 text-slate-300 leading-relaxed">
+          <p>如果某天你收到一封來自 Bitfinex 的帳戶審查通知，首先最重要的是：<strong class="text-white">不要恐慌。</strong>先仔細閱讀通知的具體內容，了解平台要求你提供什麼資訊或採取什麼行動。</p>
+          <p>接下來，盡快透過 Bitfinex 的官方客服管道聯繫他們的合規團隊。在溝通過程中，清楚且誠實地說明你的狀況。如果你有資金正在放貸中尚未到期，務必告知客服這個情況，請求他們給予合理的時間讓放貸單自然到期後再進行後續處理。</p>
+          <p>根據我們的觀察，Bitfinex 的客服處理態度通常是理性的。只要你能提供所需的文件且溝通態度良好，大多數的帳戶問題最終都能獲得妥善解決。平台一般也會給予用戶合理的寬限期來處理帳戶內的資金事宜。</p>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="reveal">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">CTA 的<span class="text-amber-400">帳戶安全建議</span></h2>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+          <p class="text-slate-300 mb-6">綜合上述分析，我們為所有使用 Bitfinex 放貸的用戶整理了以下安全守則：</p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1 shrink-0">&#10003;</span>
+              <span class="text-slate-300"><strong class="text-white">出國前確認目的地</strong> -- 檢查你要前往的國家是否在 Bitfinex 的受限國家清單中。如果是，提前規劃好替代的網路連線方式。</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1 shrink-0">&#10003;</span>
+              <span class="text-slate-300"><strong class="text-white">KYC 財務問卷如實填寫</strong> -- 不要低估你的收入範圍和資金規模。未來若財務狀況改變，記得主動更新 KYC 資料。</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1 shrink-0">&#10003;</span>
+              <span class="text-slate-300"><strong class="text-white">避免多帳號共用 IP</strong> -- 不同 Bitfinex 帳戶不要在同一個網路環境下登入，以免被系統誤判為關聯帳戶。</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1 shrink-0">&#10003;</span>
+              <span class="text-slate-300"><strong class="text-white">謹慎接收外部轉帳</strong> -- 不要接收來路不明的加密貨幣轉帳。如果不認識的地址突然發幣到你的帳戶，可能會連帶讓你的帳戶被標記。</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1 shrink-0">&#10003;</span>
+              <span class="text-slate-300"><strong class="text-white">定期關注服務條款變動</strong> -- Bitfinex 的政策會不定期更新，養成定期瀏覽官方公告的習慣，確保自己的操作符合最新規範。</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-400 mt-1 shrink-0">&#10003;</span>
+              <span class="text-slate-300"><strong class="text-white">使用 CTA 機器人不影響帳戶安全</strong> -- 我們的放貸機器人只透過 Bitfinex 的 Funding API 權限運作，不具備提領或交易功能。API 操作完全在 Bitfinex 的規範允許範圍內，不會觸發帳戶異常。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Disclaimer callout -->
+      <div class="reveal">
+        <div class="border-2 border-amber-400/50 bg-amber-400/5 rounded-2xl p-6 md:p-8">
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 text-2xl shrink-0">&#9888;</span>
+            <p class="text-slate-300 leading-relaxed">以上資訊為 CTA 團隊根據公開資訊整理的注意事項，不構成法律或合規建議。Bitfinex 的帳戶政策可能隨時更新，請以 Bitfinex 官方公告為準。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to lending -->
+      <div class="text-center reveal">
+        <a href="lending.html" class="inline-block border border-slate-600 text-slate-300 font-semibold px-8 py-3 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">
+          &larr; 返回放貸機器人頁面
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div>
+            <div class="font-bold text-white">交易幣修課</div>
+            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+      </div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">
+        本服務為自動化放貸軟體工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，放貸利率隨市場供需波動，過往績效不代表未來表現。使用前請閱讀<a href="risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
