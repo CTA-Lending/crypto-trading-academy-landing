@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTA 放貸機器人優勢解析：為什麼選擇我們？ — 交易幣修課</title>
+  <meta name="description" content="CTA 放貸機器人 v3.2 完整優勢解析。手動放貸、FRR 自動放貸、CTA 放貸機器人三方對比，深入解說訂單簿深度定價、動態多層拆單、飆升偵測等六大核心功能。">
+  <meta name="keywords" content="CTA放貸機器人,自動放貸,Bitfinex放貸機器人,Bitfinex lending bot,智能放貸,放貸自動化,被動收入,加密貨幣放貸">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/why-cta-lending-bot.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CTA 放貸機器人優勢解析：為什麼選擇我們？">
+  <meta property="og:description" content="從手動放貸的痛點談起，深入解析 CTA 放貸機器人 v3.2 的訂單簿深度定價、動態拆單、飆升偵測等六大核心功能，以及為什麼 CEO 自己也在用同一套系統。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/why-cta-lending-bot.html">
+  <meta property="og:image" content="https://crypto-trading-academy.com/assets/og-image.png">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="article:published_time" content="2026-04-30">
+  <meta property="article:author" content="交易幣修課">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "CTA 放貸機器人優勢解析：為什麼選擇我們？",
+    "description": "CTA 放貸機器人 v3.2 完整優勢解析。手動放貸、FRR 自動放貸、CTA 放貸機器人三方對比，深入解說訂單簿深度定價、動態多層拆單、飆升偵測等六大核心功能。",
+    "image": "https://crypto-trading-academy.com/assets/og-image.png",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-04-30",
+    "author": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "交易幣修課 Crypto Trading Academy",
+      "url": "https://crypto-trading-academy.com/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://crypto-trading-academy.com/blog/why-cta-lending-bot.html"
+    },
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1e3a5f',
+              'blue-light': '#2a5080',
+            }
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
+              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    }
+
+    .starfield {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .starfield::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent);
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* Article prose styles */
+    .article-body h2 {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+    }
+    .article-body ul, .article-body ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+    .article-body ul li::marker {
+      color: #fbbf24;
+    }
+    .article-body ol li::marker {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <!-- ===== NAV ===== -->
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">
+            交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login"
+           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
+          <span>&#x1F449;</span> 免費註冊
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login"
+         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
+        會員登入
+      </a>
+      <a href="https://app.crypto-trading-academy.com/register"
+         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">
+        免費註冊
+      </a>
+    </div>
+  </nav>
+
+  <!-- spacer for fixed nav -->
+  <div class="h-16"></div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <div class="max-w-3xl mx-auto px-4 py-4">
+    <nav class="text-sm text-slate-500">
+      <a href="../index.html" class="hover:text-white transition">首頁</a>
+      <span class="mx-2">&gt;</span>
+      <a href="../blog/" class="hover:text-white transition">文章</a>
+      <span class="mx-2">&gt;</span>
+      <span class="text-slate-300">CTA 放貸機器人優勢解析</span>
+    </nav>
+  </div>
+
+  <!-- ===== ARTICLE HEADER ===== -->
+  <header class="relative hero-bg py-12 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">CTA 放貸機器人優勢解析：為什麼選擇我們？</h1>
+      <div class="flex items-center gap-4 text-sm text-slate-400">
+        <time datetime="2026-04-30">2026 年 4 月 30 日</time>
+        <span class="text-slate-600">|</span>
+        <span>閱讀時間約 9 分鐘</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== ARTICLE BODY ===== -->
+  <article class="py-12">
+    <div class="max-w-3xl mx-auto px-4 article-body text-slate-300 leading-relaxed">
+
+      <!-- 開場白 -->
+      <p class="text-lg text-white"><strong>半夜兩點，Bitfinex 利率突然從 0.04% 飆到 0.12%——只持續 30 分鐘。手動操作的人在睡覺，錯過了。這就是為什麼有 CTA 放貸機器人。</strong></p>
+
+      <p>放貸這件事，看起來簡單：把穩定幣丟到 Bitfinex 的 Funding Wallet，掛個利率，等借款人吃單。但實際做過的人都知道，魔鬼藏在細節裡 —— 你掛的利率合不合理？睡覺時資金有沒有閒置？利率飆升那幾分鐘你能不能即時抓到？</p>
+
+      <p>這篇文章不是要說服你「自動化一定比手動好」，也不是要把其他方案說得一無是處。我會老實告訴你<strong class="text-white">三種方式各自的特性</strong>，再帶你看 CTA 放貸機器人 v3.2 在哪些地方做了不同的選擇，以及這些選擇背後為什麼這樣設計。</p>
+
+      <!-- 三方對比 -->
+      <h2 class="text-2xl font-bold text-white">手動放貸 vs FRR 自動放貸 vs CTA 放貸機器人</h2>
+
+      <p>在 Bitfinex 上放貸，主要有三條路可以走：</p>
+
+      <h3 class="text-xl font-bold text-amber-400">路線一：手動掛單</h3>
+      <p>你自己看訂單簿、自己決定利率、自己決定天數。優點是完全自主，缺點是<strong class="text-white">時間成本高</strong>，而且人腦無法 24 小時盯盤。我自己最早期手動放貸時最痛的，就是半夜利率飆升，等隔天醒來機會早就過了。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">路線二：FRR（Flash Return Rate）自動放貸</h3>
+      <p>這是 Bitfinex 平台內建的免費功能：你勾一下「FRR」，平台會用市場平均利率自動幫你放貸。優點是<strong class="text-white">零門檻、不用 API</strong>。缺點是 FRR 取的是平均值，沒有針對訂單簿深度做最佳化，也不會在飆升時搶高利率，這部分的超額報酬就拿不到。</p>
+
+      <h3 class="text-xl font-bold text-amber-400">路線三：CTA 放貸機器人</h3>
+      <p>透過 API 連線你的 Bitfinex 帳戶，由演算法決定利率、天數、層數。設計目標是<strong class="text-white">把「人腦盯盤的優勢」自動化</strong> —— 也就是不只接受市場平均，而是主動分析訂單簿、抓飆升、鎖長期。</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700">
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">比較項目</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">手動放貸</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">FRR 自動放貸</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">CTA 放貸機器人</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">利率邏輯</td>
+              <td class="py-3 px-4">人為判斷</td>
+              <td class="py-3 px-4">市場平均</td>
+              <td class="py-3 px-4">訂單簿深度分析</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">運作時間</td>
+              <td class="py-3 px-4">在線時段</td>
+              <td class="py-3 px-4">24 小時</td>
+              <td class="py-3 px-4">24 小時</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">飆升抓取</td>
+              <td class="py-3 px-4">看運氣</td>
+              <td class="py-3 px-4">不主動抓</td>
+              <td class="py-3 px-4">多條件偵測</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">天數策略</td>
+              <td class="py-3 px-4">手動設定</td>
+              <td class="py-3 px-4">固定 2 天</td>
+              <td class="py-3 px-4">需求導向 2-120 天</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">資金閒置率</td>
+              <td class="py-3 px-4">中-高</td>
+              <td class="py-3 px-4">低</td>
+              <td class="py-3 px-4">v3.2 達 0%</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-white">學習成本</td>
+              <td class="py-3 px-4">高</td>
+              <td class="py-3 px-4">最低</td>
+              <td class="py-3 px-4">低（一次設定）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>三種方式沒有絕對好壞。如果你資金不大、只想試水溫，FRR 是最簡單的選擇。如果你想最大化效率、把細節交給演算法，那才是 CTA 放貸機器人存在的理由。</p>
+
+      <!-- 六大核心功能 -->
+      <h2 class="text-2xl font-bold text-white">CTA v3.2 六大核心功能：每個功能解決什麼問題</h2>
+
+      <p>我不想把這段寫成功能清單，那太像產品 brochure。每個功能都是因為手動放貸的痛點才被開發出來，所以我會用「為什麼這對你重要」的角度說明。</p>
+
+      <div class="space-y-4 my-6">
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">1. 訂單簿深度定價</h4>
+          <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>表面最優價可能只有幾百塊掛單，你跟著掛，吃到的不是這個利率。</p>
+          <p class="text-sm mb-0">機器人會分析訂單簿真實深度 —— 也就是「考慮到我的本金大小，實際能成交的利率是多少」。這比看 ticker 價格更接近真實。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">2. 動態多層拆單（7-10 層）</h4>
+          <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>把 5 萬鎂全部掛同一個利率太僵硬。市場一變，整批單就尷尬。</p>
+          <p class="text-sm mb-0">v3.2 取代舊版固定五層，根據資金規模和市場狀態<strong class="text-white">動態決定 7 到 10 層</strong>，每層利率與天數略有差異，整體部位更具彈性。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">3. 需求導向智能天數</h4>
+          <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>低利率時鎖太久 = 套牢；高利率時掛太短 = 錯過長期高息。</p>
+          <p class="text-sm mb-0">低利率時掛 2 天保持靈活，等待下一波；當系統偵測到高需求，會<strong class="text-white">自動鎖長期，最長 120 天</strong>，把好利率鎖住。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">4. 儲備金機制</h4>
+          <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>飆升出現時你的資金 100% 都已經掛在低利率上，根本沒子彈。</p>
+          <p class="text-sm mb-0">系統預留 <strong class="text-white">5% 資金</strong>當儲備，平時看起來像「沒在工作」，但飆升一來，這 5% 就是搶高利率的彈藥。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">5. 飆升偵測 v3.1</h4>
+          <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>單看一個指標太容易誤判，凌晨假突破會讓你高位被套。</p>
+          <p class="text-sm mb-0">採用<strong class="text-white">多條件偵測</strong>：rate_surge（利率變化）、demand_bid（買方堆疊）、demand_top3（前三檔需求），三個條件交叉確認才行動。</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+          <h4 class="text-white font-semibold mb-1">6. 0% 資金閒置率</h4>
+          <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>放貸到期後資金回到 Funding Wallet，不重新掛單就是空轉。</p>
+          <p class="text-sm mb-0">v3.2 升級後<strong class="text-white">資金利用率達 100%</strong>，到期即重新進入演算法決策，不留空窗。</p>
+        </div>
+      </div>
+
+      <!-- 安全機制 -->
+      <h2 class="text-2xl font-bold text-white">安全機制：你的錢始終在你自己帳戶</h2>
+
+      <p>放貸機器人最常被問的一句話是：「我的錢會不會被你拿走？」這個問題很合理，所以我把架構講清楚：</p>
+
+      <ul class="list-disc">
+        <li><strong class="text-white">API Key AES-256 加密存儲</strong>：你的 Key 不是明文躺在資料庫，是工業級加密。</li>
+        <li><strong class="text-white">僅需 Funding 權限</strong>：建立 API Key 時只開放 Funding 相關權限，<strong>不能提幣、不能交易</strong>。即使最壞情況 Key 外洩，攻擊者也搬不走錢。（不過攻擊者仍可能掛出異常的放貸單，建議用戶每 3-6 個月在 Bitfinex 後台輪換 API Key，這是最佳實踐。）</li>
+        <li><strong class="text-white">IP 白名單</strong>：API Key 綁定 CTA 伺服器 IP，只有 CTA 後端能用，其他 IP 即使拿到 Key 也無效。</li>
+        <li><strong class="text-white">資金始終在你的 Bitfinex 帳戶</strong>：CTA 不託管你的資金，本金與利息都直接進你自己的 Funding Wallet。</li>
+        <li><strong class="text-white">不從利息扣款</strong>：CTA 採訂閱制月費，不會從你的放貸利息中抽成。Bitfinex 平台手續費 15% 是平台收，跟我們無關。</li>
+      </ul>
+
+      <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
+        <p class="text-amber-400 font-semibold mb-2">最重要的一句話</p>
+        <p class="mb-0">你想停就停。在 Bitfinex 後台撤銷 API Key，CTA 馬上失去所有權限，資金完全不受影響。沒有鎖倉、沒有違約金、沒有「先還清才能退款」這種事。</p>
+      </div>
+
+      <!-- 訂閱方案 -->
+      <h2 class="text-2xl font-bold text-white">訂閱方案：哪種適合什麼資金規模</h2>
+
+      <p>方案不是越貴越好，要看你的本金能不能撐起月費。簡單原則：<strong class="text-white">月費佔本金月利息的比例不要太高</strong>。</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700">
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">方案</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">月費</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">資金上限</th>
+              <th class="text-left py-3 px-4 text-amber-400 font-semibold">主要功能</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">入門版</td>
+              <td class="py-3 px-4">$13</td>
+              <td class="py-3 px-4">$5,000</td>
+              <td class="py-3 px-4">24/7 自動掛單、智能利率、每日報告</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">標準版</td>
+              <td class="py-3 px-4">$19</td>
+              <td class="py-3 px-4">$30,000</td>
+              <td class="py-3 px-4">+ 大額拆單、飆升警報、週分析、AI 客服</td>
+            </tr>
+            <tr class="border-b border-slate-800">
+              <td class="py-3 px-4 font-medium text-white">專業版</td>
+              <td class="py-3 px-4">$49</td>
+              <td class="py-3 px-4">$300,000</td>
+              <td class="py-3 px-4">+ CSV 匯出、Web Dashboard、智能鎖利 120 天</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-white">頂級方案</td>
+              <td class="py-3 px-4">另洽</td>
+              <td class="py-3 px-4">無限</td>
+              <td class="py-3 px-4">+ 專屬 IP、自定策略</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>建議搭配：本金 5,000 鎂以下用入門版測試系統；5,000 至 30,000 鎂選標準版（飆升警報幫得到）；超過 30,000 鎂直接上專業版，因為 120 天鎖利這功能在 30 萬以下級距的回收效益最明顯。</p>
+
+      <!-- CEO 自己也在用 -->
+      <h2 class="text-2xl font-bold text-white">為什麼 CEO 自己也在用</h2>
+
+      <p>我（CTA 創辦人）目前有<strong class="text-white">超過 $60,000 美元的自有資金</strong>跑在這套系統上，以近期盤整期市場利率為基準，產生穩定的小額週收益。具體數字會隨市場狀況波動 —— 行情熱絡時收益會明顯提升，盤整期則回到較保守區間。重點不是某週賺了多少，是這套系統不需要 CEO 動手，每週都在工作。我用的是同一套 codebase、同樣的參數、同樣的訂閱方案 —— 沒有「老闆專用版」這種東西。過往表現不代表未來收益。</p>
+
+      <p>為什麼這件事重要？因為很多自動化工具的開發者自己根本不用，那種工具我不敢碰。當開發者每週看著自己的本金跑這套系統，每一次 bug、每一次行為異常，都會直接影響到他自己的口袋，這時候你才能相信這套系統會被認真維護。</p>
+
+      <p class="text-sm text-slate-500"><em>免責聲明：上述為個人實測數字，過往表現不代表未來收益。放貸利率受市場供需波動影響，請依自身風險承受能力評估。</em></p>
+
+      <!-- 真實使用流程 -->
+      <h2 class="text-2xl font-bold text-white">從註冊到開始收息的實際流程</h2>
+
+      <p>整個流程設計目標是<strong class="text-white">10 分鐘上線</strong>。實際步驟：</p>
+
+      <ol class="list-decimal">
+        <li><strong class="text-white">註冊 CTA 帳號</strong>（crypto-trading-academy.com，免費）</li>
+        <li><strong class="text-white">確認你的 Bitfinex 帳號已通過 KYC</strong>，並把資金轉到 Funding Wallet</li>
+        <li><strong class="text-white">在 Bitfinex 建立 API Key</strong>，只勾 Funding 權限，不勾 Withdraw、不勾 Trade</li>
+        <li><strong class="text-white">回到 CTA 後台貼上 API Key 與 Secret</strong>（系統立即 AES-256 加密）</li>
+        <li><strong class="text-white">選擇方案、選擇放貸幣種</strong>（USD / UST）</li>
+        <li><strong class="text-white">啟動機器人</strong>，演算法開始運作；首批掛單通常 5 分鐘內出現在 Bitfinex 上</li>
+      </ol>
+
+      <p>你之後要做的事情：基本上沒有。每天打開 Web Dashboard 看一下儀表板，週報會自動寄到信箱。不必盯盤、不必調參數。</p>
+
+      <!-- FAQ -->
+      <h2 class="text-2xl font-bold text-white">常見問題</h2>
+
+      <div class="space-y-6 my-6">
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：CTA 跟其他自動化方案差在哪？</h3>
+          <p>核心差異在「定價邏輯」與「飆升處理」。一般自動化方案多採固定規則（例如永遠跟 FRR、固定五層拆單），CTA v3.2 採訂單簿深度分析 + 7-10 層動態拆單 + 多條件飆升偵測，把更多人腦判斷自動化。沒有絕對好壞，只是設計哲學不同。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：機器人會不會把我的錢借走？</h3>
+          <p>不會。機器人只透過 API 對你的 Bitfinex 帳戶下「掛放貸單」的指令。資金始終在你自己的 Funding Wallet，CTA 沒有提款權限。要驗證很簡單：你建立 API Key 時根本不要勾 Withdraw 權限，這樣即使想拿也拿不到。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：我可以隨時取消嗎？</h3>
+          <p>可以。在 CTA 後台關閉訂閱，或直接到 Bitfinex 撤銷 API Key，機器人立即停止。沒有違約金、沒有鎖倉。已經掛出去的放貸單會在到期後自然回到你的 Funding Wallet。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：能保證我每月賺多少嗎？</h3>
+          <p>不能，任何聲稱保證放貸收益率的服務都應該被質疑。放貸利率由 Bitfinex 市場供需決定，行情冷淡時利率會降低。CTA 能做的是把演算法盡量最佳化，但市場本身的波動不在我們的控制範圍內。<strong class="text-white">過往表現不代表未來收益。</strong></p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：本金多少才划算？</h3>
+          <p>純粹算數學：入門版月費 13 鎂，等於每年 156 鎂訂閱費。以盤整期年化 6-10% 估算，本金約 $3,000-5,000 USDT 以上時，機器人帶來的效率提升通常足以覆蓋訂閱費。實際情況依市場利率波動而異。低於這個金額建議先用 FRR 累積本金，等本金到位再轉用機器人。</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：支援哪些幣種？</h3>
+          <p>目前主力支援 USD 與 UST（USDT），這兩個幣種放貸需求最大、流動性最好，演算法表現最穩定。其他小幣放貸市場太薄，深度分析意義不大。</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/30 rounded-2xl p-8 md:p-10 text-center my-12">
+        <h2 class="text-2xl font-bold text-white mb-3">準備把放貸交給演算法？</h2>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">免費註冊交易幣修課，從入門版開始試用 CTA 放貸機器人。10 分鐘設定完成，今天就讓資金 24 小時為你工作。</p>
+        <a href="https://app.crypto-trading-academy.com/register"
+           class="inline-block bg-amber-400 text-slate-900 font-bold px-8 py-3 rounded-lg hover:bg-amber-300 transition text-lg">
+          免費註冊，開始放貸 &rarr;
+        </a>
+        <p class="text-xs text-slate-500 mt-4">本文僅為教學與產品介紹，不構成投資建議。放貸有風險，過往表現不代表未來收益，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ===== MORE ARTICLES ===== -->
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-white mb-6">更多文章</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="bitfinex-lending-guide.html" class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition block">
+          <div class="text-sm text-amber-400 mb-1">放貸入門</div>
+          <h3 class="text-base font-semibold text-white">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h3>
+        </a>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 opacity-60">
+          <div class="text-sm text-slate-500 mb-1">即將推出</div>
+          <h3 class="text-base font-semibold text-white">放貸利率怎麼看？APR vs APY 完整解析</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div>
+            <div class="font-bold text-white">交易幣修課</div>
+            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">
+        &copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.
+      </div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">
+        本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="https://app.crypto-trading-academy.com/register"
+       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+      免費註冊 &rarr;
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
