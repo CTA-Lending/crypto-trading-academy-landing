@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>估值共振：CAPE + 巴菲特指標的歷史級警告 — 交易幣修課</title>
+  <meta name="description" content="席勒本益比（CAPE）與巴菲特指標（市值/GDP）兩大長期估值錨同時刷新人類金融史紀錄。台股巴菲特指標突破 425%，美股 CAPE 達 41，這是 36 年來最危險的『估值共振區』。CTA 帶你看懂數據背後的重力警告。">
+  <meta name="keywords" content="CAPE,席勒本益比,巴菲特指標,台股估值,市值GDP比,4萬點台股,美股估值,風險管理">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/valuation-resonance-cape-buffett.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="估值共振：CAPE + 巴菲特指標的歷史級警告">
+  <meta property="og:description" content="兩大估值指標同步刷新紀錄。這不是預測末日，而是閱讀數據提供的『生存手冊』。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/valuation-resonance-cape-buffett.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/valuation-resonance-cover.jpg">
+  <meta property="article:published_time" content="2026-05-05">
+  <meta property="article:author" content="交易幣修課">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "估值共振：CAPE + 巴菲特指標的歷史級警告",
+    "description": "席勒本益比與巴菲特指標同步刷新人類金融史紀錄。",
+    "datePublished": "2026-05-05",
+    "dateModified": "2026-05-05",
+    "image": "https://crypto-trading-academy.com/blog/assets/valuation-resonance-cover.jpg",
+    "author": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/valuation-resonance-cape-buffett.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .indicator-card { background: rgba(30,41,59,0.6); border: 1px solid rgba(71,85,105,0.5); border-radius: 0.75rem; padding: 1.5rem; }
+    .indicator-card.cape { border-color: rgba(96,165,250,0.4); }
+    .indicator-card.buffett { border-color: rgba(74,222,128,0.4); }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child, .data-table th:nth-child(2) { text-align: left; }
+    .data-table td { padding: 0.625rem 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child, .data-table td:nth-child(2) { text-align: left; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .market-us { background: rgba(30,58,95,0.3); }
+    .data-table .market-tw { background: rgba(95,30,58,0.3); }
+    .data-table td.current { background: rgba(251,191,36,0.15); color: #fbbf24; font-weight: 700; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">CAPE + 巴菲特指標</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">市場研究 ｜ 估值分析</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        估值共振：<br class="hidden md:block">CAPE + 巴菲特指標的歷史級警告
+      </h1>
+      <p class="text-lg text-slate-400 mb-6">兩大長期估值錨同步刷新紀錄。這不是預測末日，而是閱讀數據提供的「生存手冊」。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-05-05</span><span>•</span><span>⏱ 閱讀約 8 分鐘</span><span>•</span><span>✍️ 交易幣修課 市場研究團隊</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/valuation-resonance-cover.jpg" alt="估值共振：CAPE + 巴菲特指標：美、台股歷史級別的重力警告" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">當估值過熱遇上重力回歸 — 36 年數據對照下的歷史警訊。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-16">
+
+    <p class="lead">
+      在所有衡量股市估值的工具中，能跨越百年週期、被諾貝爾獎得主與全球最成功投資人同時背書的，只有兩個 — <strong>席勒本益比（CAPE）</strong>與<strong>巴菲特指標（市值/GDP）</strong>。當這兩個指標同時刷新人類金融史紀錄，過去從來不是「新時代」，而是「重力回歸」的前夕。2026 年第二季的台股與美股，正處於這樣的位置。
+    </p>
+
+    <p>本文不預測崩盤時點，也不販賣末日恐慌。本文做的事情很單純：把數據攤開在你面前，讓你自己判斷現在處於估值週期的哪一階段，以及什麼樣的部位配置才符合你的風險承受度。</p>
+
+    <h2>一、兩大核心估值指標：為什麼這兩個值得關注？</h2>
+
+    <p>市場上的估值指標有上百種 — 本益比、股價淨值比、股價營收比、EV/EBITDA。但絕大多數指標都有一個致命缺陷：<strong>它們衡量的是「短期」</strong>。在景氣循環的高點，企業盈餘會被暫時性地推高，傳統本益比看起來「合理」 — 直到盈餘崩盤、本益比瞬間翻倍。</p>
+
+    <p>真正能告訴你「現在貴不貴」的長期估值指標，必須剔除短期循環雜訊。這就是 CAPE 與巴菲特指標誕生的原因。</p>
+
+    <div class="grid md:grid-cols-2 gap-4 my-8">
+      <div class="indicator-card cape">
+        <div class="text-blue-400 font-bold text-sm mb-2">指標 1</div>
+        <div class="font-bold text-white text-lg mb-3">席勒本益比（CAPE）</div>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3">由耶魯大學教授 Robert Shiller 提出，正式名稱為 Cyclically Adjusted Price-to-Earnings Ratio（循環調整本益比）。</p>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3"><strong class="text-white">核心邏輯：</strong>使用過去 10 年的「實質盈餘」（經通膨調整後）作為分母，平滑短期景氣循環的影響。</p>
+        <p class="text-sm text-slate-400 leading-relaxed"><strong class="text-amber-400">解讀重點：</strong>看清「貴不貴」。歷史上 CAPE 突破 30 通常代表估值進入泡沫風險區間。</p>
+      </div>
+      <div class="indicator-card buffett">
+        <div class="text-green-400 font-bold text-sm mb-2">指標 2</div>
+        <div class="font-bold text-white text-lg mb-3">巴菲特指標（市值/GDP）</div>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3">巴菲特公開推崇的長期估值衡量。將整體股市總市值除以當年度 GDP，得出比值。</p>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3"><strong class="text-white">核心邏輯：</strong>實體經濟（GDP）是股市真實獲利的源頭。當市值遠超 GDP，意味市場「預支未來」的程度過高。</p>
+        <p class="text-sm text-slate-400 leading-relaxed"><strong class="text-amber-400">解讀重點：</strong>看清「瘋不瘋」。巴菲特本人多次表示，當這個指標突破 100% 就應警覺，突破 150% 是顯著高估。</p>
+      </div>
+    </div>
+
+    <p>這兩個指標的價值不在於「精準預測時點」 — 沒有任何指標能做到那件事。它們的價值在於告訴你 <strong>「相對於歷史，你目前處於什麼位置」</strong>。位置決定的不是何時崩盤，而是<strong>未來十年的預期報酬率</strong>。研究顯示，當 CAPE 處於極端高點進場，未來十年的年化報酬率往往是個位數甚至負值；反之若在低點進場，未來十年通常有兩位數年化報酬。</p>
+
+    <div class="pull-quote">
+      估值不能告訴你「何時下車」，但能告訴你「往前走還剩多少路」。
+    </div>
+
+    <h2>二、橫跨 36 年的歷史對照：我們處於前所未有的「估值共振區」</h2>
+
+    <p>下表整理了過去四次重大市場高點，以及 2026 年 5 月的當前數據。請特別注意最右一欄與歷史峰值的差距。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>市場</th>
+          <th>指標</th>
+          <th>1990</th>
+          <th>2000</th>
+          <th>2008</th>
+          <th>2021</th>
+          <th>2026/05</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="market-us">
+          <td rowspan="2"><strong>美股</strong><br><span class="text-xs text-slate-500">S&amp;P 500</span></td>
+          <td>CAPE</td>
+          <td>~17.5</td>
+          <td>44.2</td>
+          <td>27.5</td>
+          <td>38.5</td>
+          <td class="current">41.0</td>
+        </tr>
+        <tr class="market-us">
+          <td>巴菲特指標</td>
+          <td>~60%</td>
+          <td>150%</td>
+          <td>110%</td>
+          <td>190%</td>
+          <td class="current">230%</td>
+        </tr>
+        <tr class="market-tw">
+          <td rowspan="2"><strong>台股</strong><br><span class="text-xs text-slate-500">TAIEX</span></td>
+          <td>CAPE</td>
+          <td>N/A</td>
+          <td>33.5</td>
+          <td>27.5</td>
+          <td>35.2</td>
+          <td class="current">41.18</td>
+        </tr>
+        <tr class="market-tw">
+          <td>巴菲特指標</td>
+          <td>120%</td>
+          <td>135%</td>
+          <td>165%</td>
+          <td>270%</td>
+          <td class="current">425.6%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-xs text-slate-500 italic mb-6">資料整理：CAPE 數據參考 Robert Shiller 教授官方資料庫；巴菲特指標為市值/GDP 比值，依各國股市與主計處公開數據估算。歷史峰值為各次循環頂點區間的代表數值。</p>
+
+    <p>從這張表，三個結構性事實值得反覆思考：</p>
+
+    <p><strong>1. 美股 CAPE 41.0：歷史第二高，僅次於 2000 年網路泡沫。</strong> 2008 金融海嘯前的 CAPE 是 27.5；2021 疫情泡沫頂點是 38.5。當前的 41.0 已超越所有近代崩盤前的水準，僅次於 2000 年的 44.2。</p>
+
+    <p><strong>2. 美股巴菲特指標 230%：刷新人類金融史紀錄。</strong> 巴菲特本人在 2001 年將 150% 形容為「玩火」；當前的 230% 不是「玩火」的問題，而是已經沒有歷史先例。</p>
+
+    <p><strong>3. 台股巴菲特指標 425.6%：全球最極端的估值脫節。</strong> 台股這個數字之所以特別誇張，部分來自台積電與半導體生態鏈在全球供應鏈中的特殊地位（市值反映全球需求，GDP 只計算本地產出）。但即使把這個結構性因素納入考量，從 2021 年的 270% 到 2026 年的 425% 仍然是一個瘋狂的跳升 — 短短 5 年增加了一個 2008 金融海嘯的「全幅」。</p>
+
+    <h2>三、為什麼 2026 年是「最危險的共振」？</h2>
+
+    <p>單一指標處於高點並不罕見。但兩個獨立衡量維度的指標<strong>同時</strong>處於歷史極端，這才是 2026 年的特殊之處。我們把這個現象稱為「估值共振」 — 它的危險性來自三個層面：</p>
+
+    <h3>1. 雙重極值：估值過熱不再是單一現象</h3>
+    <p>過去四十年，CAPE 與巴菲特指標通常會有「先後」 — 一個極端時，另一個還在合理區間。2000 年 CAPE 創新高時，巴菲特指標還在 150%；2021 年巴菲特指標衝高時，CAPE 是 38.5。但 2026 年是首次<strong>兩個指標同時處於各自的歷史極端區間</strong>。台股 CAPE 41.18 與巴菲特指標 425.6% 的同步刷新，意味著「貴」與「瘋」都已達到史無前例的水位。這不是「估值偏高」，是「結構性極端」。</p>
+
+    <h3>2. 重力位能：修正幅度不是線性，是平方</h3>
+    <p>2000 年巴菲特指標 150% 引發了納指 80% 的跌幅；那時的「位能」（高估幅度）是 50 個百分點（150% - 合理值 100%）。當前美股 230%（位能 130 個百分點）、台股 425%（位能 325 個百分點，假設合理值 100%），位能累積已是 2000 年的數倍。</p>
+    <p>修正力道與位能不是一比一的關係，更多時候接近平方關係。<strong>位能越大，反轉時的動能越驚人。</strong>這不是危言聳聽，這是物理。</p>
+
+    <h3>3. 時空共振：當估值過熱遇上週期節點</h3>
+    <p>估值高只是「空間」上的危險。當這個高位置遇上「時間」上的週期節點 — 例如重要的政策轉折、利率循環反轉、AI 變現速度的真實驗證 — 重力回歸的觸發條件就齊備了。本文不預測具體時點，但專業交易者該做的不是等到崩盤後才反應，而是<strong>在共振區內就把風險預算先準備好</strong>。</p>
+
+    <div class="pull-quote">
+      在 2000 年，CAPE 44 配巴菲特指標 150% 引爆了泡沫。<br>
+      在 2026 年，CAPE 41 配巴菲特指標 230% 還在創新高。<br>
+      這不叫「結構性牛市」，這叫「結構性遲到」。
+    </div>
+
+    <h2>四、總結與示警：保住獲利，遠離瘋狂</h2>
+
+    <p>本文最後三個重點，請依序閱讀：</p>
+
+    <div class="warning-card mb-4">
+      <div class="text-red-400 font-bold mb-2">⚠ 示警 1：台股 425% 巴菲特指標是「預支未來」</div>
+      <p class="text-sm text-slate-300 leading-relaxed">這個數字背後的假設是：AI 變現速度將永遠等於或快於資本市場給予的溢價速度。一旦這個假設出現任何裂痕（例如某季 AI 龍頭資本支出回報率不如預期、某項變現計畫延遲），估值校正將是劇烈且非線性的。</p>
+    </div>
+
+    <div class="warning-card mb-4">
+      <div class="text-red-400 font-bold mb-2">⚠ 示警 2：4 萬點台股的風險收益比已不對稱</div>
+      <p class="text-sm text-slate-300 leading-relaxed">在這個位置加碼，你預期的潛在報酬可能是 10-20%，但潛在下行風險可能是 30-50%。這不是看空台股，而是「報酬不對稱」 — 同樣的操作在 2 萬點與 4 萬點的本質完全不同。請誠實問自己：以這個風險回報比，這筆交易值得嗎？</p>
+    </div>
+
+    <div class="recommend-card mb-6">
+      <div class="text-green-400 font-bold mb-2">✓ 建議：增加現金儲備，靜待時間與空間重新對齊</div>
+      <p class="text-sm text-slate-300 leading-relaxed">這不是叫你清空部位、空手等崩盤 — 那是另一種極端。但在估值共振區，逐步將部分獲利轉為現金或穩健現金流工具（例如低風險放貸、短期國債），是專業資金管理的基本動作。當「時間」與「空間」重新對齊（估值回到合理區間），你才有彈藥重新進場。</p>
+    </div>
+
+    <h2>五、寫給每一位身在 4 萬點的投資人</h2>
+
+    <p>本文不販賣恐慌，也不鼓吹放空。市場是否會在三個月、六個月、或兩年後修正，沒有人知道。歷史告訴我們的不是「精準時點」，而是「結構性風險已經堆疊到什麼程度」。</p>
+
+    <p>專業交易者與一般散戶最大的差別，從來不是預測能力 — 而是<strong>面對極端估值時的反射動作</strong>。當所有人都在加碼，他們在控制部位；當所有人都在歡呼，他們在檢視風控；當所有人都認為「這次不一樣」，他們知道，這四個字是金融史上最昂貴的句子。</p>
+
+    <div class="pull-quote">
+      在非理性亢奮中保持清醒，是專業交易者與韭菜唯一的區別。
+    </div>
+
+    <p>把獲利保住，比追逐最後 10% 的漲幅重要得多。風險來臨前的減倉，永遠比風險來臨後的逃命便宜。</p>
+
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">在估值共振區，<span class="text-amber-400">建立你的攻守系統</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">交易課程教你看清訊號與風控，放貸機器人提供穩定現金流。攻守兼備，才能在歷史級別的市場環境中存活。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解交易課程 &rarr;</a>
+        <a href="../lending.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">穩健現金流：放貸機器人</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文僅為市場研究與教育用途，不構成任何投資建議。歷史模式不保證未來重演。請依個人風險承受度做決策，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="shiller-narrative-economics.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場研究</div>
+          <div class="font-bold text-white text-sm">席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病</div>
+        </a>
+        <a href="financial-market-dungeon.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易心法</div>
+          <div class="font-bold text-white text-sm">進入金融市場前，你準備好了嗎？地下城副本生存指南</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">了解交易課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

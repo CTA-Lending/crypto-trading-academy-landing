@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病 — 交易幣修課</title>
+  <meta name="description" content="諾貝爾獎得主 Robert Shiller 的敘事經濟學告訴我們：市場不只是數據運算，更是「故事」的傳染。從 1929 到 2026 AI 革命，每一次崩盤前都有相似的全民共識。CTA 帶你看穿 4 萬點台股背後的敘事週期。">
+  <meta name="keywords" content="席勒,敘事經濟學,Narrative Economics,Robert Shiller,台股4萬點,AI泡沫,市場心理,SIR模型,投資紀律">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/shiller-narrative-economics.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病">
+  <meta property="og:description" content="從 1929 到 2026 AI 革命，每一次崩盤前都有相似的全民共識。看清敘事週期，才能在亢奮中保持清醒。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/shiller-narrative-economics.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/shiller-narrative-cover.jpg">
+  <meta property="article:published_time" content="2026-05-05">
+  <meta property="article:author" content="交易幣修課">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病",
+    "description": "從 1929 到 2026 AI 革命，每一次崩盤前都有相似的全民共識。",
+    "datePublished": "2026-05-05",
+    "dateModified": "2026-05-05",
+    "image": "https://crypto-trading-academy.com/blog/assets/shiller-narrative-cover.jpg",
+    "author": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/shiller-narrative-economics.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+    .stage-card { background: rgba(30,41,59,0.6); border: 1px solid rgba(71,85,105,0.5); border-radius: 0.75rem; padding: 1.25rem; }
+    .stage-1 { border-color: rgba(96,165,250,0.4); }
+    .stage-2 { border-color: rgba(248,113,113,0.4); }
+    .stage-3 { border-color: rgba(74,222,128,0.4); }
+    table.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; }
+    .compare-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem 1rem; text-align: left; font-weight: 700; font-size: 0.875rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .compare-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; font-size: 0.875rem; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr.current-row td { background: rgba(251,191,36,0.08); color: #ffffff; font-weight: 500; }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">席勒敘事經濟學</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">市場研究 ｜ 估值週期</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        席勒敘事經濟學：<br class="hidden md:block">看穿 4 萬點台股背後的人性傳染病
+      </h1>
+      <p class="text-lg text-slate-400 mb-6">市場不是計算題，是傳染病。當「故事」成為信仰，價格才會脫離引力。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-05-05</span><span>•</span><span>⏱ 閱讀約 9 分鐘</span><span>•</span><span>✍️ 交易幣修課 市場研究團隊</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/shiller-narrative-cover.jpg" alt="席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">諾貝爾經濟學獎得主 Robert Shiller — 市場是故事的傳染，不是數字的運算。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-16">
+
+    <p class="lead">
+      台股站上 4 萬點，這個曾經被視為遙不可及的數字，如今成為許多投資人的「新常態」起點。但若你只盯著 K 線、本益比與獲利成長，看到的只是這場行情的表面。真正驅動這個歷史高度的，是一個更深層的東西 — 一個正在全球擴散、且我們每個人都身在其中的<strong>故事</strong>。
+    </p>
+
+    <p>諾貝爾經濟學獎得主 Robert Shiller（羅伯·席勒）在其 2019 年著作《敘事經濟學》（<em>Narrative Economics</em>）中，提出了一個顛覆主流經濟學的觀點：市場的劇烈波動，從來不是單純的供需運算結果，而是一個又一個「故事」在社會中傳播、感染、再潰散的過程。當一個關於「新時代」的敘事具備強烈的視覺感與情緒共鳴時，它會像病毒一樣擴散，最終驅動資產價格脫離基本面的引力。</p>
+
+    <p>2026 年的 AI 浪潮，正是這樣一個敘事 — 而它已進入最危險的階段。</p>
+
+    <h2>一、敘事經濟學：當市場成為一場集體心理現象</h2>
+
+    <p>傳統經濟學假設市場參與者是理性的：我們會冷靜評估盈餘、現金流、折現率，據此給出合理價格。但席勒教授透過大量歷史研究發現，這個假設在大多數時候並不成立。<strong>真正主導市場走向的，往往是一個能引發大量人群共鳴的故事。</strong></p>
+
+    <p>這個觀察並不抽象。回顧過去一個世紀的金融史，每一次重大行情的頂點，市場都被某個高度感染力的敘事所統治。這些敘事的共同特徵是：聽起來像「常識」、看起來像「不可逆的新時代」、講出來能讓全民點頭認同。當一個故事達到這個臨界點，它不再是預測工具，而是<strong>信仰</strong>。</p>
+
+    <p>而信仰，從來不需要證據。</p>
+
+    <div class="pull-quote">
+      當大眾不再追問獲利品質，而開始追問「故事好不好聽」，市場已從投資場變成劇場。
+    </div>
+
+    <h2>二、SIR 模型：經濟敘事的傳染三階段</h2>
+
+    <p>席勒教授借用流行病學中的 SIR 模型（Susceptible–Infected–Recovered，可感染者–感染者–康復者）來解釋敘事如何在社會中擴散。一個致命的經濟敘事通常經歷以下三個階段：</p>
+
+    <div class="grid md:grid-cols-3 gap-4 my-8">
+      <div class="stage-card stage-1">
+        <div class="text-blue-400 font-bold text-sm mb-2">階段 1 ｜ 潛伏期</div>
+        <div class="font-bold text-white mb-2">Susceptible</div>
+        <p class="text-sm text-slate-400 leading-relaxed">革命性概念出現。少數先行者開始討論。價格緩步上揚，但媒體尚未鋪天蓋地。<br><br><strong>當前對應：</strong>AI 基礎設施投資啟動。</p>
+      </div>
+      <div class="stage-card stage-2">
+        <div class="text-red-400 font-bold text-sm mb-2">階段 2 ｜ 感染期</div>
+        <div class="font-bold text-white mb-2">Infected</div>
+        <p class="text-sm text-slate-400 leading-relaxed">價格上漲反過來驗證故事。媒體、社群、計程車司機都在討論。全民集體亢奮，FOMO 接管理性。<br><br><strong>當前對應：4 萬點台股。</strong></p>
+      </div>
+      <div class="stage-card stage-3">
+        <div class="text-green-400 font-bold text-sm mb-2">階段 3 ｜ 康復／遺忘期</div>
+        <div class="font-bold text-white mb-2">Recovered</div>
+        <p class="text-sm text-slate-400 leading-relaxed">敘事力竭，新感染者（資金）枯竭。價格反轉，泡沫破裂。多年後，沒人記得自己曾深信不疑。</p>
+      </div>
+    </div>
+
+    <p>這個模型解釋了一個常被誤解的現象：<strong>為什麼泡沫總是「沒人喊頂」？</strong> 因為頂點正是感染率最高的那一刻 — 當所有人都已是感染者，市場就再也找不到新買家來推升價格。當下沒有人覺得自己處於泡沫中，這正是泡沫存在的本質特徵。</p>
+
+    <h2>三、歷史對照：每次崩盤前，都有同一種「全民共識」</h2>
+
+    <p>檢視過去近百年的重大市場事件，會發現一個近乎重複的腳本。每次崩盤前夕，市場都被一個讓所有人深信不疑的「故事」所統治。這些故事在當下聽起來不僅合理，甚至顯得「無可辯駁」。</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>年份</th><th>崩盤事件</th><th>當時的主導敘事</th><th>結果</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1929</strong></td><td>大蕭條</td><td>「股票已到達永久的高原，經濟將無限成長。」</td><td>指數跌約 89%</td></tr>
+        <tr><td><strong>2000</strong></td><td>網路泡沫</td><td>「網際網路消滅了本益比，只要有流量就有價值。」</td><td>納指跌約 80%</td></tr>
+        <tr><td><strong>2008</strong></td><td>金融海嘯</td><td>「房價永遠不會跌，金融工程能完美分散風險。」</td><td>全球金融海嘯</td></tr>
+        <tr><td><strong>2021</strong></td><td>疫情泡沫</td><td>「無限 QE 與零利率，數位轉型是唯一出路。」</td><td>2022 劇烈修正</td></tr>
+        <tr class="current-row"><td><strong>2026</strong>（現狀）</td><td>—</td><td>「AI 生產力革命、人類文明第二次工業革命。」</td><td>估值已達歷史極端區間</td></tr>
+      </tbody>
+    </table>
+
+    <p>注意這個表格中每個敘事的共同結構：<strong>它們都不是錯的。</strong> 1929 年的美國經濟確實在工業化的軌道上、2000 年的網際網路確實改變了世界、2008 年的金融工程確實是真實的技術突破、2021 年的數位轉型確實是不可逆的趨勢 — 而 2026 年的 AI 革命，當然也是真實的。</p>
+
+    <p><strong>問題不在故事是否真實，而在「真實的故事」是否能合理化「天文數字的估值」。</strong> 過去四次的答案是：不行。當敘事成為信仰，市場給予的溢價會遠超該技術所能兌現的合理回報。修正的不是技術，是估值。</p>
+
+    <div class="pull-quote">
+      泡沫從來不是「用錯誤的故事騙人」，而是「用真實的故事支撐錯誤的價格」。
+    </div>
+
+    <h2>四、AI 敘事正在進入「全民感染期」</h2>
+
+    <p>把 SIR 模型套用到當前的 AI 敘事，特徵已非常清晰：</p>
+
+    <ul>
+      <li><strong>媒體飽和度</strong>：從財經頻道到家庭群組、從 KOL 到計程車司機，「AI」幾乎是 2026 年所有對話的關鍵字。</li>
+      <li><strong>估值合理化</strong>：傳統估值方法失效，市場開始用「願景」「TAM」「未來十年滲透率」這類無法即時驗證的指標來定價。</li>
+      <li><strong>異議消音</strong>：質疑者被貼上「不懂時代」標籤。任何放空 AI 概念股的人都被嘲笑。</li>
+      <li><strong>新買家枯竭警訊</strong>：散戶持股比例攀升、機構獲利了結增加、市場波動率（VIX）異常壓低 — 這是典型的「該進場的人都進場了」結構。</li>
+    </ul>
+
+    <p>這些訊號不能精準預測「何時崩盤」 — 任何聲稱知道精確時點的人都不誠實。但它們能告訴你一件事：<strong>從風險報酬比的角度，現在不是加碼的時機，而是檢視部位的時機。</strong></p>
+
+    <h2>五、專業交易者的回歸：從敘事到數據</h2>
+
+    <p>席勒教授的研究給專業交易者最大的啟發是：<strong>不要與敘事為敵，但永遠不要把敘事當成數據。</strong></p>
+
+    <p>真正的紀律不是預測頂部、放空泡沫 — 那是難度最高、勝率最低的交易之一。真正的紀律是：</p>
+
+    <ol>
+      <li><strong>區分故事與基本面</strong>：當你聽到一個讓你激動的故事時，先問自己 — 這個故事支撐的價格，需要什麼樣的真實獲利成長率才能合理化？算出那個數字。如果那個數字超過產業歷史最佳水準三倍以上，你正在為敘事付費，不是為價值。</li>
+      <li><strong>回歸裸 K 本質</strong>：當市場全在討論宏觀敘事時，價格行為（Price Action）是最後的真相來源。籌碼結構、量價關係、支撐壓力、成交分布 — 這些不會被敘事感染。</li>
+      <li><strong>建立攻守系統</strong>：在敘事週期的不同階段，部位配置應該不同。感染期應減倉，不是加碼；遺忘期才是進場時機。</li>
+    </ol>
+
+    <p>這也是我們在 CTA 教學中一再強調的核心：<strong>交易系統的價值，不在於它預測得多準，而在於它讓你不被敘事綁架。</strong></p>
+
+    <h2>六、結語：在亢奮中保持清醒</h2>
+
+    <p>本文不是預測台股會在何時、跌到何處 — 那不是專業分析師該做的事。本文也不是建議你立刻清空部位 — 每個人的資金狀況、風險承受度、交易週期都不同。</p>
+
+    <p>本文的目的只有一個：<strong>讓你看清自己正身處在哪個敘事階段。</strong></p>
+
+    <p>當大眾不再關心獲利品質，只關心「故事好不好聽」；當異議者被視為「不懂時代」；當每天打開財經新聞，都在強化你的多頭信念 — 這就是席勒教授所說的「全民感染期」。</p>
+
+    <p>這個時候，能讓你在風暴前活下來的，不是更深入的研究、不是更聰明的選股，而是<strong>紀律</strong>。是「我願意承認自己也是這個敘事的一部分」的誠實，是「我的部位配置應該預留風險空間」的克制，是「我相信故事，但我用價格行為下單」的雙軌思維。</p>
+
+    <div class="pull-quote">
+      在非理性亢奮中保持清醒，是專業交易者與韭菜唯一的區別。
+    </div>
+
+    <p>市場的頂點，永遠在「全民亢奮」的那一刻出現。記住這句話，比任何技術指標都重要。</p>
+
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">在敘事週期中，<span class="text-amber-400">建立你的紀律系統</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">不是預測泡沫，而是建立一套讓你在任何敘事階段都能存活的交易系統。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解交易課程 &rarr;</a>
+        <a href="../lending.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">穩健現金流：放貸機器人</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文僅為市場研究與教育用途，不構成任何投資建議。歷史模式不保證未來重演。請依個人風險承受度做決策，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="valuation-resonance-cape-buffett.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場研究</div>
+          <div class="font-bold text-white text-sm">估值共振：CAPE + 巴菲特指標的歷史警告</div>
+        </a>
+        <a href="financial-market-dungeon.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易心法</div>
+          <div class="font-bold text-white text-sm">進入金融市場前，你準備好了嗎？地下城副本生存指南</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">了解交易課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
