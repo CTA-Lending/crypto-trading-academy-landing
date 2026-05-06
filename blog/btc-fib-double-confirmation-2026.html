@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC 反彈被釘死在 87K：兩種費波那契畫法殊途同歸的歷史共振 — 交易幣修課</title>
+  <meta name="description" content="2022 牛轉熊第一段下跌後，無論用哪種費波那契抓法，反彈都被釘死在 0.5 附近。2026 套用相同框架，兩種畫法都指向 87-88K 區間 — 而 BTC 在這個位置同樣失守。這不是偶然，是市場結構的數學共振。CTA 完整解析。">
+  <meta name="keywords" content="比特幣費波那契,BTC Fibonacci,反彈高點,熊市結構,費波那契回撤,牛轉熊,技術分析,2022 vs 2026">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/btc-fib-double-confirmation-2026.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="BTC 反彈被釘死在 87K：兩種費波那契畫法殊途同歸的歷史共振">
+  <meta property="og:description" content="2022 vs 2026 對照：兩種費波那契抓法都指向同一個反彈高點，且兩次都被精準守住。市場結構的數學共振解析。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/btc-fib-double-confirmation-2026.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/btc-fib-comparison-method2.png">
+  <meta property="article:published_time" content="2026-05-06">
+  <meta property="article:author" content="交易幣修課">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BTC 反彈被釘死在 87K：兩種費波那契畫法殊途同歸的歷史共振",
+    "description": "2022 vs 2026 對照：兩種費波那契抓法都指向同一個反彈高點，且兩次都被精準守住。",
+    "datePublished": "2026-05-06",
+    "dateModified": "2026-05-06",
+    "image": "https://crypto-trading-academy.com/blog/assets/btc-fib-comparison-method2.png",
+    "author": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/btc-fib-double-confirmation-2026.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .data-card { background: rgba(30,41,59,0.6); border: 1px solid rgba(71,85,105,0.5); border-radius: 0.75rem; padding: 1.25rem; }
+    .data-card.method1 { border-color: rgba(96,165,250,0.4); }
+    .data-card.method2 { border-color: rgba(251,191,36,0.4); }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .compare-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .compare-table th:first-child { text-align: left; }
+    .compare-table td { padding: 0.625rem 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; }
+    .compare-table td:first-child { text-align: left; font-weight: 600; color: #ffffff; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr.highlight td { background: rgba(251,191,36,0.1); color: #fbbf24; font-weight: 700; }
+
+    .figure-block { margin: 2.5rem 0; }
+    .figure-block figcaption { background: rgba(15,23,42,0.8); color: #94a3b8; font-size: 0.8125rem; text-align: center; padding: 0.625rem 1rem; border-top: 1px solid rgba(71,85,105,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">BTC 雙費波那契共振</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">技術分析 ｜ 比特幣週線</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        BTC 反彈被釘死在 87K：<br class="hidden md:block">兩種費波那契畫法殊途同歸
+      </h1>
+      <p class="text-lg text-slate-400 mb-6">2022 vs 2026 對照 — 不同的擺盪區間、不同的回撤比例，卻指向同一個價格區。這不是偶然，是市場結構的數學共振。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-05-06</span><span>•</span><span>⏱ 閱讀約 7 分鐘</span><span>•</span><span>✍️ 交易幣修課 技術分析團隊</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-16">
+
+    <p class="lead">
+      技術分析有一個常被忽略的鐵律：<strong>當不同工具、不同畫法指向同一個價格區，這個區位的可信度會呈倍數放大。</strong>過去一週，BTC 從 12.6 萬美元的歷史高點滑落到 6 萬美元附近後，產生一波技術性反彈。我們把這次反彈擺進費波那契回撤工具裡測量，得到一個讓人坐直身體的觀察 — 不管你用「擺盪頂」還是「實際週期頂」當錨點，反彈都精準停在 87K 附近，<strong>而 BTC 至今仍未能站穩在這個區間之上</strong>。這個結構特徵，與 2022 年牛轉熊第一段反彈高度相似。
+    </p>
+
+    <h2>一、回顧 2022：牛轉熊第一段下跌後的反彈，被精準釘死</h2>
+
+    <p>先看歷史。2021 年 11 月 BTC 在 69,000 美元見頂，正式結束 COVID 大牛市。第一段下跌把價格打到 32,917 — 這是當時市場恐慌情緒的第一波宣洩。隨後 BTC 進入一段技術性反彈，持續了約四個月。</p>
+
+    <p>這段反彈停在哪裡？我們用兩種費波那契畫法測量：</p>
+
+    <figure class="figure-block reveal">
+      <img src="assets/btc-fib-comparison-method1.png" alt="BTC 2022 vs 2026 費波那契對照（小擺盪畫法）" class="w-full rounded-t-2xl border border-slate-800 border-b-0">
+      <figcaption class="rounded-b-2xl">畫法一：以下跌段中段為錨（左：2022，0.786 = 47,215；右：2026，0.786 = 88,178.95）｜Source: Binance Weekly, BTCUSDT</figcaption>
+    </figure>
+
+    <figure class="figure-block reveal">
+      <img src="assets/btc-fib-comparison-method2.png" alt="BTC 2022 vs 2026 費波那契對照（完整週期擺盪）" class="w-full rounded-t-2xl border border-slate-800 border-b-0">
+      <figcaption class="rounded-b-2xl">畫法二：以完整週期高低點為錨（左：2022，0.5 = 47,658；右：2026，0.5 = 87,017.11）｜Source: Binance Weekly, BTCUSDT</figcaption>
+    </figure>
+
+    <h3>畫法一：以「下跌中段擺盪頂」為費波那契起點</h3>
+
+    <p>第一張圖採用較保守的擺盪取點 — 把 1 設在 52,088（圖上標註的中段反彈高點，Binance 週線），0 設在 32,917（第一段下跌底）。在這個取點下，<strong>0.786 回撤位於 47,215 美元</strong>。實際走勢顯示，BTC 反彈精準觸及這個位置後拒絕，隨後展開長達一年的二次熊市，最終於 2022 年 11 月 FTX 事件期間跌至 15,500 美元附近。</p>
+
+    <h3>畫法二：以「完整週期高低點」為費波那契起點</h3>
+
+    <p>第二張圖採用更宏觀的擺盪取點 — 把 1 設在 69,000（牛市實際頂部），0 一樣設在 32,917。在這個取點下，<strong>0.5 回撤位於 47,658 美元</strong>。同一波反彈、同一個拒絕點，但在這個畫法下落在「黃金中位」位置。</p>
+
+    <div class="pull-quote">
+      畫法一的 0.786 ≈ 47,215；畫法二的 0.5 ≈ 47,658。<br>
+      價差不到 450 美元。兩種完全不同的測量方式，把同一個反彈頂部夾在 1% 區間內。
+    </div>
+
+    <p>這不是巧合，這是<strong>結構性共振</strong> — 當兩個獨立的測量框架收斂到同一個價位，這個價位就從「主觀畫線」升級為「客觀結構」。</p>
+
+    <h2>二、2026：歷史正在以驚人的精度重演</h2>
+
+    <p>2026 年初，BTC 從 126,199.63 的歷史高點滑落到 60,000 區間，這是一段相似於 2022 年的「牛轉熊第一段下跌」。同樣地，價格在 6 萬附近停穩、產生反彈。問題是 — 這次的反彈會被釘在哪裡？</p>
+
+    <p>我們把同樣的兩種畫法套用在 2026 圖上：</p>
+
+    <table class="compare-table my-6">
+      <thead>
+        <tr>
+          <th>畫法</th>
+          <th>錨點 1（高）</th>
+          <th>錨點 0（低）</th>
+          <th>關鍵回撤</th>
+          <th>關鍵價位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>畫法一<br><span class="text-xs text-slate-500">下跌中段擺盪</span></td>
+          <td>99,924.49</td>
+          <td>60,000.00</td>
+          <td>0.786</td>
+          <td>88,178.95</td>
+        </tr>
+        <tr>
+          <td>畫法二<br><span class="text-xs text-slate-500">週期高低點</span></td>
+          <td>126,199.63</td>
+          <td>60,000.00</td>
+          <td>0.5</td>
+          <td>87,017.11</td>
+        </tr>
+        <tr class="highlight">
+          <td>共振區間</td>
+          <td colspan="3">兩種畫法價差約 1,162 美元（誤差 1.3%）</td>
+          <td><strong>87,000 – 88,200</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>對照當前實際走勢：BTC 在這次反彈觸及這個區間後，價格再度滑落、目前回到 81,310 附近震盪。<strong>不同的擺盪、不同的回撤比例，再次指向同一個拒絕區。</strong>而市場到目前為止，尚未能在這個位置取得突破。</p>
+
+    <p class="text-sm text-slate-400 italic">需要強調的是：兩種畫法因共享低點而存在數學上的天然鄰近性，<strong>真正關鍵的不是「兩條線靠近」本身，而是「市場在這個鄰近區實際出現拒絕價格行為」</strong> — 前者是幾何，後者才是訊號。</p>
+
+    <h2>三、為什麼兩種畫法會收斂？背後的數學</h2>
+
+    <p>這不是神秘學，是費波那契比例的內建幾何性質。當你選的「短擺盪」與「長擺盪」共享同一個低點（0），那麼：</p>
+
+    <ul>
+      <li><strong>短擺盪的 0.786 = 47,215</strong>：相當於從 32,917 往上拉 75% 到 52,088 的位置</li>
+      <li><strong>長擺盪的 0.5 = 47,658</strong>：相當於從 32,917 往上拉 41% 到 69,000 的位置</li>
+    </ul>
+
+    <p>兩條路徑、不同的 1 點、不同的比例，但因為短擺盪的 1 本身就介於長擺盪的 0 和 1 之間，數學上會自然產生「比例疊加」的收斂效應。<strong>當這兩種畫法同時出現拒絕現象，代表這個價位不只是技術線交叉，更是兩種市場記憶（不同投資人群的成本錨）的共同壓力區。</strong></p>
+
+    <p>2022 年的反彈被卡在這個雙重共振區，47,215 / 47,658 兩條獨立的線收斂到不到 1% 的距離 — 然後 BTC 在這裡折返、開啟長達一年的尋底過程。2026 的當前結構，把整個錨點往上平移到 87,000 / 88,179，依然收斂在 1.3% 區間內，依然被市場精準守住。</p>
+
+    <div class="pull-quote">
+      在 2022 年，市場用一年告訴所有人那是一個結構性頂部。<br>
+      在 2026 年，這個共振區是否同樣是結構轉折，市場還在用價格行為自己回答。
+    </div>
+
+    <h2>四、兩個重要說明（避免誤讀）</h2>
+
+    <h3>1. 這不是時間預測</h3>
+    <p>本文不預測 BTC 會在何時、跌到何處。歷史模式即使重演，也常以非線性方式進行。2022 那次，BTC 在 47,000 拒絕後並非一路向下 — 中間反覆掙扎了三個月才正式破前低。2026 是否會重演同一節奏、或以更快/更慢的速度展開，沒有任何指標能精準告訴你。</p>
+
+    <h3>2. 共振是強訊號，但不是 100%</h3>
+    <p>雙費波那契共振是統計上極具參考性的拒絕區，但任何技術分析工具的勝率都不是 100%。市場結構可能因為：</p>
+    <ul>
+      <li>外部宏觀變數（利率政策、AI 敘事意外推進、地緣政治）</li>
+      <li>結構性買盤介入（ETF 持續吸籌、機構大額部位）</li>
+      <li>跨市場連動（美股突破刷新預期、美元走勢）</li>
+    </ul>
+    <p>而推翻技術結構。專業交易者該做的不是迷信任何單一訊號，而是<strong>用客觀價格行為驗證或推翻假設</strong>。如果 BTC 確實守住 87-88K 這個共振區並向下確認，本文的結構推論成立；如果價格強力突破並站穩在 88,200 之上，這個拒絕區就會升級為支撐，本文的觀察就需要重新評估。</p>
+
+    <h2>五、不同處境的讀者，可以思考什麼問題？</h2>
+
+    <p>本文不提供操作建議，但讀完之後，不同處境的讀者可以問自己一個對應的問題：</p>
+
+    <ol>
+      <li><strong>持有現貨在 60K 以下成本的人</strong>：上方共振區若確認為結構性天花板，自己的風險管理計劃是什麼？什麼條件下會分批，什麼條件下繼續持有？這些規則是否在進場時就已經寫好？</li>
+      <li><strong>近期高位（80-100K）追進的人</strong>：「等更高再賣」這個假設，建立在什麼客觀依據上？如果共振拒絕成立，你預先設計的應對方案是什麼？誠實面對成本，是不是比預測明天更重要？</li>
+      <li><strong>場外觀望的人</strong>：自己進場的客觀觸發訊號是什麼？在訊號出現前，是否需要急著做決定？「等待客觀訊號」對觀望者而言，是天然的優勢還是浪費的機會？</li>
+    </ol>
+
+    <p class="text-sm text-slate-400 italic">這三個問題沒有標準答案，答案因每個人的資金狀況、風險承受度、交易週期而異。本文僅提供結構觀察，不構成任何個別化的投資建議。</p>
+
+    <h2>六、結語：學會看「結構」，比預測「方向」更值錢</h2>
+
+    <p>2022 與 2026 的對照給我們的核心啟示，不是「BTC 會不會跌」這個答案 — 而是<strong>「市場結構會在數學上自我重複」</strong>這個現象本身。費波那契只是工具，重點是學會用多個獨立框架交叉驗證同一個價位。當共振出現，操作的勝率就會顯著提升。</p>
+
+    <p>市場不會準確告訴你頂部與底部，但它會用結構說話。能聽懂這套語言的人，跟只看新聞、只追漲殺跌的人，最終會在不同的地方下車。</p>
+
+    <div class="pull-quote">
+      技術分析不是預測未來，是讀懂市場已經寫好的語言。
+    </div>
+
+    <p>本文僅為市場研究與教育用途，不構成任何投資建議。所有圖表為 CTA 研究團隊使用 TradingView 工具的個人標註，數值取自 Binance 週線。技術分析有其侷限，過去模式不保證未來重演。請依個人風險承受度做決策。</p>
+
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">學會用<span class="text-amber-400">結構交叉驗證</span>，不再靠感覺下單</h2>
+      <p class="text-slate-400 mb-8 text-lg">CTA 三大裸 K 系統教你建立多框架共振邏輯 — 從費波那契、關鍵價位到籌碼結構，全部串起來才是專業交易。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解交易課程 &rarr;</a>
+        <a href="../lending.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">穩健現金流：放貸機器人</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文僅為市場研究與教育用途，不構成任何投資建議。技術分析模式不保證未來重演。請依個人風險承受度做決策，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="valuation-resonance-cape-buffett.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場研究</div>
+          <div class="font-bold text-white text-sm">估值共振：CAPE + 巴菲特指標的歷史級警告</div>
+        </a>
+        <a href="shiller-narrative-economics.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場研究</div>
+          <div class="font-bold text-white text-sm">席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">了解交易課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
