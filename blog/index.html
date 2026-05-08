@@ -197,117 +197,175 @@
     </div>
   </section>
 
-  <!-- ===== ARTICLES GRID ===== -->
-  <section class="py-16">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-8">
+  <!-- ===== CATEGORY NAV (錨點導覽) ===== -->
+  <section class="sticky top-16 z-40 bg-slate-950/95 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-3">
+      <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-sm">
+        <a href="#cat-lending" class="px-4 py-2 rounded-full bg-slate-800 hover:bg-amber-400 hover:text-slate-900 text-slate-200 font-medium transition">💰 放貸專區 <span class="text-xs opacity-70">(7)</span></a>
+        <a href="#cat-trading" class="px-4 py-2 rounded-full bg-slate-800 hover:bg-amber-400 hover:text-slate-900 text-slate-200 font-medium transition">📊 交易策略 <span class="text-xs opacity-70">(2)</span></a>
+        <a href="#cat-market" class="px-4 py-2 rounded-full bg-slate-800 hover:bg-amber-400 hover:text-slate-900 text-slate-200 font-medium transition">🌐 市場研究 <span class="text-xs opacity-70">(2)</span></a>
+        <a href="#cat-mindset" class="px-4 py-2 rounded-full bg-slate-800 hover:bg-amber-400 hover:text-slate-900 text-slate-200 font-medium transition">🎯 CEO 心法 <span class="text-xs opacity-70">(1)</span></a>
+      </div>
+    </div>
+  </section>
 
-        <!-- Article: BTC 雙費波那契共振（featured 跨欄） -->
+  <!-- ===== 💰 放貸專區 ===== -->
+  <section id="cat-lending" class="py-12 scroll-mt-32">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-white">💰 放貸專區</h2>
+        <span class="text-sm text-slate-500">Bitfinex 放貸從入門到實戰</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- featured: 放貸新手入門（跨欄） -->
+        <a href="why-bitfinex-best-for-beginners.html" class="block bg-slate-900 border-2 border-amber-400/40 rounded-2xl p-6 card-hover reveal md:col-span-2">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs bg-amber-400 text-slate-900 font-bold px-2 py-1 rounded">放貸入門</span>
+            <span class="text-sm text-slate-500">2026-04-17</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-3">為什麼 Bitfinex 放貸是新手最好的被動收入來源？</h3>
+          <p class="text-slate-400 leading-relaxed mb-4">新手投資最大的三個障礙：不懂技術、怕風險、沒時間。Bitfinex 放貸恰好同時拆掉這三個障礙——本文逐一解析，並對比定存、美債、活存、質押等被動收入選項。</p>
+          <span class="text-amber-400 font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- 放貸完整教學 -->
+        <a href="bitfinex-lending-guide.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
+          <h3 class="text-xl font-bold text-white mb-3">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">從零開始了解 Bitfinex 融資放貸市場，學會手動放貸與自動放貸的差別，並認識 CTA 放貸機器人如何幫你 24 小時自動化管理資金。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- 註冊 + API -->
+        <a href="bitfinex-register-api-setup.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
+          <h3 class="text-xl font-bold text-white mb-3">Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">從零開始手把手帶你完成 Bitfinex 開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟讓你立即開始自動放貸。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- 帳戶安全 -->
+        <a href="bitfinex-account-guide.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
+          <h3 class="text-xl font-bold text-white mb-3">Bitfinex 帳戶安全指南：避免被關戶的注意事項</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">在 Bitfinex 放貸前必須知道的帳戶安全知識：三種常見被關戶情境、預防方式、以及遇到問題時的應對步驟。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- 放貸利率為什麼高 -->
+        <a href="why-bitfinex-lending-rate-so-high.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
+          <h3 class="text-xl font-bold text-white mb-3">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">深入分析 Bitfinex 放貸利率為何長期維持 12-17% 年化報酬，了解背後的大戶驅動市場結構、安全機制、USD 與 USDT 差異，以及如何透過自動化工具最大化收益。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- APR vs APY -->
+        <a href="apr-vs-apy-explained.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
+          <h3 class="text-xl font-bold text-white mb-3">放貸利率怎麼看？APR vs APY 完整解析</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">搞懂 APR 和 APY 的真正差別，學會 Bitfinex 日利率怎麼換算年化，知道為什麼實拿會比帳面 APR 低（空窗期、撮合、抽成）。本文含完整計算範例。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+        <!-- CTA 機器人優勢 -->
+        <a href="why-cta-lending-bot.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
+          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
+          <h3 class="text-xl font-bold text-white mb-3">CTA 放貸機器人優勢解析：為什麼選擇我們？</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">手動放貸 vs FRR 自動放貸 vs CTA 放貸機器人三方對比。深入解析 v3.2 六大核心功能：訂單簿深度定價、動態多層拆單、需求導向智能天數，以及 CEO 親自使用的真實理由。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 📊 交易策略 ===== -->
+  <section id="cat-trading" class="py-12 border-t border-slate-800/50 scroll-mt-32">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-white">📊 交易策略</h2>
+        <span class="text-sm text-slate-500">技術分析與裸K哲學</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- featured: BTC 費波那契（跨欄） -->
         <a href="btc-fib-double-confirmation-2026.html" class="block bg-slate-900 border-2 border-blue-400/40 rounded-2xl p-6 card-hover reveal md:col-span-2">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xs bg-blue-500 text-white font-bold px-2 py-1 rounded">技術分析</span>
             <span class="text-sm text-slate-500">2026-05-06</span>
           </div>
-          <h2 class="text-2xl font-bold text-white mb-3">BTC 反彈被釘死在 87K：兩種費波那契畫法殊途同歸的歷史共振</h2>
+          <h3 class="text-2xl font-bold text-white mb-3">BTC 反彈被釘死在 87K：兩種費波那契畫法殊途同歸的歷史共振</h3>
           <p class="text-slate-400 leading-relaxed mb-4">2022 vs 2026 對照：不同的擺盪區間、不同的回撤比例（0.5 vs 0.786），卻指向同一個價格區。雙費波那契共振是市場結構的數學共識，BTC 兩次都在這個位置被精準守住。</p>
           <span class="text-amber-400 font-medium">閱讀更多 &rarr;</span>
         </a>
 
-        <!-- Article: 估值共振 CAPE + 巴菲特指標（featured 跨欄） -->
+        <!-- 裸K入門 -->
+        <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal md:col-span-2">
+          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
+          <h3 class="text-xl font-bold text-white mb-3">裸K交易入門：為什麼不需要指標也能判斷行情？</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">指標是價格的衍生品——看指標等於看翻譯，看 K 棒才是聽原文。本文解析裸K哲學、K 棒語言、關鍵價位，以及為什麼這套方法學起來最難但最持久。</p>
+          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 🌐 市場研究 ===== -->
+  <section id="cat-market" class="py-12 border-t border-slate-800/50 scroll-mt-32">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-white">🌐 市場研究</h2>
+        <span class="text-sm text-slate-500">總體經濟與估值警示</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- featured: CAPE+巴菲特（跨欄） -->
         <a href="valuation-resonance-cape-buffett.html" class="block bg-slate-900 border-2 border-red-400/40 rounded-2xl p-6 card-hover reveal md:col-span-2">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xs bg-red-500 text-white font-bold px-2 py-1 rounded">市場警訊</span>
             <span class="text-sm text-slate-500">2026-05-05</span>
           </div>
-          <h2 class="text-2xl font-bold text-white mb-3">估值共振：CAPE + 巴菲特指標的歷史級警告</h2>
+          <h3 class="text-2xl font-bold text-white mb-3">估值共振：CAPE + 巴菲特指標的歷史級警告</h3>
           <p class="text-slate-400 leading-relaxed mb-4">兩大長期估值錨同步刷新人類金融史紀錄。台股巴菲特指標突破 425%、美股 CAPE 達 41 — 這是 36 年來最危險的「估值共振區」。為什麼 2026 年是最危險的時刻？專業分析師的客觀解讀。</p>
           <span class="text-amber-400 font-medium">閱讀更多 &rarr;</span>
         </a>
 
-        <!-- Article: 席勒敘事經濟學（featured 跨欄） -->
+        <!-- 席勒敘事經濟學 -->
         <a href="shiller-narrative-economics.html" class="block bg-slate-900 border-2 border-amber-400/40 rounded-2xl p-6 card-hover reveal md:col-span-2">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xs bg-amber-400 text-slate-900 font-bold px-2 py-1 rounded">市場研究</span>
             <span class="text-sm text-slate-500">2026-05-05</span>
           </div>
-          <h2 class="text-2xl font-bold text-white mb-3">席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病</h2>
+          <h3 class="text-2xl font-bold text-white mb-3">席勒敘事經濟學：看穿 4 萬點台股背後的人性傳染病</h3>
           <p class="text-slate-400 leading-relaxed mb-4">市場不是計算題，是傳染病。從 1929「永久高原」、2000 網路泡沫、2008 金融海嘯，到 2026 AI 革命 — 每次崩盤前都有相同的「全民共識」。諾貝爾獎得主 Shiller 的 SIR 模型如何幫你看清自己處於敘事的哪一階段。</p>
           <span class="text-amber-400 font-medium">閱讀更多 &rarr;</span>
         </a>
 
-        <!-- Article: 進入金融市場前，你準備好了嗎？(featured) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 🎯 CEO 心法 ===== -->
+  <section id="cat-mindset" class="py-12 border-t border-slate-800/50 scroll-mt-32">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-white">🎯 CEO 心法</h2>
+        <span class="text-sm text-slate-500">9 年交易、4 年教學的紀律之道</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- 地下城副本 -->
         <a href="financial-market-dungeon.html" class="block bg-slate-900 border-2 border-amber-400/40 rounded-2xl p-6 card-hover reveal md:col-span-2">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xs bg-amber-400 text-slate-900 font-bold px-2 py-1 rounded">CEO 親寫</span>
             <span class="text-sm text-slate-500">2026-04-17</span>
           </div>
-          <h2 class="text-2xl font-bold text-white mb-3">進入金融市場前，你準備好了嗎？地下城副本生存指南</h2>
+          <h3 class="text-2xl font-bold text-white mb-3">進入金融市場前，你準備好了嗎？地下城副本生存指南</h3>
           <p class="text-slate-400 leading-relaxed mb-4">9 年交易、4 年教學的老師寫給每一位準備踏入金融市場的冒險者。為什麼有人帶著寶物回來，有人卻永遠留在副本裡？關鍵不是技法，是紀律。</p>
           <span class="text-amber-400 font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: 為什麼 Bitfinex 放貸是新手最好的被動收入來源 -->
-        <a href="why-bitfinex-best-for-beginners.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
-          <h2 class="text-xl font-bold text-white mb-3">為什麼 Bitfinex 放貸是新手最好的被動收入來源？</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">新手投資最大的三個障礙：不懂技術、怕風險、沒時間。Bitfinex 放貸恰好同時拆掉這三個障礙——本文逐一解析，並對比定存、美債、活存、質押等被動收入選項。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: CTA 放貸機器人優勢解析 -->
-        <a href="why-cta-lending-bot.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
-          <h2 class="text-xl font-bold text-white mb-3">CTA 放貸機器人優勢解析：為什麼選擇我們？</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">手動放貸 vs FRR 自動放貸 vs CTA 放貸機器人三方對比。深入解析 v3.2 六大核心功能：訂單簿深度定價、動態多層拆單、需求導向智能天數，以及 CEO 親自使用的真實理由。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: Bitfinex 帳戶安全指南 -->
-        <a href="bitfinex-account-guide.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
-          <h2 class="text-xl font-bold text-white mb-3">Bitfinex 帳戶安全指南：避免被關戶的注意事項</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">在 Bitfinex 放貸前必須知道的帳戶安全知識：三種常見被關戶情境、預防方式、以及遇到問題時的應對步驟。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: Bitfinex 註冊開戶 + API 設定 -->
-        <a href="bitfinex-register-api-setup.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
-          <h2 class="text-xl font-bold text-white mb-3">Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">從零開始手把手帶你完成 Bitfinex 開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟讓你立即開始自動放貸。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: Bitfinex 放貸利率 -->
-        <a href="why-bitfinex-lending-rate-so-high.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
-          <h2 class="text-xl font-bold text-white mb-3">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">深入分析 Bitfinex 放貸利率為何長期維持 12-17% 年化報酬，了解背後的大戶驅動市場結構、安全機制、USD 與 USDT 差異，以及如何透過自動化工具最大化收益。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: Bitfinex 放貸教學 -->
-        <a href="bitfinex-lending-guide.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-08</div>
-          <h2 class="text-xl font-bold text-white mb-3">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">從零開始了解 Bitfinex 融資放貸市場，學會手動放貸與自動放貸的差別，並認識 CTA 放貸機器人如何幫你 24 小時自動化管理資金。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: APR vs APY 完整解析 -->
-        <a href="apr-vs-apy-explained.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
-          <h2 class="text-xl font-bold text-white mb-3">放貸利率怎麼看？APR vs APY 完整解析</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">搞懂 APR 和 APY 的真正差別，學會 Bitfinex 日利率怎麼換算年化，知道為什麼實拿會比帳面 APR 低（空窗期、撮合、抽成）。本文含完整計算範例。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
-        </a>
-
-        <!-- Article: 裸K交易入門 -->
-        <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 card-hover reveal">
-          <div class="text-sm text-slate-500 mb-2">2026-04-17</div>
-          <h2 class="text-xl font-bold text-white mb-3">裸K交易入門：為什麼不需要指標也能判斷行情？</h2>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">指標是價格的衍生品——看指標等於看翻譯，看 K 棒才是聽原文。本文解析裸K哲學、K 棒語言、關鍵價位，以及為什麼這套方法學起來最難但最持久。</p>
-          <span class="text-amber-400 text-sm font-medium">閱讀更多 &rarr;</span>
         </a>
 
       </div>
