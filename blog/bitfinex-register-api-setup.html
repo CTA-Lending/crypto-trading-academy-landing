@@ -444,34 +444,38 @@
           <strong class="text-white">點擊「Create New Key」</strong> — 開始建立一組新的 API 金鑰。
         </li>
         <li>
-          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。請嚴格按照以下設定：
+          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。Bitfinex 中文介面有 <strong class="text-white">14 個獨立開關</strong>（每個都是「關 / 開」切換），請完全按照下圖設定：
+          <div class="my-4 rounded-xl overflow-hidden border border-slate-700">
+            <img src="assets/bitfinex-api-permissions-recommended.png" alt="Bitfinex API 權限建議設定（8 開 6 關）" class="w-full" />
+            <p class="bg-slate-800 text-xs text-slate-400 px-4 py-2 mb-0">↑ CTA 放貸機器人最小必要權限：8 個開、6 個關（截圖最上方「VPS」是 Key 的備註名稱，幫自己記得這把 Key 是給 VPS 機器人用的，可自由命名）</p>
+          </div>
           <div class="bg-slate-800 rounded-xl p-5 my-4">
-            <div class="space-y-3 text-sm">
-              <div class="flex items-start gap-3">
-                <span class="text-green-400 font-bold text-lg leading-none mt-0.5">&#10003;</span>
-                <div><strong class="text-white">Account History</strong> — 勾選 <strong class="text-green-400">Read</strong>（讓機器人讀取帳戶歷史紀錄）</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-green-400 font-bold text-lg leading-none mt-0.5">&#10003;</span>
-                <div><strong class="text-white">Wallets</strong> — 勾選 <strong class="text-green-400">Read</strong>（讓機器人查看錢包餘額）</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-green-400 font-bold text-lg leading-none mt-0.5">&#10003;</span>
-                <div><strong class="text-white">Margin Funding</strong> — 在該區塊裡找到 <strong class="text-green-400">Read</strong> 和 <strong class="text-green-400">Write</strong> 兩個開關，<strong class="text-green-400">兩個都打勾</strong>（這是核心權限，讓機器人建立和取消放貸掛單）<br><span class="text-amber-300/80 text-xs">💡 提示：Bitfinex 介面每個權限類別（如 Margin Funding）就是一個區塊，區塊內只有 Read 和 Write 兩個總開關 — 找不到「Offers: Write」這種更細的子項目，那是舊版命名，不存在了</span></div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-red-400 font-bold text-lg leading-none mt-0.5">&#10007;</span>
-                <div><strong class="text-white">Withdraw</strong> — <strong class="text-red-400">絕對不要勾選</strong>（這是提幣權限，不開 = 誰都不能把你的錢轉走）</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-red-400 font-bold text-lg leading-none mt-0.5">&#10007;</span>
-                <div><strong class="text-white">Orders / Trading</strong> — <strong class="text-red-400">不要勾選</strong>（機器人只做放貸，不需要交易權限）</div>
-              </div>
+            <p class="text-green-400 font-semibold text-sm mb-3">✅ 這 8 個請打開（開）：</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">帳戶資訊 → 查閱帳戶手續費</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">賬戶歷史 → 查閱歷史餘額及交易紀錄</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">保證金融資 → 查閱融資狀態及信息</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">保證金融資 → 提供、取消及關閉融資</strong>（核心放貸權限）</div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">錢包 → 查閱錢包餘額及地址</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">錢包 → 於錢包間轉移資金</strong>（自動把現貨錢包資金轉到融資錢包用）</div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">Settings → Read account settings</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">IP位址限制 → 允許從任何IP位址訪問</strong>（CTA 機器人 IP 會浮動，必須開）</div></div>
             </div>
+            <p class="text-red-400 font-semibold text-sm mt-5 mb-3">❌ 這 6 個請關閉（關）：</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">帳戶資訊 → 編輯帳戶訊息</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">訂單 → 查閱訂單及訂單狀態</strong>（放貸機器人不需要交易權限）</div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">訂單 → 新增及取消訂單</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">保證金交易 → 查閱倉位及保證金交易</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">保證金交易 → 贖回倉位</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">提款 → 建立提款請求</strong>（<strong class="text-red-400">絕對不要開</strong>，這是提幣權限）</div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">Settings → Write account settings</strong></div></div>
+            </div>
+            <p class="text-amber-300/80 text-xs mt-4 mb-0">💡 找不到「Offers: Write」這種子項目？那是舊版命名。Bitfinex 現在就是把每一個動作做成獨立的「關 / 開」開關，照上圖逐一切換即可。</p>
           </div>
         </li>
         <li>
-          <strong class="text-white">設定 IP 白名單（選填但建議）</strong> — 如果你知道 CTA 機器人伺服器的 IP 位址，可以填入作為額外的安全層。設定後，只有來自該 IP 的請求才能使用這組 API Key。不確定的話可以先跳過，之後再補設。
+          <strong class="text-white">IP 白名單欄位請<span class="text-amber-300">跳過不填</span></strong> — Bitfinex 在權限頁面下方還會有一個「IP 白名單」輸入框，<strong class="text-red-400">請保持空白</strong>。CTA 機器人伺服器可能會更新 IP，如果你填了自己家裡的 IP，機器人就會被擋在外面（會看到 <code class="text-amber-300">ip: invalid</code> 錯誤）。安全保護由上面的「不開提款 + 不開交易 + 強密碼 + 2FA」來做就足夠了。
         </li>
         <li>
           <strong class="text-white">輸入 2FA 驗證碼確認</strong> — 打開你的 Google Authenticator，輸入當前顯示的 6 位數驗證碼來確認建立。

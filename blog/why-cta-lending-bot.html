@@ -369,7 +369,7 @@
       <ul class="list-disc">
         <li><strong class="text-white">API Key AES-256 加密存儲</strong>：你的 Key 不是明文躺在資料庫，是工業級加密。</li>
         <li><strong class="text-white">僅需 Funding 權限</strong>：建立 API Key 時只開放 Funding 相關權限，<strong>不能提幣、不能交易</strong>。即使最壞情況 Key 外洩，攻擊者也搬不走錢。（不過攻擊者仍可能掛出異常的放貸單，建議用戶每 3-6 個月在 Bitfinex 後台輪換 API Key，這是最佳實踐。）</li>
-        <li><strong class="text-white">IP 白名單</strong>：API Key 綁定 CTA 伺服器 IP，只有 CTA 後端能用，其他 IP 即使拿到 Key 也無效。</li>
+        <li><strong class="text-white">不開提款 / 不開交易 + 2FA</strong>：建立 API Key 時嚴格只勾 Funding 與 Wallets 相關權限，提款（Withdraw）、訂單、保證金交易這幾項全部關掉，搭配 Bitfinex 帳號的 2FA — 即使 Key 外洩，攻擊者既無法提幣也無法下單交易，最多只能做放貸這件事。</li>
         <li><strong class="text-white">資金始終在你的 Bitfinex 帳戶</strong>：CTA 不託管你的資金，本金與利息都直接進你自己的 Funding Wallet。</li>
         <li><strong class="text-white">不從利息扣款</strong>：CTA 採訂閱制月費，不會從你的放貸利息中抽成。Bitfinex 平台手續費 15% 是平台收，跟我們無關。</li>
       </ul>

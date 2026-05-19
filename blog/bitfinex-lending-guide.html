@@ -305,13 +305,19 @@
       <ol class="list-decimal">
         <li>進入 Bitfinex 的 API 管理頁面</li>
         <li>建立新的 API Key</li>
-        <li>權限設定：只需開啟 <strong class="text-white">「Funding」相關的讀取與寫入權限</strong>，不要開啟提款權限</li>
+        <li>權限設定：Bitfinex 中文介面有 <strong class="text-white">14 個獨立的「關 / 開」開關</strong>，請完全按照下圖切換（8 開 6 關）</li>
+        <li><strong class="text-white">IP 白名單欄位請保持空白</strong>，並把「允許從任何 IP 位址訪問」打開 — 不然 CTA 機器人會被擋掉</li>
         <li>保存好 API Key 和 Secret — Secret 只會顯示一次</li>
       </ol>
 
+      <div class="my-4 rounded-xl overflow-hidden border border-slate-700">
+        <img src="assets/bitfinex-api-permissions-recommended.png" alt="Bitfinex API 權限建議設定（8 開 6 關）" class="w-full" />
+        <p class="bg-slate-800 text-xs text-slate-400 px-4 py-2 mb-0">↑ CTA 放貸機器人最小必要權限（完整逐項說明請看 <a href="bitfinex-register-api-setup.html" class="text-amber-400 hover:underline">Bitfinex 開戶與 API Key 完整教學</a>）</p>
+      </div>
+
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">安全提醒</p>
-        <p class="mb-0">建立 API Key 時，絕對不要開啟「提款」權限。只開放 Funding 相關權限，即使 API Key 外洩，你的資金也不會被轉走。</p>
+        <p class="mb-0">建立 API Key 時，絕對不要開啟「提款（建立提款請求）」與「訂單 / 保證金交易」相關權限。只開放 Funding 與 Wallets 讀取/轉移，即使 API Key 外洩，你的資金也不會被轉走。</p>
       </div>
 
       <!-- 手動放貸 vs 自動放貸 -->
