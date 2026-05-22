@@ -251,6 +251,26 @@
 
       <p>為什麼選擇 Bitfinex？因為它是全球最大的加密貨幣融資放貸（Funding）市場，長期維持年化 12-17% 的穩定報酬。而要使用 CTA 放貸機器人幫你 24 小時自動掛單、複利滾存，第一步就是在 Bitfinex 上開好帳號並設定 API。</p>
 
+      <!-- Section 0 — 地區限制（白做工提醒） -->
+      <div class="bg-red-900/30 border-2 border-red-500/50 rounded-xl p-6 my-8">
+        <p class="text-red-400 font-bold text-lg mb-3">⚠️ 先確認你的地區能不能用 Bitfinex（避免白做工 + 被關號）</p>
+        <p class="mb-3">Bitfinex 有明確的「不接受居民清單」與「制裁名單」，<strong class="text-white">用錯國籍／IP 註冊，輕則 KYC 不過，重則資金被凍結後關戶</strong>，先看清楚再動手：</p>
+        <p class="text-red-300 font-semibold mb-2">❌ Bitfinex 明確不接受的地區（註冊前請先確認最新政策）</p>
+        <ul class="list-disc text-sm space-y-1 mb-4">
+          <li><strong class="text-white">美國（含美屬領地）</strong> — Bitfinex 已退出美國市場，美國居民／使用美國 IP 註冊會被偵測並關戶</li>
+          <li><strong class="text-white">中國大陸</strong> — Bitfinex 服務條款排除中國大陸居民，KYC 階段就會被擋下</li>
+          <li><strong class="text-white">受國際制裁地區</strong> — 包含但不限於：伊朗、北韓、敘利亞、古巴、克里米亞、頓內次克、盧甘斯克、蘇丹</li>
+          <li><strong class="text-white">加拿大安大略省</strong> — 部分產品（含 Funding）功能受限</li>
+        </ul>
+        <p class="text-amber-300 font-semibold mb-2">🚨 三個最容易踩雷的行為（會被風控掃到關號）</p>
+        <ul class="list-disc text-sm space-y-1 mb-3">
+          <li><strong class="text-white">用 VPN 翻牆假裝其他國家</strong> — Bitfinex 風控會交叉比對 IP、手機門號、付款來源，假身分被抓到就是<strong class="text-red-400">資金凍結 + 永久關戶</strong>，本金可能拿不回來</li>
+          <li><strong class="text-white">出差到禁止地區時登入</strong> — 即使你是台灣帳號，臨時用美國／中國 IP 登入也會觸發警示，建議出差期間不要登入</li>
+          <li><strong class="text-white">KYC 填假地址</strong> — 證件、地址證明、自填地址三者必須一致，任何一個對不上就 KYC 退件甚至列觀察名單</li>
+        </ul>
+        <p class="text-xs text-slate-400 mb-0">本清單為一般公開資訊整理，<strong class="text-white">最終以 <a href="https://www.bitfinex.com/legal/terms" target="_blank" rel="noopener" class="text-amber-400 underline">Bitfinex 官方服務條款</a>為準</strong>。法規與限制清單會更新，註冊前請再次確認。</p>
+      </div>
+
       <!-- Section 1 -->
       <h2 class="text-2xl font-bold text-white">開始之前你需要準備什麼</h2>
 
@@ -314,10 +334,16 @@
       <p>Bitfinex 的身分驗證分為三個等級，功能權限不同：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">Basic Plus</strong> — 最基礎的驗證，只需填寫個人資料。但功能受限，不能放貸，不太實用。</li>
-        <li><strong class="text-white">Intermediate（中階驗證）</strong> — 需要上傳證件和地址證明。<strong class="text-white">要使用放貸功能，至少要完成這個等級。</strong>這是大多數用戶需要的等級。</li>
-        <li><strong class="text-white">Full（完整驗證）</strong> — 最高等級，可以使用法幣電匯出入金等完整功能。如果你未來打算用電匯入金大額資金，就需要升級到這個等級。</li>
+        <li><strong class="text-white">Basic Plus</strong> — 最基礎的驗證，只需填寫個人資料。<strong class="text-red-400">不能放貸</strong>，做了也用不到，跳過。</li>
+        <li><strong class="text-white">Intermediate（中階驗證）</strong> — 需要上傳證件和地址證明。<strong class="text-amber-300 underline">⭐ 要放貸就一定要做到這級，這是放貸功能的最低門檻。</strong></li>
+        <li><strong class="text-white">Full（完整驗證）</strong> — 最高等級，可以使用法幣電匯出入金等完整功能。如果你未來打算用電匯入金大額資金，再升級到這個等級即可。</li>
       </ul>
+
+      <div class="bg-red-900/30 border-2 border-amber-400/60 rounded-xl p-6 my-6">
+        <p class="text-amber-300 font-bold text-lg mb-2">🔑 一句話記住：放貸 = 中階驗證（Intermediate）</p>
+        <p class="mb-2">只完成 Basic Plus 的帳號，<strong class="text-white">看得到 Funding 頁面但下不了單</strong>，API 也會回 <code class="bg-slate-800 px-2 py-0.5 rounded text-amber-300">verification level insufficient</code> 錯誤。本文以下所有步驟（入金、Funding wallet 轉帳、API 建立）<strong class="text-white">都必須在通過中階驗證後才能正常運作</strong>，所以請務必把第二步的 6 個欄位一次填完整，等審核通過再進下一步。</p>
+        <p class="text-xs text-slate-400 mb-0">如果你只想體驗 CTA 機器人介面、暫時還沒做完 KYC，可以先到會員後台註冊探索功能，等中階驗證通過後再貼 API Key 啟動實單。</p>
+      </div>
 
       <h3 class="text-xl font-bold text-amber-400">中階驗證步驟（共 6 步）</h3>
 
@@ -535,8 +561,8 @@
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold text-white mb-2">Q：哪些國家或地區可以使用 Bitfinex？</h3>
-          <p>Bitfinex 在全球多數地區開放服務，但對特定國家有限制。註冊前請先閱讀 Bitfinex 官方的服務條款，確認你所在地區是否在禁止清單中。完成 KYC 時也需提交真實的居住地資訊。</p>
+          <h3 class="text-lg font-semibold text-white mb-2">Q：哪些國家或地區不能使用 Bitfinex？</h3>
+          <p>明確排除的有：<strong class="text-white">美國（含領地）、中國大陸</strong>，以及國際制裁地區（伊朗、北韓、敘利亞、古巴、克里米亞、頓內次克、盧甘斯克、蘇丹等）。加拿大安大略省部分功能受限。最重要的事：<strong class="text-red-400">不要用 VPN 假裝其他國家註冊</strong>，Bitfinex 風控會交叉比對 IP / 手機門號 / 付款來源，被抓到等於資金凍結 + 永久關戶，本金可能拿不回來。台灣、香港、新加坡、馬來西亞用戶正常註冊都沒問題。完整最新清單以 <a href="https://www.bitfinex.com/legal/terms" target="_blank" rel="noopener" class="text-amber-400 underline">Bitfinex 官方服務條款</a>為準。</p>
         </div>
 
         <div>
@@ -564,9 +590,9 @@
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="text-xl font-bold text-white mb-6">更多文章</h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <a href="bitfinex-lending-guide.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/40 transition">
-          <div class="text-sm text-slate-500 mb-1">2026-04-08</div>
-          <h3 class="text-base font-semibold text-white">Bitfinex 放貸完整教學：從開戶到第一筆自動放貸</h3>
+        <a href="why-cta-lending-bot.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/40 transition">
+          <div class="text-sm text-slate-500 mb-1">2026-04-17</div>
+          <h3 class="text-base font-semibold text-white">CTA 放貸機器人優勢解析：API 設好後下一步看這篇</h3>
         </a>
         <a href="why-bitfinex-lending-rate-so-high.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/40 transition">
           <div class="text-sm text-slate-500 mb-1">2026-04-08</div>
