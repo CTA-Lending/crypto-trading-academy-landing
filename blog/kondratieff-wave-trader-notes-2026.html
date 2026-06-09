@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我為什麼在直播中講康波——一個交易者的長週期思考札記 — 交易幣修課</title>
+  <meta name="description" content="倒掛是碼錶,康波是日曆。本文延伸 CEO Gteno 6/9 直播,把康德拉季耶夫長波 60 年週期、Schumpeter 創新驅動論、Perez 範式轉移框架整理為交易者的長期思考札記。長週期不是預言,是地心引力——你可以忽略它,但不能違反它。">
+  <meta name="keywords" content="康德拉季耶夫,Kondratieff Wave,長波週期,Schumpeter,創造性破壞,Perez 範式轉移,周金濤,長週期框架,2030 警戒窗口">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/kondratieff-wave-trader-notes-2026.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="我為什麼在直播中講康波——一個交易者的長週期思考札記">
+  <meta property="og:description" content="倒掛是碼錶,康波是日曆。把鏡頭拉到 60 年,看清這一輩子能遇到的三次潮汐——CEO Gteno 6/9 直播延伸觀點。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/kondratieff-wave-trader-notes-2026.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/kondratieff-cover.jpg">
+  <meta property="article:published_time" content="2026-06-09">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "我為什麼在直播中講康波——一個交易者的長週期思考札記",
+    "description": "用 Kondratieff、Schumpeter、Perez 三組理論梳理 60 年長波週期,並與 Juglar、Kitchin 短中期週期共振對照,作為交易者的長期框架思考。",
+    "datePublished": "2026-06-09",
+    "dateModified": "2026-06-09",
+    "image": "https://crypto-trading-academy.com/blog/assets/kondratieff-cover.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/kondratieff-wave-trader-notes-2026.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+    .caveat-card { background: rgba(120,53,15,0.18); border: 1px solid rgba(251,146,60,0.35); border-radius: 0.75rem; padding: 1.25rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.highlight { color: #fbbf24; font-weight: 700; }
+    .data-table td.season-spring { color: #86efac; }
+    .data-table td.season-summer { color: #fbbf24; }
+    .data-table td.season-autumn { color: #fb923c; }
+    .data-table td.season-winter { color: #f87171; }
+
+    .final-quote { font-size: 1.75rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <div class="relative group">
+          <button class="hover:text-white transition flex items-center gap-1">交易課程
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="../course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
+            <a href="../index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          </div>
+        </div>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">康波長週期札記</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">CEO 觀點 ｜ 直播延伸</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        我為什麼在直播中講康波——<br class="hidden md:block">
+        一個交易者的長週期思考札記
+      </h1>
+      <p class="text-lg text-slate-400 mb-6">倒掛是碼錶，康波是日曆。前者告訴你下一個 6-24 個月，後者告訴你你跑的是哪一棒。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-06-09</span><span>•</span><span>⏱ 閱讀約 13 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+      <p class="text-sm text-slate-500 italic">本文延伸自 <a href="https://www.youtube.com/watch?v=FZ6GAPfibYM&t=4s" target="_blank" rel="noopener" class="text-amber-400 hover:underline">6/9 直播《康波 60 年：當代時代正在交班》</a>，整理為書面思考札記。</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/kondratieff-cover.jpg?v=1" alt="康德拉季耶夫長波週期:60 年週期的春夏秋冬,蒸汽到 AI 的時代交班" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">長週期不是預言，是地心引力——你可以忽略它，但不能違反它。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-16">
+
+    <p class="lead">
+      昨天我寫完<a href="yield-curve-inversion-window-2026.html" class="text-amber-400 hover:underline">《10Y3M 倒掛轉正後我們已身在窗口裡》</a>，有讀者留言問我：「那之後呢？」這篇文章是答案的另一半。
+    </p>
+
+    <p>倒掛是<strong>碼錶</strong>——它告訴你下一個 6 到 24 個月會怎麼走。康波是<strong>日曆</strong>——它告訴你你現在跑的是 60 年棒次裡的哪一棒。短週期幫你算何時進場，長週期幫你算何時離場。<strong>兩者疊起來，才看得到完整的時間結構</strong>。</p>
+
+    <p>2026 年盯著盤的感覺，跟我 2007 年盯著盤的感覺很像——<strong>大週期已經掉頭，小週期還在嘶吼</strong>。這個錯位我直播花了一小時講，這篇我用文字封存。</p>
+
+    <h2>一、從碼錶到日曆——為什麼我今天要把鏡頭拉到 60 年</h2>
+
+    <p>10Y3M 倒掛是一個很尖的訊號：精準、可驗證、命中率高（過去 8 次 NBER 衰退全中）。但它有一個缺點——<strong>它只告訴你「接下來幾個季度」</strong>，不告訴你「這是哪一場戲的第幾幕」。</p>
+
+    <p>同樣的「衰退訊號」放在 1990 年的網際網路萌芽期、跟放在 2026 年的 AI 商業化爆發期，<strong>意義完全不同</strong>。前者的衰退是「新時代的破殼陣痛」，後者可能是「舊時代的最後一道菜」。</p>
+
+    <p>要分辨這兩者，必須把鏡頭拉到 60 年。這就是康波要做的事。</p>
+
+    <div class="pull-quote">
+      長週期不是預言，是地心引力——<br>
+      你可以忽略它，但不能違反它。
+    </div>
+
+    <h2>二、康波是什麼？一個被學界爭議、但值得認識的長尺</h2>
+
+    <p>康德拉季耶夫長波（Kondratieff Wave，簡稱「康波」），由俄國經濟學家 <strong>Nikolai Kondratiev</strong> 於 <strong>1925 年的《大經濟週期》</strong>中正式提出。他研究英美法德四國從 18 世紀末以來的物價、利率、工資、貿易數據，發現存在一個<strong>約 48-60 年的長波循環</strong>（中位約 54 年）。</p>
+
+    <p>之後奧地利經濟學家 <strong>Schumpeter</strong>（熊彼得）在《Business Cycles》（1939）與《Capitalism, Socialism and Democracy》（1942）中將理論系統化，提出<strong>「創新驅動論」</strong>與其著名概念<strong>「創造性破壞」（Creative Destruction）</strong>——主張新技術革命會徹底摧毀舊產業，並在廢墟中建立新繁榮。</p>
+
+    <p>2002 年，<strong>Carlota Perez</strong> 在《Technological Revolutions and Financial Capital》中提出更完整的<strong>「技術-經濟範式轉移」（Techno-Economic Paradigm Shift）</strong>框架，將康波與金融資本、生產資本的關係系統化——這是目前科技經濟史學者最常引用的版本。</p>
+
+    <div class="caveat-card mb-6">
+      <div class="text-orange-400 font-bold mb-2">⚠ 嚴肅的學術 caveat</div>
+      <p class="text-sm text-slate-300 leading-relaxed"><strong>康波在主流總體經濟學中屬於非正統（heterodox）框架</strong>。Solow 成長模型、Mankiw 教科書體系不採用康波；IMF、Fed、各國央行的模型不使用康波預測；多位諾貝爾獎得主對其有效性提出質疑（樣本數太少、分期可任意調整、缺乏內生機制共識）。本文使用康波，<strong>是把它當作「思考框架」而非「精準預測工具」</strong>。地圖不等於地形，但沒地圖更會迷路——這是本文採用康波的姿態。</p>
+    </div>
+
+    <p>順帶提一個有趣的<strong>文化巧合</strong>：康波的中位週期（約 54-60 年），與中華文化中「一甲子」的時間感相近。但這只是<strong>巧合，兩者之間沒有任何因果關係</strong>——一個是經濟史的觀察，一個是干支曆法。它提供東方讀者一個直觀的時間刻度，但<strong>不是康波有效性的論據</strong>。</p>
+
+    <h2>三、五次康波歷史——我們現在在第幾季？</h2>
+
+    <p>依 Perez 框架，過去兩個多世紀，人類經歷了五次技術-經濟範式：</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>波次</th>
+          <th>核心技術</th>
+          <th>時期（依 Perez）</th>
+          <th>退場儀式</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>第 1 次</td>
+          <td>蒸汽 × 紡織</td>
+          <td>1771–1829</td>
+          <td>1797 運河泡沫</td>
+        </tr>
+        <tr>
+          <td>第 2 次</td>
+          <td>鋼鐵 × 鐵路</td>
+          <td>1829–1875</td>
+          <td>1847 鐵路狂熱</td>
+        </tr>
+        <tr>
+          <td>第 3 次</td>
+          <td>電氣化 × 重工業</td>
+          <td>1875–1908</td>
+          <td>1873 大恐慌、1929 大蕭條餘震</td>
+        </tr>
+        <tr>
+          <td>第 4 次</td>
+          <td>石油 × 汽車 × 大量生產</td>
+          <td>1908–1971</td>
+          <td>1929-1933 大蕭條、1970s 滯脹</td>
+        </tr>
+        <tr>
+          <td>第 5 次</td>
+          <td>資訊技術 × 網際網路</td>
+          <td>1971–202?</td>
+          <td>2000 dot-com、2008 金融海嘯</td>
+        </tr>
+        <tr class="current-row" style="background: rgba(251,191,36,0.05)">
+          <td class="highlight">第 6 次（預期）</td>
+          <td class="highlight">人工智慧 × ?</td>
+          <td class="highlight">2030s–?</td>
+          <td class="highlight">尚未發生</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-xs text-slate-500 italic mb-6">時期分期依 Perez (2002, 2010) 框架。學界對起訖點仍有分歧 (Schumpeter、Mandel、Freeman 各有版本，誤差 5-15 年)。「AI 為第六次康波」屬 Perez 晚期著作與部分科技經濟史學者的觀點，<strong>非主流總體經濟學共識</strong>。</p>
+
+    <p>從表上看，<strong>我們目前處於第五次康波的尾聲</strong>。網際網路與 PC 普及這套範式從 1971 年（Intel 4004 微處理器問世）算起，已經跑了超過 55 年。如果 Perez 的框架成立，下一波很可能就是 AI——但<strong>「下一波」不會憑空從天上掉下來，它必須從上一波的廢墟中生長</strong>。</p>
+
+    <div class="pull-quote">
+      每一次康波的尾聲，<br>
+      都長得像一場盛宴的最後一道菜。
+    </div>
+
+    <h2>四、為什麼每次康波結尾，都有一場「史詩泡沫」</h2>
+
+    <p>把一個完整的康波拆開，可以看到清晰的四個階段——學派稱為「康波四季」：</p>
+
+    <ol>
+      <li><span class="text-green-300 font-bold">春（回升期）</span>：新技術剛萌芽，少數人投入大量資本與信念。經濟從上一波蕭條中慢慢復甦。</li>
+      <li><span class="text-amber-300 font-bold">夏（繁榮期）</span>：新技術全面普及，生產力大爆發，財富迅速累積。例如智慧型手機從 iPhone 問世到「人手一機」的階段。</li>
+      <li><span class="text-orange-400 font-bold">秋（衰退期）</span>：技術紅海化，削價競爭、免費經濟，產能 &gt; 需求。利潤被擠壓。</li>
+      <li><span class="text-red-400 font-bold">冬（蕭條期）</span>：<strong>史詩級泡沫破裂</strong>。去槓桿、資產出清、社會集體進入低慾望狀態。等廢墟夠乾淨，新技術才能在裡面生長。</li>
+    </ol>
+
+    <p><strong>泡沫不是康波的副作用，是康波的退場儀式</strong>。看歷史對照：</p>
+
+    <ul>
+      <li>第 2 次康波結束 → 1847 鐵路狂熱破裂</li>
+      <li>第 3 次康波結束 → 1929 大蕭條</li>
+      <li>第 4 次康波結束 → 1970s 滯脹 + 1980s 拉美債務危機</li>
+      <li>第 5 次康波結束 → 2000 dot-com + 2008 金融海嘯（兩波退場）</li>
+    </ul>
+
+    <p>第 5 次康波的「冬」可能還沒完全演完——這也是為什麼我覺得 2026 的盤聞起來像 2007，而不是聞起來像 1995。</p>
+
+    <h2>五、四週期共振模型（周金濤學派觀點）</h2>
+
+    <p>單一條康波只能告訴你「時代」，但時代下面還有更短的週期在跑。中國宏觀分析師<strong>周金濤</strong>（中信建投首席經濟學家、業界稱「週期天王」，2016 年過世，享年 44）將四種公認的歷史週期理論疊加，建立<strong>「四週期共振模型」</strong>：</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>週期名稱</th>
+          <th>長度</th>
+          <th>對應現象</th>
+          <th>學術定位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>康波（Kondratieff）</td>
+          <td>~54-60 年</td>
+          <td>技術範式 / 時代</td>
+          <td>非主流經濟學</td>
+        </tr>
+        <tr>
+          <td>庫茲涅茨（Kuznets）</td>
+          <td>~20 年</td>
+          <td>房地產與人口遷移</td>
+          <td>歷史描述性週期</td>
+        </tr>
+        <tr>
+          <td>朱格拉（Juglar）</td>
+          <td>~10 年</td>
+          <td>企業設備 / 資本支出</td>
+          <td>歷史描述性週期</td>
+        </tr>
+        <tr>
+          <td>基欽（Kitchin）</td>
+          <td>~3.5 年</td>
+          <td>企業庫存 / 存貨</td>
+          <td>歷史描述性週期</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caveat-card mb-6">
+      <div class="text-orange-400 font-bold mb-2">⚠ 學術定位再次標註</div>
+      <p class="text-sm text-slate-300 leading-relaxed">Kuznets / Juglar / Kitchin 在經濟史教科書都列為「描述性歷史週期」，<strong>非現代總體經濟學的預測工具</strong>。「四週期共振」是周金濤學派的疊加觀點，<strong>不是學界共識</strong>。本文採用其作為「觀察結構的多尺度框架」，不主張其為精準預測。</p>
+    </div>
+
+    <p>共振概念是這樣的——當四條週期同時往下，會產生極大的破壞（史詩級崩盤）；同時往上則產生史詩級牛市。如果用衝浪比喻，<strong>單獨一條浪可能會把你騙倒，四條浪同時開口時，就是時代在說話</strong>。</p>
+
+    <h2>六、2026 的錯位——一個讓我警戒的結構相似性</h2>
+
+    <p>如果用四週期視角看 2026 年的當下：</p>
+
+    <ul>
+      <li><strong>康波（60 年）</strong>：第五波尾聲，往下</li>
+      <li><strong>庫茲涅茨（房地產）</strong>：2020 後高點下行，按周金濤學派觀點，最深谷可能要等到 2030 年代前段</li>
+      <li><strong>朱格拉（設備支出）</strong>：受 AI 算力大投資週期推升，往上</li>
+      <li><strong>基欽（庫存）</strong>：庫存週期被 AI / 半導體訂單拉升，往上</li>
+    </ul>
+
+    <p>這就是 6/9 直播我反覆強調的<strong>「錯位結構」</strong>——大週期向下、小週期向上，導致美股與台股不斷創高，呈現「經濟強勢」的表象，但底下的長尺已經在悄悄掉頭。</p>
+
+    <p><strong>結構相似性值得研究，但歷史不會簡單複製</strong>——我不會說「2026 跟 2008 一模一樣」這種武斷的話。我會說：<strong>2008 雷曼破產前，也有類似的錯位結構</strong>。當時的美股屢創新高（2007/10 SPX 1565）、企業庫存週期向上、設備支出仍熱，但房地產長週期已悄悄掉頭兩年。</p>
+
+    <div class="pull-quote">
+      2026 不是 2008，<br>
+      但它<strong>聞起來像 2007</strong>。
+    </div>
+
+    <p>這個觀察沒辦法精準告訴你時點。但它告訴我：<strong>不要被「短期創高」騙到滿倉</strong>。</p>
+
+    <p>對照其他訊號——巴菲特<a href="buffett-2026-last-warning.html" class="text-amber-400 hover:underline">逼近 4000 億現金</a>、波克夏連續多季淨賣股票、<a href="petrodollar-paradigm-shift-2026.html" class="text-amber-400 hover:underline">全球央行去美元化</a>、<a href="yield-curve-inversion-window-2026.html" class="text-amber-400 hover:underline">10Y3M 倒掛轉正</a>——這些都不是預言，是<strong>用倉位投票的最大機構正在告訴我們他們看到了什麼</strong>。</p>
+
+    <h2>七、「人生發財靠康波」——周金濤的爭議名言怎麼讀</h2>
+
+    <p>周金濤生前最有名的一句話是：「<strong>人生發財靠康波。</strong>」</p>
+
+    <p>這句話有它的洞見：因為一輪康波長達 50-60 年，一個人活到 80 歲，<strong>頂多遇到兩到三次重大的財富重分配機會</strong>——上一輩在房地產起飛時買房、這一輩在網際網路起飛時抓住科技股、下一輩可能在 AI 範式起飛時抓住 AI 資產。<strong>個人努力之外，還有更大的潮汐</strong>。</p>
+
+    <div class="caveat-card mb-6">
+      <div class="text-orange-400 font-bold mb-2">⚠ 別把它讀成宿命論</div>
+      <p class="text-sm text-slate-300 leading-relaxed">「人生發財靠康波」這句話<strong>強調的是「生涯資產配置應對齊大週期」</strong>，不是「個人努力沒用」。周金濤本人生前的研究也強調<strong>「概率思考」而非「宿命預測」</strong>，他自己 2018-2020 年的多次預測也有未命中（例如 2018 全球資產低點推算未實現）。康波給你的是<strong>「時代感」</strong>——不要在退場時期 all-in 上一輪贏家、不要在新時代起步時躲在現金裡。但具體何時行動，仍需要短週期訊號搭配（這就是為什麼我們需要 10Y3M、需要技術分析、需要結構訊號）。</p>
+    </div>
+
+    <p>翻譯成可操作的版本：</p>
+
+    <ul>
+      <li>你父母的房子可能買在第 4 次康波夏天（1970-80s），那是房地產對齊長週期的時點</li>
+      <li>你的台積電可能買在第 5 次康波秋天（2010-20s），那是科技對齊長週期的時點</li>
+      <li>你的孩子的 AI 部位，可能會買在第 6 次康波春天（2030s 後）——但<strong>那是經過第 5 次康波冬季「退場儀式」之後</strong></li>
+    </ul>
+
+    <p>關鍵問題不是「下一波 AI 會不會起飛」（我認為大概率會），而是<strong>「在第 5 次的退場儀式中，你的部位能不能撐到下一波」</strong>。能撐過去的人，下一輪有資格上船；撐不過去的人，下一輪只能看著別人賺。</p>
+
+    <h2>八、給 6/9 直播留言區問「那之後呢」的你</h2>
+
+    <p>整個康波框架的最後落點，不是預測 2030 怎樣，而是<strong>「如何在不確定的長週期中保持彈性」</strong>。我直播時講的三個原則，這裡再寫一次：</p>
+
+    <div class="ceo-card mb-6">
+      <div class="text-amber-400 font-bold mb-3">🎯 我直播時講的長週期戰略三原則</div>
+      <ol class="text-sm text-slate-300 leading-relaxed pl-5 space-y-2">
+        <li><strong>不在退場儀式期間 all-in 上一波贏家</strong>——這不是叫你清空 AI 股，是叫你不要把所有家底押在「第 5 次康波最後的明星」上。歷史上每一次康波的退場期，上一波最強的明星都會被重新定價。</li>
+        <li><strong>讓現金部位產生現金流，等下一波的入場機會</strong>——退場期可能長達 3-7 年。<a href="../lending.html" class="text-amber-400 hover:underline">放貸機器人</a>的設計邏輯就是這條：USD stablecoin 自動出借年化 5-8%，<strong>無論週期走到哪一季，都能產出現金流</strong>。這不是賭方向，是基礎設施。</li>
+        <li><strong>建立自己讀結構訊號的能力</strong>——別人喊單可以消失，但 K 線結構是公開可讀的。長週期告訴你大方向（氣候帶），<a href="../course.html" class="text-amber-400 hover:underline">裸 K 心法</a>告訴你具體出手點（今天該穿什麼）。<strong>框架 × 戰術</strong>，缺一不可。</li>
+      </ol>
+    </div>
+
+    <h2>九、寫給每一位想活過退場儀式的交易者</h2>
+
+    <p>本文不是預言。康波在主流經濟學界仍有爭議，周金濤的具體預測也有未命中紀錄，<strong>「四週期共振谷底落在 2030 年代前段」更只是一個值得高度警戒的窗口，不是必然發生的鐵律</strong>。</p>
+
+    <p>但作為交易者，我們需要的不是「100% 命中的水晶球」，而是「<strong>讓自己在不同情境下都不會輸太多的部位結構</strong>」。</p>
+
+    <p>當所有指標都告訴你錯位、所有最大的機構都在減倉囤現金、所有歷史對照都指向「不要在退場儀式 all-in」時——<strong>就算最後沒有崩盤，你的代價只是少賺一波；但只要結構訊號真的兌現，你的部位足以撐到下一輪春天</strong>。</p>
+
+    <p>這是長週期思考給我的禮物。它不告訴我「6/9 之後幾月幾號崩盤」，但它告訴我「現在是退場儀式期，要留現金、留判斷力、留隨時可動的彈性」。</p>
+
+    <p>下一波 AI 起飛時，希望我們都還站在岸上、有資格上船。</p>
+
+    <div class="final-quote">
+      我不預測崩盤的日期，<br>
+      我只<span class="text-amber-300">準備好那天到來時，我還站著</span>。
+    </div>
+
+    <p class="text-center text-slate-500 italic">— 6/9 直播延伸觀點，下次康波框架若有新解讀，我會再寫一篇。<br>Gteno @ CTA</p>
+
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">無論週期走到哪，<span class="text-amber-400">你都需要這兩件事</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">長週期告訴你大方向（氣候帶），裸 K 告訴你具體出手點（今天該穿什麼）。<br>放貸機器人是「不賭方向也能產出現金流」的基礎設施——這是穿越退場儀式期的兩個工具。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../lending.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解放貸機器人 &rarr;</a>
+        <a href="../course.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">裸 K 關鍵價位課程</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文延伸自 CTA 創辦人 Gteno 6/9 直播。<strong>康德拉季耶夫長波（康波）在主流總體經濟學中屬於非正統（heterodox）框架</strong>，多位諾貝爾獎得主對其有效性提出質疑（樣本數太少、分期可任意調整、缺乏內生機制共識）；IMF、Fed、各國央行模型並未採用。Kuznets / Juglar / Kitchin 等短中期週期在經濟史教科書列為「歷史描述性週期」，非現代總體經濟學的預測工具。「四週期共振」與「2030 年代前段為下行壓力期」屬周金濤學派觀點，非學界共識。本文以康波框架作為長週期思考的入口，<strong>僅作為觀察視角，不構成投資建議</strong>。所引用之歷史命中率、周金濤名言等均為公開資料，部分預測有未命中紀錄。請依個人風險承受度做決策，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">CEO 觀點 ｜ 直播雙視角系列</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="yield-curve-inversion-window-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">短中期計時器 · 5/26 直播</div>
+          <div class="font-bold text-white text-sm">當美聯儲的水晶球響起：10Y3M 倒掛轉正後，我們已經身在窗口裡</div>
+        </a>
+        <a href="buffett-2026-last-warning.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場觀點 · 行為層</div>
+          <div class="font-bold text-white text-sm">巴菲特最後的警告：當教堂變成賭場</div>
+        </a>
+        <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 結構底部</div>
+          <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+        </a>
+        <a href="btc-spx-divergence-2026h2.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 跨資產層</div>
+          <div class="font-bold text-white text-sm">BTC 與 SPX 的結構背離：2026 下半年資金流向觀察</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../lending.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">了解放貸機器人 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
