@@ -14,34 +14,92 @@
   <title>風險揭露聲明 — 交易幣修課</title>
   <meta name="description" content="交易幣修課 Bitfinex 自動放貸機器人風險揭露聲明。了解加密貨幣放貸的各類風險。">
   <link rel="canonical" href="https://crypto-trading-academy.com/risk-disclosure.html">
+
+  <!-- Fonts: 襯線標題(穩重) + 黑體內文 + 等寬數據(科技) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void:  '#05080F',
+            deep:  '#0A111E',
+            panel: '#0D1626',
+            line:  '#1B2A44',
+            gold:  '#E5B84B',
+            'gold-soft': '#F2D38B',
+            ice:   '#8FC7E8',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans:  ['"Noto Sans TC"', 'sans-serif'],
+            mono:  ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #05080F; font-family: "Noto Sans TC", sans-serif; }
+    /* 深空底（輕量，無 canvas） */
+    .doc-space {
+      background:
+        radial-gradient(ellipse 80% 40% at 50% -10%, rgba(36,58,97,.3) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 25% at 18% 40%, rgba(229,184,75,.04) 0%, transparent 70%);
+    }
+    /* 面板卡片 + 邊角刻線 */
+    .hud-card {
+      position: relative;
+      background: linear-gradient(160deg, rgba(13,22,38,.85), rgba(10,17,30,.65));
+      border: 1px solid #1B2A44;
+    }
+    .hud-card::before, .hud-card::after {
+      content: ''; position: absolute; width: 14px; height: 14px;
+      border-color: rgba(229,184,75,.55); border-style: solid;
+    }
+    .hud-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+    .hud-card::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+    ::selection { background: rgba(229,184,75,.3); }
+  </style>
 </head>
-<body class="bg-slate-950 text-white antialiased">
+<body class="text-slate-200 antialiased doc-space">
 
   <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-line/70 bg-void/80 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold text-amber-400">交易幣修課</a>
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-9">
+        <div class="leading-tight">
+          <div class="font-serif font-bold text-white tracking-wide">交易幣修課</div>
+          <div class="font-mono text-[10px] text-slate-500 tracking-[0.25em]">CRYPTO TRADING ACADEMY</div>
+        </div>
+      </a>
       <a href="index.html" class="text-sm text-slate-300 hover:text-white transition">← 返回首頁</a>
     </div>
   </nav>
   <div class="h-16"></div>
 
   <main class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-3xl md:text-4xl font-bold mb-2">風險揭露聲明</h1>
-    <p class="text-slate-400 mb-2">Risk Disclosure Statement</p>
+    <div class="font-mono text-xs tracking-[0.35em] text-gold uppercase mb-4"><span class="text-slate-500">— </span>LEGAL / RISK DISCLOSURE</div>
+    <h1 class="font-serif text-3xl md:text-4xl font-bold mb-2 text-white">風險揭露聲明</h1>
+    <p class="font-mono text-slate-400 mb-2">Risk Disclosure Statement</p>
     <p class="text-sm text-slate-500 mb-8">最後更新日期：2026 年 3 月 11 日 ｜ 生效日期：2026 年 3 月 11 日</p>
 
     <!-- Warning banner -->
-    <div class="bg-amber-400/10 border border-amber-400/30 rounded-xl p-6 mb-12">
-      <p class="text-amber-400 font-bold mb-2">重要提醒</p>
+    <div class="bg-gold/10 border border-gold/30 rounded-xl p-6 mb-12">
+      <p class="text-gold font-bold mb-2">重要提醒</p>
       <p class="text-slate-300 text-sm leading-relaxed">請在使用本服務前仔細閱讀本風險揭露聲明。加密貨幣放貸並非無風險活動，您可能面臨部分甚至全部資金的損失。使用本服務即表示您已閱讀、理解並接受以下所有風險揭露內容。</p>
     </div>
 
+    <div class="hud-card rounded-2xl p-6 md:p-10">
     <div class="prose prose-invert prose-slate max-w-none space-y-10 text-slate-300 leading-relaxed">
 
       <!-- 第一條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第一條 加密貨幣市場風險</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第一條 加密貨幣市場風險</h2>
 
       <h3 class="text-lg font-semibold text-white">1.1 價格波動風險</h3>
       <ul class="list-disc pl-6 space-y-1">
@@ -65,7 +123,7 @@
       </ul>
 
       <!-- 第二條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第二條 平台風險</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第二條 平台風險</h2>
 
       <h3 class="text-lg font-semibold text-white">2.1 Bitfinex 營運風險</h3>
       <p>Bitfinex 為獨立的第三方交易所，本公司無法控制其營運決策。Bitfinex 歷史上曾發生安全事件，未來仍有可能再次發生。用戶存放在 Bitfinex 的資金安全性取決於 Bitfinex 的安全措施與營運狀況，<strong>本公司無法提供任何保證</strong>。</p>
@@ -77,7 +135,7 @@
       <p>放貸本質上是將資金借給其他交易者。雖然 Bitfinex 有保證金機制來降低違約風險，但在極端市場條件下，借款方的保證金可能不足以覆蓋損失。Bitfinex 歷史上曾在極端情況下對放貸方實施<strong>損失分攤</strong>，未來不排除再次發生的可能性。</p>
 
       <!-- 第三條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第三條 技術風險</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第三條 技術風險</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>API 連線風險</strong>：API 連線可能因網路問題或伺服器負載而中斷，導致錯失最佳利率</li>
         <li><strong>網路延遲風險</strong>：延遲可能導致掛單未能以預期利率成交</li>
@@ -86,7 +144,7 @@
       </ul>
 
       <!-- 第四條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第四條 穩定幣與區塊鏈風險</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第四條 穩定幣與區塊鏈風險</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>脫鉤風險</strong>：穩定幣可能失去與美元的 1:1 錨定</li>
         <li><strong>發行方風險</strong>：穩定幣發行方的儲備金是否充足、是否受到監管等不確定性</li>
@@ -95,7 +153,7 @@
       </ul>
 
       <!-- 第五條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第五條 監管風險</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第五條 監管風險</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>法規不確定性</strong>：全球各國對加密貨幣的監管框架仍在發展中</li>
         <li><strong>稅務風險</strong>：放貸收益可能被視為應稅所得，用戶有責任自行遵守當地稅務法規</li>
@@ -104,7 +162,7 @@
       </ul>
 
       <!-- 第六條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第六條 收益相關聲明</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第六條 收益相關聲明</h2>
 
       <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
         <p class="font-bold text-red-400 mb-3">本公司明確聲明：我們不保證任何收益率、回報率或投資績效。</p>
@@ -117,18 +175,18 @@
       </div>
 
       <!-- 第七條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第七條 最大可能損失說明</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第七條 最大可能損失說明</h2>
 
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
-          <thead><tr class="border-b border-slate-700 text-left text-slate-400">
+          <thead><tr class="border-b border-line text-left text-slate-400">
             <th class="py-2 pr-4">風險等級</th><th class="py-2 pr-4">情境</th><th class="py-2">可能損失</th>
           </tr></thead>
           <tbody class="text-slate-300">
-            <tr class="border-b border-slate-800"><td class="py-2 pr-4 text-green-400">低</td><td class="py-2 pr-4">市場利率下降</td><td class="py-2">機會成本損失（收益減少但本金安全）</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2 pr-4 text-yellow-400">中</td><td class="py-2 pr-4">Bitfinex 短暫維護</td><td class="py-2">短期收益損失</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2 pr-4 text-orange-400">中高</td><td class="py-2 pr-4">借款方保證金不足觸發損失分攤</td><td class="py-2">部分本金損失</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2 pr-4 text-red-400">高</td><td class="py-2 pr-4">Bitfinex 重大安全事件或營運危機</td><td class="py-2">可能損失全部資金</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2 pr-4 text-green-400">低</td><td class="py-2 pr-4">市場利率下降</td><td class="py-2">機會成本損失（收益減少但本金安全）</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2 pr-4 text-yellow-400">中</td><td class="py-2 pr-4">Bitfinex 短暫維護</td><td class="py-2">短期收益損失</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2 pr-4 text-orange-400">中高</td><td class="py-2 pr-4">借款方保證金不足觸發損失分攤</td><td class="py-2">部分本金損失</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2 pr-4 text-red-400">高</td><td class="py-2 pr-4">Bitfinex 重大安全事件或營運危機</td><td class="py-2">可能損失全部資金</td></tr>
             <tr><td class="py-2 pr-4 text-red-500 font-bold">極高</td><td class="py-2 pr-4">穩定幣脫鉤 + 平台風險同時發生</td><td class="py-2">可能損失全部資金的法幣價值</td></tr>
           </tbody>
         </table>
@@ -140,7 +198,7 @@
       </div>
 
       <!-- 第八條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第八條 風險管理建議</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第八條 風險管理建議</h2>
 
       <h3 class="text-lg font-semibold text-white">資金管理</h3>
       <ul class="list-disc pl-6 space-y-1">
@@ -168,7 +226,7 @@
       </ol>
 
       <!-- 第九條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第九條 特別聲明</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第九條 特別聲明</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>非投資建議</strong>：本公司不是註冊的投資顧問、經紀商或金融機構</li>
         <li><strong>獨立判斷</strong>：強烈建議用戶在做出投資決策前，諮詢獨立的財務顧問、法律顧問或稅務專家</li>
@@ -176,7 +234,7 @@
       </ul>
 
       <!-- 第十條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第十條 風險確認</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第十條 風險確認</h2>
       <p>使用本服務即表示您確認：</p>
       <ol class="list-decimal pl-6 space-y-2">
         <li>我已完整閱讀並理解本風險揭露聲明的所有內容</li>
@@ -190,14 +248,15 @@
       </ol>
 
       <!-- 聯絡 -->
-      <h2 class="text-2xl font-bold text-white mt-12">聯絡方式</h2>
-      <p>如對本風險揭露聲明有任何疑問，請透過 <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener" class="text-blue-400 hover:underline">@CTA_LendingBot</a> 聯繫客服。</p>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">聯絡方式</h2>
+      <p>如對本風險揭露聲明有任何疑問，請透過 <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener" class="text-ice hover:underline">@CTA_LendingBot</a> 聯繫客服。</p>
       <p class="text-sm text-slate-500 mt-4 italic">本風險揭露聲明以繁體中文版本為準。若繁體中文版本與任何翻譯版本有歧義，以繁體中文版本為準。</p>
 
     </div>
+    </div>
   </main>
 
-  <footer class="border-t border-slate-800 py-8">
+  <footer class="border-t border-line py-8 bg-void/80">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
       <div>&copy; 2026 交易幣修課 Crypto Trading Academy</div>
       <div class="flex gap-6">

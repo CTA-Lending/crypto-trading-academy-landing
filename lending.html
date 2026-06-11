@@ -49,6 +49,11 @@
   }
   </script>
 
+  <!-- Fonts: 襯線標題(穩重) + 黑體內文 + 等寬數據(科技) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -56,20 +61,36 @@
       theme: {
         extend: {
           colors: {
-            brand: { blue: '#1e3a5f', 'blue-light': '#2a5080' }
+            void:  '#05080F',
+            deep:  '#0A111E',
+            panel: '#0D1626',
+            line:  '#1B2A44',
+            gold:  '#E5B84B',
+            'gold-soft': '#F2D38B',
+            ice:   '#8FC7E8',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans:  ['"Noto Sans TC"', 'sans-serif'],
+            mono:  ['"JetBrains Mono"', 'monospace'],
           },
           animation: {
-            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-            'float': 'float 6s ease-in-out infinite',
+            'fade-in-up': 'fade-in-up 0.7s ease-out forwards',
+            'orbit-spin': 'orbit-spin 40s linear infinite',
+            'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
           },
           keyframes: {
-            'glow-pulse': {
-              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
-              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
             },
-            'float': {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
+            'orbit-spin': {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+            'pulse-soft': {
+              '0%, 100%': { opacity: '0.5' },
+              '50%': { opacity: '1' },
             },
           }
         }
@@ -79,78 +100,131 @@
 
   <style>
     html { scroll-behavior: smooth; }
+    body { background: #05080F; font-family: "Noto Sans TC", sans-serif; }
 
+    /* ===== 星空 Canvas ===== */
+    #starfield-canvas {
+      position: fixed; inset: 0;
+      z-index: 0; pointer-events: none;
+    }
+    .content-layer { position: relative; z-index: 1; }
+
+    /* ===== Scroll reveal ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ===== HUD 卡片：玻璃面板 + 邊角刻線 ===== */
+    .hud-card {
+      position: relative;
+      background: linear-gradient(160deg, rgba(13,22,38,.85), rgba(10,17,30,.65));
+      border: 1px solid #1B2A44;
+      backdrop-filter: blur(8px);
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .hud-card::before, .hud-card::after {
+      content: ''; position: absolute; width: 14px; height: 14px;
+      border-color: rgba(229,184,75,.55); border-style: solid;
+      transition: border-color .35s ease;
+    }
+    .hud-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+    .hud-card::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+    .hud-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229,184,75,.45);
+      box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 24px rgba(229,184,75,.07);
+    }
+    .hud-card:hover::before, .hud-card:hover::after { border-color: #E5B84B; }
+
+    /* ===== 段落標籤（mono 編號） ===== */
+    .section-tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: .75rem; letter-spacing: .35em;
+      color: #E5B84B; text-transform: uppercase;
+    }
+    .section-tag::before { content: '— '; color: #3B5278; }
+
+    /* ===== 金色光暈 CTA ===== */
+    .cta-primary {
+      position: relative;
+      background: linear-gradient(135deg, #E5B84B, #D9A833);
+      color: #0A111E;
+      box-shadow: 0 4px 24px rgba(229,184,75,.25);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(229,184,75,.4); }
+    .cta-ghost {
+      border: 1px solid #2B405F; color: #C9D6E8;
+      transition: border-color .25s ease, color .25s ease, background .25s ease;
+    }
+    .cta-ghost:hover { border-color: #E5B84B; color: #F2D38B; background: rgba(229,184,75,.05); }
+
+    /* ===== Hero 深空層 ===== */
+    .hero-space {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(36,58,97,.35) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 78% 28%, rgba(38,82,120,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 18% 60%, rgba(229,184,75,.05) 0%, transparent 70%);
+    }
+    /* 地平線網格（透視） */
+    .grid-horizon {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 220px;
+      background-image:
+        linear-gradient(rgba(143,199,232,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(143,199,232,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      transform: perspective(420px) rotateX(62deg) scale(1.6);
+      transform-origin: center bottom;
+      mask-image: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      pointer-events: none;
+    }
+    /* 軌道環裝飾 */
+    .orbit-ring {
+      position: absolute; border-radius: 9999px;
+      border: 1px dashed rgba(143,199,232,.14);
+      pointer-events: none;
+    }
+    .orbit-ring .sat {
+      position: absolute; top: -3px; left: 50%; width: 6px; height: 6px;
+      border-radius: 9999px; background: #E5B84B;
+      box-shadow: 0 0 10px rgba(229,184,75,.9);
+    }
+
+    /* ===== mono 資料列 ===== */
+    .data-strip {
+      font-family: "JetBrains Mono", monospace;
+      border-top: 1px solid #16233C; border-bottom: 1px solid #16233C;
+      background: rgba(10,17,30,.6);
+    }
+
+    /* ===== FAQ details ===== */
     details summary { cursor: pointer; list-style: none; }
     details summary::-webkit-details-marker { display: none; }
-    details summary::after { content: '+'; float: right; font-size: 1.25rem; font-weight: bold; color: #fbbf24; transition: transform .2s; }
+    details summary::after { content: '+'; float: right; font-size: 1.25rem; font-weight: bold; color: #E5B84B; font-family: "JetBrains Mono", monospace; transition: transform .2s; }
     details[open] summary::after { content: '\2212'; }
 
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.4); }
-
-    .hero-bg {
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(251, 191, 36, 0.04) 0%, transparent 40%);
-    }
-
-    .starfield { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-    .starfield::before, .starfield::after { content: ''; position: absolute; inset: 0; }
-    .starfield::before {
-      background-image:
-        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
-        radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(2px 2px at 75% 70%, rgba(147,197,253,0.5), transparent);
-      animation: twinkle 8s ease-in-out infinite alternate;
-    }
-    .starfield::after {
-      background-image:
-        radial-gradient(1px 1px at 12% 28%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 28% 12%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 42% 72%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(2px 2px at 72% 48%, rgba(147,197,253,0.4), transparent),
-        radial-gradient(1px 1px at 88% 68%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1.5px 1.5px at 22% 58%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 52% 88%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 68% 8%, rgba(251,191,36,0.3), transparent);
-      animation: twinkle 10s ease-in-out 2s infinite alternate-reverse;
-    }
-    @keyframes twinkle { 0% { opacity: 0.6; } 100% { opacity: 1; } }
-
-    .nebula-glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: nebula-drift 20s ease-in-out infinite alternate; }
-    @keyframes nebula-drift {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(20px, -15px) scale(1.1); }
-      100% { transform: translate(-10px, 10px) scale(0.95); }
-    }
-
-    .grid-pattern {
-      background-image: linear-gradient(rgba(148,163,184,0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(148,163,184,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
+    /* 細節：選取顏色 */
+    ::selection { background: rgba(229,184,75,.3); }
   </style>
 </head>
 
-<body class="bg-slate-950 text-white antialiased">
+<body class="text-slate-200 antialiased">
+  <canvas id="starfield-canvas"></canvas>
+
+  <div class="content-layer">
 
   <!-- ===== NAV ===== -->
-  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-line/70 bg-void/80 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
-        <img src="assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
-        <span class="text-lg font-bold text-white">交易幣修課</span>
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-9">
+        <div class="leading-tight">
+          <div class="font-serif font-bold text-white tracking-wide">交易幣修課</div>
+          <div class="font-mono text-[10px] text-slate-500 tracking-[0.25em]">CRYPTO TRADING ACADEMY</div>
+        </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="index.html" class="hover:text-white transition">首頁</a>
@@ -159,62 +233,60 @@
             交易課程
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
-            <a href="course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
-            <a href="index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          <div class="absolute top-full left-0 mt-2 bg-panel border border-line rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="course.html" class="block px-4 py-2 hover:bg-deep hover:text-white transition">課程體系</a>
+            <a href="index.html#free-resources" class="block px-4 py-2 hover:bg-deep hover:text-white transition">免費資源</a>
           </div>
         </div>
         <a href="lending.html" class="text-white font-semibold">放貸機器人</a>
         <a href="testimonials.html" class="hover:text-white transition">學員見證</a>
         <a href="blog/" class="hover:text-white transition">文章</a>
-        <a href="https://app.crypto-trading-academy.com/login"
-           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
-        <a href="https://app.crypto-trading-academy.com/register"
-           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
-          <span>&#x1F449;</span> 免費註冊
+        <a href="https://app.crypto-trading-academy.com/login" class="text-gold hover:text-gold-soft font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="cta-primary font-semibold px-5 py-2 rounded-lg">
+          免費註冊
         </a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden text-white p-2">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+    <div id="mobile-menu" class="hidden md:hidden bg-void border-t border-line px-4 py-4 space-y-3">
       <a href="index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
       <a href="course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
       <a href="lending.html" class="block text-white font-semibold py-2">放貸機器人</a>
       <a href="testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
       <a href="blog/" class="block text-slate-300 hover:text-white py-2">文章</a>
-      <a href="https://app.crypto-trading-academy.com/login"
-         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
-        會員登入
-      </a>
-      <a href="https://app.crypto-trading-academy.com/register"
-         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-gold font-semibold py-2 border border-gold/60 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center cta-primary font-semibold py-3 rounded-lg mt-2">免費註冊</a>
     </div>
   </nav>
 
   <div class="h-16"></div>
 
   <!-- ===== HERO ===== -->
-  <section class="relative overflow-hidden hero-bg grid-pattern">
-    <div class="starfield"></div>
-    <div class="nebula-glow" style="width:400px;height:400px;top:-80px;left:-100px;background:rgba(88,28,135,0.12);"></div>
-    <div class="nebula-glow" style="width:350px;height:350px;bottom:-60px;right:-80px;background:rgba(59,130,246,0.08);animation-delay:5s;"></div>
-    <div class="nebula-glow" style="width:250px;height:250px;top:40%;left:60%;background:rgba(251,191,36,0.05);animation-delay:10s;"></div>
+  <section class="relative overflow-hidden hero-space">
+    <div class="grid-horizon"></div>
+    <!-- 軌道環 -->
+    <div class="orbit-ring animate-orbit-spin" style="width:560px;height:560px;top:-220px;right:-180px;">
+      <div class="sat"></div>
+    </div>
+    <div class="orbit-ring" style="width:340px;height:340px;bottom:-140px;left:-120px;"></div>
+
     <div class="max-w-4xl mx-auto px-4 py-24 md:py-36 text-center relative z-10">
       <div class="mb-8 flex justify-center">
-        <img src="assets/logo-full.png" alt="CTA Logo" class="h-20 md:h-24 animate-float drop-shadow-[0_0_30px_rgba(30,58,95,0.5)]">
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-20 md:h-24 drop-shadow-[0_0_36px_rgba(36,58,97,0.8)]">
       </div>
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+      <div class="font-mono text-xs tracking-[0.4em] text-ice/80 mb-6">AUTOMATED LENDING ENGINE</div>
+      <h1 class="font-serif text-4xl md:text-6xl font-black leading-tight mb-6 text-white">
         Bitfinex 放貸自動化<br class="hidden md:block">
-        <span class="text-amber-400">24/7 智能掛單不中斷</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-soft via-gold to-gold-soft">24/7 智能掛單不中斷</span>
       </h1>
       <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
         動態多層拆單 × 訂單簿深度定價，即時追蹤最佳利率。<br class="hidden md:block">
         僅需 Bitfinex API 融資權限，不託管你的資金。
       </p>
       <a href="https://app.crypto-trading-academy.com/register"
-         class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20 animate-glow-pulse">
+         class="cta-primary inline-block font-bold text-lg px-8 py-4 rounded-xl">
         立即註冊 &rarr;
       </a>
       <p class="mt-4 text-sm text-slate-500">免費註冊會員，體驗完整功能</p>
@@ -222,19 +294,19 @@
   </section>
 
   <!-- ===== TRUST BAR ===== -->
-  <section class="border-b border-slate-800 bg-slate-900/80">
+  <section class="data-strip reveal">
     <div class="max-w-5xl mx-auto px-4 py-5">
       <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm text-slate-300">
         <span class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           24小時全自動監測
         </span>
         <span class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           AI鎖定最優利潤機會
         </span>
         <span class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           資金安全
         </span>
       </div>
@@ -242,23 +314,26 @@
   </section>
 
   <!-- ===== 痛點 ===== -->
-  <section class="py-20 reveal">
+  <section class="py-20 md:py-24 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">你是不是也有這些<span class="text-amber-400">困擾</span>？</h2>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">01 / PAIN POINTS</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">你是不是也有這些<span class="text-gold">困擾</span>？</h2>
+      </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="text-4xl mb-4">&#x1F4A4;</div>
-          <h3 class="text-xl font-bold mb-3">閒置資金沒在賺錢</h3>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-1">
+          <svg class="w-9 h-9 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+          <h3 class="text-xl font-bold mb-3 text-white">閒置資金沒在賺錢</h3>
           <p class="text-slate-400">USDT 放在交易所只是躺著，每天都在浪費機會成本。</p>
         </div>
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="text-4xl mb-4">&#x23F0;</div>
-          <h3 class="text-xl font-bold mb-3">手動掛單太累</h3>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-2">
+          <svg class="w-9 h-9 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3 class="text-xl font-bold mb-3 text-white">手動掛單太累</h3>
           <p class="text-slate-400">要盯利率、要算天數、要半夜起來操作，佔據你寶貴的時間。</p>
         </div>
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="text-4xl mb-4">&#x1F4C9;</div>
-          <h3 class="text-xl font-bold mb-3">不知道該掛多少利率</h3>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-3">
+          <svg class="w-9 h-9 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181"/></svg>
+          <h3 class="text-xl font-bold mb-3 text-white">不知道該掛多少利率</h3>
           <p class="text-slate-400">掛太高沒人借，掛太低白白損失。判斷最佳利率需要經驗和即時數據。</p>
         </div>
       </div>
@@ -266,51 +341,54 @@
   </section>
 
   <!-- ===== 功能 ===== -->
-  <section id="features" class="bg-slate-900/50 py-20 reveal">
+  <section id="features" class="py-20 md:py-24 bg-deep/50 border-y border-line/50 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">我們幫你<span class="text-amber-400">搞定一切</span></h2>
-      <p class="text-center text-slate-400 mb-14">六大核心功能，全自動化管理你的放貸流程</p>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">02 / FEATURES</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">我們幫你<span class="text-gold">搞定一切</span></h2>
+        <p class="text-slate-400">六大核心功能，全自動化管理你的放貸流程</p>
+      </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-1">
+          <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">毫秒級利率偵測</h3>
+          <h3 class="text-xl font-bold mb-2 text-white">毫秒級利率偵測</h3>
           <p class="text-slate-400">全天候即時監控 Bitfinex 放貸市場，利率飆升時第一時間自動搶進高利機會。</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-1">
+          <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">24/7 全自動掛單</h3>
+          <h3 class="text-xl font-bold mb-2 text-white">24/7 全自動掛單</h3>
           <p class="text-slate-400">機器人根據市場深度與成交數據，智能計算最佳利率。不睡覺、不請假、不會忘記。</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-2">
+          <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">動態多層拆單</h3>
+          <h3 class="text-xl font-bold mb-2 text-white">動態多層拆單</h3>
           <p class="text-slate-400">資金自動拆分為 7-10 層不同利率掛單，根據訂單簿深度即時調整，涵蓋穩健到爆發區間，大幅提高成交率。</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-2">
+          <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">資金安全掌控</h3>
+          <h3 class="text-xl font-bold mb-2 text-white">資金安全掌控</h3>
           <p class="text-slate-400">API 僅開放融資權限，無法提領或交易。搭配 IP 白名單與 AES-256 加密，資金始終在你帳戶。</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-3">
+          <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">訂單簿深度定價</h3>
+          <h3 class="text-xl font-bold mb-2 text-white">訂單簿深度定價</h3>
           <p class="text-slate-400">不再只看表面最優價。從真實訂單簿深度計算可成交利率，讓掛單價格更貼近市場實際供需。</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
-          <div class="w-12 h-12 bg-amber-400/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-3">
+          <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">需求導向智能天數</h3>
+          <h3 class="text-xl font-bold mb-2 text-white">需求導向智能天數</h3>
           <p class="text-slate-400">低利率時掛短期（2 天）保持靈活，高需求時自動鎖長期（最長 120 天）賺取更多利息。</p>
         </div>
       </div>
@@ -318,62 +396,65 @@
   </section>
 
   <!-- ===== 對比區塊 ===== -->
-  <section id="compare" class="py-20 reveal">
+  <section id="compare" class="py-20 md:py-24 reveal">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">為什麼選擇<span class="text-amber-400">自動化</span>？</h2>
-      <p class="text-center text-slate-400 mb-14">對比手動放貸與 Bitfinex 官方 FRR 模式</p>
-      <div class="overflow-x-auto">
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">03 / COMPARISON</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">為什麼選擇<span class="text-gold">自動化</span>？</h2>
+        <p class="text-slate-400">對比手動放貸與 Bitfinex 官方 FRR 模式</p>
+      </div>
+      <div class="hud-card rounded-2xl p-4 md:p-6 overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-slate-700">
+            <tr class="border-b border-line">
               <th class="text-left py-4 px-4 text-slate-400 font-normal">功能</th>
               <th class="py-4 px-4 text-slate-400 font-normal">手動放貸</th>
               <th class="py-4 px-4 text-slate-400 font-normal">Bitfinex FRR</th>
-              <th class="py-4 px-4 text-amber-400 font-bold">CTA 機器人</th>
+              <th class="py-4 px-4 text-gold font-bold font-mono">CTA 機器人</th>
             </tr>
           </thead>
           <tbody class="text-slate-300">
-            <tr class="border-b border-slate-800">
+            <tr class="border-b border-line/60">
               <td class="py-3 px-4">24/7 全天候運作</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
-            <tr class="border-b border-slate-800">
+            <tr class="border-b border-line/60">
               <td class="py-3 px-4">智能利率優化</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
-            <tr class="border-b border-slate-800">
+            <tr class="border-b border-line/60">
               <td class="py-3 px-4">動態多層拆單</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
-            <tr class="border-b border-slate-800">
+            <tr class="border-b border-line/60">
               <td class="py-3 px-4">利率飆升即時反應</td>
               <td class="py-3 px-4 text-center text-slate-500">需手動</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
-            <tr class="border-b border-slate-800">
+            <tr class="border-b border-line/60">
               <td class="py-3 px-4">動態天期調整</td>
               <td class="py-3 px-4 text-center text-slate-500">需手動</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
-            <tr class="border-b border-slate-800">
+            <tr class="border-b border-line/60">
               <td class="py-3 px-4">Telegram 每日報告</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
             <tr>
               <td class="py-3 px-4">不佔用你的時間</td>
               <td class="py-3 px-4 text-center text-red-400">&#10007;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
-              <td class="py-3 px-4 text-center text-green-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
+              <td class="py-3 px-4 text-center text-emerald-400">&#10003;</td>
             </tr>
           </tbody>
         </table>
@@ -382,23 +463,26 @@
   </section>
 
   <!-- ===== 運作流程 ===== -->
-  <section class="bg-slate-900/50 py-20 reveal">
+  <section class="py-20 md:py-24 bg-deep/50 border-y border-line/50 reveal">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">三步驟<span class="text-amber-400">開始</span></h2>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">04 / WORKFLOW</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">三步驟<span class="text-gold">開始</span></h2>
+      </div>
       <div class="grid md:grid-cols-3 gap-8 text-center">
-        <div>
-          <div class="w-16 h-16 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">1</div>
-          <h3 class="text-lg font-bold mb-2">設定 API Key</h3>
+        <div class="reveal reveal-delay-1">
+          <div class="w-16 h-16 cta-primary rounded-full flex items-center justify-center text-2xl font-bold font-mono mx-auto mb-5">1</div>
+          <h3 class="text-lg font-bold mb-2 text-white">設定 API Key</h3>
           <p class="text-slate-400">在 Bitfinex 建立只有融資權限的 API Key，安全又簡單。</p>
         </div>
-        <div>
-          <div class="w-16 h-16 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">2</div>
-          <h3 class="text-lg font-bold mb-2">選擇方案</h3>
+        <div class="reveal reveal-delay-2">
+          <div class="w-16 h-16 cta-primary rounded-full flex items-center justify-center text-2xl font-bold font-mono mx-auto mb-5">2</div>
+          <h3 class="text-lg font-bold mb-2 text-white">選擇方案</h3>
           <p class="text-slate-400">免費註冊會員，體驗完整功能後再決定適合的方案。</p>
         </div>
-        <div>
-          <div class="w-16 h-16 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-5">3</div>
-          <h3 class="text-lg font-bold mb-2">自動執行</h3>
+        <div class="reveal reveal-delay-3">
+          <div class="w-16 h-16 cta-primary rounded-full flex items-center justify-center text-2xl font-bold font-mono mx-auto mb-5">3</div>
+          <h3 class="text-lg font-bold mb-2 text-white">自動執行</h3>
           <p class="text-slate-400">機器人 24/7 自動運作，每天推送收益報告到 Telegram。</p>
         </div>
       </div>
@@ -406,12 +490,12 @@
   </section>
 
   <!-- ===== 合作夥伴 ===== -->
-  <section class="py-14 border-b border-slate-800 reveal">
+  <section class="py-14 border-b border-line/50 reveal">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <p class="text-sm text-slate-500 mb-6 uppercase tracking-widest">支援平台</p>
+      <p class="font-mono text-sm text-slate-500 mb-6 uppercase tracking-widest">支援平台</p>
       <div class="flex justify-center items-center gap-10 opacity-60">
         <svg class="h-8" viewBox="0 0 200 40" fill="none">
-          <text x="0" y="30" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white" letter-spacing="2">BITFINEX</text>
+          <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="700" fill="white" letter-spacing="2">BITFINEX</text>
         </svg>
       </div>
       <p class="mt-4 text-xs text-slate-600">透過 Bitfinex 官方 API v2 安全連接</p>
@@ -419,54 +503,57 @@
   </section>
 
   <!-- ===== 適合誰 ===== -->
-  <section class="py-20 reveal">
+  <section class="py-20 md:py-24 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">CTA <span class="text-amber-400">適合誰</span>？</h2>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">05 / FIT CHECK</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">CTA <span class="text-gold">適合誰</span>？</h2>
+      </div>
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-slate-800 border border-green-500/30 rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-1">
+          <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-white">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             適合你，如果
           </h3>
           <ul class="space-y-4 text-slate-300">
             <li class="flex items-start gap-3">
-              <span class="text-green-400 mt-1">&#10003;</span>
+              <span class="text-emerald-400 mt-1">&#10003;</span>
               你有 Bitfinex 帳號，手上有閒置的 USDT 或 USD
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-green-400 mt-1">&#10003;</span>
+              <span class="text-emerald-400 mt-1">&#10003;</span>
               你希望資金自動生息，不想每天手動盯盤掛單
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-green-400 mt-1">&#10003;</span>
+              <span class="text-emerald-400 mt-1">&#10003;</span>
               你能接受利率隨市場波動，不追求「保證收益」
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-green-400 mt-1">&#10003;</span>
+              <span class="text-emerald-400 mt-1">&#10003;</span>
               你理解放貸的風險邊界（平台風險、流動性鎖定）
             </li>
           </ul>
         </div>
-        <div class="bg-slate-800 border border-amber-500/30 rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+        <div class="hud-card rounded-2xl p-8 reveal reveal-delay-2">
+          <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-white">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
             先不急，如果
           </h3>
           <ul class="space-y-4 text-slate-300">
             <li class="flex items-start gap-3">
-              <span class="text-amber-400 mt-1">&#x26A0;</span>
+              <span class="text-gold mt-1">&#x26A0;</span>
               你還沒有 Bitfinex 帳號或尚未完成 KYC
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-amber-400 mt-1">&#x26A0;</span>
+              <span class="text-gold mt-1">&#x26A0;</span>
               你的資金低於 $150 USDT（低於 Bitfinex 最低放貸門檻）
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-amber-400 mt-1">&#x26A0;</span>
+              <span class="text-gold mt-1">&#x26A0;</span>
               你期望固定收益率或保本保息
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-amber-400 mt-1">&#x26A0;</span>
+              <span class="text-gold mt-1">&#x26A0;</span>
               你不願意自己管理 API Key
             </li>
           </ul>
@@ -476,142 +563,145 @@
   </section>
 
   <!-- ===== 方案差異 ===== -->
-  <section id="pricing" class="py-20 reveal">
+  <section id="pricing" class="py-20 md:py-24 bg-deep/50 border-y border-line/50 reveal">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">選擇適合你的<span class="text-amber-400">方案</span></h2>
-      <p class="text-center text-slate-400 mb-14">依資金規模與需求挑選，註冊後在會員中心商城查看完整費用</p>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">06 / PLANS</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">選擇適合你的<span class="text-gold">方案</span></h2>
+        <p class="text-slate-400">依資金規模與需求挑選，註冊後在會員中心商城查看完整費用</p>
+      </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         <!-- Starter -->
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 flex flex-col card-hover">
-          <div class="text-sm text-slate-400 mb-2">入門版</div>
-          <div class="text-3xl font-bold mb-1">小資金起步</div>
-          <div class="text-sm text-slate-500 mb-6">最大掛單 $5,000</div>
+        <div class="hud-card rounded-2xl p-8 flex flex-col reveal reveal-delay-1">
+          <div class="font-mono text-xs tracking-[0.2em] text-slate-400 mb-2">入門版</div>
+          <div class="font-serif text-3xl font-bold mb-1 text-white">小資金起步</div>
+          <div class="font-mono text-sm text-slate-500 mb-6">最大掛單 $5,000</div>
           <ul class="space-y-3 text-slate-300 text-sm flex-1">
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               24/7 自動掛單
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               每日收益報告
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               智能利率計算
             </li>
           </ul>
           <a href="https://app.crypto-trading-academy.com/register"
-             class="mt-8 block text-center border border-amber-400 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+             class="cta-ghost mt-8 block text-center font-semibold py-3 rounded-xl">
             立即註冊
           </a>
         </div>
         <!-- Standard -->
-        <div class="bg-slate-800 border-2 border-amber-400 rounded-2xl p-8 flex flex-col relative card-hover">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">推薦</div>
-          <div class="text-sm text-slate-400 mb-2">標準版</div>
-          <div class="text-3xl font-bold mb-1">穩健放貸</div>
-          <div class="text-sm text-slate-500 mb-6">最大掛單 $30,000</div>
+        <div class="hud-card rounded-2xl p-8 flex flex-col relative reveal reveal-delay-1" style="border-color: rgba(229,184,75,.6);">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 cta-primary text-xs font-bold font-mono px-3 py-1 rounded-full">推薦</div>
+          <div class="font-mono text-xs tracking-[0.2em] text-gold mb-2">標準版</div>
+          <div class="font-serif text-3xl font-bold mb-1 text-white">穩健放貸</div>
+          <div class="font-mono text-sm text-slate-500 mb-6">最大掛單 $30,000</div>
           <ul class="space-y-3 text-slate-300 text-sm flex-1">
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               入門版所有功能
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               每週策略分析報告
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               利率飆升即時警報
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               AI 智能客服
             </li>
           </ul>
           <a href="https://app.crypto-trading-academy.com/register"
-             class="mt-8 block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-xl hover:bg-amber-300 transition">
+             class="cta-primary mt-8 block text-center font-semibold py-3 rounded-xl">
             立即註冊
           </a>
         </div>
         <!-- Pro -->
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 flex flex-col card-hover">
-          <div class="text-sm text-slate-400 mb-2">專業版</div>
-          <div class="text-3xl font-bold mb-1">大戶專用</div>
-          <div class="text-sm text-slate-500 mb-6">最大掛單 $300,000</div>
+        <div class="hud-card rounded-2xl p-8 flex flex-col reveal reveal-delay-2">
+          <div class="font-mono text-xs tracking-[0.2em] text-slate-400 mb-2">專業版</div>
+          <div class="font-serif text-3xl font-bold mb-1 text-white">大戶專用</div>
+          <div class="font-mono text-sm text-slate-500 mb-6">最大掛單 $300,000</div>
           <ul class="space-y-3 text-slate-300 text-sm flex-1">
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               標準版所有功能
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               動態多層拆單
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               CSV 匯出
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               智能鎖利（最長 120 天）
             </li>
           </ul>
           <a href="https://app.crypto-trading-academy.com/register"
-             class="mt-8 block text-center border border-amber-400 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+             class="cta-ghost mt-8 block text-center font-semibold py-3 rounded-xl">
             立即註冊
           </a>
         </div>
         <!-- Enterprise -->
-        <div class="bg-gradient-to-b from-slate-800 to-slate-800/60 border border-amber-400/30 rounded-2xl p-8 flex flex-col card-hover">
-          <div class="text-sm text-amber-400 mb-2">頂級方案</div>
-          <div class="text-3xl font-bold mb-1">另洽</div>
-          <div class="text-sm text-slate-500 mb-6">掛單無上限</div>
+        <div class="hud-card rounded-2xl p-8 flex flex-col reveal reveal-delay-2" style="background: linear-gradient(160deg, rgba(229,184,75,.08), rgba(13,22,38,.8));">
+          <div class="font-mono text-xs tracking-[0.2em] text-gold mb-2">頂級方案</div>
+          <div class="font-serif text-3xl font-bold mb-1 text-white">另洽</div>
+          <div class="font-mono text-sm text-slate-500 mb-6">掛單無上限</div>
           <ul class="space-y-3 text-slate-300 text-sm flex-1">
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               專業版所有功能
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               專屬策略調校
             </li>
             <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-green-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               1 對 1 VIP 服務
             </li>
           </ul>
           <a href="https://app.crypto-trading-academy.com/register"
-             class="mt-8 block text-center border border-amber-400/50 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+             class="cta-ghost mt-8 block text-center font-semibold py-3 rounded-xl">
             聯繫我們
           </a>
         </div>
       </div>
 
       <!-- Feature Comparison Table -->
-      <div class="overflow-x-auto">
+      <div class="hud-card rounded-2xl p-4 md:p-6 overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-slate-700">
+            <tr class="border-b border-line">
               <th class="text-left py-3 px-4 text-slate-400 font-normal">功能比較</th>
               <th class="py-3 px-4 text-slate-400">入門</th>
-              <th class="py-3 px-4 text-amber-400 font-bold">標準</th>
+              <th class="py-3 px-4 text-gold font-bold">標準</th>
               <th class="py-3 px-4 text-slate-400">專業</th>
               <th class="py-3 px-4 text-slate-400">頂級</th>
             </tr>
           </thead>
           <tbody class="text-slate-300">
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">24/7 自動掛單</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">智能利率計算</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">每日收益報告</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">每週策略分析</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">利率飆升即時警報</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">AI 智能客服</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">動態多層拆單</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">CSV 匯出</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2.5 px-4">智能鎖利（120天）</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
-            <tr><td class="py-2.5 px-4">專屬策略調校</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-green-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">24/7 自動掛單</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">智能利率計算</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">每日收益報告</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">每週策略分析</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">利率飆升即時警報</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">AI 智能客服</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">動態多層拆單</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">CSV 匯出</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2.5 px-4">智能鎖利（120天）</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
+            <tr><td class="py-2.5 px-4">專屬策略調校</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-slate-600">&mdash;</td><td class="py-2.5 px-4 text-center text-emerald-400">&#10003;</td></tr>
           </tbody>
         </table>
       </div>
@@ -620,7 +710,7 @@
       <div class="text-center mt-12">
         <p class="text-slate-400 mb-4">註冊會員後，在會員中心「商城」查看方案費用並開通</p>
         <a href="https://app.crypto-trading-academy.com/register"
-           class="inline-block bg-amber-400 text-slate-900 font-semibold px-8 py-3 rounded-xl hover:bg-amber-300 transition">
+           class="cta-primary inline-block font-semibold px-8 py-3 rounded-xl">
           免費註冊 &rarr; 查看方案費用
         </a>
       </div>
@@ -628,37 +718,40 @@
   </section>
 
   <!-- ===== 安全信任 ===== -->
-  <section class="bg-slate-900/50 py-20 reveal">
+  <section class="py-20 md:py-24 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">你的資金，你<span class="text-amber-400">掌控</span></h2>
-      <p class="text-center text-slate-400 mb-14">僅用融資權限，不觸碰你的本金</p>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">07 / SECURITY</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">你的資金，你<span class="text-gold">掌控</span></h2>
+        <p class="text-slate-400">僅用融資權限，不觸碰你的本金</p>
+      </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="text-center card-hover bg-slate-800/40 rounded-2xl p-6">
-          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-1">
+          <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
-          <h3 class="font-bold mb-2">AES-256 加密</h3>
+          <h3 class="font-bold mb-2 text-white">AES-256 加密</h3>
           <p class="text-slate-400 text-sm">API Key 以業界最高標準加密存儲</p>
         </div>
-        <div class="text-center card-hover bg-slate-800/40 rounded-2xl p-6">
-          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-2">
+          <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="font-bold mb-2">僅融資權限</h3>
+          <h3 class="font-bold mb-2 text-white">僅融資權限</h3>
           <p class="text-slate-400 text-sm">API 無法提領、無法交易，只能放貸</p>
         </div>
-        <div class="text-center card-hover bg-slate-800/40 rounded-2xl p-6">
-          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+        <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-2">
+          <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
           </div>
-          <h3 class="font-bold mb-2">IP 白名單</h3>
+          <h3 class="font-bold mb-2 text-white">IP 白名單</h3>
           <p class="text-slate-400 text-sm">只有我們的伺服器能使用你的 API</p>
         </div>
-        <div class="text-center card-hover bg-slate-800/40 rounded-2xl p-6">
-          <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-3">
+          <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
           </div>
-          <h3 class="font-bold mb-2">資金在你帳戶</h3>
+          <h3 class="font-bold mb-2 text-white">資金在你帳戶</h3>
           <p class="text-slate-400 text-sm">資金始終在你的 Bitfinex 帳戶，我們碰不到</p>
         </div>
       </div>
@@ -666,72 +759,77 @@
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section id="faq" class="py-20 reveal">
+  <section id="faq" class="py-20 md:py-24 bg-deep/50 border-y border-line/50 reveal">
     <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">常見<span class="text-amber-400">問題</span></h2>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">08 / FAQ</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">常見<span class="text-gold">問題</span></h2>
+      </div>
       <div class="space-y-4">
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">你們能碰我的資金嗎？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">你們能碰我的資金嗎？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">不能。API 只開放「融資」權限，無法提領、無法交易。你的資金始終在你自己的 Bitfinex 帳戶裡，我們的系統只能幫你掛放貸單。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">放貸有風險嗎？</summary>
-          <p class="mt-4 text-slate-400 leading-relaxed">Bitfinex 放貸有平台擔保機制（保險基金），歷史上未發生過放貸方損失本金的情況。但任何金融操作都有風險，利率會因市場波動而變化，過往績效不代表未來表現。請閱讀我們的<a href="risk-disclosure.html" class="text-blue-400 hover:underline">風險揭露聲明</a>。</p>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">放貸有風險嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">Bitfinex 放貸有平台擔保機制（保險基金），歷史上未發生過放貸方損失本金的情況。但任何金融操作都有風險，利率會因市場波動而變化，過往績效不代表未來表現。請閱讀我們的<a href="risk-disclosure.html" class="text-ice hover:underline">風險揭露聲明</a>。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">跟 Bitfinex 官方 FRR 有什麼不同？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">跟 Bitfinex 官方 FRR 有什麼不同？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">FRR（Flash Return Rate）是 Bitfinex 的加權平均利率，自動續掛但不會主動優化利率。我們的機器人會即時偵測市場變化，用動態多層拆單策略分散掛單，並根據訂單簿深度優化利率，在利率飆升時自動搶進，比被動的 FRR 模式更靈活。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">可以隨時停止嗎？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">可以隨時停止嗎？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">可以。取消訂閱後，到期前照常運作，到期後自動停止。已借出的資金會在到期後自然回收。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">最低本金是多少？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">最低本金是多少？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">Bitfinex 最低放貸門檻是 $150 USDT（單筆）。建議至少 $1,000 以上，讓階梯策略能充分發揮分層效果。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">支援哪些幣種？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">支援哪些幣種？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">目前支援 USDT (fUST) 和 USD (fUSD) 兩種幣種放貸。未來計劃擴展至 BTC 等更多幣種。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">如何付款？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">如何付款？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">接受 TRC-20 USDT 付款。透過 Telegram Bot 完成付款流程，區塊鏈確認後即刻生效。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">CEO 自己也在用嗎？</summary>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">CEO 自己也在用嗎？</summary>
           <p class="mt-4 text-slate-400 leading-relaxed">是的。CEO 自有資金也在同一套系統上運行，與所有用戶使用完全相同的軟體與策略參數。</p>
         </details>
 
-        <details class="bg-slate-800 border border-slate-700 rounded-xl px-6 py-5">
-          <summary class="font-semibold text-lg">使用 Bitfinex 放貸有什麼帳戶安全需要注意的嗎？</summary>
-          <p class="mt-4 text-slate-400 leading-relaxed">我們整理了一份 Bitfinex 帳戶安全指南，包含常見的帳戶風險情境和預防方式。<a href="blog/bitfinex-account-guide.html" class="text-amber-400 hover:underline ml-1">查看完整帳戶安全指南 &rarr;</a></p>
+        <details class="hud-card rounded-xl px-6 py-5">
+          <summary class="font-semibold text-lg text-white">使用 Bitfinex 放貸有什麼帳戶安全需要注意的嗎？</summary>
+          <p class="mt-4 text-slate-400 leading-relaxed">我們整理了一份 Bitfinex 帳戶安全指南，包含常見的帳戶風險情境和預防方式。<a href="blog/bitfinex-account-guide.html" class="text-gold hover:underline ml-1">查看完整帳戶安全指南 &rarr;</a></p>
         </details>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA + FOOTER ===== -->
-  <section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">準備好讓 USDT<br><span class="text-amber-400">替你工作了嗎？</span></h2>
+  <!-- ===== CTA ===== -->
+  <section class="relative py-20 md:py-24 overflow-hidden reveal">
+    <div class="orbit-ring" style="width:480px;height:480px;top:-240px;left:50%;transform:translateX(-50%);"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <div class="section-tag mb-4">09 / START</div>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6 text-white">準備好讓 USDT<br><span class="text-gold">替你工作了嗎？</span></h2>
       <p class="text-slate-400 mb-10 text-lg">免費註冊會員，立即體驗完整功能</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="https://app.crypto-trading-academy.com/register"
-           class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-10 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+           class="cta-primary inline-block font-bold text-lg px-10 py-4 rounded-xl">
           立即註冊 &rarr;
         </a>
         <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener"
-           class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-10 py-4 rounded-xl hover:border-slate-400 hover:text-white transition">
+           class="cta-ghost inline-block font-semibold text-lg px-10 py-4 rounded-xl">
           聯繫我們
         </a>
       </div>
@@ -739,14 +837,14 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="border-t border-slate-800 py-10">
+  <footer class="border-t border-line py-10 bg-void/80">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
           <img src="assets/logo-full.png" alt="CTA Logo" class="h-12">
           <div>
-            <div class="font-bold text-white">交易幣修課</div>
-            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+            <div class="font-serif font-bold text-white">交易幣修課</div>
+            <div class="font-mono text-[10px] text-slate-500 tracking-[0.2em]">CRYPTO TRADING ACADEMY</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
@@ -768,26 +866,114 @@
   </footer>
 
   <!-- Mobile sticky CTA -->
-  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
-    <a href="https://app.crypto-trading-academy.com/register"
-       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+  <div class="fixed bottom-0 left-0 right-0 bg-void/95 backdrop-blur border-t border-line p-3 md:hidden z-40">
+    <a href="https://app.crypto-trading-academy.com/register" class="cta-primary block text-center font-bold py-3 rounded-xl">
       立即註冊 &rarr;
     </a>
   </div>
 
+  </div><!-- /content-layer -->
+
   <!-- Scripts -->
   <script>
+    // ===== 星空 Canvas：雙層視差 + 流星 =====
+    (function () {
+      var canvas = document.getElementById('starfield-canvas');
+      var ctx = canvas.getContext('2d');
+      var stars = [], meteors = [];
+      var W, H, reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        stars = [];
+        var n = Math.min(220, Math.floor(W * H / 9000));
+        for (var i = 0; i < n; i++) {
+          stars.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: Math.random() * 1.3 + 0.2,
+            layer: Math.random() < 0.35 ? 2 : 1,        // 兩層視差
+            tw: Math.random() * Math.PI * 2,            // 閃爍相位
+            sp: 0.012 + Math.random() * 0.02
+          });
+        }
+      }
+
+      function spawnMeteor() {
+        if (reduced) return;
+        meteors.push({
+          x: Math.random() * W * 0.8 + W * 0.2,
+          y: -20,
+          vx: -(2.5 + Math.random() * 2),
+          vy: 3.5 + Math.random() * 2,
+          life: 1
+        });
+        setTimeout(spawnMeteor, 7000 + Math.random() * 14000);
+      }
+
+      var scrollY = 0;
+      window.addEventListener('scroll', function () { scrollY = window.scrollY; }, { passive: true });
+
+      function frame(t) {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < stars.length; i++) {
+          var s = stars[i];
+          var par = s.layer === 2 ? 0.08 : 0.03;        // 視差係數
+          var y = (s.y - scrollY * par) % H;
+          if (y < 0) y += H;
+          var alpha = 0.35 + 0.45 * Math.abs(Math.sin(s.tw + t * 0.001 * (s.sp * 60)));
+          ctx.globalAlpha = alpha * (s.layer === 2 ? 1 : 0.6);
+          ctx.fillStyle = s.layer === 2 ? '#DCE9F7' : '#9FB8D6';
+          ctx.beginPath();
+          ctx.arc(s.x, y, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // 流星
+        for (var j = meteors.length - 1; j >= 0; j--) {
+          var m = meteors[j];
+          m.x += m.vx; m.y += m.vy; m.life -= 0.012;
+          if (m.life <= 0 || m.y > H + 40) { meteors.splice(j, 1); continue; }
+          var grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 14, m.y - m.vy * 14);
+          grad.addColorStop(0, 'rgba(242,211,139,' + (0.8 * m.life) + ')');
+          grad.addColorStop(1, 'rgba(242,211,139,0)');
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(m.x, m.y);
+          ctx.lineTo(m.x - m.vx * 14, m.y - m.vy * 14);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      if (!reduced) { setTimeout(spawnMeteor, 4000); }
+      requestAnimationFrame(frame);
+    })();
+
+    // ===== Scroll reveal =====
     document.addEventListener('DOMContentLoaded', function() {
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function(entries) {
           entries.forEach(function(entry) {
-            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
           });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         reveals.forEach(function(el) { observer.observe(el); });
-      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
     });
+
+    // Mobile menu toggle
     document.getElementById('mobile-menu-btn').addEventListener('click', function() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });

@@ -40,6 +40,11 @@
   }
   </script>
 
+  <!-- Fonts: 襯線標題(穩重) + 黑體內文 + 等寬數據(科技) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -47,28 +52,36 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              blue: '#1e3a5f',
-              'blue-light': '#2a5080',
-            }
+            void:  '#05080F',
+            deep:  '#0A111E',
+            panel: '#0D1626',
+            line:  '#1B2A44',
+            gold:  '#E5B84B',
+            'gold-soft': '#F2D38B',
+            ice:   '#8FC7E8',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans:  ['"Noto Sans TC"', 'sans-serif'],
+            mono:  ['"JetBrains Mono"', 'monospace'],
           },
           animation: {
-            'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+            'fade-in-up': 'fade-in-up 0.7s ease-out forwards',
+            'orbit-spin': 'orbit-spin 40s linear infinite',
+            'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
           },
           keyframes: {
-            'glow-pulse': {
-              '0%, 100%': { boxShadow: '0 0 20px rgba(251,191,36,0.15)' },
-              '50%': { boxShadow: '0 0 40px rgba(251,191,36,0.3)' },
-            },
-            'float': {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
-            },
             'fade-in-up': {
               '0%': { opacity: '0', transform: 'translateY(24px)' },
               '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'orbit-spin': {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+            'pulse-soft': {
+              '0%, 100%': { opacity: '0.5' },
+              '50%': { opacity: '1' },
             },
           }
         }
@@ -78,154 +91,131 @@
 
   <style>
     html { scroll-behavior: smooth; }
+    body { background: #05080F; font-family: "Noto Sans TC", sans-serif; }
 
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* ===== 星空 Canvas ===== */
+    #starfield-canvas {
+      position: fixed; inset: 0;
+      z-index: 0; pointer-events: none;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .content-layer { position: relative; z-index: 1; }
 
-    /* Card hover */
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(251,191,36,0.08);
-      border-color: rgba(251,191,36,0.4);
-    }
+    /* ===== Scroll reveal ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
 
-    /* CTA glow */
-    .cta-glow {
+    /* ===== HUD 卡片：玻璃面板 + 邊角刻線 ===== */
+    .hud-card {
       position: relative;
-      overflow: hidden;
+      background: linear-gradient(160deg, rgba(13,22,38,.85), rgba(10,17,30,.65));
+      border: 1px solid #1B2A44;
+      backdrop-filter: blur(8px);
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
     }
-    .cta-glow::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(251,191,36,0.3), transparent, rgba(251,191,36,0.3));
-      z-index: -1;
-      animation: glow-rotate 4s linear infinite;
+    .hud-card::before, .hud-card::after {
+      content: ''; position: absolute; width: 14px; height: 14px;
+      border-color: rgba(229,184,75,.55); border-style: solid;
+      transition: border-color .35s ease;
     }
-    @keyframes glow-rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .hud-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+    .hud-card::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+    .hud-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229,184,75,.45);
+      box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 24px rgba(229,184,75,.07);
     }
+    .hud-card:hover::before, .hud-card:hover::after { border-color: #E5B84B; }
 
-    /* Hero cosmic background */
-    .hero-bg {
+    /* ===== 段落標籤（mono 編號） ===== */
+    .section-tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: .75rem; letter-spacing: .35em;
+      color: #E5B84B; text-transform: uppercase;
+    }
+    .section-tag::before { content: '— '; color: #3B5278; }
+
+    /* ===== 金色光暈 CTA ===== */
+    .cta-primary {
+      position: relative;
+      background: linear-gradient(135deg, #E5B84B, #D9A833);
+      color: #0A111E;
+      box-shadow: 0 4px 24px rgba(229,184,75,.25);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(229,184,75,.4); }
+    .cta-ghost {
+      border: 1px solid #2B405F; color: #C9D6E8;
+      transition: border-color .25s ease, color .25s ease, background .25s ease;
+    }
+    .cta-ghost:hover { border-color: #E5B84B; color: #F2D38B; background: rgba(229,184,75,.05); }
+
+    /* ===== Hero 深空層 ===== */
+    .hero-space {
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(251, 191, 36, 0.04) 0%, transparent 40%);
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(36,58,97,.35) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 78% 28%, rgba(38,82,120,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 18% 60%, rgba(229,184,75,.05) 0%, transparent 70%);
     }
-
-    /* Starfield */
-    .starfield {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
+    /* 地平線網格（透視） */
+    .grid-horizon {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 220px;
+      background-image:
+        linear-gradient(rgba(143,199,232,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(143,199,232,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      transform: perspective(420px) rotateX(62deg) scale(1.6);
+      transform-origin: center bottom;
+      mask-image: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.7), transparent);
       pointer-events: none;
     }
-    .starfield::before,
-    .starfield::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-    }
-    .starfield::before {
-      background-image:
-        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1.5px 1.5px at 70% 25%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.3), transparent),
-        radial-gradient(2px 2px at 30% 80%, rgba(251,191,36,0.6), transparent),
-        radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 65% 85%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.3), transparent),
-        radial-gradient(1px 1px at 45% 30%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(2px 2px at 75% 70%, rgba(147,197,253,0.5), transparent),
-        radial-gradient(1px 1px at 95% 15%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 20% 90%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1.5px 1.5px at 60% 5%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.3), transparent),
-        radial-gradient(1px 1px at 80% 90%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 48% 50%, rgba(251,191,36,0.4), transparent);
-      animation: twinkle 8s ease-in-out infinite alternate;
-    }
-    .starfield::after {
-      background-image:
-        radial-gradient(1px 1px at 12% 28%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 28% 12%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 42% 72%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1px 1px at 58% 18%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(2px 2px at 72% 48%, rgba(147,197,253,0.4), transparent),
-        radial-gradient(1px 1px at 88% 68%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 8% 82%, rgba(255,255,255,0.3), transparent),
-        radial-gradient(1.5px 1.5px at 22% 58%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 38% 42%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1px 1px at 52% 88%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 68% 8%, rgba(251,191,36,0.3), transparent),
-        radial-gradient(1px 1px at 82% 32%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1px 1px at 92% 78%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 18% 45%, rgba(255,255,255,0.3), transparent),
-        radial-gradient(1.5px 1.5px at 62% 62%, rgba(255,255,255,0.4), transparent);
-      animation: twinkle 10s ease-in-out 2s infinite alternate-reverse;
-    }
-    @keyframes twinkle {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    /* Nebula glow */
-    .nebula-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
+    /* 軌道環裝飾 */
+    .orbit-ring {
+      position: absolute; border-radius: 9999px;
+      border: 1px dashed rgba(143,199,232,.14);
       pointer-events: none;
-      animation: nebula-drift 20s ease-in-out infinite alternate;
     }
-    @keyframes nebula-drift {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(20px, -15px) scale(1.1); }
-      100% { transform: translate(-10px, 10px) scale(0.95); }
-    }
-
-    /* Grid pattern overlay */
-    .grid-pattern {
-      background-image: linear-gradient(rgba(148,163,184,0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(148,163,184,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
+    .orbit-ring .sat {
+      position: absolute; top: -3px; left: 50%; width: 6px; height: 6px;
+      border-radius: 9999px; background: #E5B84B;
+      box-shadow: 0 0 10px rgba(229,184,75,.9);
     }
 
-    /* Testimonial carousel */
-    .testimonial-track {
-      display: flex;
-      transition: transform 0.5s ease;
+    /* ===== mono 資料列 ===== */
+    .data-strip {
+      font-family: "JetBrains Mono", monospace;
+      border-top: 1px solid #16233C; border-bottom: 1px solid #16233C;
+      background: rgba(10,17,30,.6);
     }
+
+    /* ===== 數字滾動 ===== */
+    .stat-num { font-family: "JetBrains Mono", monospace; font-weight: 600; }
+
+    /* 輪播 */
+    .testimonial-track { display: flex; transition: transform .4s ease; }
+
+    /* 細節：選取顏色 */
+    ::selection { background: rgba(229,184,75,.3); }
   </style>
 </head>
 
-<body class="bg-slate-950 text-white antialiased">
+<body class="text-slate-200 antialiased">
+  <canvas id="starfield-canvas"></canvas>
+
+  <div class="content-layer">
 
   <!-- ===== NAV ===== -->
-  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-line/70 bg-void/80 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
-        <img src="assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
-        <span class="text-lg font-bold text-white">交易幣修課</span>
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-9">
+        <div class="leading-tight">
+          <div class="font-serif font-bold text-white tracking-wide">交易幣修課</div>
+          <div class="font-mono text-[10px] text-slate-500 tracking-[0.25em]">CRYPTO TRADING ACADEMY</div>
+        </div>
       </a>
       <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
         <a href="index.html" class="text-white font-semibold">首頁</a>
@@ -234,130 +224,162 @@
             交易課程
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="absolute top-full left-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
-            <a href="course.html" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">課程體系</a>
-            <a href="index.html#free-resources" class="block px-4 py-2 hover:bg-slate-700 hover:text-white transition">免費資源</a>
+          <div class="absolute top-full left-0 mt-2 bg-panel border border-line rounded-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl">
+            <a href="course.html" class="block px-4 py-2 hover:bg-deep hover:text-white transition">課程體系</a>
+            <a href="index.html#free-resources" class="block px-4 py-2 hover:bg-deep hover:text-white transition">免費資源</a>
           </div>
         </div>
         <a href="lending.html" class="hover:text-white transition">放貸機器人</a>
         <a href="testimonials.html" class="hover:text-white transition">學員見證</a>
         <a href="blog/" class="hover:text-white transition">文章</a>
-        <a href="https://app.crypto-trading-academy.com/login"
-           class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
-        <a href="https://app.crypto-trading-academy.com/register"
-           class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1">
-          <span>&#x1F449;</span> 免費註冊
+        <a href="https://app.crypto-trading-academy.com/login" class="text-gold hover:text-gold-soft font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="cta-primary font-semibold px-5 py-2 rounded-lg">
+          免費註冊
         </a>
       </div>
-      <!-- mobile menu button -->
       <button id="mobile-menu-btn" class="md:hidden text-white p-2">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+    <div id="mobile-menu" class="hidden md:hidden bg-void border-t border-line px-4 py-4 space-y-3">
       <a href="index.html" class="block text-white font-semibold py-2">首頁</a>
       <a href="course.html" class="block text-slate-300 hover:text-white py-2">課程體系</a>
       <a href="lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
       <a href="testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
       <a href="blog/" class="block text-slate-300 hover:text-white py-2">文章</a>
-      <a href="https://app.crypto-trading-academy.com/login"
-         class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">
-        會員登入
-      </a>
-      <a href="https://app.crypto-trading-academy.com/register"
-         class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">
-        免費註冊
-      </a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-gold font-semibold py-2 border border-gold/60 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center cta-primary font-semibold py-3 rounded-lg mt-2">免費註冊</a>
     </div>
   </nav>
 
-  <!-- spacer for fixed nav -->
   <div class="h-16"></div>
 
   <!-- ===== 1. HERO ===== -->
-  <section class="relative overflow-hidden hero-bg grid-pattern">
-    <div class="starfield"></div>
-    <div class="nebula-glow" style="width:400px;height:400px;top:-80px;left:-100px;background:rgba(88,28,135,0.12);"></div>
-    <div class="nebula-glow" style="width:350px;height:350px;bottom:-60px;right:-80px;background:rgba(59,130,246,0.08);animation-delay:5s;"></div>
-    <div class="nebula-glow" style="width:250px;height:250px;top:40%;left:60%;background:rgba(251,191,36,0.05);animation-delay:10s;"></div>
-    <div class="max-w-4xl mx-auto px-4 py-24 md:py-36 text-center relative z-10">
+  <section class="relative overflow-hidden hero-space">
+    <div class="grid-horizon"></div>
+    <!-- 軌道環 -->
+    <div class="orbit-ring animate-orbit-spin" style="width:560px;height:560px;top:-220px;right:-180px;">
+      <div class="sat"></div>
+    </div>
+    <div class="orbit-ring" style="width:340px;height:340px;bottom:-140px;left:-120px;"></div>
+
+    <div class="max-w-5xl mx-auto px-4 pt-20 md:pt-28 pb-28 md:pb-36 text-center relative z-10">
       <div class="mb-8 flex justify-center">
-        <img src="assets/logo-full.png" alt="CTA Logo" class="h-20 md:h-24 animate-float drop-shadow-[0_0_30px_rgba(30,58,95,0.5)]">
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-20 md:h-24 drop-shadow-[0_0_36px_rgba(36,58,97,0.8)]">
       </div>
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-        交易幣修課<br class="hidden md:block">
-        <span class="text-amber-400">主動交易 × 被動收益</span>
+
+      <div class="font-mono text-xs tracking-[0.4em] text-ice/80 mb-6">SYSTEMATIC TRADING · AUTOMATED LENDING</div>
+
+      <h1 class="font-serif text-4xl md:text-6xl font-black leading-tight mb-6 text-white">
+        在無垠市場中<br class="md:hidden">建立你的
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-soft via-gold to-gold-soft">導航系統</span>
       </h1>
-      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-        不管你想學會系統化交易，還是讓閒置資金自動生息，我們都有適合你的方案。
+      <p class="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto leading-relaxed">
+        主動交易 × 被動收益。
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="course.html"
-           class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20 animate-glow-pulse">
+      <p class="text-base md:text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+        不管你想學會系統化交易，還是讓閒置資金自動運轉，我們都有適合你的方案。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <a href="course.html" class="cta-primary inline-block font-bold text-lg px-9 py-4 rounded-xl">
           我想學交易 &rarr;
         </a>
-        <a href="lending.html"
-           class="inline-block border border-slate-500 text-slate-200 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">
+        <a href="lending.html" class="cta-ghost inline-block font-semibold text-lg px-9 py-4 rounded-xl">
           我想自動放貸 &rarr;
         </a>
+      </div>
+
+      <!-- 滾動指示 -->
+      <div class="flex justify-center animate-pulse-soft">
+        <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7-7-7m14-8l-7 7-7-7"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 數據帶 ===== -->
+  <section class="data-strip reveal">
+    <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      <div>
+        <div class="stat-num text-3xl md:text-4xl text-gold" data-count="8">0</div>
+        <div class="text-xs tracking-widest text-slate-400 mt-2">年交易經驗</div>
+      </div>
+      <div>
+        <div class="stat-num text-3xl md:text-4xl text-gold" data-count="3">0</div>
+        <div class="text-xs tracking-widest text-slate-400 mt-2">大裸K交易系統</div>
+      </div>
+      <div>
+        <div class="stat-num text-3xl md:text-4xl text-gold"><span data-count="100">0</span>+</div>
+        <div class="text-xs tracking-widest text-slate-400 mt-2">位培訓學員</div>
+      </div>
+      <div>
+        <div class="stat-num text-3xl md:text-4xl text-gold">24<span class="text-slate-500">/</span>7</div>
+        <div class="text-xs tracking-widest text-slate-400 mt-2">訊號自動推播</div>
       </div>
     </div>
   </section>
 
   <!-- ===== 2. 品牌簡介 ===== -->
-  <section class="border-b border-slate-800 bg-slate-900/80 py-16 reveal">
+  <section class="py-20 md:py-24 reveal">
     <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">交易幣修課 <span class="text-amber-400">Crypto Trading Academy</span></h2>
-      <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">專注系統化交易教育，讓每一位學員都能建立自己的交易邏輯</p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="text-4xl mb-3">&#x1F3C6;</div>
-          <h3 class="text-xl font-bold mb-2">8 年交易經驗</h3>
-          <p class="text-slate-400 text-sm">教練團隊深耕加密貨幣與外匯市場</p>
+      <div class="section-tag mb-4">01 / ABOUT</div>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">交易幣修課 <span class="text-gold">Crypto Trading Academy</span></h2>
+      <p class="text-lg text-slate-400 mb-12 max-w-2xl mx-auto">專注系統化交易教育，讓每一位學員都能建立自己的交易邏輯</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+        <div class="hud-card rounded-2xl p-6 reveal reveal-delay-1">
+          <svg class="w-8 h-8 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/></svg>
+          <h3 class="text-lg font-bold mb-2 text-white">8 年交易經驗</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">教練團隊深耕加密貨幣與外匯市場</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="text-4xl mb-3">&#x1F525;</div>
-          <h3 class="text-xl font-bold mb-2">三大裸 K 系統</h3>
-          <p class="text-slate-400 text-sm">煉金術獨創交易系統，順勢逆勢皆能操作</p>
+        <div class="hud-card rounded-2xl p-6 reveal reveal-delay-2">
+          <svg class="w-8 h-8 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+          <h3 class="text-lg font-bold mb-2 text-white">三大裸 K 系統</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">煉金術獨創交易系統，順勢逆勢皆能操作</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="text-4xl mb-3">&#x1F465;</div>
-          <h3 class="text-xl font-bold mb-2">數百位學員</h3>
-          <p class="text-slate-400 text-sm">已培訓數百位學員從零到穩定獲利</p>
+        <div class="hud-card rounded-2xl p-6 reveal reveal-delay-2">
+          <svg class="w-8 h-8 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+          <h3 class="text-lg font-bold mb-2 text-white">數百位學員</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">已培訓數百位學員從零到穩定獲利</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="text-4xl mb-3">&#x1F4E1;</div>
-          <h3 class="text-xl font-bold mb-2">24/7 信號推播</h3>
-          <p class="text-slate-400 text-sm">TG + LINE 即時通知，不錯過任何機會</p>
+        <div class="hud-card rounded-2xl p-6 reveal reveal-delay-3">
+          <svg class="w-8 h-8 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+          <h3 class="text-lg font-bold mb-2 text-white">24/7 信號推播</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">TG + LINE 即時通知，不錯過任何機會</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== 3. 雙產品分流 ===== -->
-  <section class="py-20 reveal">
+  <section class="py-20 md:py-24 bg-deep/50 border-y border-line/50 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">兩條路線，<span class="text-amber-400">一個目標</span></h2>
-      <p class="text-center text-slate-400 mb-14">不管主動交易還是被動收益，我們都幫你搞定</p>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">02 / PRODUCTS</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">兩條航道，<span class="text-gold">一個目標</span></h2>
+        <p class="text-slate-400">不管主動交易還是被動收益，我們都幫你搞定</p>
+      </div>
       <div class="grid md:grid-cols-2 gap-8">
         <!-- 左卡：主動交易 -->
-        <div class="bg-gradient-to-b from-slate-800 to-slate-800/60 border border-slate-700 rounded-2xl p-10 card-hover flex flex-col">
-          <div class="text-5xl mb-5">&#x1F3AF;</div>
-          <h3 class="text-2xl font-bold mb-2">主動交易｜系統化實戰課程</h3>
-          <p class="text-slate-400 mb-6 flex-1">從底層邏輯到進階滾倉，搭配專屬 VIP 指標與訊號推播，建立你自己的交易系統。</p>
-          <a href="course.html"
-             class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-xl hover:bg-amber-300 transition">
+        <div class="hud-card rounded-2xl p-10 flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+            <span class="font-mono text-xs text-slate-500 tracking-widest">ACTIVE</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-white">主動交易｜系統化實戰課程</h3>
+          <p class="text-slate-400 mb-8 flex-1 leading-relaxed">從底層邏輯到進階滾倉，搭配專屬 VIP 指標與訊號推播，建立你自己的交易系統。</p>
+          <a href="course.html" class="cta-primary block text-center font-semibold py-3 rounded-xl">
             查看課程體系 &rarr;
           </a>
         </div>
         <!-- 右卡：被動收益 -->
-        <div class="bg-gradient-to-b from-slate-800 to-slate-800/60 border border-slate-700 rounded-2xl p-10 card-hover flex flex-col">
-          <div class="text-5xl mb-5">&#x1F4B0;</div>
-          <h3 class="text-2xl font-bold mb-2">被動收益｜放貸機器人 SaaS</h3>
-          <p class="text-slate-400 mb-6 flex-1">24/7 自動放貸，AI 智能掛單，五層階梯策略。依資金規模選方案，不託管你的資金。</p>
-          <a href="lending.html"
-             class="block text-center border border-amber-400 text-amber-400 font-semibold py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+        <div class="hud-card rounded-2xl p-10 flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="font-mono text-xs text-slate-500 tracking-widest">PASSIVE</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-white">被動收益｜放貸機器人 SaaS</h3>
+          <p class="text-slate-400 mb-8 flex-1 leading-relaxed">24/7 自動放貸，AI 智能掛單，五層階梯策略。依資金規模選方案，不託管你的資金。</p>
+          <a href="lending.html" class="cta-ghost block text-center font-semibold py-3 rounded-xl">
             了解放貸機器人 &rarr;
           </a>
         </div>
@@ -366,43 +388,45 @@
   </section>
 
   <!-- ===== 4. 免費資源 ===== -->
-  <section id="free-resources" class="bg-slate-900/50 py-20 reveal">
+  <section id="free-resources" class="py-20 md:py-24 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4"><span class="text-amber-400">免費資源</span>，立即開始學習</h2>
-      <p class="text-center text-slate-400 mb-14">不花一毛錢，也能開始建立交易觀念</p>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">03 / FREE RESOURCES</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white"><span class="text-gold">免費資源</span>，立即開始學習</h2>
+        <p class="text-slate-400">不花一毛錢，也能開始建立交易觀念</p>
+      </div>
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
+        <div class="hud-card rounded-2xl p-8">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center">
+            <div class="w-10 h-10 bg-red-500/15 border border-red-500/30 rounded-xl flex items-center justify-center">
               <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </div>
-            <h3 class="text-lg font-bold">週二 20:00 YouTube 直播</h3>
+            <h3 class="text-lg font-bold text-white">週二 20:00 YouTube 直播</h3>
           </div>
-          <p class="text-slate-400">策略之夜 — 即時行情解析、交易系統分享、學員互動問答</p>
+          <p class="text-slate-400 leading-relaxed">策略之夜 — 即時行情解析、交易系統分享、學員互動問答</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
+        <div class="hud-card rounded-2xl p-8">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center">
-              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <div class="w-10 h-10 bg-ice/10 border border-ice/30 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
             </div>
-            <h3 class="text-lg font-bold">週三 20:00 Zoom 演練</h3>
+            <h3 class="text-lg font-bold text-white">週三 20:00 Zoom 演練</h3>
           </div>
-          <p class="text-slate-400">逆煉金歐美盤演練 — 實戰操作、即時講解進出場邏輯</p>
+          <p class="text-slate-400 leading-relaxed">逆煉金歐美盤演練 — 實戰操作、即時講解進出場邏輯</p>
         </div>
-        <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-8 card-hover">
+        <div class="hud-card rounded-2xl p-8">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">
-              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
             </div>
-            <h3 class="text-lg font-bold">免費錄影課程</h3>
+            <h3 class="text-lg font-bold text-white">免費錄影課程</h3>
           </div>
-          <p class="text-slate-400">「有效啟動幣圈投資」＋「辨別加密詐騙」 — 零基礎也能輕鬆上手</p>
+          <p class="text-slate-400 leading-relaxed">「有效啟動幣圈投資」＋「辨別加密詐騙」 — 零基礎也能輕鬆上手</p>
         </div>
-        <div class="bg-gradient-to-br from-amber-400/10 to-slate-800/60 border border-amber-400/30 rounded-2xl p-8 card-hover flex flex-col justify-center items-center text-center">
-          <div class="text-4xl mb-4">&#x1F381;</div>
-          <h3 class="text-lg font-bold mb-3">想領取免費課程？</h3>
-          <a href="https://app.crypto-trading-academy.com/register"
-             class="inline-block bg-amber-400 text-slate-900 font-semibold px-6 py-3 rounded-xl hover:bg-amber-300 transition">
+        <div class="hud-card rounded-2xl p-8 flex flex-col justify-center items-center text-center" style="background: linear-gradient(160deg, rgba(229,184,75,.08), rgba(13,22,38,.7));">
+          <svg class="w-9 h-9 text-gold mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+          <h3 class="text-lg font-bold mb-4 text-white">想領取免費課程？</h3>
+          <a href="https://app.crypto-trading-academy.com/register" class="cta-primary inline-block font-semibold px-6 py-3 rounded-xl">
             免費註冊領取課程
           </a>
         </div>
@@ -411,51 +435,49 @@
   </section>
 
   <!-- ===== 5. 學員見證精選 ===== -->
-  <section class="py-20 reveal">
+  <section class="py-20 md:py-24 bg-deep/50 border-y border-line/50 reveal">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">學員<span class="text-amber-400">真實回饋</span></h2>
-      <p class="text-center text-slate-400 mb-14">來自交易幣修課學員的真實分享</p>
+      <div class="text-center mb-14">
+        <div class="section-tag mb-4">04 / TESTIMONIALS</div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">學員<span class="text-gold">真實回饋</span></h2>
+        <p class="text-slate-400">來自交易幣修課學員的真實分享</p>
+      </div>
 
       <div class="relative overflow-hidden" id="testimonial-carousel">
         <div class="testimonial-track" id="testimonial-track">
-          <!-- 見證 1 -->
           <div class="w-full md:w-1/3 flex-shrink-0 px-3">
-            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-4 h-full">
+            <div class="hud-card rounded-2xl p-4 h-full">
               <img src="assets/testimonials/LINE_ALBUM_見證_260324_1.jpg" alt="學員見證" class="w-full rounded-xl" loading="lazy">
             </div>
           </div>
-          <!-- 見證 2 -->
           <div class="w-full md:w-1/3 flex-shrink-0 px-3">
-            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-4 h-full">
+            <div class="hud-card rounded-2xl p-4 h-full">
               <img src="assets/testimonials/LINE_ALBUM_見證_260324_9.jpg" alt="學員見證" class="w-full rounded-xl" loading="lazy">
             </div>
           </div>
-          <!-- 見證 3 -->
           <div class="w-full md:w-1/3 flex-shrink-0 px-3">
-            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-4 h-full">
+            <div class="hud-card rounded-2xl p-4 h-full">
               <img src="assets/testimonials/LINE_ALBUM_見證_260324_5.jpg" alt="學員見證" class="w-full rounded-xl" loading="lazy">
             </div>
           </div>
-          <!-- 見證 4 -->
           <div class="w-full md:w-1/3 flex-shrink-0 px-3">
-            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-4 h-full">
+            <div class="hud-card rounded-2xl p-4 h-full">
               <img src="assets/testimonials/wechat_2025-05-14_162341_757.png" alt="學員見證" class="w-full rounded-xl" loading="lazy">
             </div>
           </div>
         </div>
-        <!-- 輪播控制 -->
         <div class="flex justify-center gap-3 mt-8">
-          <button onclick="moveCarousel(-1)" class="w-10 h-10 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center hover:border-amber-400 transition">
+          <button onclick="moveCarousel(-1)" class="w-10 h-10 bg-panel border border-line rounded-full flex items-center justify-center hover:border-gold transition">
             <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
           </button>
-          <button onclick="moveCarousel(1)" class="w-10 h-10 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center hover:border-amber-400 transition">
+          <button onclick="moveCarousel(1)" class="w-10 h-10 bg-panel border border-line rounded-full flex items-center justify-center hover:border-gold transition">
             <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
 
       <div class="text-center mt-8">
-        <a href="testimonials.html" class="inline-block border border-amber-400 text-amber-400 font-semibold px-6 py-3 rounded-xl hover:bg-amber-400 hover:text-slate-900 transition">
+        <a href="testimonials.html" class="cta-ghost inline-block font-semibold px-6 py-3 rounded-xl">
           查看更多學員見證 &rarr;
         </a>
       </div>
@@ -464,26 +486,27 @@
   </section>
 
   <!-- ===== 6. 底部 CTA ===== -->
-  <section class="py-20 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">準備好開始了嗎？</h2>
+  <section class="relative py-24 md:py-28 overflow-hidden reveal">
+    <div class="orbit-ring" style="width:480px;height:480px;top:-240px;left:50%;transform:translateX(-50%);"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <div class="section-tag mb-4">05 / START</div>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6 text-white">準備好啟航了嗎？</h2>
       <p class="text-slate-400 mb-10 text-lg">不管你是交易新手還是老手，我們都有適合你的方案</p>
-      <a href="https://app.crypto-trading-academy.com/register"
-         class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-10 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">
+      <a href="https://app.crypto-trading-academy.com/register" class="cta-primary inline-block font-bold text-lg px-12 py-4 rounded-xl">
         免費註冊 &rarr;
       </a>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="border-t border-slate-800 py-10">
+  <footer class="border-t border-line py-10 bg-void/80">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
           <img src="assets/logo-full.png" alt="CTA Logo" class="h-12">
           <div>
-            <div class="font-bold text-white">交易幣修課</div>
-            <div class="text-xs text-slate-500">Crypto Trading Academy</div>
+            <div class="font-serif font-bold text-white">交易幣修課</div>
+            <div class="font-mono text-[10px] text-slate-500 tracking-[0.2em]">CRYPTO TRADING ACADEMY</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
@@ -505,16 +528,96 @@
   </footer>
 
   <!-- Mobile sticky CTA -->
-  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
-    <a href="https://app.crypto-trading-academy.com/register"
-       class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">
+  <div class="fixed bottom-0 left-0 right-0 bg-void/95 backdrop-blur border-t border-line p-3 md:hidden z-40">
+    <a href="https://app.crypto-trading-academy.com/register" class="cta-primary block text-center font-bold py-3 rounded-xl">
       免費註冊 &rarr;
     </a>
   </div>
 
+  </div><!-- /content-layer -->
+
   <!-- Scripts -->
   <script>
-    // Scroll reveal
+    // ===== 星空 Canvas：雙層視差 + 流星 =====
+    (function () {
+      var canvas = document.getElementById('starfield-canvas');
+      var ctx = canvas.getContext('2d');
+      var stars = [], meteors = [];
+      var W, H, reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        stars = [];
+        var n = Math.min(220, Math.floor(W * H / 9000));
+        for (var i = 0; i < n; i++) {
+          stars.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: Math.random() * 1.3 + 0.2,
+            layer: Math.random() < 0.35 ? 2 : 1,        // 兩層視差
+            tw: Math.random() * Math.PI * 2,            // 閃爍相位
+            sp: 0.012 + Math.random() * 0.02
+          });
+        }
+      }
+
+      function spawnMeteor() {
+        if (reduced) return;
+        meteors.push({
+          x: Math.random() * W * 0.8 + W * 0.2,
+          y: -20,
+          vx: -(2.5 + Math.random() * 2),
+          vy: 3.5 + Math.random() * 2,
+          life: 1
+        });
+        setTimeout(spawnMeteor, 7000 + Math.random() * 14000);
+      }
+
+      var scrollY = 0;
+      window.addEventListener('scroll', function () { scrollY = window.scrollY; }, { passive: true });
+
+      function frame(t) {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < stars.length; i++) {
+          var s = stars[i];
+          var par = s.layer === 2 ? 0.08 : 0.03;        // 視差係數
+          var y = (s.y - scrollY * par) % H;
+          if (y < 0) y += H;
+          var alpha = 0.35 + 0.45 * Math.abs(Math.sin(s.tw + t * 0.001 * (s.sp * 60)));
+          ctx.globalAlpha = alpha * (s.layer === 2 ? 1 : 0.6);
+          ctx.fillStyle = s.layer === 2 ? '#DCE9F7' : '#9FB8D6';
+          ctx.beginPath();
+          ctx.arc(s.x, y, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // 流星
+        for (var j = meteors.length - 1; j >= 0; j--) {
+          var m = meteors[j];
+          m.x += m.vx; m.y += m.vy; m.life -= 0.012;
+          if (m.life <= 0 || m.y > H + 40) { meteors.splice(j, 1); continue; }
+          var grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 14, m.y - m.vy * 14);
+          grad.addColorStop(0, 'rgba(242,211,139,' + (0.8 * m.life) + ')');
+          grad.addColorStop(1, 'rgba(242,211,139,0)');
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(m.x, m.y);
+          ctx.lineTo(m.x - m.vx * 14, m.y - m.vy * 14);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      if (!reduced) { setTimeout(spawnMeteor, 4000); }
+      requestAnimationFrame(frame);
+    })();
+
+    // ===== Scroll reveal =====
     document.addEventListener('DOMContentLoaded', function() {
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
@@ -530,6 +633,26 @@
       } else {
         reveals.forEach(function(el) { el.classList.add('visible'); });
       }
+
+      // ===== 數字滾動 =====
+      var nums = document.querySelectorAll('[data-count]');
+      var numObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          var start = null, dur = 1200;
+          function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / dur, 1);
+            el.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+          numObserver.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      nums.forEach(function(el) { numObserver.observe(el); });
     });
 
     // Mobile menu toggle

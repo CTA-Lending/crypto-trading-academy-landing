@@ -14,31 +14,89 @@
   <title>隱私政策 — 交易幣修課</title>
   <meta name="description" content="交易幣修課 Bitfinex 自動放貸機器人隱私政策。了解我們如何收集、使用與保護您的資料。">
   <link rel="canonical" href="https://crypto-trading-academy.com/privacy.html">
+
+  <!-- Fonts: 襯線標題(穩重) + 黑體內文 + 等寬數據(科技) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void:  '#05080F',
+            deep:  '#0A111E',
+            panel: '#0D1626',
+            line:  '#1B2A44',
+            gold:  '#E5B84B',
+            'gold-soft': '#F2D38B',
+            ice:   '#8FC7E8',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans:  ['"Noto Sans TC"', 'sans-serif'],
+            mono:  ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #05080F; font-family: "Noto Sans TC", sans-serif; }
+    /* 深空底（輕量，無 canvas） */
+    .doc-space {
+      background:
+        radial-gradient(ellipse 80% 40% at 50% -10%, rgba(36,58,97,.3) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 25% at 18% 40%, rgba(229,184,75,.04) 0%, transparent 70%);
+    }
+    /* 面板卡片 + 邊角刻線 */
+    .hud-card {
+      position: relative;
+      background: linear-gradient(160deg, rgba(13,22,38,.85), rgba(10,17,30,.65));
+      border: 1px solid #1B2A44;
+    }
+    .hud-card::before, .hud-card::after {
+      content: ''; position: absolute; width: 14px; height: 14px;
+      border-color: rgba(229,184,75,.55); border-style: solid;
+    }
+    .hud-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+    .hud-card::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+    ::selection { background: rgba(229,184,75,.3); }
+  </style>
 </head>
-<body class="bg-slate-950 text-white antialiased">
+<body class="text-slate-200 antialiased doc-space">
 
   <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-line/70 bg-void/80 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold text-amber-400">交易幣修課</a>
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo-full.png" alt="CTA Logo" class="h-9">
+        <div class="leading-tight">
+          <div class="font-serif font-bold text-white tracking-wide">交易幣修課</div>
+          <div class="font-mono text-[10px] text-slate-500 tracking-[0.25em]">CRYPTO TRADING ACADEMY</div>
+        </div>
+      </a>
       <a href="index.html" class="text-sm text-slate-300 hover:text-white transition">← 返回首頁</a>
     </div>
   </nav>
   <div class="h-16"></div>
 
   <main class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-3xl md:text-4xl font-bold mb-2">隱私政策</h1>
-    <p class="text-slate-400 mb-2">Privacy Policy</p>
+    <div class="font-mono text-xs tracking-[0.35em] text-gold uppercase mb-4"><span class="text-slate-500">— </span>LEGAL / PRIVACY</div>
+    <h1 class="font-serif text-3xl md:text-4xl font-bold mb-2 text-white">隱私政策</h1>
+    <p class="font-mono text-slate-400 mb-2">Privacy Policy</p>
     <p class="text-sm text-slate-500 mb-12">最後更新日期：2026 年 3 月 11 日 ｜ 生效日期：2026 年 3 月 11 日</p>
 
+    <div class="hud-card rounded-2xl p-6 md:p-10">
     <div class="prose prose-invert prose-slate max-w-none space-y-10 text-slate-300 leading-relaxed">
 
       <p>交易幣修課（以下簡稱「本公司」或「CTA」）重視您的隱私權。本隱私政策說明本公司在您使用 Bitfinex 自動放貸軟體工具服務時，如何收集、使用、保護及處理您的個人資料。</p>
       <p>使用本服務即表示您同意本政策所述之資料處理方式。</p>
 
       <!-- 第一條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第一條 資料收集範圍</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第一條 資料收集範圍</h2>
 
       <h3 class="text-lg font-semibold text-white">1.1 我們收集的資料</h3>
 
@@ -72,7 +130,7 @@
       <p>本公司<strong>明確不收集</strong>以下資料：真實姓名、地址、電話、電子郵件等個人身份資訊、Bitfinex 帳戶密碼、銀行帳戶或信用卡資訊、IP 位址或裝置資訊、任何生物辨識資料。</p>
 
       <!-- 第二條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第二條 資料使用目的</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第二條 資料使用目的</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>提供與維護服務</strong> — 執行自動放貸操作、產生收益報告、處理設定變更</li>
         <li><strong>改善用戶體驗</strong> — 分析系統效能以優化策略邏輯、改善介面與互動流程</li>
@@ -82,7 +140,7 @@
       </ul>
 
       <!-- 第三條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第三條 資料保護措施</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第三條 資料保護措施</h2>
 
       <h3 class="text-lg font-semibold text-white">3.1 加密技術</h3>
       <p>所有用戶的 Bitfinex API Key 與 API Secret 均以 <strong>AES-256</strong> 加密後存儲。加密金鑰與加密資料分開存儲，降低單點洩露風險。</p>
@@ -102,7 +160,7 @@
       </ul>
 
       <!-- 第四條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第四條 資料保存期限</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第四條 資料保存期限</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>活躍用戶</strong>：資料在服務期間持續保存</li>
         <li><strong>非活躍用戶</strong>：訂閱到期且未續費，資料保留 90 天</li>
@@ -111,7 +169,7 @@
       </ul>
 
       <!-- 第五條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第五條 用戶權利</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第五條 用戶權利</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>查看權</strong>：隨時透過 Bot 查看本公司所存儲的資料</li>
         <li><strong>修正權</strong>：要求修正不正確或不完整的個人資料</li>
@@ -121,17 +179,17 @@
       </ul>
 
       <!-- 第六條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第六條 第三方服務</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第六條 第三方服務</h2>
 
       <h3 class="text-lg font-semibold text-white">6.1 本服務互動的第三方</h3>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
-          <thead><tr class="border-b border-slate-700 text-left text-slate-400">
+          <thead><tr class="border-b border-line text-left text-slate-400">
             <th class="py-2 pr-4">服務</th><th class="py-2 pr-4">用途</th><th class="py-2">傳輸的資料</th>
           </tr></thead>
           <tbody class="text-slate-300">
-            <tr class="border-b border-slate-800"><td class="py-2 pr-4">Bitfinex</td><td class="py-2 pr-4">執行放貸</td><td class="py-2">API Key（加密傳輸）、放貸指令</td></tr>
-            <tr class="border-b border-slate-800"><td class="py-2 pr-4">Telegram</td><td class="py-2 pr-4">用戶介面</td><td class="py-2">User ID、訊息內容</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2 pr-4">Bitfinex</td><td class="py-2 pr-4">執行放貸</td><td class="py-2">API Key（加密傳輸）、放貸指令</td></tr>
+            <tr class="border-b border-line/60"><td class="py-2 pr-4">Telegram</td><td class="py-2 pr-4">用戶介面</td><td class="py-2">User ID、訊息內容</td></tr>
             <tr><td class="py-2 pr-4">TronGrid</td><td class="py-2 pr-4">付款驗證</td><td class="py-2">交易雜湊</td></tr>
           </tbody>
         </table>
@@ -141,35 +199,36 @@
       <p>本公司<strong>不會</strong>在以下情況外向第三方共享用戶資料：提供核心服務所必需的 API 互動、用戶明確同意、法律強制要求。</p>
 
       <!-- 第七條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第七條 Cookie 與追蹤技術</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第七條 Cookie 與追蹤技術</h2>
       <p>本服務<strong>不使用任何 Cookie、網頁追蹤器或類似技術</strong>。不使用像素追蹤、廣告追蹤、第三方分析工具或裝置指紋識別。</p>
 
       <!-- 第八條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第八條 兒童保護</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第八條 兒童保護</h2>
       <p>本服務<strong>不面向未滿 18 歲的未成年人</strong>。若發現未成年人使用，將立即停止服務並刪除所有資料。</p>
 
       <!-- 第九條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第九條 國際資料傳輸</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第九條 國際資料傳輸</h2>
       <p>用戶資料存儲於本公司的 VPS 伺服器。由於雲端伺服器的性質，資料可能存儲於不同司法管轄區。無論資料存儲於何處，本公司均採用本政策所述的安全措施保護用戶資料。</p>
 
       <!-- 第十條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第十條 隱私政策更新</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第十條 隱私政策更新</h2>
       <p>本公司保留隨時修改本政策之權利。更新時將透過 Telegram Bot 向所有活躍用戶發送通知，重大變更將提前 14 天通知。繼續使用即視為同意更新後的政策。</p>
 
       <!-- 第十一條 -->
-      <h2 class="text-2xl font-bold text-white mt-12">第十一條 資料外洩應對</h2>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">第十一條 資料外洩應對</h2>
       <p>若發生資料外洩事件，本公司將：立即啟動安全應變程序、評估影響範圍、72 小時內通知受影響用戶、提供風險緩解建議、採取措施防止進一步洩露。</p>
       <p>收到通知的用戶應立即至 Bitfinex 撤銷並重新建立 API Key，檢查帳戶是否有異常活動。</p>
 
       <!-- 聯絡 -->
-      <h2 class="text-2xl font-bold text-white mt-12">聯絡方式</h2>
-      <p>如對本隱私政策有任何疑問或欲行使您的資料權利，請透過 <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener" class="text-blue-400 hover:underline">@CTA_LendingBot</a> 聯繫客服。</p>
+      <h2 class="font-serif text-2xl font-bold text-white mt-12">聯絡方式</h2>
+      <p>如對本隱私政策有任何疑問或欲行使您的資料權利，請透過 <a href="https://t.me/CTA_LendingBot" target="_blank" rel="noopener" class="text-ice hover:underline">@CTA_LendingBot</a> 聯繫客服。</p>
       <p class="text-sm text-slate-500 mt-4 italic">本隱私政策以繁體中文版本為準。若繁體中文版本與任何翻譯版本有歧義，以繁體中文版本為準。</p>
 
     </div>
+    </div>
   </main>
 
-  <footer class="border-t border-slate-800 py-8">
+  <footer class="border-t border-line py-8 bg-void/80">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
       <div>&copy; 2026 交易幣修課 Crypto Trading Academy</div>
       <div class="flex gap-6">
