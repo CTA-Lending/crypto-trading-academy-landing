@@ -1,0 +1,21 @@
+# Claude Code 本機設定（不該推上線）
+.claude/
+
+# OS 雜檔
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器 / IDE
+.vscode/
+.idea/
+
+# 環境變數與機密
+.env
+.env.*
+!.env.example
+
+# 其他暫存
+*.log
+*.tmp
+.firecrawl/
