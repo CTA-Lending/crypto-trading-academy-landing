@@ -44,10 +44,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS（預編譯，取代 CDN；設定見 tailwind.config.js，重建：npx -y tailwindcss@3 -c tailwind.config.js -o assets/tw-course.css --minify。
-       ⚠️🔴 只要改過 CSS「內容」，下行 ?v= 一定要換成【從沒用過的新值】，絕不可重用舊號！
-       重用舊號會讓瀏覽器/Cloudflare 繼續發舊快取(max-age=14400=4小時)，nav 會塌成直排。事故紀錄 2026-07-08。 -->
-  <link rel="stylesheet" href="assets/tw-course.css?v=20260708b">
+  <!-- Tailwind CSS：改回 CDN(與 index/lending/testimonials 一致)。
+       2026-07-08 事故根因：預編譯 tw-course.css 版本號重用→瀏覽器/CF 續發舊快取(max-age 4h)→只有本頁 nav 塌成直排。
+       CDN 為 runtime JIT、不產生可被快取的靜態 CSS 檔，永不發生此問題。tw-course.css/tailwind.config.js 保留備用。 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void:  '#05080F',
+            deep:  '#0A111E',
+            panel: '#0D1626',
+            line:  '#1B2A44',
+            gold:  '#E5B84B',
+            'gold-soft': '#F2D38B',
+            ice:   '#8FC7E8',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans:  ['"Noto Sans TC"', 'sans-serif'],
+            mono:  ['"JetBrains Mono"', 'monospace'],
+          },
+          animation: {
+            'fade-in-up': 'fade-in-up 0.7s ease-out forwards',
+            'orbit-spin': 'orbit-spin 40s linear infinite',
+            'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
+          },
+          keyframes: {
+            'fade-in-up': { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            'orbit-spin': { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+            'pulse-soft': { '0%, 100%': { opacity: '0.5' }, '50%': { opacity: '1' } },
+          },
+        }
+      }
+    }
+  </script>
 
   <style>
     html { scroll-behavior: smooth; }
