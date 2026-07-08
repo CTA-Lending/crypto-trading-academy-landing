@@ -44,8 +44,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS（預編譯，取代 CDN；設定見 tailwind.config.js，重建：npx -y tailwindcss@3 -c tailwind.config.js -o assets/tw-course.css --minify。⚠️ 每次重建後把下行 ?v= 版本號 +1，繞過 CDN 快取） -->
-  <link rel="stylesheet" href="assets/tw-course.css?v=20260707">
+  <!-- Tailwind CSS（預編譯，取代 CDN；設定見 tailwind.config.js，重建：npx -y tailwindcss@3 -c tailwind.config.js -o assets/tw-course.css --minify。
+       ⚠️🔴 只要改過 CSS「內容」，下行 ?v= 一定要換成【從沒用過的新值】，絕不可重用舊號！
+       重用舊號會讓瀏覽器/Cloudflare 繼續發舊快取(max-age=14400=4小時)，nav 會塌成直排。事故紀錄 2026-07-08。 -->
+  <link rel="stylesheet" href="assets/tw-course.css?v=20260708b">
 
   <style>
     html { scroll-behavior: smooth; }
