@@ -19,3 +19,8 @@ desktop.ini
 *.log
 *.tmp
 .firecrawl/
+
+# 本地備份，勿部署
+*.bak
+*.bak_*
+_*.py
