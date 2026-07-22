@@ -4,10 +4,10 @@
       "day": "2026-07-22",
       "next_day": null,
       "crowding": {
-        "overlap_pct": 61.7,
-        "warning": true,
+        "overlap_pct": 15.0,
+        "warning": false,
         "families": 3,
-        "note": "⚠️ 跨模型家族組合高度重疊=擁擠警訊(同源趨同),真上線應降總暴險"
+        "note": "跨家族組合分散=較健康"
       },
       "entries": {
         "rule": {
@@ -27,69 +27,49 @@
         "gpt": {
           "alloc": {
             "BTC": 20.0,
-            "ETH": 15.0,
             "SOL": 15.0,
             "XAU": 10.0,
-            "BNB": -8.0,
-            "DOGE": 12.0,
-            "ONDO": 8.0,
-            "XRP": 5.0,
-            "HYPE": 5.0,
-            "1000PEPE": 2.0
+            "ETH": -10.0,
+            "ZEC": -8.0,
+            "DOGE": 5.0
           },
-          "reason": "偏多核心資產，搭配少量空BNB對沖；總曝險94%，控制高波動幣。",
-          "outcome": -0.107
+          "reason": "偏多主趨勢核心，少量空弱勢對沖；總曝險68%安全。",
+          "outcome": -0.071
         },
         "gemini": {
           "alloc": {
             "BTC": 20.0,
             "SOL": 15.0,
-            "XRP": 15.0,
-            "ONDO": 10.0,
-            "BANK": 10.0,
+            "ONDO": 15.0,
+            "XRP": 10.0,
+            "BANK": 5.0,
+            "ETH": -10.0,
             "BNB": -15.0
           },
-          "reason": "新開倉：看好BTC與強勢主流SOL、XRP，配置高增長小幣BANK與ONDO；做空弱勢BNB進行對沖。",
-          "outcome": -0.08
+          "reason": "建立初始倉位：多頭配置強勢的BTC、SOL與高動能的BANK；並做空趨勢偏弱的ETH與BNB進行對沖。",
+          "outcome": -0.083
         },
         "claude": {
-          "alloc": {
-            "BTC": 25.0,
-            "SOL": 15.0,
-            "ETH": -12.0,
-            "ONDO": 12.0,
-            "DOGE": 10.0,
-            "XRP": 8.0,
-            "BNB": -8.0,
-            "ZEC": -5.0,
-            "1000PEPE": 5.0
-          },
-          "reason": "核心多頭配置(BTC/SOL)佔40%,穩健資產(ONDO/DOGE/XRP)佔30%;適度做空高波動空頭(ETH/BNB/ZEC)佔25%對沖。現金空倉安全起始,曝險85%,避免極端波幅幣(AKE 948%/LAB 740%)。",
-          "outcome": -0.102
+          "alloc": {},
+          "reason": "核心多頭:BTC/SOL/ONDO穩健信號;空頭對沖:ETH/BNB/ZEC減風險。總曝險100%。迴避超高波動(BANK/AKE/LAB/HYPE)。現金0。",
+          "outcome": 0.0
         },
         "gpt_pure": {
           "alloc": {
             "BTC": 25.0,
-            "ETH": 20.0,
-            "BNB": 15.0,
-            "XAU": 10.0,
+            "ETH": 18.0,
+            "BNB": 12.0,
+            "XAU": 15.0,
+            "SOL": 10.0,
             "DOGE": -5.0
           },
-          "reason": "偏多低波動主流與避險；DOGE小空對沖風險，總曝險75%",
-          "outcome": -0.067
+          "reason": "偏防守：配BTC/ETH/BNB/XAU，少量SOL；DOGE小空對沖高波動。",
+          "outcome": -0.08
         },
         "guardian": {
-          "alloc": {
-            "BTC": 25.0,
-            "SOL": 20.0,
-            "ONDO": 15.0,
-            "DOGE": 12.0,
-            "XRP": 10.0,
-            "ZEC": -10.0,
-            "ETH": -8.0
-          },
-          "reason": "核心多頭(BTC/SOL/ONDO)穩健配置,DOGE/XRP補充輕量曝險。做空ZEC/ETH對沖牛市風險,控制總曝險92%。規避超高波動(BANK/AKE/LAB),現金留5%應急。",
-          "outcome": -0.107
+          "alloc": {},
+          "reason": "核心多:BTC/SOL/ONDO(趨勢強),分散低波動。防守空:ETH/BNB/ZEC(高位警訊),對沖牛市擁擠。資金費負荷管理,總曝險98%,保留2%緩衝。",
+          "outcome": 0.0
         },
         "bench_btc": {
           "alloc": {

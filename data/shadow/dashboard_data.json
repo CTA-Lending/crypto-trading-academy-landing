@@ -24,17 +24,17 @@
       "bench_eqw",
       "bench_cash"
     ],
-    "days": 0,
+    "days": 1,
     "pilot_days": 90,
     "gate_days": 252,
-    "last_date": null,
+    "last_date": "2026-07-22",
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "anchor": {
       "seq": 0,
-      "utc": "2026-07-22T05:33:14Z",
-      "protocol_sha256": "52c1cca467e44993",
-      "genesis_utc": "2026-07-22T05:33:14Z"
+      "utc": "2026-07-22T05:43:31Z",
+      "protocol_sha256": "48973c29afccb2d4",
+      "genesis_utc": "2026-07-22T05:43:31Z"
     }
   },
   "equity_curve": [
@@ -49,33 +49,45 @@
       "bench_btc": 10000.0,
       "bench_eqw": 10000.0,
       "bench_cash": 10000.0
+    },
+    {
+      "day": "2026-07-22",
+      "rule": 9984,
+      "gpt": 9993,
+      "gemini": 9992,
+      "claude": 10000,
+      "gpt_pure": 9992,
+      "guardian": 10000,
+      "bench_btc": 9993,
+      "bench_eqw": 9986,
+      "bench_cash": 10000
     }
   ],
   "final_equity": {
-    "rule": 10000,
-    "gpt": 10000,
-    "gemini": 10000,
+    "rule": 9984,
+    "gpt": 9993,
+    "gemini": 9992,
     "claude": 10000,
-    "gpt_pure": 10000,
+    "gpt_pure": 9992,
     "guardian": 10000,
-    "bench_btc": 10000,
-    "bench_eqw": 10000,
+    "bench_btc": 9993,
+    "bench_eqw": 9986,
     "bench_cash": 10000
   },
   "metrics": {
     "rule": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
+      "total_pct": -0.16,
+      "mdd_pct": 0.16,
       "sharpe": null
     },
     "gpt": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
+      "total_pct": -0.07,
+      "mdd_pct": 0.07,
       "sharpe": null
     },
     "gemini": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
+      "total_pct": -0.08,
+      "mdd_pct": 0.08,
       "sharpe": null
     },
     "claude": {
@@ -84,8 +96,8 @@
       "sharpe": null
     },
     "gpt_pure": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
+      "total_pct": -0.08,
+      "mdd_pct": 0.08,
       "sharpe": null
     },
     "guardian": {
@@ -94,13 +106,13 @@
       "sharpe": null
     },
     "bench_btc": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
+      "total_pct": -0.07,
+      "mdd_pct": 0.07,
       "sharpe": null
     },
     "bench_eqw": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
+      "total_pct": -0.14,
+      "mdd_pct": 0.14,
       "sharpe": null
     },
     "bench_cash": {
@@ -110,39 +122,110 @@
     }
   },
   "current_alloc": {
-    "rule": {},
-    "gpt": {},
-    "gemini": {},
+    "rule": {
+      "BANK": 12.5,
+      "AKE": 12.5,
+      "LAB": -12.5,
+      "ZEC": -12.5,
+      "ONDO": 12.5,
+      "ETH": -12.5,
+      "DOGE": 12.5,
+      "HYPE": 12.5
+    },
+    "gpt": {
+      "BTC": 20.0,
+      "SOL": 15.0,
+      "XAU": 10.0,
+      "ETH": -10.0,
+      "ZEC": -8.0,
+      "DOGE": 5.0
+    },
+    "gemini": {
+      "BTC": 20.0,
+      "SOL": 15.0,
+      "ONDO": 15.0,
+      "XRP": 10.0,
+      "BANK": 5.0,
+      "ETH": -10.0,
+      "BNB": -15.0
+    },
     "claude": {},
-    "gpt_pure": {},
+    "gpt_pure": {
+      "BTC": 25.0,
+      "ETH": 18.0,
+      "BNB": 12.0,
+      "XAU": 15.0,
+      "SOL": 10.0,
+      "DOGE": -5.0
+    },
     "guardian": {},
-    "bench_btc": {},
-    "bench_eqw": {},
+    "bench_btc": {
+      "BTC": 100.0
+    },
+    "bench_eqw": {
+      "BANK": 10.0,
+      "AKE": 10.0,
+      "LAB": 10.0,
+      "ZEC": 10.0,
+      "ONDO": 10.0,
+      "ETH": 10.0,
+      "DOGE": 10.0,
+      "HYPE": 10.0,
+      "SOL": 10.0,
+      "BTC": 10.0
+    },
     "bench_cash": {}
   },
   "current_reasons": {
-    "rule": "",
-    "gpt": "",
-    "gemini": "",
-    "claude": "",
-    "gpt_pure": "",
-    "guardian": "",
-    "bench_btc": "",
-    "bench_eqw": "",
-    "bench_cash": ""
+    "rule": "wick-break 雙向等權(確定性規則,無 AI)",
+    "gpt": "偏多主趨勢核心，少量空弱勢對沖；總曝險68%安全。",
+    "gemini": "建立初始倉位：多頭配置強勢的BTC、SOL與高動能的BANK；並做空趨勢偏弱的ETH與BNB進行對沖。",
+    "claude": "核心多頭:BTC/SOL/ONDO穩健信號;空頭對沖:ETH/BNB/ZEC減風險。總曝險100%。迴避超高波動(BANK/AKE/LAB/HYPE)。現金0。",
+    "gpt_pure": "偏防守：配BTC/ETH/BNB/XAU，少量SOL；DOGE小空對沖高波動。",
+    "guardian": "核心多:BTC/SOL/ONDO(趨勢強),分散低波動。防守空:ETH/BNB/ZEC(高位警訊),對沖牛市擁擠。資金費負荷管理,總曝險98%,保留2%緩衝。",
+    "bench_btc": "市場基準(非 AI)",
+    "bench_eqw": "市場基準(非 AI)",
+    "bench_cash": "市場基準(非 AI)"
   },
   "violations": {
     "rule": 0,
     "gpt": 0,
     "gemini": 0,
-    "claude": 0,
+    "claude": 1,
     "gpt_pure": 0,
-    "guardian": 0,
+    "guardian": 1,
     "bench_btc": 0,
     "bench_eqw": 0,
     "bench_cash": 0
   },
-  "stability": {},
-  "crowding_history": [],
-  "records": []
+  "stability": {
+    "gpt": 0.0,
+    "gemini": 0.0,
+    "claude": 1.0,
+    "gpt_pure": 0.0,
+    "guardian": 1.0
+  },
+  "crowding_history": [
+    {
+      "day": "2026-07-22",
+      "overlap_pct": 15.0,
+      "warning": false,
+      "families": 3,
+      "note": "跨家族組合分散=較健康"
+    }
+  ],
+  "records": [
+    {
+      "day": "2026-07-22",
+      "rule": -0.16,
+      "gpt": -0.07,
+      "gemini": -0.08,
+      "claude": 0.0,
+      "gpt_pure": -0.08,
+      "guardian": 0.0,
+      "bench_btc": -0.07,
+      "bench_eqw": -0.14,
+      "bench_cash": 0.0
+    }
+  ]
 }
