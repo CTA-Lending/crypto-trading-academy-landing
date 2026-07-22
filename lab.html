@@ -106,7 +106,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
   if(d.error){document.getElementById('sub').textContent=d.error;return}
   const m=d.meta;
   document.getElementById('sub').textContent=
-    `已結算 ${m.resolved_days} 日 / 目標 ${m.gate_days} 日｜最新決策日 ${m.pending_day||'—'}｜幣海選幣 · 每日自動更新`;
+    `已結算 ${m.resolved_days} 日 / 目標 ${m.gate_days} 日｜資料截至決策日 ${m.pending_day||'—'}｜幣海選幣 · 實驗每日進行`;
 
   const alloc=d.current_alloc||{},reasons=d.current_reasons||{};
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
