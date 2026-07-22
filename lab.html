@@ -30,6 +30,8 @@ h2{font-size:16px;margin-bottom:14px;color:#c8d3e0;display:flex;align-items:cent
 .pos{font-size:12.5px;margin-top:10px;line-height:1.7}
 .pos .tag{display:inline-block;background:#1b2230;border:1px solid var(--line);border-radius:6px;
 padding:1px 7px;margin:2px 3px 0 0;font-size:12px}
+.pos .tag.long{border-color:#1f4d2e;background:#12231a;color:#7ee2a8}
+.pos .tag.short{border-color:#5a2229;background:#241316;color:#f6a5ab}
 .why{font-size:12px;color:var(--dim);margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);font-style:italic}
 canvas{width:100%;height:230px}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin-top:10px}
@@ -54,9 +56,10 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🧭 這個實驗在做什麼</h2>
   <div class="plan">
-    <div><b>5 個腦,一樣的市場</b><br>規則腦(基準)+GPT+Gemini+Claude+持久腦,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。</div>
+    <div><b>5 個腦,一樣的市場</b><br>規則腦(基準)+GPT+Gemini+Claude+持久腦,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。</div>
     <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,五種完全不同的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
     <div><b>持久腦是特別角色</b><br>它不追求預測最準,追求<b>活最久</b>:充分分散、抗擁擠、存活優先。當大家擠在一起時,它反而降暴險。</div>
+    <div><b>連續持倉,不是每天失憶</b><br>每個腦每天都看得到<b>自己的權益、持倉與近期損益</b>,可以續抱、加碼、減碼或反手——這是連續的部位管理。</div>
     <div><b>90 天才算數</b><br>決策當下看不到未來,一天一天累積。達 90 天並涵蓋趨勢與盤整,才構成「哪個腦有資格碰真錢」的證據。</div>
   </div>
 </div>
@@ -108,8 +111,11 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
   const alloc=d.current_alloc||{},reasons=d.current_reasons||{};
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
     const eq=d.final_equity[b],ret=(eq/m.start_capital-1)*100,a=alloc[b]||{};
-    const tags=Object.entries(a).sort((x,y)=>y[1]-x[1]).slice(0,6)
-      .map(([k,v])=>`<span class="tag">${k} ${v.toFixed(0)}%</span>`).join('')||'<span class="tag">空手（全現金）</span>';
+    const gross=Object.values(a).reduce((s,v)=>s+Math.abs(v),0);
+    const tags=Object.entries(a).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
+      .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('')
+      ||'<span class="tag">空手（全現金）</span>';
+    const grossTag=gross>0?`<span class="tag">曝險 ${gross.toFixed(0)}%・現金 ${Math.max(0,100-gross).toFixed(0)}%</span>`:'';
     return `<div class="agent">
       <div class="top">
         <div><div class="name"><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</div>
@@ -117,7 +123,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
         <div><div class="eq">$${eq.toLocaleString()}</div>
           <div class="ret" style="color:${ret>=0?'var(--up)':'var(--down)'}">${ret>=0?'+':''}${ret.toFixed(1)}%</div></div>
       </div>
-      <div class="pos">${tags}</div>
+      <div class="pos">${tags}${grossTag}</div>
       ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
   }).join('');
 
