@@ -1,19 +1,74 @@
 {
-  "anchored_at_utc": "2026-07-22T05:33:14Z",
+  "anchored_at_utc": "2026-07-22T05:42:33Z",
   "protocol": {
-    "sha256": "52c1cca467e4499318451108c6d5e3dcb670b279e0f4a16189ca4b03a9e2bb58",
-    "bytes": 7282,
+    "sha256": "413e83521ba14f31de54339d2d778aa486dbf318c9ab5e64642952f822af34c3",
+    "bytes": 8264,
     "file": "data/shadow/PROTOCOL.md"
   },
   "code": {
     "file_sha256_16": {
-      "shadow/multi.py": "5ecd34d85ac88c75",
+      "shadow/multi.py": "8c71080edee2c6f6",
       "shadow/universe.py": "a65113f4581bd82a",
-      "shadow/forward_multi.py": "72f6300c7eb40f05",
+      "shadow/forward_multi.py": "9ee1f66bb1817521",
+      "shadow/stats.py": "647e7e1d70861a5c",
+      "shadow/anchor.py": "69be883f0adc0315",
       "core/key_level_engine.py": "a65db9d01fe36e56",
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
-    "prompt_template_sha256_16": "5ecd34d85ac88c75"
+    "prompt_template_sha256_16": "8c71080edee2c6f6",
+    "tree": {
+      "root": "7a89cc1b3c78ba4c04d1cce1f953b5f3dd6a0cf3b415f9c6ccd8a430412d2178",
+      "n_files": 40,
+      "files": {
+        "PROTOCOL.md": "413e83521ba14f31",
+        "core/__init__.py": "e3b0c44298fc1c14",
+        "core/forward_v12_adapter.py": "ff00323c777c84d8",
+        "core/key_level_engine.py": "a65db9d01fe36e56",
+        "e1/__init__.py": "e3b0c44298fc1c14",
+        "e1/config.py": "4a7691bb5931a4f7",
+        "e1/engine.py": "1830b0be355c9843",
+        "e1/main_binance_shun.py": "94263533352db53a",
+        "e1/replay.py": "e589b8552aca9656",
+        "e1/shadow_ledger.py": "c5445bddd74e783d",
+        "e1/spot_adapter.py": "2835514fa921856a",
+        "shadow/__init__.py": "e3b0c44298fc1c14",
+        "shadow/anchor.py": "69be883f0adc0315",
+        "shadow/arena.py": "2c2b36120dbdbdfc",
+        "shadow/brains.py": "c9cfc2f1e43305ab",
+        "shadow/diaries.py": "51e5299a28a04264",
+        "shadow/emit_dashboard.py": "d0c67b7c0456b155",
+        "shadow/forward_daily.py": "f942d10ede66a68c",
+        "shadow/forward_multi.py": "9ee1f66bb1817521",
+        "shadow/multi.py": "8c71080edee2c6f6",
+        "shadow/report.py": "f2558dbdc38d2816",
+        "shadow/run_forward_daily.bat": "8232f3ecf429c873",
+        "shadow/run_tg_push.bat": "cecfe2ed6cd8f55b",
+        "shadow/stats.py": "647e7e1d70861a5c",
+        "shadow/tg_push.py": "e2a77675dd4707a3",
+        "shadow/universe.py": "a65113f4581bd82a",
+        "sliceb/agent_state.py": "944df099627d7a98",
+        "sliceb/hypothesis_card.py": "a55b79704ddc6687",
+        "sliceb/llm_router.py": "f524f80ceb55203b",
+        "sliceb/market_context.py": "7dcc9975c1bebd5a",
+        "sliceb/narrative.py": "4e035676f698626c",
+        "sliceb/server.py": "ac9502a378f53135",
+        "tests/__init__.py": "e3b0c44298fc1c14",
+        "tests/test_e1.py": "9e6be9785372bb6b",
+        "tests/test_multi.py": "2e2f665812f14b9f",
+        "tests/test_replay.py": "e49ad82db5f98025",
+        "tests/test_shadow.py": "ae19343162cfc7b9",
+        "tests/test_sliceb.py": "14738db7d6e9c9ff",
+        "tests/test_stats.py": "f46eac486656173b",
+        "tools/baseline_gen.py": "bfb0ace2c0956f38"
+      }
+    },
+    "dependencies": {
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "numpy": "2.4.3",
+      "ccxt": "4.5.39",
+      "requests": "2.34.2"
+    }
   },
   "competitors": {
     "all": [
