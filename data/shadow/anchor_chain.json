@@ -1,0 +1,18 @@
+[
+  {
+    "seq": 0,
+    "utc": "2026-07-22T05:33:14Z",
+    "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+    "days_recorded": 0,
+    "ledger_head": "0000000000000000000000000000000000000000000000000000000000000000",
+    "protocol_sha256": "52c1cca467e4499318451108c6d5e3dcb670b279e0f4a16189ca4b03a9e2bb58",
+    "code": {
+      "shadow/multi.py": "5ecd34d85ac88c75",
+      "shadow/universe.py": "a65113f4581bd82a",
+      "shadow/forward_multi.py": "72f6300c7eb40f05",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "hash": "5400e23e8d4759701448d3f351feec51ede88fc13195d7ad84a1a5ce612d2a51"
+  }
+]

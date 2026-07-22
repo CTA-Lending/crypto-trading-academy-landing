@@ -1,0 +1,122 @@
+{
+  "anchored_at_utc": "2026-07-22T05:33:14Z",
+  "protocol": {
+    "sha256": "52c1cca467e4499318451108c6d5e3dcb670b279e0f4a16189ca4b03a9e2bb58",
+    "bytes": 7282,
+    "file": "data/shadow/PROTOCOL.md"
+  },
+  "code": {
+    "file_sha256_16": {
+      "shadow/multi.py": "5ecd34d85ac88c75",
+      "shadow/universe.py": "a65113f4581bd82a",
+      "shadow/forward_multi.py": "72f6300c7eb40f05",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "prompt_template_sha256_16": "5ecd34d85ac88c75"
+  },
+  "competitors": {
+    "all": [
+      "bench_btc",
+      "bench_cash",
+      "bench_eqw",
+      "claude",
+      "gemini",
+      "gpt",
+      "gpt_pure",
+      "guardian",
+      "rule"
+    ],
+    "llm": [
+      "claude",
+      "gemini",
+      "gpt",
+      "gpt_pure",
+      "guardian"
+    ],
+    "benchmarks": [
+      "bench_btc",
+      "bench_cash",
+      "bench_eqw"
+    ],
+    "model_family": {
+      "gpt": "openai",
+      "gpt_pure": "openai",
+      "gemini": "google",
+      "claude": "anthropic",
+      "guardian": "anthropic"
+    },
+    "count": 9
+  },
+  "models": {
+    "gpt": "gpt-5.4-mini",
+    "gemini": "gemini-3.5-flash",
+    "claude": "claude-haiku-4-5-20251001"
+  },
+  "llm_params": {
+    "temperature": 0.0,
+    "max_tokens": 2500,
+    "top_p": null,
+    "seed": null
+  },
+  "cost_assumptions": {
+    "fee_bps": 5.0,
+    "half_spread_major_bps": 2.0,
+    "half_spread_minor_bps": 12.0,
+    "maint_margin_rate": 0.05,
+    "liq_penalty_bps": 50.0,
+    "stale_exit_haircut": 0.2,
+    "start_capital_usdt": 10000.0,
+    "universe_top_n": 15
+  },
+  "initial_state": {
+    "rule": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "gpt": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "gemini": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "claude": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "gpt_pure": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "guardian": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "bench_btc": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "bench_eqw": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    },
+    "bench_cash": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "units": {}
+    }
+  },
+  "days_recorded": 0,
+  "last_ledger_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "declaration": "零真錢、零下單能力、純模擬。此檔一經推送即由公開平台接收時間戳背書。"
+}
