@@ -1,0 +1,76 @@
+{
+  "days": [
+    {
+      "day": "2026-07-21",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 58.8,
+        "warning": false,
+        "note": "組合分散=較健康"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "BANK": 12.5,
+            "ONDO": 12.5,
+            "ADA": 12.5,
+            "SOL": 12.5,
+            "BTC": 12.5,
+            "ERA": 12.5,
+            "XRP": 12.5,
+            "TRX": 12.5
+          },
+          "reason": "wick-break 針尖突破訊號等權配置(確定性規則,無 AI)",
+          "outcome": null
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 35.0,
+            "SOL": 25.0,
+            "TRX": 15.0,
+            "ADA": 10.0,
+            "XRP": 10.0,
+            "DOGE": 5.0
+          },
+          "reason": "優先配置趨勢為多且接近關鍵價的高流動性標的，避開空頭/平盤與過度偏離者，保留資金在BTC與SOL為主。",
+          "outcome": null
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": 40.0,
+            "SOL": 30.0,
+            "ONDO": 10.0
+          },
+          "reason": "優先配置趨勢向上且距關鍵價近的藍籌資產BTC與SOL以奠定防守基礎，輔以強勢動能幣ONDO並保留兩成現金。",
+          "outcome": null
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 35.0,
+            "SOL": 25.0,
+            "BANK": 15.0,
+            "ONDO": 15.0,
+            "ADA": 10.0
+          },
+          "reason": "多頭信號強,BTC/SOL為核心防守,BANK極度超跌(79%)可能反彈,ONDO/ADA次級配置,避空頭FLAT品",
+          "outcome": null
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 20.0,
+            "SOL": 15.0,
+            "ADA": 12.0,
+            "ONDO": 10.0,
+            "ETH": 10.0,
+            "XRP": 8.0,
+            "BNB": 5.0,
+            "ERA": 5.0
+          },
+          "reason": "多頭擁擠警訊(66.7%重疊)→降暴險,避開BANK/DOGE等極端波動,守住BTC/ETH基石,邊緣幣(ONDO/ERA)小額試頭,現金留彈藥待拉回。",
+          "outcome": null
+        }
+      }
+    }
+  ],
+  "total_days": 1
+}

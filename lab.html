@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CTA AI 交易代理人｜公開研究實驗室</title>
+<style>
+:root{--bg:#0b0e14;--card:#151a23;--card2:#0f141c;--line:#242b38;--txt:#e6edf3;--dim:#8b95a5;
+--rule:#8b95a5;--gpt:#10a37f;--gemini:#4285f4;--claude:#d97757;--guardian:#f2c94c;
+--warn:#e0a83b;--up:#3fb950;--down:#f85149;--acc:#58a6ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:"Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+line-height:1.6;padding:18px;max-width:960px;margin:0 auto}
+.warn{background:linear-gradient(90deg,#3a2c0a,#2a1f06);border:1px solid var(--warn);border-radius:10px;
+padding:12px 16px;font-size:13px;color:#f0d98a;margin-bottom:20px;line-height:1.7}
+h1{font-size:24px;margin-bottom:4px;letter-spacing:.5px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}
+h2{font-size:16px;margin-bottom:14px;color:#c8d3e0;display:flex;align-items:center;gap:8px}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:13px}
+.plan div{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px}
+.plan b{color:var(--acc)}
+.agents{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.agent{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card2)}
+.agent .top{display:flex;justify-content:space-between;align-items:flex-start}
+.agent .name{font-weight:700;font-size:15px;display:flex;align-items:center;gap:7px}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex-shrink:0}
+.eq{font-size:22px;font-weight:700;text-align:right}
+.ret{font-size:13px;text-align:right}
+.pos{font-size:12.5px;margin-top:10px;line-height:1.7}
+.pos .tag{display:inline-block;background:#1b2230;border:1px solid var(--line);border-radius:6px;
+padding:1px 7px;margin:2px 3px 0 0;font-size:12px}
+.why{font-size:12px;color:var(--dim);margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);font-style:italic}
+canvas{width:100%;height:230px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin-top:10px}
+.legend span{display:flex;align-items:center;gap:6px}
+.meter{height:12px;background:var(--card2);border:1px solid var(--line);border-radius:7px;overflow:hidden;margin:8px 0}
+.meter>div{height:100%;transition:width .4s}
+.foot{font-size:12.5px;color:var(--dim);line-height:1.8}
+.nope{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+@media(max-width:560px){.nope{grid-template-columns:1fr}.eq{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="warn">🔬 <b>公開研究實驗室｜非產品、非投資建議</b><br>
+5 個 AI 代理人的<b>透明決策實驗</b>:每個用 $10,000 <b>模擬</b>本金、<b>零真錢、零交易能力</b>。我們公開的是<b>「它們想得多不一樣、誰守紀律、誰活得久、什麼時候擠在一起」</b>——不是報酬保證。樣本未達 90 天前不具評估意義;過去表現不代表未來,不保證獲利。</div>
+
+<h1>CTA AI 交易代理人 · 公開研究實驗室</h1>
+<div class="sub" id="sub">載入中…</div>
+
+<div class="card">
+  <h2>🧭 這個實驗在做什麼</h2>
+  <div class="plan">
+    <div><b>5 個腦,一樣的市場</b><br>規則腦(基準)+GPT+Gemini+Claude+持久腦,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。</div>
+    <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,五種完全不同的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
+    <div><b>持久腦是特別角色</b><br>它不追求預測最準,追求<b>活最久</b>:充分分散、抗擁擠、存活優先。當大家擠在一起時,它反而降暴險。</div>
+    <div><b>90 天才算數</b><br>決策當下看不到未來,一天一天累積。達 90 天並涵蓋趨勢與盤整,才構成「哪個腦有資格碰真錢」的證據。</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>📈 五腦權益走勢(每腦 $10,000 起)</h2>
+  <canvas id="chart"></canvas>
+  <div class="legend" id="legend"></div>
+</div>
+
+<div class="card">
+  <h2>🤖 各腦現況 · 配置與「為什麼」</h2>
+  <div class="agents" id="agents"></div>
+</div>
+
+<div class="card">
+  <h2>🚨 擁擠監控 <span class="foot" style="font-weight:400">— 這是特色不是 bug</span></h2>
+  <p class="foot">當多個 AI 的組合高度重疊,代表它們在<b>追同一批幣(擁擠)</b>。研究(BIS/FSB)顯示:AI 同源訓練會讓決策趨同,共識越高越是<b>風險警訊而非高信心</b>。我們把它公開量測。</p>
+  <div id="crowd"></div>
+</div>
+
+<div class="card">
+  <h2>🧾 每日損益紀錄</h2>
+  <div id="records"></div>
+</div>
+
+<div class="card">
+  <h2>🛡️ 我們刻意不做的事(這才是重點)</h2>
+  <div class="nope">
+    <div>✗ 不喊「AI 幫你賺 X%」</div><div>✓ 公開每個決策與理由</div>
+    <div>✗ 不給買賣建議</div><div>✓ 帳本不可竄改(hash chain)</div>
+    <div>✗ 不保證獲利</div><div>✓ 誠實標示模擬與樣本不足</div>
+    <div>✗ 不碰你的錢</div><div>✓ 賺錢不加分,可靠才升級</div>
+  </div>
+</div>
+
+<script>
+const COLORS={rule:'--rule',gpt:'--gpt',gemini:'--gemini',claude:'--claude',guardian:'--guardian'};
+const LABEL={rule:'規則腦',gpt:'GPT',gemini:'Gemini',claude:'Claude',guardian:'持久腦'};
+const DESC={rule:'確定性規則·基準',gpt:'預測腦',gemini:'預測腦',claude:'預測腦',guardian:'持久·存活優先'};
+function cvar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+
+fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(d=>{
+  if(d.error){document.getElementById('sub').textContent=d.error;return}
+  const m=d.meta;
+  document.getElementById('sub').textContent=
+    `已結算 ${m.resolved_days} 日 / 目標 ${m.gate_days} 日｜最新決策日 ${m.pending_day||'—'}｜幣海選幣 · 每日自動更新`;
+
+  const alloc=d.current_alloc||{},reasons=d.current_reasons||{};
+  document.getElementById('agents').innerHTML=m.brains.map(b=>{
+    const eq=d.final_equity[b],ret=(eq/m.start_capital-1)*100,a=alloc[b]||{};
+    const tags=Object.entries(a).sort((x,y)=>y[1]-x[1]).slice(0,6)
+      .map(([k,v])=>`<span class="tag">${k} ${v.toFixed(0)}%</span>`).join('')||'<span class="tag">空手（全現金）</span>';
+    return `<div class="agent">
+      <div class="top">
+        <div><div class="name"><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</div>
+          <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
+        <div><div class="eq">$${eq.toLocaleString()}</div>
+          <div class="ret" style="color:${ret>=0?'var(--up)':'var(--down)'}">${ret>=0?'+':''}${ret.toFixed(1)}%</div></div>
+      </div>
+      <div class="pos">${tags}</div>
+      ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
+  }).join('');
+
+  document.getElementById('legend').innerHTML=m.brains.map(b=>
+    `<span><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</span>`).join('');
+  drawChart(d.equity_curve,m.brains,m.start_capital);
+
+  const ch=d.crowding_history||[],last=ch[ch.length-1];
+  document.getElementById('crowd').innerHTML= last&&last.overlap_pct!=null
+    ? `<div>最新思考腦組合重疊度：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--up')}">${last.overlap_pct}%</b></div>
+       <div class="meter"><div style="width:${last.overlap_pct}%;background:${last.warning?cvar('--warn'):cvar('--up')}"></div></div>
+       <div class="foot">${last.note||''}</div>`
+    : '<div class="foot">尚無擁擠資料。</div>';
+
+  const rec=d.records||[];
+  if(rec.length){
+    let h='<table><tr><th>日期</th>'+m.brains.map(b=>`<th>${LABEL[b]}</th>`).join('')+'</tr>';
+    rec.slice().reverse().forEach(r=>{h+=`<tr><td>${r.day}</td>`+m.brains.map(b=>{
+      const v=r[b];return `<td style="color:${v>=0?'var(--up)':'var(--down)'}">${v>=0?'+':''}${v}%</td>`}).join('')+'</tr>'});
+    document.getElementById('records').innerHTML=h+'</table>';
+  }else document.getElementById('records').innerHTML=
+    '<div class="foot">實驗剛起跑,今日配置將於明日收盤結算後產生第一筆損益紀錄。</div>';
+});
+
+function drawChart(curve,brains,base){
+  const c=document.getElementById('chart'),ctx=c.getContext('2d');
+  const W=c.width=c.clientWidth*2,H=c.height=460,pad=44*2;
+  const all=curve.flatMap(p=>brains.map(b=>p[b]));
+  let lo=Math.min(...all,base),hi=Math.max(...all,base);
+  if(hi-lo<base*0.02){lo=base*0.95;hi=base*1.05}
+  const x=i=>pad+(W-pad*1.3)*(curve.length<2?0.5:i/(curve.length-1));
+  const y=v=>H-pad-(H-pad*1.6)*((v-lo)/(hi-lo));
+  ctx.strokeStyle=cvar('--line');ctx.setLineDash([6,6]);ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(pad,y(base));ctx.lineTo(W-pad*0.3,y(base));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=cvar('--dim');ctx.font='22px sans-serif';ctx.fillText('$'+base.toLocaleString()+' 基準',pad,y(base)-10);
+  brains.forEach(b=>{ctx.strokeStyle=cvar(COLORS[b]);ctx.lineWidth=3;ctx.beginPath();
+    curve.forEach((p,i)=>{const px=x(i),py=y(p[b]);i?ctx.lineTo(px,py):ctx.moveTo(px,py);
+      ctx.fillStyle=cvar(COLORS[b]);ctx.fillRect(px-3,py-3,6,6);});ctx.stroke();});
+  if(curve.length<2){ctx.fillStyle=cvar('--dim');ctx.font='24px sans-serif';
+    ctx.textAlign='center';ctx.fillText('實驗剛起跑,曲線將每日累積…',W/2,H/2+40);ctx.textAlign='left';}
+}
+</script>
+</body>
+</html>
