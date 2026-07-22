@@ -31,8 +31,8 @@
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "anchor": {
-      "seq": 0,
-      "utc": "2026-07-22T05:43:31Z",
+      "seq": 1,
+      "utc": "2026-07-22T05:44:45Z",
       "protocol_sha256": "48973c29afccb2d4",
       "genesis_utc": "2026-07-22T05:43:31Z"
     }
@@ -197,6 +197,14 @@
     "bench_btc": 0,
     "bench_eqw": 0,
     "bench_cash": 0
+  },
+  "today_violation": {
+    "claude": "gross_exceeded:120%",
+    "guardian": "gross_exceeded:106%"
+  },
+  "first_attempt_violations": {
+    "claude": 1,
+    "guardian": 1
   },
   "stability": {
     "gpt": 0.0,
