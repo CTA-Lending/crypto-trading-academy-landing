@@ -7,6 +7,7 @@
 <style>
 :root{--bg:#0b0e14;--card:#151a23;--card2:#0f141c;--line:#242b38;--txt:#e6edf3;--dim:#8b95a5;
 --rule:#8b95a5;--gpt:#10a37f;--gemini:#4285f4;--claude:#d97757;--guardian:#f2c94c;
+--gpt_pure:#0d7a5f;--bench_btc:#f7931a;--bench_eqw:#9b8cf0;--bench_cash:#5a6472;
 --warn:#e0a83b;--up:#3fb950;--down:#f85149;--acc:#58a6ff}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--txt);font-family:"Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
@@ -48,7 +49,7 @@ th:first-child,td:first-child{text-align:left}
 </head>
 <body>
 <div class="warn">🔬 <b>公開研究實驗室｜非產品、非投資建議</b><br>
-5 個 AI 代理人的<b>透明決策實驗</b>:每個用 $10,000 <b>模擬</b>本金、<b>零真錢、零交易能力</b>。我們公開的是<b>「它們想得多不一樣、誰守紀律、誰活得久、什麼時候擠在一起」</b>——不是報酬保證。樣本未達 90 天前不具評估意義;過去表現不代表未來,不保證獲利。</div>
+9 位競爭者的<b>透明決策實驗</b>(5 個 AI 腦 + 規則腦 + 3 個市場基準):每個用 $10,000 <b>模擬</b>本金、<b>零真錢、零交易能力</b>。我們公開的是<b>「它們想得多不一樣、誰守紀律、誰活得久、什麼時候擠在一起」</b>——不是報酬保證。樣本未達 90 天前不具評估意義;過去表現不代表未來,不保證獲利。</div>
 
 <h1>CTA AI 交易代理人 · 公開研究實驗室</h1>
 <div class="sub" id="sub">載入中…</div>
@@ -56,16 +57,17 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🧭 這個實驗在做什麼</h2>
   <div class="plan">
-    <div><b>5 個腦,一樣的市場</b><br>規則腦(基準)+GPT+Gemini+Claude+持久腦,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。</div>
+    <div><b>9 位競爭者,一樣的市場</b><br>規則腦+GPT+Gemini+Claude+純淨腦+持久腦,外加 BTC 持有／等權多頭／純現金三個市場基準,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。</div>
     <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,五種完全不同的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
     <div><b>持久腦是特別角色</b><br>它不追求預測最準,追求<b>活最久</b>:充分分散、抗擁擠、存活優先。當大家擠在一起時,它反而降暴險。</div>
     <div><b>連續持倉,不是每天失憶</b><br>每個腦每天都看得到<b>自己的權益、持倉與近期損益</b>,可以續抱、加碼、減碼或反手——這是連續的部位管理。</div>
-    <div><b>90 天才算數</b><br>決策當下看不到未來,一天一天累積。達 90 天並涵蓋趨勢與盤整,才構成「哪個腦有資格碰真錢」的證據。</div>
+    <div><b>90 天只是觀察期</b><br>決策當下看不到未來,一天一天累積。<b>90 天不足以判定真錢資格</b>——預先登記的門檻是 <b>252 個決策日</b>且須涵蓋一次 ≥20% 回撤、一次 ≥30% 單邊上漲、高低波動各一段。</div>
+    <div><b>先寫死規則,才開始跑</b><br>判定指標(相對等權多頭的 Information Ratio)、失格條件、成本假設在<b>看到任何結果之前</b>就寫死並推上公開 repo 取得外部時間戳——<b>事後不能換指標說故事</b>。</div>
   </div>
 </div>
 
 <div class="card">
-  <h2>📈 五腦權益走勢(每腦 $10,000 起)</h2>
+  <h2>📈 權益走勢(每位 $10,000 起)</h2>
   <canvas id="chart"></canvas>
   <div class="legend" id="legend"></div>
 </div>
@@ -93,20 +95,30 @@ th:first-child,td:first-child{text-align:left}
     <div>✗ 不給買賣建議</div><div>✓ 帳本不可竄改(hash chain)</div>
     <div>✗ 不保證獲利</div><div>✓ 誠實標示模擬與樣本不足</div>
     <div>✗ 不碰你的錢</div><div>✓ 賺錢不加分,可靠才升級</div>
+    <div>✗ 不事後換指標</div><div>✓ 判定標準跑之前就公開錨定</div>
+    <div>✗ 不隱藏違規與爆倉</div><div>✓ 含手續費·價差·資金費·強制平倉</div>
   </div>
 </div>
 
 <script>
-const COLORS={rule:'--rule',gpt:'--gpt',gemini:'--gemini',claude:'--claude',guardian:'--guardian'};
-const LABEL={rule:'規則腦',gpt:'GPT',gemini:'Gemini',claude:'Claude',guardian:'持久腦'};
-const DESC={rule:'確定性規則·基準',gpt:'預測腦',gemini:'預測腦',claude:'預測腦',guardian:'持久·存活優先'};
+const COLORS={rule:'--rule',gpt:'--gpt',gemini:'--gemini',claude:'--claude',guardian:'--guardian',
+  gpt_pure:'--gpt_pure',bench_btc:'--bench_btc',bench_eqw:'--bench_eqw',bench_cash:'--bench_cash'};
+const LABEL={rule:'規則腦',gpt:'GPT',gemini:'Gemini',claude:'Claude',guardian:'持久腦',
+  gpt_pure:'純淨腦',bench_btc:'BTC 持有',bench_eqw:'等權多頭',bench_cash:'純現金'};
+const DESC={rule:'確定性規則·基準',gpt:'預測腦',gemini:'預測腦',claude:'預測腦',
+  guardian:'持久·存活優先',gpt_pure:'不看規則訊號(消融診斷組)',
+  bench_btc:'市場基準·買進持有',bench_eqw:'🎯 主要比較基準',bench_cash:'市場基準·不進場'};
 function cvar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
 
 fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(d=>{
   if(d.error){document.getElementById('sub').textContent=d.error;return}
   const m=d.meta;
+  const phase=m.phase==='formal_pilot'?'正式 pilot':'彩排';
+  const anc=m.anchor&&m.anchor.genesis_utc
+    ? `｜預先登記已外部錨定 ${m.anchor.genesis_utc.slice(0,10)}(PROTOCOL ${m.anchor.protocol_sha256})`:'';
   document.getElementById('sub').textContent=
-    `已結算 ${m.resolved_days} 日 / 目標 ${m.gate_days} 日｜資料截至決策日 ${m.pending_day||'—'}｜幣海選幣 · 實驗每日進行`;
+    `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
+    +`｜9 位競爭者｜${m.market||''}${anc}`;
 
   const alloc=d.current_alloc||{},reasons=d.current_reasons||{};
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
