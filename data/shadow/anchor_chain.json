@@ -1,12 +1,12 @@
 [
   {
     "seq": 0,
-    "utc": "2026-07-22T05:42:33Z",
+    "utc": "2026-07-22T05:43:31Z",
     "prev": "0000000000000000000000000000000000000000000000000000000000000000",
     "days_recorded": 0,
     "ledger_head": "0000000000000000000000000000000000000000000000000000000000000000",
-    "protocol_sha256": "413e83521ba14f31de54339d2d778aa486dbf318c9ab5e64642952f822af34c3",
-    "tree_root": "7a89cc1b3c78ba4c04d1cce1f953b5f3dd6a0cf3b415f9c6ccd8a430412d2178",
+    "protocol_sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
+    "tree_root": "495c9f5066c7ceffb79300dc71c000dd5308beb11e45fd6b355213c2409e4637",
     "code": {
       "shadow/multi.py": "8c71080edee2c6f6",
       "shadow/universe.py": "a65113f4581bd82a",
@@ -16,6 +16,6 @@
       "core/key_level_engine.py": "a65db9d01fe36e56",
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
-    "hash": "bbb1e8e4861294fef550e8a0347bf2f02aadb9f056fdbbb42c270ef11e411fb8"
+    "hash": "192b9e3fba60cf0d133bb0e79b77aeb2c9d50e92de001c979c8d24c5060cc3f3"
   }
 ]

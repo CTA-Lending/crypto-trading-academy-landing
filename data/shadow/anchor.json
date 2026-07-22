@@ -1,8 +1,8 @@
 {
-  "anchored_at_utc": "2026-07-22T05:42:33Z",
+  "anchored_at_utc": "2026-07-22T05:43:31Z",
   "protocol": {
-    "sha256": "413e83521ba14f31de54339d2d778aa486dbf318c9ab5e64642952f822af34c3",
-    "bytes": 8264,
+    "sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
+    "bytes": 9307,
     "file": "data/shadow/PROTOCOL.md"
   },
   "code": {
@@ -17,10 +17,10 @@
     },
     "prompt_template_sha256_16": "8c71080edee2c6f6",
     "tree": {
-      "root": "7a89cc1b3c78ba4c04d1cce1f953b5f3dd6a0cf3b415f9c6ccd8a430412d2178",
-      "n_files": 40,
+      "root": "495c9f5066c7ceffb79300dc71c000dd5308beb11e45fd6b355213c2409e4637",
+      "n_files": 41,
       "files": {
-        "PROTOCOL.md": "413e83521ba14f31",
+        "PROTOCOL.md": "48973c29afccb2d4",
         "core/__init__.py": "e3b0c44298fc1c14",
         "core/forward_v12_adapter.py": "ff00323c777c84d8",
         "core/key_level_engine.py": "a65db9d01fe36e56",
@@ -53,6 +53,7 @@
         "sliceb/narrative.py": "4e035676f698626c",
         "sliceb/server.py": "ac9502a378f53135",
         "tests/__init__.py": "e3b0c44298fc1c14",
+        "tests/test_atomicity.py": "1fef8795a98c863c",
         "tests/test_e1.py": "9e6be9785372bb6b",
         "tests/test_multi.py": "2e2f665812f14b9f",
         "tests/test_replay.py": "e49ad82db5f98025",
