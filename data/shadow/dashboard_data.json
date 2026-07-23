@@ -24,10 +24,10 @@
       "bench_eqw",
       "bench_cash"
     ],
-    "days": 1,
+    "days": 2,
     "pilot_days": 90,
     "gate_days": 252,
-    "last_date": "2026-07-22",
+    "last_date": "2026-07-23",
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "anchor": {
@@ -61,59 +61,71 @@
       "bench_btc": 9993,
       "bench_eqw": 9986,
       "bench_cash": 10000
+    },
+    {
+      "day": "2026-07-23",
+      "rule": 10595,
+      "gpt": 10009,
+      "gemini": 10187,
+      "claude": 9990,
+      "gpt_pure": 10027,
+      "guardian": 9990,
+      "bench_btc": 10030,
+      "bench_eqw": 10088,
+      "bench_cash": 10000
     }
   ],
   "final_equity": {
-    "rule": 9984,
-    "gpt": 9993,
-    "gemini": 9992,
-    "claude": 10000,
-    "gpt_pure": 9992,
-    "guardian": 10000,
-    "bench_btc": 9993,
-    "bench_eqw": 9986,
+    "rule": 10595,
+    "gpt": 10009,
+    "gemini": 10187,
+    "claude": 9990,
+    "gpt_pure": 10027,
+    "guardian": 9990,
+    "bench_btc": 10030,
+    "bench_eqw": 10088,
     "bench_cash": 10000
   },
   "metrics": {
     "rule": {
-      "total_pct": -0.16,
+      "total_pct": 5.95,
       "mdd_pct": 0.16,
-      "sharpe": null
+      "sharpe": 12.83
     },
     "gpt": {
-      "total_pct": -0.07,
+      "total_pct": 0.09,
       "mdd_pct": 0.07,
-      "sharpe": null
+      "sharpe": 5.22
     },
     "gemini": {
-      "total_pct": -0.08,
+      "total_pct": 1.87,
       "mdd_pct": 0.08,
-      "sharpe": null
+      "sharpe": 12.41
     },
     "claude": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
-      "sharpe": null
+      "total_pct": -0.1,
+      "mdd_pct": 0.1,
+      "sharpe": -13.51
     },
     "gpt_pure": {
-      "total_pct": -0.08,
+      "total_pct": 0.27,
       "mdd_pct": 0.08,
-      "sharpe": null
+      "sharpe": 8.55
     },
     "guardian": {
-      "total_pct": 0.0,
-      "mdd_pct": 0.0,
-      "sharpe": null
+      "total_pct": -0.1,
+      "mdd_pct": 0.1,
+      "sharpe": -13.51
     },
     "bench_btc": {
-      "total_pct": -0.07,
+      "total_pct": 0.3,
       "mdd_pct": 0.07,
-      "sharpe": null
+      "sharpe": 9.18
     },
     "bench_eqw": {
-      "total_pct": -0.14,
+      "total_pct": 0.88,
       "mdd_pct": 0.14,
-      "sharpe": null
+      "sharpe": 10.26
     },
     "bench_cash": {
       "total_pct": 0.0,
@@ -125,40 +137,63 @@
     "rule": {
       "BANK": 12.5,
       "AKE": 12.5,
-      "LAB": -12.5,
-      "ZEC": -12.5,
+      "LAB": 12.5,
+      "DEXE": -12.5,
       "ONDO": 12.5,
+      "ZEC": -12.5,
       "ETH": -12.5,
-      "DOGE": 12.5,
-      "HYPE": 12.5
+      "DOGE": 12.5
     },
     "gpt": {
-      "BTC": 20.0,
+      "BTC": 25.0,
       "SOL": 15.0,
       "XAU": 10.0,
       "ETH": -10.0,
       "ZEC": -8.0,
-      "DOGE": 5.0
+      "ONDO": 12.0,
+      "ADA": 8.0,
+      "BNB": -5.0,
+      "XRP": 5.0
     },
     "gemini": {
       "BTC": 20.0,
-      "SOL": 15.0,
       "ONDO": 15.0,
+      "SOL": 15.0,
+      "BNB": -15.0,
       "XRP": 10.0,
       "BANK": 5.0,
-      "ETH": -10.0,
-      "BNB": -15.0
+      "ETH": -5.0
     },
-    "claude": {},
-    "gpt_pure": {
+    "claude": {
       "BTC": 25.0,
-      "ETH": 18.0,
-      "BNB": 12.0,
-      "XAU": 15.0,
-      "SOL": 10.0,
-      "DOGE": -5.0
+      "SOL": 15.0,
+      "ONDO": 12.0,
+      "DOGE": 10.0,
+      "ADA": 8.0,
+      "ETH": -15.0,
+      "BNB": -8.0
     },
-    "guardian": {},
+    "gpt_pure": {
+      "BTC": 20.0,
+      "ETH": 15.0,
+      "XAU": 15.0,
+      "BNB": 10.0,
+      "SOL": 10.0,
+      "DOGE": -5.0,
+      "ADA": 5.0,
+      "ONDO": 5.0,
+      "XRP": 5.0
+    },
+    "guardian": {
+      "BTC": 25.0,
+      "ETH": -15.0,
+      "SOL": 15.0,
+      "ONDO": 12.0,
+      "XRP": 10.0,
+      "DOGE": 8.0,
+      "ZEC": -10.0,
+      "BNB": -5.0
+    },
     "bench_btc": {
       "BTC": 100.0
     },
@@ -166,23 +201,23 @@
       "BANK": 10.0,
       "AKE": 10.0,
       "LAB": 10.0,
-      "ZEC": 10.0,
+      "DEXE": 10.0,
       "ONDO": 10.0,
+      "ZEC": 10.0,
       "ETH": 10.0,
       "DOGE": 10.0,
       "HYPE": 10.0,
-      "SOL": 10.0,
-      "BTC": 10.0
+      "ADA": 10.0
     },
     "bench_cash": {}
   },
   "current_reasons": {
     "rule": "wick-break 雙向等權(確定性規則,無 AI)",
-    "gpt": "偏多主趨勢核心，少量空弱勢對沖；總曝險68%安全。",
-    "gemini": "建立初始倉位：多頭配置強勢的BTC、SOL與高動能的BANK；並做空趨勢偏弱的ETH與BNB進行對沖。",
-    "claude": "核心多頭:BTC/SOL/ONDO穩健信號;空頭對沖:ETH/BNB/ZEC減風險。總曝險100%。迴避超高波動(BANK/AKE/LAB/HYPE)。現金0。",
-    "gpt_pure": "偏防守：配BTC/ETH/BNB/XAU，少量SOL；DOGE小空對沖高波動。",
-    "guardian": "核心多:BTC/SOL/ONDO(趨勢強),分散低波動。防守空:ETH/BNB/ZEC(高位警訊),對沖牛市擁擠。資金費負荷管理,總曝險98%,保留2%緩衝。",
+    "gpt": "續抱核心多頭，減DOGE轉ONDO/ADA；保留ETH/ZEC空單，分散且總曝險100內。",
+    "gemini": "維持BTC、ONDO等強勢多頭與BNB空頭；因ETH近期強勢且逼近關鍵價，減碼其空單以防軋空，整體降低曝險。",
+    "claude": "多頭主軸:BTC/SOL穩健低波動基礎,ONDO中期強勢。對沖:做空ETH/BNB對沖系統性風險。總曝險85%,迴避極端波動幣(LAB/AKE)及深度反向(DEXE)。保留現金緩衝。",
+    "gpt_pure": "續持核心多頭，降BTC/ETH略增分散；保留DOGE空頭對沖，避免高波動小幣。",
+    "guardian": "核心多頭(BTC/SOL/ONDO/XRP)穩健且波動可控;對沖做空ETH/ZEC避免過度擁擠;現金留20%應急。總曝險100%,風險平衡。",
     "bench_btc": "市場基準(非 AI)",
     "bench_eqw": "市場基準(非 AI)",
     "bench_cash": "市場基準(非 AI)"
@@ -198,20 +233,17 @@
     "bench_eqw": 0,
     "bench_cash": 0
   },
-  "today_violation": {
-    "claude": "gross_exceeded:120%",
-    "guardian": "gross_exceeded:106%"
-  },
+  "today_violation": {},
   "first_attempt_violations": {
     "claude": 1,
     "guardian": 1
   },
   "stability": {
-    "gpt": 0.0,
-    "gemini": 0.0,
-    "claude": 1.0,
-    "gpt_pure": 0.0,
-    "guardian": 1.0
+    "gpt": 0.883,
+    "gemini": 0.99,
+    "claude": 0.0,
+    "gpt_pure": 0.963,
+    "guardian": 0.0
   },
   "crowding_history": [
     {
@@ -220,6 +252,13 @@
       "warning": false,
       "families": 3,
       "note": "跨家族組合分散=較健康"
+    },
+    {
+      "day": "2026-07-23",
+      "overlap_pct": 65.7,
+      "warning": true,
+      "families": 3,
+      "note": "⚠️ 跨模型家族組合高度重疊=擁擠警訊(同源趨同),真上線應降總暴險"
     }
   ],
   "records": [
@@ -233,6 +272,18 @@
       "guardian": 0.0,
       "bench_btc": -0.07,
       "bench_eqw": -0.14,
+      "bench_cash": 0.0
+    },
+    {
+      "day": "2026-07-23",
+      "rule": -0.15,
+      "gpt": -0.05,
+      "gemini": -0.05,
+      "claude": -0.1,
+      "gpt_pure": -0.04,
+      "guardian": -0.1,
+      "bench_btc": -0.01,
+      "bench_eqw": -0.15,
       "bench_cash": 0.0
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "anchored_at_utc": "2026-07-22T05:44:45Z",
+  "anchored_at_utc": "2026-07-23T00:36:04Z",
   "protocol": {
     "sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
     "bytes": 9307,
@@ -17,26 +17,32 @@
     },
     "prompt_template_sha256_16": "8c71080edee2c6f6",
     "tree": {
-      "root": "495c9f5066c7ceffb79300dc71c000dd5308beb11e45fd6b355213c2409e4637",
-      "n_files": 41,
+      "root": "f081a79a651229786eb1edbfd5edbb55d841f12786c44e0728b93c8a9ff19722",
+      "n_files": 72,
       "files": {
         "PROTOCOL.md": "48973c29afccb2d4",
         "core/__init__.py": "e3b0c44298fc1c14",
         "core/forward_v12_adapter.py": "ff00323c777c84d8",
         "core/key_level_engine.py": "a65db9d01fe36e56",
         "e1/__init__.py": "e3b0c44298fc1c14",
-        "e1/config.py": "4a7691bb5931a4f7",
-        "e1/engine.py": "1830b0be355c9843",
-        "e1/main_binance_shun.py": "94263533352db53a",
-        "e1/replay.py": "e589b8552aca9656",
-        "e1/shadow_ledger.py": "c5445bddd74e783d",
+        "e1/config.py": "d0dc5d3fb7e7bb48",
+        "e1/engine.py": "bc1140b47a572d99",
+        "e1/invariants.py": "d583575947f494c4",
+        "e1/live_recon.py": "8a89dc44318f56d4",
+        "e1/main_binance_shun.py": "b039d1d44d4d8161",
+        "e1/position_guardian.py": "f7f2db6636dfa1d2",
+        "e1/replay.py": "a25778b97c00fea0",
+        "e1/run_e1_daily.bat": "c16b278481c67104",
+        "e1/safe_mode.py": "780255d6231b92fe",
+        "e1/shadow_ledger.py": "6ff76979e542db59",
         "e1/spot_adapter.py": "2835514fa921856a",
+        "e1/watermark.py": "a94b723197760ca2",
         "shadow/__init__.py": "e3b0c44298fc1c14",
         "shadow/anchor.py": "69be883f0adc0315",
         "shadow/arena.py": "2c2b36120dbdbdfc",
         "shadow/brains.py": "c9cfc2f1e43305ab",
         "shadow/diaries.py": "51e5299a28a04264",
-        "shadow/emit_dashboard.py": "d0c67b7c0456b155",
+        "shadow/emit_dashboard.py": "7cf24cc635b2ae8d",
         "shadow/forward_daily.py": "f942d10ede66a68c",
         "shadow/forward_multi.py": "9ee1f66bb1817521",
         "shadow/multi.py": "8c71080edee2c6f6",
@@ -44,7 +50,7 @@
         "shadow/run_forward_daily.bat": "8232f3ecf429c873",
         "shadow/run_tg_push.bat": "cecfe2ed6cd8f55b",
         "shadow/stats.py": "647e7e1d70861a5c",
-        "shadow/tg_push.py": "e2a77675dd4707a3",
+        "shadow/tg_push.py": "9fd9d8a743585bf3",
         "shadow/universe.py": "a65113f4581bd82a",
         "sliceb/agent_state.py": "944df099627d7a98",
         "sliceb/hypothesis_card.py": "a55b79704ddc6687",
@@ -55,12 +61,37 @@
         "tests/__init__.py": "e3b0c44298fc1c14",
         "tests/test_atomicity.py": "1fef8795a98c863c",
         "tests/test_e1.py": "9e6be9785372bb6b",
+        "tests/test_e1_e2_closed_loop.py": "3844103308afce6b",
+        "tests/test_engine_stop.py": "3f3418ef28082e84",
+        "tests/test_ledger_robustness.py": "711db7b085463a15",
+        "tests/test_live_recon.py": "3209ff696bc81d23",
         "tests/test_multi.py": "2e2f665812f14b9f",
+        "tests/test_position_guardian.py": "ce1ec30700997597",
+        "tests/test_r3_failclosed.py": "f2c0d77c2ddf8859",
         "tests/test_replay.py": "e49ad82db5f98025",
         "tests/test_shadow.py": "ae19343162cfc7b9",
         "tests/test_sliceb.py": "14738db7d6e9c9ff",
         "tests/test_stats.py": "f46eac486656173b",
-        "tools/baseline_gen.py": "bfb0ace2c0956f38"
+        "tests/test_trading_core_concurrency.py": "54d9eaac5d088820",
+        "tests/test_trading_core_execution.py": "bf34f275772ddb18",
+        "tests/test_trading_core_external.py": "83232c548ba1b6f4",
+        "tests/test_trading_core_mock.py": "33119e6d44e6e9dd",
+        "tests/test_trading_core_normalizer.py": "0e73c097cb7bf211",
+        "tests/test_trading_core_risk.py": "cd8ca09030b6cc11",
+        "tests/test_trading_core_state.py": "d226c0c6aba8cb86",
+        "tools/__init__.py": "e3b0c44298fc1c14",
+        "tools/baseline_gen.py": "bfb0ace2c0956f38",
+        "tools/fault_drill.py": "ead21d069a807592",
+        "tools/trade_baseline_gen.py": "f98e9748d3bbbe1b",
+        "trading_core/__init__.py": "e3b0c44298fc1c14",
+        "trading_core/e1_bridge.py": "b54a0b4b872a8ddd",
+        "trading_core/execution_service.py": "de57dd25acee2ca1",
+        "trading_core/mock_exchange.py": "c6b1ba8e2deea96f",
+        "trading_core/normalizer.py": "481030ef0b1cd5b8",
+        "trading_core/order.py": "38979530b4e47057",
+        "trading_core/repository.py": "4b1a7b26d88dfd4f",
+        "trading_core/risk_engine.py": "1c75405eb5c2e9bd",
+        "trading_core/state_machine.py": "ee4dc7bdbfdd495b"
       }
     },
     "dependencies": {
@@ -127,87 +158,110 @@
   },
   "initial_state": {
     "rule": {
-      "equity": 9984.25,
-      "cash": 7484.249999999999,
+      "equity": 10594.654678783925,
+      "cash": 7943.690421131467,
       "units": {
-        "AKE": 709783.6579410596,
-        "ZEC": -2.401906152722801,
-        "HYPE": 21.08708121056716,
-        "ONDO": 3132.832080200501,
-        "LAB": -6469.979296066253,
-        "ETH": -0.650875557800353,
-        "BANK": 6654.953947718682,
-        "DOGE": 17231.87207058175
+        "DOGE": 18125.012017314766,
+        "AKE": 754959.3488786404,
+        "LAB": 8651.972120275646,
+        "DEXE": -321.17328054912264,
+        "ZEC": -2.5512118734024236,
+        "ETH": -0.6838480339819679,
+        "ONDO": 3205.5190539932987,
+        "BANK": 5650.207292835283
       }
     },
     "gpt": {
-      "equity": 9992.94,
-      "cash": 6792.94,
+      "equity": 10008.880606131268,
+      "cash": 4801.489374225945,
       "units": {
-        "XAU": 0.24177598971001385,
-        "BTC": 0.03031304279292251,
-        "ETH": -0.5207004462402824,
-        "SOL": 19.35483870967742,
-        "ZEC": -1.5372199377425926,
-        "DOGE": 6892.748828232699
+        "XRP": 437.83726423182213,
+        "SOL": 19.159848037328253,
+        "ADA": 4549.330565592384,
+        "ZEC": -1.5419827015702412,
+        "XAU": 0.24221627529708556,
+        "BNB": -0.874894192615037,
+        "ETH": -0.516657323670605,
+        "ONDO": 2906.180577753877,
+        "BTC": 0.03779895757846583
       }
     },
     "gemini": {
-      "equity": 9991.699999999999,
-      "cash": 5991.7,
+      "equity": 10186.871520159493,
+      "cash": 5602.491435999282,
       "units": {
-        "ONDO": 3759.398496240601,
-        "XRP": 882.223202470225,
-        "BTC": 0.03031304279292251,
-        "ETH": -0.5207004462402824,
-        "SOL": 19.35483870967742,
-        "BANK": 2661.9815790874727,
-        "BNB": -2.6348609671696326
+        "XRP": 890.8282002565411,
+        "SOL": 19.491411922449878,
+        "BNB": -2.670103081756514,
+        "ETH": -0.2627990759319858,
+        "ONDO": 3695.590555550352,
+        "BTC": 0.030762459116197582,
+        "BANK": 2171.343897466602
       }
     },
     "claude": {
-      "equity": 10000.0,
-      "cash": 10000.0,
-      "units": {}
+      "equity": 9990.49,
+      "cash": 5290.49,
+      "units": {
+        "DOGE": 13674.278681799535,
+        "ADA": 4542.8733674048835,
+        "BNB": -1.3978438258985517,
+        "SOL": 19.132653061224488,
+        "ONDO": 2902.0556227327693,
+        "BTC": 0.03774530674855889,
+        "ETH": -0.7738859911157888
+      }
     },
     "gpt_pure": {
-      "equity": 9992.05,
-      "cash": 2492.05,
+      "equity": 10027.42243972662,
+      "cash": 2003.253569746752,
       "units": {
-        "XAU": 0.3626639845650208,
-        "BTC": 0.03789130349115314,
-        "DOGE": -6892.748828232699,
-        "ETH": 0.9372608032325084,
-        "SOL": 12.903225806451612,
-        "BNB": 2.107888773735706
+        "DOGE": -6857.795082370324,
+        "XRP": 438.53668623097394,
+        "SOL": 12.793636591166882,
+        "ADA": 2847.873676171163,
+        "BNB": 1.752583580135737,
+        "XAU": 0.36390480458426366,
+        "ETH": 0.7762239848531037,
+        "ONDO": 1212.8429368167879,
+        "BTC": 0.030287471539962727
       }
     },
     "guardian": {
-      "equity": 10000.0,
-      "cash": 10000.0,
-      "units": {}
+      "equity": 9990.0,
+      "cash": 5990.0,
+      "units": {
+        "DOGE": 10939.422945439628,
+        "XRP": 874.4316194473593,
+        "SOL": 19.132653061224488,
+        "ZEC": -1.9247425656818402,
+        "BNB": -0.8736523911865948,
+        "ETH": -0.7738859911157888,
+        "ONDO": 2902.0556227327693,
+        "BTC": 0.03774530674855889
+      }
     },
     "bench_btc": {
-      "equity": 9993.0,
-      "cash": -7.000000000000814,
+      "equity": 10029.701026961495,
+      "cash": -0.006280494603369906,
       "units": {
-        "BTC": 0.15156521396461256
+        "BTC": 0.1514297515672772
       }
     },
     "bench_eqw": {
-      "equity": 9986.0,
-      "cash": -14.000000000000673,
+      "equity": 10088.140495217056,
+      "cash": -5.712767750626547,
       "units": {
-        "AKE": 567826.9263528476,
-        "SOL": 12.903225806451612,
-        "ZEC": 1.921524922178241,
-        "HYPE": 16.869664968453726,
-        "ONDO": 2506.265664160401,
-        "LAB": 5175.983436853002,
-        "BTC": 0.015156521396461255,
-        "ETH": 0.5207004462402824,
-        "BANK": 5323.963158174945,
-        "DOGE": 13785.497656465399
+        "LAB": 6588.677064600315,
+        "DEXE": 244.58088836849245,
+        "DOGE": 13802.616249101167,
+        "AKE": 574919.0216419481,
+        "HYPE": 16.93713212794094,
+        "ADA": 5731.887145353596,
+        "ZEC": 1.9428069026980432,
+        "ETH": 0.520766109105939,
+        "ONDO": 2441.076968069573,
+        "BANK": 4302.763657004853
       }
     },
     "bench_cash": {
@@ -216,7 +270,7 @@
       "units": {}
     }
   },
-  "days_recorded": 1,
-  "last_ledger_hash": "557add7430509acb2360cb30737b5d044e980d6020a8db6153b5402fdb4f6485",
+  "days_recorded": 2,
+  "last_ledger_hash": "e01f41af0b6b66e483ef0447a0349c8921bc5383d05b8adbeef6be45a58f66ca",
   "declaration": "零真錢、零下單能力、純模擬。此檔一經推送即由公開平台接收時間戳背書。"
 }
