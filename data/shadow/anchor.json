@@ -1,5 +1,5 @@
 {
-  "anchored_at_utc": "2026-07-25T00:36:00Z",
+  "anchored_at_utc": "2026-07-26T00:35:59Z",
   "protocol": {
     "sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
     "bytes": 9307,
@@ -9,7 +9,7 @@
     "file_sha256_16": {
       "shadow/multi.py": "8c71080edee2c6f6",
       "shadow/universe.py": "a65113f4581bd82a",
-      "shadow/forward_multi.py": "9ee1f66bb1817521",
+      "shadow/forward_multi.py": "771a387566977601",
       "shadow/stats.py": "647e7e1d70861a5c",
       "shadow/anchor.py": "69be883f0adc0315",
       "core/key_level_engine.py": "a65db9d01fe36e56",
@@ -17,8 +17,8 @@
     },
     "prompt_template_sha256_16": "8c71080edee2c6f6",
     "tree": {
-      "root": "f081a79a651229786eb1edbfd5edbb55d841f12786c44e0728b93c8a9ff19722",
-      "n_files": 72,
+      "root": "c6affb3f4d22c534436ce68433c5f7288e6b36c697b194938c70b17a275c2333",
+      "n_files": 77,
       "files": {
         "PROTOCOL.md": "48973c29afccb2d4",
         "core/__init__.py": "e3b0c44298fc1c14",
@@ -41,16 +41,17 @@
         "shadow/anchor.py": "69be883f0adc0315",
         "shadow/arena.py": "2c2b36120dbdbdfc",
         "shadow/brains.py": "c9cfc2f1e43305ab",
+        "shadow/daily_returns.py": "a32d18d063111c26",
         "shadow/diaries.py": "51e5299a28a04264",
-        "shadow/emit_dashboard.py": "7cf24cc635b2ae8d",
+        "shadow/emit_dashboard.py": "9e3b7c7d9b5872d7",
         "shadow/forward_daily.py": "f942d10ede66a68c",
-        "shadow/forward_multi.py": "9ee1f66bb1817521",
+        "shadow/forward_multi.py": "771a387566977601",
         "shadow/multi.py": "8c71080edee2c6f6",
         "shadow/report.py": "f2558dbdc38d2816",
         "shadow/run_forward_daily.bat": "8232f3ecf429c873",
         "shadow/run_tg_push.bat": "cecfe2ed6cd8f55b",
         "shadow/stats.py": "647e7e1d70861a5c",
-        "shadow/tg_push.py": "9fd9d8a743585bf3",
+        "shadow/tg_push.py": "97868cc93b24b7ec",
         "shadow/universe.py": "a65113f4581bd82a",
         "sliceb/agent_state.py": "944df099627d7a98",
         "sliceb/hypothesis_card.py": "a55b79704ddc6687",
@@ -60,6 +61,9 @@
         "sliceb/server.py": "ac9502a378f53135",
         "tests/__init__.py": "e3b0c44298fc1c14",
         "tests/test_atomicity.py": "1fef8795a98c863c",
+        "tests/test_audit_findings_20260723.py": "e8a18cda3e1aec3a",
+        "tests/test_audit_round2_20260723.py": "cd985b36bd2fbe50",
+        "tests/test_audit_round3_20260725.py": "2d7a03646cdc3bfe",
         "tests/test_e1.py": "9e6be9785372bb6b",
         "tests/test_e1_e2_closed_loop.py": "3844103308afce6b",
         "tests/test_engine_stop.py": "3f3418ef28082e84",
@@ -70,10 +74,11 @@
         "tests/test_r3_failclosed.py": "f2c0d77c2ddf8859",
         "tests/test_replay.py": "e49ad82db5f98025",
         "tests/test_shadow.py": "ae19343162cfc7b9",
+        "tests/test_shadow_daily_returns.py": "bdcef74efcc33c92",
         "tests/test_sliceb.py": "14738db7d6e9c9ff",
         "tests/test_stats.py": "f46eac486656173b",
         "tests/test_trading_core_concurrency.py": "54d9eaac5d088820",
-        "tests/test_trading_core_execution.py": "bf34f275772ddb18",
+        "tests/test_trading_core_execution.py": "01352cc1237adb4c",
         "tests/test_trading_core_external.py": "83232c548ba1b6f4",
         "tests/test_trading_core_mock.py": "33119e6d44e6e9dd",
         "tests/test_trading_core_normalizer.py": "0e73c097cb7bf211",
@@ -84,14 +89,14 @@
         "tools/fault_drill.py": "ead21d069a807592",
         "tools/trade_baseline_gen.py": "f98e9748d3bbbe1b",
         "trading_core/__init__.py": "e3b0c44298fc1c14",
-        "trading_core/e1_bridge.py": "b54a0b4b872a8ddd",
-        "trading_core/execution_service.py": "de57dd25acee2ca1",
-        "trading_core/mock_exchange.py": "c6b1ba8e2deea96f",
+        "trading_core/e1_bridge.py": "79ac9fa7c48cacf3",
+        "trading_core/execution_service.py": "33a574c6d0da963c",
+        "trading_core/mock_exchange.py": "ca786a790b81be95",
         "trading_core/normalizer.py": "481030ef0b1cd5b8",
-        "trading_core/order.py": "38979530b4e47057",
-        "trading_core/repository.py": "4b1a7b26d88dfd4f",
-        "trading_core/risk_engine.py": "1c75405eb5c2e9bd",
-        "trading_core/state_machine.py": "ee4dc7bdbfdd495b"
+        "trading_core/order.py": "5e07f33aa3b62078",
+        "trading_core/repository.py": "2d07430e1e5bb5ed",
+        "trading_core/risk_engine.py": "37259df299fba494",
+        "trading_core/state_machine.py": "fea4190a57740b10"
       }
     },
     "dependencies": {
@@ -158,123 +163,131 @@
   },
   "initial_state": {
     "rule": {
-      "equity": 8492.690463249288,
-      "cash": 6366.310154516544,
+      "equity": 9225.96546120294,
+      "cash": 6918.61278990729,
       "units": {
-        "ONDO": 2771.61145559534,
-        "ESPORTS": 21627.13902291237,
-        "LAB": 6575.078258295438,
-        "BANK": 3527.8566359172187,
-        "ZEC": -2.181350337230965,
-        "AKE": 392581.8456415229,
-        "DEXE": -257.93065365511217,
-        "RIF": -9678.563080258282
+        "ZEC": -2.3698211569940146,
+        "ETH": -0.6147104805293248,
+        "AKE": 375778.09701567574,
+        "ONDO": 3028.021878340751,
+        "LAB": 7334.242438956301,
+        "DEXE": -279.4081704160393,
+        "ESPORTS": 18777.284108851338,
+        "BANK": 3274.233959551089
       }
     },
     "gpt": {
-      "equity": 9811.319279061709,
-      "cash": 6474.334029440054,
+      "equity": 9912.441470279113,
+      "cash": 5747.5904143116695,
       "units": {
-        "BNB": -0.6944869004501917,
-        "ZEC": -1.2082062985909587,
-        "RIF": -3573.8416017795976,
-        "ETH": -0.4216078782551845,
-        "ADA": 3579.8161090166154,
-        "XRP": 359.1496660465546,
-        "SOL": 15.90062778272535,
-        "ONDO": 2558.5668662375447,
-        "HYPE": 13.672302707929541,
-        "DOGE": 5640.61063154438,
-        "XAU": 0.2898393991043331
+        "BANK": 1125.7343025988619,
+        "SOL": 13.262420807834326,
+        "BNB": -0.6957716878400059,
+        "XAU": 0.29287583455667765,
+        "ADA": 3006.7653238380003,
+        "ONDO": 2082.1652573265565,
+        "RIF": -3436.005557178699,
+        "LAB": 1260.8152623035887,
+        "BTC": -0.007697087709589019,
+        "ESPORTS": 4841.949237313342,
+        "HYPE": 13.628796094032058,
+        "1000PEPE": 144342.24218366412,
+        "ZEC": -1.0184782915674915,
+        "ETH": -0.42269470211821203,
+        "AKE": 96898.91571627365,
+        "XRP": 360.9869689849918,
+        "DOGE": 5533.656271215249
       }
     },
     "gemini": {
-      "equity": 10062.92093625817,
-      "cash": 9056.40590741277,
+      "equity": 10140.419608396223,
+      "cash": 9126.36068518342,
       "units": {
-        "ONDO": 2623.8660814530717,
-        "BANK": 1669.8991751756946,
-        "BNB": -2.6707929439192224,
-        "BTC": -0.015696410056864885,
-        "ETH": -0.27023004216368696,
-        "XRP": 920.789524147286,
-        "SOL": 20.38305040189142
+        "SOL": 20.343565398143728,
+        "BNB": -2.668154826113783,
+        "ETH": -0.27015924168330985,
+        "ONDO": 2661.5719769364946,
+        "XRP": 922.8785249479473,
+        "BTC": -0.015742345429905685,
+        "BANK": 1438.9937891482964
       }
     },
     "claude": {
-      "equity": 9703.113528128917,
-      "cash": 4946.138803449072,
+      "equity": 10015.741733369572,
+      "cash": 6308.241761673531,
       "units": {
-        "ESPORTS": 7899.195836468749,
-        "BANK": 2577.061202646605,
-        "BNB": -1.3738946994314554,
-        "ZEC": -0.3983632204768196,
-        "ADA": 4131.111354476635,
-        "ETH": -0.6255461717109272,
-        "SOL": 15.728005966820724,
-        "ONDO": 2530.7903240406918,
-        "HYPE": -5.071452087668084,
-        "BTC": 0.03027923031200564,
-        "AKE": 179235.50112658026,
-        "DOGE": 11158.749060942637
+        "BANK": 2275.071989504319,
+        "SOL": 14.741603869400016,
+        "BNB": -1.230365229286807,
+        "ADA": 3645.9442791169495,
+        "ONDO": 2366.992959158996,
+        "BTC": 0.028000009855923297,
+        "ESPORTS": 6523.613407404351,
+        "HYPE": -3.442918565754908,
+        "1000PEPE": 109391.59600188954,
+        "ZEC": -0.41166222397490176,
+        "ETH": -0.5339075540965422,
+        "AKE": 163191.2672840149,
+        "XRP": 182.38569701079513,
+        "DOGE": -11183.337269836033
       }
     },
     "gpt_pure": {
-      "equity": 9745.585177633646,
-      "cash": 2531.705106154412,
+      "equity": 9761.640001762878,
+      "cash": 3122.381268765301,
       "units": {
-        "BNB": 1.7245107083231697,
-        "ZEC": 1.6000798659138358,
-        "ADA": 2370.452664578734,
-        "ETH": 0.7328390358482151,
-        "XRP": 356.7280791539674,
-        "SOL": 13.161180752099428,
-        "ONDO": 1524.7893508467223,
-        "HYPE": 6.790058217649958,
-        "BTC": 0.015202579043196131,
-        "DOGE": -8403.867744034522,
-        "XAU": 0.23990428383187962
+        "SOL": 13.05819952363243,
+        "BNB": 1.7126446322194684,
+        "XAU": 0.24030499023679408,
+        "ADA": 1776.2794027568164,
+        "ONDO": 1281.314407325455,
+        "BTC": 0.018188553993703366,
+        "ZEC": 1.2033543137693563,
+        "ETH": 0.6242787615268683,
+        "XRP": 355.4283139359289,
+        "DOGE": -5448.44630793525
       }
     },
     "guardian": {
-      "equity": 9787.807159901406,
-      "cash": 5479.697189350293,
+      "equity": 9936.594340981079,
+      "cash": 6060.396404258043,
       "units": {
-        "ESPORTS": 5975.076702998252,
-        "BANK": 1624.4415542323063,
-        "BNB": -0.3464118956280778,
-        "ZEC": -1.2053129697143787,
-        "ADA": 3571.2434130017514,
-        "ETH": -0.42059824086944003,
-        "XRP": 537.4343989010961,
-        "SOL": 13.218791715917112,
-        "ONDO": 2041.9518298185199,
-        "BTC": 0.03359207698339553,
-        "DOGE": -5627.102887344715,
-        "XAU": 0.09638177058616906
+        "BANK": 1128.3064076651744,
+        "SOL": 10.6341784871158,
+        "BNB": -0.17434035097126074,
+        "XAU": 0.07338625109355333,
+        "ADA": 3013.635254251245,
+        "ONDO": 1826.057309177014,
+        "BTC": 0.027772827128876503,
+        "ESPORTS": 3235.341493659051,
+        "1000PEPE": 72336.01942154735,
+        "ZEC": -1.0208053354957278,
+        "ETH": -0.3177453639271712,
+        "XRP": 452.26470097017676,
+        "DOGE": -4159.724777561637
       }
     },
     "bench_btc": {
-      "equity": 9700.51886590985,
-      "cash": -0.003488182452766854,
+      "equity": 9741.772287055552,
+      "cash": -0.0020553793989696234,
       "units": {
-        "BTC": 0.15127779742174605
+        "BTC": 0.15123221470496384
       }
     },
     "bench_eqw": {
-      "equity": 12809.581114566501,
-      "cash": -10.0165845939586,
+      "equity": 13274.238279183757,
+      "cash": -5.428823227926402,
       "units": {
-        "ESPORTS": 26077.293936453338,
-        "BANK": 4253.773666642486,
-        "LAB": 7928.013419394224,
-        "ZEC": 2.6302005948215963,
-        "RIF": 11670.093490360001,
-        "DEXE": 311.00431099370354,
-        "ETH": 0.688363378088763,
-        "ADA": 7793.06851012794,
-        "ONDO": 3341.918065474573,
-        "AKE": 473362.2959589565
+        "ADA": 8053.1637977026585,
+        "ONDO": 3485.476929766846,
+        "LAB": 8442.254991997255,
+        "ESPORTS": 21614.041507831516,
+        "1000PEPE": 483248.4389523902,
+        "ZEC": 2.727839263467336,
+        "ETH": 0.7075771855205023,
+        "AKE": 432548.35680960503,
+        "DEXE": 321.6194502884884,
+        "BANK": 3768.885228440949
       }
     },
     "bench_cash": {
@@ -283,7 +296,7 @@
       "units": {}
     }
   },
-  "days_recorded": 4,
-  "last_ledger_hash": "b73c04db40c616bd158a79f33582475e8b0aaf8692db8162f1447a1354e14b84",
+  "days_recorded": 5,
+  "last_ledger_hash": "6c363fd177510521dc376bfc88f33d25506aec06eef409a667be05e69472057a",
   "declaration": "零真錢、零下單能力、純模擬。此檔一經推送即由公開平台接收時間戳背書。"
 }
