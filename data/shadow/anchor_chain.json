@@ -112,5 +112,24 @@
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
     "hash": "c3e2389f85233049c36d71c0ca72dd6624d45a164130e3716c80fe28a1871ec2"
+  },
+  {
+    "seq": 6,
+    "utc": "2026-07-27T00:36:02Z",
+    "prev": "c3e2389f85233049c36d71c0ca72dd6624d45a164130e3716c80fe28a1871ec2",
+    "days_recorded": 6,
+    "ledger_head": "7aa1d206f5fe9dc7dddce6231faca2f9c11a04322be5f714b110d29d60018ca9",
+    "protocol_sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
+    "tree_root": "4ed47e7d64ddc7d2ccd0c98faf0b3ae2832364939eac23e2eddafeee969f2b7a",
+    "code": {
+      "shadow/multi.py": "8c71080edee2c6f6",
+      "shadow/universe.py": "a65113f4581bd82a",
+      "shadow/forward_multi.py": "771a387566977601",
+      "shadow/stats.py": "647e7e1d70861a5c",
+      "shadow/anchor.py": "69be883f0adc0315",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "hash": "164c20739d2da063aa5fbca735689d992afa420fc1c0c1c50163e2306d936bbf"
   }
 ]
