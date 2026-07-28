@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>虧 50% 要賺 100% 才回本：為什麼「有賺就跑」的人，數學上注定輸 — 交易幣修課</title>
+  <meta name="description" content="市場對賺錢和虧錢的收費標準不一樣。虧 5% 要賺 5.26%、虧 50% 要賺 100%、虧 90% 要賺 900%。本文用一條公式 R=L÷(1−L)、兩張圖表與完整對照表，講清楚「有賺就跑、虧損死抱」為什麼在數學上注定輸——以及停損的真正意義：買下「我還能再錯幾次」的權利。">
+  <meta name="keywords" content="停損,止損,回本公式,虧損不對稱,盈虧比,勝率,期望值,資金管理,交易數學,裸K關鍵價位">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/loss-recovery-math-2026.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="虧 50% 要賺 100% 才回本：為什麼「有賺就跑」的人，數學上注定輸">
+  <meta property="og:description" content="一條公式、兩張圖，看懂虧損與回本的不對稱。停損不是認輸，是買下「我還能再錯 11 次」的權利。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/loss-recovery-math-2026.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/loss-recovery-cover.jpg">
+  <meta property="article:published_time" content="2026-07-28">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "虧 50% 要賺 100% 才回本：為什麼「有賺就跑」的人，數學上注定輸",
+    "description": "用回本公式 R=L÷(1−L) 拆解虧損與回本的不對稱性，並將停損量化為「錯誤預算」。",
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "image": "https://crypto-trading-academy.com/blog/assets/loss-recovery-cover.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/loss-recovery-math-2026.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">虧損回本的數學</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-4">交易策略 ｜ 資金管理數學</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        虧 50% 要賺 100% 才回本：<br class="hidden md:block">
+        為什麼「有賺就跑」的人，數學上注定輸
+      </h1>
+      <p class="text-lg text-slate-400 mb-6">市場對賺錢和虧錢，收費標準不一樣——而且越虧越貴。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-07-28</span><span>•</span><span>⏱ 閱讀約 12 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/loss-recovery-cover.jpg?v=1" alt="虧損與回本的不對稱：停損的數學意義" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">你每虧掉的 1%，市場都要你用超過 1% 買回來。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-16">
+
+    <p class="lead">
+      帳上 +3%，你手心冒汗，想都沒想就平掉了。帳上 −15%，你卻很冷靜地告訴自己：「它會回來的。」
+    </p>
+
+    <p>你不是笨。這是人的天性——賺錢的快感想立刻兌現，虧損的痛苦想延後面對。所以「有賺就跑、虧損死抱」幾乎是散戶的預設值，不需要學就會。</p>
+
+    <p>天性可以理解。但<strong>數學不同情天性。</strong></p>
+
+    <p>虧 5%，不是賺 5% 就回本，是 <strong>5.26%</strong>。虧 50%，不是賺 50%，是 <strong>100%</strong>。那個差額不是手續費——<strong>是你不肯認錯的利息。</strong></p>
+
+    <p>這篇文章不告訴你該買什麼。我只給你一條公式、兩張圖、一張表，讓你看清「有賺就跑、虧損死抱」這個習慣，在數學上開給你的收費單長什麼樣。</p>
+
+    <h2>一、你以為的對稱，其實不存在</h2>
+
+    <p>先做個小測驗。你的帳戶有 100 萬，虧了 10%，剩 90 萬。請問要賺多少百分比，才會回到 100 萬？</p>
+
+    <p>幾乎所有人的直覺都是「10%」。錯了。</p>
+
+    <p>90 萬賺 10%，是 99 萬——你還少 1 萬。因為<strong>虧損的百分比，是從「原本的大數字」算的；回本的百分比，卻是從「剩下的小數字」算的</strong>。分母變小了，同樣的百分比就換不回同樣的金額。</p>
+
+    <p>90 萬要回到 100 萬，需要賺 10 萬，也就是 <strong>11.11%</strong>。</p>
+
+    <p>這 1.11 個百分點的差距，在虧 10% 的時候看起來微不足道。但它不是線性增加的——<strong>它是加速的。</strong></p>
+
+    <div class="pull-quote">
+      虧損不是欠市場的債，<br>是欠市場的<strong>利息</strong>——而且複利。
+    </div>
+
+    <h2>二、一條公式：回本到底要賺多少</h2>
+
+    <p>把上面那個推導寫成公式，只需要一次除法：</p>
+
+    <div class="formula-box">
+      <div class="formula">R = L ÷ (1 − L)</div>
+      <div class="formula-note">R＝回本所需報酬率　｜　L＝虧損比例</div>
+    </div>
+
+    <p>為什麼是這樣？很簡單：</p>
+
+    <ul>
+      <li>虧掉 L 之後，你剩下的是 <strong>(1 − L)</strong>。</li>
+      <li>你要賺回來的金額，正好是 <strong>L</strong>。</li>
+      <li>報酬率＝賺的金額 ÷ 本金＝<strong>L ÷ (1 − L)</strong>。</li>
+    </ul>
+
+    <p>代進去驗算一次：虧 10%，L = 0.1，剩下 0.9，R = 0.1 ÷ 0.9 = <strong>11.11%</strong>。跟我們剛才手算的一樣。</p>
+
+    <p>公式本身不難。難的是——當你把 L 一路放大，會看到一件很不舒服的事。</p>
+
+    <h2>三、完整對照表：那條曲線在哪裡開始失控</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>虧損幅度 L</th>
+          <th>帳戶剩下</th>
+          <th>回本所需報酬 R</th>
+          <th>難度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>−2%</td><td>98%</td><td class="safe">+2.04%</td><td class="safe">幾乎沒感覺</td></tr>
+        <tr><td>−5%</td><td>95%</td><td class="safe">+5.26%</td><td class="safe">一次好交易</td></tr>
+        <tr><td>−10%</td><td>90%</td><td class="safe">+11.11%</td><td class="safe">還算輕鬆</td></tr>
+        <tr><td>−20%</td><td>80%</td><td class="warn">+25.00%</td><td class="warn">開始吃力</td></tr>
+        <tr><td>−30%</td><td>70%</td><td class="warn">+42.86%</td><td class="warn">要一波行情</td></tr>
+        <tr><td>−40%</td><td>60%</td><td class="warn">+66.67%</td><td class="warn">要一波大行情</td></tr>
+        <tr class="death-zone"><td>−50%</td><td>50%</td><td class="danger">+100.00%</td><td class="danger">要翻倍</td></tr>
+        <tr class="death-zone"><td>−60%</td><td>40%</td><td class="danger">+150.00%</td><td class="danger">很難</td></tr>
+        <tr class="death-zone"><td>−70%</td><td>30%</td><td class="danger">+233.33%</td><td class="danger">幾乎回不去</td></tr>
+        <tr class="death-zone"><td>−80%</td><td>20%</td><td class="danger">+400.00%</td><td class="danger">要五倍</td></tr>
+        <tr class="death-zone"><td>−90%</td><td>10%</td><td class="danger">+900.00%</td><td class="danger">要十倍</td></tr>
+      </tbody>
+    </table>
+
+    <p>看出來了嗎？從 −2% 到 −20%，回本難度只是「小幅加價」；但過了 −50%，它就<strong>從線性懲罰進入指數懲罰</strong>。</p>
+
+    <p>畫成圖，這個不對稱會更刺眼：</p>
+
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/stoploss-recovery-curve.jpg?v=1" alt="回本不對稱曲線:虧損越深,所需報酬率呈指數上升,50% 以上為死亡區" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">灰色虛線是你以為的（虧多少賺回來就好），黃色曲線是實際需要的。兩者之間那片紅色，就是「不肯認錯」的代價。</figcaption>
+    </figure>
+
+    <h3>為什麼 50% 是分水嶺</h3>
+
+    <p>50% 之所以是那條線，因為它是<strong>「賺回來的難度」第一次超過「虧掉的難度」一倍</strong>的位置。</p>
+
+    <p>虧掉 50% 只需要一次腰斬——在加密市場，這種行情三個月內可能出現好幾次。但要賺 100%，你需要一整輪牛市。<strong>虧掉它，是幾週的事；賺回來，是幾年的事。</strong></p>
+
+    <p>更殘酷的是順序不影響結果：</p>
+
+    <div class="insight-card mb-6">
+      <div class="text-blue-400 font-bold mb-2">🔍 反直覺 ①：先賺再虧，不會比較好</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        很多人以為「我先賺了 50%，就算之後虧 50% 也只是打平」。實際算一次：<br><br>
+        <strong>100 × 1.5 × 0.5 = 75</strong>　→　淨虧 25%<br>
+        <strong>100 × 0.5 × 1.5 = 75</strong>　→　完全一樣<br><br>
+        <strong>市場沒有「先賺的墊底」這回事。</strong>你的浮盈不會變成保護傘，它只是換了一個更大的分母，讓下一次的百分比虧損咬得更深。
+      </p>
+    </div>
+
+    <h2>四、錯得多，還是錯得深？——最關鍵的那張圖</h2>
+
+    <p>現在我要問一個真正重要的問題。以下兩個交易者，誰比較慘？</p>
+
+    <ul>
+      <li><strong>A 先生</strong>：連續錯 <strong>10 次</strong>，每次認賠 −2%。</li>
+      <li><strong>B 先生</strong>：只錯 <strong>1 次</strong>，但那次死抱不放，虧了 −50%。</li>
+    </ul>
+
+    <p>直覺上，錯 10 次聽起來很糟糕，錯 1 次好像還好。但算給你看：</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>交易者</th><th>錯誤次數</th><th>帳戶剩下</th><th>回本所需</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>A 先生（每次 −2%）</td><td>10 次</td><td class="safe">81.71%</td><td class="safe">+22.39%</td></tr>
+        <tr><td>B 先生（一次 −50%）</td><td>1 次</td><td class="danger">50.00%</td><td class="danger">+100.00%</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>錯十次的人，比錯一次的人好活四倍以上。</strong></p>
+
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/stoploss-small-vs-big.jpg?v=1" alt="左圖:連續 10 次 -2% vs 一次 -50% 的資金曲線對照;右圖:不同停損幅度下帳戶腰斬前還能錯幾次" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">左：連錯十次，還是比一次大錯好活。右：停損幅度決定你「還能錯幾次」——這才是停損真正在買的東西。</figcaption>
+    </figure>
+
+    <div class="insight-card mb-6">
+      <div class="text-blue-400 font-bold mb-2">🔍 反直覺 ②：一次腰斬 ≈ 連錯 34 次</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        算式：<strong>0.98<sup>34</sup> ≈ 0.5031</strong>。也就是說，一次 −50% 的大虧，在數學上<strong>等於你用 2% 停損連續錯 34 次</strong>。<br><br>
+        你這輩子會連續看錯 34 次嗎？大概不會。但你這輩子會不會遇到一次腰斬？如果不設停損，<strong>幾乎一定會。</strong>
+      </p>
+    </div>
+
+    <div class="pull-quote">
+      小錯可以錯很多次，<br><strong>大錯一次都嫌多。</strong>
+    </div>
+
+    <h2>五、把停損翻譯成一句話：「我還能錯幾次？」</h2>
+
+    <p>講到這裡，停損就不再是一個道德問題（要不要承認失敗），而是一個<strong>預算問題</strong>。</p>
+
+    <p>你的每一次停損，都是在買一樣東西：<strong>下一次還能上場的資格</strong>。停損設多大，決定了你這個帳戶能「買」到幾次犯錯的機會。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>單筆停損</th><th>帳戶腰斬前<br>能連續錯幾次</th><th>意義</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>−1%</td><td class="safe">68 次</td><td class="safe">幾乎打不死</td></tr>
+        <tr><td>−2%</td><td class="safe">34 次</td><td class="safe">連錯一整個月也還在</td></tr>
+        <tr><td>−5%</td><td class="warn">13 次</td><td class="warn">禁得起一段低潮</td></tr>
+        <tr><td>−10%</td><td class="warn">6 次</td><td class="warn">一週壞運氣就傷筋動骨</td></tr>
+        <tr><td>−20%</td><td class="danger">3 次</td><td class="danger">三次就腰斬</td></tr>
+        <tr><td>不設停損</td><td class="danger">1 次</td><td class="danger">一次就夠</td></tr>
+      </tbody>
+    </table>
+
+    <p>用 2% 停損的人，連錯 11 次也只回撤 19.93%——他還在場上，還有本金，還有機會等到那一次對的行情。而不設停損的人，只需要遇到一次真正的黑天鵝，遊戲就結束了。</p>
+
+    <div class="pull-quote">
+      停損不是認輸，<br>是買下「<strong>我還能再錯 11 次</strong>」的權利。
+    </div>
+
+    <h2>六、更冷的真相：勝率 70% 也可能是賠錢的</h2>
+
+    <p>很多人相信「只要看對的次數夠多就會賺」。這也是錯的——<strong>而且「有賺就跑、虧損死抱」正是把高勝率變成負期望的最快方法。</strong></p>
+
+    <p>假設一個典型的散戶：每次賺 2% 就跑（怕飛了），每次虧了死抱，平均虧 6% 才痛到出場。他的勝率高達 <strong>70%</strong>——十筆有七筆賺錢，聽起來是高手。</p>
+
+    <div class="warning-card mb-6">
+      <div class="text-red-400 font-bold mb-2">🔍 反直覺 ③：七勝三敗，還是賠錢</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        每 10 筆的資金變化：<strong>1.02<sup>7</sup> × 0.94<sup>3</sup> = 0.9541</strong><br><br>
+        七次賺錢、三次賠錢，帳戶還是<strong>蒸發了 4.59%</strong>。而且這是複利的——每 10 筆掉 4.6%，做 100 筆掉超過 37%。<br><br>
+        <strong>你贏得比較多次，卻輸得比較多錢。</strong>這是散戶最貴的一種自我感覺良好。
+      </p>
+    </div>
+
+    <p>要打平，需要多高的勝率？這也有公式：</p>
+
+    <div class="formula-box">
+      <div class="formula">打平勝率 W = 1 ÷ (1 + 盈虧比)</div>
+      <div class="formula-note">盈虧比＝平均獲利 ÷ 平均虧損</div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>你的習慣</th><th>盈虧比</th><th>打平所需勝率</th><th>現實</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>賺 3 塊才跑、虧 1 塊就停</td><td>3.0</td><td class="safe">25.0%</td><td class="safe">四次錯三次還能賺</td></tr>
+        <tr><td>賺 2 塊才跑、虧 1 塊就停</td><td>2.0</td><td class="safe">33.3%</td><td class="safe">三次錯兩次還能賺</td></tr>
+        <tr><td>賺跟虧一樣多</td><td>1.0</td><td class="warn">50.0%</td><td class="warn">得比丟硬幣準</td></tr>
+        <tr class="death-zone"><td><strong>有賺就跑、虧損死抱</strong></td><td>0.33</td><td class="danger">75.2%</td><td class="danger">十次要對八次</td></tr>
+      </tbody>
+    </table>
+
+    <p>最後那一行，就是這篇文章的答案。<strong>「有賺就跑、虧損死抱」不是讓你少賺，是把你的及格門檻，從 33% 拉高到 75%。</strong></p>
+
+    <p>你不是輸在看不準。你是輸在——<strong>你給自己出的考卷，及格分數比別人高一倍。</strong></p>
+
+    <h2>七、那停損到底該放哪？——回到裸 K</h2>
+
+    <p>看到這裡，你可能會想：「那我把停損設超小不就好了？設 0.5%，我就能錯 138 次。」</p>
+
+    <p>這是另一個陷阱。<strong>停損不是越小越好，而是要放在「對的位置」。</strong>設太緊，你會在正常波動裡被反覆掃出場——變成用 0.5% 的成本，買一堆本來會賺的單子的門票。</p>
+
+    <p>正確的邏輯只有一句話：</p>
+
+    <div class="pull-quote">
+      停損要放在<strong>「你的判斷被證偽」</strong>的價格，<br>不是放在「你心痛」的價格。
+    </div>
+
+    <p>這正是<a href="naked-k-trading-introduction.html" class="text-amber-400 hover:underline">裸 K 關鍵價位心法</a>在做的事。你進場，是因為某一條關鍵價位守住了、或某一個結構成立了。那麼——<strong>當那條線被有效跌破，你的進場理由就消失了。那裡，就是你的停損。</strong></p>
+
+    <p>順序不能反：<strong>先由市場結構決定停損位置，再由停損距離回推你該下多大的部位</strong>，讓單筆風險落在帳戶的 1–2%。這樣你的停損既在對的位置上，又買得起足夠多的犯錯次數。</p>
+
+    <p>而不是——先決定要買多少，再把停損塞在一個「我能忍受的虧損金額」上。那個位置跟市場毫無關係，只跟你的心情有關；市場不會因為你心痛就停下來。</p>
+
+    <h2>八、今天就能做的一個練習</h2>
+
+    <div class="ceo-card mb-6">
+      <div class="text-amber-400 font-bold mb-3">🎯 算出你自己的「錯誤預算」</div>
+      <ol class="text-sm text-slate-300 leading-relaxed pl-5 space-y-2">
+        <li><strong>翻出你最近 20 筆交易</strong>，算兩個數字：平均賺多少 %、平均虧多少 %。</li>
+        <li><strong>算出你的盈虧比</strong>＝平均獲利 ÷ 平均虧損。然後用 <strong>W = 1 ÷ (1 + 盈虧比)</strong> 算出你的及格分數。</li>
+        <li><strong>對照你的實際勝率。</strong>如果實際勝率低於這個數字——問題不在你的眼光，在你的出場習慣。</li>
+        <li><strong>下一筆單，先寫死停損再決定部位大小</strong>：停損距離由關鍵價位決定，部位大小由「這筆最多虧帳戶 1–2%」回推。</li>
+      </ol>
+    </div>
+
+    <p>這個練習不需要你預測任何行情。它只是把一個你一直用感覺在做的決定，換成用算術做。<strong>而算術，是這個市場裡少數不會騙你的東西。</strong></p>
+
+    <h2>九、寫在最後</h2>
+
+    <p>「有賺就跑」不是罪過，那只是人性。真正讓帳戶死掉的，從來不是那些你及時認賠的小虧，而是<strong>那一筆你捨不得砍、一路抱到腰斬的單子</strong>。</p>
+
+    <p>數學已經把話講得很白了：</p>
+
+    <ul>
+      <li>虧 5% 要賺 5.26%，虧 50% 要賺 100%，虧 90% 要賺 900%。</li>
+      <li>一次腰斬，等於用 2% 停損連錯 34 次。</li>
+      <li>「有賺就跑、虧損死抱」把你的及格勝率從 33% 推到 75%。</li>
+    </ul>
+
+    <p>你不需要變成天才才能在這個市場活下來。<strong>你只需要不要把及格分數，自己往上調。</strong></p>
+
+    <p>如果這篇裡有一句話值得你記住，就是這句：<strong>每一次你在小虧時認賠，都是在替未來的自己，省下加倍的力氣。</strong></p>
+
+    <div class="final-quote">
+      我不預測價格會去哪裡。<br>
+      我只確保它去錯地方的時候，<br>
+      <span class="text-amber-300">我還在場上。</span>
+    </div>
+
+    <p class="text-center text-slate-500 italic">— Gteno @ CTA</p>
+
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">停損放哪，<span class="text-amber-400">不該用猜的</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">這篇給了你算式，但算式需要一個輸入值——「我的判斷在哪裡被證偽」。<br>那條線不是感覺出來的，是讀出來的；而現金部位在等待的期間，也不必躺著。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="../lending.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">了解放貸機器人</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>教育性數學框架說明，不構成任何投資、財務或交易建議</strong>。文中所有計算為純數學推導（回本公式 R=L÷(1−L)、打平勝率 W=1÷(1+盈虧比)），讀者可自行驗算；但實際交易另涉手續費、滑價、稅負、資金成本與流動性等因素，未納入上述簡化模型。停損機制無法保證在跳空、流動性枯竭或極端行情下以預設價格成交。文中「錯誤預算」「部位大小」等示例為說明用途，非個人化建議。交易與槓桿涉及本金損失風險，請依個人風險承受度決策，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易策略 · 心法基礎</div>
+          <div class="font-bold text-white text-sm">裸K交易入門：為什麼不需要指標也能判斷行情？</div>
+        </a>
+        <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 結構底部</div>
+          <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+        </a>
+        <a href="financial-market-dungeon.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">CEO 心法</div>
+          <div class="font-bold text-white text-sm">進入金融市場前，你準備好了嗎？地下城副本生存指南</div>
+        </a>
+        <a href="mstr-mnav-below-1-risk-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場觀點 · 風險提示</div>
+          <div class="font-bold text-white text-sm">mNAV 跌破 1：當比特幣財庫之王的飛輪熄火</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
