@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>亞洲的槓桿已經爆了，美國還沒——8～10 月的四個風險窗口 — 交易幣修課</title>
+  <meta name="description" content="所有人都在等 SpaceX 8 月解禁那顆雷，但七月的韓國 KOSPI 已從高點跌 35%、今年第 8 次熔斷；台灣經歷 717 股災；日本信用買殘連三週下降。而美國是四個市場裡唯一還在加槓桿、距離高點只有 2% 的那個。本文用 FINRA 原始檔、TWSE 官方 API 與 KOFIA 數據，拆解四個風險窗口與 BTC 的傳導路徑。">
+  <meta name="keywords" content="FINRA margin debt,融資餘額,信用融資,信用取引,KOSPI 熔斷,717股災,SpaceX 解禁,曼德海峽,Kevin Warsh,BTC 傳導,去槓桿">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/four-fuses-leverage-2026h2.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="亞洲的槓桿已經爆了，美國還沒——8～10 月的四個風險窗口">
+  <meta property="og:description" content="韓國 −35%、台灣 717 股災、日本連三週去槓桿，而美國還在加。四個市場的槓桿數據攤開來看，誰是下一個。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/four-fuses-leverage-2026h2.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/four-fuses-cover.jpg">
+  <meta property="article:published_time" content="2026-07-28">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "亞洲的槓桿已經爆了，美國還沒——8～10 月的四個風險窗口",
+    "description": "用 FINRA 原始檔、TWSE 官方 API 與 KOFIA 數據拆解美台韓日四市場槓桿現況，並分析 SpaceX 解禁、曼德海峽、Warsh 政策不確定性與 BTC 的傳導路徑。",
+    "datePublished": "2026-07-28",
+    "dateModified": "2026-07-28",
+    "image": "https://crypto-trading-academy.com/blog/assets/four-fuses-cover.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/four-fuses-leverage-2026h2.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+    .caveat-card { background: rgba(120,53,15,0.18); border: 1px solid rgba(251,146,60,0.35); border-radius: 0.75rem; padding: 1.25rem; }
+    .bull-card { background: rgba(20,83,45,0.16); border: 1px solid rgba(74,222,128,0.35); border-radius: 0.75rem; padding: 1.5rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.highlight { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table tr.us-row { background: rgba(251,191,36,0.07); }
+
+    .fuse-tag { display: inline-block; padding: 0.125rem 0.7rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; margin-left: 0.5rem; vertical-align: middle; }
+    .fuse-long { background: rgba(74,222,128,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.35); }
+    .fuse-mid { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.35); }
+    .fuse-short { background: rgba(248,81,73,0.15); color: #f85149; border: 1px solid rgba(248,81,73,0.35); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">四個風險窗口</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">CEO 觀點 ｜ 直播延伸 · 風險窗口</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        亞洲的槓桿已經爆了，美國還沒——<br class="hidden md:block">
+        8～10 月的四個風險窗口
+      </h1>
+      <p class="text-lg text-slate-400 mb-6">所有人都在等 8 月那顆最吵的雷，但七月的亞洲已經先響了。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-07-28</span><span>•</span><span>⏱ 閱讀約 16 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+      <p class="text-sm text-slate-500 italic">本文為 CEO Gteno 直播延伸。四市場槓桿數據取自 <strong>FINRA 官方統計檔</strong>、<strong>台灣證交所官方 API</strong>、KOFIA／韓國央行與日經／Traders Web，並經內部對抗性查核；所有數字標明來源與截止日期。</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/four-fuses-cover.jpg?v=1" alt="四個風險窗口:SpaceX 解禁、曼德海峽、政策盲盒、與四市場槓桿" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">能被紅圈畫出來的風險，通常不是最傷人的那一個。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-16">
+
+    <p class="lead">
+      八月的財經版面只有一個數字：<strong>$1,230 億</strong>。所有人都在等 8/4 SpaceX 財報、8/6 首波解禁，行事曆上的紅圈畫得清清楚楚。
+    </p>
+
+    <p>我要說的是——<strong>凡是能被紅圈畫出來的風險，通常都不是最傷人的那一個。</strong></p>
+
+    <p>因為就在大家盯著八月的同時，七月的亞洲已經先響了：韓國 KOSPI 從六月的歷史高點跌了<strong>約 35%</strong>，今天（7/28）觸發今年<strong>第 8 次熔斷</strong>；台灣在 7/17 單日崩掉 <strong>2,953 點（−6.5%）</strong>；日本信用買殘連續三週下降。</p>
+
+    <p>而在這四個市場裡，<strong>美國是唯一一個槓桿還在往上加、指數距離歷史高點只有約 2% 的市場。</strong></p>
+
+    <p>這篇文章要做的不是預測崩盤日期。我只做一件事：<strong>把四顆雷的引信長度攤開來排序</strong>，然後告訴你，為什麼最吵的那顆，引信最長。</p>
+
+    <div class="caveat-card mb-8">
+      <div class="text-orange-400 font-bold mb-2">⚠ 先講清楚三件事</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        ① 本文<strong>不預測時點、不喊方向、不構成投資建議</strong>；②文中所有數據標明來源與截止日，金融數據具時效性（FINRA margin debt 為<strong>月度落後值</strong>，油價與機率定價每日變動）；③本文<strong>刻意用一整章寫反方觀點</strong>——因為只講單邊的風險分析，不值得你拿來做決策。
+      </p>
+    </div>
+
+    <h2>一、四顆雷，先排引信長度</h2>
+
+    <p>把四個風險窗口攤開，你會發現它們的性質完全不同——有的是行事曆事件（可預期、已被定價），有的是結構脆弱度（不可預期、隨時可被點燃）：</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>風險窗口</th>
+          <th>性質</th>
+          <th>時點</th>
+          <th>引信</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>① SpaceX 解禁</td>
+          <td>行事曆事件</td>
+          <td>8/6 起分批</td>
+          <td><span class="fuse-tag fuse-long">最長</span></td>
+        </tr>
+        <tr>
+          <td>② 曼德海峽／油價</td>
+          <td>地緣 → 通膨</td>
+          <td>進行中</td>
+          <td><span class="fuse-tag fuse-short">最短</span></td>
+        </tr>
+        <tr>
+          <td>③ Warsh 政策不確定</td>
+          <td>估值地基</td>
+          <td>9 月 FOMC</td>
+          <td><span class="fuse-tag fuse-mid">中等</span></td>
+        </tr>
+        <tr>
+          <td>④ 槓桿</td>
+          <td><strong>放大器</strong></td>
+          <td>亞洲已引爆</td>
+          <td><span class="fuse-tag fuse-short">已點燃</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>注意第四顆的性質欄——<strong>槓桿本身不是雷，它是放大器</strong>。它不會自己爆炸，但前面三顆隨便哪一顆響了，它決定聲音有多大、以及順便拖走誰。</p>
+
+    <div class="pull-quote">
+      能被紅圈畫出來的風險，通常不是最傷人的那一個。
+    </div>
+
+    <h2>二、雷一｜SpaceX $1,230 億解禁：帳面最大，殺傷最小</h2>
+
+    <p>先講最吵的那顆。</p>
+
+    <p>SpaceX（代碼 SPCX）於 2026 年 6 月中掛牌，發行價 $135。首波解禁約 <strong>911.5 百萬股、市值約 $1,230 億</strong>，將於八月初啟動——<strong>8/4 首份財報、8/6 觸發第一波解鎖</strong>。</p>
+
+    <p>市場擔心的傳導鏈很直觀：解禁 → 內部人拋售 → 股價大跌 → 因為 SPCX 已納入 Nasdaq-100，追蹤指數的被動基金（如 QQQ）被迫跟賣 → 連環踩踏。</p>
+
+    <p>但有三個事實，讓我把這顆雷的引信排到最長：</p>
+
+    <div class="insight-card mb-6">
+      <div class="text-blue-400 font-bold mb-2">🔍 為什麼「看得見的解禁」反而不可怕</div>
+      <ol class="text-sm text-slate-300 leading-relaxed pl-5 space-y-2">
+        <li><strong>它不是一次性解禁，是分批。</strong>SPCX 採用階梯式釋出：第 70／90／105／120／135 天各約 7%。這個設計本身就是為了<strong>避免</strong>一次性衝擊。</li>
+        <li><strong>股價目前低於發行價。</strong>七月中 SPCX 在 $124–135 區間，<strong>低於 $135 的 IPO 發行價</strong>。早期投資人在帳面虧損的狀態下，拋售意願通常較低。</li>
+        <li><strong>加速條款完全沒被觸發。</strong>額外 10% 解禁的條件是「財報前連續 5／10 個交易日高於發行價 30% 以上」——以目前股價，離觸發還很遠。</li>
+      </ol>
+      <p class="text-sm text-slate-300 leading-relaxed mt-3 mb-0"><strong>更根本的一點：這是一個「全市場早就知道」的風險。</strong>日期公開、股數公開、規則公開。凡是能被精確標註在行事曆上的風險，通常都已經先被定價了一輪。</p>
+    </div>
+
+    <p class="text-sm text-slate-500 italic">誠實揭露：這是我最沒把握的一顆雷——學術上解禁前後的異常報酬多半已被預期消化，但流動性事件的短期波動仍然真實。我把它定位成「<strong>流動性放大器</strong>」，而不是獨立的引爆點。</p>
+
+    <div class="pull-quote">
+      解禁是一場所有人都收到邀請函的葬禮；<br>真正危險的，是沒發帖的那一場。
+    </div>
+
+    <h2>三、雷二｜曼德海峽：唯一正在惡化的那一顆<span class="fuse-tag fuse-short">引信最短</span></h2>
+
+    <p>這顆雷的位置，在紅海。</p>
+
+    <p>胡塞武裝正試圖封鎖<strong>曼德海峽（Bab el-Mandeb）</strong>，目標是沙烏地在紅海的 Yanbu 港出口。而這裡有一個多數人沒注意到的結構性變化——</p>
+
+    <p><strong>沙烏地近月已把超過 70% 原本走波斯灣的原油出口，改道到紅海的 Yanbu 港。</strong>原因很好理解：為了繞開霍爾木茲海峽的風險。但這也意味著，曼德海峽的重要性在過去幾個月被大幅放大了。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>指標</th><th>數值</th><th>來源</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>經曼德海峽日流量</td><td>約 900 萬桶／日</td><td>高盛估計</td></tr>
+        <tr><td>多咽喉同時受阻時難改道量</td><td class="danger">約 400 萬桶／日</td><td>高盛估計</td></tr>
+        <tr><td>WTI 現價</td><td class="highlight">約 $89.57（單日 +3.16%）</td><td>市場報價</td></tr>
+        <tr><td>市場定價：觸及 $95 機率</td><td class="danger">68.5%</td><td>選擇權隱含</td></tr>
+        <tr><td>市場定價：觸及 $100 機率</td><td class="highlight">40.7%（一日前為 16%）</td><td>選擇權隱含</td></tr>
+      </tbody>
+    </table>
+
+    <p>為什麼油價是「真死穴」？因為它是<strong>唯一一顆能同時點燃另外兩顆的雷</strong>：</p>
+
+    <p><strong>油價漲 → 通膨黏著 → 聯準會不能降息、甚至被迫討論升息 → 估值地基鬆動 → 高槓桿部位被追繳。</strong></p>
+
+    <div class="pull-quote">
+      油價不會直接殺死你的部位，<br>它只是把<strong>聯準會的手綁住</strong>。
+    </div>
+
+    <div class="caveat-card mb-6">
+      <div class="text-orange-400 font-bold mb-2">⚠ 但這裡要非常誠實：兩個咽喉是「替代」不是「相加」</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        沙烏地把出口改道紅海，<strong>正是為了繞開霍爾木茲</strong>——這代表兩個咽喉的風險本質上是<strong>替代關係</strong>，不是單純相加。單一咽喉受阻，仍有東西向管線（Petroline）等備援可用。<br><br>
+        <strong>真正的尾部條件是「兩個同時鎖死」</strong>，那時備援才會互斥。這個條件成立的機率並不高。另外，$100 機率 40.7% 的另一面是——<strong>59.3% 的機率不會到。</strong>
+      </p>
+    </div>
+
+    <h2>四、雷三｜Warsh 的政策盲盒：9 比 9，以及圖上唯一缺席的那個點</h2>
+
+    <p>市場最怕的從來不是壞消息，而是「不知道」。</p>
+
+    <p>Kevin Warsh 接任聯準會主席後的首次 FOMC，按兵不動，但釋出了鷹派意外：<strong>聲明中拿掉了寬鬆傾向</strong>。而點陣圖上的分裂更值得注意：</p>
+
+    <ul>
+      <li><strong>18 位參與者中，9 位預測 2026 年應該「升息」</strong>；另外 9 位認為持平或降息。</li>
+      <li><strong>完全對半分裂，9 比 9。</strong></li>
+      <li>而 <strong>Warsh 本人拒絕提供自己的預測</strong>——他是圖上唯一缺席的那個點。</li>
+    </ul>
+
+    <div class="pull-quote">
+      主席拒絕在點陣圖上留下自己的點——<br><strong>「政策盲盒」這次是字面意思。</strong>
+    </div>
+
+    <p>這對估值的影響是結構性的：當利率路徑不確定，市場就不敢給高本益比。假設標普 500 的本益比從 22 倍壓縮到 18 倍——那不需要任何盈餘衰退，指數本身就得吐掉近兩成。<strong>9 月 FOMC 因此成為關鍵大考。</strong></p>
+
+    <p class="text-sm text-slate-500 italic">反過來說（這點也必須講）：9:9 對半分裂的自然結果，往往是<strong>按兵不動</strong>，而不是升息。Warsh 不給點，也可以解讀為「不預先承諾」的溝通策略，未必是鷹派埋伏。</p>
+
+    <h2>五、雷四｜槓桿：本文的核心，也是最被低估的一顆</h2>
+
+    <p>前面三顆是火種，這一顆決定森林有多乾。</p>
+
+    <p>我請團隊直接解析了<strong>美國 FINRA 的官方統計原始檔（1997-01 至 2026-06，共 354 個月）</strong>、打了<strong>台灣證交所的官方 API</strong>，並整理韓國 KOFIA／韓國央行與日經的數據。結果比我原本預期的更有戲——</p>
+
+    <h3>先看美國：唯一還在加槓桿的市場</h3>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>月份</th><th>Margin Debt</th><th>月增</th><th>年增</th></tr>
+      </thead>
+      <tbody>
+        <tr class="us-row"><td><strong>2026-06</strong></td><td class="highlight"><strong>$1.502 兆</strong></td><td>+6.11%</td><td class="highlight"><strong>+49.0%</strong></td></tr>
+        <tr><td>2026-05</td><td>$1.416 兆</td><td>+8.53%</td><td class="danger">+53.7%（本輪峰值）</td></tr>
+        <tr><td>2026-04</td><td>$1.304 兆</td><td>+6.83%</td><td>+53.3%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="text-xs text-slate-500 italic mb-6">資料來源：FINRA 官方 margin-statistics 統計檔，由本團隊直接解析原始數列。註：坊間流傳的「$1.53 兆／+51.5%」與 FINRA 官方檔不符（該數字出自二手研究機構），本文一律採用 <strong>FINRA 原始值 $1.502 兆／+49.0%</strong>。</p>
+
+    <p>一年之內，美國投資人增加了將近 <strong>5,000 億美元</strong>的借錢部位。這個增速有多罕見？我把 FINRA 全部 354 個月的年增率跑了一遍：</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>時期</th><th>該輪年增峰值</th><th>之後發生了什麼</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1999-12 ～ 2000-03</td><td class="danger">80.5%</td><td>網路泡沫破裂</td></tr>
+        <tr><td>2007-06 ～ 2007-07</td><td class="danger">62.6%</td><td>金融海嘯</td></tr>
+        <tr><td>2021-03 ～ 2021-06</td><td class="danger">71.6%</td><td>2022 熊市</td></tr>
+        <tr class="us-row"><td><strong>2026-04 ～ 2026-05</strong></td><td class="highlight"><strong>53.7%</strong></td><td class="highlight"><strong>？</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="caveat-card mb-6">
+      <div class="text-orange-400 font-bold mb-2">⚠ 這張表有兩個必須講清楚的前提</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        ① <strong>FINRA 資料只回溯到 1997 年</strong>，所以正確說法是「1997 年有紀錄以來的第 <strong>4</strong> 次」，不能說「歷史上只有 3 次」。<br>
+        ② <strong>本輪的 53.7% 低於前三次的全部</strong>（80.5%／62.6%／71.6%），而且 6 月已經回落到 49%、<strong>跌破 50%</strong>。<br><br>
+        如果你在直播或貼文裡說「這次比 2000 年還瘋狂」——<strong>那會被打臉。</strong>用真實的數字就夠有力了：這是近 30 年的第四次，而前三次的下一站你都知道。
+      </p>
+    </div>
+
+    <h3>再看亞洲：三個市場已經在去槓桿了</h3>
+
+    <p>這是整份研究最讓我意外的部分。當美國還在加槓桿的時候，<strong>亞洲三個市場的槓桿在六月觸頂，七月已經開始崩解：</strong></p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>市場</th>
+          <th>槓桿峰值</th>
+          <th>目前</th>
+          <th>指數距高點</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇰🇷 韓國<br><span class="text-xs text-slate-500">信用融資餘額</span></td>
+          <td>38.63 兆韓元<br><span class="text-xs text-slate-500">6/24</span></td>
+          <td class="danger">32.75 兆<br><span class="text-xs">（−15.2%）</span></td>
+          <td class="danger">KOSPI <strong>約 −35%</strong></td>
+        </tr>
+        <tr>
+          <td>🇹🇼 台灣<br><span class="text-xs text-slate-500">融資餘額（上市）</span></td>
+          <td>兩市合計 8,134.8 億<br><span class="text-xs text-slate-500">6/22</span></td>
+          <td class="danger">上市 5,686.6 億<br><span class="text-xs">（7/27）</span></td>
+          <td class="danger">加權 <strong>−8.61%</strong></td>
+        </tr>
+        <tr>
+          <td>🇯🇵 日本<br><span class="text-xs text-slate-500">信用買殘</span></td>
+          <td>7 兆 167 億日圓<br><span class="text-xs text-slate-500">6/26</span></td>
+          <td class="danger">6 兆 7,097 億<br><span class="text-xs">（−4.4%，連三週降）</span></td>
+          <td class="danger">日經 <strong>−10.3%</strong></td>
+        </tr>
+        <tr class="us-row">
+          <td>🇺🇸 美國<br><span class="text-xs text-slate-500">Margin Debt</span></td>
+          <td class="highlight">尚未確認觸頂</td>
+          <td class="highlight">$1.502 兆<br><span class="text-xs">（6 月仍 +6.11%）</span></td>
+          <td class="highlight">S&amp;P 距高點<br><strong>約 2%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-xs text-slate-500 italic mb-6">資料來源：FINRA 官方統計檔（美）、台灣證交所官方 API（台，上市部分；櫃買因官網限制取自第三方 7/23 數據，故無同日合計數）、KOFIA 經媒體轉引（韓）、日經／Traders Web（日）。截止日期各異，已於欄位標註。</p>
+
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/four-markets-leverage.jpg?v=1" alt="四市場槓桿對照:韓台日三個亞洲市場正在去槓桿,美國還在加,且距離歷史高點僅 2%" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">左：槓桿餘額的變化方向。右：指數距離歷史高點的幅度。<strong>亞洲三個市場都已經在還債，美國是唯一還在借的那一個。</strong></figcaption>
+    </figure>
+
+    <div class="warning-card mb-6">
+      <div class="text-red-400 font-bold mb-2">🇰🇷 韓國：一個正在發生的去槓桿現場</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        韓國是這輪最極端的案例，值得單獨看：<br><br>
+        • KOSPI 從 6/19 的歷史高點 9,385 點，跌到 7/28 的 6,118 點附近，<strong>約 −35%</strong><br>
+        • 今天（7/28）上午再度觸發熔斷，<strong>這是 2026 年的第 8 次</strong><br>
+        • 強制平倉（반대매매）日均金額：2025 年底 71 億韓元 → <strong>2026 年 6 月 527 億韓元，7.4 倍</strong><br>
+        • 韓國央行金融穩定報告：信用融資＋槓桿 ETF 合計，5 個月內從 41 兆暴增到 <strong>74.8 兆韓元（+82.4%）</strong><br>
+        • 槓桿高度集中在三星電子與 SK 海力士——這兩檔合計超過 KOSPI 權重的一半<br><br>
+        韓國金管單位在 5、6、7 月連續發出投資人警示，並於 7/24 將單一個股槓桿商品的基本預託金<strong>從 1,000 萬韓元調高到 3,000 萬韓元</strong>。<strong>這不是預測，這是已經發生的事。</strong>
+      </p>
+    </div>
+
+    <p><strong>台灣這邊</strong>同樣值得警惕：融資餘額在 6/22 創下兩市合計 8,134.8 億的歷史紀錄（其中上市 6,050.4 億），加權指數 6/22 收在歷史最高 47,741.51 點。然後 <strong>7/17 單日崩跌 2,953.71 點（−6.5%）</strong>，融資維持率當日降到 <strong>148.34%</strong>——距離 130% 的追繳線，只剩 18 個百分點。</p>
+
+    <p>更值得注意的是監理面的動作：<strong>金管會在 7/27–28 點名三大風險，其中「四貸同堂」</strong>——房貸、車貸、信貸、股票融資疊在一起炒股——這個詞本身就說明了問題的性質。</p>
+
+    <div class="pull-quote">
+      不是繩子讓你摔倒，<br>是繩子決定你<strong>摔多遠、以及順便拖走誰</strong>。
+    </div>
+
+    <h3>用一個比喻：結繩登山隊</h3>
+
+    <p>高山攀登時，整隊人繫在同一條繩子上。平時互相保護——有人腳滑，其他人可以卡住他。但繩隊有一個臨界人數：<strong>當隊伍拉得夠長，第一個滑落者的動能會大到把後面每一個人依序扯離冰壁，即使他們自己腳步很穩。</strong></p>
+
+    <p>強制平倉，就是這條繩子。而現在美國這支繩隊，一年之內多繫了 5,000 億美元上去。</p>
+
+    <h2>六、但我必須誠實：分母換一個，結論就相反</h2>
+
+    <p>這是全文最重要的平衡點，也是最容易被專業讀者打臉的地方。我把它放在正中間，而不是藏在附註裡。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>指標</th><th>2000</th><th>2007</th><th>2021</th><th>2026</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Margin debt 佔 GDP</td><td>~2.8%</td><td>~2.6%</td><td>~3.8%</td><td class="danger">~4.5–4.7%<br>（創紀錄）</td></tr>
+        <tr><td>Margin debt 佔股市總市值</td><td>~2.3%</td><td>~3.0%</td><td>~2.6%</td><td class="safe">~2.2%<br>（四者最低）</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>同一件事，換個分母，結論完全相反。</strong>佔 GDP 創紀錄，佔市值卻是四次裡最低的。</p>
+
+    <p>反方最有力的論點正是這個：股價上漲 → 市值上漲 → 可借額度上漲，分子分母一起動，比率把訊號洗掉了。所以有分析師主張——<strong>真正的風險不在絕對水位，而在反轉的速度</strong>：「槓桿買家在上漲時慢慢加，強制賣方在下跌時一次到齊。」</p>
+
+    <p>日本也有同樣的分母問題：信用買殘 6.7 兆日圓雖然是 <strong>1994 年 QUICK 統計以來最高</strong>（注意：<strong>不是「史上最高」</strong>，1980 年代泡沫期的數據不在這個資料庫裡），但它佔東證市值僅約 <strong>0.56%</strong>，而 2006 年前一個峰值當時佔比約 1%——<strong>以強度論，只有 2006 年的一半。</strong></p>
+
+    <h2>七、最壞劇本：一棵條件樹，不是一個預言</h2>
+
+    <p>很多人問我「會不會連環爆」。我的回答是：<strong>會，如果以下四個條件同時成立。而它們同時成立的機率並不高。</strong></p>
+
+    <div class="warning-card mb-6">
+      <div class="text-red-400 font-bold mb-3">🔗 連環爆需要的四個前提（缺一不可）</div>
+      <ol class="text-sm text-slate-300 leading-relaxed pl-5 space-y-2">
+        <li><strong>曼德海峽「與」霍爾木茲同時實質受阻</strong>——單一咽喉可改道，雙咽喉才鎖死那 400 萬桶／日。</li>
+        <li><strong>油價衝擊持續超過一季</strong>，真正傳導進 CPI。單日跳空不會改變聯準會的反應函數。</li>
+        <li><strong>9 月 FOMC 落在鷹派那半邊</strong>，且 Warsh 補上一個偏鷹的點。</li>
+        <li><strong>融資帳戶進入被動去槓桿</strong>（強制平倉），而不是主動減碼。</li>
+      </ol>
+      <p class="text-sm text-slate-300 leading-relaxed mt-3 mb-0"><strong>最可能先斷的是第 2 環（通膨傳導）。</strong>地緣溢價的歷史半衰期很短——只要航運改道成功或局勢緩和，油價回落的速度遠快於上漲。第二可能先斷的是第 1 環：雙咽喉同時封鎖的機率本來就低。</p>
+    </div>
+
+    <p>我寫這棵條件樹，不是因為我認為它會發生。<strong>我寫它，是因為它便宜到值得準備。</strong></p>
+
+    <h2>八、加密市場觀點：BTC 是最末端的保證金</h2>
+
+    <p>那這一切跟幣圈有什麼關係？關係比多數人想的更直接。</p>
+
+    <p>我看到最常見的誤解是「美股跌，資金會流進 BTC 避險」。<strong>在流動性緊縮的環境裡，這是反的。</strong>傳導路徑長這樣：</p>
+
+    <div class="insight-card mb-6">
+      <div class="text-blue-400 font-bold mb-2">🔗 四雷 → BTC 的傳導鏈</div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        油價上漲 → 通膨預期黏著 → Warsh 鷹派固化（9 月大考）→ <strong>實質利率上行、美元流動性收縮</strong> → 風險資產同步去槓桿<br><br>
+        同時：解禁拋壓與股市回檔 → 券商帳戶被追繳 → 投資人必須<strong>立刻</strong>變現 → 賣什麼？<strong>賣流動性最好、24 小時可交易、不用等開盤的那個。</strong><br><br>
+        <strong>BTC 不是避難所，它是全球唯一 24 小時營業的提款機——所以它經常是第一個被提的，不是最後一個。</strong>
+      </p>
+    </div>
+
+    <p>所以答案不是「背離」，是「<strong>提前</strong>」。而現況已經在配合這個劇本：BTC 目前約 <strong>$64,290</strong>，恐懼貪婪指數落在 <strong>29（恐懼區）</strong>。</p>
+
+    <h3>接回我們自己的 10 月劇本</h3>
+
+    <p>這是我在直播裡一直強調的：<strong>這四顆雷是催化劑，不是成因。</strong>它們可能壓縮時間，但不改寫結構。把它跟我們既有的研究對起來看：</p>
+
+    <ul>
+      <li><a href="btc-bottom-structural-signals-2027.html" class="text-amber-400 hover:underline">《BTC 結構底部觀察》</a>：四種算法交叉出的走廊是 <strong>28–44K</strong>，Glassnode 官方熊底模型錨在 46–54K，時間窗指向 <strong>2027 Q1</strong>。目前 $64,290 <strong>還在這些區間之上</strong>——也就是說，就算 8–10 月真的連環爆，價格也還沒進到我們認定的深水區。</li>
+      <li><a href="yield-curve-inversion-window-2026.html" class="text-amber-400 hover:underline">《10Y3M 倒掛窗口》</a>：倒掛已於 2025 Q4 轉正，Estrella-Mishkin 模型的 6–24 個月前置窗口，<strong>正好覆蓋 2026 下半年到 2027</strong>。這是四雷最堅實的時間框架依據。</li>
+      <li><a href="mstr-mnav-below-1-risk-2026.html" class="text-amber-400 hover:underline">《mNAV 跌破 1》</a>：Strategy 的發股飛輪已經熄火——這解釋了為什麼這一輪 BTC 下跌時，<strong>少了一個過去總在買的機構承接方</strong>。</li>
+      <li><a href="kondratieff-wave-trader-notes-2026.html" class="text-amber-400 hover:underline">《康波長週期》</a>：第五波的退場儀式還沒走完。四雷是這場儀式裡的插曲，不是儀式本身。</li>
+    </ul>
+
+    <p>換句話說：<strong>如果 10 月真的出現那個劇本，它比較可能是「時間被壓縮」，而不是「結論被改寫」。</strong></p>
+
+    <h2>九、為什麼 8–10 月也可能什麼事都沒有</h2>
+
+    <p>一篇只講單邊的風險分析，不值得你拿來做決策。所以這一章，我要盡力反駁我自己。</p>
+
+    <div class="bull-card mb-6">
+      <div class="text-green-400 font-bold mb-3">🟢 五個站得住的反方論點</div>
+      <ol class="text-sm text-slate-300 leading-relaxed pl-5 space-y-2">
+        <li><strong>解禁壓力被高估。</strong>股價低於發行價 $135，早期投資人賣在帳面虧損的意願低；分批釋出本身就是為了避免一次性衝擊；加速條款完全未觸發。</li>
+        <li><strong>地緣溢價衰減極快。</strong>2019 沙烏地 Abqaiq、2022 俄烏、2024 紅海——每一次都是急漲之後數週回吐。改道與備援管線是<strong>已知解方</strong>，不是未知風險。而且 40.7% 觸及 $100 的另一面，是 <strong>59.3% 不會</strong>。</li>
+        <li><strong>聯準會分裂 = 政策惰性。</strong>9:9 對半分裂最自然的結果是按兵不動，不是升息。</li>
+        <li><strong>槓桿高 ≠ 立即反轉。</strong>1999 年末訊號出現後，市場又漲了好幾個月；2021 春訊號之後，漲到年底。融資餘額是<strong>順週期</strong>指標——它證明多頭還有燃料，轉折需要外部觸發。而且本輪年增（53.7%）低於前三次全部，佔市值比更是四次最低。</li>
+        <li><strong>恐懼已經先行。</strong>BTC 恐懼貪婪指數 29、韓台日三個市場已經先跌了一輪。<strong>「所有人都在等崩盤」本身，就是崩盤不容易發生的理由之一。</strong></li>
+      </ol>
+    </div>
+
+    <p>還有一個更根本的反問：<strong>亞洲已經跌完了一大段，這到底是「預告片」還是「已經演完了」？</strong>我沒有答案。這正是為什麼我給的是觀察框架，不是預測。</p>
+
+    <h2>十、三個行動指南（觀察與準備，不是操作建議）</h2>
+
+    <div class="ceo-card mb-6">
+      <div class="text-amber-400 font-bold mb-3">🎯 我自己在做的三件事</div>
+      <ol class="text-sm text-slate-300 leading-relaxed pl-5 space-y-2">
+        <li><strong>檢查集中度，而不是猜方向。</strong>打開帳戶算一個數字：科技股／單一市場佔比是不是超過 60%？韓國這次的教訓非常直白——槓桿高度集中在三星與 SK 海力士兩檔，而它們合計超過 KOSPI 權重的一半。<strong>集中度不是靠預測解決的，是靠分散。</strong></li>
+        <li><strong>盯油價，不要盯 SpaceX。</strong>SpaceX 解禁是噪音——日期公開、規模公開、已被定價。真正該盯的是 <strong>WTI 是否站上 $95</strong>：那是「地緣事件」升級成「通膨事件」的分水嶺。反過來，如果中東緩和、油價回落，引信最短的那顆就等於自己熄了。</li>
+        <li><strong>準備波動資金，而且別讓它躺著。</strong>當別人被強制平倉時，你手上的現金就是議價權。但等待期可能長達數月——<a href="../lending.html" class="text-amber-400 hover:underline">USD 穩定幣放貸</a>這類不賭方向的現金流工具，就是為了讓「等待」本身不至於零成本地空轉。</li>
+      </ol>
+    </div>
+
+    <p>這三件事有一個共同點：<strong>沒有一件需要你猜對哪顆雷先爆。</strong></p>
+
+    <h2>十一、寫在最後</h2>
+
+    <p>八月的紅圈畫在 SpaceX 上，但七月的帳單已經寄到韓國、台灣和日本了。</p>
+
+    <p>韓國 KOSPI 距高點約 −35%、今年第 8 次熔斷；台灣 717 單日跌掉 2,953 點；日本連三週去槓桿。而美國——<strong>margin debt 一年增加 5,000 億美元，指數距離歷史高點只有 2%，是四個市場裡唯一還沒開始還債的那一個。</strong></p>
+
+    <p>這不代表美國一定會走上同一條路。前面那五個反方論點，每一個我都認真對待。</p>
+
+    <p>但作為一個交易者，我要的從來不是「猜對」。我要的是——<strong>不管哪一顆先爆、或者哪一顆都沒爆，我的部位都活得下去。</strong></p>
+
+    <div class="final-quote">
+      這四顆雷，我一顆都擋不住。<br>
+      我唯一能做的是：讓部位<br>
+      <span class="text-amber-300">不必猜對哪顆先爆，也活得下去。</span>
+    </div>
+
+    <p class="text-center text-slate-500 italic">— 直播延伸整理，下次結構有重大變化我會再寫一篇。<br>Gteno @ CTA</p>
+
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">你不需要猜對，<span class="text-amber-400">你只需要還在場上</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">這四個窗口沒有一個能被準確預測。能被準備的只有兩件事：<br><strong>不賭方向的現金流</strong>，以及<strong>自己讀得懂結構的眼睛</strong>。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../lending.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解放貸機器人 &rarr;</a>
+        <a href="../course.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">裸 K 關鍵價位課程</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        本文為市場結構教育內容，<strong>不構成投資建議</strong>，不推薦任何個股、商品或加密資產的買賣。所有數據截至 <strong>2026-07-28</strong>：FINRA margin debt 為<strong>月度落後值</strong>（最新為 6 月），油價與機率定價每日變動，各市場槓桿數據截止日不一（已於表格標註），讀者應自行核實最新值。文中機率（如觸及 $100 為 40.7%）為<strong>市場定價推導，反映交易者預期，非事件實際發生率</strong>，亦非本文預測。高盛桶數、解禁比例、佔 GDP／市值比等為<strong>第三方估計</strong>，不同機構口徑可能顯著差異；韓國數據為媒體轉引 KOFIA，台灣櫃買部分因官方網站限制取自第三方且與上市數據非同一日期，<strong>不可自行相加</strong>。歷史類比（1999／2007／2021）僅為結構參照，FINRA 序列<strong>僅回溯至 1997 年</strong>，樣本數僅 4 次，不具統計推論效力，<strong>歷史績效不代表未來結果</strong>。本文明列反方觀點，情境分析為<strong>條件性推演</strong>，任一前提不成立則結論不成立；作者<strong>不預測時點</strong>。交易與槓桿涉及本金損失風險，請依個人風險承受度決策並諮詢合格專業人士，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">2026 風險地圖系列</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="mstr-mnav-below-1-risk-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場觀點 · 反身性</div>
+          <div class="font-bold text-white text-sm">mNAV 跌破 1：當比特幣財庫之王的飛輪熄火</div>
+        </a>
+        <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 結構底部</div>
+          <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+        </a>
+        <a href="yield-curve-inversion-window-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">CEO 直播 · 時間框架</div>
+          <div class="font-bold text-white text-sm">當美聯儲的水晶球響起：10Y3M 倒掛轉正後，我們已經身在窗口裡</div>
+        </a>
+        <a href="loss-recovery-math-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易策略 · 資金管理</div>
+          <div class="font-bold text-white text-sm">虧 50% 要賺 100% 才回本：為什麼「有賺就跑」的人，數學上注定輸</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../lending.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">了解放貸機器人 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
