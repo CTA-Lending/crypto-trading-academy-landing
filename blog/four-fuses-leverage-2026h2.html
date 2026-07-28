@@ -384,9 +384,9 @@
         </tr>
         <tr>
           <td>🇹🇼 台灣<br><span class="text-xs text-slate-500">融資餘額（上市）</span></td>
-          <td>兩市合計 8,134.8 億<br><span class="text-xs text-slate-500">6/22</span></td>
-          <td class="danger">上市 5,686.6 億<br><span class="text-xs">（7/27）</span></td>
-          <td class="danger">加權 <strong>−8.61%</strong></td>
+          <td>上市 6,208 億<br><span class="text-xs text-slate-500">7/02</span></td>
+          <td class="danger">上市 5,826 億<br><span class="text-xs">（7/23，−6.2%）</span></td>
+          <td class="danger">加權 <strong>−11.1%</strong><br><span class="text-xs">（7/20 低點）</span></td>
         </tr>
         <tr>
           <td>🇯🇵 日本<br><span class="text-xs text-slate-500">信用買殘</span></td>
@@ -423,7 +423,23 @@
       </p>
     </div>
 
-    <p><strong>台灣這邊</strong>同樣值得警惕：融資餘額在 6/22 創下兩市合計 8,134.8 億的歷史紀錄（其中上市 6,050.4 億），加權指數 6/22 收在歷史最高 47,741.51 點。然後 <strong>7/17 單日崩跌 2,953.71 點（−6.5%）</strong>，融資維持率當日降到 <strong>148.34%</strong>——距離 130% 的追繳線，只剩 18 個百分點。</p>
+    <p><strong>台灣這邊</strong>同樣值得警惕，而且有一個細節特別值得看。我們直接串接台灣證券交易所的官方 API，把 2018 年以來的融資餘額與加權指數拉出來對照，得到這張圖：</p>
+
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/tw-margin-vs-taiex.jpg?v=1" alt="台股融資餘額 vs 加權指數 2018-2026:指數 6/22 見頂,融資 7/02 才見頂,散戶在頭部後又加碼 10 天" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">加權指數 6/22 見頂 47,742，融資餘額卻到 <strong>7/02 才見頂 6,208 億</strong>——中間隔了 10 天（圖中放大鏡的琥珀色區塊）。資料：台灣證券交易所官方 API（MI_MARGN 融資金額・上市／FMTQIK 加權指數）。</figcaption>
+    </figure>
+
+    <p>這張圖真正的重點不在「創新高」三個字，而在<strong>那 10 天的時間差</strong>：</p>
+
+    <ul>
+      <li><strong>加權指數在 6/22 就見頂了</strong>，收在歷史最高的 47,741.51 點。</li>
+      <li><strong>但融資餘額還在往上加。</strong>6/25 來到 6,110 億、<strong>7/02 才見頂於 6,208 億（上市）</strong>。（媒體報導的 6/22「兩市合計 8,134.8 億」是首度突破 8,000 億的里程碑，不是最終高點。）</li>
+      <li>然後 <strong>7/17 單日崩跌 2,953.71 點（−6.5%）</strong>，融資維持率當日降到 <strong>148.34%</strong>——距離 130% 的追繳線只剩 18 個百分點。指數在 7/20 探底 42,450，<strong>距高點 −11.1%</strong>。</li>
+      <li>融資到 7/23 降至 5,826 億，較峰值回落 6.2%——去槓桿正在進行。</li>
+    </ul>
+
+    <p>換句話說：<strong>指數已經轉頭了，散戶還在加碼，而且一加就是兩週。</strong>這不是事後諸葛——這是融資餘額這個數字每天都在公開告訴你的事，只是很少人去看。</p>
 
     <p>更值得注意的是監理面的動作：<strong>金管會在 7/27–28 點名三大風險，其中「四貸同堂」</strong>——房貸、車貸、信貸、股票融資疊在一起炒股——這個詞本身就說明了問題的性質。</p>
 
