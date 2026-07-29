@@ -1,6 +1,155 @@
 {
   "days": [
     {
+      "day": "2026-07-29",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 33.3,
+        "warning": false,
+        "families": 3,
+        "note": "跨家族組合分散=較健康"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "AKE": 12.5,
+            "BANK": 12.5,
+            "ON": 12.5,
+            "LAB": 12.5,
+            "DEXE": -12.5,
+            "EUL": 12.5,
+            "RIF": -12.5,
+            "ONDO": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -7.061
+        },
+        "gpt": {
+          "alloc": {
+            "XAU": 10.0,
+            "SOL": 6.0,
+            "ONDO": 8.0,
+            "ETH": -8.0,
+            "HYPE": 4.0,
+            "ADA": 4.0,
+            "BTC": -5.0,
+            "ZEC": -4.0,
+            "BNB": -3.0,
+            "DOGE": 3.0,
+            "XRP": 3.0,
+            "1000PEPE": 3.0,
+            "EUL": 2.0,
+            "AKE": 2.0,
+            "BANK": 2.0,
+            "RIF": -2.0,
+            "DEXE": -2.0
+          },
+          "reason": "保留核心多頭，削弱高波動/弱勢空單；總曝險降至64，留較多現金應對波動。",
+          "outcome": -3.226
+        },
+        "gemini": {
+          "alloc": {
+            "BNB": -15.0,
+            "SOL": -10.0,
+            "BTC": -10.0,
+            "ETH": -5.0,
+            "ONDO": 10.0,
+            "XRP": 10.0,
+            "BANK": 3.0,
+            "1000PEPE": 5.0
+          },
+          "reason": "SOL訊號轉空，反手做空；BNB、BTC、ETH續空；ONDO、XRP、BANK持多；增配強勢PEPE多單，控總曝險在68%。",
+          "outcome": -2.71
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "SOL": 8.0,
+            "ONDO": 8.0,
+            "ETH": -6.0,
+            "BNB": -5.0,
+            "ADA": 5.0,
+            "DOGE": 5.0,
+            "AKE": 6.0,
+            "BANK": 4.0,
+            "EUL": 3.0,
+            "XAU": 2.0,
+            "1000PEPE": 3.0,
+            "XRP": 2.0,
+            "ZEC": -2.0,
+            "ON": 3.0,
+            "LAB": 2.0,
+            "WLD": -2.0
+          },
+          "reason": "減碼虧損頭寸(BTC/SOL),鎖定極端漲幅(AKE 982%入場風險),ON/LAB多頭補充,短端控風險。總曝險85%,現金15%。近4日-3.93%,降槓桿穩陣。",
+          "outcome": -3.155
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 14.0,
+            "ETH": 14.0,
+            "BNB": 10.0,
+            "SOL": 9.0,
+            "XAU": 8.0,
+            "ONDO": 5.0,
+            "ZEC": 5.0,
+            "XRP": 4.0,
+            "ADA": 3.0,
+            "DOGE": -2.0
+          },
+          "reason": "維持核心多頭，減少高波動山寨暴露；DOGE小空對沖風險，總曝險79%不變。",
+          "outcome": -1.873
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 8.0,
+            "ETH": -6.0,
+            "SOL": 5.0,
+            "ONDO": 8.0,
+            "ADA": 4.0,
+            "XRP": 4.0,
+            "ZEC": -5.0,
+            "XAU": 3.0,
+            "DOGE": 3.0,
+            "EUL": 4.0,
+            "1000PEPE": 1.0,
+            "WLD": -3.0,
+            "BNB": -4.0
+          },
+          "reason": "虧損-2.71%下調暴險至51%避免擁擠。減BTC/ONDO防高位,增EUL/DOGE低位反彈。空單(ETH/-6、ZEC/-5)對沖牛市風險,現金保留49%待機。",
+          "outcome": -1.743
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -2.087
+        },
+        "bench_eqw": {
+          "alloc": {
+            "AKE": 10.0,
+            "BANK": 10.0,
+            "ON": 10.0,
+            "LAB": 10.0,
+            "DEXE": 10.0,
+            "EUL": 10.0,
+            "RIF": 10.0,
+            "ONDO": 10.0,
+            "WLD": 10.0,
+            "ZEC": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -4.053
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0
+        }
+      }
+    },
+    {
       "day": "2026-07-27",
       "next_day": null,
       "crowding": {
@@ -780,5 +929,5 @@
       }
     }
   ],
-  "total_days": 6
+  "total_days": 7
 }
