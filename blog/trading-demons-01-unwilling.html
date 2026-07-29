@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不甘心：停損那一刻，市場早就忘了你 — 交易心魔系列 — 交易幣修課</title>
+  <meta name="description" content="不甘心不是不服輸，是不服「我剛剛承認我錯了」。它讓你把停損往下挪一次、再一次，最後刪掉。本文拆解它的長相、收費方式、心理機制，以及一個當天就能做的動作。">
+  <meta name="keywords" content="不甘心,停損,交易心理,凹單,交易紀律">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/trading-demons-01-unwilling.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="交易心魔系列 02｜不甘心：停損那一刻，市場早就忘了你">
+  <meta property="og:description" content="你對抗的從來不是行情，是「證明我對」的那股執念。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/trading-demons-01-unwilling.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="article:published_time" content="2026-07-29">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "不甘心：停損那一刻，市場早就忘了你",
+    "description": "不甘心不是不服輸，是不服「我剛剛承認我錯了」。它讓你把停損往下挪一次、再一次，最後刪掉。本文拆解它的長相、收費方式、心理機制，以及一個當天就能做的動作。",
+    "datePublished": "2026-07-29",
+    "dateModified": "2026-07-29",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/trading-demons-01-unwilling.html"},
+    "isPartOf": {"@type": "CreativeWorkSeries", "name": "交易心魔系列"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">交易心魔系列 02</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">CEO 心法 ｜ 交易心魔系列 02</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">不甘心：<br class="hidden md:block">停損那一刻，市場早就忘了你</h1>
+      <p class="text-lg text-slate-400 mb-6">你對抗的從來不是行情，是「證明我對」的那股執念。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-07-29</span><span>•</span><span>⏱ 閱讀約 8 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+      <div class="text-xs text-slate-500 bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-3">
+        本文為<strong class="text-slate-400">「交易心魔系列」</strong>第 2 篇（共 14 篇）。
+        <a href="trading-demons-00-overview.html" class="text-amber-400 hover:underline">從總論開始讀 &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <div class="pull-quote">你對抗的從來不是行情，是「證明我對」的那股執念。</div>
+    <p>那根 K 已經跌破我的停損。數字是紅的，很小的紅。我卻沒有出。</p>
+    <p>因為我不甘心。不甘心的不是那點錢——是我明明看對了方向，只是早進了兩根 K。我不想讓市場「贏」，於是我加了倉，告訴自己這叫攤平。那天收盤，一筆小虧，變成了大虧的三倍。</p>
+    <p>後來我才想明白：那筆單我對抗的從來不是行情，是「證明我對」的執念。市場在我停損那一刻就已經忘了我，只有我還站在原地，跟一個根本不記得我的對手較勁。</p>
+    <p>這篇要講的，就是我怎麼學會——在紅字亮起的那 15 分鐘，先離開螢幕。</p>
+    <h2>一、「不甘心」在交易裡長什麼樣</h2>
+    <p>它很少一次現形，而是換著臉出現：跌破停損，你把手拿開，「再等一根」；浮虧擴大，你加碼，「攤平成本」；價格繼續走，你把停損往後移，「給它一點空間」；最後乾脆刪掉停損，「反正等回本就走」。</p>
+    <p>這四個動作，說的都是同一句話：<strong>我不接受我錯了。</strong></p>
+    <p>（它跟旁邊幾張臉不同：不甘心專屬的味道，是「我明明看對、只是時機早了」那口不服氣——不是要證明方向對到底（那是執著），也不是虧完想開新單洩憤（那是報復）。它只在「同一筆單」上，不肯認賠。）</p>
+    <h2>二、它如何一步步把小虧凹成大虧</h2>
+    <p>不甘心最狠的地方，是每一步都感覺很「理性」。攤平——聽起來像降低成本；再等一下——聽起來像有耐心；都要回來了——聽起來像有把握。於是小虧變中虧、中虧變大虧，資金被一筆早該結束的單子鎖死，你連下一個真正的好機會都沒有子彈進場。</p>
+    <p>你以為你在等回本。其實你在用<strong>一次錯誤的成本，去買更多同一個錯誤。</strong></p>
+    <h2>三、為什麼你的大腦這麼難認賠（三個學理）</h2>
+    <p>這不是你意志力差，是三個內建的認知偏誤在同時作用：</p>
+    <ul><li><strong>損失規避</strong>（Kahneman &amp; Tversky 展望理論）：虧 1,000 的痛，大約等於賺 2,000 的爽。大腦把「按下停損、把浮虧變成真虧」當成一次真實的痛，於是本能地拖延。</li><li><strong>處置效應</strong>（disposition effect）：人天生「賺的太早跑、虧的死命抱」——剛好跟「賺錢」的邏輯相反。</li><li><strong>沉沒成本謬誤</strong>：已經虧掉的錢救不回來，但大腦會用「我都已經投入這麼多了」逼你追加，把回不來的成本，當成繼續下去的理由。</li></ul>
+    <p>看懂這點很重要：<strong>對抗不甘心，靠「叫自己理性一點」是贏不了的</strong>——因為敵人正是理性本身被騙的方式。你需要的不是更強的意志力，是一個動作。</p>
+    <h2>四、正念解法：把「我要回本」還原成「此刻我在痛」</h2>
+    <p>正念不是打坐、不是心靈雞湯。它在交易裡只有一個意思——<strong>不帶評判地，看清此刻腦子裡真正在發生什麼。</strong></p>
+    <p>當你想凹單，停下來，替那個念頭貼一張標籤，而且真的動手貼：在單子旁邊寫下一行字——*我現在的感覺，不是「行情會回來」，是「我不想承認我錯了」。* 寫出來的那一秒，你就看清那是情緒、不是判斷，它的力量就鬆了一半。</p>
+    <p>然後換一句話重新定義這筆虧損：<strong>虧損，是我為了「買到市場的資訊」付的成本，不是市場在否定我這個人。</strong> 停損出場的那一刻，市場已經不記得我了。</p>
+    <div class="insight-card my-8"><p class="mb-2 last:mb-0">停損那一刻，市場早就忘了你。</p><p class="mb-2 last:mb-0">放不下的，一直是你自己。</p></div>
+    <p>要放下的，是「證明我對」的執念——<strong>不是放下你的判斷</strong>。這兩件事一定要分清楚。</p>
+    <h2>五、今天就能做的一個練習</h2>
+    <p><strong>停損觸發後，強制離場 15 分鐘。</strong> 起身、離開螢幕、喝水。回來之後，只准問一句話：「下一個關鍵價位在哪裡？」——不准問「剛才那筆」。</p>
+    <p>這 15 分鐘不是浪費，是策略的一部分。它讓情緒的峰值過去，讓你用清醒的前額葉、而不是還在流血的傷口，做下一個決定。</p>
+    <p>而這正好接回裸 K 心法：<strong>一條關鍵價位被有效跌破，就是市場親手替你寫好的認賠理由。</strong> 你不甘心地凹單，本質上是拿自己的判斷，去跟市場最清楚的那個訊號對賭。看得懂關鍵價位怎麼進場的人很多；看得懂「我錯了」長什麼樣、並且願意在那條線被跌破時放手的人，才真正活得久。</p>
+    <hr class="my-10 border-slate-800">
+    <p>我花了三倍的錢，換來一句話：<strong>認賠不是輸，是保留下一次贏的資格。</strong> 那條紅字不是市場在說你笨，是市場在說「這裡不是」。早一點聽懂，你就還有子彈，站到對的那一次。</p>
+    <div class="final-quote"><strong>認賠不是認輸——是保留下一次贏的資格。</strong></div>
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-12 flex justify-between text-sm text-slate-400">
+    <a href="trading-demons-00-overview.html" class="hover:text-amber-400 transition">&larr; 上一篇</a>
+    <a href="./" class="hover:text-amber-400 transition">回文章列表</a>
+    <a href="trading-demons-02-greed.html" class="hover:text-amber-400 transition">下一篇 &rarr;</a>
+  </div>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">看見它，是<span class="text-amber-400">馴服它的起點</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">心魔對治的最後一步，永遠落在同一個動作上——<br>這條關鍵價位被有效跌破，你走不走。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="./" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">看完整系列</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>交易心理與行為教育內容，不構成任何投資、財務或交易建議</strong>。交易幣修課 CTA 及本文作者非證券投資顧問事業，不提供個股、標的、進出場點位或槓桿倍數之建議。文中作者個人經驗僅為個別情況，不代表一般結果，亦不預示未來績效。交易與槓桿涉及本金損失風險，請依個人風險承受度決策，並參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易策略 · 心法基礎</div>
+          <div class="font-bold text-white text-sm">裸K交易入門：為什麼不需要指標也能判斷行情？</div>
+        </a>
+        <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 結構底部</div>
+          <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+        </a>
+        <a href="financial-market-dungeon.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">CEO 心法</div>
+          <div class="font-bold text-white text-sm">進入金融市場前，你準備好了嗎？地下城副本生存指南</div>
+        </a>
+        <a href="mstr-mnav-below-1-risk-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場觀點 · 風險提示</div>
+          <div class="font-bold text-white text-sm">mNAV 跌破 1：當比特幣財庫之王的飛輪熄火</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
