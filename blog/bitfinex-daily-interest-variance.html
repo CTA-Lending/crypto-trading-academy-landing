@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>為什麼放貸金額沒變，每天領到的利息卻不一樣？ — 交易幣修課</title>
+  <meta name="description" content="放貸新手最常問：金額一樣、利率沒動，為什麼每天領到的利息不一樣？本文逐項拆解 Bitfinex 官方計息公式（以秒計息、15% 手續費、日利率×365=年化），說明四個造成單日波動的原因、「借單存續 vs 到期重掛」的關鍵區別，以及一套 30 天平均自我驗算法。">
+  <meta name="keywords" content="Bitfinex放貸,放貸利息,計息公式,日利率,年化,Margin Funding,放貸手續費,放貸教學,利息驗算">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/bitfinex-daily-interest-variance.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="為什麼放貸金額沒變，每天領到的利息卻不一樣？">
+  <meta property="og:description" content="一條官方公式、四個波動來源，以及「什麼時候該檢查、什麼時候不用擔心」的判斷方法。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/bitfinex-daily-interest-variance.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/lending-daily-interest.jpg">
+  <meta property="article:published_time" content="2026-07-30">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "為什麼放貸金額沒變，每天領到的利息卻不一樣？",
+    "description": "一條官方公式、四個波動來源，以及「什麼時候該檢查、什麼時候不用擔心」的判斷方法。",
+    "datePublished": "2026-07-30",
+    "dateModified": "2026-07-30",
+    "image": "https://crypto-trading-academy.com/blog/assets/lending-daily-interest.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/bitfinex-daily-interest-variance.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">放貸利息為何每天不同</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">放貸專區 ｜ 計息機制</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">為什麼放貸金額沒變，<br class="hidden md:block">每天領到的利息卻不一樣？</h1>
+      <p class="text-lg text-slate-400 mb-6">一條官方公式、四個波動來源，以及「什麼時候該檢查、什麼時候不用擔心」的判斷方法。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-07-30</span><span>•</span><span>⏱ 閱讀約 8 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/lending-daily-interest.jpg?v=1" alt="玻璃瓶被大小不一的琥珀色水滴逐滴注滿，瓶身刻度顯示水位以穩定等距上升" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">每一滴的大小都不一樣。但水位，一天一天等速地升。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <div class="pull-quote">Bitfinex 計息機制完整拆解：一條官方公式、四個波動來源，以及「什麼時候該檢查、什麼時候不用擔心」的判斷方法。</div>
+    <p>這是放貸新手最常問的一個問題，通常出現在開始放貸的第一週：</p>
+    <div class="pull-quote">「我的錢都借出去了，金額一樣、利率也沒動，為什麼昨天領 1.2 美元、今天只領 0.9，前天卻領了 1.4？是不是被少算了？」</div>
+    <p>先講結論：<strong>在借單與利率都沒變的情況下，單日利息本來就會上下跳動；但把天數拉長平均，會精確收斂到公式算出來的數字。</strong> 這不是平台少給，是計息與結算方式造成的正常現象。</p>
+    <p>這篇把整件事拆開講清楚——包括那條官方公式、每一項參數的意思、四個造成單日波動的原因，以及一套你自己就能動手驗算的方法。</p>
+    <h2>一、先看官方公式：你的利息是這樣算出來的</h2>
+    <p>Bitfinex 官方說明中心公開的保證金融資（Margin Funding）利息公式是：</p>
+    <div class="pull-quote"><strong>利息 ＝ 數量 ×（日利率 ÷ 100）×（秒數 ÷ 86,400）× 0.85</strong></div>
+    <p>逐項拆開：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th>參數</th><th>意思</th></tr></thead><tbody><tr><td>數量</td><td>你被借走的金額（不是掛單金額——掛著沒人借走的部分不計息）</td></tr><tr><td>日利率 ÷ 100</td><td>Bitfinex 的利率報價是<strong>日利率</strong>，例如 0.06 代表每天 0.06%</td></tr><tr><td>秒數 ÷ 86,400</td><td><strong>以秒計息</strong>。86,400 是一天的秒數，借幾秒就算幾秒</td></tr><tr><td>× 0.85</td><td>平台收取 15% 手續費後，你實拿 85%（隱藏掛單手續費為 18%，實拿 82%）</td></tr></tbody></table></div>
+    <p>兩個容易忽略的細節：</p>
+    <ul><li><strong>不滿一小時以一小時計</strong>：借款人若在一小時內還款，利息仍以一小時計算。</li><li><strong>入帳有精度門檻</strong>：利息以小數點後 8 位計算，過小的金額可能因精度而暫不入帳。</li></ul>
+    <h3>日利率和年化的換算</h3>
+    <p>新手最常混淆的一點：Bitfinex 介面上的報價是<strong>日利率</strong>，而大家習慣講的是<strong>年化</strong>。換算就是乘 365：</p>
+    <div class="pull-quote">日利率 0.06% × 365 ＝ 年化 21.9%</div>
+    <p>所以看到「0.06」不要以為一年只有 0.06%——那是<strong>一天</strong>的利率。</p>
+    <h3>用官方範例實算一次</h3>
+    <p>假設你有 10,000 美元被以日利率 0.06%（年化 21.9%）借走一整天：</p>
+    <ul><li>毛利息：10,000 × 0.06% ＝ <strong>6.00 美元</strong></li><li>手續費 15%：6.00 × 0.15 ＝ 0.90 美元</li><li><strong>實拿：5.10 美元／天</strong></li></ul>
+    <p>這就是你「理論上」每天該領到的數字。接下來的問題是——為什麼實際入帳常常不等於它？</p>
+    <h2>二、四個原因，讓單日數字上下跳</h2>
+    <h3>原因一：計息以秒，結算以「天」切帳</h3>
+    <p>利息是一秒一秒累積的，但入帳是以「結算日」為單位切割的。你的借單起訖時間不會剛好對齊結算的切點，所以<strong>每個結算日實際包含的計息秒數不完全相同</strong>——有的日子多切到一點，有的少切到一點。</p>
+    <p>單日看會忽高忽低；多日加總，秒數一秒不少。</p>
+    <h3>原因二：你的錢通常不是「一筆」借單</h3>
+    <p>掛出 10,000 美元，實際上常被拆成好幾筆成交：3,000 借給 A、5,000 借給 B、2,000 借給 C，各有各的成交時間、天期與到期日。<strong>每筆單獨計息、單獨結算</strong>，每天入帳的是「當天剛好結算到的那幾筆」的組合——組合天天不同，單日總額自然天天不同。</p>
+    <h3>原因三：第一天是「部分計息」</h3>
+    <p>下午才成交的借單，第一個結算日只計了半天不到的秒數。這就是為什麼<strong>剛開始放貸的頭一兩天，利息會特別少、甚至顯示為 0</strong>——不是壞掉，是第一刀切下去只切到幾個小時，加上結算與入帳本身有延遲。我們處理過不少新用戶的詢問，最後都是同一個答案：等 24 到 48 小時，數字就正常了。</p>
+    <h3>原因四：精度與湊整</h3>
+    <p>利息計算到小數點後 8 位，每筆結算各自湊整。單筆看差距是 0.00000001 這種等級，感覺不到；但它解釋了為什麼你自己驗算時，會跟實際入帳差了尾數幾位——那不是誤差，是精度切割。</p>
+    <h2>三、真正該分清楚的：借單「存續中」還是「到期重掛」了？</h2>
+    <p>上面四個原因，都建立在「同一筆借單持續存在」的前提上。但實務上，<strong>利息變動最大的原因往往不是以上任何一個</strong>，而是：</p>
+    <div class="pull-quote"><strong>你的借單到期了，重新掛出去的利率，已經不是原來那個利率。</strong></div>
+    <p>Bitfinex 的借單有天期（2 天到 120 天）。到期之後資金回到錢包，重新掛單成交的利率跟著<strong>當時的市場</strong>走——市場熱，成交利率高；市場冷，成交利率低。這時每天的利息不同，不是計算問題，是<strong>你的利率真的變了</strong>。</p>
+    <p>所以看到利息變動，先分兩種情況：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th>情況</th><th>該看什麼</th><th>該不該擔心</th></tr></thead><tbody><tr><td>同一筆借單存續中，單日金額跳動</td><td>多天平均是否貼近公式值</td><td>不用。這是結算切割的正常現象</td></tr><tr><td>借單到期重掛，之後每天變少（或變多）</td><td>新成交的利率與當時市場利率</td><td>這是市場變化，不是被少算——該關注的是掛單策略跟不跟得上市場</td></tr></tbody></table></div>
+    <h2>四、多天平均會收斂——你可以自己驗證</h2>
+    <p>同一筆借單如果長期存續，會觀察到一個穩定的現象：<strong>單日入帳有高有低，但拉長到一個月平均，會幾乎精確等於公式算出來的每日金額</strong>；每筆借單期滿後的利息總額，也會等於公式計算的總額。</p>
+    <p>你可以自己動手驗算，三步：</p>
+    <ol><li>在 Bitfinex 的 Funding 頁面找到你的借單：金額、日利率、天期。</li><li>套公式：金額 ×（日利率 ÷ 100）× 0.85 ＝ 理論日息。</li><li>把最近 30 天的實際利息入帳加總、除以 30，對照第 2 步的數字。</li></ol>
+    <p>只要借單存續、利率沒變，兩個數字會非常接近。<strong>對不上再來查；對得上，就不用每天盯著單日數字焦慮。</strong></p>
+    <p>順帶一提，這也是為什麼我們自己的放貸後台，年化報酬顯示用的是 <strong>30 天滾動平均</strong>、而不是拿單日利息 × 365——單日年化會因為上面四個原因劇烈跳動，給你的是雜訊；30 天平均給你的才是真實水位。</p>
+    <h2>五、給新手的三句話</h2>
+    <ol><li><strong>第一天利息很少或是 0，先等 24–48 小時</strong>——部分計息加結算延遲，幾乎都不是故障。</li><li><strong>單日數字是雜訊，多天平均才是訊號</strong>——驗算用 30 天平均對公式，不要用某一天。</li><li><strong>利息真的持續變少時，先看利率而不是懷疑計算</strong>——十之八九是借單到期重掛、市場利率變了。</li></ol>
+    <div class="final-quote">放貸的本質是把錢借給市場收利息。利息怎麼算，平台寫得清清楚楚；真正影響你長期報酬的，從來不是哪一天被「少算」了幾分錢，而是你的資金<strong>有多少比例、以什麼利率、持續地被借走</strong>。</div>
+    <hr class="my-10 border-slate-800">
+    <h2>免責聲明</h2>
+    <ol><li>本文為教育性說明，不構成任何投資建議、招攬或收益保證。</li><li>文中公式、手續費率與計息規則引自 Bitfinex 官方說明中心，以平台當下公告為準，並得隨時調整。</li><li>加密貨幣放貸涉及平台風險、市場風險與流動性風險；境外交易平台未受我國主管機關監理，不具投資人保護、賠償或爭議處理機制。</li><li>歷史利率與算例不代表未來報酬。任何決策請依個人風險承受度自行評估。</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h3>資料來源</h3>
+    <ul><li>Bitfinex Help Center,〈How are the Funding interest earnings and fees calculated at Bitfinex〉（利息公式與 15%／18% 手續費）。<a href="https://support.bitfinex.com/hc/en-us/articles/360024039494-How-are-the-Funding-interest-earnings-and-fees-calculated-at-Bitfinex" class="text-amber-400 hover:underline" target="_blank" rel="noopener">support.bitfinex.com &#8599;</a></li><li>Bitfinex Help Center,〈How is Funding interest calculated on Bitfinex〉（以秒計息、精度規則）。<a href="https://support.bitfinex.com/hc/en-us/articles/213918989-How-is-Funding-interest-calculated-on-Bitfinex" class="text-amber-400 hover:underline" target="_blank" rel="noopener">support.bitfinex.com &#8599;</a></li><li>Bitfinex Help Center,〈Margin Funding interest on Bitfinex〉。<a href="https://support.bitfinex.com/hc/en-us/articles/115004554309-Margin-Funding-interest-on-Bitfinex" class="text-amber-400 hover:underline" target="_blank" rel="noopener">support.bitfinex.com &#8599;</a></li></ul>
+    <p class="text-xs text-slate-600 mt-6">資料截取日：2026-07-30｜內容製作日：2026-07-30</p>
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">真正影響報酬的，<span class="text-amber-400">是掛單跟不跟得上市場</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">計息公式人人相同——差別在你的資金有多少比例、以什麼利率、持續地被借走。<br>這件事，可以交給每天 24 小時盯著市場利率的機器人。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../lending.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解放貸機器人 &rarr;</a>
+        <a href="apr-vs-apy-explained.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">APR 與 APY 差在哪？</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>教育性說明，不構成任何投資建議或收益保證</strong>。計息規則與費率以 Bitfinex 官方公告為準，並得隨時調整。加密貨幣放貸涉及平台、市場與流動性風險，境外平台未受我國主管機關監理。請參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易策略 · 心法基礎</div>
+          <div class="font-bold text-white text-sm">裸K交易入門：為什麼不需要指標也能判斷行情？</div>
+        </a>
+        <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 結構底部</div>
+          <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+        </a>
+        <a href="financial-market-dungeon.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">CEO 心法</div>
+          <div class="font-bold text-white text-sm">進入金融市場前，你準備好了嗎？地下城副本生存指南</div>
+        </a>
+        <a href="mstr-mnav-below-1-risk-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場觀點 · 風險提示</div>
+          <div class="font-bold text-white text-sm">mNAV 跌破 1：當比特幣財庫之王的飛輪熄火</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
