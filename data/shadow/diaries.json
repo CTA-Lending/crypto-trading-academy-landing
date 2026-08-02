@@ -1,6 +1,160 @@
 {
   "days": [
     {
+      "day": "2026-08-02",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 23.0,
+        "warning": false,
+        "families": 3,
+        "note": "跨家族組合分散=較健康"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "AKE": 12.5,
+            "ON": 12.5,
+            "KOMA": 12.5,
+            "LAB": 12.5,
+            "DEXE": -12.5,
+            "COTI": 12.5,
+            "EUL": 12.5,
+            "BANK": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": 3.126
+        },
+        "gpt": {
+          "alloc": {
+            "XAU": 10.0,
+            "XRP": 6.0,
+            "SOL": 6.0,
+            "BNB": 5.0,
+            "DOGE": 4.0,
+            "BTC": 4.0,
+            "ONDO": 5.0,
+            "ETH": -6.0,
+            "ZEC": -4.0,
+            "HYPE": -3.0,
+            "WLD": -3.0,
+            "LAB": 2.0,
+            "COTI": 2.0,
+            "EUL": 2.0,
+            "ADA": 2.0,
+            "ON": 2.0,
+            "1000PEPE": -2.0
+          },
+          "reason": "保留防守核心，減弱高波動空頭與弱多，轉向低波動與強趨勢標的。",
+          "outcome": -0.285
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": -10.0,
+            "SOL": -10.0,
+            "BNB": -10.0,
+            "ETH": -5.0,
+            "XRP": 10.0,
+            "ONDO": 10.0,
+            "WLD": -5.0,
+            "1000PEPE": -5.0
+          },
+          "reason": "維持現有配置並整數化。大盤距關鍵價近，保持防禦不追高波動幣，靜待趨勢確立。",
+          "outcome": 0.141
+        },
+        "claude": {
+          "alloc": {
+            "AKE": 8.0,
+            "BTC": 6.0,
+            "ONDO": 7.0,
+            "SOL": -4.0,
+            "ADA": 4.5,
+            "DOGE": -3.0,
+            "ETH": -3.5,
+            "BNB": -2.5,
+            "EUL": 3.0,
+            "ON": 2.5,
+            "XRP": 2.0,
+            "XAU": 1.5,
+            "WLD": -1.5,
+            "COTI": 1.5,
+            "ZEC": -1.0,
+            "LAB": 1.0,
+            "HYPE": -0.5,
+            "RIF": -0.5
+          },
+          "reason": "連4日淨虧損(-7.34%)表現弱。減碼高波動(AKE/LAB),止損做空DOGE/HYPE(持續虧),加碼穩健多頭(BTC/ONDO/ADA)。降曝險至65%,保護現金緩衝。",
+          "outcome": 3.131
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 18.0,
+            "ETH": 12.0,
+            "BNB": 10.0,
+            "SOL": 8.0,
+            "XAU": 8.0,
+            "DOGE": -5.0,
+            "ONDO": 5.0,
+            "ZEC": 4.0,
+            "XRP": 3.0,
+            "ADA": 2.0,
+            "WLD": 5.0
+          },
+          "reason": "降部分高相關多頭，保留核心趨勢；增WLD分散，維持DOGE空頭。總曝險82%",
+          "outcome": -0.614
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 8.0,
+            "ETH": -8.0,
+            "SOL": -6.0,
+            "BNB": -5.0,
+            "ONDO": 6.0,
+            "EUL": 5.0,
+            "COTI": 5.0,
+            "XRP": 4.0,
+            "ADA": 4.0,
+            "ON": 3.0,
+            "XAU": 3.0,
+            "DOGE": -3.0,
+            "WLD": -3.0,
+            "ZEC": -2.0,
+            "RIF": -2.0,
+            "HYPE": -1.0
+          },
+          "reason": "近日連跌,降曝險至45%保現金優勢。保核心多頭(BTC/ONDO/EUL),鞏固短線空頭(ETH/SOL/BNB)。減超高波動(AKE/KOMA/LAB)風險。認錯DOGE從多改空。",
+          "outcome": 0.141
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.223
+        },
+        "bench_eqw": {
+          "alloc": {
+            "AKE": 10.0,
+            "ON": 10.0,
+            "KOMA": 10.0,
+            "LAB": 10.0,
+            "DEXE": 10.0,
+            "COTI": 10.0,
+            "EUL": 10.0,
+            "BANK": 10.0,
+            "WLD": 10.0,
+            "HYPE": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -1.696
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0
+        }
+      }
+    },
+    {
       "day": "2026-08-01",
       "next_day": null,
       "crowding": {
@@ -1301,108 +1455,7 @@
           "outcome": 0.0
         }
       }
-    },
-    {
-      "day": "2026-07-22",
-      "next_day": null,
-      "crowding": {
-        "overlap_pct": 15.0,
-        "warning": false,
-        "families": 3,
-        "note": "跨家族組合分散=較健康"
-      },
-      "entries": {
-        "rule": {
-          "alloc": {
-            "BANK": 12.5,
-            "AKE": 12.5,
-            "LAB": -12.5,
-            "ZEC": -12.5,
-            "ONDO": 12.5,
-            "ETH": -12.5,
-            "DOGE": 12.5,
-            "HYPE": 12.5
-          },
-          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -0.157
-        },
-        "gpt": {
-          "alloc": {
-            "BTC": 20.0,
-            "SOL": 15.0,
-            "XAU": 10.0,
-            "ETH": -10.0,
-            "ZEC": -8.0,
-            "DOGE": 5.0
-          },
-          "reason": "偏多主趨勢核心，少量空弱勢對沖；總曝險68%安全。",
-          "outcome": -0.071
-        },
-        "gemini": {
-          "alloc": {
-            "BTC": 20.0,
-            "SOL": 15.0,
-            "ONDO": 15.0,
-            "XRP": 10.0,
-            "BANK": 5.0,
-            "ETH": -10.0,
-            "BNB": -15.0
-          },
-          "reason": "建立初始倉位：多頭配置強勢的BTC、SOL與高動能的BANK；並做空趨勢偏弱的ETH與BNB進行對沖。",
-          "outcome": -0.083
-        },
-        "claude": {
-          "alloc": {},
-          "reason": "核心多頭:BTC/SOL/ONDO穩健信號;空頭對沖:ETH/BNB/ZEC減風險。總曝險100%。迴避超高波動(BANK/AKE/LAB/HYPE)。現金0。",
-          "outcome": 0.0
-        },
-        "gpt_pure": {
-          "alloc": {
-            "BTC": 25.0,
-            "ETH": 18.0,
-            "BNB": 12.0,
-            "XAU": 15.0,
-            "SOL": 10.0,
-            "DOGE": -5.0
-          },
-          "reason": "偏防守：配BTC/ETH/BNB/XAU，少量SOL；DOGE小空對沖高波動。",
-          "outcome": -0.08
-        },
-        "guardian": {
-          "alloc": {},
-          "reason": "核心多:BTC/SOL/ONDO(趨勢強),分散低波動。防守空:ETH/BNB/ZEC(高位警訊),對沖牛市擁擠。資金費負荷管理,總曝險98%,保留2%緩衝。",
-          "outcome": 0.0
-        },
-        "bench_btc": {
-          "alloc": {
-            "BTC": 100.0
-          },
-          "reason": "市場基準(非 AI)",
-          "outcome": -0.07
-        },
-        "bench_eqw": {
-          "alloc": {
-            "BANK": 10.0,
-            "AKE": 10.0,
-            "LAB": 10.0,
-            "ZEC": 10.0,
-            "ONDO": 10.0,
-            "ETH": 10.0,
-            "DOGE": 10.0,
-            "HYPE": 10.0,
-            "SOL": 10.0,
-            "BTC": 10.0
-          },
-          "reason": "市場基準(非 AI)",
-          "outcome": -0.14
-        },
-        "bench_cash": {
-          "alloc": {},
-          "reason": "市場基準(非 AI)",
-          "outcome": 0.0
-        }
-      }
     }
   ],
-  "total_days": 10
+  "total_days": 11
 }
