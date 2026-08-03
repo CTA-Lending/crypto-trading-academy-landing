@@ -94,6 +94,7 @@ th:first-child,td:first-child{text-align:left}
 
 <div class="card">
   <h2>🧾 每日損益紀錄</h2>
+  <div id="corrections"></div>
   <div id="records"></div>
 </div>
 
@@ -167,6 +168,23 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     `<tr><td>${LABEL[b]}</td><td>${fv[b]||0}</td>`
     +`<td style="color:${viol[b]?'var(--down)':'var(--dim)'}">${viol[b]||'—'}</td>`
     +`<td>${tv[b]||0}</td></tr>`).join('')+'</table>';
+
+  // 🔴 2026-08-03:更正揭露。PROTOCOL §9 要求修補須記錄於 CHANGELOG,
+  //    而一份沒有人看得到的 CHANGELOG 不算揭露。數字一律從資料讀,不寫死 ——
+  //    寫死的話,未來出現新的不一致時頁面會顯示一個過期的假數字。
+  const mm=d.returns_reconcile_mismatches;
+  document.getElementById('corrections').innerHTML=
+    '<div style="border:1px solid var(--down);border-radius:8px;padding:12px;margin-bottom:14px">'
+    +'<b style="color:var(--down)">⚠️ 更正聲明(2026-08-03)</b><br>'
+    +'本實驗於第 12 決策日的內部稽核中,發現數項會影響損益估值的程式錯誤,'
+    +'其中包含<b>資金費被重複換算 3 倍</b>,影響第 1~12 決策日的全部數字。'
+    +(mm!==undefined&&mm!==null
+        ? `另有帳本與淨值序列不一致 <b>${mm}</b> 筆(已於 2026-07-26 修正)。`
+        : '')
+    +'<br>依 PROTOCOL §9,修補內容、生效日與影響範圍已完整記錄於 '
+    +'<a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。'
+    +'<br><b>在重述數列完成獨立驗證之前,下表第 1~12 決策日的數字不應用於任何績效判斷。</b>'
+    +'</div>';
 
   const rec=d.records||[];
   if(rec.length){
