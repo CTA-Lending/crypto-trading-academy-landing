@@ -89,6 +89,7 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🚫 紀律紀錄 <span class="foot" style="font-weight:400">— 違規一律記錄,不替 AI 擦屁股</span></h2>
   <p class="foot">總曝險上限 100%。若模型輸出超標或幻覺出不存在的幣種,系統<b>不會自動幫它縮到 100%</b>——會回饋錯誤讓它重試一次;仍違規就記錄違規並維持原倉。這是「指令遵循能力」的真實量測。</p>
+  <p class="foot" style="color:var(--down)"><b>⚠️ 適用範圍(2026-08-04 更正)</b>:此項檢查<b>僅套用於上表的 5 個 LLM 腦</b>。規則腦與 3 個市場基準的權重由程式直接產生,<b>不經過這道檢查</b>,因此它們在資料檔中的「違規 0」代表<b>未受檢查</b>,不代表未逾越——實測規則腦於 2026-07-25 的實際總曝險曾達 <b>174.6%</b>。依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 <a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。</p>
   <div id="disc"></div>
 </div>
 
