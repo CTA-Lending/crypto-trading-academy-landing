@@ -24,15 +24,15 @@
       "bench_eqw",
       "bench_cash"
     ],
-    "days": 14,
+    "days": 15,
     "pilot_days": 90,
     "gate_days": 252,
-    "last_date": "2026-08-05",
+    "last_date": "2026-08-06",
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "anchor": {
-      "seq": 13,
-      "utc": "2026-08-04T00:36:34Z",
+      "seq": 14,
+      "utc": "2026-08-05T00:36:44Z",
       "protocol_sha256": "48973c29afccb2d4",
       "genesis_utc": "2026-07-22T05:43:31Z"
     }
@@ -217,59 +217,71 @@
       "bench_btc": 9649,
       "bench_eqw": 9947,
       "bench_cash": 10000
+    },
+    {
+      "day": "2026-08-06",
+      "rule": 5877,
+      "gpt": 9368,
+      "gemini": 9410,
+      "claude": 9097,
+      "gpt_pure": 9480,
+      "guardian": 9381,
+      "bench_btc": 9733,
+      "bench_eqw": 9689,
+      "bench_cash": 10000
     }
   ],
   "final_equity": {
-    "rule": 5860,
-    "gpt": 9069,
-    "gemini": 9377,
-    "claude": 9085,
-    "gpt_pure": 9380,
-    "guardian": 9400,
-    "bench_btc": 9649,
-    "bench_eqw": 9947,
+    "rule": 5877,
+    "gpt": 9368,
+    "gemini": 9410,
+    "claude": 9097,
+    "gpt_pure": 9480,
+    "guardian": 9381,
+    "bench_btc": 9733,
+    "bench_eqw": 9689,
     "bench_cash": 10000
   },
   "metrics": {
     "rule": {
-      "total_pct": -41.4,
+      "total_pct": -41.23,
       "mdd_pct": 50.44,
-      "sharpe": -6.23
+      "sharpe": -5.97
     },
     "gpt": {
-      "total_pct": -9.31,
+      "total_pct": -6.32,
       "mdd_pct": 9.39,
-      "sharpe": -12.65
+      "sharpe": -5.63
     },
     "gemini": {
-      "total_pct": -6.23,
+      "total_pct": -5.9,
       "mdd_pct": 8.31,
-      "sharpe": -6.59
+      "sharpe": -5.94
     },
     "claude": {
-      "total_pct": -9.15,
+      "total_pct": -9.03,
       "mdd_pct": 9.29,
-      "sharpe": -6.83
+      "sharpe": -6.49
     },
     "gpt_pure": {
-      "total_pct": -6.2,
+      "total_pct": -5.2,
       "mdd_pct": 7.58,
-      "sharpe": -6.93
+      "sharpe": -5.29
     },
     "guardian": {
-      "total_pct": -6.0,
-      "mdd_pct": 6.0,
-      "sharpe": -7.87
+      "total_pct": -6.19,
+      "mdd_pct": 6.19,
+      "sharpe": -7.85
     },
     "bench_btc": {
-      "total_pct": -3.51,
+      "total_pct": -2.67,
       "mdd_pct": 5.63,
-      "sharpe": -3.58
+      "sharpe": -2.53
     },
     "bench_eqw": {
-      "total_pct": -0.53,
-      "mdd_pct": 25.06,
-      "sharpe": 0.66
+      "total_pct": -3.11,
+      "mdd_pct": 27.01,
+      "sharpe": 0.27
     },
     "bench_cash": {
       "total_pct": 0.0,
@@ -281,100 +293,103 @@
     "rule": {
       "AKE": 12.5,
       "ON": 12.5,
+      "BLESS": 12.5,
+      "CYS": 12.5,
+      "HEI": 12.5,
       "LAB": 12.5,
       "DEXE": -12.5,
-      "KOMA": 12.5,
-      "COTI": 12.5,
-      "1000RATS": 12.5,
-      "HOME": 12.5
+      "KOMA": 12.5
     },
     "gpt": {
       "XAU": 8.0,
       "HYPE": 6.0,
-      "SOL": -8.0,
-      "BTC": -5.0,
+      "SOL": -6.0,
       "ETH": -5.0,
-      "ONDO": 5.0,
-      "COTI": 4.0,
-      "EUL": 4.0,
-      "GIGGLE": 2.0,
-      "BLESS": 2.0,
-      "BNB": -3.0,
-      "XRP": 3.0,
-      "LAB": -2.0,
-      "DOGE": 2.0,
+      "BTC": -5.0,
+      "ONDO": 4.0,
+      "BLESS": 4.0,
       "ON": 4.0,
-      "ADA": 3.0
+      "EUL": 3.0,
+      "COTI": 3.0,
+      "BNB": -3.0,
+      "ADA": 3.0,
+      "XRP": 3.0,
+      "GIGGLE": 2.0,
+      "DOGE": 2.0,
+      "LAB": -2.0,
+      "WLD": -2.0,
+      "ZEC": -2.0,
+      "RIF": -2.0,
+      "DEXE": -1.0
     },
     "gemini": {
       "BTC": -10.0,
-      "BNB": -10.0,
       "SOL": -10.0,
       "WLD": -5.0,
       "ONDO": 10.0,
       "XRP": 10.0,
-      "ON": 5.0
+      "ON": 10.0,
+      "AKE": 5.0,
+      "COTI": 5.0
     },
     "claude": {
-      "BTC": 8.4,
-      "DEXE": -8.3,
+      "BTC": 8.5,
       "ONDO": 8.2,
-      "AKE": 7.2,
-      "ADA": 6.3,
+      "DEXE": -8.0,
+      "AKE": 6.7,
+      "ADA": 6.2,
+      "ETH": -5.3,
       "SOL": -5.2,
-      "ETH": -5.2,
-      "KOMA": 4.2,
+      "KOMA": 4.6,
       "GIGGLE": 3.3,
+      "ON": 3.2,
       "BNB": -3.2,
-      "EUL": 3.2,
+      "DOGE": 3.1,
       "WLD": -3.1,
       "XRP": 3.1,
-      "DOGE": 3.1,
-      "ON": 2.9,
-      "COTI": 2.4,
-      "HYPE": -2.2,
+      "EUL": 3.0,
+      "HYPE": -2.3,
+      "COTI": 2.2,
       "ZEC": -2.1,
-      "XAU": 2.0,
-      "RIF": -1.7
+      "XAU": 2.1,
+      "RIF": -1.6
     },
     "gpt_pure": {
+      "XAU": 8.0,
+      "ETH": 6.0,
+      "SOL": 6.0,
+      "ONDO": 5.0,
+      "WLD": 4.0,
+      "HYPE": 3.0,
+      "DOGE": -4.0,
+      "ON": 4.0,
+      "XRP": 2.0,
+      "GIGGLE": 1.0,
+      "ZEC": 1.0,
       "BTC": 2.0,
       "BNB": -2.0,
-      "ETH": 8.0,
-      "ONDO": 8.0,
-      "SOL": 8.0,
-      "XAU": 8.0,
-      "WLD": 8.0,
-      "HYPE": 6.0,
-      "DOGE": -5.0,
-      "ON": 4.0,
-      "XRP": 3.0,
-      "GIGGLE": 2.0,
-      "COTI": 2.0,
-      "ZEC": 2.0,
-      "ADA": 2.0,
+      "ADA": 1.0,
+      "COTI": 1.0,
       "EUL": 1.0
     },
     "guardian": {
-      "BTC": 8.0,
-      "ETH": -5.0,
-      "SOL": -4.0,
-      "BNB": -3.0,
-      "ONDO": 6.0,
-      "EUL": 3.0,
-      "COTI": 3.0,
+      "BTC": 12.0,
+      "ETH": -8.0,
+      "SOL": -6.0,
+      "DOGE": 8.0,
+      "XRP": 6.0,
+      "BNB": 5.0,
+      "ONDO": 8.0,
+      "EUL": 5.0,
       "GIGGLE": 4.0,
-      "XRP": 2.0,
-      "ADA": 2.0,
-      "DOGE": 2.0,
-      "XAU": 2.0,
-      "KOMA": 2.0,
+      "ON": 3.0,
+      "COTI": 3.0,
+      "ADA": 4.0,
+      "XAU": 4.0,
+      "WLD": -3.0,
+      "ZEC": -2.0,
       "LAB": 2.0,
-      "ON": 1.0,
-      "1000RATS": 1.0,
-      "AKE": 1.0,
-      "WLD": -2.0,
-      "ZEC": -1.0,
+      "KOMA": 2.0,
       "HYPE": -1.0
     },
     "bench_btc": {
@@ -383,24 +398,24 @@
     "bench_eqw": {
       "AKE": 10.0,
       "ON": 10.0,
+      "BLESS": 10.0,
+      "CYS": 10.0,
+      "HEI": 10.0,
       "LAB": 10.0,
       "DEXE": 10.0,
       "KOMA": 10.0,
-      "COTI": 10.0,
       "1000RATS": 10.0,
-      "HOME": 10.0,
-      "BANK": 10.0,
-      "EUL": 10.0
+      "COTI": 10.0
     },
     "bench_cash": {}
   },
   "current_reasons": {
     "rule": "wick-break 雙向等權(確定性規則,無 AI)",
-    "gpt": "降風險、保留強勢多頭；減BTC/ETH/SOL空與高波動倉，增ON/ADA，總曝險約71%",
-    "gemini": "近期連續虧損，轉為防守策略。維持大盤主流空單與強勢多單，並減碼高波動的 ON 以控制組合波動度。",
-    "claude": "持倉虧損9.14%,近日波動劇烈(-2.11%→+3.13%)。維持現有部位避免追高殺低;多頭AKE/ON超高波動需警戒;做空DEXE/BANK信號強但基本面弱。保留15%現金應對反轉。曝險85%適度。",
-    "gpt_pure": "保留核心多頭，減少高波動與弱勢幣；小幅對沖DOGE。",
-    "guardian": "降極端波動標的(AKE/ON/LAB減碼),鞏固核心多頭(BTC/ONDO/EUL),做空部位適度減輕(短期反彈跡象),現金留32%應對。總曝險68%,避免過度擁擠。",
+    "gpt": "保留核心低波趨勢倉，減碼高波弱勢/對沖空單，總曝險受控。",
+    "gemini": "平倉趨勢不符的 BNB 空單；ON 強勢加碼；BTC、SOL、WLD 續空，ONDO 與 XRP 續多；微幅試單強勢多頭 AKE 與 COTI。",
+    "claude": "虧損9%,持倉多為極高波動超跌資產(AKE +1238.9%已漲,DEXE空-92%極弱)。維持現倉,避免追高虧損資產。現金15%作緩衝。多空比例合理,總曝險85%適中。",
+    "gpt_pure": "減少高波動小幣，保留低波動核心多頭並維持少量空頭對沖；整體曝險降至100內。",
+    "guardian": "認錯 BNB 做空(-3%轉+5%),強化大盤多頭(BTC/ETH/SOL微調);降低擁擠度,落袋 1000RATS/BANK/RIF;保留現金35%應對波動,避免加槓桿傷害。",
     "bench_btc": "市場基準(非 AI)",
     "bench_eqw": "市場基準(非 AI)",
     "bench_cash": "市場基準(非 AI)"
@@ -431,15 +446,15 @@
   "first_attempt_violations": {
     "claude": 0,
     "guardian": 0,
-    "gpt": 1,
+    "gpt": 0,
     "gpt_pure": 1
   },
   "stability": {
-    "gpt": 0.896,
-    "gemini": 0.984,
+    "gpt": 0.973,
+    "gemini": 0.851,
     "claude": 1.0,
-    "gpt_pure": 0.794,
-    "guardian": 0.987
+    "gpt_pure": 0.974,
+    "guardian": 0.864
   },
   "crowding_history": [
     {
@@ -536,6 +551,13 @@
     {
       "day": "2026-08-05",
       "overlap_pct": 30.8,
+      "warning": false,
+      "families": 3,
+      "note": "跨家族組合分散=較健康"
+    },
+    {
+      "day": "2026-08-06",
+      "overlap_pct": 33.8,
       "warning": false,
       "families": 3,
       "note": "跨家族組合分散=較健康"
@@ -708,6 +730,18 @@
       "guardian": -1.13,
       "bench_btc": 1.2,
       "bench_eqw": -4.5,
+      "bench_cash": 0.0
+    },
+    {
+      "day": "2026-08-06",
+      "rule": 0.28,
+      "gpt": 3.3,
+      "gemini": 0.36,
+      "claude": 0.12,
+      "gpt_pure": 1.07,
+      "guardian": -0.19,
+      "bench_btc": 0.87,
+      "bench_eqw": -2.59,
       "bench_cash": 0.0
     }
   ],
