@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用 USDT 供給量測了一個抄底訊號，結果它失敗了——但失敗的方式很有價值 — 交易幣修課</title>
+  <meta name="description" content="把 USDT 流通量與比特幣價格逐日比對的完整驗算：「供給一開始流出就抄底」在唯一可驗證的樣本裡會讓部位再承受約 45% 回撤（事後回填日 −45.6%／當下可確認日 −45.8%）；「供給止跌與 BTC 見底相差 9 天」是事後切片、實盤不可操作；2020 年 3 月則是完整反例（供給反而 +80%）。含資料可信度驗證、收縮期定義、反向因果討論與完整免責。">
+  <meta name="keywords" content="USDT,泰達幣,穩定幣供給,比特幣底部,抄底訊號,前瞻偏誤,look-ahead bias,反向因果,DefiLlama,量化驗證,交易研究方法">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/usdt-supply-btc-bottom-test-2026.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="我用 USDT 供給量測了一個抄底訊號，結果它失敗了——但失敗的方式很有價值">
+  <meta property="og:description" content="USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過——這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/usdt-supply-btc-bottom-test-2026.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/usdt-tide-test.jpg">
+  <meta property="article:published_time" content="2026-08-11">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "我用 USDT 供給量測了一個抄底訊號，結果它失敗了——但失敗的方式很有價值",
+    "description": "USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過——這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。",
+    "datePublished": "2026-08-11",
+    "dateModified": "2026-08-11",
+    "image": "https://crypto-trading-academy.com/blog/assets/usdt-tide-test.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/usdt-supply-btc-bottom-test-2026.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+
+  <div class="h-16"></div>
+
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">USDT 供給與比特幣底部</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-4">交易策略 ｜ 研究方法 · 假說驗證</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">我用 USDT 供給量測了一個抄底訊號，<br class="hidden md:block">結果它失敗了——但失敗的方式很有價值</h1>
+      <p class="text-lg text-slate-400 mb-6">USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過——這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-08-11</span><span>•</span><span>⏱ 閱讀約 12 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/usdt-tide-test.jpg?v=1" alt="夜晚潮池，岩壁上留著數道琥珀色的歷史高水位痕跡，水中立著一支刻度量尺" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">尺量得出水位，量不出潮水轉不轉向。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <div class="pull-quote">USDT 供給和比特幣底部到底有沒有關係？我把資料一天一天對過。這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。</div>
+    <p>先說這篇的來源。</p>
+    <p>盯盤的時候我有一個直覺：把 USDT 的流通量拉出來，跟比特幣的價格擺在一起看，好像有兩件事一直重複發生——</p>
+    <ul><li><strong>假說一</strong>：當 USDT 的發行量由增轉減，比特幣離底部不遠了</li><li><strong>假說二</strong>：當 USDT 的發行量創下前高，比特幣接著迎來大行情</li></ul>
+    <p>聽起來很有道理。穩定幣就是場內的錢，錢進來水位就升，錢出去水位就降。</p>
+    <p>但這兩句話有一個先天問題，我一開始沒意識到：<strong>「不遠了」和「大行情」都沒有事前定義。</strong> 多近算不遠？漲多少算大行情？多久之內？沒有門檻，任何結果都能事後說成「符合」。所以下文會用具體數字描述「發生了什麼」，但<strong>不會宣稱假說「通過」或「被否證」</strong>——因為它從一開始就沒有可證偽的形式。這本身就是第一個教訓。</p>
+    <p>即使如此，數字還是能告訴我們一些事。所以我把資料抓下來，一天一天對。</p>
+    <p><strong>結果是：假說一在 2022 年那次，會讓部位在半年內再承受約 45% 的回撤——不論你用事後回填的日期還是當下真能確認的日期。假說二描述的現象在唯一一次完整樣本裡確實出現了，但因果方向可能是反的。</strong></p>
+    <p>這篇文章把整個驗算過程攤開，包括那個我自己差點犯第二次的錯誤。</p>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/usdt-supply-vs-btc.jpg?v=1" alt="USDT 流通量 vs 比特幣價格 2020-2026：2022 年供給萎縮 21.7%、供給止跌與 BTC 見底相差 9 天；2020 年新冠底部供給反而擴張 80%" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">資料：DefiLlama 穩定幣 API／Binance BTCUSDT 日線，本站自行擷取與計算。分析窗口 2020-01 起；完整循環樣本僅 1 個，不足以做統計推論。</figcaption>
+    </figure>
+    <h2>一、先驗資料，再談分析</h2>
+    <p>我用 DefiLlama 穩定幣 API 的 USDT 流通量（本站自行擷取，2017-11 至 2026-08，共 3,178 個日資料點），比特幣用 Binance BTCUSDT 日線收盤。</p>
+    <p>抓下來第一件事不是分析，是<strong>驗證資料本身可不可信</strong>——拿它去對公開已知的里程碑：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th>時間</th><th>公開已知</th><th>本資料</th><th></th></tr></thead><tbody><tr><td>2020-07</td><td>USDT 突破 100 億</td><td>$10.7B</td><td>✅</td></tr><tr><td>2021-06</td><td>2021 牛市中段約 620 億</td><td>$62.9B</td><td>✅</td></tr><tr><td>2022-04</td><td>Luna 崩盤前高點約 830 億</td><td>$83.2B</td><td>✅</td></tr><tr><td>2022-11</td><td>Luna 之後低點約 654 億</td><td>$65.3B</td><td>✅</td></tr><tr><td>2026-08</td><td>目前約 1,800 億</td><td>$182.1B</td><td>✅</td></tr></tbody></table></div>
+    <p>這五點是<strong>抽樣核對</strong>：在這五個點上未發現明顯落差。它不代表整條日序列已驗證，也不能排除系統性偏差——嚴格說，核對用的公開數字與本資料可能有共同上游，這一點無法完全排除。</p>
+    <p><strong>而 2018–2019 那一段對不上</strong>——資料顯示 2018 年 USDT 只有 0.6 億美元，實際規模是二十幾億。那是資料源覆蓋不完整，不是市場的事。</p>
+    <p>所以分析窗口限縮在 <strong>2020 年 1 月之後</strong>。而這件事的代價必須講清楚：</p>
+    <div class="insight-card my-8"><p class="mb-2 last:mb-0">這樣一來，完整的循環樣本只剩下<strong>一個</strong>（2022 那一輪），加上一個進行中的。</p><p class="mb-2 last:mb-0"><strong>一個樣本不能證明任何規律。</strong> 這篇文章能提出的是待驗證的機制假說，不是勝率，也不是可重複性。</p></div>
+    <p>（2018 年 10 月 Tether 確實發生過大規模贖回：官方公告在 10 月 24 日銷毀 5 億 USDT，同期 USDT 一度脫鉤到 0.92 美元附近。事件是真的，但各家記錄的供給數字兜不攏，本文不納入驗算。）</p>
+    <h2>二、把定義寫死，否則就是黑箱</h2>
+    <p>講結果之前，先把「什麼叫流出」定義清楚——不然後面每個數字都可以事後調整成好看的樣子：</p>
+    <div class="pull-quote"><strong>本文對「供給收縮期」的定義：USDT 流通量自其歷史高點回落超過 3%，且此狀態持續超過 30 天。</strong></div>
+    <p>用這個定義掃過 2020 年以後的全部資料，只掃出<strong>兩段</strong>：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th>收縮期</th><th>最深萎縮</th><th>供給最低日</th></tr></thead><tbody><tr><td>2022-05-12 → 2023-04-16</td><td>−21.7%</td><td>2022-11-30（$65.3B）</td></tr><tr><td>2026-07-01 → 進行中</td><td>−4.4%</td><td>尚未確定</td></tr></tbody></table></div>
+    <p><strong>這裡有一個必須先承認的技術問題</strong>：這個定義包含「持續 30 天」的條件，所以事件的<strong>起算日</strong>是事後回推的——2022-05-12 這個日期，實際上要到 <strong>2022-06-10</strong> 才滿足條件、才能確認成立。下文所有日期都是<strong>事後標定</strong>，不是當下可辨識的即時訊號。</p>
+    <h2>三、假說一：在那一次，它把「開始」讀成了「接近結束」</h2>
+    <p>假設「看到流出就準備抄底」，2022 年會發生什麼？這裡要分兩種算法，因為起算日在當下並不可知：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th>進場假設</th><th>日期</th><th>BTC 收盤</th><th>到該波最低日的最大跌幅</th></tr></thead><tbody><tr><td><strong>事後回填</strong>到事件起算日（有利算法）</td><td>2022-05-12</td><td>$29,030</td><td><strong>−45.6%</strong>（193 天）</td></tr><tr><td><strong>實際可確認日</strong>（滿足 30 天條件之後）</td><td>2022-06-10</td><td>$29,092</td><td><strong>−45.8%</strong>（164 天）</td></tr></tbody></table></div>
+    <p>該波最低日收盤為 <strong>2022-11-21 的 $15,781</strong>。</p>
+    <p>注意第二列——<strong>即使用誠實的、當下真的能確認的日期，結果一樣差。</strong> 這代表這個直覺的失敗不是前瞻偏誤造成的假象，而是它本身就抓錯了時點。</p>
+    <p>（上述天數是「到最低日」的天數，不是回本期間，也不代表這段期間價格全程低於進場價。）</p>
+    <p><strong>在 2022 年這一次，供給開始萎縮的時點，與去槓桿的初期重疊，而不是尾聲。</strong> 把「開始」讀成「接近結束」，是這個直覺在該次事件中失效的地方。（一次事件不足以說明它每次都會如此。）</p>
+    <p>而且再提醒一次：連 2022-05-12 這個日期本身，在當下都還不能確認。</p>
+    <h2>四、那「停止流出」呢？——這裡是我差點犯第二次錯的地方</h2>
+    <p>把同一份資料換一個問法：不問「什麼時候開始減少」，改問「什麼時候不再減少」。</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th></th><th>日期</th><th></th></tr></thead><tbody><tr><td>USDT 供給該波最低日</td><td><strong>2022-11-30</strong></td><td>$65.3B</td></tr><tr><td>BTC 該波最低日收盤</td><td><strong>2022-11-21</strong></td><td>$15,781</td></tr><tr><td><strong>相差</strong></td><td><strong>9 天</strong></td><td></td></tr></tbody></table></div>
+    <p>九天。看到這個數字的時候，我第一個反應是「找到了」。</p>
+    <p><strong>然後我發現自己正在犯同一個錯誤，只是換了一層。</strong></p>
+    <p>因為 2022-11-30 是「供給最低點」這件事，<strong>在 2022-11-30 當天沒有任何人知道</strong>。你必須等到後面幾週、甚至幾個月，看到供給確實回升了，才能回頭指認那天是最低點。</p>
+    <p>換句話說：</p>
+    <div class="pull-quote"><strong>這 9 天不是訊號，是事後切片。</strong> 它可以支持「賣壓耗盡與供給贖回停止大約同時發生」這個描述，但它在實盤上不可操作——當下你只會看到一條還在下滑的線，跟前面 200 天沒有任何區別。</div>
+    <p>而且只有一次。一次事件的 9 天，可能是共同衝擊下的同步反應，也可能純粹是巧合。要判斷它有沒有資訊價值，得先定義一個「當下就能確認」的規則（例如：供給自低點回升 X% 且持續 Y 天才算成立），再用那個確認日重算後續報酬——<strong>那是另一份功課，這篇還沒做。</strong></p>
+    <h2>五、假說二：現象成立，但因果方向可能是反的</h2>
+    <p>在唯一一次完整樣本裡：</p>
+    <ul><li>USDT 供給於 <strong>2023-05-24</strong> 收復前高</li><li>當天比特幣 <strong>$26,329</strong></li><li>其後 18 個月內最高日收盤 <strong>$90,375</strong>（出現在 2024-11-13）</li><li><strong>+243%</strong></li></ul>
+    <p>這個 <strong>18 個月是事後選定的觀察窗，不是事前訂好的</strong>；換一個窗口（6 個月、12 個月、24 個月）數字會不同。所以它只能當作「那段期間發生了什麼」的描述，不能當作假說的檢定結果。</p>
+    <p>現象確實發生了。但<strong>「供給創高帶來牛市」這個因果方向，資料撐不住</strong>。</p>
+    <p>反過來的故事一樣合理，甚至更常見：</p>
+    <div class="pull-quote">比特幣因為其他原因上漲（ETF、減半、宏觀轉向）→ 賺錢效應吸引散戶把法幣換成穩定幣進場 → 交易所與造市商為了滿足需求向 Tether 申購 → <strong>USDT 供給創高</strong>。</div>
+    <p>在這個版本裡，供給創高是<strong>結果</strong>，不是原因。而總供給這一個數字，沒有辦法區分這兩種故事——你看不出那些新發行的 USDT 是進了交易所準備買幣，還是被拿去做跨境支付、場外交易、DeFi，或就只是有人拿著。</p>
+    <p>所以誠實的說法是：<strong>在那一次，供給創高與大幅上漲同時發生；而本文的資料無法區分這是單向因果、反向因果，還是兩者同受第三個因素驅動。</strong></p>
+    <h2>六、必須放在同樣顯眼位置的反例</h2>
+    <p>如果只寫上面那些，這篇就變成另一篇「我找到聖杯」的文章。所以把反例擺出來：</p>
+    <p><strong>2020 年 3 月，新冠暴跌。</strong></p>
+    <ul><li>比特幣以<strong>日收盤</strong>計最低為 3 月 12 日的 <strong>$4,800</strong>（3 月 13 日盤中最低更低，達 $3,782；本文全篇採日收盤口徑）</li><li>同期 USDT 供給：2 月 1 日 $4.3B → 4 月 30 日 $7.7B</li><li><strong>不但沒有萎縮，反而擴張了 80%</strong></li></ul>
+    <p>那一次的底部，這個指標<strong>整段抓不到</strong>。</p>
+    <p>一種可能的解釋是：那是流動性衝擊，全世界資產同時被拋售換現金，而穩定幣在當下反而是避風港——大家把幣換成 USDT 停著，供給不減反增。但本文沒有直接檢驗那些新增供給的用途，所以這只是一個可能的解釋，不是已證實的原因。</p>
+    <div class="pull-quote">結論：<strong>USDT 供給的變化，既不是比特幣見底的必要條件，也不是充分條件。</strong></div>
+    <h2>七、現在的位置——以及為什麼我不打算從中推論任何事</h2>
+    <p>寫這篇的直接原因是：類似的收縮<strong>正在發生</strong>。</p>
+    <ul><li>USDT 供給高點：<strong>2026-05-20，$190.4B</strong></li><li>2026-08-11：<strong>$182.1B</strong>，距高點 <strong>−4.4%</strong></li></ul>
+    <p>跟 2022 那一次擺在一起，純粹作為<strong>描述性比較</strong>：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th></th><th>2022 那一次</th><th>現在</th></tr></thead><tbody><tr><td>高點到供給最低日</td><td>214 天</td><td>未知（已經過 83 天）</td></tr><tr><td>供給最大萎縮</td><td>−21.7%</td><td>−4.4%（截至 8/11）</td></tr></tbody></table></div>
+    <p>我要很明確地說明這張表<strong>不能</strong>用來做什麼：</p>
+    <div class="pull-quote">本輪的終點還沒出現，所以「已走了幾成」這種說法在定義上就不成立。上面兩個數字只是「截至資料截取日，兩次事件的比例不同」，<strong>不能用來推算剩餘時間、剩餘跌幅或任何價格落點</strong>。</div>
+    <p>還有一個讓「照抄 2022」更站不住的觀察，把兩個變數的數字並排就看得出來（全部採日收盤口徑）：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th></th><th>2022 那一次</th><th>現在</th></tr></thead><tbody><tr><td>BTC 自當時高點的最大回撤</td><td><strong>−76.6%</strong>（2022-11-21，$15,781）</td><td><strong>−48.7%</strong>（2026-08-11，$64,012，高點為 2025-10-06 的 $124,659）</td></tr><tr><td>同期 USDT 供給萎縮</td><td>−21.7%</td><td>−4.4%</td></tr></tbody></table></div>
+    <p><strong>兩個變數的相對關係在兩次事件中並不相同。</strong> 這不足以推論任何方向，但足以說明：不能把 2022 的比例直接搬過來用。</p>
+    <p>而且今天的 USDT 也不是 2022 年的 USDT。Tether 2026 年第一季的儲備證明報告顯示，其美國國債曝險約 1,410 億美元，另持有約 200 億美元黃金與約 70 億美元比特幣。不過要說清楚：<strong>儲備怎麼配置，和持有者拿 USDT 去做什麼，是兩個不同層次的問題</strong>——儲備結構不能直接證明用途改變。要支持「用途結構已經不同」這個主張，需要交易所餘額、支付流量、跨境使用與 DeFi 分布的資料，那些本文都沒有。</p>
+    <h2>八、這篇研究能說什麼、不能說什麼</h2>
+    <p><strong>能說的：</strong></p>
+    <ul><li>在唯一一次可驗證的樣本裡，「USDT 一開始流出就準備抄底」會讓部位承受約 45% 的後續回撤——<strong>不論用事後回填日（−45.6%）還是當下可確認日（−45.8%）</strong>。</li><li>在那一次，供給的<strong>斜率轉向</strong>比<strong>水位方向</strong>更貼近底部（相差 9 天）；但這是事後標定，且只有一次。</li><li>存在明確的反例（2020 年 3 月），該指標會整段漏掉某一類底部。</li><li>因果方向無法由本文資料判定：單向、反向、或同受第三因素驅動，都無法排除。</li></ul>
+    <p><strong>不能說的：</strong></p>
+    <ul><li>不能說這是一個訊號，因為關鍵時點在當下無法確認。</li><li>不能說它有多少勝率，因為 N=1。</li><li>不能用它推論比特幣接下來會怎麼走。</li></ul>
+    <div class="final-quote">這篇文章最後留下的不是一個指標，是一個方法：<strong>當你有一個看起來很準的市場直覺，先把定義寫死、把資料驗過、把反例找出來、把因果方向反過來想一遍。</strong> 大部分直覺會死在這四關的其中一關——而在自己桌上死掉，比在帳戶裡死掉便宜太多了。</div>
+    <hr class="my-10 border-slate-800">
+    <h2>免責聲明</h2>
+    <ol><li>本文為市場研究與教育內容，不構成任何投資建議、招攬或要約，亦不預測任何資產之未來價格、時點或幅度。</li><li>文中所有歷史數據為已發生之紀錄，<strong>完整循環樣本僅 1 個</strong>，不具統計代表性，不代表未來必然重演。</li><li>文中所述之時點（收縮起算日、供給最低日）均為<strong>事後標定</strong>，於事件當下無法即時確認，不可作為交易依據。</li><li>USDT 流通量資料引自 DefiLlama 公開 API、比特幣價格引自 Binance 公開 API，均為本站自行擷取與計算；2018–2019 年段因各來源數字不一致，本文未採用。</li><li>Tether 儲備數字引自其自行揭露之季度儲備證明報告（第三方確信報告，不等同完整財務報表查核或審計，且非四大會計師事務所出具），其查核範圍與限制應以原報告為準。</li><li>加密貨幣價格波動劇烈，可能損失全部本金。使用未在我國依法登記或納管之境外平台時，可能不具我國之投資人保護、賠償或爭議處理機制；各平台之監理狀態與保障範圍因司法管轄區而異，應自行查證。</li><li>讀者依本文所為之任何決策，其風險與後果由讀者自行承擔。</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h3>資料來源</h3>
+    <ul><li><strong>USDT 流通量</strong>：DefiLlama 穩定幣 API（本站自行擷取，2017-11-29 ~ 2026-08-11，3,178 個日資料點；分析採用 2020-01-01 以後共 2,415 天）。<a href="https://defillama.com/stablecoin/tether" class="text-amber-400 hover:underline" target="_blank" rel="noopener">defillama.com &#8599;</a></li><li><strong>比特幣價格</strong>：Binance 公開 API，BTCUSDT 日線收盤（本站自行擷取）。<a href="https://api.binance.com/api/v3/klines" class="text-amber-400 hover:underline" target="_blank" rel="noopener">api.binance.com &#8599;</a></li><li><strong>2018 年 Tether 贖回事件</strong>：Tether 官方公告〈Upcoming USDT Redemption – October 24th, 2018〉。<a href="https://tether.io/news/upcoming-usdt-redemption-october-24th-2018/" class="text-amber-400 hover:underline" target="_blank" rel="noopener">tether.io &#8599;</a></li><li><strong>Tether 儲備結構</strong>：Tether 2026 年第一季儲備證明報告（BDO 出具，截至 2026-03-31），詳細範圍與限制以官方報告頁為準。<a href="https://tether.io/transparency/" class="text-amber-400 hover:underline" target="_blank" rel="noopener">tether.io &#8599;</a></li></ul>
+    <p class="text-xs text-slate-600 mt-6">資料截取日：2026-08-11｜內容製作日：2026-08-11</p>
+  </article>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">直覺要先過四關，<span class="text-amber-400">才准放進帳戶</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">把定義寫死、把資料驗過、把反例找出來、把因果反過來想一遍。<br>而在市場裡真正決定進出的那條線，還是得從 K 棒上讀。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="loss-recovery-math-2026.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">虧損回本的數學</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>市場研究與教育內容，不構成任何投資建議</strong>，亦不預測任何資產之未來價格、時點或幅度。完整循環樣本僅 1 個，不具統計代表性；文中時點均為事後標定，於事件當下無法即時確認，不可作為交易依據。加密貨幣波動劇烈，可能損失全部本金。請參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <section class="py-12 border-t border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-wider">延伸閱讀</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">交易策略 · 心法基礎</div>
+          <div class="font-bold text-white text-sm">裸K交易入門：為什麼不需要指標也能判斷行情？</div>
+        </a>
+        <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">技術分析 · 結構底部</div>
+          <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+        </a>
+        <a href="financial-market-dungeon.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">CEO 心法</div>
+          <div class="font-bold text-white text-sm">進入金融市場前，你準備好了嗎？地下城副本生存指南</div>
+        </a>
+        <a href="mstr-mnav-below-1-risk-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+          <div class="text-xs text-slate-500 mb-1">市場觀點 · 風險提示</div>
+          <div class="font-bold text-white text-sm">mNAV 跌破 1：當比特幣財庫之王的飛輪熄火</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
