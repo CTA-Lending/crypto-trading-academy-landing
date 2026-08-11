@@ -10,13 +10,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我用 USDT 供給量測了一個抄底訊號，結果它失敗了——但失敗的方式很有價值 — 交易幣修課</title>
+  <title>我用 USDT 供給量測了一個抄底訊號：它「接近」是對的，「可以進場」是錯的 — 交易幣修課</title>
   <meta name="description" content="把 USDT 流通量與比特幣價格逐日比對的完整驗算：「供給一開始流出就抄底」在唯一可驗證的樣本裡會讓部位再承受約 45% 回撤（事後回填日 −45.6%／當下可確認日 −45.8%）；「供給止跌與 BTC 見底相差 9 天」是事後切片、實盤不可操作；2020 年 3 月則是完整反例（供給反而 +80%）。含資料可信度驗證、收縮期定義、反向因果討論與完整免責。">
   <meta name="keywords" content="USDT,泰達幣,穩定幣供給,比特幣底部,抄底訊號,前瞻偏誤,look-ahead bias,反向因果,DefiLlama,量化驗證,交易研究方法">
   <link rel="canonical" href="https://crypto-trading-academy.com/blog/usdt-supply-btc-bottom-test-2026.html">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="我用 USDT 供給量測了一個抄底訊號，結果它失敗了——但失敗的方式很有價值">
+  <meta property="og:title" content="我用 USDT 供給量測了一個抄底訊號：它「接近」是對的，「可以進場」是錯的">
   <meta property="og:description" content="USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過——這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。">
   <meta property="og:url" content="https://crypto-trading-academy.com/blog/usdt-supply-btc-bottom-test-2026.html">
   <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
@@ -29,7 +29,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "我用 USDT 供給量測了一個抄底訊號，結果它失敗了——但失敗的方式很有價值",
+    "headline": "我用 USDT 供給量測了一個抄底訊號：它「接近」是對的，「可以進場」是錯的",
     "description": "USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過——這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。",
     "datePublished": "2026-08-11",
     "dateModified": "2026-08-11",
@@ -125,7 +125,7 @@
   <section class="py-12">
     <div class="max-w-3xl mx-auto px-4">
       <p class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-4">交易策略 ｜ 研究方法 · 假說驗證</p>
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">我用 USDT 供給量測了一個抄底訊號，<br class="hidden md:block">結果它失敗了——但失敗的方式很有價值</h1>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">我用 USDT 供給量測了一個抄底訊號：它「接近」是對的，<br class="hidden md:block">「可以進場」是錯的</h1>
       <p class="text-lg text-slate-400 mb-6">USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過——這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。</p>
       <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
         <span>📅 2026-08-11</span><span>•</span><span>⏱ 閱讀約 12 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
@@ -143,14 +143,14 @@
   </section>
 
   <article class="article-body max-w-3xl mx-auto px-4 pb-8">
-    <div class="pull-quote">USDT 供給和比特幣底部到底有沒有關係？我把資料一天一天對過。這篇不是「我發現了一個指標」，是「我測了一個直覺，它沒過關，而沒過關的原因比通過更值得講」。</div>
+    <div class="pull-quote">USDT 供給和比特幣底部到底有沒有關係？我把 3,178 天的資料一天一天對過。答案很微妙：以「跌幅走完多少」來看，它確實抓到了「接近」；但把它當進場訊號，2022 年那次要再承受一次腰斬。</div>
     <p>先說這篇的來源。</p>
     <p>盯盤的時候我有一個直覺：把 USDT 的流通量拉出來，跟比特幣的價格擺在一起看，好像有兩件事一直重複發生——</p>
     <ul><li><strong>假說一</strong>：當 USDT 的發行量由增轉減，比特幣離底部不遠了</li><li><strong>假說二</strong>：當 USDT 的發行量創下前高，比特幣接著迎來大行情</li></ul>
     <p>聽起來很有道理。穩定幣就是場內的錢，錢進來水位就升，錢出去水位就降。</p>
     <p>但這兩句話有一個先天問題，我一開始沒意識到：<strong>「不遠了」和「大行情」都沒有事前定義。</strong> 多近算不遠？漲多少算大行情？多久之內？沒有門檻，任何結果都能事後說成「符合」。所以下文會用具體數字描述「發生了什麼」，但<strong>不會宣稱假說「通過」或「被否證」</strong>——因為它從一開始就沒有可證偽的形式。這本身就是第一個教訓。</p>
     <p>即使如此，數字還是能告訴我們一些事。所以我把資料抓下來，一天一天對。</p>
-    <p><strong>結果是：假說一在 2022 年那次，會讓部位在半年內再承受約 45% 的回撤——不論你用事後回填的日期還是當下真能確認的日期。假說二描述的現象在唯一一次完整樣本裡確實出現了，但因果方向可能是反的。</strong></p>
+    <p><strong>結果是：假說一講「接近」是對的——供給開始流出時，整段跌幅已經走完約 74%；但那剩下的 26 個百分點，換算成價格是再跌 45.6%。假說二描述的現象在唯一一次完整樣本裡確實出現了，但因果方向可能是反的。</strong></p>
     <p>這篇文章把整個驗算過程攤開，包括那個我自己差點犯第二次的錯誤。</p>
     <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
       <img src="assets/usdt-supply-vs-btc.jpg?v=1" alt="USDT 流通量 vs 比特幣價格 2020-2026：2022 年供給萎縮 21.7%、供給止跌與 BTC 見底相差 9 天；2020 年新冠底部供給反而擴張 80%" class="w-full h-auto" loading="lazy">
@@ -177,8 +177,17 @@
     <p>該波最低日收盤為 <strong>2022-11-21 的 $15,781</strong>。</p>
     <p>注意第二列——<strong>即使用誠實的、當下真的能確認的日期，結果一樣差。</strong> 這代表這個直覺的失敗不是前瞻偏誤造成的假象，而是它本身就抓錯了時點。</p>
     <p>（上述天數是「到最低日」的天數，不是回本期間，也不代表這段期間價格全程低於進場價。）</p>
-    <p><strong>在 2022 年這一次，供給開始萎縮的時點，與去槓桿的初期重疊，而不是尾聲。</strong> 把「開始」讀成「接近結束」，是這個直覺在該次事件中失效的地方。（一次事件不足以說明它每次都會如此。）</p>
     <p>而且再提醒一次：連 2022-05-12 這個日期本身，在當下都還不能確認。</p>
+    <h3>但這裡要幫這個直覺講一句公道話</h3>
+    <p>上面那個 −45.6% 看起來像判死刑，可是把同一件事換一個尺量，結論會不一樣。</p>
+    <p>原本的直覺說的是「<strong>接近</strong>底部」，不是「<strong>就是</strong>底部」。那「接近」該怎麼量？用「<strong>跌幅走完了多少</strong>」來看：</p>
+    <div style="overflow-x:auto"><table class="data-table"><thead><tr><th>時點</th><th>BTC 距週期高點</th><th>整段跌幅走完了</th><th>但價格還要再跌</th></tr></thead><tbody><tr><td>週期高點 2021-11-08（$67,526）</td><td>—</td><td>0%</td><td>—</td></tr><tr><td><strong>供給開始流出 2022-05-12（$29,030）</strong></td><td><strong>−57.0%</strong></td><td><strong>74%</strong></td><td>−45.6%</td></tr><tr><td><strong>供給止跌 2022-11-30（$17,164）</strong></td><td><strong>−74.6%</strong></td><td><strong>97%</strong></td><td>−8.1%</td></tr><tr><td>真正底部 2022-11-21（$15,781）</td><td>−76.6%</td><td>100%</td><td>—</td></tr></tbody></table></div>
+    <p><strong>兩件事同時成立，而且不衝突：</strong></p>
+    <ul><li>供給開始流出的那一刻，整段空頭的跌幅<strong>已經走完約四分之三</strong>——就「還剩多遠」而言，確實是「接近了」</li><li>但剩下那四分之一的跌幅，換算成價格是<strong>再腰斬一次</strong></li></ul>
+    <p>會這樣，是因為<strong>跌幅是複利的</strong>。一段 −76.6% 的空頭，最後那二十幾個百分點在價格上就是 −45.6%。這跟我們在〈虧 50% 要賺 100% 才回本〉講的是同一個不對稱——<strong>百分比的加減，和價格的乘除，不是一回事。</strong></p>
+    <p>所以更精確的說法是：</p>
+    <div class="pull-quote">這個指標<strong>能告訴你「跌得差不多了」，不能告訴你「跌完了」</strong>。而在槓桿部位上，這兩者的距離足以讓你出局。</div>
+    <p>時間軸也給了同樣的訊息：供給開始收縮那天，這段空頭在<strong>時間上只走了 49%</strong>（185 天／全程 378 天）。跌幅走完七成四，時間才走一半——<strong>下半場走得慢，而且痛。</strong></p>
     <h2>四、那「停止流出」呢？——這裡是我差點犯第二次錯的地方</h2>
     <p>把同一份資料換一個問法：不問「什麼時候開始減少」，改問「什麼時候不再減少」。</p>
     <div style="overflow-x:auto"><table class="data-table"><thead><tr><th></th><th>日期</th><th></th></tr></thead><tbody><tr><td>USDT 供給該波最低日</td><td><strong>2022-11-30</strong></td><td>$65.3B</td></tr><tr><td>BTC 該波最低日收盤</td><td><strong>2022-11-21</strong></td><td>$15,781</td></tr><tr><td><strong>相差</strong></td><td><strong>9 天</strong></td><td></td></tr></tbody></table></div>
@@ -217,7 +226,7 @@
     <p>而且今天的 USDT 也不是 2022 年的 USDT。Tether 2026 年第一季的儲備證明報告顯示，其美國國債曝險約 1,410 億美元，另持有約 200 億美元黃金與約 70 億美元比特幣。不過要說清楚：<strong>儲備怎麼配置，和持有者拿 USDT 去做什麼，是兩個不同層次的問題</strong>——儲備結構不能直接證明用途改變。要支持「用途結構已經不同」這個主張，需要交易所餘額、支付流量、跨境使用與 DeFi 分布的資料，那些本文都沒有。</p>
     <h2>八、這篇研究能說什麼、不能說什麼</h2>
     <p><strong>能說的：</strong></p>
-    <ul><li>在唯一一次可驗證的樣本裡，「USDT 一開始流出就準備抄底」會讓部位承受約 45% 的後續回撤——<strong>不論用事後回填日（−45.6%）還是當下可確認日（−45.8%）</strong>。</li><li>在那一次，供給的<strong>斜率轉向</strong>比<strong>水位方向</strong>更貼近底部（相差 9 天）；但這是事後標定，且只有一次。</li><li>存在明確的反例（2020 年 3 月），該指標會整段漏掉某一類底部。</li><li>因果方向無法由本文資料判定：單向、反向、或同受第三因素驅動，都無法排除。</li></ul>
+    <ul><li>在唯一一次可驗證的樣本裡，「USDT 一開始流出就準備抄底」會讓部位承受約 45% 的後續回撤——<strong>不論用事後回填日（−45.6%）還是當下可確認日（−45.8%）</strong>。</li><li>但用「跌幅完成度」這個尺量，同一時點已走完約 <strong>74%</strong> 的整段跌幅；供給止跌時已走完 <strong>97%</strong>。<strong>「接近」成立，「可以進場」不成立</strong>——差別在於跌幅是複利的。</li><li>在那一次，供給的<strong>斜率轉向</strong>比<strong>水位方向</strong>更貼近底部（相差 9 天）；但這是事後標定，且只有一次。</li><li>存在明確的反例（2020 年 3 月），該指標會整段漏掉某一類底部。</li><li>因果方向無法由本文資料判定：單向、反向、或同受第三因素驅動，都無法排除。</li></ul>
     <p><strong>不能說的：</strong></p>
     <ul><li>不能說這是一個訊號，因為關鍵時點在當下無法確認。</li><li>不能說它有多少勝率，因為 N=1。</li><li>不能用它推論比特幣接下來會怎麼走。</li></ul>
     <div class="final-quote">這篇文章最後留下的不是一個指標，是一個方法：<strong>當你有一個看起來很準的市場直覺，先把定義寫死、把資料驗過、把反例找出來、把因果方向反過來想一遍。</strong> 大部分直覺會死在這四關的其中一關——而在自己桌上死掉，比在帳戶裡死掉便宜太多了。</div>
