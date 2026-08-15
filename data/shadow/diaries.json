@@ -1,6 +1,168 @@
 {
   "days": [
     {
+      "day": "2026-08-15",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 17.7,
+        "warning": false,
+        "families": 3,
+        "note": "跨家族組合分散=較健康"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "AKE": 12.5,
+            "ON": 12.5,
+            "CYS": -12.5,
+            "ACE": 12.5,
+            "SKYAI": 12.5,
+            "APR": 12.5,
+            "TUT": 12.5,
+            "DEXE": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": 4.9
+        },
+        "gpt": {
+          "alloc": {
+            "XAU": 6.0,
+            "BNB": 8.0,
+            "ONDO": 5.0,
+            "WLD": -2.0,
+            "HYPE": 4.0,
+            "LINK": 3.0,
+            "ZEC": 2.0,
+            "DOGE": -2.0,
+            "SOL": 2.0,
+            "XRP": -2.0,
+            "ADA": -2.0,
+            "PUMP": 8.0
+          },
+          "reason": "保留核心多頭，減弱弱勢空頭；加PUMP、降高波動與逆勢部位。",
+          "outcome": -0.13
+        },
+        "gemini": {
+          "alloc": {
+            "ON": 10.0,
+            "AKE": 10.0,
+            "PUMP": 5.0,
+            "CYS": -5.0,
+            "WLD": -10.0,
+            "BTC": -5.0,
+            "XRP": -5.0,
+            "LAB": -5.0
+          },
+          "reason": "平倉趨勢轉空的CYS並反手做空；加碼強勢多頭ON與AKE；其餘符合訊號持倉維持不變以控制曝險。",
+          "outcome": 2.08
+        },
+        "claude": {
+          "alloc": {
+            "AKE": 15.0,
+            "BTC": 8.0,
+            "ONDO": 6.0,
+            "SOL": 5.0,
+            "ON": 5.0,
+            "KOMA": 4.0,
+            "ETH": -4.0,
+            "DEXE": -3.0,
+            "ADA": -4.0,
+            "BNB": 4.0,
+            "GIGGLE": 3.0,
+            "EUL": 3.0,
+            "WLD": -3.0,
+            "HEI": 2.0,
+            "ZEC": -2.0,
+            "XRP": -2.0,
+            "HYPE": 2.0,
+            "LAB": -1.0,
+            "COTI": 2.0,
+            "RIF": -1.0,
+            "PUMP": 1.0,
+            "LINK": 2.0
+          },
+          "reason": "現有強多倉(AKE +1461%)保留主倉,近5日+5.19%確認上升趨勢。輕減ETH空倉(-4%)因技術面轉弱;降DEXE空倉(-3%)規避資金費損耗。總曝險87%維持激進,留13%現金緩衝高波動環境。",
+          "outcome": 6.0
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 10.0,
+            "BNB": 8.0,
+            "XAU": 8.0,
+            "WLD": 4.0,
+            "ZEC": 4.0,
+            "LINK": 3.0,
+            "SOL": 3.0,
+            "ADA": 3.0,
+            "XRP": 3.0,
+            "DOGE": -2.0,
+            "DEXE": -2.0,
+            "PUMP": 2.0,
+            "COTI": 2.0,
+            "ON": 2.0
+          },
+          "reason": "減持高波動山寨，保留核心與避險，略加低波動/相對強勢；縮減部分空單。",
+          "outcome": -0.29
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": -8.0,
+            "SOL": 6.0,
+            "BNB": 5.0,
+            "LINK": 3.0,
+            "PUMP": 3.0,
+            "ONDO": 3.0,
+            "ON": 2.0,
+            "EUL": 2.0,
+            "HEI": 2.0,
+            "HYPE": 2.0,
+            "COTI": 2.0,
+            "AKE": 1.0,
+            "ZEC": -5.0,
+            "XRP": -3.0,
+            "ADA": -2.0,
+            "DOGE": -2.0,
+            "RIF": -2.0,
+            "WLD": -1.0,
+            "LAB": -1.0,
+            "XAU": -1.0
+          },
+          "reason": "持久守護:減空多做(ZEC-5、XRP-3改良),強化BTC12%做多,保留現金38%抗波動。認錯剪裁BEAT/GIGGLE,降擁擠至58%。近日負報酬需等待反轉信號。",
+          "outcome": 0.93
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.66
+        },
+        "bench_eqw": {
+          "alloc": {
+            "AKE": 10.0,
+            "ON": 10.0,
+            "CYS": 10.0,
+            "ACE": 10.0,
+            "SKYAI": 10.0,
+            "APR": 10.0,
+            "TUT": 10.0,
+            "DEXE": 10.0,
+            "KOMA": 10.0,
+            "BICO": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 3.63
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0
+        }
+      }
+    },
+    {
       "day": "2026-08-14",
       "next_day": null,
       "crowding": {
@@ -1539,170 +1701,7 @@
           "outcome": 0.0
         }
       }
-    },
-    {
-      "day": "2026-08-05",
-      "next_day": null,
-      "crowding": {
-        "overlap_pct": 30.8,
-        "warning": false,
-        "families": 3,
-        "note": "跨家族組合分散=較健康"
-      },
-      "entries": {
-        "rule": {
-          "alloc": {
-            "AKE": 12.5,
-            "ON": 12.5,
-            "LAB": 12.5,
-            "DEXE": -12.5,
-            "KOMA": 12.5,
-            "COTI": 12.5,
-            "1000RATS": 12.5,
-            "HOME": 12.5
-          },
-          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -7.83
-        },
-        "gpt": {
-          "alloc": {
-            "XAU": 8.0,
-            "HYPE": 6.0,
-            "SOL": -8.0,
-            "BTC": -5.0,
-            "ETH": -5.0,
-            "ONDO": 5.0,
-            "COTI": 4.0,
-            "EUL": 4.0,
-            "GIGGLE": 2.0,
-            "BLESS": 2.0,
-            "BNB": -3.0,
-            "XRP": 3.0,
-            "LAB": -2.0,
-            "DOGE": 2.0,
-            "ON": 4.0,
-            "ADA": 3.0
-          },
-          "reason": "降風險、保留強勢多頭；減BTC/ETH/SOL空與高波動倉，增ON/ADA，總曝險約71%",
-          "outcome": -0.94
-        },
-        "gemini": {
-          "alloc": {
-            "BTC": -10.0,
-            "BNB": -10.0,
-            "SOL": -10.0,
-            "WLD": -5.0,
-            "ONDO": 10.0,
-            "XRP": 10.0,
-            "ON": 5.0
-          },
-          "reason": "近期連續虧損，轉為防守策略。維持大盤主流空單與強勢多單，並減碼高波動的 ON 以控制組合波動度。",
-          "outcome": -0.59
-        },
-        "claude": {
-          "alloc": {
-            "BTC": 8.4,
-            "DEXE": -8.3,
-            "ONDO": 8.2,
-            "AKE": 7.2,
-            "ADA": 6.3,
-            "SOL": -5.2,
-            "ETH": -5.2,
-            "KOMA": 4.2,
-            "GIGGLE": 3.3,
-            "BNB": -3.2,
-            "EUL": 3.2,
-            "WLD": -3.1,
-            "XRP": 3.1,
-            "DOGE": 3.1,
-            "ON": 2.9,
-            "COTI": 2.4,
-            "HYPE": -2.2,
-            "ZEC": -2.1,
-            "XAU": 2.0,
-            "RIF": -1.7
-          },
-          "reason": "持倉虧損9.14%,近日波動劇烈(-2.11%→+3.13%)。維持現有部位避免追高殺低;多頭AKE/ON超高波動需警戒;做空DEXE/BANK信號強但基本面弱。保留15%現金應對反轉。曝險85%適度。",
-          "outcome": -1.92
-        },
-        "gpt_pure": {
-          "alloc": {
-            "BTC": 2.0,
-            "BNB": -2.0,
-            "ETH": 8.0,
-            "ONDO": 8.0,
-            "SOL": 8.0,
-            "XAU": 8.0,
-            "WLD": 8.0,
-            "HYPE": 6.0,
-            "DOGE": -5.0,
-            "ON": 4.0,
-            "XRP": 3.0,
-            "GIGGLE": 2.0,
-            "COTI": 2.0,
-            "ZEC": 2.0,
-            "ADA": 2.0,
-            "EUL": 1.0
-          },
-          "reason": "保留核心多頭，減少高波動與弱勢幣；小幅對沖DOGE。",
-          "outcome": 0.38
-        },
-        "guardian": {
-          "alloc": {
-            "BTC": 8.0,
-            "ETH": -5.0,
-            "SOL": -4.0,
-            "BNB": -3.0,
-            "ONDO": 6.0,
-            "EUL": 3.0,
-            "COTI": 3.0,
-            "GIGGLE": 4.0,
-            "XRP": 2.0,
-            "ADA": 2.0,
-            "DOGE": 2.0,
-            "XAU": 2.0,
-            "KOMA": 2.0,
-            "LAB": 2.0,
-            "ON": 1.0,
-            "1000RATS": 1.0,
-            "AKE": 1.0,
-            "WLD": -2.0,
-            "ZEC": -1.0,
-            "HYPE": -1.0
-          },
-          "reason": "降極端波動標的(AKE/ON/LAB減碼),鞏固核心多頭(BTC/ONDO/EUL),做空部位適度減輕(短期反彈跡象),現金留32%應對。總曝險68%,避免過度擁擠。",
-          "outcome": -1.13
-        },
-        "bench_btc": {
-          "alloc": {
-            "BTC": 100.0
-          },
-          "reason": "市場基準(非 AI)",
-          "outcome": 1.2
-        },
-        "bench_eqw": {
-          "alloc": {
-            "AKE": 10.0,
-            "ON": 10.0,
-            "LAB": 10.0,
-            "DEXE": 10.0,
-            "KOMA": 10.0,
-            "COTI": 10.0,
-            "1000RATS": 10.0,
-            "HOME": 10.0,
-            "BANK": 10.0,
-            "EUL": 10.0
-          },
-          "reason": "市場基準(非 AI)",
-          "outcome": -4.5
-        },
-        "bench_cash": {
-          "alloc": {},
-          "reason": "市場基準(非 AI)",
-          "outcome": 0.0
-        }
-      }
     }
   ],
-  "total_days": 23
+  "total_days": 24
 }
