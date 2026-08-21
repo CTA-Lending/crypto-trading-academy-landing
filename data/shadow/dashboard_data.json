@@ -24,22 +24,22 @@
       "bench_eqw",
       "bench_cash"
     ],
-    "days": 29,
+    "days": 30,
     "pilot_days": 90,
     "gate_days": 252,
-    "last_date": "2026-08-20",
-    "resolved_days": 29,
-    "pending_day": "2026-08-20",
+    "last_date": "2026-08-21",
+    "resolved_days": 30,
+    "pending_day": "2026-08-21",
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "epoch2_first_day": "2026-08-04",
-    "epoch2_days": 17,
+    "epoch2_days": 18,
     "voided_days": 12,
     "voided_reason": "資金費計算錯誤(CHANGELOG-002),該期間損益不得用於績效陳述",
     "sharpe_min_days": 20,
     "anchor": {
-      "seq": 28,
-      "utc": "2026-08-19T00:36:55Z",
+      "seq": 29,
+      "utc": "2026-08-20T00:36:51Z",
       "protocol_sha256": "48973c29afccb2d4",
       "genesis_utc": "2026-07-22T05:43:31Z"
     }
@@ -404,214 +404,225 @@
       "bench_btc": 10432,
       "bench_eqw": 6715,
       "bench_cash": 10000
+    },
+    {
+      "day": "2026-08-21",
+      "rule": 5875,
+      "gpt": 9677,
+      "gemini": 8964,
+      "claude": 10465,
+      "gpt_pure": 10216,
+      "guardian": 9821,
+      "bench_btc": 11041,
+      "bench_eqw": 6994,
+      "bench_cash": 10000
     }
   ],
   "final_equity": {
-    "rule": 5458,
-    "gpt": 9484,
-    "gemini": 8659,
-    "claude": 10031,
-    "gpt_pure": 9927,
-    "guardian": 9622,
-    "bench_btc": 10432,
-    "bench_eqw": 6715,
+    "rule": 5875,
+    "gpt": 9677,
+    "gemini": 8964,
+    "claude": 10465,
+    "gpt_pure": 10216,
+    "guardian": 9821,
+    "bench_btc": 11041,
+    "bench_eqw": 6994,
     "bench_cash": 10000
   },
   "metrics": {
     "rule": {
-      "total_pct": -17.34,
+      "total_pct": -11.02,
       "mdd_pct": 19.42,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": -45.42,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": -41.25,
+      "full_days": 30
     },
     "gpt": {
-      "total_pct": 2.97,
+      "total_pct": 5.05,
       "mdd_pct": 3.62,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": -5.16,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": -3.23,
+      "full_days": 30
     },
     "gemini": {
-      "total_pct": -8.71,
+      "total_pct": -5.49,
       "mdd_pct": 11.65,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": -13.41,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": -10.36,
+      "full_days": 30
     },
     "claude": {
-      "total_pct": 6.81,
+      "total_pct": 11.43,
       "mdd_pct": 3.35,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": 0.31,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": 4.65,
+      "full_days": 30
     },
     "gpt_pure": {
-      "total_pct": 5.92,
+      "total_pct": 9.02,
       "mdd_pct": 2.81,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": -0.73,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": 2.16,
+      "full_days": 30
     },
     "guardian": {
-      "total_pct": 1.05,
+      "total_pct": 3.14,
       "mdd_pct": 3.48,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": -3.78,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": -1.79,
+      "full_days": 30
     },
     "bench_btc": {
-      "total_pct": 9.44,
+      "total_pct": 15.82,
       "mdd_pct": 3.55,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": 4.32,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": 10.41,
+      "full_days": 30
     },
     "bench_eqw": {
-      "total_pct": -35.95,
+      "total_pct": -33.28,
       "mdd_pct": 35.95,
       "sharpe": null,
-      "days": 17,
-      "full_total_pct": -32.85,
-      "full_days": 29
+      "days": 18,
+      "full_total_pct": -30.06,
+      "full_days": 30
     },
     "bench_cash": {
       "total_pct": 0.0,
       "mdd_pct": 0.0,
       "sharpe": null,
-      "days": 17,
+      "days": 18,
       "full_total_pct": 0.0,
-      "full_days": 29
+      "full_days": 30
     }
   },
   "current_alloc": {
     "rule": {
       "AKE": 12.5,
-      "SKYAI": 12.5,
-      "TUT": 12.5,
-      "CYS": -12.5,
-      "DEXE": -12.5,
-      "BEAT": -12.5,
       "ACE": 12.5,
-      "ON": -12.5
+      "SKYAI": 12.5,
+      "ON": -12.5,
+      "TUT": 12.5,
+      "BEAT": -12.5,
+      "PUMP": 12.5,
+      "CYS": -12.5
     },
     "gpt": {
-      "LINK": 12.0,
-      "SOL": 10.0,
-      "BTC": 8.0,
-      "ETH": 6.0,
-      "BNB": 5.0,
-      "XAU": 5.0,
+      "LINK": 10.0,
+      "BTC": 10.0,
+      "ETH": 8.0,
+      "SOL": 8.0,
+      "BNB": 6.0,
+      "XAU": 6.0,
+      "HYPE": 5.0,
       "XAG": 4.0,
-      "PUMP": 4.0,
-      "AKE": 3.0,
-      "KOMA": 3.0,
+      "PUMP": 5.0,
       "GPS": 3.0,
-      "HYPE": 4.0,
+      "DOGE": -3.0,
+      "ADA": -2.0,
       "XRP": -2.0,
-      "DOGE": -2.0,
       "LAB": -2.0,
-      "ADA": -1.0,
       "ZEC": -1.0
     },
     "gemini": {
       "BTC": 10.0,
       "AKE": 10.0,
-      "TUT": 8.0,
-      "KOMA": 8.0,
-      "PUMP": 5.0,
-      "ACE": 4.0,
-      "LAB": -8.0,
-      "DEXE": -5.0,
-      "BEAT": -4.0
+      "ACE": 10.0,
+      "TUT": 10.0,
+      "SKYAI": 10.0,
+      "HYPE": 10.0,
+      "LAB": -10.0,
+      "BEAT": -5.0,
+      "DEXE": -5.0
     },
     "claude": {
-      "BTC": 13.0,
-      "AKE": 10.7,
-      "SOL": 8.9,
-      "ACE": 5.9,
-      "TUT": 5.6,
-      "ONDO": 5.5,
-      "KOMA": 4.8,
+      "BTC": 13.5,
+      "AKE": 10.0,
+      "SOL": 8.5,
+      "ACE": 7.0,
+      "TUT": 5.5,
+      "ONDO": 5.0,
       "SKYAI": 4.8,
-      "BNB": 4.2,
-      "GIGGLE": 4.2,
-      "LINK": 3.4,
-      "EUL": 3.3,
-      "PUMP": 3.0,
-      "COTI": 2.1,
-      "XAU": 3.5,
-      "HYPE": 2.5,
-      "GPS": 1.5
+      "KOMA": 4.5,
+      "BNB": 4.0,
+      "GIGGLE": 4.0,
+      "PUMP": 3.5,
+      "XAU": 3.2,
+      "LINK": 3.2,
+      "EUL": 2.8,
+      "HYPE": 2.4,
+      "COTI": 2.0,
+      "GPS": 1.5,
+      "ETH": 1.5
     },
     "gpt_pure": {
-      "LINK": 10.57449907738652,
-      "XRP": 4.242791758193962,
-      "BNB": 7.9130635722085705,
-      "DOGE": -4.096306085987313,
-      "SOL": 5.281153701105099,
-      "XAU": 9.862427663538437,
-      "ZEC": -3.184936453855034,
-      "ADA": 3.0727485015197886,
-      "BTC": 12.267996119811182,
-      "XAG": 8.077372671609693,
-      "ETH": 8.988318009382132,
-      "PUMP": 2.8363111226895175
+      "BTC": 12.0,
+      "LINK": 10.0,
+      "XAU": 10.0,
+      "ETH": 9.0,
+      "BNB": 8.0,
+      "XAG": 8.0,
+      "SOL": 5.0,
+      "XRP": 5.0,
+      "DOGE": -4.0,
+      "PUMP": 3.0,
+      "ADA": 3.0,
+      "ZEC": -3.0
     },
     "guardian": {
       "BTC": 12.0,
       "ETH": 6.0,
-      "SOL": 6.0,
+      "SOL": 5.0,
       "BNB": 5.0,
-      "LINK": 4.0,
-      "XAU": 5.0,
-      "XAG": 3.0,
+      "XAU": 4.0,
+      "LINK": 3.0,
+      "XAG": 2.0,
       "HYPE": 2.0,
       "ACE": 2.0,
       "PUMP": 2.0,
-      "ONDO": 1.5,
       "TUT": 1.5,
+      "ONDO": 1.5,
       "COTI": 1.5,
-      "GIGGLE": 1.0,
-      "EUL": 1.5,
+      "EUL": 1.0,
       "GPS": 1.0,
-      "ZEC": -3.0,
-      "LAB": -2.0,
-      "ON": -1.5,
-      "XRP": -1.5,
-      "ADA": -1.5
+      "GIGGLE": 1.0,
+      "ZEC": -2.0,
+      "LAB": -1.5,
+      "ADA": -1.0,
+      "ON": -1.0,
+      "XRP": -1.0
     },
     "bench_btc": {
       "BTC": 100.0
     },
     "bench_eqw": {
       "AKE": 10.0,
+      "ACE": 10.0,
       "SKYAI": 10.0,
+      "ON": 10.0,
       "TUT": 10.0,
+      "BEAT": 10.0,
+      "PUMP": 10.0,
       "CYS": 10.0,
       "DEXE": 10.0,
-      "BEAT": 10.0,
-      "ACE": 10.0,
-      "ON": 10.0,
-      "KOMA": 10.0,
-      "PUMP": 10.0
+      "KOMA": 10.0
     },
     "bench_cash": {}
   },
   "current_reasons": {
     "rule": "wick-break 雙向等權(確定性規則,無 AI)",
-    "gpt": "保留核心多頭、降高波動雜訊；小幅對沖弱空，總曝險54%留現金。",
-    "gemini": "平倉逆勢的ON和XRP，續抱強勢AKE與TUT，增配BTC降低波動，總曝險降至62%以求穩健。",
-    "claude": "平倉 ETH 空(高波動+逆趨勢)、減 ON 至 0(空訊號弱),轉增安全性資產 XAU/HYPE/GPS。持續偏多延續昨日漲勢。曝險 93%→91%,控管風險。",
-    "gpt_pure": "保留核心多頭，維持DOGE/ZEC對沖；因波動偏高，降杠桿感並提高現金緩衝。",
-    "guardian": "減曝險5%(60→55)降擁擠。平衡做空(ZEC/LAB超貴、ADA/ON/XRP反轉信號弱)。加貴金屬抗擁擠。認損ON多頭,強化防守。保留核心多頭(BTC/ETH/SOL)。現金35%。",
+    "gpt": "保留核心多頭，減高波動小幣；空頭續抱但略降，總曝險76%控風險。",
+    "gemini": "保留強勢多頭AKE、TUT，加碼ACE並新增SKYAI與HYPE；維持LAB、BEAT等空單對沖，總曝險控制在80%防範波動。",
+    "claude": "持倉強勢多頭已+4.71%,保持核心配置。微調BTC/SOL/ACE細化風險,新增ETH小額多頭配置。曝險88%,現金12%,應對波動。規則訊號清晰,避免追高極端波動幣(TUT 798%年化)。",
+    "gpt_pure": "保留核心趨勢與低波資產，略減高波曝險；修正總曝險至79%，維持DOGE/ZEC對沖。",
+    "guardian": "近日波動加大(-0.53%/-0.39%)示風險升溫。減擁擠度(移除低信號部位XRP空轉多)、縮高波幅品(ACE/TUT/AKE暫停)、堅守穩定核心(BTC/ETH/BNB各減0.1-1%)。現金提升至40%備機會。",
     "bench_btc": "市場基準(非 AI)",
     "bench_eqw": "市場基準(非 AI)",
     "bench_cash": "市場基準(非 AI)"
@@ -638,9 +649,7 @@
     "bench_eqw": false,
     "bench_cash": false
   },
-  "today_violation": {
-    "gpt_pure": "unknown_symbol:USDT"
-  },
+  "today_violation": {},
   "first_attempt_violations": {
     "claude": 0,
     "guardian": 0,
@@ -648,11 +657,11 @@
     "gpt_pure": 1
   },
   "stability": {
-    "gpt": 0.821,
-    "gemini": 0.78,
-    "claude": 0.909,
-    "gpt_pure": 1.0,
-    "guardian": 0.655
+    "gpt": 0.964,
+    "gemini": 0.75,
+    "claude": 0.998,
+    "gpt_pure": 0.999,
+    "guardian": 0.993
   },
   "crowding_history": [
     {
@@ -854,6 +863,13 @@
     {
       "day": "2026-08-20",
       "overlap_pct": 32.8,
+      "warning": false,
+      "families": 3,
+      "note": "跨家族組合分散=較健康"
+    },
+    {
+      "day": "2026-08-21",
+      "overlap_pct": 31.3,
       "warning": false,
       "families": 3,
       "note": "跨家族組合分散=較健康"
@@ -1234,6 +1250,19 @@
       "guardian": 0.02,
       "bench_btc": 7.53,
       "bench_eqw": -8.3,
+      "bench_cash": 0.0,
+      "voided": false
+    },
+    {
+      "day": "2026-08-21",
+      "rule": 7.64,
+      "gpt": 2.03,
+      "gemini": 3.53,
+      "claude": 4.33,
+      "gpt_pure": 2.92,
+      "guardian": 2.07,
+      "bench_btc": 5.83,
+      "bench_eqw": 4.16,
       "bench_cash": 0.0,
       "voided": false
     }
