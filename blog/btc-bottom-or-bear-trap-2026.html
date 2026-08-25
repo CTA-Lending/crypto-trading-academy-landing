@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC 見底了嗎：七張圖、一條鏈上的尺，和一個我們五月做錯的預測 — 交易幣修課</title>
+  <meta name="description" content="CTA 創辦人七項技術觀察，以 15 年日線逐條驗算：五項成立、兩項推翻。並補上假陽性分析（強力週 K 精確率僅約三成）、鏈上成本基礎（四個歷史重大低點 MVRV 皆 ≤1，本輪最低 1.10）、ETF 資金流（單週 $1.92B）與期中選舉慣性，並公開更正本站 2026-05 的舊預測。">
+  <meta name="keywords" content="比特幣見底,熊市陷阱,BTC 週期底,MVRV,已實現價格,鏈上分析,現貨ETF,未平倉量,月線KD,假陽性,基準率謬誤,期中選舉,BTC 季節性,交易研究方法">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/btc-bottom-or-bear-trap-2026.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="BTC 見底了嗎：七張圖、一條鏈上的尺，和一個我們五月做錯的預測">
+  <meta property="og:description" content="比特幣七天漲了 22.7%，週線收出十五年來第 96.7 百分位的一根長紅。多數動能指標都在轉多。但有兩個數字與歷史慣性不合：這輪熊市只跌了 53.1%，而且價格從頭到尾沒有跌破全網平均持幣成本。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/btc-bottom-or-bear-trap-2026.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/btc-bottom-or-trap-2026.jpg">
+  <meta property="article:published_time" content="2026-08-25">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BTC 見底了嗎：七張圖、一條鏈上的尺，和一個我們五月做錯的預測",
+    "description": "比特幣七天漲了 22.7%，週線收出十五年來第 96.7 百分位的一根長紅。多數動能指標都在轉多。但有兩個數字與歷史慣性不合：這輪熊市只跌了 53.1%，而且價格從頭到尾沒有跌破全網平均持幣成本。",
+    "datePublished": "2026-08-25",
+    "dateModified": "2026-08-25",
+    "image": "https://crypto-trading-academy.com/blog/assets/btc-bottom-or-trap-2026.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/btc-bottom-or-bear-trap-2026.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">BTC 見底還是熊市陷阱</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-4">市場研究 ｜ 技術 × 鏈上 × 資金流交叉驗證</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">BTC 見底了嗎<br class="hidden md:block"><span class="text-slate-400 text-2xl md:text-3xl">七張圖、一條鏈上的尺，和一個我們五月做錯的預測</span></h1>
+      <p class="text-lg text-slate-400 mb-6">比特幣七天漲了 22.7%，週線收出十五年來第 96.7 百分位的一根長紅。多數動能指標都在轉多。但有兩個數字與歷史慣性不合：這輪熊市只跌了 53.1%，而且價格從頭到尾沒有跌破全網平均持幣成本。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-08-25</span><span>•</span><span>⏱ 閱讀約 22 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="max-w-4xl mx-auto px-4 mb-12">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+        <img src="assets/btc-bottom-or-trap-2026.jpg?v=1" alt="暗色場景中一只黃銅鉛錘懸在石台上方，霧氣使人看不出它是否已經觸底" class="w-full h-auto" loading="eager">
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">鉛錘已經停住，但霧讓人看不出它到底碰到石台了沒有。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <blockquote class="pull-quote">比特幣七天漲了 22.7%，週線收出十五年來第 96.7 百分位的一根長紅。多數動能指標都在轉多。但有兩個數字與歷史慣性不合：這輪熊市只跌了 53.1%，而且價格從頭到尾沒有跌破全網平均持幣成本——四個歷史重大低點，這兩件事都發生過。</blockquote>
+    <p>現況數據（採日收盤口徑，價格源為 Bitstamp，資料截至 <strong>2026-08-25</strong>）：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th></th><th>數值</th></tr></thead><tbody><tr><td>週期高點</td><td><strong>$124,728</strong>（2025-10-06）</td></tr><tr><td>本輪最低</td><td><strong>$58,526</strong>（2026-06-30；盤中最低 $57,735，7 月 1 日）</td></tr><tr><td>今日</td><td><strong>$79,364</strong></td></tr><tr><td>自最低反彈</td><td><strong>+35.6%</strong></td></tr><tr><td>近 7 日</td><td><strong>+22.7%</strong>（$64,686 → $79,364）</td></tr><tr><td>距週期高點</td><td><strong>−36.4%</strong></td></tr></tbody></table></div>
+    <p>這篇文章要回答一個問題：<strong>這是週期底，還是熊市陷阱？</strong></p>
+    <p>本文針對 CTA 創辦人提出的七項技術觀察（附其自繪圖表七張），以 15 年日線資料逐條驗證，再補上鏈上成本基礎與資金流數據，最後送兩套外部 AI 模型做對抗性審查。</p>
+    <p><strong>先講結論，分四層：</strong></p>
+    <ol><li><strong>動能面幾乎全面轉多</strong>，而且創辦人的七項觀察裡有五項經得起驗算。</li><li><strong>其中兩項不成立</strong>，而且有一項的實證方向與直覺相反。</li><li><strong>我自己也錯了一次，而且錯得比他嚴重</strong>：我原本用的是「底部附近有沒有出現訊號」，那是錯的分母。改算正確的分母之後，最強的那個訊號精確率只剩三成。</li><li><strong>與歷史慣性差最多的一項不在 K 線上，在鏈上</strong>——而那條證據本身，也有一個我無法否認的反駁。</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h2>一、七張圖，七個宣稱，我逐條算了一遍</h2>
+    <p>先聲明資料來源：價格用 <strong>Bitstamp BTC/USD 日線（2011-08 起，5,487 根）</strong>，通過 8 項公開里程碑核對，與 Binance 重疊的 3,296 天收盤價差異中位數 <strong>0.061%</strong>。指標另用 Binance 現貨與期貨資料交叉驗證。創辦人的圖表用的是 TradingView 的 INDEX BTCUSD（多所綜合），與本文資料源不同但結構一致。</p>
+    <h3>宣稱 ①：熊底突破都是週線一根強力 K 棒（✅ 成立）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-1-three-bottoms.jpg?v=1" alt="三個週期熊市底部的 BTC 走勢並排比較，2019、2022、2026 各以黃色箭頭標示底部後的強力週 K 棒" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView，INDEX BTCUSD）。2019、2022 與 2026 三段底部結構並排；黃色箭頭為底部後的強力反彈 K 棒。</figcaption>
+    </figure>
+    <p>算法是：找出各週期最低點之後 10 週內最大的一根週 K，再看它在 15 年全部週報酬裡排第幾。</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>週期</th><th>最低點</th><th>後 10 週最大週漲幅</th><th>歷史百分位</th></tr></thead><tbody><tr><td>2018 熊底</td><td>2018-12-15</td><td>+23.48%</td><td>94.0%</td></tr><tr><td>2022 熊底</td><td>2022-11-21</td><td>+22.00%</td><td>94.6%</td></tr><tr><td><strong>2026 本次</strong></td><td>2026-06-30</td><td><strong>+23.69%</strong></td><td><strong>96.7%</strong></td></tr></tbody></table></div>
+    <p>結構確實高度相似，而且<strong>本次那根 K 棒是三次裡最強的</strong>。這一項創辦人說對了。</p>
+    <p>（我第一次算的時候把週線對齊搞錯，用了 <code>W-MON</code> 的標籤日去切，結果把最大的那一根切掉了，算出 +0.90%。修正後才是上表的數字。）</p>
+    <h3>宣稱 ②：突破都帶量，這次沒量（✅ 成立，而且是最強的空方技術證據）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-2-monthly-volume.jpg?v=1" alt="BTC 月線圖疊加成交量，標示 2015、2019、2023 三次突破時的量增，以及 2026 年 8 月的量縮" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView 月線）。本站以「當月量 ÷ 前 12 月均量」重算後：2019-04 為 1.07x、2023-01 為 1.59x、2026-08 為 0.67x（Binance 現貨口徑）。</figcaption>
+    </figure>
+    <p>用「當月成交量 ÷ 前 12 個月均量」這把尺（Binance 現貨，2017 年起）：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>月份</th><th>成交量（BTC）</th><th>前 12 月均量</th><th>比值</th><th>當月漲跌</th></tr></thead><tbody><tr><td>2019-04</td><td>1,126,961</td><td>1,048,646</td><td><strong>1.07x</strong></td><td>+29.7%</td></tr><tr><td>2019-05</td><td>1,498,410</td><td>1,097,307</td><td><strong>1.37x</strong></td><td>+60.7%</td></tr><tr><td>2023-01</td><td>7,977,029</td><td>5,012,401</td><td><strong>1.59x</strong></td><td>+39.8%</td></tr><tr><td><strong>2026-08</strong></td><td>379,199</td><td>567,754</td><td><strong>0.67x</strong></td><td><strong>+26.0%</strong></td></tr></tbody></table></div>
+    <p>2026 年 8 月至今漲了 26%，成交量卻只有前 12 個月均量的 <strong>0.67 倍</strong>。就算把未過完的 6 天等比例外推，全月也只有 <strong>0.83x</strong>。</p>
+    <p>這裡要老實說一個資料源打架的地方：同一件事用 Bitstamp 的量算，2023-01 是 0.97x（不成立），Binance 是 1.59x（成立）。兩者差這麼多，是因為 Bitstamp 在這十年間市佔大幅萎縮，它的絕對成交量不再能代表市場。<strong>我選擇採用 Binance，理由是市佔主導；但這個選擇會影響結論，所以必須寫出來讓你自己判斷。</strong></p>
+    <h3>宣稱 ③：月線 KD 超賣區金叉是絕佳底部（✅ 成立，但樣本只有 4）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-3-monthly-kd.jpg?v=1" alt="BTC 月線圖搭配 KD 指標，白色虛線標示歷次 KD 在超賣區金叉的時點" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView 月線 + KD）。本站以 KD(9,3,3)、D&lt;30 全樣本掃描，15 年僅 5 次（含本次）。</figcaption>
+    </figure>
+    <p>用 KD(9,3,3)、D 值 &lt; 30 掃過 15 年全部月線，一共只有 <strong>5 次</strong>（含本次）：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>金叉月</th><th>當時價格</th><th>+6 月</th><th>+12 月</th><th>+18 月</th><th>12 月內最大回撤</th></tr></thead><tbody><tr><td>2012-05</td><td>$5</td><td>+140.4%</td><td>+2374.1%</td><td>+21554.2%</td><td>−6.0%</td></tr><tr><td>2015-05</td><td>$229</td><td>+64.6%</td><td>+132.3%</td><td>+224.2%</td><td>−13.5%</td></tr><tr><td>2019-03</td><td>$4,096</td><td>+102.6%</td><td>+56.8%</td><td>+163.1%</td><td>−10.4%</td></tr><tr><td>2023-01</td><td>$23,127</td><td>+26.4%</td><td>+84.0%</td><td>+179.4%</td><td><strong>−28.7%</strong></td></tr><tr><td><strong>2026-08</strong></td><td>$79,364</td><td>進行中</td><td>進行中</td><td>進行中</td><td>—</td></tr></tbody></table></div>
+    <p>前四次 +12 個月報酬 <strong>4/4 為正</strong>，中位數 <strong>+108.2%</strong>。</p>
+    <p>我做了穩健性測試：KD 參數換 9／14／21，門檻換 D&lt;20／30／40，共 9 種組合，全部同向，勝率都是 100%。</p>
+    <p><strong>但這 9 種組合不是 9 份獨立證據</strong>——它們偵測的是同一批事件，只是判準略有不同。真正的分母始終是 <strong>3 到 4</strong>。這是本文最大的統計限制。</p>
+    <h3>宣稱 ④：雙週線 MACD 水下黃金交叉（⚠️ 已交叉，但 K 棒還沒收）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-4-biweekly-macd.jpg?v=1" alt="BTC 雙週線圖搭配 MACD，白色虛線標示 2019、2022、2026 三次水下黃金交叉" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView 雙週線 + MACD）。本站實測 DIF −6,493 已上穿 DEA −6,548，惟該根雙週 K 棒尚未收線。</figcaption>
+    </figure>
+    <p>目前 DIF = −6,493、DEA = −6,548，<strong>DIF 已在零軸下方上穿 DEA</strong>。歷史上出現過 5 次，前 4 次已完成的 +6 個月報酬全為正。</p>
+    <p>但必須標清楚：<strong>這根雙週 K 棒要到 2026-08-31 之後才收線，在收線前這個交叉可以消失。</strong> 同樣的問題也適用於月線 KD——8 月還沒過完。</p>
+    <h3>宣稱 ⑤：週線 MACD 背離是相對高低點的慣性（⏸️ 本文未獨立驗證）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-5-weekly-macd-div.jpg?v=1" alt="BTC 週線圖搭配 MACD，以黃色線段標示 2021 與 2025 的頂背離結構" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView 週線 + MACD）。背離畫法含主觀成分，本文未對此項做獨立量化驗證。</figcaption>
+    </figure>
+    <p>背離的畫法有主觀成分（起訖點怎麼選會改變結論），要做成可重現的檢驗需要先把定義寫死。這一項本文沒做，不列入任何加減分。</p>
+    <h3>宣稱 ⑥：日線 50MA / 200MA 即將黃金交叉（✅ 成立）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-6-daily-ma.jpg?v=1" alt="BTC 日線圖疊加 50 日與 200 日移動平均線，標示歷次交叉時點" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView 日線 + 50/200MA）。本站實測：50MA $65,767、200MA $69,132，差距 −4.87%。</figcaption>
+    </figure>
+    <ul><li>50MA = $65,767，200MA = $69,132，差距 <strong>−4.87%</strong></li><li>近 20 日以 <strong>+205 美元／日</strong>的速度收斂</li><li>線性外推約 <strong>16 天</strong>後交叉</li></ul>
+    <p>但要注意：<strong>均線收斂不是線性的</strong>。價格橫盤或回落，交叉日就會大幅延後甚至不發生。這是預測，不是已發生的訊號。</p>
+    <h3>宣稱 ⑦：日線 RSI 超長頂背離，有乏力味道（❌ 我推翻這一條）</h3>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/ceo-7-daily-rsi.jpg?v=1" alt="BTC 日線圖搭配 RSI，紅色水平線標示 82,814 前高，黃色線段標示 RSI 的背離畫法" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">創辦人自繪（TradingView 日線 + RSI）。82,814 對應 2026-05-06 盤中高點 82,833；最高日收盤為 2026-05-10 的 82,193。</figcaption>
+    </figure>
+    <p>先說對的部分：創辦人標的 <strong>82,814</strong> 這個價位非常精準——2026-05-06 的盤中最高價是 <strong>82,833</strong>，只差 0.02%。而且這個價位的意義比他講的更重——它同時是上一波反彈的頂，第九節會回到這裡。</p>
+    <p>但「頂背離」這個判斷，資料不支持：</p>
+    <ul><li>頂背離的前提是「<strong>價格創新高、指標不創新高</strong>」</li><li>今日 RSI(14) = <strong>82.6</strong>，這是超買，不是背離</li><li>而價格距離 2026 年內最高收盤（$96,942，1 月 14 日）還有 <strong>−18.1%</strong>，根本沒有創新高</li></ul>
+    <p>那 RSI 衝到 80 以上，歷史上通常代表什麼？我掃了全樣本，RSI 首次上穿 80 的事件近 11 次（已完成）：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th></th><th>中位數</th></tr></thead><tbody><tr><td>+30 日報酬</td><td><strong>+14.0%</strong></td></tr><tr><td>+90 日報酬</td><td><strong>+20.9%</strong></td></tr><tr><td>90 日內最大回撤</td><td>僅 <strong>−3.1%</strong></td></tr></tbody></table></div>
+    <p><strong>方向偏多，跟創辦人的直覺相反。</strong></p>
+    <p>但這 11 次裡有 10 次落在 2023–2024 的多頭期間——<strong>在上漲的市場裡，RSI 超買本來就容易再上漲</strong>。這是嚴重的樣本偏誤，所以這組數字只能當參考，不能當證據。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>二、改用完整的訊號分母重算</h2>
+    <p>上面那些驗算有一個共同的結構性問題，外部審查一致點名：</p>
+    <blockquote class="pull-quote">我證明的是「<strong>熊市底部附近，出現過這些訊號</strong>」。<br>但要回答的問題是「<strong>現在出現這些訊號，所以現在是底部嗎</strong>」。<br>這是兩個完全不同的機率。前者是 P(訊號｜底部)，後者是 P(底部｜訊號)。</blockquote>
+    <p>差別在於<strong>假陽性</strong>——那些出現了訊號、但之後繼續破底的次數，在我原本的算法裡根本沒進分母。</p>
+    <p>所以我重做了。事前定義「底部」為：<strong>訊號出現後 12 個月內，價格不再跌破訊號當日收盤的 90%。</strong> 然後掃出全部訊號，一次不漏。</p>
+    <h3>強力週 K 棒的真實精確率</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>週漲幅門檻</th><th>15 年出現次數</th><th>已完成</th><th>符合底部定義</th><th><strong>精確率</strong></th></tr></thead><tbody><tr><td>≥15%</td><td>77</td><td>76</td><td>26</td><td><strong>34.2%</strong></td></tr><tr><td>≥18%</td><td>47</td><td>46</td><td>14</td><td><strong>30.4%</strong></td></tr><tr><td>≥20%</td><td>40</td><td>39</td><td>12</td><td><strong>30.8%</strong></td></tr><tr><td>≥22%</td><td>32</td><td>31</td><td>9</td><td><strong>29.0%</strong></td></tr><tr><td>≥23%</td><td>27</td><td>26</td><td>8</td><td><strong>30.8%</strong></td></tr></tbody></table></div>
+    <p><strong>大約七成是假陽性。</strong> 熊市反彈本來就常有極端週漲幅——這正是「熊市陷阱」這個詞存在的原因。</p>
+    <h3>而我原本以為疊加條件會更準，結果比「相反」更複雜</h3>
+    <p>我在腳本裡先寫好了一句話：「加上『已深跌 40%』這個條件後，精確率應該會明顯上升。」</p>
+    <p>第一次跑出來的結果是往下的，我差點就直接寫成「跌得越深、彈得越猛，越可能是熊市反彈」。但那句話只測了一半——我把跌幅門檻固定在 40%，只變動反彈強度。<strong>把跌幅門檻也變動之後，形狀根本不是單調的：</strong></p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>距高點跌幅門檻</th><th>樣本數</th><th>符合底部定義</th><th>精確率</th></tr></thead><tbody><tr><td>不設限</td><td>76</td><td>26</td><td>34.2%</td></tr><tr><td>跌逾 20%</td><td>37</td><td>11</td><td>29.7%</td></tr><tr><td>跌逾 30%</td><td>34</td><td>9</td><td><strong>26.5%</strong> ← 最低</td></tr><tr><td>跌逾 40%</td><td>33</td><td>9</td><td>27.3%</td></tr><tr><td>跌逾 50%</td><td>22</td><td>8</td><td>36.4%</td></tr><tr><td>跌逾 60%</td><td>12</td><td>6</td><td><strong>50.0%</strong> ← 最高</td></tr><tr><td>跌逾 70%</td><td>5</td><td>2</td><td>40.0%</td></tr></tbody></table></div>
+    <p>（固定週漲幅 ≥15%，只變動跌幅門檻。）</p>
+    <p><strong>這是一條 U 型曲線，不是一條下降線。</strong> 跌 30–40% 時的強力反彈最不可靠（約四分之一），跌逾 60% 之後反而回升到一半。</p>
+    <p>而在固定「跌逾 40%」的樣本內，反彈越猛精確率確實越低：≥15% 是 27.3%、≥20% 是 25.0%、≥23% 只剩 <strong>12.5%</strong>（分母只有 8）。</p>
+    <p>所以能講的只有這句，而且必須講滿：</p>
+    <blockquote class="pull-quote"><strong>在「距高點跌逾 40%」這個子樣本裡，反彈越猛，精確率越低。</strong><br>至於「跌得越深」本身——資料顯示的是 U 型，不支持任何單調的說法。</blockquote>
+    <p>順帶一提本輪的位置：那根 +23.69% 的週 K 出現時（週結束 2026-08-23，收 $77,716），距週期高點是 <strong>−37.7%</strong>，正好落在精確率最低的那個區間。</p>
+    <h3>月線 KD 用同一把尺重算</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>金叉月</th><th>距前高</th><th>12 個月內最深跌破</th><th>符合底部定義？</th></tr></thead><tbody><tr><td>2012-05</td><td>−55.8%</td><td>−5.8%</td><td>✅</td></tr><tr><td>2015-05</td><td>−79.8%</td><td>−8.4%</td><td>✅</td></tr><tr><td>2019-03</td><td>−78.7%</td><td>−9.7%</td><td>✅</td></tr><tr><td>2023-01</td><td>−65.8%</td><td><strong>−28.2%</strong></td><td>❌</td></tr></tbody></table></div>
+    <p>精確率 <strong>3/4</strong>。注意 2023-01 那次：12 個月報酬是 +84%（正的），但中途要先吞下 <strong>−28.2%</strong> 的回撤。</p>
+    <blockquote class="pull-quote"><strong>「12 個月後是賺的」和「中間不會讓你出局」是兩件事。</strong> 在槓桿部位上，這兩件事的距離可以決定你還在不在場上。</blockquote>
+    <hr class="my-10 border-slate-800">
+    <h2>三、鏈上那把尺：四個歷史重大低點都跌破了全網平均持幣成本，這次沒有</h2>
+    <p>這是外部審查兩家都列為第一優先、而我原本漏掉的維度。它是本文與歷史慣性差距最大的一項觀察——但它也是本文被反駁得最有力的一項。</p>
+    <p><strong>已實現價格（Realized Price）</strong>是全網所有比特幣「最後一次鏈上移動時的價格」加權平均——可以粗略理解為<strong>整個市場的平均持幣成本</strong>。價格除以它就是 <strong>MVRV</strong>。MVRV &lt; 1 代表全網平均帳面是虧損的。</p>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/btc-mvrv-cost-basis.jpg?v=1" alt="BTC 價格與全網平均持幣成本（已實現價格）對照圖，下方為 MVRV，標示四次歷史重大低點 MVRV 皆低於 1，本輪最低為 1.10" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">資料：CoinMetrics community API，本站自行擷取與計算（已實現價格 = 價格 ÷ MVRV）。樣本僅 4 個歷史重大低點，不足以做統計推論。</figcaption>
+    </figure>
+    <p>下表價格採 <strong>CoinMetrics</strong>（與 MVRV 同源），與本文其他表格的 Bitstamp 價格有 0.1~0.8% 的差異，屬資料源差異而非錯誤：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>日期</th><th>標記</th><th>價格</th><th>已實現價格</th><th>MVRV</th><th>價格 vs 成本</th></tr></thead><tbody><tr><td>2015-01-14</td><td>2015 熊底</td><td>$176</td><td>$312</td><td><strong>0.56</strong></td><td>−43.6%</td></tr><tr><td>2018-12-15</td><td>2018 熊底</td><td>$3,185</td><td>$4,613</td><td><strong>0.69</strong></td><td>−31.0%</td></tr><tr><td>2020-03-12</td><td>新冠底</td><td>$4,959</td><td>$5,652</td><td><strong>0.88</strong></td><td>−12.3%</td></tr><tr><td>2022-11-21</td><td>2022 熊底</td><td>$15,778</td><td>$20,291</td><td><strong>0.78</strong></td><td>−22.2%</td></tr><tr><td><strong>2026-06-30</strong></td><td><strong>本輪最低</strong></td><td><strong>$58,525</strong></td><td><strong>$53,070</strong></td><td><strong>1.10</strong></td><td><strong>+10.3%</strong></td></tr><tr><td>2026-08-24</td><td>今日</td><td>$78,894</td><td>$52,927</td><td>1.49</td><td>+49.1%</td></tr></tbody></table></div>
+    <p><strong>這四個歷史重大低點，價格全部跌到全網平均成本以下。這一次，最低點時全網平均仍賺 10.3%。</strong></p>
+    <p>（要註明：2020-03 通常被歸類為流動性衝擊造成的急跌，與 2015、2018、2022 那種完整熊市週期底並不同類。把它放進同一張表，是為了呈現「價格跌破成本線」這個現象的普遍性，不是主張它們是同一種事件。）</p>
+    <p>MVRV &lt; 1 在 15 年裡只佔 <strong>13.6%</strong> 的時間——它不是常態，是投降時刻的指紋。</p>
+    <h3>但這條證據必須配一個反向對照組</h3>
+    <p>如果 MVRV ≤ 1 是底部的必要條件，那所有重大低點都該滿足它。我把歷史上每個年度的重大低點掃出來：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>年</th><th>日期</th><th>價格</th><th>MVRV</th></tr></thead><tbody><tr><td>2011</td><td>2011-11-18</td><td>$2</td><td>0.42</td></tr><tr><td>2015</td><td>2015-01-14</td><td>$176</td><td>0.56</td></tr><tr><td>2018</td><td>2018-12-14</td><td>$3,199</td><td>0.69</td></tr><tr><td>2020</td><td>2020-03-12</td><td>$4,959</td><td>0.88</td></tr><tr><td><strong>2021</strong></td><td><strong>2021-07-20</strong></td><td><strong>$29,767</strong></td><td><strong>1.54</strong></td></tr><tr><td>2022</td><td>2022-11-09</td><td>$15,758</td><td>0.75</td></tr><tr><td><strong>2024</strong></td><td><strong>2024-09-06</strong></td><td><strong>$53,839</strong></td><td><strong>1.71</strong></td></tr></tbody></table></div>
+    <p><strong>2021 和 2024 那兩個低點的 MVRV 都遠高於 1。</strong> 而那兩次都不是週期底，是<strong>牛市途中的深度回調</strong>。</p>
+    <h3>而且這條證據，我一樣不能講滿</h3>
+    <p>寫到這裡我差點又犯第二節那個錯。原本我寫的是「MVRV ≤ 1 可以<strong>區分</strong>週期底和牛市回調」——但那句話一樣沒有被上面的表格證明。</p>
+    <p>表格證明的是：<strong>在我選出來的這幾個歷史低點裡，週期底的 MVRV 都 ≤ 1，牛市回調的都 &gt; 1。</strong> 要從這裡跳到「MVRV &gt; 1 所以現在不是週期底」，需要的是另一個分母：歷史上所有 MVRV &gt; 1 的重大低點，有多少最後其實是週期底？而「重大低點」又要怎麼<strong>事前</strong>定義，而不是我事後挑出來的？</p>
+    <p>這份功課本文沒做。</p>
+    <p>還有一個更難迴避的問題，是外部審查直接點名的<strong>雙重標準</strong>：</p>
+    <blockquote class="pull-quote">我在第六節承認「ETF 帶來的常態性機構買盤，本來就該讓回撤更淺」。<br>但如果回撤真的變淺了，<strong>MVRV 在機制上就更難跌破 1</strong>——因為價格根本不會跌那麼深。<br>那麼「MVRV 沒破 1，所以還沒見底」就是在用舊時代的門檻，去要求一個結構已經改變的市場。</blockquote>
+    <p>我沒有辦法否認這個反駁。所以這一節的結論必須降級成這樣：</p>
+    <blockquote class="pull-quote"><strong>本輪最低點的鏈上狀態，與四個歷史重大低點都不同。</strong><br>這是一個值得記住的差異，但它<strong>不足以判定</strong>本輪低點的性質——因為 MVRV 的門檻本身，可能已經被 ETF 時代的結構改變推移了。</blockquote>
+    <p>至於怎麼解讀這個差異，有兩種讀法，而且<strong>兩種都合理</strong>：</p>
+    <ul><li><strong>空方讀法</strong>：真正的週期底還沒到，2026-06-30 只是下跌途中的一站</li><li><strong>多方讀法</strong>：2025-10 的高點根本不是週期頂，這輪從頭到尾都還在牛市裡，−53% 只是一次特別深的回調；在 ETF 常態買盤下，MVRV 本來就不該再破 1</li></ul>
+    <p>本文的資料無法在這兩種讀法之間做出裁決。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>四、資金流：這波確實不是槓桿推的，但我原本的說法有錯</h2>
+    <h3>買盤來自現貨 ETF</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>日期</th><th>全部美國現貨 BTC ETF 淨流入（BTC）</th></tr></thead><tbody><tr><td>2026-08-17</td><td>+4,730</td></tr><tr><td>2026-08-18</td><td>+2,930</td></tr><tr><td>2026-08-19</td><td>+7,990</td></tr><tr><td>2026-08-20</td><td>+8,750</td></tr><tr><td>2026-08-21</td><td>+4,210</td></tr><tr><td>2026-08-24</td><td>+4,340</td></tr><tr><td><strong>六個交易日合計</strong></td><td><strong>+32,950 BTC</strong></td></tr></tbody></table></div>
+    <p>獨立來源交叉驗證：截至 8 月 22 日當週淨流入 <strong>$1.92B</strong>，是 <strong>2025 年 10 月以來最強的一週</strong>，也是 2026 年最強；8 月累計 <strong>$2.38B</strong>，為今年最強月份；IBIT 單週 <strong>$1.331B</strong>，8 月 20 日單日 $503M（佔當日全市場 83%）。</p>
+    <h3>🔴 而我原本把 OI 講錯了</h3>
+    <p>我原本寫的是「期貨未平倉量幾乎不動」。以 BTC 計價確實如此（+0.8%），但這個說法會誤導：</p>
+    <blockquote class="pull-quote">同一段期間、同一個交易所（Binance）：價格 +22.5%、BTC 計價 OI +0.8%<br>→ <strong>美元名目 OI = 1.008 × 1.225 − 1 = +23.4%</strong></blockquote>
+    <p>正確的表述是：<strong>槓桿部位相對於 BTC 數量幾乎沒有增加，但美元名目的衍生品曝險隨價格同步上升了約 23%。</strong>（此處價格變化採 Binance，與 OI 同源；本文其餘價格採 Bitstamp，兩者同期差約 0.2 個百分點。） 這兩句話的意思差很多，我原本的寫法會讓人以為衍生品風險沒變。</p>
+    <p>修正之後，這條證據仍然有效，只是要講得更精確：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>指標</th><th>數值</th><th>讀法</th></tr></thead><tbody><tr><td>BTC 計價 OI（7 日）</td><td>+0.8%</td><td>沒有大量新增以幣計價的槓桿部位</td></tr><tr><td>CME 比特幣期貨持倉</td><td><strong>$9.65B（−1.27%）</strong></td><td>機構期貨端<strong>沒有</strong>同步增倉</td></tr><tr><td>資金費率（近 7 日年化）</td><td><strong>+9.1%</strong>（全樣本第 88.4 百分位）</td><td>偏高，但遠不到狂熱</td></tr><tr><td>24 小時爆倉</td><td>$691.90M（+122.87%）</td><td>有軋空成分</td></tr></tbody></table></div>
+    <p><strong>CME 持倉不增反減這一點值得注意</strong>：如果 ETF 的買盤大量伴隨「買 ETF、空 CME」的現金套利，CME 的未平倉量應該同步放大。它沒有。這<strong>降低了</strong>「全部流入都是基差套利」作為唯一解釋的可信度——但 CME 總量下降可能同時包含舊套利平倉與新套利建立，單一總量無法排除套利存在。</p>
+    <h3>這提供了量能矛盾的一種解釋，但沒有驗證它</h3>
+    <p>有一種解釋是這樣的：ETF 把籌碼買走鎖進託管，市場上的浮動籌碼變少、盤口變薄，於是<strong>少量的淨買盤就能推出大幅度的漲幅</strong>。在這個框架下，「量縮」不代表買盤無力，而代表<strong>賣壓枯竭</strong>。</p>
+    <p>這個機制在邏輯上成立，而且和上面所有數字自洽。外部審查中有一家強烈主張這才是正確讀法。</p>
+    <p>但它有兩個沒被證實的環節：</p>
+    <ol><li>本文的量能只算了 Binance 現貨的 BTC 計價成交量，<strong>沒有做跨交易所、美元口徑、市佔調整後的可比量能</strong>，也沒有把 ETF 自身的成交量加回去。0.67x 最多只能說「該場所周轉率偏低」。</li><li><strong>成交量是雙邊周轉，不是淨需求。</strong> 用它來推論買盤強弱，本來就是間接的。</li></ol>
+    <p>所以誠實的說法是：<strong>量能這條證據的權重，比我原本給的要低。</strong> 它是一個警訊，不是一個判決。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>五、宏觀：利多的地基比看起來鬆</h2>
+    <h3>聯準會在辯論的是「要不要升息」</h3>
+    <ul><li>2026-07-29 FOMC 維持 <strong>3.5%–3.75%</strong>，投票 <strong>9 比 3</strong>，而<strong>三位異議者主張的都是升息 1 碼</strong></li><li>目前市場押注 9 月「維持不動」的機率約 <strong>60%（CME）／65%（Kalshi）</strong></li><li>而升息機率之所以下滑，主因是 <strong>7 月非農就業意外轉弱</strong></li></ul>
+    <p>換句話說：<strong>這是「壞消息就是好消息」，不是寬鬆循環啟動。</strong> 支撐風險資產的，是勞動市場走弱到讓聯準會不敢升息——這個地基跟「降息週期開始」是兩回事，而且它可以在下一份數據轉向。</p>
+    <h3>財政部回購不是 QE</h3>
+    <p>8 月 19 日美國財政部擴大長天期公債回購，8 月 20 日財長 Bessent 確認單次規模可超過 <strong>$4B</strong>（上限翻倍）。這被廣泛解讀成流動性利多。</p>
+    <p>要小心：<strong>若回購的資金來自發行其他天期的公債，它主要是債市微結構與流動性管理，不必然增加總體金融體系的流動性。</strong> 把它等同於印鈔，是過度解讀。</p>
+    <h3>情緒面已經不便宜</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>指標</th><th>數值</th></tr></thead><tbody><tr><td>恐懼與貪婪指數</td><td><strong>73（貪婪）</strong></td></tr><tr><td>BTC 市值佔比</td><td>59.61%</td></tr><tr><td>山寨季節指數</td><td>40（中性）</td></tr><tr><td>Binance 全市場帳戶多空比</td><td><strong>0.945</strong>（30 日最低，30 日均 1.504）</td></tr><tr><td>Binance 大戶持倉多空比</td><td><strong>2.020</strong>（接近 30 日高）</td></tr></tbody></table></div>
+    <p>散戶帳戶偏空、大戶持倉偏多，這個分歧值得記住。但要提醒：<strong>帳戶多空比是按帳戶數計算的，不反映部位大小</strong>，不能直接翻譯成「聰明錢在買、散戶在賣」。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>六、週期與期中選舉：兩項歷史比較都偏向「見底更晚」</h2>
+    <h3>這輪熊市又淺又短</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>週期</th><th>高點（日收盤）</th><th>低點（日收盤）</th><th>跌幅</th><th>歷時</th></tr></thead><tbody><tr><td>2013 → 2015</td><td>$1,132（2013-12-04）</td><td>$171（2015-01-14）</td><td><strong>−84.9%</strong></td><td>406 天</td></tr><tr><td>2017 → 2018</td><td>$19,188（2017-12-16）</td><td>$3,180（2018-12-15）</td><td><strong>−83.4%</strong></td><td>364 天</td></tr><tr><td>2021 → 2022</td><td>$67,559（2021-11-08）</td><td>$15,766（2022-11-21）</td><td><strong>−76.7%</strong></td><td>378 天</td></tr><tr><td><strong>2025 → 2026</strong></td><td><strong>$124,728（2025-10-06）</strong></td><td><strong>$58,526（2026-06-30）</strong></td><td><strong>−53.1%</strong></td><td><strong>267 天</strong></td></tr></tbody></table></div>
+    <p>深度和時間都明顯不足。</p>
+    <p>但這條證據有一個很強的反駁：<strong>跌幅本來就在逐輪收斂</strong>（−84.9% → −83.4% → −76.7%），而 ETF 帶來的常態性機構買盤，本來就該讓回撤更淺。要求本輪必須跌到 −77% 才算數，是刻舟求劍。</p>
+    <p>我的判斷是：這條證據<strong>只能當先驗，不能當目標價模型</strong>。它說明「現在還早」的可能性存在，但它推不出任何具體價位。</p>
+    <h3>三輪熊底，全部落在期中選舉之後</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>選舉日</th><th>熊市最低點</th><th>相差</th></tr></thead><tbody><tr><td>2014-11-04</td><td>2015-01-14</td><td><strong>+71 天</strong></td></tr><tr><td>2018-11-06</td><td>2018-12-15</td><td><strong>+39 天</strong></td></tr><tr><td>2022-11-08</td><td>2022-11-21</td><td><strong>+13 天</strong></td></tr></tbody></table></div>
+    <p>2026 年期中選舉是 <strong>11 月 3 日</strong>。同樣的慣性，對應窗口約在 <strong>2026-11-16 到 2027-01-13</strong>。</p>
+    <p>但這裡的統計問題比看起來嚴重：三個樣本告訴我們的是「在這三個已知的熊底裡，全部落在選後」，它<strong>回答不了</strong>「現在位於選前，所以底部還在後面嗎」。而且曆法變數很多（總統大選、減半、月份、週期天數），事後挑出最吻合的那一個，本來就容易吻合。</p>
+    <p><strong>但本輪的最低點（2026-06-30）出現在選舉前四個月——已經打破這個慣性了。</strong></p>
+    <p>這同樣有兩種讀法：慣性壞了（底部已成立），或者那不是真正的底（底部還在後面）。三個樣本推不出答案。</p>
+    <p>順帶更正一個常見的誤解：期中選舉年的市場慣性，<strong>不是單純的「不樂觀」</strong>。以標普 500 為例（1974 年起）：</p>
+    <ul><li>8 月 1 日到選舉日：平均僅 <strong>+1.7%</strong>（弱）</li><li>選後三個月：平均 <strong>+5.7%</strong>，13 次中 <strong>11 次為正</strong>（強）</li></ul>
+    <p>也就是<strong>選前弱、選後強</strong>。如果照這個劇本，現在（8 月底）正好在最弱的那一段。</p>
+    <h3>季節性：9 月是全年最差的月份</h3>
+    <p>BTC 各月報酬（2011-09 ~ 2026-07，已剔除未收月）：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>月份</th><th>樣本數</th><th>中位數</th><th>為正</th></tr></thead><tbody><tr><td>7 月</td><td>15</td><td>+8.3%</td><td>11/15</td></tr><tr><td>8 月</td><td>14</td><td>−7.5%</td><td>5/14</td></tr><tr><td><strong>9 月</strong></td><td>15</td><td><strong>−3.2%</strong></td><td><strong>6/15</strong> ← 全年最弱</td></tr><tr><td><strong>10 月</strong></td><td>15</td><td><strong>+10.9%</strong></td><td><strong>10/15</strong> ← 全年最強之一</td></tr><tr><td>11 月</td><td>15</td><td>+8.8%</td><td>9/15</td></tr></tbody></table></div>
+    <p>我們正走進歷史上最弱的那個月，然後才是最強的那兩個月。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>七、🔴 更正：我們自己五月那篇預測，目前是錯的</h2>
+    <p>本站在 <strong>2026-05-19</strong> 發表〈<a href="btc-bottom-structural-signals-2027.html" class="text-amber-400 hover:underline">BTC 結構底部觀察：時間與價格雙重訊號交叉點</a>〉，結論是：</p>
+    <blockquote class="pull-quote">結構底部訊號最可能出現在 <strong>2026 Q4 到 2027 Q2 之間，重心落在 2027 Q1</strong>，價格區間 <strong>28K–44K</strong>。</blockquote>
+    <p>截至 2026-08-25，本輪最低日收盤是 <strong>$58,526</strong>——<strong>價格從來沒有接近過那個區間</strong>，最接近時也還差 33%。</p>
+    <p>原預測的時間窗尚未走完，所以形式上還不能宣告完全失效。但如果 2026-06-30 最終被確認為週期底，那篇文章就是<strong>時間、價格、方向三項全錯</strong>。</p>
+    <h3>而且我們在核對時，發現那篇還有一個資料錯誤</h3>
+    <p>那篇文章把 2025 年的週期高點寫成 <strong>110,745 美元</strong>。實際上，2025 年 10 月的最高<strong>日收盤</strong>是 <strong>124,728 美元</strong>、盤中最高價是 <strong>126,272 美元</strong>（Bitstamp 與 Binance 兩個資料源一致，差異在 0.06% 以內）。無論用哪個口徑，都與 110,745 差了 12% 以上。</p>
+    <p><strong>這是資料錯誤，不是口徑差異。</strong> 而 28K–44K 這個目標區間，正是從那個錨點按比例推導出來的。</p>
+    <p>如果只機械地修正錨點：</p>
+    <blockquote class="pull-quote">28K–44K × (124,728 ÷ 110,745) ≈ <strong>31.5K–49.6K</strong><br>（採日收盤口徑，與全文一致。若改用盤中高點 126,272，結果是 31.9K–50.2K。）</blockquote>
+    <p><strong>但我們不會拿這個數字去改寫舊預測。</strong> 原因有兩層，必須分開講：</p>
+    <ol><li><strong>資料錯誤</strong>可以修正 —— 我們會在那篇文章加上勘誤。</li><li><strong>模型錯誤</strong>不會因為修正資料而痊癒 —— 就算把區間改成 31.5K–49.6K，它仍然低於已經出現的最低點 58,526；而且時間預測（重心 2027 Q1）完全不受錨點修正影響。</li></ol>
+    <p>原預測永久保留為 28K–44K，不覆蓋、不追改。這篇是另一份研究，有自己的日期、資料與限制。</p>
+    <blockquote class="pull-quote">一份研究最容易失去可信度的方式，不是預測錯了，是預測錯了之後<strong>悄悄改口</strong>。</blockquote>
+    <hr class="my-10 border-slate-800">
+    <h2>八、送外部審查：兩家的機率差了 20 個百分點</h2>
+    <p>上述資料經兩套外部 AI 模型做對抗性審查，要求其找出會讓結論翻掉的缺陷，並各自給出機率判斷。命題定義為：<strong>2026-06-30 的 $58,526 是本輪週期底（在下一次創歷史新高之前，日收盤不再跌破它）。</strong></p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th></th><th>機率判斷</th><th>主要理由</th></tr></thead><tbody><tr><td><strong>審查方 A</strong></td><td><strong>55–70%</strong>（中心 62%）</td><td>關鍵訊號尚未收線；技術指標高度共線、樣本極小；宏觀不是明確寬鬆；9 月與選前季節性偏弱</td></tr><tr><td><strong>審查方 B</strong></td><td><strong>75–85%</strong></td><td>給予 ETF 資金流較高權重；將盤面解讀為現貨需求與軋空並存；認為要求 −80% 回撤是刻舟求劍</td></tr></tbody></table></div>
+    <p><strong>它們差了 20 個百分點。</strong></p>
+    <p>我認為呈現這個分歧，比硬湊出一個共識數字誠實。兩邊的差異幾乎全部來自同一個問題：<strong>「ETF 時代的市場結構改變」該給多少權重。</strong> 這件事目前沒有客觀答案，因為 ETF 上線之後，<strong>還沒有一輪已確認完成、可供獨立比較的完整循環</strong>——本文正在爭論的，就是這一輪算不算走完。</p>
+    <p>兩家倒是在幾件事上完全一致，而且都是針對我的：</p>
+    <ul><li>我原本的分母錯了（假陽性未計入）——已在第二節重做</li><li>未收線的訊號不能當成已成立——已在第一節標示</li><li>OI 應該用美元口徑——已在第四節更正</li><li>9 種 KD 參數組合不是 9 份獨立證據——已在第一節說明</li><li>舊預測必須公開勘誤，不能偷改——已在第七節處理</li></ul>
+    <hr class="my-10 border-slate-800">
+    <h2>九、所以，見底了嗎</h2>
+    <p><strong>能說的：</strong></p>
+    <ul><li>動能面的訊號確實在轉多，而且創辦人指出的結構相似性經得起驗算——<strong>本次那根週 K 是三次熊底裡最強的一根</strong>。</li><li>這波上漲<strong>可觀察到的主要需求來源是現貨 ETF</strong>（六日 32,950 BTC、單週 $1.92B），且同期 BTC 計價的期貨未平倉量未見同幅擴張、CME 持倉小幅下降。要注意：同期發生不等於因果歸因，美元名目曝險實際仍上升約 23%。</li><li><strong>但「強力週 K」這個訊號的精確率只有三成</strong>（≥23% 門檻為 30.8%）；若再限定在「距高點跌逾 40%」的子樣本內，只剩 12.5%（分母 8）。月線 KD 用同一把尺是 3/4，但分母只有 4。</li><li><strong>鏈上成本基礎與歷史慣性不合</strong>：四個歷史重大低點 MVRV 全部 ≤ 1，本輪最低是 1.10，數值上更接近 2021（1.54）與 2024（1.71）那兩次牛市中的深度回調。<strong>但這條證據不能講滿</strong>——若 ETF 常態買盤真的讓回撤變淺，MVRV 在機制上本來就更難跌破 1，那個門檻可能已經移動了。</li><li>這輪跌幅（−53.1%）與時間（267 天）都明顯短於前三輪，但跌幅逐輪收斂是既有趨勢，這條證據只能當先驗。</li><li>兩家外部審查給的機率是 <strong>55–70%</strong> 與 <strong>75–85%</strong>，分歧點在「ETF 改變了多少」。</li></ul>
+    <p><strong>不能說的：</strong></p>
+    <ul><li>不能說「已經確定見底」——<strong>最關鍵的兩個訊號（月線 KD、雙週 MACD）都還沒收線</strong>，8 月 31 日之後才算數。</li><li>不能給目標價。本文所有價位都是已發生的歷史紀錄，沒有任何一個是預測。</li><li>不能說勝率——月線 KD 的分母只有 3 到 4，任何百分比在這個樣本量下都不具統計意義。</li><li>不能推論你該做什麼。這篇沒有任何進出場建議。</li></ul>
+    <p><strong>這個判斷什麼時候算錯：</strong></p>
+    <blockquote class="pull-quote">如果日收盤跌破 <strong>$58,526</strong>，本文「該低點可能是週期底」的整個命題直接失效。<br>如果 8 月底收線後月線 KD 金叉消失、或雙週 MACD 回到水下未交叉，第一節的兩項證據要撤回。<br>如果價格在 <strong>$82,814</strong> 附近第三次被壓回，那麼「結構翻轉」就還沒發生。這個價位的兩個口徑要分清楚：<strong>盤中最高價 $82,833（2026-05-06）</strong>，<strong>最高日收盤 $82,193（2026-05-10）</strong>；從後者到 2026-06-30 的 $58,526，跌幅是 <strong>−28.8%</strong>（收盤對收盤）。</blockquote>
+    <p>最後一句留給方法，不留給方向：</p>
+    <blockquote class="pull-quote">這篇文章裡最有價值的東西，不是那個機率數字，是<strong>第二節</strong>——我原本用的分母是錯的，改對之後，我最有信心的那個訊號從「歷年都準」變成「七成是假的」。<br>市場最貴的不是看錯方向，是<strong>用一個從來沒被檢驗過的分母，去相信一件事很久</strong>。</blockquote>
+    <hr class="my-10 border-slate-800">
+    <h2>免責聲明</h2>
+    <ol><li>本文為市場研究與教育內容，<strong>不構成任何投資建議、招攬或要約</strong>，亦不預測任何資產之未來價格、時點或幅度。</li><li>文中所有價位均為<strong>已發生的歷史紀錄</strong>，非目標價、非預測值。本文不提供任何進出場建議或部位配置建議。</li><li>加密貨幣波動極高，可能損失全部本金。任何交易決策應由讀者自行評估並自負風險。</li><li>文中技術指標之歷史統計，<strong>樣本數極小（月線 KD 僅 3–4 個完整樣本）</strong>，不具統計顯著性，不代表未來必然重演。</li><li>部分關鍵訊號（月線 KD、雙週線 MACD）<strong>在本文發表時尚未收線</strong>，其成立與否須以收線後為準；50/200MA 交叉為線性外推之推估，非既成事實。</li><li>成交量為雙邊周轉量，非淨買賣量；本文量能僅取單一交易所之 BTC 計價成交量，未做跨所與市佔調整，此為已知限制。</li><li>MVRV 與已實現價格為鏈上估計值，其計算依賴 UTXO 最後移動時點，不等同實際持有成本；交易所內部帳本移動不上鏈，會造成偏差。</li><li>期貨帳戶多空比按帳戶數計算，不反映部位規模，不應解讀為資金流向。</li><li>文中對聯準會與財政部政策之描述為公開資訊之整理，非政策預測；美國財政部公債回購不等同量化寬鬆。</li><li>本站 2026-05-19 之〈BTC 結構底部觀察〉一文結論目前明顯不利，且含一項資料錯誤（週期高點誤植），已於本文第七節公開更正。舊文結論不予追改。</li><li>本文引用之外部 AI 審查意見為模型輸出，非人類專業機構之投資研究報告。</li><li><strong>過去績效不代表未來收益</strong>（Past performance is not indicative of future results）。本文所有歷史數據、統計與情境比較，均不保證未來重現。</li><li><strong>利益衝突揭露</strong>：本站為交易教育內容提供者，非證券投資顧問事業、非期貨顧問事業、亦非虛擬資產服務業者，未受金管會核准或背書。本文非付費內容，撰寫過程未接受任何交易所、ETF 發行商、虛擬資產服務業者或其關係人之贊助、廣告或報酬。本站經營者個人可能持有比特幣及其他虛擬資產部位，且可能於本文發布前後進行交易。</li><li><strong>加密貨幣特有風險</strong>：包括但不限於價格劇烈波動、槓桿與強制平倉、流動性枯竭、交易所停業或遭駭、託管與私鑰遺失、穩定幣脫鉤、跨境平台求償困難等。虛擬資產非法定貨幣，通常不受存款保險保障。</li><li>本文資料取自第三方公開來源與 API，可能存在延遲、修訂或錯誤，本站不保證其完整性與正確性。</li><li>資料截取日為 <strong>2026-08-25</strong>（鏈上資料至 2026-08-24），其後市況變動不在本文涵蓋範圍。</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h3>資料來源</h3>
+    <ul><li><strong>價格</strong>：Bitstamp BTC/USD 日線公開 API（2011-08-18 起，5,487 根），與 Binance BTCUSDT 交叉驗證 <a href="https://www.bitstamp.net/api/" class="text-amber-400 hover:underline" target="_blank" rel="noopener">bitstamp.net &#8599;</a></li><li><strong>成交量、期貨未平倉、資金費率、多空比</strong>：Binance 公開 API <a href="https://api.binance.com" class="text-amber-400 hover:underline" target="_blank" rel="noopener">api.binance.com &#8599;</a> ／ <a href="https://fapi.binance.com" class="text-amber-400 hover:underline" target="_blank" rel="noopener">fapi.binance.com &#8599;</a></li><li><strong>跨所衍生品匯總、ETF 流量、情緒指標</strong>：CoinGlass <a href="https://www.coinglass.com/zh-TW" class="text-amber-400 hover:underline" target="_blank" rel="noopener">coinglass.com &#8599;</a></li><li><strong>鏈上 MVRV 與已實現價格</strong>：CoinMetrics community API（PriceUSD、CapMVRVCur；已實現價格 = 價格 ÷ MVRV）<a href="https://coinmetrics.io/" class="text-amber-400 hover:underline" target="_blank" rel="noopener">coinmetrics.io &#8599;</a></li><li><strong>ETF 週度流量交叉驗證</strong>：<a href="https://www.coindesk.com/markets/2026/08/09/bitcoin-investors-pour-usd853-million-into-spot-etfs-blackrock-s-ibit-claims-the-bulk" class="text-amber-400 hover:underline" target="_blank" rel="noopener">CoinDesk</a>、<a href="https://www.theblock.co/news/markets/2026-08-20-us-bitcoin-etf-517-million-inflows-412291" class="text-amber-400 hover:underline" target="_blank" rel="noopener">The Block</a>、<a href="https://cryptobriefing.com/spot-bitcoin-etf-strongest-inflow-10-months/" class="text-amber-400 hover:underline" target="_blank" rel="noopener">CryptoBriefing</a></li><li><strong>聯準會利率機率</strong>：<a href="https://www.cnbc.com/2026/08/07/odds-the-fed-hikes-in-september-tumble-following-big-july-jobs-miss.html" class="text-amber-400 hover:underline" target="_blank" rel="noopener">CNBC</a></li><li><strong>期中選舉市場慣性</strong>：<a href="https://www.schwab.com/learn/story/what-2026-midterms-could-mean-markets" class="text-amber-400 hover:underline" target="_blank" rel="noopener">Charles Schwab</a>、<a href="https://www.usbank.com/investing/financial-perspectives/market-news/stock-market-performance-after-midterm-elections.html" class="text-amber-400 hover:underline" target="_blank" rel="noopener">U.S. Bank</a></li><li><strong>技術圖表</strong>：CTA 創辦人自繪（TradingView，INDEX BTCUSD）</li></ul>
+    <blockquote class="pull-quote">資料截取日：2026-08-25｜內容製作日：2026-08-25</blockquote>
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href="btc-bottom-structural-signals-2027.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">市場研究 · 已於本文公開更正</div>
+        <div class="font-bold text-white text-sm">BTC 結構底部觀察：時間與價格雙重訊號交叉點</div>
+      </a>
+      <a href="usdt-supply-btc-bottom-test-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">交易策略 · 研究方法</div>
+        <div class="font-bold text-white text-sm">我用 USDT 供給量測了一個抄底訊號：「接近」是對的，「可以進場」是錯的</div>
+      </a>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">指標會吵架，<span class="text-amber-400">價格只寫一份帳</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">這篇有 30 個統計數字，沒有一個能告訴你何時進場。<br>真正決定你在不在場上的那條線，寫在 K 棒自己身上。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="trading-demons-13-leverage.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">交易心魔：槓桿</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>市場研究與教育內容，不構成任何投資建議</strong>，亦不預測任何資產之未來價格、時點或幅度。文中所有價位均為已發生之歷史紀錄，非目標價。加密貨幣波動極高，可能損失全部本金。技術指標歷史統計之樣本數極小，不具統計顯著性。<strong>過去績效不代表未來收益。</strong>請參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
