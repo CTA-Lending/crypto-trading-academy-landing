@@ -777,5 +777,24 @@
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
     "hash": "566967c8d07c821b5898f9b90ec3c83fc0eb2d992a403e7a591988f8ada180d8"
+  },
+  {
+    "seq": 41,
+    "utc": "2026-09-01T00:37:02Z",
+    "prev": "566967c8d07c821b5898f9b90ec3c83fc0eb2d992a403e7a591988f8ada180d8",
+    "days_recorded": 41,
+    "ledger_head": "fa08498636b18761605a7683b47099b3a4374a64b0bbf8f2d1e78f3a9d6e691f",
+    "protocol_sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
+    "tree_root": "f252c9e44c3d897d9134854ec38aa8178a445d9fcf6ac4538f8503f0eca72aec",
+    "code": {
+      "shadow/multi.py": "7f1556c363b6274f",
+      "shadow/universe.py": "685b1dc1bd351221",
+      "shadow/forward_multi.py": "fc44a3df0fc17fa6",
+      "shadow/stats.py": "647e7e1d70861a5c",
+      "shadow/anchor.py": "69be883f0adc0315",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "hash": "f97d167a93825df4de235d7bff8ffc00396c9928a560d238c8eb77a602b2e00e"
   }
 ]
