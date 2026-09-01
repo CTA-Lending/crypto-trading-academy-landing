@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山寨季要來了嗎：一張 MACD 圖，和 43 檔幣裡只有 1 檔贏過比特幣的結局 — 交易幣修課</title>
+  <meta name="description" content="OTHERS 月線 MACD 零軸下方即將金叉，歷史上兩次之後是 +4,340.92% 與 +353.42%。本文把帳算完：市值總額不等於持有報酬；2020-01 已上市的 43 檔幣，山寨季當下中位數 +928.1%（0/43 為負），抱到今天 −40.1%（僅 1/43 贏過 BTC）；並補上 ETF 通道結構、穩定幣、賽道相對強度與山寨季的可操作定義。">
+  <meta name="keywords" content="山寨季,altseason,OTHERS,CRYPTOCAP,月線MACD,黃金交叉,存活者偏誤,市值vs報酬,比特幣市佔率,穩定幣,加密ETF,賽道輪動,DeFi,隱私幣,幣圈新手">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/altseason-2026-others-macd-reality-check.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="山寨季要來了嗎：一張 MACD 圖，和 43 檔幣裡只有 1 檔贏過比特幣的結局">
+  <meta property="og:description" content="這張圖說「山寨季快來了」。我把兩次歷史行情的帳算完，發現最該先知道的不是「什麼時候進場」——而是上一次山寨季裡 43 檔幣沒有一檔是負報酬，但同一批幣抱到今天，只有 1 檔贏過比特幣。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/altseason-2026-others-macd-reality-check.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/others-golden-cross-marketing.jpg">
+  <meta property="article:published_time" content="2026-09-01">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "山寨季要來了嗎：一張 MACD 圖，和 43 檔幣裡只有 1 檔贏過比特幣的結局",
+    "description": "這張圖說「山寨季快來了」。我把兩次歷史行情的帳算完，發現最該先知道的不是「什麼時候進場」——而是上一次山寨季裡 43 檔幣沒有一檔是負報酬，但同一批幣抱到今天，只有 1 檔贏過比特幣。",
+    "datePublished": "2026-09-01",
+    "dateModified": "2026-09-01",
+    "image": "https://crypto-trading-academy.com/blog/assets/others-golden-cross-marketing.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/altseason-2026-others-macd-reality-check.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">山寨季要來了嗎</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-red-400 text-sm font-semibold tracking-wider uppercase mb-4">市場研究 ｜ 資金結構 × 賽道輪動 × 訊號檢驗</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">山寨季要來了嗎<br class="hidden md:block"><span class="text-slate-400 text-2xl md:text-3xl">一張 MACD 圖，和 43 檔幣裡只有 1 檔贏過比特幣的結局</span></h1>
+      <p class="text-lg text-slate-400 mb-6">這張圖說「山寨季快來了」。我把兩次歷史行情的帳算完，發現最該先知道的不是「什麼時候進場」——而是上一次山寨季裡 43 檔幣沒有一檔是負報酬，但同一批幣抱到今天，只有 1 檔贏過比特幣。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-09-01</span><span>•</span><span>⏱ 閱讀約 18 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <blockquote class="pull-quote">這張圖說「山寨季快來了」。我花了一天把兩次歷史行情的帳算完，發現最該讓你知道的不是「什麼時候進場」，而是：上一次山寨季裡，43 檔幣沒有一檔是賠的；但同一批幣抱到今天，只有 1 檔贏過比特幣。</blockquote>
+    <p>先看這張圖。</p>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/others-golden-cross-marketing.jpg?v=1" alt="OTHERS 月線圖與 MACD：零軸下方低檔收斂，快慢線接近交叉；圖上標示 2020-01 起 +4,340.92%、2023-07 起 +353.42% 兩次歷史訊號" class="w-full h-auto" loading="eager">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">本站自繪（TradingView，CRYPTOCAP:OTHERS 月線）。零軸下方低檔收斂中；本月尚未收線，最快下月才能確認。歷史表現不代表未來結果。</figcaption>
+    </figure>
+    <p>這是 <strong>OTHERS</strong>——加密貨幣總市值扣掉前十大之後，剩下所有幣的市值合計。用白話講：<strong>把當天排名前十的同學拿掉，剩下所有同學的總分加起來。</strong></p>
+    <p>注意「當天」兩個字：前十名的名單會換人。所以這個總分不只反映原有同學的進退步，也反映<strong>誰進了前十、誰掉出前十</strong>。</p>
+    <p>圖上的重點有三個：</p>
+    <ol><li>下方那條 MACD 正在<strong>零軸下方</strong>收斂，快線與慢線快要交叉</li><li>過去兩次出現類似型態（2020-01、2023-07），到各自的高點分別是 <strong>+4,340.92%</strong> 和 <strong>+353.42%</strong>（圖上以月線標記，起訖點見圖）</li><li>這個月還沒收線，<strong>最快下個月才能確認</strong></li></ol>
+    <p>如果你不熟 MACD，先這樣理解就好：<strong>它是價格動能的溫度計。</strong> 兩條線由下往上靠近，代表跌勢在減弱；真的交叉，要等這個月結束才算數。它提醒的是「可能轉向」，不是「保證上漲」。</p>
+    <p>這是我自己在盤面上讀出來的觀察。這篇文章要做的，是把它拆開來驗一遍。</p>
+    <p>訊號成不成立，這個月收線才知道。但在那之前，有三件事我覺得比「什麼時候進場」更該先算清楚——因為它們決定的是，<strong>就算山寨季真的來了，你會不會賺到</strong>。</p>
+    <p><strong>先講結論，三句話：</strong></p>
+    <ol><li><strong>市值漲 4,340%，不等於你賺 4,340%。</strong> 這兩個數字的差距，比大多數人想的大非常多。</li><li><strong>至少在 2020-01 到 2021-04 這組固定起訖日裡，選到正報酬的標的並不難。</strong> 難的是實現獲利——同一批幣抱到今天，中位數是 −40%。</li><li><strong>這一次的市場結構跟 2021、2023 都不一樣</strong>：多了一條 ETF 高速公路，而它 98% 不通往山寨幣。</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h2>一、市值漲 4,340%，不等於你賺 4,340%</h2>
+    <p>這是整篇文章最重要的一段，也是最容易被忽略的一段。</p>
+    <p>OTHERS 是<strong>市值總額</strong>。市值會變大，至少有四種原因：</p>
+    <ol><li><strong>原本就有的幣漲價</strong> ← 只有這一種，會直接變成你的獲利</li><li><strong>新發行的幣</strong>，或原本就存在、後來才被資料源納入統計的幣，其市值被加進來</li><li><strong>已經發行但還鎖著的幣解鎖</strong>，流通量變大、市值跟著變大</li><li><strong>排名替換</strong>：掉出前十的幣被加進 OTHERS（同時，新擠進前十的幣會被移出）</li></ol>
+    <p>只有第 1 種能直接算成你的持有報酬。第 2、3 種會改變總市值，也可能透過稀釋與賣壓<strong>間接影響價格</strong>，但不能直接換算成你的收益。</p>
+    <blockquote class="pull-quote">想像一個美食街。去年營業額 1 億，今年 10 億。<br>你以為每家店都賺了十倍——但其實是<strong>美食街從 10 個攤位擴建成 100 個攤位</strong>。<br>原本那 10 家，可能生意跟去年差不多，甚至更差。</blockquote>
+    <p>（這個比喻要補一句：整條美食街的營業額變大，跟原本那 10 家店賺多少，是<strong>兩件不同的事</strong>。至於 OTHERS 那 43 倍裡，有多少來自漲價、多少來自新增供給與成分替換——<strong>光看這張圖是拆不出來的</strong>。）</p>
+    <p>那<strong>原本那些攤位</strong>，到底賺了多少？這個可以算，而且我算了。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>二、上一次山寨季，實際持有的人賺到了嗎</h2>
+    <p>我把 2020 年 1 月就已經在 Binance 掛牌、而且今天還在交易的山寨幣挑出來，一共 <strong>43 檔</strong>。</p>
+    <figure class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10">
+      <img src="assets/altseason-two-faces.jpg?v=1" alt="兩張並排長條圖：左為 2020-01 至 2021-04 期間 43 檔山寨幣的報酬（全部為正、中位數 +928%），右為同一批幣抱到 2026-09 的報酬（多數為負、中位數 -40%，僅 1 檔贏過比特幣）" class="w-full h-auto" loading="lazy">
+      <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic">每一條橫槓＝一檔幣。樣本：2020-01 已在 Binance 掛牌、2026-09 仍在交易的 USDT 現貨對 43 檔（已排除前十大與穩定幣）。資料：Binance 公開 API 月線收盤，本站自行擷取與計算。本樣本不含期間已下架的幣。</figcaption>
+    </figure>
+    <p><strong>左邊是山寨季當下（2020-01 → 2021-04 高點）：</strong></p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th></th><th>數值</th></tr></thead><tbody><tr><td>中位數報酬</td><td><strong>+928.1%</strong></td></tr><tr><td>賠錢的比例</td><td><strong>0 / 43（一檔都沒有）</strong></td></tr><tr><td>贏過 BTC 的</td><td>31 / 43（72%）</td></tr><tr><td>同期 BTC</td><td>+519.4%</td></tr></tbody></table></div>
+    <p>在這組固定起訖日的比較中，<strong>43 檔全部是正報酬，其中 31 檔跑贏比特幣</strong>。</p>
+    <p><strong>右邊是同一批幣，抱到今天（2026-09）：</strong></p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th></th><th>數值</th></tr></thead><tbody><tr><td>中位數報酬</td><td><strong>−40.1%</strong></td></tr><tr><td>賠錢的比例</td><td><strong>32 / 43（74%）</strong></td></tr><tr><td><strong>贏過 BTC 的</strong></td><td><strong>1 / 43</strong></td></tr><tr><td>同期 BTC</td><td><strong>+750.8%</strong></td></tr></tbody></table></div>
+    <p>同樣 43 檔幣，同樣的起點，只是換一個結算日：從「沒有人賠錢」變成「四分之三賠錢」，從「七成贏過比特幣」變成「<strong>只剩一檔</strong>」。</p>
+    <h3>把「後來下架的幣」也加回來</h3>
+    <p>上面那 43 檔，是<strong>今天還在交易</strong>的幣。那些後來被下架的呢？</p>
+    <p>Binance 的公開資料裡，除了正在交易的交易對之外，還有 <strong>249 個 USDT 交易對已停止交易</strong>（這是交易對數量，不是幣種數；同一個專案可能改過名或換過代號）。我把其中符合條件的抓回來：2020 年 1 月就有報價、撐過 2021 年 4 月、後來才下架，扣掉 2 檔因為<strong>代幣置換</strong>造成價格假跳空的標的後，剩 <strong>28 檔</strong>。</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>期間</th><th>中位數</th><th>為負</th></tr></thead><tbody><tr><td>2020-01 → 2021-04（山寨季）</td><td><strong>+1,092.6%</strong></td><td><strong>0 / 28</strong></td></tr><tr><td>2021-04 → 下架前最後一筆報價</td><td><strong>−95.0%</strong></td><td><strong>27 / 28（96%）</strong></td></tr></tbody></table></div>
+    <p><strong>注意第一列：這些後來被下架的幣，在山寨季當下漲得跟活下來的一樣多（甚至更多）。</strong></p>
+    <p>那「漲最凶的是不是跌最慘」？我把存活與下架合併成 71 檔實際算了一次：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>從 2021-04 高點算起</th><th>樣本</th><th>之後的中位數報酬</th></tr></thead><tbody><tr><td>山寨季漲幅<strong>前 25%</strong></td><td>18</td><td><strong>−97.7%</strong></td></tr><tr><td>山寨季漲幅<strong>後 25%</strong></td><td>18</td><td><strong>−91.6%</strong></td></tr></tbody></table></div>
+    <p>兩者的等級相關係數是 <strong>−0.23</strong>，方向確實是「漲越凶、之後越慘」，但<strong>差距只有 6 個百分點</strong>。</p>
+    <p>所以真正的重點不是「哪幾檔會歸零」，而是：</p>
+    <blockquote class="pull-quote"><strong>從 2021 年 4 月那個高點算起，這 71 檔幣的中位數跌幅都在 90% 以上。</strong><br>在山寨季裡賺到帳面獲利，是這件事最簡單的部分。難的是把它變成已實現的獲利。</blockquote>
+    <p>（要說清楚：Binance 下架不等於專案失敗，也不等於價格歸零——上表算的是下架前最後一筆報價，中位數是 −95.0%，不是 −100%。）</p>
+    <hr class="my-10 border-slate-800">
+    <h2>三、這一次哪裡不一樣：多了一條不通往山寨的高速公路</h2>
+    <p>2021 年和 2023 年那兩次，市場上<strong>沒有現貨比特幣 ETF</strong>（2024 年 1 月才上市）。</p>
+    <p>今天有了。而且規模是這樣分配的：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>ETF 類別</th><th>規模（約數）</th><th>佔比</th></tr></thead><tbody><tr><td>比特幣</td><td>約 <strong>$1,020 億</strong></td><td>約 <strong>89%</strong></td></tr><tr><td>以太幣</td><td>約 <strong>$110 億</strong></td><td>約 <strong>10%</strong></td></tr><tr><td>XRP</td><td>約 $12 億</td><td>約 1%</td></tr><tr><td>Solana</td><td>約 $11 億</td><td>約 1%</td></tr></tbody></table></div>
+    <p>（全美現貨加密 ETF 總規模約 $1,150 億；上列為各家整理之約數，加總與總額會有四捨五入誤差）</p>
+    <p><strong>比特幣加以太幣，合計約 98%。</strong></p>
+    <p>先定義一下用詞：<strong>本文所說的「山寨幣」不包含比特幣與以太幣。</strong> 市場上有人把 ETH 也算進廣義山寨幣，本文不採這個口徑。</p>
+    <p>傳統金融的錢現在有一條合規的高速公路可以進加密市場，但這條公路的出口，98% 通往比特幣和以太幣。</p>
+    <p>這是 2021 年完全不存在的結構。</p>
+    <h3>但這條推論有很強的反駁，我必須寫出來</h3>
+    <p>「ETF 把錢吸走了，所以山寨季更難」——這句話聽起來合理，但它不一定成立。反方最強的說法是<strong>香檳塔效應</strong>：</p>
+    <blockquote class="pull-quote">頂層的杯子（比特幣）被華爾街倒滿了，酒才會溢出來，流到下面那層（山寨幣）。<br>華爾街受法規限制不能買山寨，但<strong>幣圈原生的大戶可以</strong>。當比特幣被推到高位，這些人獲利了結之後，那筆錢會往下找報酬更高的地方去。<br>而且山寨市場的盤子小很多——<strong>不需要等量的資金，就能推出更大的漲幅</strong>。<br>（但這個比喻要補一句：<strong>酒也可能停在上層、被拿走，或直接流出整座塔。</strong> 而且盤子小是雙向的——少量資金能推上去，也能砸下來，流動性風險更高。）</blockquote>
+    <p>還有一點：ETF 的規模是<strong>存量</strong>，不是「接下來每一塊錢都只會買比特幣」。</p>
+    <p>所以比較誠實的說法是：</p>
+    <blockquote class="pull-quote">ETF 可能讓「全市場一起雞犬升天」變得更難、更晚、更集中；<br>但它也可能透過比特幣的財富效應，間接點燃一波<strong>規模較小、速度更快</strong>的山寨行情。<br>這兩種可能，目前的資料都無法排除。</blockquote>
+    <hr class="my-10 border-slate-800">
+    <h2>四、現在的溫度計：八個可以自己查的數字</h2>
+    <p>把所有能查到的當前數據攤開，資料截至 <strong>2026-09-01</strong>：</p>
+    <h3>偏多的四個</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>指標</th><th>數值</th><th>怎麼讀</th></tr></thead><tbody><tr><td>山寨近 3 月中位數</td><td><strong>+8.9%</strong>（BTC +7.9%）</td><td><strong>12 個月來第一次跑贏 BTC</strong>，54% 的幣贏過 BTC</td></tr><tr><td>穩定幣總量</td><td><strong>$3,092 億</strong></td><td>是 2023-07（$1,271 億）的 <strong>2.4 倍</strong>、2020-08（$130 億）的 <strong>23.8 倍</strong></td></tr><tr><td>ETH/BTC 比值</td><td>0.03145</td><td>歷史上約有 <strong>32% 的時間比現在更低、68% 的時間更高</strong>，距 2021 年高點還有 −61.3%</td></tr><tr><td>山寨近 12 月中位數</td><td><strong>−70.5%</strong></td><td>基期已大幅降低。但低基期不保證反彈——跌了 70.5% 之後，要漲 <strong>239%</strong> 才回到原點</td></tr></tbody></table></div>
+    <h3>偏空的四個</h3>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>指標</th><th>數值</th><th>怎麼讀</th></tr></thead><tbody><tr><td><strong>山寨季節指數</strong>（CoinGlass）</td><td><strong>8/25 是 40 → 9/1 掉到 26</strong></td><td><strong>方向跟「即將表態」相反</strong></td></tr><tr><td>比特幣市佔率</td><td><strong>59.15%</strong></td><td>錢還在比特幣裡，沒有明顯外流</td></tr><tr><td>近 12 個月贏過 BTC 的山寨</td><td><strong>只有 7%</strong></td><td>近 6 個月也只有 19%，市場廣度很差</td></tr><tr><td>穩定幣近 90 日</td><td><strong>−2.4%</strong></td><td>距 5 月高點 −3.6%，<strong>乾火藥沒有在增加</strong></td></tr></tbody></table></div>
+    <p><strong>穩定幣那兩格要一起看</strong>：總量很大（偏多），但最近三個月在縮（偏空）。停車場裡車很多，不代表這些車馬上要開進山寨市場。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>五、賽道：哪些是訊號，哪些是雜訊</h2>
+    <p>我把 Binance 上的山寨幣按賽道分組（分組是本站自己編的，不是任何機構的官方分類），算各組的中位數報酬，再跟同期 BTC 比。</p>
+    <blockquote class="pull-quote">⚠️ <strong>下表是歷史分組的統計結果，不代表本站看好任何賽道，也不是選幣清單。</strong> 樣本內領先，不表示發布之後還會領先；多數組別的檔數只有 3–8 檔，統計上下不了結論。</blockquote>
+    <p>先用一行白話說明這些名詞：<strong>DeFi</strong> = 不透過銀行、直接在鏈上完成借貸與交易的金融服務；<strong>RWA</strong> = 把債券、房地產這類現實世界資產做成鏈上代幣；<strong>DePIN</strong> = 用代幣獎勵大家提供硬體或網路資源；<strong>Layer-1</strong> = 本身就是一條底層區塊鏈；<strong>Layer-2</strong> = 蓋在既有區塊鏈上、用來加速或降低手續費的系統。</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>賽道</th><th>檔數</th><th>近 3 月中位</th><th>贏 BTC</th><th>近 12 月中位</th><th>贏 BTC</th></tr></thead><tbody><tr><td><strong>DeFi 組</strong></td><td>7</td><td><strong>+48.7%</strong></td><td><strong>6/7</strong></td><td>−53.9%</td><td>1/7</td></tr><tr><td><strong>隱私</strong></td><td>3</td><td><strong>+42.9%</strong></td><td>2/3</td><td><strong>+107.6%</strong></td><td>2/3</td></tr><tr><td>迷因幣</td><td>6</td><td>+16.0%</td><td>5/6</td><td>−70.5%</td><td>0/6</td></tr><tr><td>RWA / 代幣化</td><td>3</td><td>+12.7%</td><td>2/3</td><td>−60.7%</td><td>0/3</td></tr><tr><td>DePIN</td><td>4</td><td>+2.6%</td><td>2/4</td><td>−77.0%</td><td>0/4</td></tr><tr><td>Layer-1 公鏈</td><td>8</td><td>+2.2%</td><td>2/8</td><td>−75.6%</td><td>1/8</td></tr><tr><td>Layer-2 / 擴容</td><td>6</td><td>−3.2%</td><td>1/6</td><td>−80.3%</td><td>0/6</td></tr><tr><td>AI / 算力</td><td>7</td><td>−4.6%</td><td>2/7</td><td>−70.6%</td><td>2/7</td></tr><tr><td>遊戲 / 元宇宙</td><td>6</td><td>−8.7%</td><td>2/6</td><td>−78.4%</td><td>0/6</td></tr><tr><td>*（同期 BTC）*</td><td>—</td><td>*+7.9%*</td><td>—</td><td>*−26.7%*</td><td>—</td></tr></tbody></table></div>
+    <p><strong>在這組有限樣本裡，近期相對報酬較高、而且組內成分同步性較好的是：</strong></p>
+    <ul><li><strong>DeFi 組</strong>：近 3 個月中位數 +48.7%，7 檔裡有 6 檔跑贏 BTC。<strong>幅度與廣度同時具備</strong>——不是被一兩檔拉起來的。但近 12 個月中位數仍是 −53.9%。</li><li><strong>隱私組</strong>：唯一近 12 個月中位數為正的組別（+107.6%）。但<strong>只有 3 檔</strong>，任何一檔大波動都會改變整組數字，統計上不能當成產業級趨勢。</li></ul>
+    <p><strong>訊號比較不可靠的：</strong></p>
+    <ul><li><strong>迷因幣組</strong>：5/6 跑贏 BTC 看起來廣度不錯，但迷因幣受社群熱度、名人效應與槓桿影響極大，而且<strong>沒跑贏的那些，很多已經下架、不在樣本內</strong>。它比較像市場情緒的溫度計，不是景氣的領先指標。</li><li><strong>RWA、DePIN</strong>：檔數只有 3–4 檔，任何結論都不成立。</li></ul>
+    <p><strong>近 12 個月那一欄請看清楚</strong>：除了隱私組，所有組別的中位數都在 <strong>−53.9% 到 −80.3%</strong> 之間。這是一個經歷過大幅回撤、最近三個月才出現局部改善的市場——<strong>還不能只憑三個月的反彈，就說整體轉強</strong>。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>六、所以機率是多少</h2>
+    <p>要回答這個問題，得先定義什麼叫「山寨季」。不能用「某幾檔迷因幣暴漲」來定義——那每個月都有。</p>
+    <p><strong>本文的定義（先寫死，才不會事後調整成好看的樣子）：</strong></p>
+    <blockquote class="pull-quote">未來 6 個月內，出現一段連續 90 天的區間，滿足兩個條件：<br>① 山寨幣的<strong>中位數</strong>報酬，比同期比特幣高出至少 <strong>15 個百分點</strong>；<br>② <strong>至少 60% 的山寨幣</strong>跑贏比特幣。<br>第二個條件是關鍵——它要求的是「全班一起進步」，不是「只有第一名考很好」。</blockquote>
+    <p>我把整份資料送給兩套外部模型做獨立判斷，各自的答案是：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th></th><th>機率</th><th>主要理由</th></tr></thead><tbody><tr><td><strong>模型 A</strong></td><td><strong>30–45%</strong>（中心 35%）</td><td>近 3 個月廣度剛改善，但近 6/12 個月仍差；BTC 市佔率高；穩定幣沒擴張；歷史訊號只有 2 次</td></tr><tr><td><strong>模型 B</strong></td><td><strong>25–30%</strong></td><td>穩定幣近 90 日萎縮、合約資金費率部分為負，更像<strong>局部板塊輪動</strong>而非全面山寨季</td></tr></tbody></table></div>
+    <p><strong>兩套模型都判為「低於五成、證據不足」。</strong> 表格裡的百分比只是把文字判斷數字化，不是從歷史勝率算出來的。</p>
+    <p>而且兩邊給的理由高度一致：現在看到的是<strong>局部輪動</strong>（DeFi、隱私），還不是<strong>全面山寨季</strong>。</p>
+    <p>如果把標準放寬成「少數賽道明顯跑贏比特幣」，主觀上的機率當然會比「全面山寨季」高——但本文沒有對這個放寬後的定義做可校準的估計，所以不給數字。而且那應該叫<strong>局部輪動</strong>，不叫山寨季：一個是「幾個班級考得好」，一個是「全校平均提高」，對你的部位意義完全不同。</p>
+    <p>必須說明：<strong>這個機率是研究判斷，不是從足夠歷史樣本校準出來的統計機率。</strong> 歷史上符合條件的事件只有 2 次，任何百分比在這個樣本量下都不具統計意義。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>七、給新手的六個檢查：怎麼自己看賽道</h2>
+    <p>不要問「哪個賽道漲最多」。先問五題，最後再加一個常被忽略的：</p>
+    <ol><li><strong>幅度</strong>：它比比特幣多漲了多少？（如果承擔了更高的風險卻贏不過比特幣，那多出來的風險就沒有被補償）</li><li><strong>廣度</strong>：是整個賽道一起漲，還是只有龍頭在漲？（<strong>只有少數標的上漲，代表性通常較弱；多數成分同步上漲，才比較能支持「整體轉強」的解讀</strong>）</li><li><strong>持續性</strong>：1 個月、3 個月、6 個月、12 個月，方向一致嗎？（過濾掉一日行情）</li><li><strong>流動性</strong>：成交量夠不夠讓你<strong>出得來</strong>？（進得去出不來，帳面獲利只是數字）</li><li><strong>催化劑</strong>：漲的理由是收入、使用量、法規變化，還是純粹的敘事和槓桿？</li></ol>
+    <p>再加第六題，這題是這篇文章的重點：</p>
+    <ol><li><strong>代幣解鎖</strong>：接下來有沒有大量代幣要解鎖？（第一節講的「攤位變多」，發生在單一幣種身上就是解鎖）</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h2>八、關於這個訊號本身：我驗證時遇到的問題</h2>
+    <p><strong>先給白話結論：我換一種資料來源重算之後，訊號的日期變了。這代表 MACD 不只看參數，還會被「籃子裡放哪些幣、每檔幣佔多少比重」影響。</strong></p>
+    <p>以下是細節。我可以在 TradingView 的 OTHERS 圖上看到這個型態；但 TradingView 沒有提供可完整下載的歷史成分資料，所以我沒辦法用<strong>另一套公開資料、從原始成分重新算出完全相同的結果</strong>。</p>
+    <p>我原本想把 OTHERS 的歷史資料抓下來，自己算一次月線 MACD。結果卡住了：</p>
+    <ul><li>CoinGecko 的<strong>全市場市值歷史</strong>是付費項目</li><li>改成一檔一檔幣抓，呼叫到第三次就被擋（HTTP 429）</li><li>CoinMetrics 免費版只開放 38 檔幣的市值，連 SOL 都要付費</li></ul>
+    <p>所以我改用<strong>自己建一個代理指數</strong>：把 Binance 上所有 USDT 現貨交易對抓下來，排除前十大市值與穩定幣，剩下 350 檔，每個月取「所有幣報酬的正中間那一檔」串起來。</p>
+    <p>在這個代理指數上，MACD 快線<strong>早在 2025 年 8 月就已經在慢線上方</strong>，不是「即將交叉」。</p>
+    <p>而且只要換一種算法，訊號的月份就會跑掉：</p>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>指數怎麼算</th><th>掃出來的「零軸下金叉」</th></tr></thead><tbody><tr><td>取中間那一檔，每月至少 20 檔</td><td>2020-08、2023-07</td></tr><tr><td>取中間那一檔，每月至少 40 檔</td><td>只剩 2023-10</td></tr><tr><td>取平均，每月至少 20 檔</td><td>2020-06、2023-12</td></tr><tr><td>取平均，每月至少 40 檔</td><td>只剩 2023-12</td></tr></tbody></table></div>
+    <p><strong>兩套指數得到不同日期，不表示原圖上的型態不存在。</strong> OTHERS 是市值加權、涵蓋全市場；我的代理指數是等權、只看 Binance——兩者本來就是不同的東西，訊號日期不一致很正常。它是一次交叉檢查，不是要否定原圖上的觀察。</p>
+    <p>但它代表一件必須講清楚的事：</p>
+    <blockquote class="pull-quote"><strong>這類訊號對「你用哪一份資料、怎麼算」極度敏感。</strong><br>在拿到可重現的 OTHERS 原始成分資料之前，它是一條值得記在筆記本上的線索，<br>而不是一個已經被第二套資料交叉確認過的進場訊號。</blockquote>
+    <p>順帶一提，我自建的指數還有兩個已知偏誤，都寫在文末免責聲明裡：<strong>存活者偏誤</strong>（樣本以今天還活著的幣為主）和<strong>前視偏誤</strong>（排除清單用的是今天的前十大，不是各歷史時點的前十大）。前者會讓報酬看起來比實際好，後者會讓 2020 年的樣本混進當時的大市值幣。</p>
+    <hr class="my-10 border-slate-800">
+    <h2>九、這篇能說什麼、不能說什麼</h2>
+    <p><strong>能說的：</strong></p>
+    <ul><li>圖上那個型態確實存在，而且過去兩次類似型態之後，山寨市場都有過大行情。</li><li>但那兩次的「+4,340.92%」是<strong>市值總額</strong>，不是持有報酬。同期實際中位數是 <strong>+928.1%</strong>（2020 那次）。</li><li><strong>上一次山寨季，43 檔幣沒有一檔是負報酬；同一批抱到今天，只有 1 檔贏過比特幣。</strong>（此結論僅適用於同一批標的、固定起點、持有至本文截取日且<strong>完全不調倉</strong>的比較；它不回答分批進出、定期再平衡或不同買入日期的結果。）</li><li>現在的市場結構跟前兩次不同：多了一條 98.3% 通往 BTC 與 ETH 的 ETF 通道。</li><li>短期廣度<strong>剛剛開始改善</strong>（近 3 月 54% 的幣贏過 BTC，12 個月來第一次），但中期仍然很差（近 12 月只有 7%）。</li><li>在本站這組有限樣本中，近期相對報酬較高、且組內同步性較好的是 DeFi 組（幅度與廣度都有）與隱私組（持續最久，但只有 3 檔）。</li><li>兩套外部模型對「未來 6 個月出現全面山寨季」的機率判斷是 <strong>25–45%</strong>。</li></ul>
+    <p><strong>不能說的：</strong></p>
+    <ul><li>不能說山寨季<strong>確定</strong>要來。這個月的月線還沒收，訊號本身尚未成立。</li><li>不能說「歷史上每次都成功」。可驗證的樣本只有 <strong>2 次</strong>，而且換一種算法就會變成 1 次。</li><li>不能給任何買進標的、價位或部位比例。本文所有數字都是已經發生的歷史紀錄。</li><li>不能用 +4,340.92% 去預期你的報酬。那是市值，不是你的帳戶。</li></ul>
+    <p><strong>這個判斷什麼時候該修正：</strong></p>
+    <blockquote class="pull-quote">如果 9 月的月線收盤後，OTHERS 的 MACD 金叉沒有成立，這條線索就要放回抽屜。<br>如果山寨季節指數繼續往下、比特幣市佔率繼續上升，那「局部輪動」的解讀就比「山寨季」更貼近事實。<br>只有在<strong>同一個連續 90 天區間內</strong>，同時做到「中位數領先比特幣至少 15 個百分點」與「至少 60% 的標的跑贏比特幣」，才會被本文的研究規則事後歸類為山寨季。這是一個分類規則，不等同買進訊號。</blockquote>
+    <p>最後留一句給看到這裡的人：</p>
+    <blockquote class="final-quote"><strong>中位數在山寨季裡是 +928%，抱到今天是 −40%——這是同一批幣。</strong><br>固定起訖日的結果顯示：<strong>什麼時候實現獲利，對最終報酬的影響，大過你選了哪一檔。</strong><br>但這不代表存在一個可以事先辨認的最佳賣點。</blockquote>
+    <hr class="my-10 border-slate-800">
+    <h2>免責聲明</h2>
+    <ol><li>本文為市場研究與教育內容，<strong>不構成任何投資建議、招攬或要約</strong>，亦不預測任何資產之未來價格、時點或幅度。</li><li>文中所有價位與報酬均為<strong>已發生的歷史紀錄</strong>，非目標價、非預測值、非預期報酬。本文不提供任何進出場建議、標的推薦或部位配置建議。</li><li><strong>過去績效不代表未來收益</strong>（Past performance is not indicative of future results）。</li><li>加密貨幣波動極高，山寨幣流動性風險、下架風險與歸零風險顯著高於主流幣種，可能損失全部本金。</li><li><strong>本文無法重建 TradingView CRYPTOCAP:OTHERS 的歷史成分與市值資料</strong>，故無法獨立驗證文中所引用之當前訊號。相關型態描述以本站自繪之圖表為準。</li><li>文中歷史訊號之可驗證樣本<strong>僅 2 次</strong>，且對指數建構方式高度敏感，<strong>不具統計顯著性</strong>。</li><li>本文自建之山寨指數存在已知偏誤：<strong>存活者偏誤</strong>（樣本以現存標的為主）、<strong>前視偏誤</strong>（排除清單採用當前前十大市值，非各歷史時點之前十大）、等權與市值加權之差異、Binance 上市時點偏誤。相關數字僅供比較，不宜視為可投資組合之報酬。</li><li>賽道分類為本站自行編列，非任何機構之官方分類；部分賽道樣本數僅 3–4 檔，不具統計代表性。</li><li>文中兩組機率判斷為外部模型輸出，屬研究判斷而非統計機率，亦非本站之價格預測。</li><li><strong>利益衝突揭露</strong>：本站為交易教育內容提供者，非證券投資顧問事業、非期貨顧問事業、亦非虛擬資產服務業者，未受金管會核准或背書。本文非付費內容，撰寫過程未接受任何交易所、ETF 發行商、專案方或其關係人之贊助、廣告或報酬。本站經營者個人可能持有比特幣及其他虛擬資產部位，且可能於本文發布前後進行交易。</li><li>本文資料取自第三方公開來源與 API，可能存在延遲、修訂或錯誤，本站不保證其完整性與正確性。</li><li><strong>本文未考量任何讀者之財務狀況、風險承受度、投資期限或所在地法規，不應作為個人化決策依據。</strong></li><li><strong>賽道名稱、相對強弱與分組結果僅為歷史統計分類，不代表品質評等、推薦順序或本站對任何賽道之看法。</strong> 本文亦未提供各組之成分標的清單。</li><li>本文已剔除 2 檔因代幣置換造成價格跳空的標的；其餘標的若存在未公告之換幣、更名或分割，可能仍造成報酬計算偏差。</li><li>資料截取日為 <strong>2026-09-01</strong>，其後市況變動不在本文涵蓋範圍。</li></ol>
+    <hr class="my-10 border-slate-800">
+    <h3>資料來源</h3>
+    <ul><li><strong>山寨幣價格與成交</strong>：Binance 公開 API 月線收盤，含 <code>TRADING</code> 與 <code>BREAK</code>（已停止交易）狀態之 USDT 現貨對，本站自行擷取與計算 <a href="https://api.binance.com" class="text-amber-400 hover:underline" target="_blank" rel="noopener">api.binance.com &#8599;</a></li><li><strong>市值結構與比特幣市佔率</strong>：CoinGecko <code>/global</code> <a href="https://www.coingecko.com" class="text-amber-400 hover:underline" target="_blank" rel="noopener">coingecko.com &#8599;</a></li><li><strong>衍生品、資金費率、山寨幣季節指數</strong>：CoinGlass <a href="https://www.coinglass.com/zh-TW" class="text-amber-400 hover:underline" target="_blank" rel="noopener">coinglass.com &#8599;</a></li><li><strong>穩定幣總量</strong>：DefiLlama Stablecoins <a href="https://defillama.com/stablecoins" class="text-amber-400 hover:underline" target="_blank" rel="noopener">defillama.com &#8599;</a></li><li><strong>加密 ETF 規模</strong>：<a href="https://www.kucoin.com/blog/en-what-cryptocurrencies-are-listed-as-sec-approved-etfs-in-2026-btc-eth-sol-xrp-more" class="text-amber-400 hover:underline" target="_blank" rel="noopener">KuCoin 研究整理</a>、<a href="https://blockchainreporter.net/the-altcoin-etf-wave-every-crypto-fund-now-live-filed-or-coming-next/" class="text-amber-400 hover:underline" target="_blank" rel="noopener">Blockchain Reporter</a></li><li><strong>OTHERS 月線圖表</strong>：本站自繪（TradingView，CRYPTOCAP:OTHERS）</li></ul>
+    <blockquote class="pull-quote">資料截取日：2026-09-01｜內容製作日：2026-09-01</blockquote>
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href="btc-bottom-or-bear-trap-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">交易策略 · 訊號實測</div>
+        <div class="font-bold text-white text-sm">BTC 見底了嗎：七個訊號、一條鏈上的成本尺，與一次完整的假陽性檢驗</div>
+      </a>
+      <a href="usdt-supply-btc-bottom-test-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">交易策略 · 研究方法</div>
+        <div class="font-bold text-white text-sm">我用 USDT 供給量測了一個抄底訊號：「接近」是對的，「可以進場」是錯的</div>
+      </a>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">賺到帳面獲利很容易，<span class="text-amber-400">把它變成已實現的才難</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">同一批 43 檔幣，中位數在山寨季裡是 +928%，抱到今天是 −40%。<br>差別不在你買了哪一檔。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="trading-demons-02-greed.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">交易心魔：貪心</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>市場研究與教育內容，不構成任何投資建議</strong>，亦不預測任何資產之未來價格、時點或幅度。文中所有數字均為已發生之歷史紀錄，非目標價、非預期報酬。賽道分組僅為歷史統計分類，<strong>不代表推薦或本站看法</strong>。加密貨幣波動極高，山寨幣之流動性、下架與歸零風險顯著更高，可能損失全部本金。<strong>過去績效不代表未來收益。</strong>請參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
