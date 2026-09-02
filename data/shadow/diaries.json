@@ -1,6 +1,177 @@
 {
   "days": [
     {
+      "day": "2026-09-02",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 35.3,
+        "warning": false,
+        "families": 3,
+        "note": "跨家族組合分散=較健康"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "BTR": -12.5,
+            "SKR": 12.5,
+            "ACE": 12.5,
+            "HEMI": 12.5,
+            "PROM": 12.5,
+            "ONG": 12.5,
+            "PUMP": 12.5,
+            "BEAT": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": 6.77
+        },
+        "gpt": {
+          "alloc": {
+            "ETH": -3.0,
+            "SOL": 8.0,
+            "BNB": 7.0,
+            "LINK": 7.0,
+            "BTC": -2.0,
+            "ENA": 5.0,
+            "ZEC": 4.0,
+            "HYPE": 4.0,
+            "PUMP": 2.0,
+            "TRUMP": 2.0,
+            "DOGE": 2.0,
+            "ADA": 2.0,
+            "SUI": 2.0,
+            "LAB": -1.0,
+            "SKR": 6.0,
+            "ACE": 5.0,
+            "PROM": 4.0,
+            "BEAT": -4.0,
+            "XAG": 2.0,
+            "XAU": -2.0
+          },
+          "reason": "降高波動弱勢倉，保留核心多頭；加碼SKR/ACE/PROM，少量對沖BTC/ETH與BEAT。",
+          "outcome": -0.37
+        },
+        "gemini": {
+          "alloc": {
+            "HYPE": 15.0,
+            "PROM": 10.0,
+            "SKR": 5.0,
+            "ACE": 5.0,
+            "ENA": 5.0,
+            "PUMP": 5.0,
+            "BEAT": -10.0,
+            "BTC": -10.0,
+            "LAB": -5.0
+          },
+          "reason": "BTR轉空遂平倉多單。維持HYPE與PROM多頭及BTC、BEAT空單，增配強勢SKR、ACE，曝險控於70%防守。",
+          "outcome": -4.81
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 8.0,
+            "SOL": 8.0,
+            "ACE": 8.0,
+            "ETH": -6.0,
+            "AKE": 5.0,
+            "BNB": 5.0,
+            "LINK": 5.0,
+            "ZEC": 5.0,
+            "PUMP": 5.0,
+            "TUT": 4.0,
+            "ENA": 4.0,
+            "XRP": 3.0,
+            "HEMI": -3.0,
+            "TRUMP": 3.0,
+            "SKYAI": 3.0,
+            "HYPE": 2.0,
+            "1000PEPE": -2.0,
+            "DOGE": 2.0,
+            "CYS": -2.0,
+            "ONDO": 1.0,
+            "PROM": 3.0,
+            "SKR": 2.0,
+            "BEAT": -2.0,
+            "LAB": -1.0,
+            "ON": -1.0
+          },
+          "reason": "持倉穩健獲利+9.65%。加碼藍籌多頭(BTC/SOL/ETH/LINK)應對牛市;控制做空部位(ETH/HEMI限度);新增PROM/SKR小額進場;維持81%曝險,保留現金機動性。近日波動大,穩健為先。",
+          "outcome": 2.76
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 15.0,
+            "SOL": 10.0,
+            "LINK": 10.0,
+            "ETH": 10.0,
+            "XAU": 10.0,
+            "BNB": 8.0,
+            "XAG": 6.0,
+            "ENA": 6.0,
+            "XRP": 5.0,
+            "DOGE": -5.0,
+            "HYPE": 3.0,
+            "SUI": 3.0,
+            "PUMP": 2.0,
+            "ONDO": -2.0
+          },
+          "reason": "保留核心多頭，減弱高波動小幣；續持DOGE/ONDO空單對沖，總曝險97%內。",
+          "outcome": -1.86
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": -8.0,
+            "ETH": -8.0,
+            "SOL": 6.0,
+            "BNB": 5.0,
+            "LINK": 4.0,
+            "ZEC": 4.0,
+            "XRP": 4.0,
+            "HYPE": 3.0,
+            "TRUMP": 3.0,
+            "DOGE": 3.0,
+            "ENA": 3.0,
+            "AKE": 2.0,
+            "PUMP": 2.0,
+            "SUI": 2.0,
+            "XAU": -6.0,
+            "1000PEPE": -3.0,
+            "BEAT": -2.0,
+            "LAB": -2.0,
+            "ON": -1.0
+          },
+          "reason": "牛市頂部訊號:BTC/ETH空頭反轉,做空轉小幅,分散至藍籌(SOL/BNB)。高波動微調-AKE/PUMP留倉,降BTR/SKR風險。現金30%防擁擠。資金費計入。",
+          "outcome": -0.52
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -1.97
+        },
+        "bench_eqw": {
+          "alloc": {
+            "BTR": 10.0,
+            "SKR": 10.0,
+            "ACE": 10.0,
+            "HEMI": 10.0,
+            "PROM": 10.0,
+            "ONG": 10.0,
+            "PUMP": 10.0,
+            "BEAT": 10.0,
+            "AKE": 10.0,
+            "ENA": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -2.54
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0
+        }
+      }
+    },
+    {
       "day": "2026-09-01",
       "next_day": null,
       "crowding": {
@@ -1467,173 +1638,7 @@
           "outcome": 0.0
         }
       }
-    },
-    {
-      "day": "2026-08-23",
-      "next_day": null,
-      "crowding": {
-        "overlap_pct": 38.2,
-        "warning": false,
-        "families": 3,
-        "note": "跨家族組合分散=較健康"
-      },
-      "entries": {
-        "rule": {
-          "alloc": {
-            "TUT": 12.5,
-            "AKE": 12.5,
-            "ACE": 12.5,
-            "PUMP": 12.5,
-            "SKYAI": 12.5,
-            "HEMI": -12.5,
-            "BEAT": -12.5,
-            "ENA": 12.5
-          },
-          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 7.81
-        },
-        "gpt": {
-          "alloc": {
-            "BTC": 12.0,
-            "LINK": 10.0,
-            "ETH": 10.0,
-            "SOL": 10.0,
-            "BNB": 8.0,
-            "XAU": 8.0,
-            "PUMP": 4.0,
-            "HYPE": 4.0,
-            "XAG": 4.0,
-            "ENA": 3.0,
-            "COTI": 2.0,
-            "DOGE": -2.0,
-            "ACE": 2.0,
-            "ZEC": 2.0,
-            "ADA": 1.0,
-            "XRP": 1.0,
-            "HEMI": -2.0,
-            "ON": -2.0,
-            "LAB": -1.0,
-            "CYS": -1.0,
-            "DEXE": -1.0
-          },
-          "reason": "保留核心多頭，減少高波動空單與弱勢短倉；總曝險84%，留現金應對波動。",
-          "outcome": 1.08
-        },
-        "gemini": {
-          "alloc": {
-            "TUT": 10.0,
-            "AKE": 10.0,
-            "ACE": 10.0,
-            "PUMP": 10.0,
-            "SKYAI": 10.0,
-            "HYPE": 10.0,
-            "BTC": 10.0,
-            "ENA": 10.0,
-            "DEXE": -7.0,
-            "BEAT": -7.0
-          },
-          "reason": "平倉轉空的HEMI多單，減碼高波動TUT。續抱AKE、ACE等強勢多頭並引入ENA，空頭部位維持。",
-          "outcome": 7.01
-        },
-        "claude": {
-          "alloc": {
-            "BTC": 14.0,
-            "AKE": 10.0,
-            "TUT": 9.0,
-            "SOL": 9.0,
-            "ACE": 6.5,
-            "ONDO": 4.5,
-            "SKYAI": 4.5,
-            "PUMP": 4.0,
-            "BNB": 4.0,
-            "KOMA": 4.0,
-            "GIGGLE": 4.0,
-            "LINK": 3.5,
-            "XAU": 3.0,
-            "EUL": 3.0,
-            "HYPE": 2.5,
-            "COTI": 2.0,
-            "ETH": 1.5,
-            "GPS": 1.5,
-            "BEAT": -0.5
-          },
-          "reason": "持續增強高動能贏家(TUT+334%、AKE+248%)與藍籌穩定器。微調減碼BEAT空頭(跌95%已極端),保留少量做空對沖。總曝險88%,現金12%緩衝波動。",
-          "outcome": 2.36
-        },
-        "gpt_pure": {
-          "alloc": {
-            "BTC": 10.0,
-            "XAU": 12.0,
-            "XAG": 8.0,
-            "BNB": 8.0,
-            "LINK": 10.0,
-            "ETH": 8.0,
-            "SOL": 7.0,
-            "XRP": 6.0,
-            "ENA": 5.0,
-            "DOGE": -4.0,
-            "ZEC": -2.0,
-            "ADA": 3.0,
-            "ONDO": -2.0,
-            "HYPE": 6.0,
-            "PUMP": 3.0,
-            "TUT": 1.0,
-            "ACE": 1.0
-          },
-          "reason": "保留核心多頭，增配強勢低波動；縮減高波動空頭，總曝險控制在100內。",
-          "outcome": 0.08
-        },
-        "guardian": {
-          "alloc": {
-            "BTC": 12.0,
-            "ETH": 6.0,
-            "BNB": 5.0,
-            "SOL": 5.0,
-            "XAU": 4.0,
-            "LINK": 3.0,
-            "PUMP": 2.5,
-            "TUT": 2.0,
-            "HYPE": 2.0,
-            "XAG": 2.0,
-            "ACE": 2.0,
-            "COTI": 1.5,
-            "EUL": 1.0,
-            "GPS": 1.0,
-            "GIGGLE": 1.0
-          },
-          "reason": "獲利部位(BTC+11.8%)落袋+1%,持續整理。清空虧損部位(ZEC空、LAB空、ON空、ONDO)釋出8.3%現金至35%,降風險。保留核心多頭,擁擠度降至42%。",
-          "outcome": 1.01
-        },
-        "bench_btc": {
-          "alloc": {
-            "BTC": 100.0
-          },
-          "reason": "市場基準(非 AI)",
-          "outcome": -0.95
-        },
-        "bench_eqw": {
-          "alloc": {
-            "TUT": 10.0,
-            "AKE": 10.0,
-            "ACE": 10.0,
-            "PUMP": 10.0,
-            "SKYAI": 10.0,
-            "HEMI": 10.0,
-            "BEAT": 10.0,
-            "ENA": 10.0,
-            "CYS": 10.0,
-            "ZEC": 10.0
-          },
-          "reason": "市場基準(非 AI)",
-          "outcome": 0.98
-        },
-        "bench_cash": {
-          "alloc": {},
-          "reason": "市場基準(非 AI)",
-          "outcome": 0.0
-        }
-      }
     }
   ],
-  "total_days": 41
+  "total_days": 42
 }
