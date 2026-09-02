@@ -1,0 +1,81 @@
+{
+ "days": 2,
+ "records": [
+  {
+   "asOf": "2026-09-01",
+   "changeD1": -2.0,
+   "changeD14": 12.9,
+   "changeD30": 21.0,
+   "changeD7": 9.1,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-02T02:36:34Z",
+   "layers": {
+    "B": 62.7,
+    "L": 55.2,
+    "R": 63.7,
+    "S": 33.6,
+    "V": 56.5
+   },
+   "revision": 1,
+   "score": 55.3,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "rotation",
+   "stageDesc": "少數族群轉強，整體仍由 BTC 主導",
+   "stageName": "輪動初期",
+   "universeCount": 380,
+   "universeVersion": "universe-v1.1"
+  },
+  {
+   "asOf": "2026-08-31",
+   "changeD1": 7.7,
+   "changeD14": 14.3,
+   "changeD30": 22.5,
+   "changeD7": 6.6,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-02T01:58:01Z",
+   "layers": {
+    "B": 58.9,
+    "L": 54.1,
+    "R": 66.1,
+    "S": 47.5,
+    "V": 57.5
+   },
+   "revision": 2,
+   "score": 57.3,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "btc_led",
+   "stageDesc": "資金集中在 BTC，山寨普遍落後",
+   "stageName": "BTC 主導",
+   "universeCount": 377,
+   "universeVersion": "universe-v1.1"
+  },
+  {
+   "asOf": "2026-08-31",
+   "changeD1": 7.7,
+   "changeD14": 14.3,
+   "changeD30": 22.5,
+   "changeD7": 6.6,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-02T01:55:28Z",
+   "layers": {
+    "B": 58.9,
+    "L": 54.1,
+    "R": 66.1,
+    "S": 47.5,
+    "V": 57.5
+   },
+   "revision": 1,
+   "score": 57.3,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "btc_led",
+   "stageDesc": "資金集中在 BTC，山寨普遍落後",
+   "stageName": "BTC 主導",
+   "universeCount": 377,
+   "universeVersion": "universe-v1.1"
+  }
+ ],
+ "records_total": 3
+}

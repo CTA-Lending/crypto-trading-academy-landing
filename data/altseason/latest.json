@@ -1,0 +1,62 @@
+{
+ "aiBrief": {
+  "label": "🤖 AI 產生",
+  "model": "claude-opus-5",
+  "ok": true,
+  "source": "claude",
+  "text": "今天山寨幣市場的整體溫度是 55.3 分（滿分 100），算是溫吞偏暖的狀態，程式把它歸類成「輪動初期」——意思是有一小部分幣種開始比較有活力，但整個市場的主角還是比特幣。這個溫度過去 30 天往上加了 21.0 分，最近 7 天也加了 9.1 分，等於是慢慢在回暖，不是突然竄起來的。\n\n拆開來看五個面向，資金輪動 63.7 分和市場廣度 62.7 分表現比較好，代表錢有在不同幣種之間移動、上漲的幣也不算集中在少數幾檔；流動性 55.2 分和波動結構 56.5 分都在中間；比較弱的是現貨訂單流，只有 33.6 分，也就是實際掏錢買現貨的力道還沒跟上。以上是根據 380 種幣的數據算出來的結果。"
+ },
+ "asOf": "2026-09-01",
+ "changeD1": -2.0,
+ "changeD14": 12.9,
+ "changeD30": 21.0,
+ "changeD7": 9.1,
+ "dataOk": true,
+ "eventDefVersion": "event-definition-v1.0",
+ "forwardLogDays": 2,
+ "forwardLogFirstDay": "2026-08-31",
+ "forwardLogRecords": 3,
+ "generatedAtUtc": "2026-09-02T02:36:34Z",
+ "layers": {
+  "B": 62.7,
+  "L": 55.2,
+  "R": 63.7,
+  "S": 33.6,
+  "V": 56.5
+ },
+ "layersDetail": [
+  {
+   "code": "L",
+   "name": "流動性",
+   "score": 55.2
+  },
+  {
+   "code": "R",
+   "name": "資金輪動",
+   "score": 63.7
+  },
+  {
+   "code": "B",
+   "name": "市場廣度",
+   "score": 62.7
+  },
+  {
+   "code": "S",
+   "name": "現貨訂單流",
+   "score": 33.6
+  },
+  {
+   "code": "V",
+   "name": "波動與結構",
+   "score": 56.5
+  }
+ ],
+ "revision": 1,
+ "score": 55.3,
+ "scoreVersion": "score-v1.0",
+ "stageCode": "rotation",
+ "stageDesc": "少數族群轉強，整體仍由 BTC 主導",
+ "stageName": "輪動初期",
+ "universeCount": 380,
+ "universeVersion": "universe-v1.1"
+}
