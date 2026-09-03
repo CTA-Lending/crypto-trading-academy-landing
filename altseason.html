@@ -428,14 +428,21 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
     if (!g) {
       var el = document.getElementById('log-count');
       if (el) el.textContent = '公開留底暫時讀不到，請稍後再看。';
-      return;
+      // 🔴 留底讀不到，「過去七年」圖仍要畫（它主要靠 series.json）。
+      //    原本這裡直接 return，圖會永遠停在「圖表讀取中…」（最終複查抓到）。
+      //    records 設 null 讓圖表區知道是「讀不到」而不是「0 天」。
+      g = { days: 0, records_total: 0, records: null };
     }
     // 🔴 完整列出，不截斷。總數一定要印在旁邊（見 lab.html 曾經靜靜截掉前 12 天的教訓）
     //    同一天若有修訂，兩筆都列 —— 頁面承諾「修訂紀錄永久公開」，就要真的看得到。
     var recs = g.records || [];
-    document.getElementById('log-count').textContent =
-      '共 ' + g.days + ' 天、' + (g.records_total != null ? g.records_total : recs.length) +
-      ' 筆讀數（含修訂），以下全部列出，未截斷';
+    // 🔴 留底讀不到（records 為 null）時，不要把「暫時讀不到」蓋成「共 0 天…以下全部列出」——
+    //    那看起來像真的零筆（反向對照抓到）。
+    if (Array.isArray(g.records)) {
+      document.getElementById('log-count').textContent =
+        '共 ' + g.days + ' 天、' + (g.records_total != null ? g.records_total : recs.length) +
+        ' 筆讀數（含修訂），以下全部列出，未截斷';
+    }
     // 圖表要兩份資料：重建段（series.json）＋ 公開留底段（PG 的權威紀錄）
     fetch('./data/altseason/series.json?_=' + Date.now())
       .then(function (r) { return r.ok ? r.json() : null; })
@@ -446,7 +453,7 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
           if (c) c.innerHTML = '<p class="text-slate-500 text-sm text-center py-10">歷史資料暫時無法取得。</p>';
           return;
         }
-        buildChart(sj.series, recs, sj.distribution, sj.relNote, window.__latest);
+        buildChart(sj.series, g.records, sj.distribution, sj.relNote, window.__latest);
       });
 
     document.getElementById('log-body').innerHTML = recs.map(function (r) {
@@ -469,27 +476,27 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
   .catch(function (e) { fail('目前沒有可顯示的讀數'); });
 
 // ================= 歷史對照圖（純 SVG，不載圖表庫） =================
-// 🔴 智囊團第十四輪「小白測試」後的重構。改之前先讀理由：
-//   · 主圖只放「分數」。「相對 BTC 表現」比主分數更戲劇化、小白看不懂對數尺度、
-//     還可能被誤讀成「分數有效性的證明」→ 收進下方收合區，預設不展開。
-//   · 歷史線改「實線、細、低彩度」。虛線會被小白讀成「預測／模擬／還沒載入」。
-//   · 資料身分（重算 vs 公開留底）改用**背景區域 + 常駐標籤**，不逼人靠線型猜。
-//   · 加一條「熱度帶」：每一天一個小色塊，冷藍→暖橘。顏色**只編碼高低**，不編碼好壞，
-//     而且要在圖上明講。這是 CoinGlass「一眼看出哪段熱」的效果，但沒有紅綠買賣暗示。
-//   · 公開留底只有幾天 → 誠實畫成幾個金色圓點 + 狀態卡「已累積 N 天，尚不能形成趨勢」，
-//     不把一小段線假裝成趨勢。
-//   · 不畫紅綠色帶、不標買賣區、不畫箭頭指向「很準」的案例、預設顯示完整歷史。
+// 🔴 智囊團第十四輪「小白測試」+ 最終複查後的版本。改之前先讀理由：
+//   · 主圖只放「分數」。「相對 BTC 表現」收進下方收合區，預設不展開。
+//   · 歷史線實線、細、低彩度。虛線會被小白讀成「預測／模擬／還沒載入」。
+//   · 資料身分（重算 vs 公開留底）靠**背景區域 + HTML 常駐標籤**（放在 SVG 外，
+//     手機上才不會縮成 4px 看不見）。
+//   · 熱度帶：每一天一格，冷藍→暖橘，**只編碼高低**，圖上明講不代表好壞買賣。
+//   · 公開留底天數少 → **右側固定保留一塊區域**專畫留底日，每天一個看得見的金點並標日期。
+//     原本把 2 天塞進七年同一條 x 軸，兩點相距 0.3 個 viewBox 單位疊成一個次像素點，
+//     小白對照「已累積 2 天」會以為圖壞了（最終複查抓到）。
+//   · 同一天有修訂時取**最新修訂**（原本取到第 1 版）。
+//   · 不畫紅綠買賣色帶、不標買賣區、不畫箭頭指向「很準」的案例、預設完整歷史。
 
-// 分數 → 溫度色（冷藍 → 暖橘）。只表示高低。
 function tempColor(s) {
   var t = Math.max(0, Math.min(1, s / 100));
-  // 藍(#3B6FB6) → 沙(#9C8F7A) → 橘(#E8913A)
-  var stops = [[59,111,182],[156,143,122],[232,145,58]];
+  var stops = [[59,111,182],[156,143,122],[232,145,58]];   // 藍 → 沙 → 橘
   var seg = t < 0.5 ? 0 : 1, u = t < 0.5 ? t * 2 : (t - 0.5) * 2;
   var a = stops[seg], b = stops[seg + 1];
   return 'rgb(' + Math.round(a[0] + (b[0]-a[0])*u) + ',' + Math.round(a[1] + (b[1]-a[1])*u) + ',' + Math.round(a[2] + (b[2]-a[2])*u) + ')';
 }
 
+// forwardRows：null = 留底讀不到；[] = 讀到但沒有紀錄
 function buildChart(series, forwardRows, dist, relNote, latest) {
   var host = document.getElementById('chart');
   var lead = document.getElementById('chart-lead');
@@ -498,137 +505,162 @@ function buildChart(series, forwardRows, dist, relNote, latest) {
     if (host) host.innerHTML = '<p class="text-slate-500 text-sm text-center py-10">歷史資料暫時無法取得。</p>';
     return;
   }
+  var fwdUnavailable = (forwardRows === null || forwardRows === undefined);
 
-  // ---- 合併：重建段 + 公開留底段（PG 的權威紀錄）----
-  var pts = series.map(function (x) { return { d: x.d, s: x.s, r: x.r, src: 'rebuilt' }; });
-  var fwd = [];
-  (forwardRows || []).slice().reverse().forEach(function (f) {
-    if (f.score == null) return;
-    if (pts.length && f.asOf <= pts[pts.length - 1].d) return;
-    var p = { d: f.asOf, s: f.score, r: null, src: 'forward' };
-    pts.push(p); fwd.push(p);
+  // ---- 重建段 ----
+  var reb = series.filter(function (x) { return x.s != null; })
+                  .map(function (x) { return { d: x.d, s: x.s, r: x.r }; });
+  var lastRebDate = reb.length ? reb[reb.length - 1].d : '';
+
+  // ---- 公開留底段：每個 asOf 只取最新修訂 ----
+  var byDay = {};
+  (forwardRows || []).forEach(function (f) {
+    if (f.score == null || !f.asOf || f.asOf <= lastRebDate) return;
+    var cur = byDay[f.asOf];
+    if (!cur || (f.revision || 1) > (cur.revision || 1)) byDay[f.asOf] = f;
   });
-  var n = pts.length;
-  var cur = latest && latest.score != null ? latest.score : pts[n - 1].s;
+  var fwd = Object.keys(byDay).sort().map(function (k) {
+    return { d: k, s: byDay[k].score, rev: byDay[k].revision || 1 };
+  });
 
-  // ---- 百分位（不發明「恐懼／貪婪」區間）----
-  var k = null;
+  var curScore = (latest && latest.score != null) ? latest.score : (fwd.length ? fwd[fwd.length-1].s : reb[reb.length-1].s);
+  var curDate  = (latest && latest.asOf) ? latest.asOf : (fwd.length ? fwd[fwd.length-1].d : lastRebDate);
+
+  // ---- 百分位（分母 = 重建段天數，明講）----
+  var k = null, nDist = (dist && dist.n) ? dist.n : reb.length;
   if (dist && dist.ladder && dist.ladder.length === 101) {
-    k = 0; while (k < 100 && dist.ladder[k] < cur) k++;
+    k = 0; while (k < 100 && dist.ladder[k] < curScore) k++;
   }
 
-  // ---- 第一層：小白 10 秒要帶走的四句話 ----
+  // ---- 引導句：四句話（不寫「今天」，寫資料日；分母寫出來；堵住「高了 72%」的誤讀）----
   if (lead) {
     lead.innerHTML =
-      '今天 <b class="text-slate-100">' + cur.toFixed(1) + '</b> 分' +
-      (k !== null ? '，高於過去 <b class="text-slate-100">' + k + '%</b> 的日子' : '') + '。' +
+      '最新讀數（' + esc(curDate) + '）是 <b class="text-slate-100">' + curScore.toFixed(1) + '</b> 分。' +
+      (k !== null ? '把過去 ' + nDist.toLocaleString() + ' 天的分數排一排，有 <b class="text-slate-100">' + k + '%</b> 的日子比它低。' : '') +
       '分數越高，代表市場越符合「錢從比特幣分散到其他幣」的特徵。' +
-      '<span class="text-slate-500">這是歷史位置的描述，不是上漲機率，也不是買賣訊號。</span>';
+      '<span class="text-slate-500">這是歷史位置，不是上漲機率，也不是買賣訊號。' +
+      '左邊灰色區是拿舊資料事後重算的；公開每日留底目前' +
+      (fwdUnavailable ? '暫時讀不到' : '累積 <b>' + fwd.length + '</b> 天') + '。</span>';
   }
 
-  // ---- 幾何 ----
-  var W = 900, H = 190, PADL = 40, PADR = 14, PADT = 22, STRIP = 14, GAPS = 8, PADB = 30;
+  // ---- 幾何：右側固定保留「留底區」，讓幾天都看得見 ----
+  var W = 900, H = 170, PADL = 40, PADR = 14, PADT = 8, STRIP = 14, GAPS = 8, PADB = 24;
   var innerW = W - PADL - PADR;
-  var x = function (i) { return PADL + innerW * (n < 2 ? 0 : i / (n - 1)); };
+  var hasFwdZone = fwd.length > 0;
+  var FWD_W = hasFwdZone ? Math.max(70, Math.min(innerW * 0.22, 26 * fwd.length + 30)) : 0;
+  var GAPZ = hasFwdZone ? 12 : 0;
+  var histW = innerW - FWD_W - GAPZ;
+  var nR = reb.length;
+  var xR = function (i) { return PADL + histW * (nR < 2 ? 0 : i / (nR - 1)); };
+  var xF0 = PADL + histW + GAPZ;
+  var xF = function (j) { return xF0 + FWD_W * (j + 0.5) / fwd.length; };
   var y = function (v) { return PADT + H * (1 - v / 100); };
   var stripTop = PADT + H + GAPS;
-  var firstFwd = pts.findIndex(function (p) { return p.src === 'forward'; });
-  var xSplit = firstFwd > 0 ? (x(firstFwd - 1) + x(firstFwd)) / 2 : (W - PADR);
 
-  var svg = ['<svg viewBox="0 0 ' + W + ' ' + (stripTop + STRIP + PADB) + '" class="w-full" style="min-height:240px">'];
-
-  // 背景區域：重算區淡灰、公開留底區淡金 —— 資料身分靠區域＋文字，不靠線型
-  svg.push('<rect x="' + PADL + '" y="' + PADT + '" width="' + (xSplit - PADL) + '" height="' + H + '" fill="#0F1A2E"/>');
-  if (firstFwd > 0) {
-    svg.push('<rect x="' + xSplit + '" y="' + PADT + '" width="' + Math.max(6, W - PADR - xSplit) + '" height="' + H + '" fill="#E5B84B" opacity="0.10"/>');
-  }
-  // 格線
+  var svg = ['<svg viewBox="0 0 ' + W + ' ' + (stripTop + STRIP + PADB) + '" class="w-full" style="min-height:200px;max-height:360px">'];
+  // 背景區域
+  svg.push('<rect x="' + PADL + '" y="' + PADT + '" width="' + histW + '" height="' + H + '" fill="#0F1A2E"/>');
+  if (hasFwdZone) svg.push('<rect x="' + xF0 + '" y="' + PADT + '" width="' + FWD_W + '" height="' + H + '" fill="#E5B84B" opacity="0.10"/>');
+  // 格線與刻度
   [0, 25, 50, 75, 100].forEach(function (v) {
     svg.push('<line x1="' + PADL + '" y1="' + y(v) + '" x2="' + (W - PADR) + '" y2="' + y(v) + '" stroke="#1B2A44"/>');
-    svg.push('<text x="' + (PADL - 6) + '" y="' + (y(v) + 3.5) + '" text-anchor="end" font-size="10" fill="#64748B" font-family="monospace">' + v + '</text>');
+    svg.push('<text x="' + (PADL - 6) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="12" fill="#64748B" font-family="monospace">' + v + '</text>');
   });
-  // 歷史線：實線、細、低彩度（不是虛線）
+  // 歷史線
   var d = '', on = false;
-  for (var i = 0; i < n; i++) {
-    if (pts[i].src !== 'rebuilt' || pts[i].s == null) { on = false; continue; }
-    d += (on ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(pts[i].s).toFixed(1) + ' '; on = true;
-  }
+  for (var i = 0; i < nR; i++) { d += (on ? 'L' : 'M') + xR(i).toFixed(1) + ' ' + y(reb[i].s).toFixed(1) + ' '; on = true; }
   svg.push('<path d="' + d.trim() + '" fill="none" stroke="#7C8BA3" stroke-width="1.1"/>');
-  // 公開留底：金色圓點（幾天就幾個點，不假裝成線）
-  fwd.forEach(function (p) {
-    var i = pts.indexOf(p);
-    svg.push('<circle cx="' + x(i) + '" cy="' + y(p.s) + '" r="4.5" fill="#E5B84B" stroke="#05080F" stroke-width="1.5"/>');
+  // 分界線
+  if (hasFwdZone) svg.push('<line x1="' + (xF0 - GAPZ/2) + '" y1="' + PADT + '" x2="' + (xF0 - GAPZ/2) + '" y2="' + (stripTop + STRIP) + '" stroke="#E5B84B" stroke-width="1.2" stroke-dasharray="3 3"/>');
+  // 留底：每天一個看得見的金點（≤7 天時標日期；多了改連線）
+  if (fwd.length > 7) {
+    var d2 = '';
+    fwd.forEach(function (p, j) { d2 += (j ? 'L' : 'M') + xF(j).toFixed(1) + ' ' + y(p.s).toFixed(1) + ' '; });
+    svg.push('<path d="' + d2.trim() + '" fill="none" stroke="#E5B84B" stroke-width="2"/>');
+  }
+  fwd.forEach(function (p, j) {
+    svg.push('<circle cx="' + xF(j).toFixed(1) + '" cy="' + y(p.s).toFixed(1) + '" r="5" fill="#E5B84B" stroke="#05080F" stroke-width="1.5"/>');
+    if (fwd.length <= 7) {
+      svg.push('<text x="' + xF(j).toFixed(1) + '" y="' + (y(p.s) - 10).toFixed(1) + '" text-anchor="middle" font-size="11" fill="#E5B84B" font-family="monospace">' + p.s.toFixed(1) + '</text>');
+      svg.push('<text x="' + xF(j).toFixed(1) + '" y="' + (stripTop + STRIP + 17) + '" text-anchor="middle" font-size="11" fill="#E5B84B" font-family="monospace">' + esc(p.d.slice(5)) + '</text>');
+    }
   });
-  // 常駐標籤（不能只靠圖例）
-  svg.push('<text x="' + (PADL + 6) + '" y="' + (PADT - 8) + '" font-size="10" fill="#94A3B8" font-family="monospace">歷史重算｜非當時公開紀錄</text>');
-  if (firstFwd > 0) {
-    svg.push('<line x1="' + xSplit + '" y1="' + PADT + '" x2="' + xSplit + '" y2="' + (stripTop + STRIP) + '" stroke="#E5B84B" stroke-width="1.2" stroke-dasharray="3 3"/>');
-    svg.push('<text x="' + (W - PADR) + '" y="' + (PADT - 8) + '" text-anchor="end" font-size="10" fill="#E5B84B" font-family="monospace">公開每日留底｜' + pts[firstFwd].d + ' 起</text>');
+  // 熱度帶
+  var bw = histW / Math.max(nR, 1);
+  for (var j2 = 0; j2 < nR; j2++) {
+    svg.push('<rect x="' + (xR(j2) - bw / 2).toFixed(2) + '" y="' + stripTop + '" width="' + Math.max(bw, 0.6).toFixed(2) + '" height="' + STRIP + '" fill="' + tempColor(reb[j2].s) + '"/>');
   }
-  // 熱度帶：每一天一個色塊，冷藍→暖橘（只表示高低）
-  var bw = innerW / n;
-  for (var j = 0; j < n; j++) {
-    if (pts[j].s == null) continue;
-    svg.push('<rect x="' + (x(j) - bw / 2).toFixed(2) + '" y="' + stripTop + '" width="' + Math.max(bw, 0.6).toFixed(2) + '" height="' + STRIP + '" fill="' + tempColor(pts[j].s) + '"/>');
+  if (hasFwdZone) {
+    var fw = FWD_W / fwd.length;
+    fwd.forEach(function (p, j) {
+      svg.push('<rect x="' + (xF(j) - fw / 2).toFixed(2) + '" y="' + stripTop + '" width="' + fw.toFixed(2) + '" height="' + STRIP + '" fill="' + tempColor(p.s) + '"/>');
+    });
   }
-  svg.push('<text x="' + (PADL - 6) + '" y="' + (stripTop + STRIP - 3) + '" text-anchor="end" font-size="9" fill="#64748B">熱度</text>');
-  // 時間軸
-  [0, Math.floor(n / 4), Math.floor(n / 2), Math.floor(3 * n / 4), n - 1].forEach(function (i) {
-    svg.push('<text x="' + x(i) + '" y="' + (stripTop + STRIP + 18) + '" text-anchor="middle" font-size="10" fill="#64748B" font-family="monospace">' + pts[i].d.slice(0, 7) + '</text>');
+  svg.push('<text x="' + (PADL - 6) + '" y="' + (stripTop + STRIP - 2) + '" text-anchor="end" font-size="11" fill="#64748B">熱度</text>');
+  // 時間軸（歷史段）
+  [0, Math.floor(nR / 3), Math.floor(2 * nR / 3), nR - 1].forEach(function (i, idx, arr) {
+    var anchor = idx === 0 ? 'start' : (idx === arr.length - 1 ? 'end' : 'middle');
+    svg.push('<text x="' + xR(i) + '" y="' + (stripTop + STRIP + 17) + '" text-anchor="' + anchor + '" font-size="12" fill="#64748B" font-family="monospace">' + esc(reb[i].d.slice(0, 7)) + '</text>');
   });
   svg.push('</svg>');
 
-  // 顏色尺（明講：只表示高低）
+  // 身分標籤放 HTML（手機可讀）
+  var idRow = '<div class="flex items-center justify-between text-xs mb-1 gap-3">' +
+    '<span class="text-slate-400"><span class="inline-block w-3 h-3 align-middle rounded-sm mr-1" style="background:#0F1A2E;border:1px solid #1B2A44"></span>歷史重算｜非當時公開紀錄</span>' +
+    (hasFwdZone ? '<span class="text-gold"><span class="inline-block w-3 h-3 align-middle rounded-sm mr-1" style="background:rgba(229,184,75,.25);border:1px solid #E5B84B"></span>公開每日留底｜' + esc(fwd[0].d) + ' 起</span>' : '') +
+    '</div>';
+
   var scale = '<div class="mt-3 flex items-center gap-3 text-xs text-slate-500">' +
     '<span>較低</span>' +
     '<div class="flex-1 h-2 rounded-full" style="background:linear-gradient(90deg,' + tempColor(0) + ',' + tempColor(50) + ',' + tempColor(100) + ')"></div>' +
     '<span>較高</span></div>' +
     '<div class="mt-1 text-xs text-slate-500">顏色只表示分數較低或較高，不代表好壞、漲跌或買賣建議。</div>';
 
-  // 公開留底狀態卡：誠實說只有幾天
-  var fwdDays = fwd.length;
-  var card = '<div class="mt-4 border border-gold/30 bg-gold/5 rounded-lg px-4 py-3 text-sm">' +
-    '<div class="text-slate-200">公開每日留底：已累積 <b>' + fwdDays + '</b> 天（自 ' + (fwd[0] ? fwd[0].d : '—') + ' 起）</div>' +
-    '<div class="text-slate-500 text-xs mt-1">' +
-      (fwdDays < 30 ? '資料還太短，尚不能形成趨勢線，圖上以金色圓點標示每一天。' : '圖上金色為公開留底段。') +
-      ' 左側灰色區域是用舊資料事後重算的，不是當年公開發布過的紀錄。</div></div>';
+  var card;
+  if (fwdUnavailable) {
+    card = '<div class="mt-4 border border-line rounded-lg px-4 py-3 text-sm text-slate-400">公開每日留底暫時讀不到，請稍後再看。左側灰色區域是用舊資料事後重算的，不是當年公開發布過的紀錄。</div>';
+  } else {
+    card = '<div class="mt-4 border border-gold/30 bg-gold/5 rounded-lg px-4 py-3 text-sm">' +
+      '<div class="text-slate-200">公開每日留底：已累積 <b>' + fwd.length + '</b> 天' + (fwd.length ? '（自 ' + esc(fwd[0].d) + ' 起）' : '') + '</div>' +
+      '<div class="text-slate-500 text-xs mt-1">' +
+        (fwd.length < 30 ? '資料還太短，尚不能形成趨勢線；右側金色區每天一個圓點，上面標分數、下面標日期。' : '右側金色區為公開留底段。') +
+        ' 左側灰色區域是用舊資料事後重算的，不是當年公開發布過的紀錄。</div></div>';
+  }
 
   host.innerHTML =
-    '<div class="text-xs text-slate-400 mb-1">山寨雷達分數（0-100）</div>' +
+    '<div class="text-xs text-slate-400 mb-1">山寨雷達分數（0-100）</div>' + idRow +
     '<div class="overflow-x-auto">' + svg.join('') + '</div>' + scale + card;
 
   // ---- 收合區：長期背景（相對 BTC）----
   if (relHost) {
-    var rv = series.map(function (p) { return p.r; }).filter(function (v) { return v != null && v > 0; });
+    var rv = reb.filter(function (p) { return p.r != null && p.r > 0; });
     if (rv.length > 10) {
-      var r0 = rv[0], r1 = rv[rv.length - 1];
+      var r0 = rv[0].r, r1 = rv[rv.length - 1].r, dEnd = rv[rv.length - 1].d;
       var lag = Math.round((1 - r1 / r0) * 100);
-      // 對數尺度圖，但刻度改成人話：起點 100 與現在的值
       var W2 = 900, H2 = 130, T2 = 14, B2 = 26;
-      var lo = Math.log10(Math.min.apply(null, rv)), hi = Math.log10(Math.max.apply(null, rv)), span = (hi - lo) || 1;
+      var vals = rv.map(function (p) { return p.r; });
+      var lo = Math.log10(Math.min.apply(null, vals)), hi = Math.log10(Math.max.apply(null, vals)), span = (hi - lo) || 1;
       var y2 = function (v) { return T2 + H2 * (1 - (Math.log10(v) - lo) / span); };
-      var m = series.length, x2 = function (i) { return PADL + innerW * i / (m - 1); };
-      var d2 = '', on2 = false;
-      for (var q = 0; q < m; q++) {
-        var v = series[q].r; if (v == null || v <= 0) { on2 = false; continue; }
-        d2 += (on2 ? 'L' : 'M') + x2(q).toFixed(1) + ' ' + y2(v).toFixed(1) + ' '; on2 = true;
-      }
-      var svg2 = '<svg viewBox="0 0 ' + W2 + ' ' + (T2 + H2 + B2) + '" class="w-full" style="min-height:150px">' +
-        '<line x1="' + PADL + '" y1="' + y2(100) + '" x2="' + (W2 - PADR) + '" y2="' + y2(100) + '" stroke="#1B2A44" stroke-dasharray="3 3"/>' +
-        '<text x="' + (PADL - 6) + '" y="' + (y2(100) + 3.5) + '" text-anchor="end" font-size="10" fill="#94A3B8" font-family="monospace">起點 100</text>' +
-        '<text x="' + (PADL - 6) + '" y="' + (y2(r1) + 3.5) + '" text-anchor="end" font-size="10" fill="#94A3B8" font-family="monospace">現在 ' + r1.toFixed(0) + '</text>' +
-        '<path d="' + d2.trim() + '" fill="none" stroke="#7C8BA3" stroke-width="1.1"/>' +
-        '<text x="' + x2(0) + '" y="' + (T2 + H2 + 18) + '" text-anchor="start" font-size="10" fill="#64748B" font-family="monospace">' + series[0].d.slice(0, 7) + '</text>' +
-        '<text x="' + x2(m - 1) + '" y="' + (T2 + H2 + 18) + '" text-anchor="end" font-size="10" fill="#64748B" font-family="monospace">' + series[m - 1].d.slice(0, 7) + '</text>' +
+      var m = rv.length, x2 = function (i) { return PADL + innerW * i / (m - 1); };
+      var d3 = '';
+      rv.forEach(function (p, q) { d3 += (q ? 'L' : 'M') + x2(q).toFixed(1) + ' ' + y2(p.r).toFixed(1) + ' '; });
+      var svg2 = '<svg viewBox="0 0 ' + W2 + ' ' + (T2 + H2 + B2) + '" class="w-full" style="min-height:140px;max-height:260px">' +
+        '<line x1="' + PADL + '" y1="' + y2(r0) + '" x2="' + (W2 - PADR) + '" y2="' + y2(r0) + '" stroke="#1B2A44" stroke-dasharray="3 3"/>' +
+        '<text x="' + (PADL - 6) + '" y="' + (y2(r0) + 4) + '" text-anchor="end" font-size="12" fill="#94A3B8" font-family="monospace">' + r0.toFixed(0) + '</text>' +
+        '<text x="' + (PADL - 6) + '" y="' + (y2(r1) + 4) + '" text-anchor="end" font-size="12" fill="#94A3B8" font-family="monospace">' + r1.toFixed(0) + '</text>' +
+        '<path d="' + d3.trim() + '" fill="none" stroke="#7C8BA3" stroke-width="1.1"/>' +
+        '<text x="' + x2(0) + '" y="' + (T2 + H2 + 18) + '" text-anchor="start" font-size="12" fill="#64748B" font-family="monospace">' + esc(rv[0].d.slice(0, 7)) + '</text>' +
+        '<text x="' + x2(m - 1) + '" y="' + (T2 + H2 + 18) + '" text-anchor="end" font-size="12" fill="#64748B" font-family="monospace">' + esc(dEnd.slice(0, 7)) + '</text>' +
         '</svg>';
       relHost.innerHTML =
-        '<p>從 ' + series[0].d.slice(0, 4) + ' 年起算，如果分別把 100 元放進「一組山寨幣」和「比特幣」，' +
-        '山寨幣那一組相對比特幣的表現由 <b class="text-slate-200">100</b> 變成約 <b class="text-slate-200">' + r1.toFixed(0) + '</b>，' +
-        '也就是累積落後約 <b class="text-slate-200">' + lag + '%</b>。</p>' +
-        '<p class="mt-2 text-slate-500">這不代表每一種山寨幣都跌了 ' + lag + '%；這是一組幣（含後來已下架的）的整體平均，個別幣差異很大。</p>' +
+        '<p>這個數字<b class="text-slate-200">不是金額</b>，是「一組山寨幣」和「比特幣」的表現<b class="text-slate-200">比例</b>：' +
+        '從 ' + esc(rv[0].d.slice(0, 4)) + ' 年起算設為 <b class="text-slate-200">' + r0.toFixed(0) + '</b>，' +
+        '到 ' + esc(dEnd) + ' 變成約 <b class="text-slate-200">' + r1.toFixed(0) + '</b>，也就是這組山寨幣整體<b class="text-slate-200">相對比特幣</b>落後約 ' + lag + '%。</p>' +
+        '<p class="mt-2 text-slate-500">這是「相對比特幣」的落後，<b>不是價格跌幅</b>——山寨幣可能有漲，只是漲得比比特幣少。' +
+        '也不代表每一種山寨幣都落後 ' + lag + '%；這是一組幣（含後來已下架的）的整體平均，個別差異很大。</p>' +
         '<div class="mt-4 overflow-x-auto">' + svg2 + '</div>' +
-        '<p class="mt-2 text-xs text-slate-600">縱軸用等比例刻度（每往上一格代表變成幾倍），這樣七年內從 200 多掉到 15 的過程才看得清楚。' +
-        '計算方式：' + esc(relNote || '') + '</p>';
+        '<p class="mt-2 text-xs text-slate-600">縱軸用「倍數」刻度，上下同樣距離代表變成同樣的倍數，這樣從 ' + r0.toFixed(0) + ' 掉到 ' + r1.toFixed(0) + ' 的過程才看得清楚。' +
+        ' 計算方式（給想深究的人）：' + esc(relNote || '') + '</p>';
     } else {
       relHost.innerHTML = '<p class="text-slate-500">資料不足。</p>';
     }
