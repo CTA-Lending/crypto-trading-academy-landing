@@ -124,13 +124,16 @@
       </h1>
       <p class="mt-3 text-slate-400 text-sm">
         我們每天量一次，量完就公開。<span class="text-slate-300">這是「現在」的溫度，不是對未來的判斷。</span>
+        <span class="block mt-1 text-xs text-slate-500">量的是「完整的前一天」，隔天早上更新，所以資料日通常比今天晚一到兩天。</span>
       </p>
       <p class="mt-4 mx-auto max-w-xl text-xs text-slate-500 leading-relaxed border border-line rounded-lg px-4 py-3 text-left">
-        <b class="text-slate-300">先解釋兩個詞：</b>
+        <b class="text-slate-300">先解釋三個詞：</b>
         <b class="text-slate-300">比特幣（BTC）</b>是市場上最大、最多人買的那一種加密貨幣；
-        除了它以外的其他幾百種，市場上習慣統稱為<b class="text-slate-300">「山寨幣」</b>（這是中性的稱呼，不是罵人）。
-        這一頁量的是：<b class="text-slate-300">錢有多少集中在比特幣，又有多少分散到其他幣上。</b>
-        分數越高，代表其他幣參與得越多。
+        除了它以外的其他幾百種，市場上習慣統稱為<b class="text-slate-300">「山寨幣」</b>（這是中性的稱呼，不是罵人）；
+        <b class="text-slate-300">「山寨季」</b>是圈內對「很多其他幣同時漲得比比特幣多」那段時期的俗稱。
+        這一頁量的是：<b class="text-slate-300">錢有多少集中在比特幣，又有多少分散到其他幣上</b>——
+        也就是現在像不像那種狀態；<b class="text-slate-300">不是預告它會不會來</b>。分數越高，代表其他幣參與得越多。
+        <span class="block mt-1 text-slate-600">（順帶一提：下面提到的「穩定幣」是價格釘住美元的代幣，它本身不計分，但它的數量是「錢有沒有進來」那一項的輸入之一。）</span>
       </p>
     </div>
 
@@ -198,12 +201,16 @@
         <p class="text-sm text-slate-400 mb-4">
           每一天的讀數在產出當下就寫進資料庫，資料庫層級已停用修改與刪除權限。
           <span class="text-slate-300">所有歷史讀數、方法版本與修訂紀錄永久公開，不回填、不刪除。</span>
+          <!-- 2026-09-03 複查：讀者無法從頁面核對「當天寫入」這個宣稱 → 加「產出時間」欄，直接印資料庫的寫入時間。 -->
+          <span class="block mt-1 text-xs text-slate-500">「產出時間」是資料庫寫入的時間（UTC），通常在資料日的隔天早上。
+          「修訂」是同一天重新產出的版本；若兩版數字相同，代表重跑後結果不變。</span>
         </p>
         <div id="log-count" class="font-mono text-xs text-slate-500 mb-2"></div>
+        <div class="md:hidden text-xs text-slate-600 mb-1">← 表格可左右滑動 →</div>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm min-w-[520px]">
+          <table class="w-full text-sm min-w-[640px]">
             <thead class="text-slate-500 border-b border-line">
-              <tr><th class="text-left py-2 font-normal">日期</th><th class="text-right font-normal">溫度</th><th class="text-left pl-4 font-normal">狀態</th><th class="text-right font-normal">30日淨變化</th><th class="text-right font-normal">幣種數</th></tr>
+              <tr><th class="text-left py-2 font-normal">資料日</th><th class="text-right font-normal">溫度</th><th class="text-left pl-4 font-normal">狀態</th><th class="text-right font-normal">30日淨變化</th><th class="text-right font-normal">幣種數</th><th class="text-right font-normal">產出時間（UTC）</th></tr>
             </thead>
             <tbody id="log-body" class="text-slate-300"></tbody>
           </table>
@@ -236,16 +243,17 @@
         <svg class="chev w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div class="px-6 pb-6 border-t border-line pt-4 text-sm text-slate-400 space-y-3 leading-relaxed">
-        <p><span class="text-slate-200 font-medium">這支溫度計描述現在，不判斷未來。</span>
-          依原先預先登記的方法進行的歷史檢驗，未證實本分數對未來 30 日的表現具有穩健預測力。
-          我們把這件事寫在這裡，而不是留在內部。</p>
-        <p><span class="text-slate-200 font-medium">極端的狀態可以維持數月。</span>
-          分數很高不代表接近尾聲，分數很低也不代表接近開始。本指標不提供任何關於「何時反轉」的判斷。</p>
+        <!-- 2026-09-03 複查：這裡原本有兩段跟最上方「三件事」逐字重複的免責，全頁同義句 11 處。
+             刪掉重複的，只留最上方沒有的內容；結論回指即可，免得讀者只記得「它不能預測」。 -->
+        <p class="text-slate-500">結論已寫在最上方的「三件事」。這裡只放那裡沒有的檢驗細節，給想深究的人。</p>
         <p><span class="text-slate-200 font-medium">和常見免費指標的對照。</span>
-          以「前 50 大山寨中過去 90 日跑贏 BTC 的比例」為基準，對照對象是
-          「等權山寨籃子 30 日報酬減 BTC 30 日報酬」這個當下狀態量，樣本 2,226 天：
+          白話說：我們拿這個分數跟「最常見的免費山寨季指數」比，看誰更能說明<b>當下</b>的市場狀態——
+          結果兩者量的不是同一件事，本分數多解釋了一些，但這<b>不代表</b>它能預測未來。
+          <span class="text-slate-500 block mt-1">細節：基準是「前 50 大山寨中過去 90 日跑贏 BTC 的比例」，對照對象是
+          「等權山寨籃子 30 日報酬減 BTC 30 日報酬」這個當下狀態量，這次對照用的樣本是 2,226 天
+          （比上方圖表的 2,654 天少，因為對照量需要更長的回看視窗）：
           基準的解釋力 R² = 0.208，本分數 0.275，兩者併用 0.348；兩者秩相關 0.397。
-          <span class="text-slate-500">保留：這個狀態量與本分數仍有部分機械性重疊（分數本身含報酬類指標），
+          保留：這個狀態量與本分數仍有部分機械性重疊（分數本身含報酬類指標），
           因此上述數字只說明兩者量的不是同一件事，<b>不構成</b>「本分數比較好用」或具有預測力的主張。</span></p>
         <p><span class="text-slate-200 font-medium">衍生品資料的範圍限制。</span>
           未平倉量與多空比的歷史在 2021 年 12 月之前僅有 BTC 一個幣種，
@@ -260,7 +268,8 @@
       </summary>
       <div class="px-6 pb-6 border-t border-line pt-4 text-sm text-slate-400 leading-relaxed">
         <p class="mb-4 text-slate-300">本區資料<b>不參與</b>上方溫度分數的計算，也<b>未證實</b>具有前瞻預測能力。
-          它描述的是合約市場現在的槓桿與部位狀態，請與溫度分數分開看，不要合併判讀。</p>
+          它描述的是合約市場<b>最近一筆</b>的槓桿與部位狀態（各卡的資料日在下方，可能比上面的分數早一天），
+          請與溫度分數分開看，不要合併判讀。</p>
         <div id="deriv-body"></div>
       </div>
     </details>
@@ -277,17 +286,21 @@ document.getElementById('mobile-menu-btn').addEventListener('click', function ()
   document.getElementById('mobile-menu').classList.toggle('hidden');
 });
 
+// 🔴 2026-09-03 複查：說明列原本全是行話（成交周轉、離散程度、創新高減創新低…），
+//    小白只能靠問句猜。改成一句人話，行話放括號在句尾給想查的人。
 var LAYER_Q = {
-  L: ['錢有沒有進到這個市場？', '整體成交量與穩定幣供給的變化'],
-  R: ['錢有沒有從 BTC 往其他幣移動？', '山寨相對 BTC 的強弱與轉向速度'],
-  B: ['有多少幣真的在漲？', '跑贏 BTC 的比例、創新高減創新低'],
-  S: ['買賣有多熱烈？', '主動買進佔比與成交周轉'],
-  V: ['市場有多分歧？', '各幣走勢的離散程度與波動結構']
+  L: ['錢有沒有進到這個市場？', '整個市場一天成交了多少錢，以及可拿來買幣的美元代幣（穩定幣）變多還是變少'],
+  R: ['錢有沒有從比特幣往其他幣移動？', '其他幣相對比特幣是變強還是變弱、轉得多快'],
+  B: ['有多少幣真的在漲？', '有幾成的幣漲得比比特幣多；創新高的幣多，還是創新低的多'],
+  S: ['買賣有多熱烈？', '真的成交的買單佔多少、換手多快（不是掛著沒成交的單）'],
+  V: ['市場有多分歧？', '各種幣是一起動，還是各走各的']
 };
 
+// 進度條的顏色跟歷史圖同一套溫度色（冷藍→暖橘），只表示高低。
+// 原本用品牌金色，跟「免費註冊」按鈕同色，會讓「高分」讀成「好」。
 function bar(v) {
   var pct = Math.max(0, Math.min(100, v));
-  return '<div class="h-1.5 bg-line rounded-full overflow-hidden"><div class="h-full bg-gold/70 rounded-full" style="width:' + pct + '%"></div></div>';
+  return '<div class="h-1.5 bg-line rounded-full overflow-hidden"><div class="h-full rounded-full" style="width:' + pct + '%;background:' + tempColor(v) + '"></div></div>';
 }
 
 // 🔴 stageName / stageDesc 來自資料庫的 stage 欄位。若出現未登記的代碼，
@@ -341,21 +354,28 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
           '<div class="font-mono text-6xl md:text-7xl font-bold text-white leading-none">' + s + '</div>' +
           '<div class="text-slate-500 text-sm mb-2">/ 100</div>' +
         '</div>' +
+        // 🔴 2026-09-03 複查：溫度計原本用品牌金色（跟「免費註冊」按鈕同色）當「熱」端，
+        //    讀者會把「熱」讀成「好」。改用跟歷史圖同一套溫度色（冷藍→暖橘），並明講只表示高低。
         '<div class="mt-7 relative">' +
-          '<div class="gauge h-2.5 rounded-full"></div>' +
+          '<div class="h-2.5 rounded-full" style="background:linear-gradient(90deg,' + tempColor(0) + ',' + tempColor(50) + ',' + tempColor(100) + ')"></div>' +
           '<div class="gauge-mark absolute -top-1.5" style="left:calc(' + pos + '% - 9px)">' +
             '<div class="w-[18px] h-[18px] rounded-full bg-white border-[3px] border-void shadow-lg"></div>' +
           '</div>' +
           '<div class="flex justify-between mt-2 font-mono text-[10px] text-slate-600">' +
-            '<span>冷（錢在 BTC）</span><span>熱（多數幣一起動）</span>' +
+            '<span>較低（錢多在比特幣）</span><span>較高（多數幣一起動）</span>' +
           '</div>' +
+          '<div class="mt-1 text-center text-[11px] text-slate-600">顏色只表示分數較低或較高，不代表好壞、漲跌或買賣建議。</div>' +
         '</div>' +
         '<div class="mt-8 text-center">' +
-          '<div class="inline-block border border-gold/40 text-gold rounded-full px-4 py-1 text-sm">' + esc(d.stageName) + '</div>' +
+          '<div class="inline-block border border-slate-500/60 text-slate-200 rounded-full px-4 py-1 text-sm">' + esc(d.stageName) + '</div>' +
           '<div class="mt-3 text-slate-200 text-lg">' + esc(d.stageDesc) + '</div>' +
+          // 🔴 狀態**不是**按總分切的（複查：57.3 分是「BTC 主導」、55.3 分卻是「輪動初期」，讀者以為矛盾）。
+          //    引擎規則：看「過去 30 天跑贏比特幣的幣佔幾成」以及這個比例最近 7 天升或降。這句由程式產生，不是模型寫的。
+          '<div class="mt-2 text-xs text-slate-500">狀態怎麼判：看的是「過去 30 天跑贏比特幣的幣佔幾成」和這個比例最近 7 天是升是降，不是用總分切的，所以分數略降、狀態仍可能往「輪動」靠。</div>' +
           '<div class="mt-2 text-slate-500 text-sm">' +
-            '比一個月前 ' + delta(d.changeD30, '分') +
+            '比前一天 ' + delta(d.changeD1, '分') +
             '　·　比一週前 ' + delta(d.changeD7, '分') +
+            '　·　比一個月前 ' + delta(d.changeD30, '分') +
           '</div>' +
         '</div>' +
         '<div class="mt-7 pt-5 border-t border-line text-center font-mono text-[11px] text-slate-600">' +
@@ -470,6 +490,9 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
         '<td class="text-right font-mono text-slate-400">' +
           (d30 === null ? '—' : (Number(r.changeD30) >= 0 ? '+' : '') + d30) + '</td>' +
         '<td class="text-right font-mono text-slate-500">' + (r.universeCount == null ? '—' : r.universeCount) + '</td>' +
+        // 產出時間直接印資料庫的寫入時間，讓「當天寫入、不回填」是讀者可自行核對的事實，不是宣稱
+        '<td class="text-right font-mono text-xs text-slate-500">' +
+          (r.generatedAtUtc ? esc(String(r.generatedAtUtc).replace('T', ' ').replace('Z', '')) : '—') + '</td>' +
       '</tr>';
     }).join('');
   })
@@ -690,15 +713,17 @@ function renderDeriv(dv) {
     (f.meanPct >= 0 ? '+' : '') + f.meanPct.toFixed(4) + '%',
     '每 8 小時結算一次。正值代表做多的人付錢給做空的人，負值反過來。納入 ' + f.symbols + ' 個合約。'));
   if (f.pctile90d !== null && f.pctile90d !== undefined) {
+    // 2026-09-03 複查：「槓桿多頭沒有那麼擁擠」是詮釋不是描述，且是未解釋的術語。只描述位置。
     cards.push(card('相對過去 90 天的位置', f.pctile90d.toFixed(0) + ' / 100',
-      '數字越低，代表目前的費率在近三個月裡算低的，也就是槓桿多頭沒有那麼擁擠。'));
+      '把最近 90 天的費率排一排，這個數字是它現在排在第幾位（0 = 最低、100 = 最高）。'));
   }
   if (f.fracNegativePct !== null && f.fracNegativePct !== undefined) {
     cards.push(card('資金費率為負的合約比例', f.fracNegativePct.toFixed(1) + '%',
       '這些合約目前是做空的人付錢給做多的人。'));
   }
   if (o) {
-    cards.push(card('未平倉合約總額', '$' + o.totalUsdB.toFixed(1) + 'B',
+    // 「$18.7B」對小白是英文縮寫；改成中文單位
+    cards.push(card('未平倉合約總額', (o.totalUsdB * 10).toFixed(0) + ' 億美元',
       '市場上還沒平倉的合約規模，納入 ' + o.symbols + ' 個合約。'));
     if (o.changeD7Pct !== null && o.changeD7Pct !== undefined) {
       cards.push(card('未平倉 7 日變化',
