@@ -4,14 +4,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-09-01 這一天，山寨市場的溫度是 55.3 分，處在「輪動初期」——也就是有一部分比特幣以外的幣開始轉強，但整體大盤還是由比特幣說了算。跟一個月前比，這個溫度上升了 21.0 分，最近七天也多了 9.1 分，等於熱度是一路慢慢加上來的。\n\n拆開來看五個面向，資金輪動 63.7 分和市場廣度 62.7 分算是比較高的，代表在納入計算的 380 種幣裡，有不少幣的表現跑贏了比特幣；流動性 55.2 分、波動與結構 56.5 分則落在中間位置。比較低的是現貨訂單流，只有 33.6 分，意思是真正成交的買單佔比並不高，實際換手的力道相對冷清。"
+  "text": "2026-09-02 這一天，山寨市場的溫度是 57.9 分（滿分 100），狀態被歸類為「BTC 主導」，也就是錢大多集中在比特幣身上，其他幣種普遍跟不上。\n\n拆開來看五個面向：流動性 52.6，資金輪動 61.3，市場廣度 55.8，現貨訂單流 60.7，波動與結構 61.6，這些分數是從 376 種幣的數據算出來的。整體來說，中間偏上的幾項還算有點熱度，但衡量市場成交規模與可用資金的流動性，以及有多少幣漲贏比特幣的市場廣度，是相對低的兩項。\n\n拉長時間比較，這個溫度比 30 天前多了 22.7 分，比 7 天前多了 3.9 分，等於一個月來爬得不少，但最近這一週只挪動了一小步。"
  },
- "asOf": "2026-09-01",
- "changeD1": -2.0,
- "changeD14": 12.9,
- "changeD30": 21.0,
- "changeD7": 9.1,
- "dataAsOfUtc": "2026-09-02T02:36:34Z",
+ "asOf": "2026-09-02",
+ "changeD1": 2.6,
+ "changeD14": 6.8,
+ "changeD30": 22.7,
+ "changeD7": 3.9,
+ "dataAsOfUtc": "2026-09-03T09:42:05Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -39,50 +39,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 2,
+ "forwardLogDays": 3,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 3,
+ "forwardLogRecords": 4,
  "layers": {
-  "B": 62.7,
-  "L": 55.2,
-  "R": 63.7,
-  "S": 33.6,
-  "V": 56.5
+  "B": 55.8,
+  "L": 52.6,
+  "R": 61.3,
+  "S": 60.7,
+  "V": 61.6
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 55.2
+   "score": 52.6
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 63.7
+   "score": 61.3
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 62.7
+   "score": 55.8
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 33.6
+   "score": 60.7
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 56.5
+   "score": 61.6
   }
  ],
- "publishedAtUtc": "2026-09-03T09:19:29Z",
+ "publishedAtUtc": "2026-09-03T09:42:45Z",
  "revision": 1,
- "score": 55.3,
+ "score": 57.9,
  "scoreVersion": "score-v1.0",
- "stageCode": "rotation",
- "stageDesc": "一部分幣種開始轉強，整體仍由比特幣主導",
- "stageName": "輪動初期",
- "universeCount": 380,
+ "stageCode": "btc_led",
+ "stageDesc": "資金集中在 BTC，山寨普遍落後",
+ "stageName": "BTC 主導",
+ "universeCount": 376,
  "universeVersion": "universe-v1.1"
 }
