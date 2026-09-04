@@ -1,17 +1,16 @@
 {
  "aiBrief": {
-  "label": "🤖 AI 產生",
-  "model": "claude-opus-5",
+  "label": "由程式產生（AI 本次未使用）",
   "ok": true,
-  "source": "claude",
-  "text": "2026-09-02 這一天，山寨市場的溫度是 57.9 分（滿分 100），狀態被歸類為「BTC 主導」，也就是錢大多集中在比特幣身上，其他幣種普遍跟不上。\n\n拆開來看五個面向：流動性 52.6，資金輪動 61.3，市場廣度 55.8，現貨訂單流 60.7，波動與結構 61.6，這些分數是從 376 種幣的數據算出來的。整體來說，中間偏上的幾項還算有點熱度，但衡量市場成交規模與可用資金的流動性，以及有多少幣漲贏比特幣的市場廣度，是相對低的兩項。\n\n拉長時間比較，這個溫度比 30 天前多了 22.7 分，比 7 天前多了 3.9 分，等於一個月來爬得不少，但最近這一週只挪動了一小步。"
+  "source": "static",
+  "text": "目前的山寨市場溫度是 57.2 分（滿分 100）。狀態是「BTC 主導」：資金集中在 BTC，山寨普遍落後。這個分數比一個月前高 21.1 分。本次納入計算的幣種共 378 個。這個分數描述的是現在，不是對未來的判斷。"
  },
- "asOf": "2026-09-02",
- "changeD1": 2.6,
- "changeD14": 6.8,
- "changeD30": 22.7,
- "changeD7": 3.9,
- "dataAsOfUtc": "2026-09-03T09:42:05Z",
+ "asOf": "2026-09-03",
+ "changeD1": -0.7,
+ "changeD14": 4.9,
+ "changeD30": 21.1,
+ "changeD7": -0.8,
+ "dataAsOfUtc": "2026-09-04T01:36:12Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -39,50 +38,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 3,
+ "forwardLogDays": 4,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 4,
+ "forwardLogRecords": 5,
  "layers": {
-  "B": 55.8,
-  "L": 52.6,
-  "R": 61.3,
-  "S": 60.7,
-  "V": 61.6
+  "B": 61.1,
+  "L": 54.7,
+  "R": 59.2,
+  "S": 64.0,
+  "V": 39.9
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 52.6
+   "score": 54.7
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 61.3
+   "score": 59.2
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 55.8
+   "score": 61.1
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 60.7
+   "score": 64.0
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 61.6
+   "score": 39.9
   }
  ],
- "publishedAtUtc": "2026-09-03T09:42:45Z",
+ "publishedAtUtc": "2026-09-04T02:18:56Z",
  "revision": 1,
- "score": 57.9,
+ "score": 57.2,
  "scoreVersion": "score-v1.0",
  "stageCode": "btc_led",
  "stageDesc": "資金集中在 BTC，山寨普遍落後",
  "stageName": "BTC 主導",
- "universeCount": 376,
+ "universeCount": 378,
  "universeVersion": "universe-v1.1"
 }

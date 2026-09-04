@@ -149,24 +149,35 @@
     <div id="layers" class="grid gap-3 md:grid-cols-2"></div>
   </section>
 
-  <!-- ===== 歷史對照 ===== -->
-  <!-- 🔴 智囊團第十四輪（小白測試）重構：
-       · 小白 10 秒內要帶走四句話：今天幾分／高於過去幾 % 的日子／這只是描述現在／長期歷史是事後重算
-       · 顏色只編碼「分數高低」，不編碼「好壞／買賣」，且要明講
-       · 「相對 BTC 表現」比主分數更戲劇化、小白看不懂對數尺度 → 收進「長期背景」，預設收合
-       · 公開留底只有 2 天 → 誠實畫成兩個點 + 狀態卡，不假裝成趨勢線
-       · 免責只留一段，其餘已在最上方的三點說明裡 -->
+  <!-- ===== 這個分數在歷史上的位置 ===== -->
+  <!-- 🔴 智囊團第十五輪（第二次小白測試）重構：
+       · **七年折線圖不放主要位置**。小白看完只記得「一條線在上上下下」，答不出「所以呢」。
+         主畫面改成「分數 + 在歷史上的位置」，折線圖收進下面。
+       · 每句話 25 字內，不出現需要另外解釋的名詞。
+       · 「熱度」「趨勢線」「留底」「重算」全部換成白話。
+       · 不寫「今天」—— 資料日通常比今天晚一到兩天，寫今天會讓過期資料看起來即時。 -->
   <section class="max-w-4xl mx-auto px-4 py-8">
-    <h2 class="font-serif text-xl text-white mb-1">過去七年，這個分數長什麼樣</h2>
-    <p id="chart-lead" class="text-sm text-slate-400 leading-relaxed mb-5"></p>
+    <h2 class="font-serif text-xl text-white mb-4">這個分數，在過去七年算高嗎？</h2>
 
-    <div id="chart" class="bg-panel border border-line rounded-xl p-4 md:p-5">
-      <div class="text-center text-slate-500 py-16 font-mono text-sm">圖表讀取中…</div>
+    <div class="bg-panel border border-line rounded-xl p-5 md:p-6">
+      <div id="pos-body">
+        <div class="text-center text-slate-500 py-10 font-mono text-sm">讀取中…</div>
+      </div>
     </div>
 
     <details class="mt-3 bg-deep border border-line rounded-xl">
       <summary class="px-6 py-4 flex items-center justify-between text-white font-medium">
-        <span>長期背景：山寨幣和比特幣相比，長期表現如何？</span>
+        <span>看七年的完整變化</span>
+        <svg class="chev w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </summary>
+      <div class="px-5 pb-6 border-t border-line pt-4">
+        <div id="chart"></div>
+      </div>
+    </details>
+
+    <details class="mt-3 bg-deep border border-line rounded-xl">
+      <summary class="px-6 py-4 flex items-center justify-between text-white font-medium">
+        <span>其他幣和比特幣比，長期表現如何？</span>
         <svg class="chev w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div id="rel-body" class="px-6 pb-6 border-t border-line pt-4 text-sm text-slate-400 leading-relaxed"></div>
@@ -194,7 +205,7 @@
 
     <details class="bg-deep border border-line rounded-xl">
       <summary class="px-6 py-4 flex items-center justify-between text-white font-medium">
-        <span>公開留底：我們每天說了什麼</span>
+        <span>每天存下的紀錄：那天我們說了什麼</span>
         <svg class="chev w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </summary>
       <div class="px-6 pb-6 border-t border-line pt-4">
@@ -354,6 +365,11 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
           '<div class="font-mono text-6xl md:text-7xl font-bold text-white leading-none">' + s + '</div>' +
           '<div class="text-slate-500 text-sm mb-2">/ 100</div>' +
         '</div>' +
+        // 🔴 小白測試（第二次，兩家獨立作答）：兩位讀者都答不出「57.9 是高還是低」。
+        //    刻度上的「較低／較高」被讀成對這個數字的判定，而不是刻度兩端。
+        //    修法：把「跟過去比」這句話搬到數字正下方。百分位由 buildChart 算完填進來，
+        //    這裡**不自己再算一次**（lab.html 就是前端重算一份而算錯，教訓不重犯）。
+        '<div id="hero-pct" class="mt-3 text-center text-sm text-slate-300"></div>' +
         // 🔴 2026-09-03 複查：溫度計原本用品牌金色（跟「免費註冊」按鈕同色）當「熱」端，
         //    讀者會把「熱」讀成「好」。改用跟歷史圖同一套溫度色（冷藍→暖橘），並明講只表示高低。
         '<div class="mt-7 relative">' +
@@ -362,7 +378,7 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
             '<div class="w-[18px] h-[18px] rounded-full bg-white border-[3px] border-void shadow-lg"></div>' +
           '</div>' +
           '<div class="flex justify-between mt-2 font-mono text-[10px] text-slate-600">' +
-            '<span>較低（錢多在比特幣）</span><span>較高（多數幣一起動）</span>' +
+            '<span>0 分｜錢多在比特幣</span><span>100 分｜多數幣一起動</span>' +
           '</div>' +
           '<div class="mt-1 text-center text-[11px] text-slate-600">顏色只表示分數較低或較高，不代表好壞、漲跌或買賣建議。</div>' +
         '</div>' +
@@ -371,11 +387,15 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
           '<div class="mt-3 text-slate-200 text-lg">' + esc(d.stageDesc) + '</div>' +
           // 🔴 狀態**不是**按總分切的（複查：57.3 分是「BTC 主導」、55.3 分卻是「輪動初期」，讀者以為矛盾）。
           //    引擎規則：看「過去 30 天跑贏比特幣的幣佔幾成」以及這個比例最近 7 天升或降。這句由程式產生，不是模型寫的。
-          '<div class="mt-2 text-xs text-slate-500">狀態怎麼判：看的是「過去 30 天跑贏比特幣的幣佔幾成」和這個比例最近 7 天是升是降，不是用總分切的，所以分數略降、狀態仍可能往「輪動」靠。</div>' +
+          '<div class="mt-3 text-xs text-slate-500 leading-relaxed max-w-md mx-auto">' + '上面這個名稱和分數，看的不是同一件事。' +
+          '分數是把五類數字合起來算的。' +
+          '名稱只看一件事：最近 30 天漲得比比特幣多的幣有幾成，以及這個比例這 7 天在升還是在降。' +
+          '所以會出現「分數不低，名稱卻還是 BTC 主導」，那不是寫錯。</div>' +
           '<div class="mt-2 text-slate-500 text-sm">' +
             '比前一天 ' + delta(d.changeD1, '分') +
             '　·　比一週前 ' + delta(d.changeD7, '分') +
             '　·　比一個月前 ' + delta(d.changeD30, '分') +
+            '<div class="mt-1 text-xs text-slate-600">這是分數的變化，不是幣價漲跌。</div>' +
           '</div>' +
         '</div>' +
         '<div class="mt-7 pt-5 border-t border-line text-center font-mono text-[11px] text-slate-600">' +
@@ -393,7 +413,7 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
         '<div class="mt-1">2. 極端的狀態可以維持數月。分數高不代表接近尾聲，分數低也不代表接近開始；' +
         '本指標不提供任何關於何時反轉的判斷。</div>' +
         '<div class="mt-1">3. 上面「比一個月前 / 比一週前」的比較，來自我們用歷史資料重建的分數；' +
-        '每日公開留底目前累積 <b class="text-slate-200">' + (d.forwardLogDays || 0) + '</b> 天' +
+        '當天算好就存下、之後不改的紀錄目前有 <b class="text-slate-200">' + (d.forwardLogDays || 0) + '</b> 天' +
         '（自 ' + esc(d.forwardLogFirstDay || '—') + ' 起）。</div>' +
       '</div>';
 
@@ -447,7 +467,7 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
   .then(function (g) {
     if (!g) {
       var el = document.getElementById('log-count');
-      if (el) el.textContent = '公開留底暫時讀不到，請稍後再看。';
+      if (el) el.textContent = '當天存下的紀錄暫時讀不到，請稍後再看。';
       // 🔴 留底讀不到，「過去七年」圖仍要畫（它主要靠 series.json）。
       //    原本這裡直接 return，圖會永遠停在「圖表讀取中…」（最終複查抓到）。
       //    records 設 null 讓圖表區知道是「讀不到」而不是「0 天」。
@@ -469,8 +489,14 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
       .catch(function () { return null; })
       .then(function (sj) {
         if (!sj) {
+          // 🔴 2026-09-04 反向測試（把 series.json 移走）抓到：這裡只救了 #chart，
+          //    但主視覺已經換成 #pos-body，它會永遠停在「讀取中…」。
+          //    教訓重複第三次：**把某個區塊升成主視覺時，它的失敗路徑要一起搬過來。**
           var c = document.getElementById('chart');
           if (c) c.innerHTML = '<p class="text-slate-500 text-sm text-center py-10">歷史資料暫時無法取得。</p>';
+          var pbf = document.getElementById('pos-body');
+          if (pbf) pbf.innerHTML = '<p class="text-slate-500 text-sm text-center py-10">' +
+            '過去七年的資料暫時讀不到，所以現在無法告訴你這個分數算高還算低。請稍後再看。</p>';
           return;
         }
         buildChart(sj.series, g.records, sj.distribution, sj.relNote, window.__latest);
@@ -522,10 +548,11 @@ function tempColor(s) {
 // forwardRows：null = 留底讀不到；[] = 讀到但沒有紀錄
 function buildChart(series, forwardRows, dist, relNote, latest) {
   var host = document.getElementById('chart');
-  var lead = document.getElementById('chart-lead');
   var relHost = document.getElementById('rel-body');
-  if (!host || !series || !series.length) {
+  if (!series || !series.length) {
     if (host) host.innerHTML = '<p class="text-slate-500 text-sm text-center py-10">歷史資料暫時無法取得。</p>';
+    var ph = document.getElementById('pos-body');
+    if (ph) ph.innerHTML = '<p class="text-slate-500 text-sm text-center py-10">資料暫時無法取得。</p>';
     return;
   }
   var fwdUnavailable = (forwardRows === null || forwardRows === undefined);
@@ -555,15 +582,49 @@ function buildChart(series, forwardRows, dist, relNote, latest) {
     k = 0; while (k < 100 && dist.ladder[k] < curScore) k++;
   }
 
-  // ---- 引導句：四句話（不寫「今天」，寫資料日；分母寫出來；堵住「高了 72%」的誤讀）----
-  if (lead) {
-    lead.innerHTML =
-      '最新讀數（' + esc(curDate) + '）是 <b class="text-slate-100">' + curScore.toFixed(1) + '</b> 分。' +
-      (k !== null ? '把過去 ' + nDist.toLocaleString() + ' 天的分數排一排，有 <b class="text-slate-100">' + k + '%</b> 的日子比它低。' : '') +
-      '分數越高，代表市場越符合「錢從比特幣分散到其他幣」的特徵。' +
-      '<span class="text-slate-500">這是歷史位置，不是上漲機率，也不是買賣訊號。' +
-      '左邊灰色區是拿舊資料事後重算的；公開每日留底目前' +
-      (fwdUnavailable ? '暫時讀不到' : '累積 <b>' + fwd.length + '</b> 天') + '。</span>';
+  // ---- 主視覺：分數 + 在歷史上的位置（一條橫條、一個點）----
+  //     智囊團第十五輪：小白看七年折線圖只記得「一條線在上上下下」，答不出「所以呢」。
+  //     他真正想知道的是「現在算高還算低」，那就直接畫那件事。
+  //     每句 25 字內、零術語、用資料日不寫「今天」。
+  // 🔴 首屏那句「跟過去比算高還算低」由這裡填，**百分位只算這一份**。
+  //    算不出來就留白，不填猜測值（fail-closed）。
+  var heroPct = document.getElementById('hero-pct');
+  if (heroPct && k !== null) {
+    heroPct.innerHTML = '跟過去 ' + nDist.toLocaleString() + ' 天比，這天' +
+      (k >= 50 ? '<b class="text-white">偏高</b>' : '<b class="text-white">偏低</b>') +
+      '：有 <b class="text-white">' + k + '%</b> 的日子分數比它低。' +
+      '<div class="text-xs text-slate-500 mt-1">偏高只是位置，不代表接下來會漲。</div>';
+  }
+
+  var posHost = document.getElementById('pos-body');
+  if (posHost) {
+    posHost.innerHTML =
+      '<div class="text-center">' +
+        '<div class="text-slate-400 text-sm">' + esc(curDate) + ' 的分數</div>' +
+        '<div class="font-mono text-5xl font-bold text-white mt-1">' + curScore.toFixed(1) +
+          '<span class="text-slate-500 text-lg font-normal"> / 100</span></div>' +
+      '</div>' +
+      (k === null ? '' :
+      '<div class="mt-7">' +
+        '<div class="flex justify-between text-xs text-slate-500 mb-1"><span>比較低</span><span>比較高</span></div>' +
+        '<div class="relative h-3 rounded-full" style="background:linear-gradient(90deg,' + tempColor(0) + ',' + tempColor(50) + ',' + tempColor(100) + ')">' +
+          '<div class="absolute -top-1" style="left:calc(' + k + '% - 9px)">' +
+            '<div class="w-[18px] h-[18px] rounded-full bg-white border-[3px] border-void shadow-lg"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="mt-3 text-center text-slate-200">過去 ' + nDist.toLocaleString() +
+        ' 天裡，有 <b class="text-white">' + k + '%</b> 的日子分數比這天低。</div>' +
+      '</div>') +
+      '<div class="mt-6 pt-5 border-t border-line text-sm text-slate-400 leading-relaxed space-y-1">' +
+        '<div>分數越高，越像錢從比特幣轉到其他幣。</div>' +
+        '<div class="text-slate-500">這只是位置，不是上漲的機率。</div>' +
+        '<div class="text-slate-500">也不是叫你買進或賣出。</div>' +
+        '<div class="mt-2">' + (fwdUnavailable
+          ? '每天存下的紀錄暫時讀不到。'
+          : '每天算好就存下、之後不改的紀錄，目前有 <b class="text-slate-200">' + fwd.length + '</b> 天。') + '</div>' +
+        '<div class="text-slate-500">再往前的分數，是後來用舊資料算的。</div>' +
+        '<div class="text-slate-500">那些不是當年公開發布過的紀錄。</div>' +
+      '</div>';
   }
 
   // ---- 幾何：右側固定保留「留底區」，讓幾天都看得見 ----
@@ -619,7 +680,7 @@ function buildChart(series, forwardRows, dist, relNote, latest) {
       svg.push('<rect x="' + (xF(j) - fw / 2).toFixed(2) + '" y="' + stripTop + '" width="' + fw.toFixed(2) + '" height="' + STRIP + '" fill="' + tempColor(p.s) + '"/>');
     });
   }
-  svg.push('<text x="' + (PADL - 6) + '" y="' + (stripTop + STRIP - 2) + '" text-anchor="end" font-size="11" fill="#64748B">熱度</text>');
+  svg.push('<text x="' + (PADL - 6) + '" y="' + (stripTop + STRIP - 2) + '" text-anchor="end" font-size="11" fill="#64748B">顏色</text>');
   // 時間軸（歷史段）
   [0, Math.floor(nR / 3), Math.floor(2 * nR / 3), nR - 1].forEach(function (i, idx, arr) {
     var anchor = idx === 0 ? 'start' : (idx === arr.length - 1 ? 'end' : 'middle');
@@ -629,29 +690,29 @@ function buildChart(series, forwardRows, dist, relNote, latest) {
 
   // 身分標籤放 HTML（手機可讀）
   var idRow = '<div class="flex items-center justify-between text-xs mb-1 gap-3">' +
-    '<span class="text-slate-400"><span class="inline-block w-3 h-3 align-middle rounded-sm mr-1" style="background:#0F1A2E;border:1px solid #1B2A44"></span>歷史重算｜非當時公開紀錄</span>' +
-    (hasFwdZone ? '<span class="text-gold"><span class="inline-block w-3 h-3 align-middle rounded-sm mr-1" style="background:rgba(229,184,75,.25);border:1px solid #E5B84B"></span>公開每日留底｜' + esc(fwd[0].d) + ' 起</span>' : '') +
+    '<span class="text-slate-400"><span class="inline-block w-3 h-3 align-middle rounded-sm mr-1" style="background:#0F1A2E;border:1px solid #1B2A44"></span>灰色｜後來算的，不是當年紀錄</span>' +
+    (hasFwdZone ? '<span class="text-gold"><span class="inline-block w-3 h-3 align-middle rounded-sm mr-1" style="background:rgba(229,184,75,.25);border:1px solid #E5B84B"></span>金色｜當天存下，之後不改</span>' : '') +
     '</div>';
 
   var scale = '<div class="mt-3 flex items-center gap-3 text-xs text-slate-500">' +
     '<span>較低</span>' +
     '<div class="flex-1 h-2 rounded-full" style="background:linear-gradient(90deg,' + tempColor(0) + ',' + tempColor(50) + ',' + tempColor(100) + ')"></div>' +
     '<span>較高</span></div>' +
-    '<div class="mt-1 text-xs text-slate-500">顏色只表示分數較低或較高，不代表好壞、漲跌或買賣建議。</div>';
+    '<div class="mt-1 text-xs text-slate-500">顏色只表示分數高低。不表示好壞，也不代表會漲或跌。</div>';
 
   var card;
   if (fwdUnavailable) {
-    card = '<div class="mt-4 border border-line rounded-lg px-4 py-3 text-sm text-slate-400">公開每日留底暫時讀不到，請稍後再看。左側灰色區域是用舊資料事後重算的，不是當年公開發布過的紀錄。</div>';
+    card = '<div class="mt-4 border border-line rounded-lg px-4 py-3 text-sm text-slate-400">當天存下的紀錄暫時讀不到，請稍後再看。左邊灰色的，是後來用舊資料算的。</div>';
   } else {
     card = '<div class="mt-4 border border-gold/30 bg-gold/5 rounded-lg px-4 py-3 text-sm">' +
-      '<div class="text-slate-200">公開每日留底：已累積 <b>' + fwd.length + '</b> 天' + (fwd.length ? '（自 ' + esc(fwd[0].d) + ' 起）' : '') + '</div>' +
-      '<div class="text-slate-500 text-xs mt-1">' +
-        (fwd.length < 30 ? '資料還太短，尚不能形成趨勢線；右側金色區每天一個圓點，上面標分數、下面標日期。' : '右側金色區為公開留底段。') +
-        ' 左側灰色區域是用舊資料事後重算的，不是當年公開發布過的紀錄。</div></div>';
+      '<div class="text-slate-200">當天存下的紀錄：目前 <b>' + fwd.length + '</b> 天' + (fwd.length ? '，從 ' + esc(fwd[0].d) + ' 開始' : '') + '</div>' +
+      '<div class="text-slate-500 text-xs mt-1 space-y-0.5">' +
+        '<div>這些分數當天算好就存下，之後不改。</div><div>以前的日期也不會事後補進來。</div>' + (fwd.length < 30 ? '<div>目前只有 ' + fwd.length + ' 天，還看不出長期變化。</div>' : '') +
+        '<div>左邊灰色的，是後來用舊資料算的。</div><div>每天只算當時買得到的幣。</div></div></div>';
   }
 
   host.innerHTML =
-    '<div class="text-xs text-slate-400 mb-1">山寨雷達分數（0-100）</div>' + idRow +
+    '<div class="text-xs text-slate-400 mb-1">每天的分數（0 到 100 分）</div>' + idRow +
     '<div class="overflow-x-auto">' + svg.join('') + '</div>' + scale + card;
 
   // ---- 收合區：長期背景（相對 BTC）----
