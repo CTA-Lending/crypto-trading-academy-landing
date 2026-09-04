@@ -153,9 +153,48 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
     +`｜9 位競爭者｜${m.market||''}${anc}`;
 
+  /* ⏳ 未提交 · 等 CEO 決定(2026-08-07 寫的,一直沒上)
+     🔴 作廢期間必須寫在**這一頁**上。讀者看到的是這裡,不是我們的 CHANGELOG。 */
+  if(m.voided_days>0){
+    const w=document.createElement('div');
+    w.className='warn';
+    w.style.marginBottom='16px';
+    /* 🔴 `voided_reason` 本身就含 CHANGELOG 編號,這裡不要再講一遍。
+       🔴 也不要寫「不計入下方數字」—— 卡片底下**就印著**含作廢期的全期數字。
+          說「不計入」而畫面上明明有,那句話本身就是不準確的。 */
+    w.innerHTML=`<b>⚠️ 前 ${m.voided_days} 個決策日的損益已作廢</b><br>
+      原因:${m.voided_reason}。
+      所以每張卡片的<b>大字報酬一律自 ${m.epoch2_first_day} 起算</b>
+      (目前 ${m.epoch2_days} 個決策日),基準是作廢期最後一日的權益,<b>不是起始資金</b>。
+      <br>卡片下方另附<b>自起始資金起算的全期數字</b>(含那 ${m.voided_days} 日)——
+      兩個都給,是因為只給一個都會被合理地懷疑在藏。
+      <br>樣本數不足 ${m.sharpe_min_days} 日時不顯示 Sharpe —— 樣本太少的 Sharpe 是噪音,不是指標。`;
+    const host=document.getElementById('agents');
+    host.parentNode.insertBefore(w, host);
+  }
+
   const alloc=d.current_alloc||{},reasons=d.current_reasons||{},viol=d.today_violation||{};
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
-    const eq=d.final_equity[b],ret=(eq/m.start_capital-1)*100,a=alloc[b]||{};
+    /* ⏳ 未提交 · 等 CEO 決定
+       🔴 2026-08-07:報酬**一律用後端算好的**,前端不得自己推算。
+          原本 (eq/m.start_capital-1)*100 把 44 天算成一段,而 CHANGELOG-002 明訂
+          第 1~12 決策日的損益不得用於任何對外績效陳述。
+          同一段計算被複製在四個地方(日報/儀表板後端/內部儀表板/這裡),
+          我修前三個時都以為修完了。**重複的指標實作一定會漂。**
+       🔴🔴 後端拿不到就**明講拿不到**,不要靜靜寫 0 ——
+          「查不到」寫成 0% 會被讀成「這個腦不賺不賠」,那是假話。
+          (原稿寫的是 `: 0`,那正是這個 codebase 犯過十次的同一個洞。) */
+    const eq=d.final_equity[b],a=alloc[b]||{};
+    const _mb=d.metrics&&d.metrics[b];
+    const ret=(_mb&&_mb.total_pct!=null)?_mb.total_pct:null;
+    /* 🔴🔴 **兩個都要印。**
+       只印 Epoch-2 的 −20.7%,而卡片上同時寫著權益 $5,236 ——
+       讀的人一除就是 −47.6%,會合理地懷疑我們在藏。
+       只印 −47.6% 又違反我們自己公告的 CHANGELOG-002(前 12 日不得用於績效陳述)。
+       ⭐ 正解不是二選一,是**兩個都印、各自標清楚是什麼**。
+       (`full_total_pct` 後端本來就有,以前沒人拿來用。) */
+    const retFull=(_mb&&_mb.full_total_pct!=null)?_mb.full_total_pct:null;
+    const fullDays=(_mb&&_mb.full_days!=null)?_mb.full_days:null;
     const gross=Object.values(a).reduce((s,v)=>s+Math.abs(v),0);
     const tags=Object.entries(a).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
       .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('')
@@ -166,7 +205,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
         <div><div class="name"><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</div>
           <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
         <div><div class="eq">$${eq.toLocaleString()}</div>
-          <div class="ret" style="color:${ret>=0?'var(--up)':'var(--down)'}">${ret>=0?'+':''}${ret.toFixed(1)}%</div></div>
+          <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
+          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':`自 ${m.epoch2_first_day} 起算(${m.epoch2_days} 日)`}${retFull===null?'':`<br>起始資金起算 ${(retFull>=0?'+':'')+retFull.toFixed(1)}%(${fullDays??m.days} 日,含已作廢 ${m.voided_days} 日)`}</div></div>
       </div>
       <div class="pos">${tags}${grossTag}</div>
       ${viol[b]?`<div class="viol">🚫 <b>今日決策被風控攔下</b>(${viol[b]})<br>
