@@ -166,8 +166,10 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
       原因:${m.voided_reason}。
       所以每張卡片的<b>大字報酬一律自 ${m.epoch2_first_day} 起算</b>
       (目前 ${m.epoch2_days} 個決策日),基準是作廢期最後一日的權益,<b>不是起始資金</b>。
-      <br>卡片下方另附<b>自起始資金起算的全期數字</b>(含那 ${m.voided_days} 日)——
-      兩個都給,是因為只給一個都會被合理地懷疑在藏。
+      <br>卡片下方印出<b>那個基準是多少</b>,讓你可以自己驗算大字的報酬。
+      <b>我們不列出含那 ${m.voided_days} 日的報酬</b> —— 不是為了好看:
+      那段期間的數字本身是錯的(資金費被乘 3 倍、時間軸錯位),
+      重述數列<b>尚未獨立重跑驗證</b>,拿它做任何績效陳述都是不成立的。
       <br>樣本數不足 ${m.sharpe_min_days} 日時不顯示 Sharpe —— 樣本太少的 Sharpe 是噪音,不是指標。`;
     const host=document.getElementById('agents');
     host.parentNode.insertBefore(w, host);
@@ -187,14 +189,26 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     const eq=d.final_equity[b],a=alloc[b]||{};
     const _mb=d.metrics&&d.metrics[b];
     const ret=(_mb&&_mb.total_pct!=null)?_mb.total_pct:null;
-    /* 🔴🔴 **兩個都要印。**
-       只印 Epoch-2 的 −20.7%,而卡片上同時寫著權益 $5,236 ——
-       讀的人一除就是 −47.6%,會合理地懷疑我們在藏。
-       只印 −47.6% 又違反我們自己公告的 CHANGELOG-002(前 12 日不得用於績效陳述)。
-       ⭐ 正解不是二選一,是**兩個都印、各自標清楚是什麼**。
-       (`full_total_pct` 後端本來就有,以前沒人拿來用。) */
-    const retFull=(_mb&&_mb.full_total_pct!=null)?_mb.full_total_pct:null;
-    const fullDays=(_mb&&_mb.full_days!=null)?_mb.full_days:null;
+    /* 🔴🔴 2026-09-05 自我更正(這一段我今天犯了又改回來,留痕)
+
+       我原本在這裡印了 `full_total_pct`(自起始資金起算的全期報酬),
+       理由是「卡片同時寫著權益 $5,236 跟 −20.7%,不印全期會像在藏」。
+       **那個理由是對的,但那個做法違反我們自己公告的規則。**
+
+       CHANGELOG-001 原文:「第 1~12 決策日的損益數字**不得用於任何對外績效陳述**」
+       —— 因為那段期間的資金費被乘了 3 倍、時間軸也錯位,重述數列**尚未獨立重跑驗證**。
+       印「起始資金起算 −47.6%」就是拿那 12 天的損益做對外績效陳述。
+       `emit_dashboard.py` 的註解也早就寫著「full_total_pct 供內部除錯,不得對外引用」。
+
+       ⭐ 正解不是二選一,也不是兩個都印,是**把大字報酬的分母印出來**:
+         讀者拿 $6,603 → $5,236 自己就能驗算 −20.7%,
+         而我們一個字都沒有對那段作廢期間的損益下判斷。
+
+       🔴 `epoch2_base` 由前端從權益曲線取(作廢期最後一日),不是後端新欄位;
+          曲線上找不到那一天就印 null,**不要拿起始資金頂替** ——
+          拿 $10,000 當分母會算出 −47.6%,正好是那個被禁止的數字。 */
+    const _e2i=(d.equity_curve||[]).findIndex(pt=>pt.day===m.epoch2_first_day);
+    const e2base=(_e2i>0)?d.equity_curve[_e2i-1][b]:null;
     const gross=Object.values(a).reduce((s,v)=>s+Math.abs(v),0);
     const tags=Object.entries(a).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
       .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('')
@@ -206,7 +220,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
           <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
         <div><div class="eq">$${eq.toLocaleString()}</div>
           <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
-          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':`自 ${m.epoch2_first_day} 起算(${m.epoch2_days} 日)`}${retFull===null?'':`<br>起始資金起算 ${(retFull>=0?'+':'')+retFull.toFixed(1)}%(${fullDays??m.days} 日,含已作廢 ${m.voided_days} 日)`}</div></div>
+          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':`自 ${m.epoch2_first_day} 起算(${m.epoch2_days} 日)`}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}</div></div>
       </div>
       <div class="pos">${tags}${grossTag}</div>
       ${viol[b]?`<div class="viol">🚫 <b>今日決策被風控攔下</b>(${viol[b]})<br>
