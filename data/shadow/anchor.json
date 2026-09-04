@@ -1,5 +1,5 @@
 {
-  "anchored_at_utc": "2026-09-04T00:37:00Z",
+  "anchored_at_utc": "2026-09-04T10:08:09Z",
   "protocol": {
     "sha256": "48973c29afccb2d499f509a3532d0a193e12d8a09d6d62c49ddecbe33017921a",
     "bytes": 9307,
@@ -11,13 +11,13 @@
       "shadow/universe.py": "685b1dc1bd351221",
       "shadow/forward_multi.py": "b2f100ab2efd265d",
       "shadow/stats.py": "647e7e1d70861a5c",
-      "shadow/anchor.py": "69be883f0adc0315",
+      "shadow/anchor.py": "4885b6278107812a",
       "core/key_level_engine.py": "a65db9d01fe36e56",
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
     "prompt_template_sha256_16": "7f1556c363b6274f",
     "tree": {
-      "root": "b1a7f751d7b6968c54a98790bed68164de58aabe57682f301eb60a7fa11fc10e",
+      "root": "fb874b85958e151573f217480780cc9f62f8fc85d421a9924ce3e6d0554e774c",
       "n_files": 303,
       "files": {
         "PROTOCOL.md": "48973c29afccb2d4",
@@ -86,7 +86,7 @@
         "reference/interp.py": "99ae614fb60c9695",
         "reference/run.py": "19b4ac1f559b2227",
         "shadow/__init__.py": "e3b0c44298fc1c14",
-        "shadow/anchor.py": "69be883f0adc0315",
+        "shadow/anchor.py": "4885b6278107812a",
         "shadow/arena.py": "2c2b36120dbdbdfc",
         "shadow/brains.py": "c9cfc2f1e43305ab",
         "shadow/daily_returns.py": "b1c591e2b03d0689",
