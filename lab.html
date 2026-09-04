@@ -42,6 +42,17 @@ canvas{width:100%;height:230px}
 .meter{height:12px;background:var(--card2);border:1px solid var(--line);border-radius:7px;overflow:hidden;margin:8px 0}
 .meter>div{height:100%;transition:width .4s}
 .foot{font-size:12.5px;color:var(--dim);line-height:1.8}
+/* 每日損益紀錄的分頁列。CEO 2026-08-27:「可以變成一頁一頁那種,不要前面就不見了。」*/
+/* 每日損益表有 10 欄,手機上(375px)會被切掉 —— 讓它在自己的容器裡橫捲,
+   而不是把後面幾個腦靜靜切掉。 */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tblwrap table{min-width:520px}
+.pager{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;
+font-size:12.5px;color:var(--dim)}
+.pager button{background:var(--card2);color:var(--txt);border:1px solid var(--line);
+border-radius:8px;padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.pager button:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}
+.pager button:disabled{opacity:.35;cursor:default}
 .nope{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;font-size:13px}
 table{width:100%;border-collapse:collapse;font-size:12.5px}
 th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line)}
@@ -51,7 +62,7 @@ th:first-child,td:first-child{text-align:left}
 </head>
 <body>
 <div class="warn">🔬 <b>公開研究實驗室｜非產品、非投資建議</b><br>
-9 位競爭者的<b>透明決策實驗</b>(5 個 AI 腦 + 規則腦 + 3 個市場基準):每個用 $10,000 <b>模擬</b>本金、<b>零真錢、零交易能力</b>。我們公開的是<b>「它們想得多不一樣、誰守紀律、誰活得久、什麼時候擠在一起」</b>——不是報酬保證。樣本未達 90 天前不具評估意義;過去表現不代表未來,不保證獲利。</div>
+9 位競爭者的<b>透明決策實驗</b>(5 個 AI 腦 + 規則腦 + 3 個市場基準):每個用 $10,000 <b>模擬</b>本金、<b>零真錢、零交易能力</b>。我們公開的是<b>「它們想得多不一樣、誰守紀律、誰活得久、什麼時候擠在一起」</b>——不是報酬保證。樣本未達預先登記的資格門檻(<span id="capGate">252 個決策日</span>,且須涵蓋多空與高低波動 regime)前不具評估意義;過去表現不代表未來,不保證獲利。</div>
 
 <div style="margin-bottom:14px"><a href="index.html" style="color:var(--acc);text-decoration:none;font-size:13px">← 返回 CTA 官網</a></div>
 <h1>CTA AI 交易代理人 · 公開研究實驗室</h1>
@@ -64,7 +75,7 @@ th:first-child,td:first-child{text-align:left}
     <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,五種完全不同的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
     <div><b>持久腦是特別角色</b><br>它不追求預測最準,追求<b>活最久</b>:充分分散、抗擁擠、存活優先。當大家擠在一起時,它反而降暴險。</div>
     <div><b>連續持倉,不是每天失憶</b><br>每個腦每天都看得到<b>自己的權益、持倉與近期損益</b>,可以續抱、加碼、減碼或反手——這是連續的部位管理。</div>
-    <div><b>90 天只是觀察期</b><br>決策當下看不到未來,一天一天累積。<b>90 天不足以判定真錢資格</b>——預先登記的門檻是 <b>252 個決策日</b>且須涵蓋一次 ≥20% 回撤、一次 ≥30% 單邊上漲、高低波動各一段。</div>
+    <div><b>這是觀察期,不是成績單</b><br>決策當下看不到未來,一天一天累積。<b>跑滿實驗天數也不等於取得真錢資格</b>——預先登記的門檻是 <b><span id="gateDays">252</span> 個決策日</b>且須涵蓋一次 ≥20% 回撤、一次 ≥30% 單邊上漲、高低波動各一段。<span id="pilotLen"></span></div>
     <div><b>先寫死規則,才開始跑</b><br>判定指標(相對等權多頭的 Information Ratio)、失格條件、成本假設在<b>看到任何結果之前</b>就寫死並推上公開 repo 取得外部時間戳——<b>事後不能換指標說故事</b>。</div>
   </div>
 </div>
@@ -127,6 +138,17 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
   const phase=m.phase==='formal_pilot'?'正式 pilot':'彩排';
   const anc=m.anchor&&m.anchor.genesis_utc
     ? `｜預先登記已外部錨定 ${m.anchor.genesis_utc.slice(0,10)}(PROTOCOL ${m.anchor.protocol_sha256})`:'';
+  /* 🔴 這兩個數字原本**寫死在 HTML 裡**(頂部警語與計畫卡都寫「90 天」),
+     而副標同時在說「第 N / 365 日」—— 同一頁自己打自己。
+     shadow/pilot.py 早就把長度收斂成單一常數,但它漏掉了這一頁的兩處。
+     ⭐ 改成從 meta 讀:寫死的數字一定會漂,漂了沒有人會發現。
+     靜態文字保留一個**沒有數字也成立**的說法當 fallback,JS 掛掉時不會變成假話。 */
+  const _cg=document.getElementById('capGate');
+  if(_cg&&m.gate_days) _cg.textContent=`${m.gate_days} 個決策日`;
+  const _gd=document.getElementById('gateDays');
+  if(_gd&&m.gate_days) _gd.textContent=m.gate_days;
+  const _pl=document.getElementById('pilotLen');
+  if(_pl&&m.pilot_days) _pl.innerHTML=`<br>目前實驗長度設定為 <b>${m.pilot_days}</b> 個決策日。`;
   document.getElementById('sub').textContent=
     `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
     +`｜9 位競爭者｜${m.market||''}${anc}`;
@@ -187,14 +209,85 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     +'<br><b>在重述數列完成獨立驗證之前,下表第 1~12 決策日的數字不應用於任何績效判斷。</b>'
     +'</div>';
 
-  const rec=d.records||[];
-  if(rec.length){
-    let h='<table><tr><th>日期</th>'+m.brains.map(b=>`<th>${LABEL[b]}</th>`).join('')+'</tr>';
-    rec.slice().reverse().forEach(r=>{h+=`<tr><td>${r.day}</td>`+m.brains.map(b=>{
-      const v=r[b];return `<td style="color:${v>=0?'var(--up)':'var(--down)'}">${v>=0?'+':''}${v}%</td>`}).join('')+'</tr>'});
-    document.getElementById('records').innerHTML=h+'</table>';
-  }else document.getElementById('records').innerHTML=
-    '<div class="foot">實驗剛起跑,今日配置將於明日收盤結算後產生第一筆損益紀錄。</div>';
+  /* 🔴 CEO 2026-08-27:「每日績效紀錄這裡有上限齁?可以變成一頁一頁那種,
+       不要前面就不見了,持續積累下來。」
+     後端 emit_dashboard.py 現在**全部給**(原本只發最後 30 天,而實驗已跑 42 天,
+     前 12 天早就從這一頁上消失,且頁面沒有任何地方說它被截斷)。
+     🔴 分母(共 X 天)一定要印出來 —— 這一頁自己的標語是「公開每個決策與理由」,
+        一個宣稱公開的頁面如果靜靜丟掉前面的紀錄,那句話就是假的。 */
+  const rec=(d.records||[]).slice().reverse();   // 新的在前
+  const PAGE=30;
+  let recPage=0;
+  function drawRecords(){
+    const el=document.getElementById('records');
+    if(!rec.length){
+      /* 🔴🔴「查不到」不等於「沒有」。
+         meta 已經在說跑了 N 個決策日,而 records 是空的 —— 那是**載入/發佈壞掉**,
+         不是「實驗剛起跑」。原本這裡只有一句「剛起跑」,
+         等於把一次故障靜靜講成一句好消息,而這一頁的標語是「公開每個決策與理由」。 */
+      el.innerHTML = (m.days>0)
+        ? '<div class="foot" style="color:var(--down)">⚠️ <b>每日損益紀錄載入失敗</b>:上方顯示已結算 '+m.days+' 個決策日,但這張表沒有拿到任何一筆。這是<b>發佈或載入的問題,不是沒有紀錄</b> —— 請重新整理;若持續發生,代表資料檔有問題。</div>'
+        : '<div class="foot">實驗剛起跑,今日配置將於明日收盤結算後產生第一筆損益紀錄。</div>';
+      return;
+    }
+    const pages=Math.ceil(rec.length/PAGE);
+    recPage=Math.max(0,Math.min(recPage,pages-1));
+    const from=recPage*PAGE, to=Math.min(from+PAGE,rec.length);
+    /* 🔴🔴 作廢的那幾天**在這張表裡也要標**。
+       上面雖然有一條更正聲明,但那是**另一個區塊**;在拿掉截斷之前那些日子根本
+       畫不出來,所以沒人碰到這個問題 —— 現在它們會出現在第 2 頁,
+       而讀的人在那一頁看不到任何標記。
+       ⭐ 揭露要放在**資料旁邊**,不是放在另一個區塊;拿掉一道截斷,就要補上等量的揭露。
+       🔴 用後端算好的 r.voided,**不要在這裡自己再算一次** ——
+          同一個判斷兩份實作遲早分岔,症狀會是「聲明說 12 天、表格標 11 天」。 */
+    let h='<div class="tblwrap"><table><tr><th>日期</th>'+m.brains.map(b=>`<th>${LABEL[b]}</th>`).join('')+'</tr>';
+    let voidedOnPage=0;
+    rec.slice(from,to).forEach(r=>{
+      const dead=!!r.voided;
+      if(dead) voidedOnPage++;
+      h+=`<tr${dead?' style="opacity:.45"':''}><td>${r.day}`
+       + (dead?' <span style="color:var(--warn)">⚠️作廢</span>':'')
+       + '</td>'+m.brains.map(b=>{
+        const v=r[b];return `<td style="color:${v>=0?'var(--up)':'var(--down)'}">${v>=0?'+':''}${v}%</td>`}).join('')+'</tr>'});
+    h+='</table></div>';
+    if(voidedOnPage){
+      h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
+        ⚠️ 這一頁有 <b>${voidedOnPage}</b> 天標示為「作廢」:${m.voided_reason||'資金費計算錯誤(CHANGELOG-002)'}
+        <br>仍然列出來,是因為<b>我們不刪紀錄</b>。</div>`;
+    }
+    /* 🔴 缺漏日也要說。2026-07-28 那天實際上**沒有跑**(啟動後遭手動中斷,CHANGELOG 有記),
+       但這一頁只印「共 44 天」,而那 44 天跨的是 **45 個日曆日** ——
+       不講,那一天就是靜靜消失了。
+       ⭐ 這跟 CEO 說的「不要前面就不見了」是同一件事:**少一天也是不見**。
+       🔴 從資料自己算(比對日曆日 vs 實際有的日期),不寫死日期 ——
+          寫死的話,下一次缺漏頁面不會有反應。 */
+    const gaps=[];
+    {
+      const have=new Set(rec.slice(from,to).map(r=>r.day));
+      const a=Date.parse(rec[to-1].day+'T00:00:00Z'), b=Date.parse(rec[from].day+'T00:00:00Z');
+      for(let t=a;t<=b;t+=86400000){
+        const ds=new Date(t).toISOString().slice(0,10);
+        if(!have.has(ds)) gaps.push(ds);
+      }
+    }
+    if(gaps.length){
+      h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
+        ⚠️ 這一頁的日期區間裡有 <b>${gaps.length}</b> 天<b>完全沒有紀錄</b>:${gaps.join('、')}
+        <br>原因記在 <a href="./data/shadow/CHANGELOG.md" style="color:var(--warn)">CHANGELOG</a>。
+        我們<b>不把缺漏日補平</b>,也不假裝它不存在。</div>`;
+    }
+    h+=`<div class="pager">
+        <button id="recPrev" ${recPage===0?'disabled':''}>← 較新</button>
+        <span>第 ${from+1}–${to} 筆 / <b>共 ${rec.length} 天</b>(第 ${recPage+1}/${pages} 頁)</span>
+        <button id="recNext" ${recPage>=pages-1?'disabled':''}>較舊 →</button>
+        <span style="opacity:.7">${rec[to-1].day} ~ ${rec[from].day}</span>
+      </div>`;
+    el.innerHTML=h;
+    const pv=document.getElementById('recPrev'), nx=document.getElementById('recNext');
+    if(pv) pv.onclick=()=>{recPage--;drawRecords();};
+    if(nx) nx.onclick=()=>{recPage++;drawRecords();};
+  }
+  drawRecords();
 });
 
 function drawChart(curve,brains,base){
