@@ -143,6 +143,42 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
      shadow/pilot.py 早就把長度收斂成單一常數,但它漏掉了這一頁的兩處。
      ⭐ 改成從 meta 讀:寫死的數字一定會漂,漂了沒有人會發現。
      靜態文字保留一個**沒有數字也成立**的說法當 fallback,JS 掛掉時不會變成假話。 */
+  /* 🔴🔴 已錨定的協議跟這一頁講的實驗長度不一致時,**要在這一頁上說**。
+
+     稽核(2026-09-05)查到:PROTOCOL.md 寫「Pilot:90 個決策日」,
+     而這一頁的標題印「第 N / 365 日」—— 同時這一頁還寫著
+     「✗ 不事後換指標 / ✓ 判定標準跑之前就公開錨定」,並把 PROTOCOL 的 hash
+     印出來當憑證。讀者順著那個 hash 點進去會看到 90,
+     然後他無從判斷是我們誇大了長度,還是協議過期了。
+
+     ⭐ 這裡刻意**不寫死一句道歉文字** —— 那種文字在修好之後會變成過時的假話,
+       而且要靠有人記得回來刪。改成讓頁面自己比對兩個數字:
+       一致就完全不顯示,不一致才出現。它不會過期。
+
+     🔴 `protocol_pilot_days` 是 null(解析不到)時也要說 ——
+        「讀不到協議」不等於「協議同意」。 */
+  (function(){
+    const pp=m.protocol_pilot_days, mine=m.pilot_days;
+    if(pp===mine) return;                       // 一致:什麼都不做
+    const w=document.createElement("div");
+    w.className="warn";
+    w.style.marginBottom="16px";
+    w.innerHTML = (pp==null)
+      ? `<b>⚠️ 無法從已錨定的 PROTOCOL 讀出實驗長度</b><br>
+         這一頁說 <b>${mine}</b> 個決策日,但我們沒能從協議原文解析出對應的數字。
+         <b>「讀不到」不等於「一致」</b> —— 請直接看
+         <a href="./data/shadow/PROTOCOL.md" style="color:#f0d98a">PROTOCOL</a> 原文。`
+      : `<b>⚠️ 這一頁說 ${mine} 個決策日,而已錨定的 PROTOCOL 寫的是 ${pp} 個</b><br>
+         實驗長度於 2026-08-27 由 <b>${pp} 改為 ${mine}</b>,
+         但<b>協議至今未重新錨定</b>,這件事也未登記於 CHANGELOG(已於 2026-09-05 補登)。
+         <br>🔴 所以目前<b>可驗證的預先登記值是 ${pp}</b>,不是 ${mine}。
+         真錢資格門檻 ${m.gate_days} 日與統計方法未變動。
+         <br>詳見 <a href="./data/shadow/CHANGELOG.md" style="color:#f0d98a">CHANGELOG-013</a>
+         與 <a href="./data/shadow/PROTOCOL.md" style="color:#f0d98a">PROTOCOL</a>。`;
+    const host=document.querySelector(".card");
+    host.parentNode.insertBefore(w, host);
+  })();
+
   const _cg=document.getElementById('capGate');
   if(_cg&&m.gate_days) _cg.textContent=`${m.gate_days} 個決策日`;
   const _gd=document.getElementById('gateDays');

@@ -37,6 +37,7 @@
     "voided_days": 12,
     "voided_reason": "資金費計算錯誤(CHANGELOG-002),該期間損益不得用於績效陳述",
     "sharpe_min_days": 20,
+    "protocol_pilot_days": 90,
     "anchor": {
       "seq": 47,
       "utc": "2026-09-05T00:36:56Z",

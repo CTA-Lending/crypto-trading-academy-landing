@@ -68,6 +68,48 @@ def entry_hash(entry: dict) -> str:
     return hashlib.sha256(blob).hexdigest()
 
 
+def check_published(chain: list, folder: str) -> dict:
+    """比對「鏈上記的雜湊」與「資料夾裡那些檔案現在的雜湊」。
+
+    🔴🔴 為什麼需要這一段(2026-09-05)
+
+    在此之前,鏈只保護 PROTOCOL 與引擎程式碼 —— 而讀者在頁面上看到的
+    每一個數字都來自 `dashboard_data.json`,它的雜湊**不在鏈裡**。
+    頁面卻把「帳本不可竄改(hash chain)」寫在那些數字**旁邊**。
+    改掉那個檔案裡任何一個數字,整條鏈照樣通過。
+
+    ⭐ 「有密碼學保護」與「讀者以為有密碼學保護」之間的落差,
+      本身就是一種不實陳述 —— 即使我們沒有動過任何數字。
+
+    🔴 三種結果必須分開,不可混同:通過 / 不符 / **沒有檔案可比對**。
+      把第三種算成「通過」,等於「查不到」被當成「沒問題」。
+    """
+    latest = chain[-1] if chain else {}
+    recorded = latest.get("published") or {}
+    if not recorded:
+        return {"state": "未記錄", "rows": [], "mismatch": 0, "missing": 0,
+                "detail": "鏈的最後一筆沒有 published 欄位 —— "
+                          "這一筆是在把公開檔案納入保護之前寫的"}
+    rows, mismatch, missing = [], 0, 0
+    for fn, want in sorted(recorded.items()):
+        fp = os.path.join(folder, fn)
+        if want == "MISSING":
+            rows.append((fn, "錨定當時就不存在", "—"))
+            missing += 1
+            continue
+        if not os.path.exists(fp):
+            rows.append((fn, want, "本機沒有這個檔案"))
+            missing += 1
+            continue
+        got = hashlib.sha256(open(fp, "rb").read()).hexdigest()[:16]
+        rows.append((fn, want, got))
+        if got != want:
+            mismatch += 1
+    state = "不符" if mismatch else ("部分未比對" if missing else "通過")
+    return {"state": state, "rows": rows, "mismatch": mismatch,
+            "missing": missing, "detail": ""}
+
+
 def verify(chain: list) -> dict:
     """回傳一份**逐項**結果。不要只回一個 True/False ——
     只回布林值的話,壞掉時沒有人知道壞在哪一筆、哪一種。"""
@@ -183,12 +225,30 @@ def main(argv: list) -> int:
                     print(f"      ℹ️ tree_root 有 {d['程式碼幾種']} 種 —— "
                           f"程式碼在這幾次之間改過(這正是錨點要記錄的事)")
 
+    pub = check_published(chain, os.path.dirname(os.path.abspath(path)))
+    print("")
+    print("讀者看到的那些檔案(頁面上的數字就住在裡面):")
+    if pub["state"] == "未記錄":
+        print("   ⚠️ " + pub["detail"])
+    else:
+        for fn, want, got in pub["rows"]:
+            mark = "✓" if want == got else ("⚠️" if "—" in str(got) or "沒有" in str(got) else "✗")
+            print("   %s %-22s 鏈上 %s  現在 %s" % (mark, fn, want, got))
+        if pub["state"] == "通過":
+            print("   ✓ 全部相符 —— 你讀到的數字就是被錨定的那一份")
+        elif pub["state"] == "不符":
+            print("   ✗ 有 %d 個檔案跟鏈上記的不一樣" % pub["mismatch"])
+        else:
+            print("   ⚠️ 有 %d 個檔案沒有比對到(這不是通過,是沒驗)" % pub["missing"])
+
     print("\n🔴 這支驗證器**不能**證明我們沒有整條重算。")
     print("   雜湊鏈只防「改一筆」。防「重寫全部」要靠外部時間戳 ——")
     print("   本專案是每日推送到公開 git repo,commit 時間由 GitHub 記錄,")
     print("   那份證據在 git 歷史裡,不在這支程式裡。")
 
-    return 0 if r["ok"] else 1
+    # 🔴 公開檔案對不上也算失敗 —— 鏈自己自洽但數字被換掉,
+    #   對讀者來說是更嚴重的一種壞掉。
+    return 0 if (r["ok"] and pub["state"] != "不符") else 1
 
 
 if __name__ == "__main__":
