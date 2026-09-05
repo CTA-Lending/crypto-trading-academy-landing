@@ -336,6 +336,31 @@ function delta(v, unit) {
 //    警示放在數字**旁邊**，不放到下面的收合區 —— 讀者只會看到數字那一塊。
 //    正常延遲：資料日是「完整的前一天」，加上產出時間，落後 1~2 天屬正常。
 var STALE_DAYS = 3;
+// 🔴 2026-09-06 CEO 實際踩到：他在台北時間 9/6 早上看到「資料日期 2026-09-04」，
+//    直覺是「已經兩天沒更新了」。其實那當下 UTC 還是 9/5 23:57 ——
+//    **最新一個「完整的 UTC 交易日」就是 9/4，頁面顯示的已經是能算的最新資料。**
+//    最上面雖然有寫「資料日通常比今天晚一到兩天」，但那句離日期太遠，讀者不會連起來。
+//    修法：把「這是不是目前能算的最新一天」直接算給讀者看，就印在日期下面。
+//    只講三種確定的情況，不確定就不講（fail-closed，寧可少說也不安慰讀者）。
+function freshNote(asOf) {
+  var d = new Date(asOf + 'T00:00:00Z');
+  if (isNaN(d.getTime())) return '';
+  var now = new Date();
+  // 最新「完整的 UTC 交易日」= 現在的 UTC 日期減一天
+  var todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  var behind = Math.round((todayUtc - d.getTime()) / 86400000) - 1;   // 0 = 已是最新
+  var txt;
+  if (behind <= 0) {
+    txt = '這已經是目前能算的最新一天。我們只算「已經收盤的完整一天」，所以資料日永遠比日曆日早。';
+  } else if (behind === 1 && now.getUTCHours() < 12) {
+    txt = '新的一天正在計算中，通常台北時間下午更新。';
+  } else {
+    return '';                                   // 其餘情況不下判斷，交給下面的過期警示
+  }
+  return '<div class="mt-2 text-center text-[11px] text-slate-500 leading-relaxed max-w-md mx-auto">' +
+    txt + '</div>';
+}
+
 function staleBanner(asOf) {
   var d = new Date(asOf + 'T00:00:00Z');
   if (isNaN(d.getTime())) return '';
@@ -402,6 +427,7 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
           '資料日期 ' + esc(d.asOf) + (d.revision > 1 ? '（修訂 ' + d.revision + '）' : '') +
           '　·　納入 ' + (d.universeCount == null ? '—' : d.universeCount) + ' 個幣種' +
         '</div>' +
+        freshNote(d.asOf) +
         staleBanner(d.asOf) +
       '</div>' +
       // 🔴 核心揭露**不能**放在收合區。姊妹頁 lab.html 就是把作廢說明藏起來被抓到；
