@@ -104,6 +104,33 @@ th:first-child,td:first-child{text-align:left}
   <div id="disc"></div>
 </div>
 
+<div class="card" id="verify">
+  <h2>🔐 自己驗:不需要相信我們</h2>
+  <p class="foot">這一頁以前寫著「帳本<b>不可竄改</b>」,而在 2026-09-05 之前,
+  <b>那條鏈從來沒有被任何程式驗證過</b>,也沒有任何入口讓你自己驗。
+  ⭐ 一條沒有人驗證的雜湊鏈是裝飾品,不是證據。</p>
+  <p class="foot">現在驗證程式跟鏈一起公開。它只用 Python 標準庫,
+  <b>不需要我們的任何其他程式碼</b>:</p>
+  <pre style="background:var(--card2);border:1px solid var(--line);border-radius:8px;
+padding:12px;overflow-x:auto;font-size:12px;line-height:1.7">curl -O https://crypto-trading-academy.com/data/shadow/verify_chain.py
+curl -O https://crypto-trading-academy.com/data/shadow/anchor_chain.json
+curl -O https://crypto-trading-academy.com/data/shadow/dashboard_data.json
+python verify_chain.py</pre>
+  <p class="foot">🔴 <b>它會自己印出它證明不了什麼</b>,請一起讀:
+  雜湊鏈只防「改掉其中一筆」,<b>防不了「整條重算」</b>。
+  防重算靠的是每日推到公開 git repo 留下的外部時間戳 ——
+  那份證據在 <a href="https://github.com/CTA-Lending/crypto-trading-academy-landing/commits/main/data/shadow"
+  style="color:var(--acc)">git 歷史</a>裡,不在那支程式裡。</p>
+  <p class="foot">⚠️ <b>還有一件我們現在做不到的事</b>:
+  驗證程式證明的是「<b>GitHub 上那份檔案</b>沒被改」,
+  而你正在看的是<b>這個網頁</b> —— 網頁本身<b>不會</b>在你的瀏覽器裡即時比對雜湊。
+  所以「你螢幕上的數字 = 被錨定的那一份」這件事,我們目前<b>沒有</b>給你證明。
+  要自己確認,請用上面的指令下載原始檔比對。</p>
+  <p class="foot">📌 錨點是每天 00:36 UTC 拍一次快照。
+  我們當天稍後更新過檔案時,驗證器會顯示「不符」並說明它<b>分辨不出</b>
+  「正常更新」與「被竄改」—— 那時請看 git 歷史。</p>
+</div>
+
 <div class="card">
   <h2>⚖️ 失格條件檢查(PROTOCOL §4)</h2>
   <p class="foot" style="margin-bottom:10px">預先登記書 §4 寫著:<b>任一觸發即該腦當期失格</b>
@@ -133,7 +160,7 @@ th:first-child,td:first-child{text-align:left}
   <h2>🛡️ 我們刻意不做的事(這才是重點)</h2>
   <div class="nope">
     <div>✗ 不喊「AI 幫你賺 X%」</div><div>✓ 公開每個決策與理由</div>
-    <div>✗ 不給買賣建議</div><div>✓ 帳本不可竄改(hash chain)</div>
+    <div>✗ 不給買賣建議</div><div>✓ 帳本可驗證(hash chain)—— <b><a href="#verify" style="color:var(--acc)">你可以自己驗</a></b></div>
     <div>✗ 不保證獲利</div><div>✓ 誠實標示模擬與樣本不足</div>
     <div>✗ 不碰你的錢</div><div>✓ 賺錢不加分,可靠才升級</div>
     <div>✗ 不事後換指標</div><div>✓ 判定標準跑之前就公開錨定</div>
