@@ -101,8 +101,24 @@ def check_published(chain: list, folder: str) -> dict:
             rows.append((fn, want, "本機沒有這個檔案"))
             missing += 1
             continue
-        got = hashlib.sha256(open(fp, "rb").read()).hexdigest()[:16]
-        rows.append((fn, want, got))
+        raw = open(fp, "rb").read()
+        got = hashlib.sha256(raw).hexdigest()[:16]
+        if got != want:
+            # 🔴 分辨「換行差異」與「內容被改」——這兩件事完全不同,
+            #   而只喊一句「不符」會讓人以為是後者。
+            #   實測踩過(seq 48):錨定時在 Windows 上對 CRLF 版取雜湊,
+            #   而 git 送出的是 LF 版 → 三個檔案被判「竄改」,
+            #   但它們一個位元組都沒被人動過。
+            #   ⭐ 一個會誣指自己的驗證器比沒有驗證器更糟:它訓練所有人忽略紅燈。
+            #   🔴 但這**不是免死金牌**:仍然判為不符,只是多說一句診斷。
+            CRLF = (chr(13) + chr(10)).encode()
+            LF = chr(10).encode()
+            for variant, label in ((raw.replace(LF, CRLF), "CRLF"),
+                                   (raw.replace(CRLF, LF), "LF")):
+                if hashlib.sha256(variant).hexdigest()[:16] == want:
+                    got = got + "(內容相同,只差換行:鏈上記的是 %s 版)" % label
+                    break
+        rows.append((fn, want, got))   # got 可能已附上換行差異的診斷
         if got != want:
             mismatch += 1
     state = "不符" if mismatch else ("部分未比對" if missing else "通過")
@@ -226,6 +242,7 @@ def main(argv: list) -> int:
                           f"程式碼在這幾次之間改過(這正是錨點要記錄的事)")
 
     pub = check_published(chain, os.path.dirname(os.path.abspath(path)))
+    latest = chain[-1] if chain else {}
     print("")
     print("讀者看到的那些檔案(頁面上的數字就住在裡面):")
     if pub["state"] == "未記錄":
@@ -237,7 +254,24 @@ def main(argv: list) -> int:
         if pub["state"] == "通過":
             print("   ✓ 全部相符 —— 你讀到的數字就是被錨定的那一份")
         elif pub["state"] == "不符":
-            print("   ✗ 有 %d 個檔案跟鏈上記的不一樣" % pub["mismatch"])
+            # 🔴🔴 這裡必須把**這支程式分辨不出來的事**講出來。
+            #
+            #   錨點是每天 00:36 UTC 拍一次快照。任何在那之後的**正常更新**
+            #   (例如我們當天補了一則 CHANGELOG)都會讓檔案跟錨點不同。
+            #   而「正常更新」與「被竄改」在這支程式眼裡**長得一模一樣**。
+            #
+            #   ⭐ 如果只印「✗ 不符」,它會在我們每次正常更新時喊狼來了,
+            #     然後所有人就開始忽略紅燈 —— 那比沒有驗證器更糟。
+            #     所以印出不符,同時明說它分辨不出哪一種、以及去哪裡分辨。
+            print("   ✗ 有 %d 個檔案跟最後一筆錨點記的不一樣" % pub["mismatch"])
+            print("     最後一筆錨點:seq %s(%s)" %
+                  (latest.get("seq"), latest.get("utc")))
+            print("     這可能是兩種完全不同的事,而**這支程式分辨不出來**:")
+             
+            print("       (a) 該時點之後檔案被正常更新過(下一次錨定就會涵蓋)")
+            print("       (b) 內容被竄改")
+            print("     要分辨:看公開 repo 的 git 歷史 —— 每一次改動都有",
+                  "commit 時間與內容,由 GitHub 記錄,不是我們說了算。")
         else:
             print("   ⚠️ 有 %d 個檔案沒有比對到(這不是通過,是沒驗)" % pub["missing"])
 
