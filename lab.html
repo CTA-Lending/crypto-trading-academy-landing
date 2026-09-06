@@ -112,10 +112,12 @@ th:first-child,td:first-child{text-align:left}
   <p class="foot">現在驗證程式跟鏈一起公開。它只用 Python 標準庫,
   <b>不需要我們的任何其他程式碼</b>:</p>
   <pre style="background:var(--card2);border:1px solid var(--line);border-radius:8px;
-padding:12px;overflow-x:auto;font-size:12px;line-height:1.7">curl -O https://crypto-trading-academy.com/data/shadow/verify_chain.py
-curl -O https://crypto-trading-academy.com/data/shadow/anchor_chain.json
-curl -O https://crypto-trading-academy.com/data/shadow/dashboard_data.json
+padding:12px;overflow-x:auto;font-size:12px;line-height:1.7"># 一次抓齊:驗證器 + 鏈 + 鏈所保護的四個檔案
+B=https://crypto-trading-academy.com/data/shadow
+for f in verify_chain.py anchor_chain.json dashboard_data.json CHANGELOG.md PROTOCOL.md diaries.json; do curl -sO $B/$f; done
+
 python verify_chain.py</pre>
+  <p class="foot">⚠️ 少下載任何一個檔,那一項會顯示「<b>本機沒有這個檔案</b>」—— 那是<b>沒有比對到</b>,不是「通過」。這支程式把三種結果分開:<b>通過 / 不符 / 沒有檔案可比對</b>。</p>
   <p class="foot">🔴 <b>它會自己印出它證明不了什麼</b>,請一起讀:
   雜湊鏈只防「改掉其中一筆」,<b>防不了「整條重算」</b>。
   防重算靠的是每日推到公開 git repo 留下的外部時間戳 ——

@@ -51,6 +51,18 @@ import json
 import os
 import sys
 
+# 🔴🔴 2026-09-06:Windows 的預設 console 編碼(cp950 等)吐不出這支程式的
+#   中文與 emoji → 執行到一半 **UnicodeEncodeError 當掉**。
+#   我把「三行 curl + python verify_chain.py」印上公開頁之後,
+#   照著做的第一次就當了 —— 而所有單元測試都是綠的。
+#   ⭐ 「測試全綠」不等於「照文件做得起來」。**要照使用者的步驟自己走一遍。**
+#   `errors="replace"` 而不是 "ignore":字印不出來要看到替代字元,
+#   不是靜靜消失(消失的話讀者會以為那一行本來就沒有內容)。
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:      # 極舊的 Python 或被重導向時可能沒有這個方法
+    pass
+
 #: 發佈到公開 repo 之後,鏈就躺在這支檔案旁邊。
 DEFAULT_NAMES = ("anchor_chain.json", "data/shadow/anchor_chain.json")
 
