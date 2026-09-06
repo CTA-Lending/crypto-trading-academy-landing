@@ -35,7 +35,7 @@
     "epoch2_first_day": "2026-08-04",
     "epoch2_days": 34,
     "voided_days": 12,
-    "voided_reason": "資金費計算錯誤(CHANGELOG-002),該期間損益不得用於績效陳述",
+    "voided_reason": "資金費計算錯誤:被乘 3 倍(CHANGELOG-001)並有抓取分頁不足導致的時間軸錯位(CHANGELOG-002);該期間損益不得用於績效陳述",
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
@@ -820,6 +820,97 @@
       "BEAT": 10.0
     },
     "bench_cash": {}
+  },
+  "gate_check": {
+    "thresholds": {
+      "mdd_pct": 35.0,
+      "violation_rate_pct": 10.0
+    },
+    "denominator_days": 46,
+    "source": "PROTOCOL §4",
+    "by_brain": {
+      "rule": {
+        "mdd_full_pct": 60.81,
+        "mdd_epoch2_pct": 30.81,
+        "violation_days": 0,
+        "violation_rate_pct": 0.0,
+        "liquidations": 0,
+        "triggered": [
+          "最大回撤(全期)"
+        ]
+      },
+      "gpt": {
+        "mdd_full_pct": 9.39,
+        "mdd_epoch2_pct": 5.77,
+        "violation_days": 6,
+        "violation_rate_pct": 13.0,
+        "liquidations": 0,
+        "triggered": [
+          "正式違規率"
+        ]
+      },
+      "gemini": {
+        "mdd_full_pct": 23.76,
+        "mdd_epoch2_pct": 20.44,
+        "violation_days": 0,
+        "violation_rate_pct": 0.0,
+        "liquidations": 0,
+        "triggered": []
+      },
+      "claude": {
+        "mdd_full_pct": 9.38,
+        "mdd_epoch2_pct": 6.73,
+        "violation_days": 2,
+        "violation_rate_pct": 4.3,
+        "liquidations": 0,
+        "triggered": []
+      },
+      "gpt_pure": {
+        "mdd_full_pct": 7.58,
+        "mdd_epoch2_pct": 5.23,
+        "violation_days": 9,
+        "violation_rate_pct": 19.6,
+        "liquidations": 0,
+        "triggered": [
+          "正式違規率"
+        ]
+      },
+      "guardian": {
+        "mdd_full_pct": 6.53,
+        "mdd_epoch2_pct": 3.48,
+        "violation_days": 1,
+        "violation_rate_pct": 2.2,
+        "liquidations": 0,
+        "triggered": []
+      },
+      "bench_btc": {
+        "mdd_full_pct": 6.06,
+        "mdd_epoch2_pct": 4.39,
+        "violation_days": 0,
+        "violation_rate_pct": 0.0,
+        "liquidations": 0,
+        "triggered": []
+      },
+      "bench_eqw": {
+        "mdd_full_pct": 55.38,
+        "mdd_epoch2_pct": 43.13,
+        "violation_days": 0,
+        "violation_rate_pct": 0.0,
+        "liquidations": 0,
+        "triggered": [
+          "最大回撤(全期)",
+          "最大回撤(Epoch-2)"
+        ]
+      },
+      "bench_cash": {
+        "mdd_full_pct": -0.0,
+        "mdd_epoch2_pct": -0.0,
+        "violation_days": 0,
+        "violation_rate_pct": 0.0,
+        "liquidations": 0,
+        "triggered": []
+      }
+    }
   },
   "events": {
     "denominator_days": 46,

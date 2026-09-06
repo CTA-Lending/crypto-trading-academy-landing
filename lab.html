@@ -73,7 +73,7 @@ th:first-child,td:first-child{text-align:left}
   <div class="plan">
     <div><b>9 位競爭者,一樣的市場</b><br>規則腦+GPT+Gemini+Claude+純淨腦+持久腦,外加 BTC 持有／等權多頭／純現金三個市場基準,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。</div>
     <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,五種完全不同的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
-    <div><b>持久腦是特別角色</b><br>它不追求預測最準,追求<b>活最久</b>:充分分散、抗擁擠、存活優先。當大家擠在一起時,它反而降暴險。</div>
+    <div><b>持久腦是特別角色</b><br>它的<b>設計目標</b>不是預測最準,是<b>活最久</b>:充分分散、抗擁擠、存活優先。<br>🔴 <b>2026-09-06 更正:實測與這個設計目標不符。</b>原本這裡寫「當大家擠在一起時,它反而降曝險」——拿它自己 45 個決策日的資料檢定,<b>方向是相反的</b>(相關 <b>+0.36</b>;最擁擠的三分之一天數,它的曝險反而比最不擁擠的高 <b>6.5</b> 個百分點)。<br>我們把這句話改成事實:<b>設計目標是抗擁擠,而目前的實測結果沒有支持它。</b>這正是這個實驗要量的東西 —— 不是拿設計目標當成果。</div>
     <div><b>連續持倉,不是每天失憶</b><br>每個腦每天都看得到<b>自己的權益、持倉與近期損益</b>,可以續抱、加碼、減碼或反手——這是連續的部位管理。</div>
     <div><b>這是觀察期,不是成績單</b><br>決策當下看不到未來,一天一天累積。<b>跑滿實驗天數也不等於取得真錢資格</b>——預先登記的門檻是 <b><span id="gateDays">252</span> 個決策日</b>且須涵蓋一次 ≥20% 回撤、一次 ≥30% 單邊上漲、高低波動各一段。<span id="pilotLen"></span></div>
     <div><b>先寫死規則,才開始跑</b><br>判定指標(相對等權多頭的 Information Ratio)、失格條件、成本假設在<b>看到任何結果之前</b>就寫死並推上公開 repo 取得外部時間戳——<b>事後不能換指標說故事</b>。</div>
@@ -102,6 +102,17 @@ th:first-child,td:first-child{text-align:left}
   <p class="foot">總曝險上限 100%。若模型輸出超標或幻覺出不存在的幣種,系統<b>不會自動幫它縮到 100%</b>——會回饋錯誤讓它重試一次;仍違規就記錄違規並維持原倉。這是「指令遵循能力」的真實量測。</p>
   <p class="foot" style="color:var(--down)"><b>⚠️ 適用範圍(2026-08-04 更正)</b>:此項檢查<b>僅套用於上表的 5 個 LLM 腦</b>。規則腦與 3 個市場基準的權重由程式直接產生,<b>不經過這道檢查</b>,因此它們在資料檔中的「違規 0」代表<b>未受檢查</b>,不代表未逾越——實測規則腦於 2026-07-25 的實際總曝險曾達 <b>174.6%</b>。依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 <a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。</p>
   <div id="disc"></div>
+</div>
+
+<div class="card">
+  <h2>⚖️ 失格條件檢查(PROTOCOL §4)</h2>
+  <p class="foot" style="margin-bottom:10px">預先登記書 §4 寫著:<b>任一觸發即該腦當期失格</b>
+  —— 最大回撤 &gt; 35% / 發生爆倉 / 正式違規率 &gt; 10% 的決策日。
+  <br>🔴 <b>這張表就是那條規則的執行結果,包含已經觸發的。</b>
+  在 2026-09-06 之前,這一頁完全不顯示回撤與違規率 ——
+  唯一出現「失格」兩個字的地方是「失格條件跑之前就寫死」那句話本身。
+  <br>門檻**從已錨定的 PROTOCOL 原文解析**,不是寫死在這一頁上。</p>
+  <div id="gate"></div>
 </div>
 
 <div class="card">
@@ -315,7 +326,11 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
 
   document.getElementById('legend').innerHTML=m.brains.map(b=>
     `<span><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</span>`).join('');
-  drawChart(d.equity_curve,m.brains,m.start_capital);
+  /* 🔴🔴 2026-09-06:圖從 $10,000 畫起、還畫一條「$10,000 基準」虛線,
+     而同一頁的橫幅說「我們不列出含那 12 日的報酬」—— **自己打自己**。
+     ⭐ 拿掉那段又會變成「靜靜丟掉紀錄」(CEO 2026-08-27 抓過的同一個錯)。
+       所以不刪,**標出來**:作廢區段畫成淡的,並在圖下說明。 */
+  drawChart(d.equity_curve,m.brains,m.start_capital,m.epoch2_first_day);
 
   const ch=d.crowding_history||[],last=ch[ch.length-1];
   document.getElementById('crowd').innerHTML= last&&last.overlap_pct!=null
@@ -354,6 +369,34 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      前 12 天早就從這一頁上消失,且頁面沒有任何地方說它被截斷)。
      🔴 分母(共 X 天)一定要印出來 —— 這一頁自己的標語是「公開每個決策與理由」,
         一個宣稱公開的頁面如果靜靜丟掉前面的紀錄,那句話就是假的。 */
+  /* 🔴🔴 失格條件檢查。這是整頁**最不該藏**的一張表:
+     它是我們自己訂的規則的執行結果,而已經有競爭者觸發。 */
+  (function(){
+    const g=d.gate_check, host=document.getElementById("gate");
+    if(!host) return;
+    if(!g||!g.by_brain){
+      host.innerHTML=`<div class="foot" style="color:var(--warn)">⚠️ 後端沒有提供失格檢查結果 —— <b>空白不等於沒有人觸發</b>。</div>`;
+      return;
+    }
+    const th=g.thresholds||{}, N=g.denominator_days;
+    /* 🔴 門檻讀不到時要明講,不准填一個我記得的數字 */
+    const tm=(th.mdd_pct==null)?"(協議讀不到)":th.mdd_pct+"%";
+    const tv=(th.violation_rate_pct==null)?"(協議讀不到)":th.violation_rate_pct+"%";
+    let h=`<table><tr><th>競爭者</th><th>最大回撤<br>全期</th><th>最大回撤<br>自 ${m.epoch2_first_day}</th><th>正式違規<br>(分母 ${N} 日)</th><th>爆倉</th><th>§4 判定</th></tr>`;
+    let hit=0;
+    m.brains.forEach(b=>{
+      const x=g.by_brain[b]||{};
+      const t=(x.triggered||[]);
+      if(t.length) hit++;
+      const red=v=>(v!=null&&th.mdd_pct!=null&&v>th.mdd_pct)?"var(--down)":"var(--dim)";
+      const vr=x.violation_rate_pct;
+      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${x.violation_days??"—"} 日 / ${vr==null?"—":vr+"%"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${t.length?'var(--down)':'var(--up)'}">${t.length?"🔴 已觸發:"+t.join("、"):"未觸發"}</td></tr>`;
+    });
+    h+="</table>";
+    h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
+    host.innerHTML=h;
+  })();
+
   /* 🔴🔴 2026-09-06:**事件揭露表**。
 
      這一頁印著「✗ 不隱藏違規與爆倉」,而在這之前公開資料裡
@@ -476,7 +519,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   /* 🔴 清單漏一個區,那個區就會在載入失敗時是**空白的** ——
      而空白就在「不隱藏爆倉」旁邊,讀起來正好是「沒有事件」。
      ⭐ 實測抓到:第一版漏了 events。**列舉式的清單一定會漏一個。** */
-  ['agents','records','disc','corrections','events'].forEach(id=>{
+  ['agents','records','disc','corrections','events','gate'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.innerHTML='<div class="foot" style="color:var(--down)">'
       +'⚠️ 這一區的資料沒有載入成功('+err.message+')。'
@@ -484,7 +527,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   });
 });
 
-function drawChart(curve,brains,base){
+function drawChart(curve,brains,base,epoch2){
   const c=document.getElementById('chart'),ctx=c.getContext('2d');
   const W=c.width=c.clientWidth*2,H=c.height=460,pad=44*2;
   const all=curve.flatMap(p=>brains.map(b=>p[b]));
@@ -492,6 +535,18 @@ function drawChart(curve,brains,base){
   if(hi-lo<base*0.02){lo=base*0.95;hi=base*1.05}
   const x=i=>pad+(W-pad*1.3)*(curve.length<2?0.5:i/(curve.length-1));
   const y=v=>H-pad-(H-pad*1.6)*((v-lo)/(hi-lo));
+  /* 作廢區段:從第一點到 epoch2 前一點,塗一層暗底 + 標籤。
+     🔴 讀者看到的是一條連續的線,而前面那一段的損益我們自己宣告過不可用。
+        不標的話,那一段會被當成正常績效讀。 */
+  if(epoch2){
+    const i2=curve.findIndex(p=>p.day===epoch2);
+    if(i2>0){
+      ctx.fillStyle="rgba(224,168,59,0.10)";
+      ctx.fillRect(x(0)-4,0,x(i2-1)-x(0)+8,H);
+      ctx.fillStyle=cvar("--warn");ctx.font="20px sans-serif";
+      ctx.fillText("⚠️ 已作廢("+i2+" 個決策日,損益不得用於績效陳述)",x(0),26);
+    }
+  }
   ctx.strokeStyle=cvar('--line');ctx.setLineDash([6,6]);ctx.lineWidth=2;
   ctx.beginPath();ctx.moveTo(pad,y(base));ctx.lineTo(W-pad*0.3,y(base));ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle=cvar('--dim');ctx.font='22px sans-serif';ctx.fillText('$'+base.toLocaleString()+' 基準',pad,y(base)-10);
