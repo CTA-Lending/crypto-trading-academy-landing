@@ -105,6 +105,14 @@ th:first-child,td:first-child{text-align:left}
 </div>
 
 <div class="card">
+  <h2>🚨 事件揭露(爆倉 · 強制出場 · 基建異常)</h2>
+  <p class="foot" style="margin-bottom:10px">這一頁寫著「不隱藏違規與爆倉」。
+  下表就是那句話的<b>可檢查版本</b>:每一類事件的發生天數與分母,逐日從帳本算出。
+  <b>零也列出來</b> —— 沒有分母的零,跟「這個欄位不存在」看起來一樣。</p>
+  <div id="events"></div>
+</div>
+
+<div class="card">
   <h2>🧾 每日損益紀錄</h2>
   <div id="corrections"></div>
   <div id="records"></div>
@@ -132,7 +140,9 @@ const DESC={rule:'確定性規則·基準',gpt:'預測腦',gemini:'預測腦',cl
   bench_btc:'市場基準·買進持有',bench_eqw:'🎯 主要比較基準',bench_cash:'市場基準·不進場'};
 function cvar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
 
-fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(d=>{
+fetch('./data/shadow/dashboard_data.json?_='+Date.now())
+  .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json()})
+  .then(d=>{
   if(d.error){document.getElementById('sub').textContent=d.error;return}
   const m=d.meta;
   const phase=m.phase==='formal_pilot'?'正式 pilot':'彩排';
@@ -185,9 +195,14 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
   if(_gd&&m.gate_days) _gd.textContent=m.gate_days;
   const _pl=document.getElementById('pilotLen');
   if(_pl&&m.pilot_days) _pl.innerHTML=`<br>目前實驗長度設定為 <b>${m.pilot_days}</b> 個決策日。`;
+  /* 🔴 資料日期要印在**最上面**。
+     它本來只出現在最下面那張表的最後一列 —— 發佈停擺時(2026-09-03 真的發生過,
+     公開頁凍了 33.5 小時),頁面看起來完全正常,只有翻到表格最後才看得出來。
+     ⭐ 新鮮度是**讀者判斷要不要相信這一頁**的前提,不是附註。 */
   document.getElementById('sub').textContent=
     `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
-    +`｜9 位競爭者｜${m.market||''}${anc}`;
+    +`｜資料截至 ${m.last_date||'(後端未提供)'}`
+    +`｜${(m.brains||[]).length} 位競爭者｜${m.market||''}${anc}`;
 
   /* ⏳ 未提交 · 等 CEO 決定(2026-08-07 寫的,一直沒上)
      🔴 作廢期間必須寫在**這一頁**上。讀者看到的是這裡,不是我們的 CHANGELOG。 */
@@ -246,10 +261,35 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     const _e2i=(d.equity_curve||[]).findIndex(pt=>pt.day===m.epoch2_first_day);
     const e2base=(_e2i>0)?d.equity_curve[_e2i-1][b]:null;
     const gross=Object.values(a).reduce((s,v)=>s+Math.abs(v),0);
+    /* 🔴🔴 2026-09-06:只印前 7 檔,而 GPT 今天有 **30 檔** ——
+       而這一頁印著「✓ 公開每個決策與理由」,卻一個字都沒說被截斷。
+       ⭐ 跟每日紀錄那次是**同一個錯**:截斷本身不是罪,
+         不講才是。拿掉截斷或講出來,二選一。
+       這裡選「講出來」:持倉多的腦印 7 檔會比印 30 檔好讀,
+       但**必須把分母放在旁邊**。 */
+    const _n=Object.keys(a).length, SHOW=7;
     const tags=Object.entries(a).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
       .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('')
       ||'<span class="tag">空手（全現金）</span>';
-    const grossTag=gross>0?`<span class="tag">曝險 ${gross.toFixed(0)}%・現金 ${Math.max(0,100-gross).toFixed(0)}%</span>`:'';
+    const moreTag=_n>SHOW
+      ? `<span class="tag" style="opacity:.75">…只顯示前 ${SHOW} 檔,共 <b>${_n}</b> 檔</span>` : '';
+    /* 🔴🔴 2026-09-06:現金**只能讀後端的真值**,不准在這裡估。
+
+       原本寫 `Math.max(0, 100 − 總曝險)` —— 實測 9 個腦有 **6 個是錯的**:
+         規則腦 這一頁印「現金 0%」,而帳本裡是 **50.0%**
+         Gemini 印「現金 40%」,帳本裡是 **70.0%**
+       因為那條式子把**空頭部位當成消耗現金**,而空單不是用現金買的。
+
+       ⭐ 「同一個語意兩份實作」的又一次 —— 而分岔的那一份,
+         對一個受試者的風險姿態做了實質上錯誤的陳述,
+         就印在一個宣稱「公開每個決策」的頁面上。
+
+       🔴 拿不到就**不印**,不要退回去估一個 ——
+         估出來的數字看起來跟真的一模一樣,而那正是最危險的地方。 */
+    const cashPct=(d.current_cash_pct||{})[b];
+    const cashTag=(cashPct==null)?`<span class="tag">現金 未提供 ⚠️</span>`
+      : `<span class="tag">現金 ${Math.abs(cashPct)<0.05?0:cashPct.toFixed(0)}%</span>`;
+    const grossTag=gross>0?`<span class="tag">曝險 ${gross.toFixed(0)}%</span>`+cashTag:cashTag;
     return `<div class="agent">
       <div class="top">
         <div><div class="name"><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</div>
@@ -258,7 +298,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
           <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
           <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':`自 ${m.epoch2_first_day} 起算(${m.epoch2_days} 日)`}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}</div></div>
       </div>
-      <div class="pos">${tags}${grossTag}</div>
+      <div class="pos">${tags}${moreTag}${grossTag}</div>
       ${viol[b]?`<div class="viol">🚫 <b>今日決策被風控攔下</b>(${viol[b]})<br>
         重試一次仍違反總曝險上限 → 依規則<b>維持原倉、不執行交易</b>。下方理由是它<b>被駁回</b>的原案。</div>`:''}
       ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
@@ -305,6 +345,39 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
      前 12 天早就從這一頁上消失,且頁面沒有任何地方說它被截斷)。
      🔴 分母(共 X 天)一定要印出來 —— 這一頁自己的標語是「公開每個決策與理由」,
         一個宣稱公開的頁面如果靜靜丟掉前面的紀錄,那句話就是假的。 */
+  /* 🔴🔴 2026-09-06:**事件揭露表**。
+
+     這一頁印著「✗ 不隱藏違規與爆倉」,而在這之前公開資料裡
+     **沒有任何一個欄位**會顯示爆倉、停牌折價或基建跳過 ——
+     讀者無從檢查那句話。它不是在藏事件(46 天真的一次都沒有爆倉),
+     而是**那句宣稱沒有任何東西可以支撐**。
+
+     ⭐ 「零」是有意義的揭露 —— 但**零一定要帶分母**。
+       沒有分母的零,跟「這個欄位根本不存在」在畫面上長得一模一樣。
+     🔴 天數從後端逐日算出來,不是寫死的統計:
+       寫死的話,以後真的發生一次,頁面會繼續說 0。 */
+  (function(){
+    const ev=d.events, host=document.getElementById("events");
+    if(!host) return;
+    if(!ev){
+      host.innerHTML=`<div class="foot" style="color:var(--warn)">⚠️ 後端沒有提供事件資料 —— <b>空白不等於沒有事件</b>,只代表我們沒把它送到你面前。</div>`;
+      return;
+    }
+    const N=ev.denominator_days;
+    const rows=[
+      ["強制平倉(爆倉)", ev.liquidation_days],
+      ["連續無報價 → 強制出場折價", ev.stale_days],
+      ["基建異常日(強制只減倉)", ev.infra_skip_days],
+      ["當日未能結算", ev.unsettled_days],
+    ];
+    host.innerHTML=`<table><tr><th>事件</th><th>發生天數</th><th>日期</th></tr>`
+      + rows.map(([name,days])=>{
+          const n=(days||[]).length;
+          return `<tr><td>${name}</td><td style="color:${n?'var(--warn)':'var(--dim)'}"><b>${n}</b> / ${N} 個決策日</td><td style="text-align:left">${n?days.join("、"):"—"}</td></tr>`;
+        }).join("")
+      + "</table>";
+  })();
+
   const rec=(d.records||[]).slice().reverse();   // 新的在前
   const PAGE=30;
   let recPage=0;
@@ -334,9 +407,13 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     let voidedOnPage=0;
     rec.slice(from,to).forEach(r=>{
       const dead=!!r.voided;
+      /* 🔴 2026-08-10 與 2026-09-01 是**基建異常日**(強制 reduce-only),
+         而在這之前表格上一個字都沒說。⭐ 揭露要放在資料旁邊 —— 同一課第三次。 */
+      const skip=!!r.infra_skip;
       if(dead) voidedOnPage++;
       h+=`<tr${dead?' style="opacity:.45"':''}><td>${r.day}`
        + (dead?' <span style="color:var(--warn)">⚠️作廢</span>':'')
+       + (skip?' <span style="color:var(--acc)">⚙️基建異常</span>':'')
        + '</td>'+m.brains.map(b=>{
         const v=r[b];return `<td style="color:${v>=0?'var(--up)':'var(--down)'}">${v>=0?'+':''}${v}%</td>`}).join('')+'</tr>'});
     h+='</table></div>';
@@ -378,6 +455,24 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now()).then(r=>r.json()).then(
     if(nx) nx.onclick=()=>{recPage++;drawRecords();};
   }
   drawRecords();
+})
+/* 🔴🔴 2026-09-06:`fetch` 原本**沒有 .catch**。
+   JSON 壞掉 / 404 / 讀到寫了一半的檔案時,整頁停在「載入中…」,
+   而上面那些行銷文案(「公開每個決策」「帳本不可竄改」)照常顯示 ——
+   讀者看到的是一個看起來正常、只是還沒載完的頁面。
+   ⭐ 這是「安靜地錯」的教科書形狀:**壞掉的時候看起來像正常的**。 */
+.catch(err=>{
+  const sub=document.getElementById('sub');
+  if(sub) sub.textContent='⚠️ 資料載入失敗:'+err.message+' —— 本頁顯示的內容不完整,請重新整理。';
+  /* 🔴 清單漏一個區,那個區就會在載入失敗時是**空白的** ——
+     而空白就在「不隱藏爆倉」旁邊,讀起來正好是「沒有事件」。
+     ⭐ 實測抓到:第一版漏了 events。**列舉式的清單一定會漏一個。** */
+  ['agents','records','disc','corrections','events'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerHTML='<div class="foot" style="color:var(--down)">'
+      +'⚠️ 這一區的資料沒有載入成功('+err.message+')。'
+      +'<b>不要把空白當成「沒有事件」</b> —— 它只代表我們沒把資料送到你面前。</div>';
+  });
 });
 
 function drawChart(curve,brains,base){

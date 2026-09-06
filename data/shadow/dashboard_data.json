@@ -821,6 +821,38 @@
     },
     "bench_cash": {}
   },
+  "events": {
+    "denominator_days": 46,
+    "liquidation_days": [],
+    "stale_days": [],
+    "infra_skip_days": [
+      "2026-08-10",
+      "2026-09-01"
+    ],
+    "unsettled_days": []
+  },
+  "current_cash": {
+    "rule": 2762.32,
+    "gpt": 3573.07,
+    "gemini": 5565.19,
+    "claude": 3589.09,
+    "gpt_pure": 1774.28,
+    "guardian": 2951.65,
+    "bench_btc": -0.0,
+    "bench_eqw": -2.91,
+    "bench_cash": 10000.0
+  },
+  "current_cash_pct": {
+    "rule": 50.0,
+    "gpt": 35.0,
+    "gemini": 70.0,
+    "claude": 31.0,
+    "gpt_pure": 16.0,
+    "guardian": 28.0,
+    "bench_btc": -0.0,
+    "bench_eqw": -0.0,
+    "bench_cash": 100.0
+  },
   "current_reasons": {
     "rule": "wick-break 雙向等權(確定性規則,無 AI)",
     "gpt": "保留核心多頭，減弱高波動空頭，轉向BTC/SOL/ETH與黃金白銀；總曝險可控。",
@@ -1204,7 +1236,8 @@
       "bench_btc": -0.07,
       "bench_eqw": -0.14,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-23",
@@ -1217,7 +1250,8 @@
       "bench_btc": 0.37,
       "bench_eqw": 1.02,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-24",
@@ -1230,7 +1264,8 @@
       "bench_btc": -2.13,
       "bench_eqw": -2.08,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-25",
@@ -1243,7 +1278,8 @@
       "bench_btc": -1.17,
       "bench_eqw": 29.68,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-26",
@@ -1256,7 +1292,8 @@
       "bench_btc": 0.43,
       "bench_eqw": 3.63,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-27",
@@ -1269,7 +1306,8 @@
       "bench_btc": 1.08,
       "bench_eqw": -3.11,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-29",
@@ -1282,7 +1320,8 @@
       "bench_btc": -2.09,
       "bench_eqw": -4.05,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-30",
@@ -1295,7 +1334,8 @@
       "bench_btc": -0.12,
       "bench_eqw": -0.57,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-07-31",
@@ -1308,7 +1348,8 @@
       "bench_btc": 1.34,
       "bench_eqw": -11.53,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-08-01",
@@ -1321,7 +1362,8 @@
       "bench_btc": -2.8,
       "bench_eqw": 4.6,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-08-02",
@@ -1334,7 +1376,8 @@
       "bench_btc": -0.22,
       "bench_eqw": -1.7,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-08-03",
@@ -1347,7 +1390,8 @@
       "bench_btc": 0.71,
       "bench_eqw": -6.08,
       "bench_cash": 0.0,
-      "voided": true
+      "voided": true,
+      "infra_skip": false
     },
     {
       "day": "2026-08-04",
@@ -1360,7 +1404,8 @@
       "bench_btc": 0.02,
       "bench_eqw": -0.64,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-05",
@@ -1373,7 +1418,8 @@
       "bench_btc": 1.2,
       "bench_eqw": -4.5,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-06",
@@ -1386,7 +1432,8 @@
       "bench_btc": 0.87,
       "bench_eqw": -2.59,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-07",
@@ -1399,7 +1446,8 @@
       "bench_btc": -0.62,
       "bench_eqw": 0.22,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-08",
@@ -1412,7 +1460,8 @@
       "bench_btc": 0.85,
       "bench_eqw": 3.24,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-09",
@@ -1425,7 +1474,8 @@
       "bench_btc": 0.13,
       "bench_eqw": -0.72,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-10",
@@ -1438,7 +1488,8 @@
       "bench_btc": 0.02,
       "bench_eqw": 4.11,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": true
     },
     {
       "day": "2026-08-11",
@@ -1451,7 +1502,8 @@
       "bench_btc": -1.56,
       "bench_eqw": -5.09,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-12",
@@ -1464,7 +1516,8 @@
       "bench_btc": -0.44,
       "bench_eqw": -8.75,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-13",
@@ -1477,7 +1530,8 @@
       "bench_btc": -0.22,
       "bench_eqw": 2.7,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-14",
@@ -1490,7 +1544,8 @@
       "bench_btc": -0.28,
       "bench_eqw": -5.08,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-15",
@@ -1503,7 +1558,8 @@
       "bench_btc": -0.66,
       "bench_eqw": 3.63,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-16",
@@ -1516,7 +1572,8 @@
       "bench_btc": 0.05,
       "bench_eqw": -14.84,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-17",
@@ -1529,7 +1586,8 @@
       "bench_btc": -0.49,
       "bench_eqw": -1.98,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-18",
@@ -1542,7 +1600,8 @@
       "bench_btc": 2.65,
       "bench_eqw": -0.41,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-19",
@@ -1555,7 +1614,8 @@
       "bench_btc": 0.31,
       "bench_eqw": -2.86,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-20",
@@ -1568,7 +1628,8 @@
       "bench_btc": 7.53,
       "bench_eqw": -8.3,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-21",
@@ -1581,7 +1642,8 @@
       "bench_btc": 5.83,
       "bench_eqw": 4.16,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-22",
@@ -1594,7 +1656,8 @@
       "bench_btc": 5.96,
       "bench_eqw": 7.95,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-23",
@@ -1607,7 +1670,8 @@
       "bench_btc": -0.95,
       "bench_eqw": 0.98,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-24",
@@ -1620,7 +1684,8 @@
       "bench_btc": 0.26,
       "bench_eqw": -0.23,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-25",
@@ -1633,7 +1698,8 @@
       "bench_btc": 1.77,
       "bench_eqw": -7.11,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-26",
@@ -1646,7 +1712,8 @@
       "bench_btc": -0.47,
       "bench_eqw": -2.13,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-27",
@@ -1659,7 +1726,8 @@
       "bench_btc": 0.31,
       "bench_eqw": 3.06,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-28",
@@ -1672,7 +1740,8 @@
       "bench_btc": 2.0,
       "bench_eqw": -2.37,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-29",
@@ -1685,7 +1754,8 @@
       "bench_btc": -3.26,
       "bench_eqw": -4.53,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-30",
@@ -1698,7 +1768,8 @@
       "bench_btc": 0.58,
       "bench_eqw": 3.03,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-08-31",
@@ -1711,7 +1782,8 @@
       "bench_btc": -0.17,
       "bench_eqw": -3.28,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-09-01",
@@ -1724,7 +1796,8 @@
       "bench_btc": 0.75,
       "bench_eqw": -7.04,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": true
     },
     {
       "day": "2026-09-02",
@@ -1737,7 +1810,8 @@
       "bench_btc": -1.97,
       "bench_eqw": -2.54,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-09-03",
@@ -1750,7 +1824,8 @@
       "bench_btc": -0.34,
       "bench_eqw": -1.23,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-09-04",
@@ -1763,7 +1838,8 @@
       "bench_btc": 5.6,
       "bench_eqw": 4.84,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-09-05",
@@ -1776,7 +1852,8 @@
       "bench_btc": -2.09,
       "bench_eqw": -0.64,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     },
     {
       "day": "2026-09-06",
@@ -1789,7 +1866,8 @@
       "bench_btc": 0.31,
       "bench_eqw": 1.33,
       "bench_cash": 0.0,
-      "voided": false
+      "voided": false,
+      "infra_skip": false
     }
   ],
   "returns_reconcile_mismatches": 22
