@@ -1,6 +1,56 @@
 {
- "days": 6,
+ "days": 8,
  "records": [
+  {
+   "asOf": "2026-09-07",
+   "changeD1": -6.2,
+   "changeD14": 13.7,
+   "changeD30": 12.7,
+   "changeD7": 7.0,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-08T01:33:56Z",
+   "layers": {
+    "B": 76.0,
+    "L": 62.9,
+    "R": 68.1,
+    "S": 53.7,
+    "V": 52.2
+   },
+   "revision": 1,
+   "score": 64.3,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "heating",
+   "stageDesc": "跑贏比例明顯上升，但尚未過半",
+   "stageName": "升溫中",
+   "universeCount": 380,
+   "universeVersion": "universe-v1.1"
+  },
+  {
+   "asOf": "2026-09-06",
+   "changeD1": 5.8,
+   "changeD14": 17.4,
+   "changeD30": 29.0,
+   "changeD7": 20.9,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-07T01:33:21Z",
+   "layers": {
+    "B": 79.9,
+    "L": 62.5,
+    "R": 67.3,
+    "S": 90.5,
+    "V": 44.2
+   },
+   "revision": 1,
+   "score": 70.5,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "heating",
+   "stageDesc": "跑贏比例明顯上升，但尚未過半",
+   "stageName": "升溫中",
+   "universeCount": 380,
+   "universeVersion": "universe-v1.1"
+  },
   {
    "asOf": "2026-09-05",
    "changeD1": 11.0,
@@ -177,5 +227,5 @@
    "universeVersion": "universe-v1.1"
   }
  ],
- "records_total": 7
+ "records_total": 9
 }
