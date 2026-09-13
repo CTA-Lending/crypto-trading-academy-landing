@@ -5,14 +5,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-09-11 這一天，山寨市場的溫度是 55.6 分（滿分 100），比一個月前多了 9.1 分，比一週前多了 1.8 分，整體狀態是資金集中在比特幣身上，其他幣普遍跟不上。\n\n拆開來看，市場裡的錢和交易量算充足，流動性有 66.1 分，資金輪動 64.9 分也還過得去；但市場廣度只有 54.8 分，意思是漲得比比特幣兇的幣並不算多。\n\n比較冷的是另外兩塊：現貨訂單流只有 42.7 分，代表真正成交的買單比例偏低，很多單子只是掛著；波動與結構 36.5 分，表示各種幣的走勢比較散，沒有一起往同一個方向跑。\n\n這份溫度是把 381 種幣一起算進來得到的結果，簡單講，那一天的錢比較願意待在比特幣，山寨這邊熱度有回來一些，但買盤的力道還不夠紮實。"
+  "text": "2026-09-12 這一天，山寨市場的整體溫度是 54.2 分（滿分 100），狀態被歸類為「BTC 主導」，也就是錢大多集中在比特幣身上，其他幣普遍跟不上。細看五個面向，資金輪動有 69.5 分、市場廣度 61.0 分、流動性 58.3 分，都還算中間偏上，波動與結構 51.4 分落在中間，但現貨訂單流只有 21.2 分，明顯偏低，代表真正成交的買單並不多。\n\n如果拉長來看，這個溫度比 30 天前多了 12.2 分，但比 7 天前少了 10.6 分，等於一個月來是往上走，最近一週卻是往下掉。以上數字是從 382 種幣的資料算出來的。"
  },
- "asOf": "2026-09-11",
- "changeD1": 4.2,
- "changeD14": 4.0,
- "changeD30": 9.1,
- "changeD7": 1.8,
- "dataAsOfUtc": "2026-09-12T01:35:26Z",
+ "asOf": "2026-09-12",
+ "changeD1": -1.4,
+ "changeD14": 1.1,
+ "changeD30": 12.2,
+ "changeD7": -10.6,
+ "dataAsOfUtc": "2026-09-13T01:36:17Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -40,50 +40,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 12,
+ "forwardLogDays": 13,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 13,
+ "forwardLogRecords": 14,
  "layers": {
-  "B": 54.8,
-  "L": 66.1,
-  "R": 64.9,
-  "S": 42.7,
-  "V": 36.5
+  "B": 61.0,
+  "L": 58.3,
+  "R": 69.5,
+  "S": 21.2,
+  "V": 51.4
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 66.1
+   "score": 58.3
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 64.9
+   "score": 69.5
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 54.8
+   "score": 61.0
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 42.7
+   "score": 21.2
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 36.5
+   "score": 51.4
   }
  ],
- "publishedAtUtc": "2026-09-12T06:00:18Z",
+ "publishedAtUtc": "2026-09-13T06:00:13Z",
  "revision": 1,
- "score": 55.6,
+ "score": 54.2,
  "scoreVersion": "score-v1.0",
  "stageCode": "btc_led",
  "stageDesc": "資金集中在 BTC，山寨普遍落後",
  "stageName": "BTC 主導",
- "universeCount": 381,
+ "universeCount": 382,
  "universeVersion": "universe-v1.1"
 }
