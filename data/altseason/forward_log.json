@@ -1,6 +1,31 @@
 {
- "days": 18,
+ "days": 19,
  "records": [
+  {
+   "asOf": "2026-09-18",
+   "changeD1": -1.6,
+   "changeD14": 9.4,
+   "changeD30": 12.1,
+   "changeD7": 7.7,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-19T01:37:33Z",
+   "layers": {
+    "B": 81.8,
+    "L": 64.0,
+    "R": 60.2,
+    "S": 52.4,
+    "V": 46.7
+   },
+   "revision": 1,
+   "score": 63.2,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "heating",
+   "stageDesc": "跑贏比例明顯上升，但尚未過半",
+   "stageName": "升溫中",
+   "universeCount": 384,
+   "universeVersion": "universe-v1.1"
+  },
   {
    "asOf": "2026-09-17",
    "changeD1": 3.4,
@@ -477,5 +502,5 @@
    "universeVersion": "universe-v1.1"
   }
  ],
- "records_total": 19
+ "records_total": 20
 }
