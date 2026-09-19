@@ -145,6 +145,20 @@ python verify_chain.py</pre>
 </div>
 
 <div class="card">
+  <h2>📐 主指標,以及它換一個基準會變成什麼樣</h2>
+  <p class="foot" style="margin-bottom:10px">
+  預先登記書 §3 指定的<b>唯一主指標</b>是「相對<b>等權多頭</b>的 Information Ratio」,
+  §9 禁止中途更換基準 —— 所以<b>我們不換</b>,下表左欄就是那個指標。
+  <br>🔴 但它有一個我們必須講出來的後果:<b>那個「等權多頭」不是大盤。</b>
+  它取候選表前 10 檔,而候選表按「近 30 日<b>絕對</b>漲跌幅」排序 ——
+  也就是<b>波動最大的 10 支幣</b>(持倉年化波動中位數 <b>331%</b>,BTC 持有是 <b>43%</b>),
+  再機械地全部做多、每日輪動。
+  <br>⭐ 結果是:拿它當尺,<b>連「完全空手」和「賠錢的腦」都拿到正分</b>。
+  所以右欄併列「相對 BTC 買進持有」的同一個算法,<b>不替你選一個</b>。</p>
+  <div id="ircmp"></div>
+</div>
+
+<div class="card">
   <h2>🚨 事件揭露(爆倉 · 強制出場 · 基建異常)</h2>
   <p class="foot" style="margin-bottom:10px">這一頁寫著「不隱藏違規與爆倉」。
   下表就是那句話的<b>可檢查版本</b>:每一類事件的發生天數與分母,逐日從帳本算出。
@@ -177,8 +191,18 @@ const LABEL={rule:'規則腦',gpt:'GPT',gemini:'Gemini',claude:'Claude',guardian
   gpt_pure:'純淨腦',bench_btc:'BTC 持有',bench_eqw:'等權多頭',bench_cash:'純現金'};
 const DESC={rule:'確定性規則·基準',gpt:'預測腦',gemini:'預測腦',claude:'預測腦',
   guardian:'持久·存活優先',gpt_pure:'不看規則訊號(消融診斷組)',
-  bench_btc:'市場基準·買進持有',bench_eqw:'🎯 主要比較基準',bench_cash:'市場基準·不進場'};
+  /* 🔴🔴 2026-09-19:`bench_eqw` 以前只寫「🎯 主要比較基準」,讀者會理解成「大盤」。
+     它不是。它取候選表前 10 檔,而候選表按 `-abs(近30日報酬)` 排序 =
+     **波動最大的 10 支幣**(年化波動 331%,BTC 43%),再全部做多、每日輪動。
+     ⭐ 它確實是 PROTOCOL §3 預先登記的主指標基準(§9 禁止中途更換),
+       所以不改它 —— 但名字必須說實話。 */
+  bench_btc:'市場基準·買進持有',bench_eqw:'🎯 主要比較基準(非大盤)',bench_cash:'市場基準·不進場'};
 function cvar(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+
+/* 🔴 在 fetch **之前**拍一張快照:此刻還空著的、有 id 的容器 = 等資料填的區塊。
+   載入失敗時就填這些,不靠任何人維護一份手寫清單(那份清單已經漏過兩次)。 */
+const RENDER_TARGETS=[...document.querySelectorAll('div[id],canvas[id]')]
+  .filter(el=>el.tagName==='CANVAS'||!el.innerHTML.trim());
 
 fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json()})
@@ -239,10 +263,31 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      它本來只出現在最下面那張表的最後一列 —— 發佈停擺時(2026-09-03 真的發生過,
      公開頁凍了 33.5 小時),頁面看起來完全正常,只有翻到表格最後才看得出來。
      ⭐ 新鮮度是**讀者判斷要不要相信這一頁**的前提,不是附註。 */
+  /* 🔴🔴 2026-09-19 更正:「資料截至 <日期>」高估了新鮮度約 23 小時。
+     排程每天 00:36 UTC 跑,那一刻當日的日 K 還沒收 ——
+     所以標記為第 D 天的那一列,量到的是 [D−1 00:36Z → D 00:36Z] 這個窗口。
+     實測(分鐘 K 對帳,Epoch-2 46 天):平均誤差 0.056pp、0/46 天超過 0.5pp,
+     也就是**數字完全正確,錯的只有「截至哪一天」這個宣稱**。
+     ⭐ 讀者拿自己的 BTC 線圖對照時會看到約 6.7pp 的缺口,
+       然後合理推論「連基準都對不上,這頁不可信」—— 誤會的成本由我們承擔。 */
+  const snapUTC=(m.anchor&&m.anchor.utc)||null;
   document.getElementById('sub').textContent=
     `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
-    +`｜資料截至 ${m.last_date||'(後端未提供)'}`
+    +`｜快照 ${snapUTC||(m.last_date||'(後端未提供)')}`
     +`｜${(m.brains||[]).length} 位競爭者｜${m.market||''}${anc}`;
+  (function(){
+    const s=document.getElementById('sub');
+    if(!s||!snapUTC) return;
+    const n=document.createElement('div');
+    n.className='foot';
+    n.style.cssText='margin-top:6px;font-size:11px;line-height:1.6';
+    n.innerHTML=`📌 <b>怎麼讀這個時間</b>:排程每天 <b>00:36 UTC</b> 拍一次快照,
+      所以最新一列(${m.last_date})是<b>該時刻的真實淨值</b>,
+      而它涵蓋的最後一根完整日 K 是<b>前一天的收盤</b>。
+      換句話說,<b>快照當天白天的行情還不在裡面</b> ——
+      拿當日的 BTC 線圖直接對照會對不起來,那是時間窗口的差,不是數字算錯。`;
+    s.parentNode.insertBefore(n,s.nextSibling);
+  })();
 
   /* ⏳ 未提交 · 等 CEO 決定(2026-08-07 寫的,一直沒上)
      🔴 作廢期間必須寫在**這一頁**上。讀者看到的是這裡,不是我們的 CHANGELOG。 */
@@ -276,6 +321,30 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   }
 
   const alloc=d.current_alloc||{},reasons=d.current_reasons||{},viol=d.today_violation||{};
+  const noDec=d.no_decision||{};
+
+  /* 🔴🔴 2026-09-19:這段紅字以前**寫死**成「重試一次仍違反總曝險上限」,
+     還承諾「下方理由是它被駁回的原案」—— 而 2026-09-17~19 這三天,
+     GPT 與純淨腦的真實情況是**模型完全沒有回應**:沒有原案,下方也是空的。
+     ⭐ 頁面在描述一件沒發生的事,而且把我方的基建中斷寫成受試者違規。
+     🔴 卡片上顯示的配置是**最後一次有效決策**留下來的舊倉,
+       不標出來的話,讀者會以為那是它今天的決定。 */
+  function vioBanner(b,type){
+    const nd=noDec[b]||{}, stale=(nd.streak||0)>0;
+    const isInfra=String(type||'').split(':')[0]==='no_response';
+    const staleLine=stale?`<br>📌 下方配置是 <b>${nd.last_decision_day||'?'}</b> 的舊倉位
+        (已連續 <b>${nd.streak}</b> 個決策日沒有新決策,分母 ${nd.denominator_days??'?'} 日),
+        <b>不是今天的決定</b>。`:'';
+    if(isInfra){
+      return `<div class="viol">⚠️ <b>今天沒有取得決策</b>(${type})<br>
+        原因在<b>我們這邊</b>:重試後仍叫不到該模型的 API。依規則<b>維持原倉、不執行交易</b>。
+        <b>沒有「被駁回的原案」</b> —— 模型沒有回話,所以下方不會有理由。<br>
+        🔴 依 PROTOCOL §4 原文(「重試後仍違反曝險/幣種約束」),
+        這<b>不計入該腦的正式違規率</b>;它記在失格表的「我方基建中斷」欄。${staleLine}</div>`;
+    }
+    return `<div class="viol">🚫 <b>今日決策被風控攔下</b>(${type})<br>
+      重試一次仍違反約束 → 依規則<b>維持原倉、不執行交易</b>。下方理由是它<b>被駁回</b>的原案。${staleLine}</div>`;
+  }
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
     /* ⏳ 未提交 · 等 CEO 決定
        🔴 2026-08-07:報酬**一律用後端算好的**,前端不得自己推算。
@@ -348,8 +417,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
           <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':`自 ${m.epoch2_first_day} 起算(${m.epoch2_days} 日)`}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}</div></div>
       </div>
       <div class="pos">${tags}${moreTag}${grossTag}</div>
-      ${viol[b]?`<div class="viol">🚫 <b>今日決策被風控攔下</b>(${viol[b]})<br>
-        重試一次仍違反總曝險上限 → 依規則<b>維持原倉、不執行交易</b>。下方理由是它<b>被駁回</b>的原案。</div>`:''}
+      ${viol[b]?vioBanner(b,viol[b]):''}
       ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
   }).join('');
 
@@ -368,12 +436,29 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        <div class="foot">${last.note||''}</div>`
     : '<div class="foot">尚無擁擠資料。</div>';
 
-  const fv=d.first_attempt_violations||{},tv=d.violations||{};
-  document.getElementById('disc').innerHTML='<table><tr><th>腦</th><th>今日首次違規</th>'
-    +'<th>今日最終違規</th><th>累計正式違規</th></tr>'+m.thinkers.map(b=>
-    `<tr><td>${LABEL[b]}</td><td>${fv[b]||0}</td>`
-    +`<td style="color:${viol[b]?'var(--down)':'var(--dim)'}">${viol[b]||'—'}</td>`
-    +`<td>${tv[b]||0}</td></tr>`).join('')+'</table>';
+  /* 🔴🔴 2026-09-19:這張表原本印 `d.violations`(**總數**),
+     而下面的 §4 表印的是拆解後的「受試者違規」——
+     同一頁上同一個語意出現兩個打架的數字(GPT 9 vs 1、純淨腦 12 vs 4),
+     而這張表正上方寫著「這是『指令遵循能力』的真實量測」。
+     ⭐ 兩處都從 `violations_split` 讀,**不再各算各的**。 */
+  const fv=d.first_attempt_violations||{},vsp=d.violations_split||{},tv=d.violations||{};
+  const fvs=d.first_attempt_violations_split||{};
+  document.getElementById('disc').innerHTML='<table><tr><th>腦</th><th>今日首次違規<br><span style="font-weight:400;font-size:10px">(不含我方中斷)</span></th>'
+    +'<th>今日最終狀態</th><th>累計受試者違規</th><th>累計我方中斷<br><span style="font-weight:400;font-size:10px">(不計入 §4)</span></th></tr>'
+    +m.thinkers.map(b=>{
+      const s=vsp[b]||{}, subj=(s.subject==null?tv[b]:s.subject), infra=s.infra, unk=s.unknown;
+      const isInfra=String(viol[b]||'').split(':')[0]==='no_response';
+      const f=fvs[b]||{}, fSubj=(f.subject==null?fv[b]:f.subject);
+      return `<tr><td>${LABEL[b]}</td><td>${fSubj||0}`
+        +`${f.infra?` <span style="color:var(--warn);font-size:10px">(+${f.infra} 中斷)</span>`:''}</td>`
+        +`<td style="color:${viol[b]?(isInfra?'var(--warn)':'var(--down)'):'var(--dim)'}">`
+        +`${viol[b]?(isInfra?'⚠️ 我方叫不到 API':'🚫 '+viol[b]):'—'}</td>`
+        +`<td>${subj==null?'—':subj}${unk?` <span style="color:var(--warn)">+${unk} 未分類⚠️</span>`:''}</td>`
+        +`<td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?'—':infra}</td></tr>`;
+    }).join('')+'</table>'
+    +`<div class="foot" style="margin-top:8px">🔴 <b>2026-09-19 更正</b>:這一欄以前印的是兩者相加的總數,
+      把「<b>我們自己叫不到模型 API</b>」算成受試者不守紀律。現在分開列,
+      §4 失格判定只用左邊那欄。詳見 CHANGELOG-023。</div>`;
 
   // 🔴 2026-08-03:更正揭露。PROTOCOL §9 要求修補須記錄於 CHANGELOG,
   //    而一份沒有人看得到的 CHANGELOG 不算揭露。數字一律從資料讀,不寫死 ——
@@ -411,18 +496,80 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     /* 🔴 門檻讀不到時要明講,不准填一個我記得的數字 */
     const tm=(th.mdd_pct==null)?"(協議讀不到)":th.mdd_pct+"%";
     const tv=(th.violation_rate_pct==null)?"(協議讀不到)":th.violation_rate_pct+"%";
-    let h=`<table><tr><th>競爭者</th><th>最大回撤<br>全期</th><th>最大回撤<br>自 ${m.epoch2_first_day}</th><th>正式違規<br>(分母 ${N} 日)</th><th>爆倉</th><th>§4 判定</th></tr>`;
-    let hit=0;
+    /* 🔴🔴 2026-09-19 更正:違規要拆成兩類才誠實。
+       PROTOCOL §4 的原文是「重試後仍**違反曝險/幣種約束**」,
+       而 `no_response`(我們叫不到模型 API)兩者都不是。
+       在此之前這一頁把兩者加在一起當分子,把**我方的基建中斷公告成受試者不守紀律**。
+       ⭐ 依 §9「修改前後的樣本必須分開統計」→ 原公告值保留在同一列,不偷偷抹掉。 */
+    let h=`<table><tr><th>競爭者</th><th>最大回撤<br>全期</th><th>最大回撤<br>自 ${m.epoch2_first_day}</th><th>受試者違規<br>(分母 ${N} 日)</th><th>我方基建中斷<br>(不計入 §4)</th><th>爆倉</th><th>§4 判定</th></tr>`;
+    let hit=0, anyRestated=false;
     m.brains.forEach(b=>{
       const x=g.by_brain[b]||{};
       const t=(x.triggered||[]);
       if(t.length) hit++;
       const red=v=>(v!=null&&th.mdd_pct!=null&&v>th.mdd_pct)?"var(--down)":"var(--dim)";
-      const vr=x.violation_rate_pct;
-      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${x.violation_days??"—"} 日 / ${vr==null?"—":vr+"%"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${t.length?'var(--down)':'var(--up)'}">${t.length?"🔴 已觸發:"+t.join("、"):"未觸發"}</td></tr>`;
+      const vr=x.violation_rate_pct, was=x.violation_rate_pct_as_published;
+      const subj=x.subject_violations, infra=x.infra_no_response, unk=x.unclassified_violations;
+      /* 原公告值高於門檻、修正值低於門檻 = 這一列曾被錯誤公告過,要標出來 */
+      const restated=(was!=null&&vr!=null&&th.violation_rate_pct!=null
+                      &&was>th.violation_rate_pct&&vr<=th.violation_rate_pct);
+      if(restated) anyRestated=true;
+      const vCell=(subj==null)?"—":`${subj} 日 / ${vr==null?"—":vr+"%"}`
+        +(restated?`<br><span style="color:var(--warn);font-size:10px">原公告 ${was}%(含中斷)</span>`:"")
+        +((unk)?`<br><span style="color:var(--warn);font-size:10px">⚠️ 未分類 ${unk}</span>`:"");
+      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${vCell}</td><td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?"—":infra+" 日"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${t.length?'var(--down)':'var(--up)'}">${t.length?"🔴 已觸發:"+t.join("、"):"未觸發"}</td></tr>`;
     });
     h+="</table>";
+    if(anyRestated){
+      h+=`<div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">
+        🔴 <b>2026-09-19 更正:我們先前公告錯了。</b>
+        在這個日期之前,這一頁把「<b>我們自己叫不到模型 API</b>」(<code>no_response</code>)
+        算進「正式違規」的分子,因此把 <b>GPT 與純淨腦公告成「已觸發失格」</b>——
+        而 PROTOCOL §4 的原文是「重試後仍<b>違反曝險/幣種約束</b>」,模型沒回話兩者都不是。
+        扣掉之後兩者都低於門檻。上表「原公告」那一行就是被更正掉的數字。<br>
+        ⚠️ 依 §9 這屬於「修補會造成錯誤估值的 bug」,<b>不是修改判定指標</b>;
+        原始違規紀錄一筆未刪,只是改變歸類。詳見 CHANGELOG-023。</div>`;
+    }
     h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
+    host.innerHTML=h;
+  })();
+
+  /* 🔴🔴 2026-09-19:主指標的兩個基準並列。
+     主指標**不動**(§9 禁止),只是把同一個算法換一個基準再算一次給讀者看。
+     ⭐ 分子分母都由後端算好送過來 —— 頁面自己再數一次會變成
+       「同一個語意兩份實作」,兩邊遲早走樣。 */
+  (function(){
+    const ir=d.ir_comparison, host=document.getElementById("ircmp");
+    if(!host) return;
+    if(!ir||!ir.by_brain){
+      host.innerHTML=`<div class="foot" style="color:var(--warn)">⚠️ 後端沒有提供 IR 比較 —— <b>空白不等於沒有差異</b>。</div>`;
+      return;
+    }
+    if(ir.insufficient){
+      host.innerHTML=`<div class="foot" style="color:var(--warn)">樣本 ${ir.days} 日,不足以計算 IR。</div>`;
+      return;
+    }
+    const f=x=>(x==null)?'—':((x>=0?'+':'')+x.toFixed(2));
+    const col=x=>(x==null)?'var(--dim)':(x>0?'var(--up)':'var(--down)');
+    let h=`<table><tr><th>競爭者</th><th>IR vs 等權多頭<br><span style="font-weight:400;font-size:10px">(§3 預先登記的主指標)</span></th><th>IR vs BTC 買進持有<br><span style="font-weight:400;font-size:10px">(同算法,換基準)</span></th></tr>`;
+    (m.brains||[]).forEach(b=>{
+      const x=ir.by_brain[b]; if(!x) return;
+      h+=`<tr><td>${LABEL[b]||b}</td>`
+        +`<td style="color:${col(x.bench_eqw)}">${f(x.bench_eqw)}</td>`
+        +`<td style="color:${col(x.bench_btc)}">${f(x.bench_btc)}</td></tr>`;
+    });
+    h+="</table>";
+    const A=ir.positive_vs_bench_eqw||{}, B=ir.positive_vs_bench_btc||{};
+    h+=`<div class="foot" style="margin-top:10px">
+      分母:<b>${ir.denominator_days}</b> 個報酬日(自 ${ir.epoch2_first_day},不含已作廢的期間)。<br>
+      用<b>等權多頭</b>當基準:<b style="color:var(--warn)">${A.n??'—'} / ${A.denominator??'—'}</b> 位競爭者 IR 為正。<br>
+      用 <b>BTC 買進持有</b>當基準:<b>${B.n??'—'} / ${B.denominator??'—'}</b> 位競爭者 IR 為正。<br>
+      🔴 左欄那個「幾乎全部為正」<b>不是好消息</b> —— 它代表這把尺量不出技術,
+      而不是代表大家都有技術。判斷一個基準好不好用,看它會不會給
+      「純現金」和「賠錢的腦」高分。<br>
+      ⚠️ 我們<b>沒有</b>因此更換主指標:§9 明文禁止中途改基準,
+      而「跑完發現指標不好看就換一把尺」正是這一頁承諾不做的事。
+      這裡做的是<b>揭露</b>,不是重新計分。詳見 CHANGELOG-024。</div>`;
     host.innerHTML=h;
   })();
 
@@ -545,14 +692,23 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
 .catch(err=>{
   const sub=document.getElementById('sub');
   if(sub) sub.textContent='⚠️ 資料載入失敗:'+err.message+' —— 本頁顯示的內容不完整,請重新整理。';
-  /* 🔴 清單漏一個區,那個區就會在載入失敗時是**空白的** ——
-     而空白就在「不隱藏爆倉」旁邊,讀起來正好是「沒有事件」。
-     ⭐ 實測抓到:第一版漏了 events。**列舉式的清單一定會漏一個。** */
-  ['agents','records','disc','corrections','events','gate'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el) el.innerHTML='<div class="foot" style="color:var(--down)">'
+  /* 🔴🔴 2026-09-19:這裡本來是一份**手寫的區塊清單**,而它正上方的註解
+     自己寫著「列舉式的清單一定會漏一個」—— 然後它就又漏了三個
+     (新加的 ircmp、擁擠監控 crowd、權益圖 chart)。
+     ⭐ 再補一次清單只會再漏第四個。改成**結構性推導**:
+       頁面載入時先記下「哪些有 id 的容器是空的」= 全部等資料填的區塊,
+       之後新增任何區塊都會自動被涵蓋,不需要有人記得回來改這一行。 */
+  RENDER_TARGETS.forEach(el=>{
+    const msg='<div class="foot" style="color:var(--down)">'
       +'⚠️ 這一區的資料沒有載入成功('+err.message+')。'
       +'<b>不要把空白當成「沒有事件」</b> —— 它只代表我們沒把資料送到你面前。</div>';
+    if(el.tagName==='CANVAS'){            // canvas 沒有 innerHTML,改插一個兄弟節點
+      el.style.display='none';
+      const n=document.createElement('div'); n.innerHTML=msg;
+      if(!el.nextElementSibling||!el.nextElementSibling.dataset.loadErr){
+        n.dataset.loadErr='1'; el.parentNode.insertBefore(n,el.nextSibling);
+      }
+    }else{ el.innerHTML=msg; }
   });
 });
 

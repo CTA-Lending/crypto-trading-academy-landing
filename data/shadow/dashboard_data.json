@@ -993,6 +993,10 @@
         "mdd_epoch2_pct": 30.81,
         "violation_days": 0,
         "violation_rate_pct": 0.0,
+        "violation_rate_pct_as_published": 0.0,
+        "subject_violations": 0,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": [
           "最大回撤(全期)"
@@ -1002,17 +1006,23 @@
         "mdd_full_pct": 9.39,
         "mdd_epoch2_pct": 5.77,
         "violation_days": 9,
-        "violation_rate_pct": 15.3,
+        "violation_rate_pct": 1.7,
+        "violation_rate_pct_as_published": 15.3,
+        "subject_violations": 1,
+        "infra_no_response": 8,
+        "unclassified_violations": 0,
         "liquidations": 0,
-        "triggered": [
-          "正式違規率"
-        ]
+        "triggered": []
       },
       "gemini": {
         "mdd_full_pct": 23.76,
         "mdd_epoch2_pct": 20.44,
         "violation_days": 0,
         "violation_rate_pct": 0.0,
+        "violation_rate_pct_as_published": 0.0,
+        "subject_violations": 0,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
       },
@@ -1021,6 +1031,10 @@
         "mdd_epoch2_pct": 6.73,
         "violation_days": 2,
         "violation_rate_pct": 3.4,
+        "violation_rate_pct_as_published": 3.4,
+        "subject_violations": 2,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
       },
@@ -1028,17 +1042,23 @@
         "mdd_full_pct": 8.17,
         "mdd_epoch2_pct": 8.17,
         "violation_days": 12,
-        "violation_rate_pct": 20.3,
+        "violation_rate_pct": 6.8,
+        "violation_rate_pct_as_published": 20.3,
+        "subject_violations": 4,
+        "infra_no_response": 8,
+        "unclassified_violations": 0,
         "liquidations": 0,
-        "triggered": [
-          "正式違規率"
-        ]
+        "triggered": []
       },
       "guardian": {
         "mdd_full_pct": 7.92,
         "mdd_epoch2_pct": 7.92,
         "violation_days": 1,
         "violation_rate_pct": 1.7,
+        "violation_rate_pct_as_published": 1.7,
+        "subject_violations": 1,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
       },
@@ -1047,6 +1067,10 @@
         "mdd_epoch2_pct": 6.95,
         "violation_days": 0,
         "violation_rate_pct": 0.0,
+        "violation_rate_pct_as_published": 0.0,
+        "subject_violations": 0,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
       },
@@ -1055,6 +1079,10 @@
         "mdd_epoch2_pct": 48.57,
         "violation_days": 0,
         "violation_rate_pct": 0.0,
+        "violation_rate_pct_as_published": 0.0,
+        "subject_violations": 0,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": [
           "最大回撤(全期)",
@@ -1066,9 +1094,64 @@
         "mdd_epoch2_pct": -0.0,
         "violation_days": 0,
         "violation_rate_pct": 0.0,
+        "violation_rate_pct_as_published": 0.0,
+        "subject_violations": 0,
+        "infra_no_response": 0,
+        "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
       }
+    }
+  },
+  "ir_comparison": {
+    "denominator_days": 46,
+    "epoch2_first_day": "2026-08-04",
+    "primary_benchmark": "bench_eqw",
+    "by_brain": {
+      "rule": {
+        "bench_eqw": 2.275329004582417,
+        "bench_btc": -0.479225955887338
+      },
+      "gpt": {
+        "bench_eqw": 2.7435977356550434,
+        "bench_btc": -0.370426429983697
+      },
+      "gemini": {
+        "bench_eqw": 1.0469180881101545,
+        "bench_btc": -2.4336513984000927
+      },
+      "claude": {
+        "bench_eqw": 4.254281145408342,
+        "bench_btc": 2.0089783686895513
+      },
+      "gpt_pure": {
+        "bench_eqw": 2.7768018984741056,
+        "bench_btc": 0.1753286925392759
+      },
+      "guardian": {
+        "bench_eqw": 1.7214056982116335,
+        "bench_btc": -2.8155935064361266
+      },
+      "bench_btc": {
+        "bench_eqw": 2.5817954634906397,
+        "bench_btc": null
+      },
+      "bench_eqw": {
+        "bench_eqw": null,
+        "bench_btc": -2.5817954634906397
+      },
+      "bench_cash": {
+        "bench_eqw": 0.9695113592525428,
+        "bench_btc": -3.736076391616473
+      }
+    },
+    "positive_vs_bench_eqw": {
+      "n": 8,
+      "denominator": 8
+    },
+    "positive_vs_bench_btc": {
+      "n": 2,
+      "denominator": 8
     }
   },
   "events": {
@@ -1125,6 +1208,109 @@
     "bench_eqw": 0,
     "bench_cash": 0
   },
+  "violations_split": {
+    "rule": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "gpt": {
+      "subject": 1,
+      "infra": 8,
+      "unknown": 0,
+      "total": 9
+    },
+    "gemini": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "claude": {
+      "subject": 2,
+      "infra": 0,
+      "unknown": 0,
+      "total": 2
+    },
+    "gpt_pure": {
+      "subject": 4,
+      "infra": 8,
+      "unknown": 0,
+      "total": 12
+    },
+    "guardian": {
+      "subject": 1,
+      "infra": 0,
+      "unknown": 0,
+      "total": 1
+    },
+    "bench_btc": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "bench_eqw": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "bench_cash": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    }
+  },
+  "no_decision": {
+    "rule": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    },
+    "gpt": {
+      "streak": 3,
+      "last_decision_day": "2026-09-16",
+      "denominator_days": 59
+    },
+    "gemini": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    },
+    "claude": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    },
+    "gpt_pure": {
+      "streak": 3,
+      "last_decision_day": "2026-09-16",
+      "denominator_days": 59
+    },
+    "guardian": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    },
+    "bench_btc": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    },
+    "bench_eqw": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    },
+    "bench_cash": {
+      "streak": 0,
+      "last_decision_day": "2026-09-19",
+      "denominator_days": 59
+    }
+  },
   "violation_checked": {
     "rule": false,
     "gpt": true,
@@ -1145,6 +1331,32 @@
     "guardian": 0,
     "gpt": 1,
     "gpt_pure": 1
+  },
+  "first_attempt_violations_split": {
+    "claude": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "guardian": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "gpt": {
+      "subject": 0,
+      "infra": 1,
+      "unknown": 0,
+      "total": 1
+    },
+    "gpt_pure": {
+      "subject": 0,
+      "infra": 1,
+      "unknown": 0,
+      "total": 1
+    }
   },
   "stability": {
     "gpt": 1.0,
