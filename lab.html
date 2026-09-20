@@ -210,8 +210,22 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   if(d.error){document.getElementById('sub').textContent=d.error;return}
   const m=d.meta;
   const phase=m.phase==='formal_pilot'?'正式 pilot':'彩排';
-  const anc=m.anchor&&m.anchor.genesis_utc
-    ? `｜預先登記已外部錨定 ${m.anchor.genesis_utc.slice(0,10)}(PROTOCOL ${m.anchor.protocol_sha256})`:'';
+  /* 🔴🔴 2026-09-20 更正:這一行本來印
+       「預先登記已外部錨定 2026-07-22(PROTOCOL 1b953e4d)」
+     —— 把**創世錨定日**配上**現行版本的雜湊**。而 1b953e4d 是
+     seq 48(2026-09-06)才上鏈的;2026-07-22 那天錨的是 48973c29。
+     ⭐ 日期配了一個當時還不存在的雜湊,而這一頁的招牌正是
+       「事後不能換指標說故事」—— 這種寫法會讓讀者以為現行這一版
+       從一開始就被時間戳過。
+     修法不是改口徑,是**兩個日期都印出來**,並在下面列出版本沿革。 */
+  const A=m.anchor||{};
+  const anc=A.genesis_utc
+    ? `｜創世錨定 ${A.genesis_utc.slice(0,10)}`
+      + (A.genesis_protocol_sha256?`(當時的 PROTOCOL ${A.genesis_protocol_sha256})`:'')
+      + (A.protocol_since_utc
+          ? `｜現行 PROTOCOL ${A.protocol_sha256} 自 ${A.protocol_since_utc.slice(0,10)} 上鏈`
+          : `｜現行 PROTOCOL ${A.protocol_sha256}`)
+    :'';
   /* 🔴 這兩個數字原本**寫死在 HTML 裡**(頂部警語與計畫卡都寫「90 天」),
      而副標同時在說「第 N / 365 日」—— 同一頁自己打自己。
      shadow/pilot.py 早就把長度收斂成單一常數,但它漏掉了這一頁的兩處。
@@ -281,6 +295,23 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     const n=document.createElement('div');
     n.className='foot';
     n.style.cssText='margin-top:6px;font-size:11px;line-height:1.6';
+    /* 🔴🔴 2026-09-20:這一頁從來沒有任何一行程式比對「資料日期」與「現在」。
+       2026-09-02 公開頁凍了 33.5 小時,畫面看起來完全正常 ——
+       ⭐ **發佈停擺與正常運作,在讀者眼裡長得一模一樣。**
+       這個檢查跑在讀者的瀏覽器裡,不靠我們這邊的任何監控:
+       我們的伺服器整個掛掉時,它照樣會說話(fail-safe)。
+       🔴 門檻要寬到不會誤報:排程 00:36 UTC,正常最多 ~24h 前;
+         超過 **40 小時**才算異常(留足重跑與時區的餘裕)。
+         會誤報的紅燈遲早被當成背景雜訊。 */
+    const ageH=(Date.now()-Date.parse(snapUTC))/3.6e6;
+    if(isFinite(ageH)&&ageH>40){
+      const w=document.createElement('div');
+      w.style.cssText='border:1px solid var(--warn);border-radius:8px;padding:10px;margin-top:8px;color:var(--warn);font-size:12px;line-height:1.7';
+      w.innerHTML=`⚠️ <b>這一頁的資料已經 ${Math.floor(ageH)} 小時沒有更新了</b>
+        （正常是每 24 小時一次）。你看到的數字停在 ${snapUTC}。
+        這可能是發佈流程故障 —— <b>畫面看起來正常不代表資料是新的</b>。`;
+      s.parentNode.insertBefore(w,s.nextSibling);
+    }
     n.innerHTML=`📌 <b>怎麼讀這個時間</b>:排程每天 <b>00:36 UTC</b> 拍一次快照,
       所以最新一列(${m.last_date})是<b>該時刻的真實淨值</b>,
       而它涵蓋的最後一根完整日 K 是<b>前一天的收盤</b>。
@@ -315,7 +346,16 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       <b>該承諾已公開撤回</b> —— 重述所需的五樣輸入我們只保存了一樣,
       忠實的重跑做不出來;而「獨立驗證」在一人公司裡本來就無法兌現。
       <b>那 12 天的數字永久不得用於任何績效陳述</b>,原始紀錄保留不刪。
-      <br>樣本數不足 ${m.sharpe_min_days} 日時不顯示 Sharpe —— 樣本太少的 Sharpe 是噪音,不是指標。`;
+      <br>🔴 2026-09-20 更正:這裡本來寫「樣本數不足 ${m.sharpe_min_days} 日時不顯示 Sharpe」,
+      那句話<b>暗示樣本夠了就會顯示</b> —— 而樣本早就夠了(目前 ${m.epoch2_days} 日),
+      這一頁卻<b>從頭到尾沒有顯示過 Sharpe</b>。
+      <br>講清楚:<b>我們刻意不在這一頁放 Sharpe。</b>
+      依預先登記書 §3,Sharpe 是<b>次要指標、不作勝負判定</b>;
+      而在幾十天的樣本上,它會算出 4~5 這種<b>好看但沒有意義</b>的數字。
+      把它印在這裡只會變成行銷素材。
+      <br>但我們<b>沒有把它藏起來</b>:Sharpe 與每日換手相似度(stability)
+      都在公開資料檔 <code>dashboard_data.json</code> 的 <code>metrics</code>
+      與 <code>stability</code> 欄位裡,你可以自己取用(下載指令見本頁「🔐 自己驗」)。`;
     const host=document.getElementById('agents');
     host.parentNode.insertBefore(w, host);
   }
@@ -429,12 +469,24 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        所以不刪,**標出來**:作廢區段畫成淡的,並在圖下說明。 */
   drawChart(d.equity_curve,m.brains,m.start_capital,m.epoch2_first_day);
 
+  /* 🔴🔴 2026-09-20:這個數字以前只印一個百分比,**沒有分母**:
+     它是用 `families` 個模型家族算出來的(目前 3 個,不是 5 個腦),
+     而且只顯示 59 天裡的**最新 1 天**,頁面完全沒說。
+     🔴 更要命的是:當某個腦連續幾天沒回應時,它的「持倉」是幾天前的舊倉,
+       重疊度等於拿過期資料去算 —— 2026-09-17~19 就正好是這個情況。
+     ⭐ 沒有分母的百分比,跟「我們挑了一個好看的數字」分不出來。 */
   const ch=d.crowding_history||[],last=ch[ch.length-1];
+  const nd2=d.no_decision||{};
+  const staleB=(m.thinkers||[]).filter(b=>(nd2[b]||{}).streak>0);
   document.getElementById('crowd').innerHTML= last&&last.overlap_pct!=null
-    ? `<div>最新思考腦組合重疊度：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--up')}">${last.overlap_pct}%</b></div>
+    ? `<div>思考腦組合重疊度：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--up')}">${last.overlap_pct}%</b>
+         <span class="foot" style="font-size:11px">（${last.day||'?'}，跨 <b>${last.families??'?'}</b> 個模型家族算出；共 ${ch.length} 天紀錄，此處只顯示最新 1 天）</span></div>
        <div class="meter"><div style="width:${last.overlap_pct}%;background:${last.warning?cvar('--warn'):cvar('--up')}"></div></div>
        <div class="foot">${last.note||''}</div>`
-    : '<div class="foot">尚無擁擠資料。</div>';
+      +(staleB.length?`<div class="foot" style="color:var(--warn);margin-top:6px">
+         ⚠️ 這個數字現在<b>含過期持倉</b>:${staleB.map(b=>`${LABEL[b]||b}（${nd2[b].streak} 個決策日沒有新決策）`).join('、')}。
+         它們的權重還是上次有效決策時的樣子,所以這裡量到的「重疊」不完全是今天的重疊。</div>`:'')
+    : '<div class="foot" style="color:var(--warn)">⚠️ 後端沒有提供擁擠資料 —— <b>空白不等於不擁擠</b>。</div>';
 
   /* 🔴🔴 2026-09-19:這張表原本印 `d.violations`(**總數**),
      而下面的 §4 表印的是拆解後的「受試者違規」——
@@ -517,9 +569,25 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       const vCell=(subj==null)?"—":`${subj} 日 / ${vr==null?"—":vr+"%"}`
         +(restated?`<br><span style="color:var(--warn);font-size:10px">原公告 ${was}%(含中斷)</span>`:"")
         +((unk)?`<br><span style="color:var(--warn);font-size:10px">⚠️ 未分類 ${unk}</span>`:"");
-      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${vCell}</td><td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?"—":infra+" 日"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${t.length?'var(--down)':'var(--up)'}">${t.length?"🔴 已觸發:"+t.join("、"):"未觸發"}</td></tr>`;
+      /* 🔴🔴 2026-09-20:門檻讀不到時,`triggered` 對每一個腦都是空陣列
+         → 整張表印綠色「未觸發」、頁腳印綠色「0 / 9 位競爭者已觸發」。
+         實測(把 PROTOCOL 讀成 None):觸發數 2/9 → **0/9 全綠**。
+         ⭐ **「讀不到規則」與「沒有人違規」在畫面上長得一模一樣** ——
+           而這正是 gate_denominator 那一類:判準恆綠。
+         → 門檻缺任何一條就不准印綠色結論,改印「無法判定」。 */
+      const noTh=(th.mdd_pct==null||th.violation_rate_pct==null);
+      const verdict = t.length ? "🔴 已觸發:"+t.join("、")
+                     : (noTh ? "⚠️ 無法判定(門檻讀不到)" : "未觸發");
+      const vColor = t.length ? 'var(--down)' : (noTh ? 'var(--warn)' : 'var(--up)');
+      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${vCell}</td><td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?"—":infra+" 日"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${vColor}">${verdict}</td></tr>`;
     });
     h+="</table>";
+    if(th.mdd_pct==null||th.violation_rate_pct==null){
+      h+=`<div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px;color:var(--warn)">
+        ⚠️ <b>這張表現在不能用。</b>門檻要從已錨定的 PROTOCOL 原文即時解析,
+        而這次<b>解析不到</b>(${th.mdd_pct==null?'最大回撤門檻':''}${(th.mdd_pct==null&&th.violation_rate_pct==null)?'、':''}${th.violation_rate_pct==null?'違規率門檻':''})。
+        <b>讀不到規則 ≠ 沒有人違規</b> —— 所以上表不印「未觸發」,也不給「幾位已觸發」的數字。</div>`;
+    }
     if(anyRestated){
       h+=`<div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">
         🔴 <b>2026-09-19 更正:我們先前公告錯了。</b>
@@ -530,7 +598,9 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         ⚠️ 依 §9 這屬於「修補會造成錯誤估值的 bug」,<b>不是修改判定指標</b>;
         原始違規紀錄一筆未刪,只是改變歸類。詳見 CHANGELOG-023。</div>`;
     }
-    h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
+    h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>${(th.mdd_pct==null||th.violation_rate_pct==null)
+        ? `目前 <b style="color:var(--warn)">無法判定</b>(門檻讀不到,見上方說明)。`
+        : `目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。`}<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
     host.innerHTML=h;
   })();
 
