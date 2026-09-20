@@ -796,6 +796,7 @@
       "mdd_pct": 30.81,
       "sharpe": 1.3,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": -26.15,
       "full_days": 60
     },
@@ -804,6 +805,7 @@
       "mdd_pct": 5.77,
       "sharpe": 3.99,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": 12.48,
       "full_days": 60
     },
@@ -812,6 +814,7 @@
       "mdd_pct": 20.44,
       "sharpe": -0.14,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": -8.07,
       "full_days": 60
     },
@@ -820,6 +823,7 @@
       "mdd_pct": 6.73,
       "sharpe": 5.72,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": 46.19,
       "full_days": 60
     },
@@ -828,6 +832,7 @@
       "mdd_pct": 8.17,
       "sharpe": 4.32,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": 18.14,
       "full_days": 60
     },
@@ -836,6 +841,7 @@
       "mdd_pct": 7.92,
       "sharpe": 2.89,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": 4.49,
       "full_days": 60
     },
@@ -844,6 +850,7 @@
       "mdd_pct": 6.95,
       "sharpe": 4.4,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": 21.16,
       "full_days": 60
     },
@@ -852,6 +859,7 @@
       "mdd_pct": 48.9,
       "sharpe": -0.87,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": -14.68,
       "full_days": 60
     },
@@ -860,6 +868,7 @@
       "mdd_pct": 0.0,
       "sharpe": null,
       "days": 48,
+      "undefined_returns": 0,
       "full_total_pct": 0.0,
       "full_days": 60
     }
@@ -1167,6 +1176,66 @@
       "n": 1,
       "denominator": 8
     }
+  },
+  "crowding_reality": {
+    "pairs": [
+      {
+        "a": "claude",
+        "b": "gemini",
+        "corr": 0.416
+      },
+      {
+        "a": "claude",
+        "b": "gpt",
+        "corr": 0.565
+      },
+      {
+        "a": "claude",
+        "b": "gpt_pure",
+        "corr": 0.455
+      },
+      {
+        "a": "claude",
+        "b": "guardian",
+        "corr": 0.516
+      },
+      {
+        "a": "gemini",
+        "b": "gpt",
+        "corr": 0.438
+      },
+      {
+        "a": "gemini",
+        "b": "gpt_pure",
+        "corr": 0.257
+      },
+      {
+        "a": "gemini",
+        "b": "guardian",
+        "corr": 0.381
+      },
+      {
+        "a": "gpt",
+        "b": "gpt_pure",
+        "corr": 0.833
+      },
+      {
+        "a": "gpt",
+        "b": "guardian",
+        "corr": 0.765
+      },
+      {
+        "a": "gpt_pure",
+        "b": "guardian",
+        "corr": 0.756
+      }
+    ],
+    "mean_corr": 0.538,
+    "max_corr": 0.833,
+    "denominator_days": 47,
+    "denominator_pairs": 10,
+    "warning_threshold_pct": 60.0,
+    "threshold_source": "硬編碼於 shadow/multi.py,PROTOCOL 未定義"
   },
   "events": {
     "denominator_days": 60,

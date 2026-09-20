@@ -486,11 +486,36 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   const ch=d.crowding_history||[],last=ch[ch.length-1];
   const nd2=d.no_decision||{};
   const staleB=(m.thinkers||[]).filter(b=>(nd2[b]||{}).streak>0);
+  /* 🔴🔴 2026-09-20(稽核 A013/A027 複查):這張卡以前印一個綠色百分比 +
+     「跨家族組合分散=較健康」。而**我們自己的 CHANGELOG「已知待處理」第 2 項**
+     早就寫著(且沒有刪除線 = 未解決):
+       「擁擠度門檻無依據:`avg >= 60` 為硬編碼,程式與 PROTOCOL 皆無推導。
+        …**持倉重疊度會系統性低估真實擁擠。**」
+     ⭐ 拿一把**已知會低估**的尺量出低值,再用綠色告訴讀者安全 ——
+       而這張卡的標題正是「🚨 擁擠監控」。
+     🔴 修法不是把綠燈拿掉就好,是**把另一把尺也量出來擺旁邊**:
+       重疊度看「持倉像不像」,相關係數看「**賺賠有沒有一起動**」。 */
+  const cr=d.crowding_reality||{};
+  const ovs=ch.map(c=>c.overlap_pct).filter(v=>v!=null);
+  const warnDays=ch.filter(c=>c.warning);
   document.getElementById('crowd').innerHTML= last&&last.overlap_pct!=null
-    ? `<div>思考腦組合重疊度：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--up')}">${last.overlap_pct}%</b>
-         <span class="foot" style="font-size:11px">（${last.day||'?'}，跨 <b>${last.families??'?'}</b> 個模型家族算出；共 ${ch.length} 天紀錄，此處只顯示最新 1 天）</span></div>
-       <div class="meter"><div style="width:${last.overlap_pct}%;background:${last.warning?cvar('--warn'):cvar('--up')}"></div></div>
-       <div class="foot">${last.note||''}</div>`
+    ? `<div>思考腦<b>持倉重疊度</b>：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--dim')}">${last.overlap_pct}%</b>
+         <span class="foot" style="font-size:11px">（${last.day||'?'}，跨 <b>${last.families??'?'}</b> 個模型家族算出）</span></div>
+       <div class="meter"><div style="width:${last.overlap_pct}%;background:${last.warning?cvar('--warn'):cvar('--dim')}"></div></div>
+       <div class="foot">${last.note||''}</div>
+       ${ovs.length?`<div class="foot" style="margin-top:6px">共 <b>${ch.length}</b> 天紀錄：最低 ${Math.min(...ovs)}% ／ 最高 ${Math.max(...ovs)}% ／ 平均 ${(ovs.reduce((a,b)=>a+b,0)/ovs.length).toFixed(1)}%；
+         其中達到警訊門檻的有 <b>${warnDays.length}</b> 天${warnDays.length?`（${warnDays.map(c=>c.day).join('、')}）`:''}。</div>`:''}
+       ${(cr.mean_corr!=null)?`
+       <div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">
+         🔴 <b>這個數字會低估擁擠,而且我們知道。</b><br>
+         重疊度量的是「持倉像不像」。但同一批 AI 真正的風險是<b>賺賠會不會一起動</b> ——
+         同期實測它們的<b>日報酬相關係數平均 <span style="color:var(--warn)">+${cr.mean_corr.toFixed(2)}</span></b>
+         （最高一對 +${cr.max_corr.toFixed(2)}，分母 ${cr.denominator_pairs} 對 ／ ${cr.denominator_days} 個報酬日）。
+         <b>持倉看起來只重疊 ${last.overlap_pct}%，報酬卻明顯同向。</b><br>
+         ⚠️ 而那條警訊線（<b>${cr.warning_threshold_pct}%</b>）是<b>我們自己選的</b>：${cr.threshold_source}。
+         對照之下，§4 的失格門檻是從<b>已錨定的協議原文即時解析</b>的 ——
+         這兩條線在畫面上都像「規則」，但只有一條真的被錨定過。
+       </div>`:`<div class="foot" style="margin-top:8px;color:var(--warn)">⚠️ 後端沒有提供報酬相關係數 —— <b>空白不等於不相關</b>。</div>`}`
       +(staleB.length?`<div class="foot" style="color:var(--warn);margin-top:6px">
          ⚠️ 這個數字現在<b>含過期持倉</b>:${staleB.map(b=>`${LABEL[b]||b}（${nd2[b].streak} 個決策日沒有新決策）`).join('、')}。
          它們的權重還是上次有效決策時的樣子,所以這裡量到的「重疊」不完全是今天的重疊。</div>`:'')
