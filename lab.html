@@ -446,7 +446,12 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
          估出來的數字看起來跟真的一模一樣,而那正是最危險的地方。 */
     const cashPct=(d.current_cash_pct||{})[b];
     const cashTag=(cashPct==null)?`<span class="tag">現金 未提供 ⚠️</span>`
-      : `<span class="tag">現金 ${Math.abs(cashPct)<0.05?0:cashPct.toFixed(0)}%</span>`;
+      /* 🔴 2026-09-20:規則腦的現金是 **−0.1%**(真的略為透支),
+         而 `toFixed(0)` 把它變成字串 `"-0"` → 畫面印「現金 -0%」,看起來像 bug。
+         但四捨五入成 `0%` 也是錯的:**它不是零**。
+         ⭐ 小到看不見的數字要給更多位數,不是抹平成零 ——
+           抹平就是把「略為透支」講成「剛好打平」。 */
+      : `<span class="tag">現金 ${Math.abs(cashPct)<0.05?0:(Math.abs(cashPct)<0.5?cashPct.toFixed(1):cashPct.toFixed(0))}%</span>`;
     const grossTag=gross>0?`<span class="tag">曝險 ${gross.toFixed(0)}%</span>`+cashTag:cashTag;
     return `<div class="agent">
       <div class="top">
@@ -566,7 +571,17 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       const restated=(was!=null&&vr!=null&&th.violation_rate_pct!=null
                       &&was>th.violation_rate_pct&&vr<=th.violation_rate_pct);
       if(restated) anyRestated=true;
-      const vCell=(subj==null)?"—":`${subj} 日 / ${vr==null?"—":vr+"%"}`
+      /* 🔴🔴 2026-09-20:曝險/幣種檢查寫在 `multi._parse_alloc()` 裡,
+         而它**只被 `llm_allocation()` 呼叫** —— 規則腦與三個市場基準
+         從來不經過它。資料檔早就有 `violation_checked` 這個欄位,
+         而這一頁**一次都沒讀過**,於是那 4 個在表上印「0 日 / 0%」,
+         讀起來像「最守規矩」。實測規則腦 2026-07-25 的總曝險曾達 174.6%。
+         📌 「適用範圍」的說明在**兩張卡片之前**的紀律紀錄區 ——
+           ⭐ **揭露要放在資料旁邊,不是另一個區塊**(這是第四次犯)。 */
+      const checked=(d.violation_checked||{})[b];
+      const vCell=(checked===false)
+        ? `<span style="color:var(--warn)">未受檢查</span>`
+        : (subj==null)?"—":`${subj} 日 / ${vr==null?"—":vr+"%"}`
         +(restated?`<br><span style="color:var(--warn);font-size:10px">原公告 ${was}%(含中斷)</span>`:"")
         +((unk)?`<br><span style="color:var(--warn);font-size:10px">⚠️ 未分類 ${unk}</span>`:"");
       /* 🔴🔴 2026-09-20:門檻讀不到時,`triggered` 對每一個腦都是空陣列
@@ -598,7 +613,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         ⚠️ 依 §9 這屬於「修補會造成錯誤估值的 bug」,<b>不是修改判定指標</b>;
         原始違規紀錄一筆未刪,只是改變歸類。詳見 CHANGELOG-023。</div>`;
     }
-    h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>${(th.mdd_pct==null||th.violation_rate_pct==null)
+    h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>${(()=>{const u=(m.brains||[]).filter(x=>(d.violation_checked||{})[x]===false);
+      return u.length?`🔴 <b>「未受檢查」不等於「沒有違規」</b>:${u.map(x=>LABEL[x]||x).join('、')} 的權重由程式直接產生,<b>不經過曝險/幣種檢查</b>,所以這一欄沒有數字可以給你。實測規則腦於 2026-07-25 的實際總曝險曾達 <b>174.6%</b>。依 §9 不得於實驗進行中對受試者新增約束,故只更正陳述、不改變其行為。<br>`:'';})()}${(th.mdd_pct==null||th.violation_rate_pct==null)
         ? `目前 <b style="color:var(--warn)">無法判定</b>(門檻讀不到,見上方說明)。`
         : `目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。`}<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
     host.innerHTML=h;
@@ -726,18 +742,35 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        ⭐ 這跟 CEO 說的「不要前面就不見了」是同一件事:**少一天也是不見**。
        🔴 從資料自己算(比對日曆日 vs 實際有的日期),不寫死日期 ——
           寫死的話,下一次缺漏頁面不會有反應。 */
-    const gaps=[];
+    /* 🔴🔴 2026-09-20:這段原本只掃**當前這一頁**的區間
+       (`rec.slice(from,to)` + `rec[to-1]`~`rec[from]`)——
+       缺漏日如果正好落在**換頁邊界**,兩頁的區間都不含它,**兩頁都不會報**。
+       ⭐ 「少一天也是不見」,而分頁讓它更容易不見。
+       → 改成掃**整個資料集**算出所有缺漏日,再標出哪些落在本頁區間;
+         本頁以外的也給一個總數,不讓翻頁決定你看不看得到。 */
+    const allGaps=[];
     {
-      const have=new Set(rec.slice(from,to).map(r=>r.day));
-      const a=Date.parse(rec[to-1].day+'T00:00:00Z'), b=Date.parse(rec[from].day+'T00:00:00Z');
-      for(let t=a;t<=b;t+=86400000){
-        const ds=new Date(t).toISOString().slice(0,10);
-        if(!have.has(ds)) gaps.push(ds);
+      const have=new Set(rec.map(r=>r.day));
+      const ds=rec.map(r=>Date.parse(r.day+'T00:00:00Z')).filter(x=>!isNaN(x));
+      if(ds.length){
+        for(let t=Math.min(...ds);t<=Math.max(...ds);t+=86400000){
+          const s=new Date(t).toISOString().slice(0,10);
+          if(!have.has(s)) allGaps.push(s);
+        }
       }
+    }
+    const pFrom=rec[to-1]&&rec[to-1].day, pTo=rec[from]&&rec[from].day;
+    const gaps=allGaps.filter(g=>pFrom&&pTo&&g>=pFrom&&g<=pTo);
+    const elsewhere=allGaps.length-gaps.length;
+    if(allGaps.length&&!gaps.length){
+      h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
+        ⚠️ 整個實驗期間有 <b>${allGaps.length}</b> 天<b>完全沒有紀錄</b>(不在本頁區間內):${allGaps.join('、')}
+        <br>原因記在 <a href="./data/shadow/CHANGELOG.md" style="color:var(--warn)">CHANGELOG</a>。</div>`;
     }
     if(gaps.length){
       h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
         ⚠️ 這一頁的日期區間裡有 <b>${gaps.length}</b> 天<b>完全沒有紀錄</b>:${gaps.join('、')}
+        ${elsewhere?`<br>另外 <b>${elsewhere}</b> 天缺漏落在其他頁:${allGaps.filter(g=>!gaps.includes(g)).join('、')}`:''}
         <br>原因記在 <a href="./data/shadow/CHANGELOG.md" style="color:var(--warn)">CHANGELOG</a>。
         我們<b>不把缺漏日補平</b>,也不假裝它不存在。</div>`;
     }
