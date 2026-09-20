@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC 接下來的五套劇本：82,814 站得上，和站不上，是兩個世界 — 交易幣修課</title>
+  <meta name="description" content="BTC 五套走勢劇本完整拆解：82,814 關鍵關卡、威科夫吸籌彈簧、64,543–73,757 回採帶收針、0.786 對數回撤 106,771、50/200 雙均線濾網（9/8 已金叉）。附 15 年實測基準率——金叉後一年中位數 +90.7%（8/11 為正），但 10/11 期間回撤超過 30%。含起算口徑對照表、新手名詞小辭典與完整風險提示。">
+  <meta name="keywords" content="BTC,比特幣,技術分析,關鍵價位,82814,威科夫,吸籌,彈簧,Spring,費波那契,0.786,對數座標,200日均線,50日均線,黃金交叉,金叉,回採,收針,二探,裸K,交易幣修課,加密貨幣新手">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/btc-five-paths-2026.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="BTC 接下來的五套劇本：82,814 站得上，和站不上，是兩個世界">
+  <meta property="og:description" content="BTC 剛收在 81,235，離 82,814 那條線只差 1.94%。這篇把我目前在看的五條路一次攤開：每一條都寫清楚它長什麼樣子、我會拿什麼來辨認它。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/btc-five-paths-2026.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/btc-five-paths-map.jpg">
+  <meta property="article:published_time" content="2026-09-20">
+  <meta property="article:author" content="交易幣修課 Gteno">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BTC 接下來的五套劇本：82,814 站得上，和站不上，是兩個世界",
+    "description": "BTC 剛收在 81,235，離 82,814 那條線只差 1.94%。這篇把我目前在看的五條路一次攤開：每一條都寫清楚它長什麼樣子、我會拿什麼來辨認它。",
+    "datePublished": "2026-09-20",
+    "dateModified": "2026-09-20",
+    "image": "https://crypto-trading-academy.com/blog/assets/btc-five-paths-map.jpg",
+    "author": {"@type": "Person", "name": "Gteno", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/btc-five-paths-2026.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+  <style>
+    /* 手機版:欄數多的表格改為可橫向捲動,避免整頁被撐出橫向捲軸 */
+    .article-body .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    @media (max-width: 640px) {
+      .article-body table.data-table { font-size: 0.8125rem; }
+      .article-body .data-table th,
+      .article-body .data-table td { padding: 0.55rem 0.4rem; white-space: nowrap; }
+      .article-body .data-table td:first-child,
+      .article-body .data-table th:first-child { white-space: normal; }
+      .article-body h2 { font-size: 1.45rem; }
+    }
+  </style>
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">BTC 五套劇本</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-4">技術分析 ｜ 關鍵價位 × 路徑推演 × 歷史基準率</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">BTC 接下來的五套劇本<br class="hidden md:block"><span class="text-slate-400 text-2xl md:text-3xl">82,814 站得上，和站不上，是兩個世界</span></h1>
+      <p class="text-lg text-slate-400 mb-6">BTC 剛收在 81,235，離 82,814 那條線只差 1.94%。這篇把我目前在看的五條路一次攤開：每一條都寫清楚它長什麼樣子、我會拿什麼來辨認它。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-09-20</span><span>•</span><span>⏱ 閱讀約 18 分鐘</span><span>•</span><span>✍️ Gteno（CTA 創辦人）</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <p>BTC 剛剛收在 81,235，離我畫的那條 <strong>82,814</strong> 只差 <strong>1.94%</strong>。</p>
+
+    <p>這篇文章不猜 BTC 會漲到哪裡。它做的是另一件事：把我目前在看的五條路一次攤開，每一條都寫清楚——<strong>這條路長什麼樣子、我會拿什麼來辨認它</strong>。</p>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/btc-five-paths-map.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/btc-five-paths-map.jpg?v=1" alt="BTC 週線圖與五條劇本路徑示意：圖上標出 106,771 的 0.786 回撤、82,814 關鍵關卡、73,757 與 64,543 構成的回採帶、70,502 的 200 日均線，以及 57,735 的 7 月 1 日前低" class="w-full h-auto" loading="eager">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">五條路徑為劇本示意，不是價格預測。資料：Bitstamp BTC/USD 週線，本站自行擷取與計算；最後一根週 K 截至 2026-09-20 盤中，尚未收完。本文的統計數字一律以 9/19 收盤為準。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <div class="insight-card my-8">
+<p><strong>先講資料口徑，免得你讀到一半被數字搞混</strong></p>
+
+    <p>· <strong>我圖上的價位</strong>（82,814.03、106,771.25、費波那契錨點 126,219.03／57,748.80、200 均 70,498）來自 TradingView 的 <strong>BTCUSD INDEX</strong>，那是多家交易所的綜合報價。</p>
+
+    <p>· <strong>本文的歷史統計與均線重算</strong>，全部用 <strong>Bitstamp BTC/USD 日線</strong>，本站自行擷取與計算，樣本 5,512 筆，<strong>截至 2026-09-19 收盤</strong>。</p>
+
+    <p>· 撰稿時間是 <strong>2026-09-20 台北下午 2 點（UTC 06:00）</strong>，今天的日 K <strong>還沒收完</strong>（只走了 6 小時、成交量不到昨日的兩成）。所以文中所有<strong>用 Bitstamp 算出來的</strong>「現況」數字，一律以 <strong>9 月 19 日的收盤 81,235</strong> 為準，不用今天的盤中價。</p>
+
+    <p>· <strong>我圖上標的那些價位是截圖當下的快照</strong>（例如 200 均 70,498、7/1 前低 57,749），不隨本文的收盤口徑改動——它們是我畫線的依據，不是統計樣本。同一項目若有兩個值，我會兩個都列出來。</p>
+
+    <p>· 兩個來源在本文用到的幾個價位上，經逐項核對差異都在 <strong>0.05% 以內</strong>（例如 5/6 那根高點：INDEX 82,814.03、Bitstamp 82,833）。這是這幾個數字的核對結果，不是對所有差異的保證。</p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>先說清楚：為什麼是五套，不是一個目標價</h2>
+
+    <p>先給一個數字。</p>
+
+    <p>BTC 的 50 日均線與 200 日均線黃金交叉，從 2014 年到 2025 年，完整發生過 <strong>11 次</strong>。一年之後價格上漲的有 <strong>8 次（73%）</strong>，中位數漲幅 <strong>+90.7%</strong>。</p>
+
+    <p>聽起來很不錯。但同一批 11 次裡面，<strong>有 10 次在那一年當中出現過超過 30% 的回撤</strong>，中位數是 <strong>−52.5%</strong>。</p>
+
+    <p>歷史上這個訊號之後偏多的情況比較多。但路，從來不是直的。</p>
+
+    <p>（這是 11 次歷史樣本的分布，<strong>不是這一次的機率</strong>。樣本只有 11 次，不能當成預測。）</p>
+
+    <p>這就是為什麼我不寫一個目標價，而是寫五套劇本。因為「方向看對」跟「你抱得住」是兩件完全不同的事，而抱不抱得住，往往取決於你有沒有事先知道自己可能會經歷什麼。</p>
+
+    <div class="pull-quote">事先想過的下跌，叫劇本。<br>沒想過的下跌，叫恐慌。<br>價格一模一樣，結果天差地遠。</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>一、先認識這條線：82,814 為什麼這麼重要</h2>
+
+    <p>如果你是新手，先把「壓力」這個詞弄懂，這篇後面才讀得下去。</p>
+
+    <p><strong>壓力</strong>，就是價格漲到某個位置時，常常會遇到比較大賣壓的區域。常見的解釋是：在那個價位套牢的人想解套、有獲利的人想落袋，賣單疊在一起，價格就容易被擋住。能不能突破，還是要看當下的買賣力量。</p>
+
+    <p>82,814 不是我隨手畫的。同一個價位上，疊了三項結構線索。</p>
+
+    <p><strong>線索一：它是 2026 年 5 月那一波反彈的最高點。</strong></p>
+
+    <p>那一波的頂打在 5 月 6 日。從那個高點算起，接下來 40 天 BTC 再跌 <strong>28.7%</strong>，最低來到 59,100。換句話說，上一批在這個價位追進去的人，套了快三成。</p>
+
+    <p><strong>線索二：那個高點，不是自己停在那裡的——是 200 日均線把它擋下來的。</strong></p>
+
+    <p>5 月 6 日當天，200 日均線在 83,286。價格的最高點離它只差 <strong>0.5%</strong>，碰都沒碰到就被壓回去了。</p>
+
+    <p>這就是我在第五張圖上用黃箭頭標的那個位置。我的判讀是：<strong>那一次反彈在接近當時 200 日均線的地方受阻，所以我把前波高點和均線合看成同一個壓力區</strong>（兩者相距 0.5%）。</p>
+
+    <p><strong>線索三：它也是這一波反彈的天花板。</strong></p>
+
+    <p>7 月 1 日落底之後最強的一根，打在 9 月 3 日，最高 <strong>82,280.62</strong>，距離 82,814 只差 <strong>0.64%</strong>，然後就回頭了。</p>
+
+    <p>從 7/1 到 9/19，<strong>收盤站上 82,814 的天數是 0 天，連日內碰到都沒有過。</strong></p>
+
+    <p>三項線索指到同一個價位——這種線不是畫出來的，是市場自己走出來的。</p>
+
+    <p>（要說明白：這三項彼此有關聯，不是三個各自獨立的證據。均線是價格算出來的，5 月的高點本身也是形成這個壓力區的一部分。重點是它們<strong>指向同一個位置</strong>。）</p>
+
+    <p>所以我的五套劇本，全部從同一個問題分岔：<strong>這一次，站得上去嗎？</strong></p>
+
+    <p>先把「站上」這個詞講清楚，因為它是五套劇本的分流條件：</p>
+
+    <div class="pull-quote">我說的「<strong>有效突破</strong>」，不是盤中一根針刺穿 82,814 就算。我會結合<strong>收盤的位置</strong>，以及<strong>突破之後守不守得住</strong>一起判讀，不用單一個瞬間的價格去下結論。<br>我不給固定的天數或百分比門檻——那要看突破當下的量能與結構，硬填一個數字反而會誤導。<br>還有一件事要先說：<strong>前四張圖我畫的是週線</strong>，呈現的是主要路徑；本文的日線統計是用來補充行情背景的，<strong>不代表一根日 K 就能確認週線上的劇本</strong>。碰到收針、突破這種結構確認，我會連同圖上的週期和後續走勢一起看。</div>
+
+    <p>下面這張表先把所有關卡攤開。裡面會出現「回採」這個詞，先解釋一下：</p>
+
+    <div class="pull-quote"><strong>回採</strong> ＝ 價格漲上去之後，再跌回某個位置，回頭確認那裡還守不守得住。<br>「回採帶」是指 64,543–73,757 這一段；「回採 200 均」是指跌回到 200 日均線。<br>兩個講的是同一件事，只是回頭確認的對象不一樣。</div>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>關卡</th>
+    <th>價位</th>
+    <th>距 9/19 收盤</th>
+    <th>它是什麼</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>0.786 回撤</td>
+    <td class="safe">106,771</td>
+    <td class="safe">+31.43%</td>
+    <td>劇本四提到的位置</td>
+  </tr>
+  <tr>
+    <td><strong>關鍵關卡</strong></td>
+    <td class="danger"><strong>82,814</strong></td>
+    <td class="danger"><strong>+1.94%</strong></td>
+    <td><strong>五套劇本的分水嶺</strong></td>
+  </tr>
+  <tr>
+    <td>回採帶上緣</td>
+    <td class="warn">73,757</td>
+    <td class="warn">−9.21%</td>
+    <td>劇本三的上緣</td>
+  </tr>
+  <tr>
+    <td>200 日均線</td>
+    <td class="warn">70,498</td>
+    <td class="warn">−13.22%</td>
+    <td>劇本五提到的回採位</td>
+  </tr>
+  <tr>
+    <td>回採帶下緣</td>
+    <td class="warn">64,543</td>
+    <td class="warn">−20.55%</td>
+    <td>劇本三的下緣</td>
+  </tr>
+  <tr>
+    <td>7/1 前低</td>
+    <td class="danger">57,749</td>
+    <td class="danger">−28.91%</td>
+    <td>劇本二提到的前低</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>（表上這幾個價位都是我自己圖上標的值，距離則是對 Bitstamp 的 9/19 收盤算的。兩個來源同一項目的對照：200 日均線 我圖上 <strong>70,498</strong>、Bitstamp 重算 70,464；7/1 前低 我圖上 <strong>57,749</strong>、Bitstamp 當日低 57,734.63。兩組都差 0.05% 以內。<strong>另外提醒：200 日均線每天都在移動，70,498 只是這個時點的位置，真的走到回採的時候要看當下的均線在哪裡。</strong>）</p>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>二、劇本一：站不上 82,814，二探之後才做真表態</h2>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/path-1-retest-declare.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/path-1-retest-declare.jpg?v=1" alt="劇本一走勢圖：BTC 週線，82,814 紅色水平線為壓力，價格先往下二探再向上表態" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">劇本一：82,814 站不上去，二探之後才做真表態。TradingView，BTCUSD INDEX 週線（作者原圖，截圖時間 2026-09-20 台北下午 2 點）。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <p><strong>這套劇本在講什麼</strong></p>
+
+    <p>82,814 是強壓力，這一次還是站不上去。價格回頭往下再探一次，觀察換手與支撐承接，之後才做真正的方向表態。<strong>在我畫的這套路徑裡，二探完成之後是向上表態</strong>（見上圖我畫的那一段）。</p>
+
+    <p><strong>「二探」是什麼</strong></p>
+
+    <p>就是價格再往下走一趟，回去測試下方支撐的區域。在這套劇本裡，我會透過這次再度回落，<strong>觀察賣壓有沒有減弱、下方的承接有沒有增強</strong>。</p>
+
+    <p>⚠️ <strong>一個小白最容易讀錯的地方</strong>：本文的「二探」是「再次回落測試支撐」的<strong>概稱</strong>，各套劇本要測的區域<strong>不一樣</strong>，不是一律回到 7/1 的前低——</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>哪一套</th>
+    <th>二探測的是哪裡</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>劇本二</td>
+    <td>57,749 前低附近</td>
+  </tr>
+  <tr>
+    <td>劇本三</td>
+    <td>64,543–73,757 回採帶</td>
+  </tr>
+  <tr>
+    <td>劇本四</td>
+    <td>走到 106,771 之後的那一次洗盤</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>劇本一沒有指定區域——深度由市場決定。</p>
+
+    <p><strong>我為什麼不在這套劇本裡指定二探的深度</strong></p>
+
+    <p>這是刻意的。深度要由市場決定，而不是由我先填一個數字。下面的歷史數字只是提供一個「通常有多深」的感覺，<strong>不是我設定的門檻</strong>。</p>
+
+    <p><strong>歷史上，金叉之後的回檔通常有多深</strong></p>
+
+    <p>這裡要先講一件事實，因為後面的推算會用到：<strong>BTC 在 2026 年 9 月 8 日，剛剛完成了一次 50/200 雙均金叉，當天收在 78,449。</strong>（完整的意義留到劇本五那一節講。）</p>
+
+    <p>拿前面那 11 次金叉來看：金叉之後 120 天內，價格從金叉當天收盤算起最深的跌幅，中位數是 <strong>−12.1%</strong>。11 次裡有 <strong>6 次跌破 10%</strong>、<strong>3 次跌破 20%</strong>。</p>
+
+    <p>（要說清楚：這量的是「金叉之後的任何回檔」，不是專門量「二探」這個動作——歷史資料沒辦法幫我標出哪一段才是二探。它只提供一個幅度感。）</p>
+
+    <p>這一次的金叉收在 78,449。以中位數 −12.1% 換算，大約落在 <strong>68,950</strong> 附近——正好在回採帶裡面。這是歷史的落點，不是我的目標價。</p>
+
+    <div class="insight-card my-8">
+<p><strong>我會怎麼辨認這一套</strong>：82,814 再度被擋下，價格回落、換手，之後重新往上挑戰 82,814。</p>
+
+    <p><strong>什麼情況我會改看別套</strong>：82,814 被突破、價格往 106,771 推進，那是劇本四的路徑；如果跌得更深、一路測到前低附近，就要看劇本二；如果是用「急跌 + 收針」的方式殺進回採帶，那是劇本三。</p>
+
+    <p>（劇本四著重的是<strong>突破之後往 106,771 推進、再洗盤二探</strong>的那一段；它跟前面的二探路徑是不是接得起來，要連同完整走勢一起判讀，不是看單一個瞬間。）</p>
+
+    <p><strong>這三件事不互相排斥</strong>——劇本一講的是整個「受阻 → 二探 → 表態」的骨架，劇本二和劇本三是這個骨架底下，二探那一段長得不一樣的兩種版本。</p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>三、劇本二：威科夫吸籌——二探前低，砌穩才算數</h2>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/path-2-wyckoff-spring.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/path-2-wyckoff-spring.jpg?v=1" alt="劇本二走勢圖：價格跌破 7 月前低之後被快速收回，在低位築底再往上" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">劇本二：威科夫吸籌——二探前低，砌穩之後才表態。TradingView，BTCUSD INDEX 週線（作者原圖，截圖時間 2026-09-20 台北下午 2 點）。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <p><strong>先用白話講威科夫</strong></p>
+
+    <p>威科夫（Richard Wyckoff）是 1900 年代初期的交易者，他研究的問題很單純：<strong>大資金要怎麼在不推高價格的情況下買到很多貨？</strong></p>
+
+    <p>威科夫的框架會把某些區間震盪，理解成<strong>籌碼逐步轉移、供需關係改變</strong>的過程：震盪把沒耐心的人磨出場，貨慢慢換到願意抱的人手上。其中一種被討論很多的情況，是價格往下壓到整理區間的下緣、甚至短暫跌破，把掛在那裡的停損掃掉。</p>
+
+    <p>（要講清楚：這是一套<strong>判讀框架</strong>，不是已經被證實的資金行為。光看 K 線和成交量，沒辦法證明是誰在買、意圖是什麼。）</p>
+
+    <p>這種<strong>跌破整理區間的支撐（或下緣）之後又被收回來</strong>的動作，在威科夫分析裡常被稱為 <strong>Spring（彈簧）</strong>。要注意兩件事：<strong>吸籌不一定會出現彈簧</strong>，它只是其中一種可能的路徑；而且要跌破的是<strong>整理區間的支撐</strong>，不是隨便一個前低被碰到又彈起來就算。</p>
+
+    <p><strong>這套劇本的路徑</strong></p>
+
+    <p>82,814 還是站不上去 → 價格往下走，回到 7/1 的前低 <strong>57,749</strong> 附近做測試 → <strong>二探不一定要跌破前低</strong>；如果出現短暫跌破又被快速收回，我會把它列為可能的彈簧結構 → 接著看它能不能在那一帶把底<strong>砌穩</strong> → 然後才是真正的表態。</p>
+
+    <p><strong>關鍵字是「砌穩」，不是「跌破」</strong></p>
+
+    <p>這一點必須講清楚，因為這是整套劇本最容易被用錯的地方。</p>
+
+    <p><strong>「跌破前低」本身不是訊號。</strong> 在我的判讀裡，短暫跌破又收回只是第一個線索；後續的測試與向上的力量，才是我確認這套吸籌路徑的重點。</p>
+
+    <p>在我採用的這套路徑裡，跌破之後我會繼續看兩件事：</p>
+
+    <ol>
+  <li><strong>後續的測試</strong>：價格再往下試的時候，賣壓有沒有變弱（量縮、而且不再破新低）。</li>
+  <li><strong>向上的力量</strong>：接下來的反彈有沒有帶量，能不能把區間上緣打掉。</li>
+</ol>
+
+    <p>這兩個觀察點是我自己的判讀順序，不是保證。K 線和成交量能告訴你的是「賣壓看起來變弱了」，不是「下面真的沒貨了」——這兩句話差很多。</p>
+
+    <p>所以這套劇本的關鍵字從頭到尾是「<strong>砌穩</strong>」，不是「跌破」。跌不跌破都可能，<strong>砌穩才是我在等的那件事</strong>。</p>
+
+    <div class="insight-card my-8">
+<p><strong>我會怎麼辨認這一套</strong>：價格回到 57,749 附近測試（不一定要跌破）；若出現短暫跌破後被收回，我會把它列為可能的彈簧，再觀察後續的測試有沒有量縮不破低，以及反彈有沒有力量。</p>
+
+    <p><strong>什麼情況我會改看別套</strong>：跌破之後價格續弱、收不回去——那就不是彈簧，而是新的下跌段，五套劇本全部重新評估。</p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>四、劇本三：急跌回採 64,543–73,757，收針之後翻多</h2>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/path-3-sharp-drop-pin.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/path-3-sharp-drop-pin.jpg?v=1" alt="劇本三走勢圖：橘色水平線標出 73,757.39 與 64,543.75 構成的回採帶，價格急跌進帶內收針後翻多" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">劇本三：急跌回採 64,543–73,757（圖上標 64,543.75 與 73,757.39），收針之後 82,814 由壓力翻為新支撐。TradingView，BTCUSD INDEX 週線（作者原圖，截圖時間 2026-09-20 台北下午 2 點）。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <p><strong>這套劇本在講什麼</strong></p>
+
+    <p>82,814 一樣站不上去，但這次不是慢慢磨下去，而是急跌，直接殺進 <strong>64,543–73,757</strong> 這個帶子，在裡面收出長下影線，然後往上翻。走完之後，82,814 的角色會翻轉——<strong>從壓力變成支撐</strong>。</p>
+
+    <p>補一句順序，因為這件事常被講反：價格從下面再回到 82,814 的時候，它<strong>還是壓力</strong>。要先<strong>向上突破</strong>，然後<strong>回測守住</strong>，82,814 才算真的變成支撐。</p>
+
+    <p><strong>「收針」是什麼</strong></p>
+
+    <p>一根 K 棒，下影線很長、實體很短，看起來像一根針插下去。它的意思是：那一段時間裡價格被打到很低，但收盤前又被買回來了。<strong>長下影線代表低價沒能撐到收盤</strong>，我把它當成觀察承接的線索——不代表針尖就確認是底。</p>
+
+    <p><strong>為什麼是這個帶子</strong></p>
+
+    <p>因為這裡有三件事疊在一起：</p>
+
+    <ol>
+  <li><strong>這是 2024 年一段重要的整理區域。</strong> 2024 年 3 月到 10 月，BTC 有 <strong>116 個交易日（約 47.3%）的收盤落在這個帶子裡</strong>——將近一半的時間。而攤開 15 年全樣本，只有 <strong>3.9%</strong> 的日子收在這裡。我把這種「價格在窄帶裡停留很久」當成歷史整理的線索。（要說明白：這算的是收盤落點，不是成交量分布。）</li>
+  <li><strong>200 日均線現在就在裡面</strong>（我圖上 70,498）</li>
+  <li><strong>50 日均線也在裡面</strong>（72,839）</li>
+</ol>
+
+    <p>同一個價格帶上有兩條主要均線，加上一段停留很久的舊區間，這叫「共振」。多個技術條件集中在同一個區域，我就會提高對這個區域的關注。</p>
+
+    <p><strong>距離</strong>：從 9/19 收盤算，到帶子上緣 73,757 是 <strong>−9.21%</strong>，到帶子下緣 64,543 是 <strong>−20.55%</strong>。</p>
+
+    <div class="insight-card my-8">
+<p><strong>我會怎麼辨認這一套</strong>：價格急跌進 64,543–73,757 的帶子 → 收出長下影線（收針）→ 做真表態往上翻。之後 82,814 由壓力轉成新支撐。</p>
+
+    <p><strong>什麼情況我會改看別套</strong>：跌進帶子後沒有收針、就直接往下走，那就要看劇本二那一段。</p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>五、劇本四：小牛市劇本——直接突破，上看 0.786</h2>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/path-4-mini-bull-fib786.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/path-4-mini-bull-fib786.jpg?v=1" alt="劇本四走勢圖：費波那契自 57,748.80 至 126,219.03，綠色線標出 0.786 回撤位 106,771.25" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">劇本四：突破 82,814 後上看 0.786（106,771.25），洗盤二探再迎主升段。費波那契錨點為圖上的 1（126,219.03）與 0（57,748.80），採對數座標計算。TradingView，BTCUSD INDEX 週線（作者原圖，截圖時間 2026-09-20 台北下午 2 點）。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <p><strong>這套劇本在講什麼</strong></p>
+
+    <p>82,814 這次直接被攻破。價格一路走到 <strong>106,771</strong>（這一段跌勢的 0.786 回撤位），在那裡做一次洗盤二探，然後才迎來主升段。</p>
+
+    <p><strong>費波那契回撤是什麼</strong></p>
+
+    <p>把一段完整的漲勢或跌勢的頭和尾抓出來，中間用固定比例切幾刀（0.382、0.5、0.618、0.786）。這些比例是市場上常見的觀察參考，價格走到附近時我會留意；<strong>但會不會真的形成轉折，還是要看價格到了那裡的反應</strong>。</p>
+
+    <p><strong>0.786 這條線怎麼來的</strong></p>
+
+    <p>這一段下跌，從 2025-10-06 的 <strong>126,219</strong> 跌到 2026-07-01 的 <strong>57,749</strong>，跌幅 −54%。（這兩個端點是我圖上 BTCUSD INDEX 的值；同樣這兩天，Bitstamp 日線的高低點分別是 126,272 與 <strong>57,734.63</strong>。下面的費波那契計算一律用我圖上的 INDEX 錨點。）</p>
+
+    <p>這裡有一個細節值得講，因為它決定了這條線該畫在哪裡：<strong>我是用對數座標算的，不是線性。</strong></p>
+
+    <p>同樣這組高低點：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>座標</th>
+    <th>0.786 的位置</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>線性座標</td>
+    <td>111,566</td>
+  </tr>
+  <tr>
+    <td><strong>對數座標</strong></td>
+    <td><strong>106,771</strong></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>差了快 4,800 點。這種長週期、大跌幅的行情，我更重視<strong>相對的漲跌幅</strong>，所以採用對數計算——同樣下跌 1 萬點，從 12 萬跌到 11 萬，和從 6 萬跌到 5 萬，跌幅<strong>比例</strong>並不相同。（線性也有人用，這是畫法的選擇；我說明我用哪一種，讓你知道這條線怎麼來的。）</p>
+
+    <p>我圖上標的 <strong>106,771.25</strong>，就是對數座標的那個值。</p>
+
+    <p><strong>為什麼走到那裡要先洗盤</strong></p>
+
+    <p>0.786 是常用回撤位裡比較深的一個，已經很接近整段跌勢的起點。能走到這裡的人，很多是從底部一路抱上來的，帳面獲利已經相當可觀。<strong>在我這套小牛市劇本裡，走到這裡會先經歷一次洗盤二探，再銜接主升段</strong>——把獲利了結的賣壓先消化掉。</p>
+
+    <p><strong>距離</strong>：9/19 收盤到 106,771 是 <strong>+31.43%</strong>。</p>
+
+    <div class="insight-card my-8">
+<p><strong>我會怎麼辨認這一套</strong>：82,814 被突破，價格往 106,771 走。</p>
+
+    <p><strong>什麼情況我會改看別套</strong>：站上之後守不住、跌回 82,814 之下——用我自己的話說就是「無法站上」，那就回到劇本一，二探的機率還在。</p>
+
+    <p>（要注意：這套劇本自己也含一次二探——走到 0.786 之後的洗盤。所以「站上 82,814」不是終點，只是換到另一條路上。）</p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>六、劇本五：雙均線濾網——熊市結束的判斷式</h2>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/path-5-dual-ma-filter.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/path-5-dual-ma-filter.jpg?v=1" alt="劇本五走勢圖：BTC 日線加上 50 日與 200 日均線，黃箭頭標示 2022 年與 2026 年的均線反壓點，白箭頭標示歷次黃金交叉，橘色虛線為 70,498 的 200 日均線" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">劇本五：雙均線濾網——熊市結束的趨勢條件。黃箭頭為均線反壓（2022 與 2026 各一）、白箭頭為歷次雙均金叉，橘色虛線為圖上標示的 200 日均線 70,498.37。TradingView，BTCUSD INDEX 日線（作者原圖，截圖時間 2026-09-20 台北下午 2 點）。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <p><strong>這一套跟前面四套不一樣。</strong></p>
+
+    <p>前面四套講的是「價格會走哪一條路」。這一套不是一條路，是一個<strong>濾網</strong>——它回答的是另一個層次的問題：<strong>趨勢的背景，到底翻過來了沒有？</strong></p>
+
+    <p>因為層次不同，所以它可以跟前面任何一套同時成立。</p>
+
+    <p><strong>均線白話</strong></p>
+
+    <p>50 日均線，就是最近 50 天收盤價的平均；200 日均線，就是最近 200 天的平均。短的代表近期的力氣，長的代表長期的趨勢。</p>
+
+    <p>當短的由下往上穿過長的，叫<strong>黃金交叉</strong>——近期的力氣開始超過長期的慣性。反過來由上往下穿，叫死亡交叉。</p>
+
+    <p><strong>我的判斷式</strong>，講清楚是兩件事：</p>
+
+    <div class="pull-quote">我用雙均線金叉成功，作為判斷<strong>熊市結束的趨勢條件</strong>；再用 82,814 的有效突破，作為<strong>價格確認</strong>。<br>截至 9 月 19 日：<strong>金叉已成立且仍維持；依這個雙條件框架，價格確認尚未完成。</strong></div>
+
+    <p><strong>兩個歷史對照——就是我在圖上標的那兩組箭頭</strong></p>
+
+    <p><strong>2022 年（黃箭頭）：</strong> 熊市下跌段當中，價格反彈上去碰到 200 均，被壓回來，然後繼續跌。</p>
+
+    <p>把當年的軌跡攤開來看：那一輪下跌途中最後一次觸及 200 日均線是 <strong>2022-01-02</strong>，當天最高 47,989，200 均在 47,928。從那一刻算起，BTC 又再跌了 <strong>67.7%</strong> 才真正落底。</p>
+
+    <p><strong>2023 年（白箭頭）：</strong> 底部成功突破 200 均、雙均金叉成立之後，趨勢反轉，牛市開啟。而且金叉之後，BTC 有做一次回採 200 均的動作——<strong>與這一次的結構極其相似。</strong></p>
+
+    <p>同樣攤開來看：金叉在 <strong>2023-02-07</strong>，回採在 <strong>2023-03-10</strong>，第 31 天，當天最低 19,569，200 均在 19,707——<strong>只穿破 0.7% 就翻上去了</strong>。</p>
+
+    <p>那一次回採之後的表現（以回採日<strong>收盤價</strong>為起點）：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>2023-03-10 回採之後</th>
+    <th>報酬</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>30 天</td>
+    <td class="safe">+40.2%</td>
+  </tr>
+  <tr>
+    <td>90 天</td>
+    <td class="safe">+31.1%</td>
+  </tr>
+  <tr>
+    <td>180 天</td>
+    <td class="safe">+27.3%</td>
+  </tr>
+  <tr>
+    <td>365 天</td>
+    <td class="safe">+238.6%</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p><strong>但這是單一案例（n=1），不是基準率。</strong> 為了不讓這張表被誤讀，我把「金叉後 120 天內有回採 200 均」的 <strong>5 次</strong>全部攤開，一樣以回採日收盤價為起點：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>自回採日收盤起算</th>
+    <th>中位數</th>
+    <th>最差的一次</th>
+    <th>最好的一次</th>
+    <th>為正</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>30 天</td>
+    <td>+3.3%</td>
+    <td class="danger">−27.4%</td>
+    <td class="safe">+53.3%</td>
+    <td>3/5</td>
+  </tr>
+  <tr>
+    <td>90 天</td>
+    <td>+8.5%</td>
+    <td class="danger">−36.5%</td>
+    <td class="safe">+47.2%</td>
+    <td>4/5</td>
+  </tr>
+  <tr>
+    <td>180 天</td>
+    <td class="safe">+27.3%</td>
+    <td class="danger">−65.0%</td>
+    <td class="safe">+80.2%</td>
+    <td>3/5</td>
+  </tr>
+  <tr>
+    <td>365 天</td>
+    <td class="safe">+154.0%</td>
+    <td class="danger">−56.1%</td>
+    <td class="safe">+436.4%</td>
+    <td>3/5</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>我引用 2023 年，是因為<strong>它在突破 200 均、形成金叉之後的結構，跟我現在看到的情況極其相似</strong>。若這一次也出現回採 200 均，就會進一步呼應我畫的劇本三——<strong>但回採還沒發生，那是待觀察的路徑，不是已成立的事實。</strong></p>
+
+    <p>至於報酬：那一次一年後 +238.6%，高於這 5 次的中位數 +154.0%；所以我用它說明<strong>路徑</strong>，不把那次的漲幅當成這次的預期。</p>
+
+    <p>這 5 次裡面的落差也要看到：有一次在回採之後第 180 天，報酬是 <strong>−65.0%</strong>（這是「第 180 天當天相對回採日」的報酬，不是期間最深跌幅）。</p>
+
+    <p>⚠️ <strong>這張表是「從回採那一天」起算的。</strong> 第七節還會出現同一批 5 次樣本，但那裡是「從金叉那一天」起算，數字不一樣。起算日不同，數字就不同——第七節末尾有一張對照表把所有口徑列清楚。</p>
+
+    <p><strong>這一次，均線結構已經有兩項進展</strong></p>
+
+    <p><strong>第一，這一輪的均線反壓位置，就落在 82,814。</strong> 這就是第一節說的那個理由二。</p>
+
+    <p><strong>第二，雙均金叉已經在 2026 年 9 月 8 日成立了。</strong></p>
+
+    <p>那一天，50 均在 69,957，200 均在 69,869，兩線只差 88 點。</p>
+
+    <p>到 9 月 19 日收盤，含金叉那一根在內走了 12 根日 K。這段期間的已知事實是：<strong>兩條線一天都沒有再交叉回去；兩線乖離由 +0.13% 擴大到 +3.37%，逐日遞增；200 日均線近 20 日淨上升 1.58%。</strong></p>
+
+    <p><strong>這兩件事不是互相矛盾，是前後兩件</strong></p>
+
+    <p>趨勢條件成立了，代表熊市結束的判斷已經有依據；接下來價格會走哪一條路，還是得看 82,814。<strong>兩件都到位，反轉的確認才算完整。</strong>（所以到現在為止，我的結論是「趨勢訊號已經有了，價格確認還在等」，不是「已經確認反轉」。）</p>
+
+    <p><strong>如果這次也走回採劇本</strong></p>
+
+    <p>200 均現在在 <strong>70,498</strong>（我圖上標的值；用 Bitstamp 已收盤日線重算是 70,464，差 0.05%）——剛好落在劇本三的回採帶裡面。</p>
+
+    <p>歷史上金叉之後 120 天內有沒有回採 200 均？<strong>11 次裡有 5 次，接近一半（45%）。</strong></p>
+
+    <div class="insight-card my-8">
+<p><strong>趨勢條件目前的狀態</strong>：成立。金叉後兩線未反向交叉，乖離逐日擴大。</p>
+
+    <p><strong>什麼情況趨勢條件會失效</strong>：50 均回頭跌破 200 均，形成死亡交叉——金叉既然沒有「成功」，雙均線這項趨勢條件就失效；即使之後價格再去挑戰 82,814，我也要重新檢查整個雙條件框架。</p>
+
+    <p><strong>注意</strong>：這個濾網跟前面四套<strong>不是二選一</strong>。它是趨勢的背景條件，前四套是價格的路徑；背景成立的情況下，價格還是可以走一、二、三、四裡面的任何一條。</p>
+</div>
+
+    <div class="ceo-card my-8">
+<p><strong>這一節要記的一句話</strong></p>
+
+    <p>在雙均線這項趨勢條件維持成立的前提下，82,814 成功突破，就是我判斷牛市開啟的價格確認；無法站上，二探的機率還是存在。</p>
+
+    <p>兩邊都要準備好，不是選一邊站。</p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>七、把五套劇本串在一起的那條線</h2>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/btc-golden-cross-base-rate.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/btc-golden-cross-base-rate.jpg?v=1" alt="左右雙欄長條圖：左欄為 BTC 11 次 50/200 均線黃金交叉之後一年的報酬，中位數 +90.7%；右欄為同一年內的最大回撤，中位數 -52.5%，11 次裡有 10 次回撤超過 30%" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">同一批樣本、同一段時間：左邊是終點，右邊是過程。右欄是「從期間最高點算下來」的回撤，不是從進場價算的（兩者的差別見第七節與風險提示第 5 點）。資料：Bitstamp BTC/USD 日線 2011-08-18 至 2026-09-19 收盤，本站自行擷取與計算。歷史表現不代表未來結果。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <p>前面五套看起來各走各的。但它們其實是同一件事的不同面貌，而串起它們的，就是文章開頭那組數字。</p>
+
+    <p><strong>50/200 金叉的完整基準率</strong>（11 次，2014–2025，不含這次因為還沒滿一年）：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>自金叉當天收盤起算</th>
+    <th>中位數報酬</th>
+    <th>為正比例</th>
+    <th>最差</th>
+    <th>最好</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>30 天</td>
+    <td>+3.2%</td>
+    <td>6/11（55%）</td>
+    <td class="danger">−39.3%</td>
+    <td class="safe">+42.5%</td>
+  </tr>
+  <tr>
+    <td>90 天</td>
+    <td>+19.1%</td>
+    <td>8/11（73%）</td>
+    <td class="danger">−43.4%</td>
+    <td class="safe">+86.7%</td>
+  </tr>
+  <tr>
+    <td>180 天</td>
+    <td>+35.4%</td>
+    <td>8/11（73%）</td>
+    <td class="danger">−56.6%</td>
+    <td class="safe">+95.1%</td>
+  </tr>
+  <tr>
+    <td><strong>365 天</strong></td>
+    <td class="safe"><strong>+90.7%</strong></td>
+    <td class="safe"><strong>8/11（73%）</strong></td>
+    <td class="danger">−59.1%</td>
+    <td class="safe">+412.3%</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>同一批樣本，同一年之內的<strong>最大回撤</strong>：</p>
+
+    <div class="pull-quote"><strong>最大回撤</strong>，是指在觀察期間內，價格從當時已經出現過的高點，跌到後面某個低點，最深的那一段跌幅。它可能包含的是獲利回吐，<strong>不等於你相對進場價虧了多少</strong>。本文用日內高低價計算。</div>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>一年內最大回撤</th>
+    <th>數值</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>中位數</td>
+    <td class="danger">−52.5%</td>
+  </tr>
+  <tr>
+    <td>最淺</td>
+    <td>−22.6%</td>
+  </tr>
+  <tr>
+    <td>最深</td>
+    <td class="danger">−76.3%</td>
+  </tr>
+  <tr>
+    <td>出現超過 30% 回撤的比例</td>
+    <td class="danger">10 / 11</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p><strong>再看一個更直接的切法</strong>：金叉之後 120 天內，有沒有回採 200 均？</p>
+
+    <div class="pull-quote">⚠️ <strong>這裡統計用的「回採」，定義比技術判讀上的寬鬆得多</strong>：只要金叉後 120 天內，曾經有<strong>任何一天的最低價觸及或跌破當日的 200 日均線</strong>，就算。它<strong>不要求當天收回、也不代表均線守住了</strong>——一路跌穿、繼續往下的那幾次，同樣被算進「有回採」。<br>另外兩點：符合條件的日子若不只一天，<strong>一律取第一次</strong>；而且這是<strong>事後分類</strong>——金叉當天你並不知道自己會落在哪一組。</div>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th></th>
+    <th>樣本</th>
+    <th>一年後中位數（自金叉日收盤）</th>
+    <th>為正</th>
+    <th>120 天內跌幅（自金叉日收盤，中位／最壞）</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>有回採 200 均</td>
+    <td>5</td>
+    <td><strong>+90.7%</strong></td>
+    <td>3/5</td>
+    <td class="danger">−30.6% ／ −62.2%</td>
+  </tr>
+  <tr>
+    <td>沒有回採</td>
+    <td>6</td>
+    <td><strong>+86.2%</strong></td>
+    <td>5/6</td>
+    <td>−4.6% ／ −12.1%</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>一年之後的中位數幾乎一樣（+90.7% 對 +86.2%），但<strong>為正的比例並不一樣</strong>（3/5 對 5/6）。真正拉開差距的是過程——有回採的那一組，中途跌幅的中位數是 −30.6%，最壞的一次跌掉 <strong>−62.2%</strong>；沒回採的那一組，中位只有 −4.6%，最壞也只有 −12.1%。</p>
+
+    <p>（樣本各只有 5 次和 6 次，很小。這裡看的是量級差距，不是精確的機率。）</p>
+
+    <p><strong>要注意</strong>：這個歷史分組是「有沒有回採 200 均」，<strong>不能一對一對應到我的五套劇本</strong>。它提供的是「過程會不會難走」的參考，不是劇本的分類器。</p>
+
+    <hr class="border-slate-800 my-10">
+
+    <p><strong>最後，把這一篇用到的每一個統計，起算日和期間一次列清楚</strong></p>
+
+    <p>這篇文章裡有好幾個長得很像、但其實量的是不同東西的數字。放在一起對照，就不會混。</p>
+
+    <p>除了「最大回撤」用的是期間內的<strong>日內高低價</strong>之外，下列報酬與最深跌幅都以指定日期的<strong>收盤價</strong>為基準：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>這個數字</th>
+    <th>從哪一天算起</th>
+    <th>看多久</th>
+    <th>值</th>
+    <th>樣本</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>金叉後的報酬</td>
+    <td>金叉當天收盤</td>
+    <td>365 天</td>
+    <td>中位 <strong>+90.7%</strong></td>
+    <td>11</td>
+  </tr>
+  <tr>
+    <td>一年內最大回撤</td>
+    <td><strong>期間內已出現的高點</strong></td>
+    <td>365 天</td>
+    <td>中位 <strong>−52.5%</strong></td>
+    <td>11</td>
+  </tr>
+  <tr>
+    <td>一年內最深跌幅</td>
+    <td>金叉當天收盤</td>
+    <td>365 天</td>
+    <td>中位 <strong>−30.4%</strong></td>
+    <td>11</td>
+  </tr>
+  <tr>
+    <td>金叉後 120 日內最深跌幅（非二探專屬）</td>
+    <td>金叉當天收盤</td>
+    <td>120 天</td>
+    <td>中位 <strong>−12.1%</strong></td>
+    <td>11</td>
+  </tr>
+  <tr>
+    <td>有回採組的報酬</td>
+    <td>金叉當天收盤</td>
+    <td>365 天</td>
+    <td>中位 <strong>+90.7%</strong></td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>回採之後的報酬</td>
+    <td><strong>回採當天收盤</strong></td>
+    <td>365 天</td>
+    <td>中位 <strong>+154.0%</strong></td>
+    <td>5</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>（表裡第一列和第五列都是 +90.7%，這不是複製貼上——11 次的中位數和有回採那 5 次的中位數，剛好都落在 2023-02-07 那一次身上。）</p>
+
+    <p>最容易搞混的是最後兩列：<strong>同一批 5 次樣本，從金叉那天算是 +90.7%，從回採那天算是 +154.0%。</strong> 差別不只是起跑價不同，<strong>觀察的終點日也不同</strong>（一個從金叉日往後 365 天，一個從回採日往後 365 天），而且中位數落在哪一次身上也可能不一樣。兩個數字不能當成同一筆交易的成本差異來理解。</p>
+
+    <p>同樣的道理，「最大回撤 −52.5%」是從<strong>期間內已出現的高點</strong>往下量的，「最深跌幅 −30.4%」是從<strong>金叉當天收盤</strong>往下量的。前者回答「這一年最慘的一段有多慘」，後者回答「金叉當天買進、一路抱著，帳面最多會看到虧多少」。</p>
+
+    <p><strong>這一次目前走到哪裡</strong></p>
+
+    <p>到 9 月 19 日收盤，金叉之後已收盤的日 K 有 11 根，價格自金叉當天收盤 <strong>+3.55%</strong>。</p>
+
+    <p>歷史上那 11 次金叉，各自走到<strong>第 11 個交易日</strong>時的表現：中位數 <strong>+4.2%</strong>，為正 <strong>7/11</strong>，範圍從 −16.3% 到 +21.9%。</p>
+
+    <p>也就是說，目前的 +3.55% 接近歷史第 11 天的中位數 +4.2%，也落在這 11 次樣本的觀察範圍之內。</p>
+
+    <p>不過要講清楚：這項比較<strong>只描述金叉後的價格變化</strong>，接下來會走哪一套劇本，還是要靠前面講的那些關卡與結構去辨認。</p>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>八、這五套劇本，新手該怎麼用</h2>
+
+    <p><strong>先講清楚它們的關係，不要當成五選一。</strong></p>
+
+    <div class="pull-quote"><strong>前面四套是「路徑」</strong>——價格可能怎麼走。<br><strong>第五套是「濾網」</strong>——趨勢的背景翻過來了沒有。<br>濾網跟路徑不互斥，可以同時成立。<br>而前四套之間也不是完全切開的：劇本一是「受阻 → 二探 → 表態」的骨架，劇本二和劇本三是二探那一段的兩種長相；劇本四走到 0.786 之後，自己也含一次二探。</div>
+
+    <p><strong>原則一：先看關卡，不要先看預測。</strong></p>
+
+    <p>你不需要猜哪一套會發生。你只需要知道：現在價格在哪一格，以及下一個會決定方向的位置在哪裡。</p>
+
+    <p><strong>原則二：心裡有主要路徑，但不要把其他的關掉。</strong></p>
+
+    <p>最容易虧錢的做法，是把某一套當成唯一的答案，然後在中間的價位做出一個兩邊都不像的決定。我自己的做法是：<strong>隨行情更新主要路徑，同時保留其他可能性。</strong></p>
+
+    <p><strong>原則三：每一套都要知道「什麼情況我會改看別套」。</strong></p>
+
+    <p>上面每一套劇本我都寫了這一項。那不是客套話，那是這五套劇本裡最重要的部分。沒有這一項的劇本，不是分析，是信仰。</p>
+
+    <p><strong>一張觀察表</strong></p>
+
+    <p>這張表列的是「看到什麼、要想到什麼」，不是把行情強制分類。判讀的時候要連同<strong>之前走過哪一段</strong>一起看。</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>你看到什麼</th>
+    <th>要想到什麼</th>
+    <th>下一個要盯的位置</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>突破 82,814、往 106,771 推進</td>
+    <td>劇本四的那一段路徑</td>
+    <td>106,771（0.786），以及之後的洗盤</td>
+  </tr>
+  <tr>
+    <td>先走完二探／收針，之後才突破 82,814</td>
+    <td>前面那一套仍在走，銜接到突破段</td>
+    <td>82,814 能不能守成支撐</td>
+  </tr>
+  <tr>
+    <td>站上之後又跌回 82,814 之下</td>
+    <td>回到劇本一的骨架</td>
+    <td>二探會走成哪一種長相</td>
+  </tr>
+  <tr>
+    <td>又被 82,814 擋下、開始回落</td>
+    <td>劇本一的骨架啟動</td>
+    <td>回落的方式：慢磨？急跌？</td>
+  </tr>
+  <tr>
+    <td>急跌進 64,543–73,757 並收出長下影</td>
+    <td>劇本三的長相</td>
+    <td>能不能突破 82,814、再回測守住</td>
+  </tr>
+  <tr>
+    <td>慢慢跌進帶子、沒有收針</td>
+    <td>還在劇本一的骨架裡</td>
+    <td>有沒有出現收針</td>
+  </tr>
+  <tr>
+    <td>跌到 200 均 70,498 附近就被收回去</td>
+    <td>若均線條件仍成立，這種回採可與劇本三呼應</td>
+    <td>兩條均線會不會反向交叉</td>
+  </tr>
+  <tr>
+    <td>回到 57,749 前低附近，但沒有跌破</td>
+    <td>劇本二的前低測試</td>
+    <td>能不能在這裡砌穩</td>
+  </tr>
+  <tr>
+    <td>短暫跌破前低之後又被收回</td>
+    <td>可能是彈簧結構</td>
+    <td>後續測試量縮不破低？反彈有力量？</td>
+  </tr>
+  <tr>
+    <td>跌破 57,749 且續弱不收回</td>
+    <td><strong>五套全部重評</strong></td>
+    <td>不預設立場，等新結構</td>
+  </tr>
+  <tr>
+    <td>50 均回頭跌破 200 均（死叉）</td>
+    <td><strong>趨勢條件失效</strong></td>
+    <td>整個雙條件框架要重新檢查</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>九、名詞小辭典</h2>
+
+    <p>看不懂上面哪個詞，回來這裡查就好。</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>名詞</th>
+    <th>白話解釋</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>壓力</td>
+    <td>價格上漲時可能遇到較大賣壓的區域</td>
+  </tr>
+  <tr>
+    <td>支撐</td>
+    <td>價格下跌時可能出現較強承接的區域</td>
+  </tr>
+  <tr>
+    <td>二探</td>
+    <td>價格再往下走一趟，回去測試下方支撐（各劇本測的區域不同，見第二節）</td>
+  </tr>
+  <tr>
+    <td>回採</td>
+    <td>漲上去之後再跌回某個位置，回頭確認那裡守不守得住</td>
+  </tr>
+  <tr>
+    <td>回採帶</td>
+    <td>本文指 64,543–73,757 這一段，兩條主要均線都在裡面</td>
+  </tr>
+  <tr>
+    <td>收針</td>
+    <td>一根下影線很長的 K 棒，代表盤中被打低、收盤前被買回來</td>
+  </tr>
+  <tr>
+    <td>洗盤</td>
+    <td>用震盪或急跌，讓信心不足的持有者離場（這是對價格行為的描述，不是對特定人的動機斷言）</td>
+  </tr>
+  <tr>
+    <td>威科夫吸籌</td>
+    <td>用價格、成交量與區間結構，判讀籌碼可能正在被逐步吸收的分析框架</td>
+  </tr>
+  <tr>
+    <td>彈簧（Spring）</td>
+    <td>吸籌過程中，短暫跌破整理區間支撐又被收回的動作（不是每次吸籌都會出現）</td>
+  </tr>
+  <tr>
+    <td>50 / 200 日均線</td>
+    <td>最近 50 天 / 200 天收盤價的平均</td>
+  </tr>
+  <tr>
+    <td>黃金交叉</td>
+    <td>短均線由下往上穿過長均線</td>
+  </tr>
+  <tr>
+    <td>費波那契回撤</td>
+    <td>把一段漲跌的頭尾用固定比例切開，找可能的轉折位</td>
+  </tr>
+  <tr>
+    <td>對數座標</td>
+    <td>縱軸按百分比等距，而不是按點數等距</td>
+  </tr>
+  <tr>
+    <td>共振</td>
+    <td>好幾個不同的理由，剛好指向同一個價格位置</td>
+  </tr>
+  <tr>
+    <td>乖離</td>
+    <td>兩條線之間拉開的距離，通常用百分比表示</td>
+  </tr>
+  <tr>
+    <td>基準率</td>
+    <td>某類事件在歷史樣本中出現後續結果的比例分布</td>
+  </tr>
+  <tr>
+    <td>中位數</td>
+    <td>把所有數字排隊，站在正中間的那一個</td>
+  </tr>
+  <tr>
+    <td>最大回撤</td>
+    <td>期間內從已出現的高點跌到後面的低點，最深的一段</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>十、風險提示</h2>
+
+    <p>這一段請務必讀完。</p>
+
+    <ol>
+  <li><strong>本文為技術分析與教育內容，不構成任何投資建議</strong>，也不對任何資產的未來價格、時點或幅度做出承諾。</li>
+  <li><strong>五套劇本不是固定的機率排序，也不代表任何一套必然發生。</strong> 我會隨行情調整自己主要觀察的路徑，但<strong>本文不提供各劇本的數值機率</strong>。文中「我會怎麼辨認」是我的判讀順序，不是保證，更不是進出場建議。</li>
+  <li><strong>文中所有歷史統計都是已發生的紀錄，不是預期報酬。</strong> 金叉樣本只有 11 次，樣本數偏小，統計結論的穩定性有限。</li>
+  <li><strong>第六節「2023-03-10 回採之後」那張表是單一案例（n=1），不具統計意義。</strong> 同節下方那張「5 次全部攤開」的表才有分母，而且那也只有 5 個樣本。兩張表都是從回採日收盤起算，和第七節「從金叉日收盤起算」是不同的尺，數字不能互相套用。</li>
+  <li><strong>統計上的「中位數 +90.7%」不等於你會賺到 90.7%。</strong> 那是「金叉當天買進、抱滿一年、中間完全不動作」的結果。而這一年有多難熬，取決於你用哪一把尺量：</li>
+</ol>
+
+    <p>· 用<strong>「從期間內已出現的高點算下來」</strong>的回撤：中位數 <strong>−52.5%</strong>，11 次裡有 10 次超過 30%。</p>
+
+    <p>· 用<strong>「從金叉當天收盤算起」</strong>的跌幅：中位數 <strong>−30.4%</strong>，最深的一次 <strong>−76.1%</strong>、最淺的一次只有 −1.3%。</p>
+
+    <p>下面這段只示意<strong>以美元等穩定計價單位衡量、損益隨 BTC 價格線性變動的多頭持倉</strong>，不適用於反向合約、幣本位抵押等其他安排。在「初始槓桿 L 倍、持倉數量不變、不追加保證金、不再平衡，且忽略費用與提前強平」的簡化模型下，標的相對初始價格下跌 1/L，就對應初始權益歸零。11 次裡觸及這個門檻的次數是：<strong>2 倍 3 次、3 倍 4 次、5 倍 6 次</strong>。</p>
+
+    <p>⚠️ <strong>這只是價格跌幅的算術，不等於真實的強制平倉結果。</strong> 實際強平取決於交易所的標記價格、維持保證金率、資金費與手續費，<strong>可能比這個模型更早發生</strong>。這一點請務必認知。</p>
+
+    <ol>
+  <li><strong>資料口徑</strong>：歷史統計與均線使用 Bitstamp BTC/USD 日線，區間 2011-08-18 至 <strong>2026-09-19 收盤</strong>（5,512 筆），由本站自行擷取與計算；撰稿當日（2026-09-20）的日 K 尚未收完，未納入統計。圖上的價位與費波那契錨點來自 TradingView 的 BTCUSD INDEX（多所綜合報價）。本文用到的幾個價位經逐項核對，兩個來源差異在 0.05% 以內；這是這幾項的核對結果，不是對所有差異的通用保證。</li>
+  <li><strong>這些工具的用途要講清楚。</strong> 我用均線、費波那契與威科夫的框架去整理價格結構、建立可能的路徑；<strong>它們不能保證未來走勢</strong>，任何一套情境都要隨行情更新。</li>
+  <li><strong>加密貨幣波動極高，可能損失全部本金。</strong> 過去績效不代表未來收益。請只用你虧得起的錢，並自行做最終決策。</li>
+</ol>
+
+    <div class="pull-quote">五套劇本不是要你選一套來信。<br>是要你在任何一套發生的時候，都知道自己現在在哪裡、下一步該看什麼。<br>這就是關鍵價位的全部價值。</div>
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href="btc-bottom-or-bear-trap-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">交易策略 · 訊號實測</div>
+        <div class="font-bold text-white text-sm">BTC 見底了嗎：七個訊號、一條鏈上的成本尺，與一次完整的假陽性檢驗</div>
+      </a>
+      <a href="naked-k-trading-introduction.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">交易策略 · 裸K哲學</div>
+        <div class="font-bold text-white text-sm">裸K交易入門：為什麼不需要指標也能判斷行情？</div>
+      </a>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">五套劇本不是要你選一套來信，<span class="text-amber-400">是要你隨時知道自己在哪裡</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">關鍵價位不會告訴你明天漲跌。<br>它告訴你的是：什麼時候該動，什麼時候該等。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="trading-demons-04-impatience.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">交易心魔：躁進</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>技術分析與教育內容，不構成任何投資建議</strong>，亦不預測任何資產之未來價格、時點或幅度。文中五套劇本為<strong>可能路徑之描述，非機率排序、非目標價</strong>；所有歷史統計均為已發生之紀錄，樣本數有限，<strong>不代表未來表現</strong>。加密貨幣波動極高，使用槓桿可能在達到任何統計中位數之前即遭強制平倉，<strong>可能損失全部本金</strong>。<strong>過去績效不代表未來收益。</strong>請參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
