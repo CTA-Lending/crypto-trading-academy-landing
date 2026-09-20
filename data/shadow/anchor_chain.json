@@ -1260,5 +1260,30 @@
       "PROTOCOL.md": "603a62467f936a39"
     },
     "hash": "e3f75a3dd9d241383ec15534c09969ae669ed51fc5992d44846c6841724c183f"
+  },
+  {
+    "seq": 62,
+    "utc": "2026-09-20T00:36:59Z",
+    "prev": "e3f75a3dd9d241383ec15534c09969ae669ed51fc5992d44846c6841724c183f",
+    "days_recorded": 60,
+    "ledger_head": "831fbf27e4d0e8e031d9845e7d7151320cc890afde14b2f708cf15888da29135",
+    "protocol_sha256": "1b953e4d9e218ef06a14a5c457a8e377ab91c9e0d0b0448e8ce0be99e7757dad",
+    "tree_root": "2de96c2da868f02daa7d0fc46885ee09d7d35ab6ed19066350c76ddb674e4654",
+    "code": {
+      "shadow/multi.py": "7f1556c363b6274f",
+      "shadow/universe.py": "685b1dc1bd351221",
+      "shadow/forward_multi.py": "e29b79e66d15d7ab",
+      "shadow/stats.py": "647e7e1d70861a5c",
+      "shadow/anchor.py": "63aa66783557adfe",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "published": {
+      "dashboard_data.json": "878dd2f766767d0c",
+      "CHANGELOG.md": "d02ac9316f586aa7",
+      "diaries.json": "23e61a4713d45715",
+      "PROTOCOL.md": "603a62467f936a39"
+    },
+    "hash": "232abd20c78d93c62e2da7fb07030b9a29391a8e55c365a35892e0129f57f7d1"
   }
 ]
