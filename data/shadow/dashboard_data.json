@@ -42,22 +42,7 @@
       "seq": 62,
       "utc": "2026-09-20T00:36:59Z",
       "protocol_sha256": "1b953e4d9e218ef0",
-      "genesis_utc": "2026-07-22T05:43:31Z",
-      "genesis_protocol_sha256": "48973c29afccb2d4",
-      "protocol_since_utc": "2026-09-06T00:36:56Z",
-      "protocol_since_seq": 48,
-      "protocol_versions": [
-        {
-          "sha256": "48973c29afccb2d4",
-          "since_seq": 0,
-          "since_utc": "2026-07-22T05:43:31Z"
-        },
-        {
-          "sha256": "1b953e4d9e218ef0",
-          "since_seq": 48,
-          "since_utc": "2026-09-06T00:36:56Z"
-        }
-      ]
+      "genesis_utc": "2026-07-22T05:43:31Z"
     }
   },
   "equity_curve": [

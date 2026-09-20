@@ -780,10 +780,36 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     const pFrom=rec[to-1]&&rec[to-1].day, pTo=rec[from]&&rec[from].day;
     const gaps=allGaps.filter(g=>pFrom&&pTo&&g>=pFrom&&g<=pTo);
     const elsewhere=allGaps.length-gaps.length;
+    /* 🔴🔴 2026-09-20:報出缺漏日還不夠 —— **缺漏日的隔天那一列涵蓋兩天**,
+       它是 48 小時的報酬混在 24 小時的序列裡,而畫面上長得跟平常一樣。
+       實測:2026-07-28 缺漏 → 2026-07-29 那一列其實是 07-27 → 07-29。
+       ⭐ 現況它落在已作廢的 12 天內、Epoch-2 的 48 列完全沒有斷距(已實測),
+         所以**目前沒有污染有效樣本** —— 但這句話要由資料自己講,不是我記得。
+       🔴 逐列從日期算,不寫死 —— 下一次缺漏才會自己冒出來。 */
+    const spans=[];
+    {
+      const byDay=[...rec].sort((a,b)=>a.day<b.day?-1:1);
+      for(let i=1;i<byDay.length;i++){
+        const n=Math.round((Date.parse(byDay[i].day+'T00:00:00Z')
+                           -Date.parse(byDay[i-1].day+'T00:00:00Z'))/86400000);
+        if(n>1) spans.push({day:byDay[i].day, from:byDay[i-1].day, days:n,
+                            voided:!!byDay[i].voided});
+      }
+    }
     if(allGaps.length&&!gaps.length){
       h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
         ⚠️ 整個實驗期間有 <b>${allGaps.length}</b> 天<b>完全沒有紀錄</b>(不在本頁區間內):${allGaps.join('、')}
         <br>原因記在 <a href="./data/shadow/CHANGELOG.md" style="color:var(--warn)">CHANGELOG</a>。</div>`;
+    }
+    if(spans.length){
+      const dirty=spans.filter(s=>!s.voided);
+      h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
+        ⚠️ <b>缺漏日的隔天那一列,涵蓋的不只 24 小時。</b>
+        ${spans.map(s=>`<b>${s.day}</b> 那一列實際涵蓋 ${s.from} → ${s.day}(<b>${s.days} 天</b>)${s.voided?'〔已作廢〕':''}`).join('、')}。
+        <br>${dirty.length
+          ? `🔴 其中 <b>${dirty.length}</b> 列<b>不在作廢期內</b> —— 它們是 ${dirty.map(s=>s.days*24).join('/')} 小時的報酬混在日報酬序列裡,會影響波動度與相關的風險指標。`
+          : `這些列<b>全部落在已作廢的 ${m.voided_days} 個決策日內</b>(該期間的數字本來就不得用於績效陳述),
+             所以目前<b>沒有污染有效樣本</b>。這句話是從日期逐列算出來的,不是寫死的。`}</div>`;
     }
     if(gaps.length){
       h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
