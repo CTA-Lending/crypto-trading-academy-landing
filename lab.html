@@ -320,8 +320,11 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     s.parentNode.insertBefore(n,s.nextSibling);
   })();
 
-  /* ⏳ 未提交 · 等 CEO 決定(2026-08-07 寫的,一直沒上)
-     🔴 作廢期間必須寫在**這一頁**上。讀者看到的是這裡,不是我們的 CHANGELOG。 */
+  /* 🔴 作廢期間必須寫在**這一頁**上。讀者看到的是這裡,不是我們的 CHANGELOG。
+     📌 2026-09-20:這段以前掛著「未提交 · 等 CEO 決定(2026-08-07 寫的,一直沒上)」
+        —— 而它**早就上線了**(線上看得到那條作廢橫幅)。
+        ⭐ 原始碼對自己的上線狀態說謊,比沒有註解更糟:
+          以後要找「還沒上的東西」時,這種假陽性會把真的那一筆淹掉。 */
   if(m.voided_days>0){
     const w=document.createElement('div');
     w.className='warn';
@@ -386,8 +389,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       重試一次仍違反約束 → 依規則<b>維持原倉、不執行交易</b>。下方理由是它<b>被駁回</b>的原案。${staleLine}</div>`;
   }
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
-    /* ⏳ 未提交 · 等 CEO 決定
-       🔴 2026-08-07:報酬**一律用後端算好的**,前端不得自己推算。
+    /* 🔴 2026-08-07:報酬**一律用後端算好的**,前端不得自己推算。
+       📌 2026-09-20:這段的「未提交」標記同樣是**過期的**(整頁主體早就在跑)。
           原本 (eq/m.start_capital-1)*100 把 44 天算成一段,而 CHANGELOG-002 明訂
           第 1~12 決策日的損益不得用於任何對外績效陳述。
           同一段計算被複製在四個地方(日報/儀表板後端/內部儀表板/這裡),
@@ -526,8 +529,23 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     +'<b style="color:var(--down)">⚠️ 更正聲明(2026-08-03)</b><br>'
     +'本實驗於第 12 決策日的內部稽核中,發現數項會影響損益估值的程式錯誤,'
     +'其中包含<b>資金費被重複換算 3 倍</b>,影響第 1~12 決策日的全部數字。'
+    /* 🔴🔴 2026-09-20:這句話以前是「另有不一致 ${mm} 筆(**已於 2026-07-26 修正**)」
+       —— 筆數是**即時算的**,而「已修正」是**寫死的**。
+       今天剛好為真(22 筆全在 07-23~07-25),但明天若出現新的不一致,
+       頁面會印「25 筆(已於 2026-07-26 修正)」而沒有任何人會發現。
+       ⭐ **一句永遠不會被推翻的「已修正」,跟沒有揭露是一樣的。**
+       → 改成從資料推導:印出實際的日期範圍,並在修正日之後還有新的時大聲講。 */
     +(mm!==undefined&&mm!==null
-        ? `另有帳本與淨值序列不一致 <b>${mm}</b> 筆(已於 2026-07-26 修正)。`
+        ? (()=>{const R=d.returns_reconcile_range||{};
+            if(!mm) return `帳本與淨值序列對帳:<b>0</b> 筆不一致。`;
+            const span=(R.first&&R.last)?`(集中在 ${R.first} ~ ${R.last})`:'';
+            return (R.after_fix>0)
+              ? `<br>🔴 <b>另有帳本與淨值序列不一致 ${mm} 筆${span},其中 ${R.after_fix} 筆發生在
+                 宣稱修正日 ${R.fixed_on} <b>之後</b> —— 那個 bug 沒有真的修乾淨。</b>`
+              : `另有帳本與淨值序列不一致 <b>${mm}</b> 筆${span};
+                 造成它的 bug 於 ${R.fixed_on} 修正,<b>該日之後 0 筆</b>
+                 (這個「0」是每天重算的,不是寫死的)。`;
+          })()
         : '')
     +'<br>依 PROTOCOL §9,修補內容、生效日與影響範圍已完整記錄於 '
     +'<a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。'

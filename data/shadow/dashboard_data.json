@@ -2657,5 +2657,11 @@
       "infra_skip": false
     }
   ],
-  "returns_reconcile_mismatches": 22
+  "returns_reconcile_mismatches": 22,
+  "returns_reconcile_range": {
+    "first": "2026-07-23",
+    "last": "2026-07-25",
+    "fixed_on": "2026-07-26",
+    "after_fix": 0
+  }
 }
