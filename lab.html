@@ -475,7 +475,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      而同一頁的橫幅說「我們不列出含那 12 日的報酬」—— **自己打自己**。
      ⭐ 拿掉那段又會變成「靜靜丟掉紀錄」(CEO 2026-08-27 抓過的同一個錯)。
        所以不刪,**標出來**:作廢區段畫成淡的,並在圖下說明。 */
-  drawChart(d.equity_curve,m.brains,m.start_capital,m.epoch2_first_day);
+  drawChart(d.equity_curve,m.brains,m.start_capital,m.epoch2_first_day,m.voided_days);
 
   /* 🔴🔴 2026-09-20:這個數字以前只印一個百分比,**沒有分母**:
      它是用 `families` 個模型家族算出來的(目前 3 個,不是 5 個腦),
@@ -859,7 +859,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   });
 });
 
-function drawChart(curve,brains,base,epoch2){
+function drawChart(curve,brains,base,epoch2,voidedDays){
   const c=document.getElementById('chart'),ctx=c.getContext('2d');
   const W=c.width=c.clientWidth*2,H=c.height=460,pad=44*2;
   const all=curve.flatMap(p=>brains.map(b=>p[b]));
@@ -870,13 +870,24 @@ function drawChart(curve,brains,base,epoch2){
   /* 作廢區段:從第一點到 epoch2 前一點,塗一層暗底 + 標籤。
      🔴 讀者看到的是一條連續的線,而前面那一段的損益我們自己宣告過不可用。
         不標的話,那一段會被當成正常績效讀。 */
+  /* 🔴🔴 2026-09-20(稽核 A016/A036 複查):這個標籤以前印的是 `i2` ——
+     那是 epoch2 在**曲線陣列**裡的索引,而曲線的第 0 點是合成的「起始」點、
+     **不是決策日**。於是圖上寫「已作廢(13 個決策日)」,
+     而同一頁的橫幅與表格都是 **12** 天。
+     ⭐ **把索引當成天數用**,多算了那個起始點 ——
+       而這一頁的招牌正是「可查證」,一個想對帳的讀者會先撞到這個矛盾。
+     📌 天數只能有一份權威:後端的 `meta.voided_days`。
+       索引仍用來決定**畫到哪裡**(那是位置,不是天數)—— 兩件事不要混用同一個數。 */
   if(epoch2){
     const i2=curve.findIndex(p=>p.day===epoch2);
     if(i2>0){
       ctx.fillStyle="rgba(224,168,59,0.10)";
       ctx.fillRect(x(0)-4,0,x(i2-1)-x(0)+8,H);
       ctx.fillStyle=cvar("--warn");ctx.font="20px sans-serif";
-      ctx.fillText("⚠️ 已作廢("+i2+" 個決策日,損益不得用於績效陳述)",x(0),26);
+      const vd=(voidedDays==null)?null:voidedDays;
+      ctx.fillText(vd==null
+        ? "⚠️ 已作廢(天數未提供,損益不得用於績效陳述)"
+        : "⚠️ 已作廢("+vd+" 個決策日,損益不得用於績效陳述)", x(0), 26);
     }
   }
   ctx.strokeStyle=cvar('--line');ctx.setLineDash([6,6]);ctx.lineWidth=2;
