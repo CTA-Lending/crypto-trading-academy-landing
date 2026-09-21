@@ -575,6 +575,15 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   //    而一份沒有人看得到的 CHANGELOG 不算揭露。數字一律從資料讀,不寫死 ——
   //    寫死的話,未來出現新的不一致時頁面會顯示一個過期的假數字。
   const mm=d.returns_reconcile_mismatches;
+  /* 🔴🔴 2026-09-21(稽核 M040):上面那個「不一致 N 筆」以前**沒有分母**。
+     而後端的 `reconcile` 當時把「帳本根本沒有 returns 可比」當成通過 ——
+     也就是說,如果哪天整批 returns 掉了,這裡會顯示一個漂亮的「0 筆不一致」,
+     ⭐⭐ **「沒問到」跟「沒問題」在畫面上長得一模一樣。**
+     → 一律印出已比對的格子數 X/Y,以及**沒比到**的格子(那不是通過)。 */
+  const RC=d.returns_reconcile_codes||{}, CV=d.returns_coverage||{};
+  const unchecked=(RC.missing_returns||0)+(RC.underivable||0);
+  const covTxt = (CV.total==null) ? ('<br>⚠️ <b>後端沒有送出對帳涵蓋率</b> —— 上面那個筆數沒有分母,請勿當成「已全部比對」。'
+    ) : (`<br>對帳涵蓋率:已比對 <b>${CV.computable}/${CV.total}</b> 格(${CV.pct}%,9 位競爭者 × ${d.meta&&d.meta.days} 個決策日)` + (unchecked ? `。<b style="color:var(--down)">其中 ${unchecked} 格沒有比到(帳本缺 returns ${RC.missing_returns||0} 格 / 無法由淨值推導 ${RC.underivable||0} 格) —— 這些<b>不算通過</b>。</b>` : '。'));
   document.getElementById('corrections').innerHTML=
     '<div style="border:1px solid var(--down);border-radius:8px;padding:12px;margin-bottom:14px">'
     +'<b style="color:var(--down)">⚠️ 更正聲明(2026-08-03)</b><br>'
@@ -598,6 +607,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
                  (這個「0」是每天重算的,不是寫死的)。`;
           })()
         : '')
+    +covTxt
     +'<br>依 PROTOCOL §9,修補內容、生效日與影響範圍已完整記錄於 '
     +'<a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。'
     +'<br><b>在重述數列完成獨立驗證之前,下表第 1~12 決策日的數字不應用於任何績效判斷。</b>'
@@ -798,7 +808,14 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        + (dead?' <span style="color:var(--warn)">⚠️作廢</span>':'')
        + (skip?' <span style="color:var(--acc)">⚙️基建異常</span>':'')
        + '</td>'+m.brains.map(b=>{
-        const v=r[b];return `<td style="color:${v>=0?'var(--up)':'var(--down)'}">${v>=0?'+':''}${v}%</td>`}).join('')+'</tr>'});
+        /* 🔴🔴 2026-09-21(稽核 M027):後端現在會送 `null`=「這一格算不出來」。
+           這一行本來是 `v>=0?'var(--up)':'var(--down)'` —— 而 JS 的 **`null>=0` 是 true**,
+           所以缺漏的格子會印成一個**綠色的 `+null%`**。
+           ⭐ 修好了後端卻讓前端把 null 讀成 0,等於沒修:同一個洞換一個地方再開一次。
+           → 一律先擋 null,印「—」並附上為什麼算不出來。 */
+        const v=r[b];
+        if(v==null) return `<td style="color:var(--warn)" title="當日淨值缺漏,或前一格缺漏 → 這一格不是日報酬">—</td>`;
+        return `<td style="color:${v>=0?'var(--up)':'var(--down)'}">${v>=0?'+':''}${v}%</td>`}).join('')+'</tr>'});
     h+='</table></div>';
     if(voidedOnPage){
       h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
@@ -923,7 +940,12 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
 function drawChart(curve,brains,base,epoch2,voidedDays){
   const c=document.getElementById('chart'),ctx=c.getContext('2d');
   const W=c.width=c.clientWidth*2,H=c.height=460,pad=44*2;
-  const all=curve.flatMap(p=>brains.map(b=>p[b]));
+  /* 🔴🔴 2026-09-21:後端現在會送 `null`=「那一天那個腦沒有結算出淨值」。
+     `Math.min(...all)` 遇到 null 會把它當成 **0**(JS 的數值轉型),
+     於是整張圖的下界被壓到 0,所有曲線擠成貼著頂端的一條 ——
+     ⭐ **一格缺漏就讓整張圖變成一張看起來正常、但比例全錯的圖。**
+     → 算刻度前先把 null 濾掉。 */
+  const all=curve.flatMap(p=>brains.map(b=>p[b])).filter(v=>v!=null);
   let lo=Math.min(...all,base),hi=Math.max(...all,base);
   if(hi-lo<base*0.02){lo=base*0.95;hi=base*1.05}
   const x=i=>pad+(W-pad*1.3)*(curve.length<2?0.5:i/(curve.length-1));
@@ -954,9 +976,19 @@ function drawChart(curve,brains,base,epoch2,voidedDays){
   ctx.strokeStyle=cvar('--line');ctx.setLineDash([6,6]);ctx.lineWidth=2;
   ctx.beginPath();ctx.moveTo(pad,y(base));ctx.lineTo(W-pad*0.3,y(base));ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle=cvar('--dim');ctx.font='22px sans-serif';ctx.fillText('$'+base.toLocaleString()+' 基準',pad,y(base)-10);
+  /* 🔴 缺漏的點不准連過去:`y(null)` 是 NaN,Canvas 會默默不畫那一段,
+     結果是一條**看起來連續**的線,而中間那天其實沒有資料。
+     → 遇到 null 就把線斷開(下一個有值的點重新 moveTo),讓缺口看得見。 */
+  let hadGap=false;
   brains.forEach(b=>{ctx.strokeStyle=cvar(COLORS[b]);ctx.lineWidth=3;ctx.beginPath();
-    curve.forEach((p,i)=>{const px=x(i),py=y(p[b]);i?ctx.lineTo(px,py):ctx.moveTo(px,py);
+    let pen=false;
+    curve.forEach((p,i)=>{const v=p[b];
+      if(v==null){pen=false;hadGap=true;return;}
+      const px=x(i),py=y(v);
+      pen?ctx.lineTo(px,py):ctx.moveTo(px,py); pen=true;
       ctx.fillStyle=cvar(COLORS[b]);ctx.fillRect(px-3,py-3,6,6);});ctx.stroke();});
+  if(hadGap){ctx.fillStyle=cvar('--warn');ctx.font='20px sans-serif';
+    ctx.fillText('⚠️ 線上的缺口 = 當天沒有結算出淨值(我們不補平、也不拿前一天頂替)',pad,H-10);}
   if(curve.length<2){ctx.fillStyle=cvar('--dim');ctx.font='24px sans-serif';
     ctx.textAlign='center';ctx.fillText('實驗剛起跑,曲線將每日累積…',W/2,H/2+40);ctx.textAlign='left';}
 }
