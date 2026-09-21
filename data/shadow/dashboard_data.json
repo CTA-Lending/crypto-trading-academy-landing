@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 67,
-      "utc": "2026-09-21T10:56:52Z",
+      "seq": 68,
+      "utc": "2026-09-21T11:16:34Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -1269,14 +1269,14 @@
   },
   "code_change_audit": {
     "available": true,
-    "core_changes": 13,
+    "core_changes": 14,
     "metric_files": [
       "shadow/forward_multi.py",
       "shadow/multi.py",
       "shadow/universe.py",
       "shadow/stats.py"
     ],
-    "same_entry": 5,
+    "same_entry": 6,
     "date_mentioned_only": 4,
     "undisclosed": 4,
     "undisclosed_seqs": [
@@ -1405,6 +1405,15 @@
         "files": [
           "shadow/forward_multi.py",
           "shadow/multi.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 67,
+        "date": "2026-09-21",
+        "files": [
+          "shadow/forward_multi.py"
         ],
         "changelog_same_entry": true,
         "changelog_mentions_date": true
