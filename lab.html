@@ -509,6 +509,13 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      ⭐ 兩者上下並排、沒有任何時間標示 —— 讀者(含 CEO)必然把 +X% 歸因給
        看到的那組幣,再據此判斷「這個腦選幣準」。**歸錯了對象。**
      🔴 修法是加時間標示,不是改數字:兩個數字各自都是對的。 */
+  /* 🔴🔴 2026-09-21(稽核 A019/L009 複查):基建保護日**整天不換倉**,
+     而卡片照樣印新的目標配置、還主動宣稱「下方是今天的新決策」。
+     ⭐ 今天(09-21)實測:這一頁印規則腦持有 <b>ARB 12.5%</b>,
+       而帳上 units 裡**沒有 ARB**,實際是 <b>ZEC 13.1%</b> ——
+       **一份從未成交的購物清單,印在寫著「公開每個決策與理由」的頁面上。**
+     61 個決策日裡已有 3 天如此(08-10 / 09-01 / 09-21)。 */
+  const infraToday=!!(d.events&&d.events.today_infra_skip);
   const _recs=d.records||[];
   const settleDay=m.last_date||(_recs.length?_recs[_recs.length-1].day:null);
   const fromDay=(_recs.length>1)?_recs[_recs.length-2].day:null;
@@ -610,11 +617,44 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
           <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
         <div><div class="eq">$${eq.toLocaleString()}</div>
           <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
-          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}${settleDay?`<br>截至 <b>${settleDay}</b> 結算${fromDay?`,由 <b>${fromDay}</b> 決定的那組持倉產生(含當日換倉成本)`:''}`:''}</div></div>
+          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}${settleDay?`<br>截至 <b>${settleDay}</b> 結算${infraToday?'(<b style="color:var(--acc)">該日為基建異常日,換倉受我方基建限制,不是正常的 AI 成績</b>)':''}${fromDay?`,由 <b>${fromDay}</b> 決定的那組持倉產生(含當日換倉成本)`:''}`:''}</div></div>
       </div>
-      ${((noDec[b]||{}).streak||0)>0?'':
+      ${infraToday?`<div class="viol">⚙️ <b>${settleDay} 是基建異常日</b>
+        (決策前後報價偏離超過保護門檻)。當日<b>強制只減倉</b>:
+        只有會降低總曝險的調整才執行,其餘<b>一律維持原倉</b>。
+        <b>下方「要求的目標」是模型提出的配置,今天沒有執行</b> ——
+        實際持倉請看下一排。</div>`:''}
+      ${(((noDec[b]||{}).streak||0)>0||infraToday)?'':
+        /* 🔴 基建異常日已經有自己的警示框(說那份配置沒有執行),
+           再印「下方是今天的新決策」會和它互相打架。 */
         `<div class="foot" style="font-size:10.5px;margin-top:6px">📅 下方是 <b>${settleDay||'今日'}</b> 的<b>新決策</b> —— 下一個決策日收盤才會有損益,<b>與上方報酬不是同一組持倉</b>。</div>`}
+      <div class="foot" style="font-size:10.5px;margin-top:4px">🎯 <b>要求的目標配置</b></div>
       <div class="pos">${tags}${moreTag}${grossTag}</div>
+      ${(()=>{
+        /* 🔴 實際部位一律讀後端由 units 換算的值;拿不到就**明講**,
+           不准拿目標頂替 —— 估出來的數字看起來跟真的一模一樣。 */
+        const ap=(d.current_position||{})[b];
+        if(ap===undefined) return '';
+        if(ap===null) return `<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">`
+          +`📦 <b>實際持倉 未提供 ⚠️</b>(該腦有持倉但取不到價)—— 上排是<b>要求的目標</b>,不是實際持倉。</div>`;
+        const ks=Object.keys(ap);
+        if(!ks.length) return `<div class="foot" style="font-size:10.5px;margin-top:6px">`
+          +`📦 <b>實際持倉</b>:空手(全現金)</div>`;
+        const t2=Object.entries(ap).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
+          .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('');
+        const more2=ks.length>7?`<span class="tag" style="opacity:.75">…共 <b>${ks.length}</b> 檔</span>`:'';
+        const want=new Set(Object.keys(a)), have=new Set(ks);
+        const onlyWant=[...want].filter(x=>!have.has(x)), onlyHave=[...have].filter(x=>!want.has(x));
+        const diff=(onlyWant.length||onlyHave.length)
+          ? `<div class="foot" style="font-size:10.5px;color:var(--down);margin-top:4px">`
+            +`🔴 目標與實際不一致:`
+            +`${onlyWant.length?`目標有而帳上沒有 <b>${onlyWant.join('、')}</b>`:''}`
+            +`${onlyWant.length&&onlyHave.length?';':''}`
+            +`${onlyHave.length?`帳上有而目標沒有 <b>${onlyHave.join('、')}</b>`:''}</div>` : '';
+        return `<div class="foot" style="font-size:10.5px;margin-top:6px">`
+          +`📦 <b>實際持倉</b>(帳本 units 換算,計價日 ${d.position_priced_at||'?'})</div>`
+          +`<div class="pos">${t2}${more2}</div>`+diff;
+      })()}
       ${viol[b]?vioBanner(b,viol[b]):''}
       ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
   }).join('');
