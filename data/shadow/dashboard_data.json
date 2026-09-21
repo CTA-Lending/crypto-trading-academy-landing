@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 65,
-      "utc": "2026-09-21T10:06:11Z",
+      "seq": 66,
+      "utc": "2026-09-21T10:28:23Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -1276,7 +1276,8 @@
       "2026-09-01",
       "2026-09-21"
     ],
-    "unsettled_days": []
+    "unsettled_days": [],
+    "unsettled_implemented": false
   },
   "current_cash": {
     "rule": 80.15,

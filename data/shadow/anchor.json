@@ -1,5 +1,5 @@
 {
-  "anchored_at_utc": "2026-09-21T10:06:11Z",
+  "anchored_at_utc": "2026-09-21T10:28:23Z",
   "protocol": {
     "sha256": "1b953e4d9e218ef06a14a5c457a8e377ab91c9e0d0b0448e8ce0be99e7757dad",
     "bytes": 12006,
@@ -7,18 +7,18 @@
   },
   "code": {
     "file_sha256_16": {
-      "shadow/multi.py": "6a99f98a39024923",
+      "shadow/multi.py": "ee999125b0da0a91",
       "shadow/universe.py": "685b1dc1bd351221",
-      "shadow/forward_multi.py": "8cc3f9968a310961",
+      "shadow/forward_multi.py": "2890337bad0bcac8",
       "shadow/stats.py": "647e7e1d70861a5c",
       "shadow/anchor.py": "a6d966c5d3b12412",
       "core/key_level_engine.py": "a65db9d01fe36e56",
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
-    "prompt_template_sha256_16": "184189c7e487e945",
+    "prompt_template_sha256_16": "997585fe795dd317",
     "tree": {
-      "root": "cd99e589ea39ef2f300091e2c0b9548bd3d7484d28a58d25c193ce3b85ecd05e",
-      "n_files": 323,
+      "root": "d61421390594d3728b3ac3d0f3379e36e190f784f8768a5c2c376fcb579d9680",
+      "n_files": 324,
       "files": {
         "PROTOCOL.md": "1b953e4d9e218ef0",
         "README.md": "4f2eac507dff9048",
@@ -93,11 +93,11 @@
         "shadow/brains.py": "c9cfc2f1e43305ab",
         "shadow/daily_returns.py": "a7fe5f857517b776",
         "shadow/diaries.py": "9ba39b911f469577",
-        "shadow/emit_dashboard.py": "e140627a6c423667",
+        "shadow/emit_dashboard.py": "336b0678ec91f74f",
         "shadow/forward_daily.py": "f942d10ede66a68c",
-        "shadow/forward_multi.py": "8cc3f9968a310961",
+        "shadow/forward_multi.py": "2890337bad0bcac8",
         "shadow/invariants.py": "5eb8c812522987af",
-        "shadow/multi.py": "6a99f98a39024923",
+        "shadow/multi.py": "ee999125b0da0a91",
         "shadow/pilot.py": "7133279679b8ed70",
         "shadow/report.py": "f2558dbdc38d2816",
         "shadow/run_forward_daily.bat": "8232f3ecf429c873",
@@ -210,7 +210,7 @@
         "tests/test_journey_curve.py": "68602dbb32a9f889",
         "tests/test_key_isolation.py": "8dca8446d19127a3",
         "tests/test_lab_page_green_when_broken.py": "27630855a7891023",
-        "tests/test_lab_page_no_truncation.py": "f2c9adeb9a25a157",
+        "tests/test_lab_page_no_truncation.py": "e0a414b796bcc181",
         "tests/test_lab_page_violation_disclosure.py": "702c6993e9afc41b",
         "tests/test_leaderboard.py": "203c746efb65530e",
         "tests/test_leaderboard_missing.py": "3e9803d3b903a5a1",
@@ -298,6 +298,7 @@
         "tests/test_trading_core_risk.py": "cd8ca09030b6cc11",
         "tests/test_trading_core_state.py": "d226c0c6aba8cb86",
         "tests/test_turnover_cost_ledger.py": "826ebc82a7931d48",
+        "tests/test_unsettled_lamp_cannot_lie.py": "ee35918ba286e88d",
         "tests/test_venue_broker_diff.py": "56dede27b8e52c95",
         "tests/test_venue_contract.py": "effc400d77116b22",
         "tests/test_venue_outage.py": "892045058fbb13df",
