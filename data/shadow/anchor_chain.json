@@ -1311,5 +1311,57 @@
       "anchor.json": "858153e80ba4e2e4"
     },
     "hash": "b5044f8456923a73590f1a35aa221da5b732802e8c738a03adcf9611114553d8"
+  },
+  {
+    "seq": 64,
+    "utc": "2026-09-21T10:05:49Z",
+    "prev": "b5044f8456923a73590f1a35aa221da5b732802e8c738a03adcf9611114553d8",
+    "days_recorded": 61,
+    "ledger_head": "b986d52bde8d2f0d4f2e767a1248b6788acb00f1c58d3c7df3160894785a35c5",
+    "protocol_sha256": "1b953e4d9e218ef06a14a5c457a8e377ab91c9e0d0b0448e8ce0be99e7757dad",
+    "tree_root": "cd99e589ea39ef2f300091e2c0b9548bd3d7484d28a58d25c193ce3b85ecd05e",
+    "code": {
+      "shadow/multi.py": "6a99f98a39024923",
+      "shadow/universe.py": "685b1dc1bd351221",
+      "shadow/forward_multi.py": "8cc3f9968a310961",
+      "shadow/stats.py": "647e7e1d70861a5c",
+      "shadow/anchor.py": "a6d966c5d3b12412",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "published": {
+      "dashboard_data.json": "038080cb71fdc3ca",
+      "CHANGELOG.md": "7a40bcd1fe3ed512",
+      "diaries.json": "9cbd2dcfb806ce89",
+      "PROTOCOL.md": "603a62467f936a39",
+      "anchor.json": "c4f97baa7e66b6ff"
+    },
+    "hash": "a03246d6afd9a4b174e3213e92b1a2dc9157dceb823d0f1ee4d40e997fb2b696"
+  },
+  {
+    "seq": 65,
+    "utc": "2026-09-21T10:06:11Z",
+    "prev": "a03246d6afd9a4b174e3213e92b1a2dc9157dceb823d0f1ee4d40e997fb2b696",
+    "days_recorded": 61,
+    "ledger_head": "b986d52bde8d2f0d4f2e767a1248b6788acb00f1c58d3c7df3160894785a35c5",
+    "protocol_sha256": "1b953e4d9e218ef06a14a5c457a8e377ab91c9e0d0b0448e8ce0be99e7757dad",
+    "tree_root": "cd99e589ea39ef2f300091e2c0b9548bd3d7484d28a58d25c193ce3b85ecd05e",
+    "code": {
+      "shadow/multi.py": "6a99f98a39024923",
+      "shadow/universe.py": "685b1dc1bd351221",
+      "shadow/forward_multi.py": "8cc3f9968a310961",
+      "shadow/stats.py": "647e7e1d70861a5c",
+      "shadow/anchor.py": "a6d966c5d3b12412",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "published": {
+      "dashboard_data.json": "8f6bf07728bbdfc3",
+      "CHANGELOG.md": "7a40bcd1fe3ed512",
+      "diaries.json": "9cbd2dcfb806ce89",
+      "PROTOCOL.md": "603a62467f936a39",
+      "anchor.json": "1e54fd0e6a784749"
+    },
+    "hash": "30f02139ba31a91b5fc9ff867c0ca70f26d0063bd98fd9ed8b6e3b75ad53f4ff"
   }
 ]

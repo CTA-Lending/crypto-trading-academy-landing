@@ -22,7 +22,8 @@
             "ARB": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -0.75
+          "outcome": -0.75,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -49,7 +50,8 @@
             "1000PEPE": -1.9132618055390027
           },
           "reason": "",
-          "outcome": 2.65
+          "outcome": 2.65,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -65,7 +67,8 @@
             "BEAT": -10.0
           },
           "reason": "清空弱勢多單 PROM，引入強勢動能幣 BR。保留表現優異的多頭與 CYS、BEAT 空單避險，總曝險控制在 94% 留有餘裕。",
-          "outcome": 0.71
+          "outcome": 0.71,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -92,7 +95,8 @@
             "1000PEPE": -1.0
           },
           "reason": "獲利46.5%,持倉穩健。降低AKE極端集中(653%波動),加碼RAYSOL穩定多頭,維持空單對沖(CYS/BEAT/空頭ETH),減碼UNI空單。總曝險100%,現金清零,保持曝險力度。",
-          "outcome": 0.19
+          "outcome": 0.19,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -120,7 +124,8 @@
             "ADA": 2.050881745139318
           },
           "reason": "",
-          "outcome": 2.84
+          "outcome": 2.84,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -147,14 +152,16 @@
             "BEAT": -2.0
           },
           "reason": "核心持倉(BTC/ETH/SOL)維持穩定。減少CYS做空風險(從5.1%→4%),加強ENA、ONDO、HYPE中段部位。保留XAU短部位應對通膨。現金維持28%,應對過熱風險。曝險68%,分散度提升,降低重疊。",
-          "outcome": 1.93
+          "outcome": 1.93,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.49
+          "outcome": 0.49,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -170,12 +177,14 @@
             "UNI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.95
+          "outcome": -0.95,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -201,7 +210,8 @@
             "RAYSOL": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 7.09
+          "outcome": 7.09,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -228,7 +238,8 @@
             "ONDO": 2.0
           },
           "reason": "順勢偏多大盤與強勢幣，保留少量空頭對沖；降XAU/BNB空頭並擴散配置，總曝險89%內。",
-          "outcome": -1.47
+          "outcome": -1.47,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -244,7 +255,8 @@
             "BEAT": -10.0
           },
           "reason": "清退低效能BTC，換入極強勢新星ONE。其餘主力多單與CYS、BEAT空單微調至等權重，維持均衡對沖防禦。",
-          "outcome": -0.79
+          "outcome": -0.79,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -271,7 +283,8 @@
             "LINK": -1.0
           },
           "reason": "獲利46%,保持主倉AKE/BTC/SOL不變。輕減過度曝險(88%→88%),減少低波動空單(BNB/ETH/-3%),穩健持有高漲幅多單。資金費控制,現金維持12%。",
-          "outcome": 5.08
+          "outcome": 5.08,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -299,7 +312,8 @@
             "BTC": 11.398612625699894
           },
           "reason": "減碼高波動弱勢幣，保留核心多頭與貴金屬對沖；總曝險100%，含現有持倉調整。",
-          "outcome": -1.2
+          "outcome": -1.2,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -323,14 +337,16 @@
             "XAU": -3.0
           },
           "reason": "持續持有核心藍籌(BTC/ETH/SOL/BNB),現金保留32%應對高波動。減碼擁擠部位,維持做空對沖。年初以來持倉風險已足,優先守護利潤。",
-          "outcome": -0.35
+          "outcome": -0.35,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.02
+          "outcome": -0.02,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -346,12 +362,14 @@
             "UNI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 4.53
+          "outcome": 4.53,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -377,7 +395,8 @@
             "PROM": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 9.29
+          "outcome": 9.29,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -402,7 +421,8 @@
             "UNI": 2.416709532161682
           },
           "reason": "",
-          "outcome": 8.15
+          "outcome": 8.15,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -418,7 +438,8 @@
             "BTC": 5.0
           },
           "reason": "平倉與趨勢相左之 BTC 空單並反手，續抱 ARB, USELESS 等強勢多頭及 CYS, BEAT 空單對沖，新增高動能 AKE。",
-          "outcome": 4.92
+          "outcome": 4.92,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -445,7 +466,8 @@
             "HYPE": 2.0
           },
           "reason": "持倉獲利+39%,鞏固核心多頭(BTC/SOL/AKE)並小幅加碼高動能幣。縮減弱勢空頭(ETH/BNB)轉向務實配置。維持80%曝險,保留20%現金防風險。近期波動大,降低高波動幣權重。",
-          "outcome": 16.57
+          "outcome": 16.57,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -473,7 +495,8 @@
             "UNI": 4.888922311256585
           },
           "reason": "",
-          "outcome": 7.14
+          "outcome": 7.14,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -497,14 +520,16 @@
             "XAU": -3.0
           },
           "reason": "減輕擁擠(42.8%),補強 BTC/ETH 核心部位。止損空單 BTC/ETH/BNB,改做空低品質短期熱點 CYS/BEAT。保留 ENA 長線,現金維持 48%應對回調。總曝險 52%,安全第一。",
-          "outcome": 2.99
+          "outcome": 2.99,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 6.35
+          "outcome": 6.35,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -520,12 +545,14 @@
             "UNI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 22.24
+          "outcome": 22.24,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -551,7 +578,8 @@
             "UNI": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 3.13
+          "outcome": 3.13,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -576,7 +604,8 @@
             "BTC": 15.086683851990681
           },
           "reason": "",
-          "outcome": 3.07
+          "outcome": 3.07,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -591,7 +620,8 @@
             "BTC": -10.0
           },
           "reason": "近期損益回升，維持BTC對沖與強勢空單CYS、BEAT。加碼強勢LSK並納入USELESS，其餘多單續抱。",
-          "outcome": 1.05
+          "outcome": 1.05,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -615,7 +645,8 @@
             "1000PEPE": -1.0
           },
           "reason": "持倉獲利19%,回吐風險升高。加碼BTC(短期離關鍵價近)、AKE(極端波動)、SOL;減碼空單UNI(-3),控曝險98%。保留核心多頭,防守現金不足。",
-          "outcome": 1.6
+          "outcome": 1.6,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -643,7 +674,8 @@
             "BTC": 11.338154871807255
           },
           "reason": "",
-          "outcome": 3.22
+          "outcome": 3.22,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -663,14 +695,16 @@
             "ETH": -3.0
           },
           "reason": "持久守護:降做空敞口(BTC短5→-4,ETH增-3),縮減擁擠度至30%。保留強趨勢多頭核心(BTC8+SOL5),現金維持35%應急。近期震盪減損,優先止血。",
-          "outcome": 0.94
+          "outcome": 0.94,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.1
+          "outcome": -0.1,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -686,12 +720,14 @@
             "ARB": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 4.8
+          "outcome": 4.8,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -717,7 +753,8 @@
             "RAYSOL": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 7.6
+          "outcome": 7.6,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -742,7 +779,8 @@
             "NEAR": 6.65693082976881
           },
           "reason": "",
-          "outcome": 3.62
+          "outcome": 3.62,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -756,7 +794,8 @@
             "BEAT": -10.0
           },
           "reason": "汰除高波動小幣AKE、SKR控制風險。保留強勢多頭ARB、NEAR、PROM，維持CYS、BEAT、BTC空頭對沖，降低曝險至75%。",
-          "outcome": 2.81
+          "outcome": 2.81,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -780,7 +819,8 @@
             "1000PEPE": -1.0
           },
           "reason": "持倉績效正向(+17.63%)。減BTC/SOL過度集中,增ENA小幅加碼(低門檻近高點)。做空側維持輕倉對沖,現金預留24%。總曝險86%內,波動環境保持彈性。",
-          "outcome": -1.51
+          "outcome": -1.51,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -808,7 +848,8 @@
             "NEAR": 6.6795334465582386
           },
           "reason": "",
-          "outcome": 3.32
+          "outcome": 3.32,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -830,14 +871,16 @@
             "TRUMP": 1.0
           },
           "reason": "近日連虧,降曝險至60%。減BTC(11.9%過重)、ETH多轉空(已+8.17%關鍵價),加USELESS短期強勢,現金保留40%應對波動。",
-          "outcome": 1.94
+          "outcome": 1.94,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.84
+          "outcome": 0.84,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -853,12 +896,14 @@
             "UNI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 8.04
+          "outcome": 8.04,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -884,7 +929,8 @@
             "RAYSOL": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -0.53
+          "outcome": -0.53,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -909,7 +955,8 @@
             "USELESS": 2.0
           },
           "reason": "降高波動弱勢幣，保留核心多頭；加少量USELESS對沖，維持總曝險低於100。",
-          "outcome": -2.85
+          "outcome": -2.85,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -925,7 +972,8 @@
             "BEAT": -10.0
           },
           "reason": "BTC趨勢轉空故平多反手；續抱強勢多頭SOL、NEAR、ARB、PROM並加入LSK；維持強勢空頭CYS與BEAT以對沖風險。",
-          "outcome": 3.83
+          "outcome": 3.83,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -950,7 +998,8 @@
             "1000PEPE": -1.0
           },
           "reason": "持倉表現+19.4%,繼續多頭主軸。AKE/LSK/PROM高動能,鎖定高波幅多單。BTC/ETH/SOL穩健加碼。做空部位適度縮減(UNI/LINK/BNB風險),總曝險 83%,保留現金應對波動。",
-          "outcome": 3.93
+          "outcome": 3.93,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -978,7 +1027,8 @@
             "BEAT": -2.0
           },
           "reason": "減少高波動弱勢，保留核心多頭，增配強勢PROM/USELESS，續空CYS/BEAT對沖。",
-          "outcome": -3.21
+          "outcome": -3.21,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1001,14 +1051,16 @@
             "LINK": -1.0
           },
           "reason": "持久守護模式:縮減核心疊度(BTC/ETH/SOL 佔比降至24%);止損 HYPE(+2%→-2%)、ONDO(清);補強做空 UNI(+17.6%)對沖牛市;保留 NEAR/ADA 低波段位;維持現金 28%緩衝連跌。",
-          "outcome": -2.24
+          "outcome": -2.24,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.83
+          "outcome": -2.83,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1024,12 +1076,14 @@
             "CYS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.64
+          "outcome": -0.64,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -1055,7 +1109,8 @@
             "ARB": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -8.91
+          "outcome": -8.91,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -1080,7 +1135,8 @@
             "ZEC": 4.0
           },
           "reason": "維持核心多頭，減少高波動雜訊；加PROM/ZEC，略降DOGE/BNB避險。",
-          "outcome": 2.27
+          "outcome": 2.27,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -1095,7 +1151,8 @@
             "SKR": 5.0
           },
           "reason": "維持BTC與SOL等主流多頭，PROM與ARB續抱；保留強烈看空的CYS及BEAT對沖，微調比例控險。",
-          "outcome": -0.33
+          "outcome": -0.33,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -1120,7 +1177,8 @@
             "LINK": -1.0
           },
           "reason": "獲利14.87%後適度加碼強勢多頭(BTC/ETH/SOL/ARB),減輕高波動空頭頭寸(ENA/ZEC),新增BNB/LINK小額做空對沖。總曝險81%→81%維持穩健,近日波動大宜保守。",
-          "outcome": 1.68
+          "outcome": 1.68,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -1144,7 +1202,8 @@
             "TRUMP": 2.0
           },
           "reason": "維持核心多頭，減少高波動弱勢；保留少量避險空單，總曝險合規。",
-          "outcome": 2.44
+          "outcome": 2.44,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1169,14 +1228,16 @@
             "HYPE": 2.0
           },
           "reason": "近5日連虧信號,維持核心多頭(BTC/ETH/SOL)穩健配置。增持ZEC(多轉向,近期強)、RAYSOL、ENA、HYPE補充曝險。減少高波動小幣(PUMP)。現金維持47%抗風險,總曝險53%穩健。",
-          "outcome": 0.85
+          "outcome": 0.85,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.64
+          "outcome": 1.64,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1192,12 +1253,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.72
+          "outcome": -0.72,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -1223,7 +1286,8 @@
             "CYS": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 15.33
+          "outcome": 15.33,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -1246,7 +1310,8 @@
             "RAYSOL": 5.0
           },
           "reason": "順勢偏多，保留核心多頭，減少空頭與弱勢山寨，新增RAYSOL強勢補位。",
-          "outcome": -1.66
+          "outcome": -1.66,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -1261,7 +1326,8 @@
             "BEAT": -5.0
           },
           "reason": "持倉多頭表現好，續抱並加碼強勢多頭ARB；弱勢空頭CYS與BEAT繼續持倉對沖，整體曝險控制在85%。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -1284,7 +1350,8 @@
             "1000PEPE": -1.0
           },
           "reason": "持倉趨勢良好(+12.91%)。精簡持股集中強勢幣(BTC/ETH/SOL/AKE)。縮減弱信號空單(ENA/IOST/ZEC)風險。保留13%現金應對回調。曝險97%,控制風險。",
-          "outcome": -1.99
+          "outcome": -1.99,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -1306,7 +1373,8 @@
             "SUI": 3.0
           },
           "reason": "保留核心多頭，減金銀與DOGE；加碼中等趨勢幣，總曝險98%仍可控。",
-          "outcome": -1.34
+          "outcome": -1.34,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1328,14 +1396,16 @@
             "ZEC": -1.0
           },
           "reason": "近5日連虧,降曝險至55%釋放現金緩衝。減持高波動小幣(AKE/ONG/LAB),保留穩健多頭核心(BTC/ETH/SOL/NEAR)。做空部位縮減30%,規避牛市資費損耗。擁擠度高,優化配置權重。",
-          "outcome": -0.64
+          "outcome": -0.64,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.71
+          "outcome": -0.71,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1351,12 +1421,14 @@
             "ARB": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 7.64
+          "outcome": 7.64,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -1382,7 +1454,8 @@
             "ONG": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 4.32
+          "outcome": 4.32,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -1404,7 +1477,8 @@
             "ACE": 2.0
           },
           "reason": "保留核心多頭，減USELESS/加強短空對沖，補強LINK/ACE；總曝險控制在100內。",
-          "outcome": 0.74
+          "outcome": 0.74,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -1418,7 +1492,8 @@
             "BEAT": -5.0
           },
           "reason": "因近期回撤較大，降低總曝險至75%以控制風險。保留大市值多頭並減持極高波動的AKE與部分空頭，維持防禦配置。",
-          "outcome": 4.02
+          "outcome": 4.02,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -1445,7 +1520,8 @@
             "CYS": -0.5
           },
           "reason": "持倉績效 +15%,多頭主流(BTC/ETH/SOL)續抱加碼。AKE/ACE 高波動抗跌留倉。做空部位(ENA/ZEC)微幅減碼控風險。總曝險 86%,保留 14% 現金應對。4日內連負,-2% 跌幅提示市場波動升溫,謹慎微調。",
-          "outcome": 1.87
+          "outcome": 1.87,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -1464,7 +1540,8 @@
             "XAG": -2.0
           },
           "reason": "保留主流多頭，減低高波動與黃金空頭；偏向趨勢延續，現有持倉微調降風險。",
-          "outcome": 0.25
+          "outcome": 0.25,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1486,14 +1563,16 @@
             "PUMP": 0.5
           },
           "reason": "連5日虧損+擁擠度42%示警。減輕1000PEPE空單(27%漲幅易軋),縮ZEC空(牛市做空付費傷本金)。保留核心多頭BTC/ETH/SOL,現金維持37%應急。總曝險63%,安全邊界明確。",
-          "outcome": -0.06
+          "outcome": -0.06,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.02
+          "outcome": -0.02,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1509,12 +1588,14 @@
             "CYS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.53
+          "outcome": 1.53,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -1540,7 +1621,8 @@
             "CYS": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -6.66
+          "outcome": -6.66,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -1559,7 +1641,8 @@
             "XAU": -4.0
           },
           "reason": "減碼弱勢與空頭續抱，增配ARB/UNI/HYPE分散多頭；總曝險78%內。",
-          "outcome": 0.5
+          "outcome": 0.5,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -1574,7 +1657,8 @@
             "NEAR": 10.0
           },
           "reason": "平倉趨勢反轉的USELESS(多轉空)與LAB(空轉多)；續抱原強勢持倉，並新增貼近關鍵價的NEAR與SOL。",
-          "outcome": -7.45
+          "outcome": -7.45,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -1601,7 +1685,8 @@
             "UNI": -1.5
           },
           "reason": "持倉績效佳(+13%),續抱核心多頭(BTC/ETH/SOL)微增加權;小幅補空ZEC、UNI對沖風險;ENA空加碼對抗牛市資費。曝險93%,風控平衡。",
-          "outcome": -0.82
+          "outcome": -0.82,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -1623,7 +1708,8 @@
             "ARB": -1.0
           },
           "reason": "順勢偏多大盤與強勢幣；保留部分黃金空頭對沖，減碼弱勢/高波動空頭，總曝險76%",
-          "outcome": 0.66
+          "outcome": 0.66,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1646,14 +1732,16 @@
             "1000PEPE": -1.0
           },
           "reason": "減做空(BNB、UNI、ZEC、LINK)避免資金費損耗,清空風險過高部位(LAB、BEAT、XAU)。保留核心多頭(BTC、ETH、SOL),總曝險降至 57%留現金,應對近期波動震盪。",
-          "outcome": -1.01
+          "outcome": -1.01,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.55
+          "outcome": 0.55,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1669,12 +1757,14 @@
             "UNI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 2.12
+          "outcome": 2.12,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -1700,7 +1790,8 @@
             "CYS": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -0.53
+          "outcome": -0.53,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -1719,7 +1810,8 @@
             "ADA": 2.0
           },
           "reason": "保留核心多頭，減弱高波動山寨與部分避險空頭；總曝險84%內。",
-          "outcome": -1.68
+          "outcome": -1.68,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -1734,7 +1826,8 @@
             "LAB": -5.0
           },
           "reason": "維持近期獲利持倉。保留核心多頭BTC與強勢小幣，並加碼BEAT與CYS等弱勢空頭，提升多空對沖效能。",
-          "outcome": 0.59
+          "outcome": 0.59,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -1759,7 +1852,8 @@
             "LAB": -0.5
           },
           "reason": "續抱核心贏家BTC/ETH/SOL,加碼高動能AKE/PROM/ACE符合多頭訊號。減碼低成長LINK/UNI等,部分轉向NEAR/ARB補強多頭配置。維持空單ENA/1000PEPE對沖,總曝險83%保持穩健,現金17%備緩衝。",
-          "outcome": -2.02
+          "outcome": -2.02,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -1783,7 +1877,8 @@
             "SUI": -2.0
           },
           "reason": "保留核心多頭，減弱高估值金屬與弱勢山寨，少量對沖DOGE與近期轉弱幣種。",
-          "outcome": -2.61
+          "outcome": -2.61,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1809,14 +1904,16 @@
             "BEAT": -1.0
           },
           "reason": "去除 UNI/LINK 做空(20+%高位費用負擔),ZEC 從多轉空(+20%距關鍵價),加強 NEAR/ARB 獲利部位。總曝險 74%→68%,保留現金應對波動。近期虧損積累需抑制風險。",
-          "outcome": -1.82
+          "outcome": -1.82,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.87
+          "outcome": -1.87,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1832,12 +1929,14 @@
             "ARB": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -4.78
+          "outcome": -4.78,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -1863,7 +1962,8 @@
             "CYS": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -2.91
+          "outcome": -2.91,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -1886,7 +1986,8 @@
             "1000PEPE": -1.0
           },
           "reason": "保留核心多頭，減弱高波動小幣；以DOGE/BEAT/PEPE小空對沖回撤風險，總曝險77%內。",
-          "outcome": -1.26
+          "outcome": -1.26,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -1900,7 +2001,8 @@
             "LAB": -4.0
           },
           "reason": "汰弱留強：平倉具反彈風險的HYPE，小幅建立強勢多單SKR，並維持其餘核心多空持倉以控制總曝險。",
-          "outcome": 2.23
+          "outcome": 2.23,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -1923,7 +2025,8 @@
             "LAB": -0.5
           },
           "reason": "止盈穩定贏家(BTC/ETH/SOL/ZEC),加碼高基本面(AKE/LINK/PROM),縮減高波動(ACE),輕減做空曝險(ENA平倉)。總曝險83%,保留現金緩衝。最近偏弱,減碼風險。",
-          "outcome": -0.47
+          "outcome": -0.47,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -1947,7 +2050,8 @@
             "XAG": 2.0
           },
           "reason": "偏多趨勢強勢幣，減低高波動小幣；保留DOGE空頭對沖，總曝險可控。",
-          "outcome": -1.47
+          "outcome": -1.47,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -1973,14 +2077,16 @@
             "BEAT": -1.0
           },
           "reason": "降ENA(負報酬訊號),小加PUMP/ARB(遠關鍵價),維持BTC/ETH主軸。現金降至18%,總曝險85%。牛市背景優先做多,做空部位最小化。避免擁擠踏空風險。",
-          "outcome": -1.27
+          "outcome": -1.27,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.39
+          "outcome": -0.39,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -1996,12 +2102,14 @@
             "ENA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -10.68
+          "outcome": -10.68,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -2027,7 +2135,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 4.23
+          "outcome": 4.23,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -2047,7 +2156,8 @@
             "UNI": 2.0
           },
           "reason": "保留核心多頭，減碼高波動小幣與空單；偏向BTC/ETH/SOL/BNB/防禦資產，總曝險控制在上限內。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -2061,7 +2171,8 @@
             "LAB": -5.0
           },
           "reason": "HYPE轉空故平多反手，續抱強勢多頭USELESS與PROM並加碼AKE，維持弱勢空頭BEAT、CYS、LAB，控制總曝險。",
-          "outcome": 4.03
+          "outcome": 4.03,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -2084,7 +2195,8 @@
             "LAB": -0.8
           },
           "reason": "持倉表現佳(+16.89%),穩健加碼強勢多頭(BTC/ETH/SOL)與高潛力幣種(ZEC/AKE)各+0.1-0.2%。保留空頭對沖(1000PEPE/BEAT/CYS/ON/LAB),總曝險維持90%。短期市場偏多,但波動高,適度保留現金緩衝。",
-          "outcome": -0.28
+          "outcome": -0.28,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -2107,7 +2219,8 @@
             "ENA": 2.0
           },
           "reason": "延續核心多頭，補強高動能且降部分波動；保留DOGE小空對沖。",
-          "outcome": -0.3
+          "outcome": -0.3,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -2132,14 +2245,16 @@
             "LAB": -1.0
           },
           "reason": "核心藍籌(BTC/ETH/BNB)維持強配置。降低單一部位暴險至12%以下,對沖擁擠度。減持HYPE空倉(規則信號弱),保留1000PEPE/BEAT/LAB空倉作風險對沖。現金17%+規則配置總曝險87%,符合存活優先。",
-          "outcome": -0.2
+          "outcome": -0.2,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.81
+          "outcome": -0.81,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -2155,12 +2270,14 @@
             "CYS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 2.78
+          "outcome": 2.78,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -2186,7 +2303,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 5.31
+          "outcome": 5.31,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -2221,7 +2339,8 @@
             "HEMI": -1.0
           },
           "reason": "續抱核心多頭，增配BTC/ETH/SOL/BNB，保留少量對沖空單，控制總曝險在100內。",
-          "outcome": -1.15
+          "outcome": -1.15,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -2234,7 +2353,8 @@
             "CYS": -5.0
           },
           "reason": "續抱強勢多頭BTC、HYPE與USELESS並小幅加碼；維持BEAT與LAB空單，增開CYS空單對沖，總曝險控於70%防禦波動。",
-          "outcome": -0.56
+          "outcome": -0.56,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -2258,7 +2378,8 @@
             "ON": -0.8
           },
           "reason": "持倉表現+17%,保留核心多頭(BTC/ETH/SOL)並微調加碼高勢幣。減少波動極高標的(USELESS/SKR)曝險。空頭部位精簡(BEAT/CYS持續虧損),維持86%總曝險,現金緩衝14%應對回調。",
-          "outcome": 0.3
+          "outcome": 0.3,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -2281,7 +2402,8 @@
             "HYPE": 2.0
           },
           "reason": "減碼部分高曝險山寨，保留核心強勢資產；微持DOGE空對沖，總曝險控制在100內。",
-          "outcome": -2.76
+          "outcome": -2.76,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -2306,14 +2428,16 @@
             "LAB": -1.0
           },
           "reason": "維持核心藍籌(BTC/ETH/BNB/SOL)穩定性,緩減擁擠度(34.5%→穩健配置)。減少高波動(USELESS/AKE/-74%距關鍵價風險),補充NEAR(43%正報酬、波動可控)。空頭部位維持對沖。現金保留19%應急。",
-          "outcome": -1.8
+          "outcome": -1.8,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.2
+          "outcome": -1.2,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -2329,12 +2453,14 @@
             "PUMP": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.36
+          "outcome": 0.36,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -2360,7 +2486,8 @@
             "HEMI": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -4.63
+          "outcome": -4.63,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -2395,7 +2522,8 @@
             "USELESS": 1.0
           },
           "reason": "降高波動小幣空單，增配主流與黃金，保留部分現有贏家，總曝險81%內。",
-          "outcome": 1.76
+          "outcome": 1.76,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -2407,7 +2535,8 @@
             "LAB": -5.0
           },
           "reason": "保留強勢多頭HYPE與BTC；PROM及USELESS具高動能續抱；空單BEAT與LAB符合預期，維持總曝險於60%以控防禦風險。",
-          "outcome": 0.76
+          "outcome": 0.76,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -2431,7 +2560,8 @@
             "ON": -0.8
           },
           "reason": "持續保持現有多頭配置,87%曝險恰當。多數LONG信號強(USELESS/AKE/SKR漲幅過火,高波動存風險)。現金14%作緩衝。SHORT部位小額對沖。近日收益穩定,維持策略。",
-          "outcome": 0.83
+          "outcome": 0.83,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -2455,7 +2585,8 @@
             "ADA": 3.0
           },
           "reason": "保留核心多頭、減低高波動；加碼相對強勢中低波動幣，維持小幅對沖空DOGE與BEAT。",
-          "outcome": 2.72
+          "outcome": 2.72,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -2479,14 +2610,16 @@
             "LAB": -1.0
           },
           "reason": "持倉達+7.48%,止盈微調主幣種(BTC/ETH各+0.2%)並縮減高波動迷你幣。31%擁擠度透過減碼超低市值(PUMP/AKE/ACE)。現金維持16%應急。近日雙向波動,保守穩健。",
-          "outcome": 1.93
+          "outcome": 1.93,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.34
+          "outcome": 0.34,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -2502,12 +2635,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.34
+          "outcome": -2.34,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -2533,7 +2668,8 @@
             "HEMI": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 8.06
+          "outcome": 8.06,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -2569,7 +2705,8 @@
             "ON": -1.0
           },
           "reason": "保留核心多頭，減弱高波動空頭，轉向BTC/SOL/ETH與黃金白銀；總曝險可控。",
-          "outcome": 3.19
+          "outcome": 3.19,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -2581,7 +2718,8 @@
             "LAB": -5.0
           },
           "reason": "鑒於權益回撤，清退高波動AKE並減碼USELESS以控制風險；保留強勢HYPE、BTC及穩定下跌的BEAT、LAB空單。",
-          "outcome": 1.97
+          "outcome": 1.97,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -2605,7 +2743,8 @@
             "ON": -1.0
           },
           "reason": "持倉已獲利15.98%。強化藍籌(BTC/ETH/SOL)與高勢能多頭(AKE/ZEC)核心曝險;適度增HYPE、UNI平衡;維持空頭對沖(BEAT/CYS/1000PEPE)。曝險89%→100%,現金歸零。減少高波動邊緣頭寸(SKR/TRUMP/USELESS)。",
-          "outcome": 2.66
+          "outcome": 2.66,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -2626,7 +2765,8 @@
             "BEAT": -1.0
           },
           "reason": "維持核心強勢資產，略減高波動/弱勢空頭；總曝險96%，保留現金緩衝。",
-          "outcome": 2.53
+          "outcome": 2.53,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -2650,14 +2790,16 @@
             "BEAT": -1.0
           },
           "reason": "擁擠度高(30%),微幅降杠:藍籌主軸維持,邊緣部位(BEAT/-1)縮小。做空PEPE/LAB保留對沖。現金12%預留。近日波幅大,持久優先。",
-          "outcome": 2.76
+          "outcome": 2.76,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.31
+          "outcome": 0.31,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -2673,12 +2815,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.33
+          "outcome": 1.33,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -2704,7 +2848,8 @@
             "ONG": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -2.3
+          "outcome": -2.3,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -2742,7 +2887,8 @@
             "AKE": 1.0
           },
           "reason": "減碼高波動弱勢空單，增持BTC/ETH/SOL等強勢低波動核心，多空平衡且總曝險受控。",
-          "outcome": -0.88
+          "outcome": -0.88,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -2755,7 +2901,8 @@
             "AKE": 5.0
           },
           "reason": "平倉訊號反轉的HEMI以止損；保留BTC與HYPE，並配置強勢幣USELESS、PROM、AKE做多，BEAT與LAB維持做空。",
-          "outcome": -3.17
+          "outcome": -3.17,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -2783,7 +2930,8 @@
             "SKR": 2.0
           },
           "reason": "持倉已優化,+12.9%獲利穩定。保留高動量多頭(BTC/SOL/ETH),增配超高漲幅新秀USELESS/SKR各2%分散風險;空頭部位維持對沖。總曝險85%,保留15%現金應急。",
-          "outcome": -2.01
+          "outcome": -2.01,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -2804,7 +2952,8 @@
             "BEAT": -2.0
           },
           "reason": "減碼高波動弱勢倉，保留強勢核心；以金銀對沖，總曝險100。",
-          "outcome": -1.31
+          "outcome": -1.31,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -2829,14 +2978,16 @@
             "XAU": -2.0
           },
           "reason": "調整做多權重至主流(BTC/ETH/SOL)以降波動;縮減擁擠部位重疊;保留少量做空對沖;現金備用30%;持續監控負收益序列。",
-          "outcome": -0.72
+          "outcome": -0.72,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.09
+          "outcome": -2.09,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -2852,12 +3003,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.64
+          "outcome": -0.64,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -2883,7 +3036,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 1.02
+          "outcome": 1.02,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -2914,7 +3068,8 @@
             "XRP": 2.0
           },
           "reason": "保留核心多頭，減碼高波動小幣與空單，總曝險控在100內；補強BTC/SOL，續持對沖。",
-          "outcome": 4.01
+          "outcome": 4.01,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -2926,7 +3081,8 @@
             "LAB": -5.0
           },
           "reason": "汰弱留強：平倉距關鍵價過遠的SKR，增配大盤BTC防禦；加碼強勢的HEMI與HYPE，維持BEAT與LAB空單。",
-          "outcome": 1.83
+          "outcome": 1.83,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -2952,7 +3108,8 @@
             "ON": -1.0
           },
           "reason": "迴轉多頭主軸:BTC/ETH加碼,止損空單(HEMI/ETH反手做多)。AKE/ACE高波超強續抱。弱空(BEAT/CYS/LAB)減碼止血。保留現金5%應急,曝險95%。",
-          "outcome": 3.85
+          "outcome": 3.85,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -2973,7 +3130,8 @@
             "BEAT": -2.0
           },
           "reason": "減碼高波動弱勢，保留強勢核心，補少量DOGE對沖；總曝險100%",
-          "outcome": 6.42
+          "outcome": 6.42,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -2999,14 +3157,16 @@
             "ONDO": 2.0
           },
           "reason": "止損 BTC/ETH/XAU 空倉(反向虧損+波動大);加碼 SOL/ZEC/UNI 多(近漲+低波);減 AKE(波動>450%,跌風險);保留 TRUMP/PUMP 小位(跨家族重疊 26.3%→控制 70%);現金留 28%應變。",
-          "outcome": 2.2
+          "outcome": 2.2,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 5.6
+          "outcome": 5.6,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -3022,12 +3182,14 @@
             "ENA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 4.84
+          "outcome": 4.84,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -3053,7 +3215,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 4.77
+          "outcome": 4.77,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -3083,7 +3246,8 @@
             "CYS": -1.0
           },
           "reason": "保留核心多頭、減少高波動空單與弱勢倉，曝險約75%，留足現金防震盪。",
-          "outcome": -0.65
+          "outcome": -0.65,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -3095,7 +3259,8 @@
             "LAB": -5.0
           },
           "reason": "因連續虧損降曝險至56%。平倉逆勢BTC空單與雜亂微倉，保留強勢HYPE、PROM及BEAT空，小幅配置新強勢幣HEMI。",
-          "outcome": -0.68
+          "outcome": -0.68,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -3125,7 +3290,8 @@
             "LAB": -1.0
           },
           "reason": "持倉已獲利+11%,多數多頭訊號持續強勢(AKE/SKR/HEMI近30日漲幅超200%)。維持現配置避免頻繁交易,保留8%現金應對回調。空頭部位(ETH/BTC/HEMI逆向)適度對沖風險。總曝險92%穩健。",
-          "outcome": 1.22
+          "outcome": 1.22,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -3146,7 +3312,8 @@
             "LAB": -2.0
           },
           "reason": "保留核心多頭，減弱高波動小幣；加碼ZEC/UNI，續持DOGE空與新空BEAT/LAB對沖。",
-          "outcome": -0.65
+          "outcome": -0.65,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -3171,14 +3338,16 @@
             "ON": -1.0
           },
           "reason": "持續5日虧損信號,降總曝險至61%增活性。做空BTC/ETH/XAU部位維持對沖,防牛市過熱。多數多頭部位保留但上限25%,避擁擠。現金比增至39%,應對波動。",
-          "outcome": 1.01
+          "outcome": 1.01,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.34
+          "outcome": -0.34,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -3194,12 +3363,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.23
+          "outcome": -1.23,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -3225,7 +3396,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 6.77
+          "outcome": 6.77,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -3251,7 +3423,8 @@
             "XAU": -2.0
           },
           "reason": "降高波動弱勢倉，保留核心多頭；加碼SKR/ACE/PROM，少量對沖BTC/ETH與BEAT。",
-          "outcome": -0.37
+          "outcome": -0.37,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -3266,7 +3439,8 @@
             "LAB": -5.0
           },
           "reason": "BTR轉空遂平倉多單。維持HYPE與PROM多頭及BTC、BEAT空單，增配強勢SKR、ACE，曝險控於70%防守。",
-          "outcome": -4.81
+          "outcome": -4.81,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -3297,7 +3471,8 @@
             "ON": -1.0
           },
           "reason": "持倉穩健獲利+9.65%。加碼藍籌多頭(BTC/SOL/ETH/LINK)應對牛市;控制做空部位(ETH/HEMI限度);新增PROM/SKR小額進場;維持81%曝險,保留現金機動性。近日波動大,穩健為先。",
-          "outcome": 2.76
+          "outcome": 2.76,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -3317,7 +3492,8 @@
             "ONDO": -2.0
           },
           "reason": "保留核心多頭，減弱高波動小幣；續持DOGE/ONDO空單對沖，總曝險97%內。",
-          "outcome": -1.86
+          "outcome": -1.86,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -3342,14 +3518,16 @@
             "ON": -1.0
           },
           "reason": "牛市頂部訊號:BTC/ETH空頭反轉,做空轉小幅,分散至藍籌(SOL/BNB)。高波動微調-AKE/PUMP留倉,降BTR/SKR風險。現金30%防擁擠。資金費計入。",
-          "outcome": -0.52
+          "outcome": -0.52,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.97
+          "outcome": -1.97,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -3365,12 +3543,14 @@
             "ENA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.54
+          "outcome": -2.54,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -3396,7 +3576,8 @@
             "ONG": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -4.37
+          "outcome": -4.37,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -3422,7 +3603,8 @@
             "HEMI": -4.272582441410953
           },
           "reason": "",
-          "outcome": 1.13
+          "outcome": 1.13,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -3437,7 +3619,8 @@
             "LAB": -5.0
           },
           "reason": "平倉逆勢BTR多單；續抱HYPE、PROM與BEAT等空單；輕倉引入強勢SKR、HEMI，總曝險控於70%以控制風險。",
-          "outcome": -1.76
+          "outcome": -1.76,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -3465,7 +3648,8 @@
             "LAB": -3.0
           },
           "reason": "維持核心多頭(BTC/SOL/ETH/ACE/PUMP)。加碼BEAT空頭(-97%虧損+多頭強信號衝突)與LAB空頭(跌幅大)各-3%對沖漲勢,增強防禦。總曝險100%,現金歸零,無槓桿。近期盤整前止跌,保守應對。",
-          "outcome": 0.67
+          "outcome": 0.67,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -3487,7 +3671,8 @@
             "ETH": 9.915826649615624
           },
           "reason": "",
-          "outcome": 0.9
+          "outcome": 0.9,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -3509,14 +3694,16 @@
             "BEAT": -1.0
           },
           "reason": "減持過度曝險BTC(10%→8%)、加碼ENA/TRUMP低風險高動能、清減HEMI空(虧損)轉PUMP多、維持1000PEPE/LAB/ON空對沖、現金降至20%保持靈活。總曝險98%內。",
-          "outcome": -0.03
+          "outcome": -0.03,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.75
+          "outcome": 0.75,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -3532,12 +3719,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -7.04
+          "outcome": -7.04,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -3563,7 +3752,8 @@
             "TUT": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -11.81
+          "outcome": -11.81,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -3589,7 +3779,8 @@
             "SOL": 8.468497930398785
           },
           "reason": "",
-          "outcome": -2.83
+          "outcome": -2.83,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -3603,7 +3794,8 @@
             "LAB": -5.0
           },
           "reason": "優化多頭,保留強勢 BTR 與 PROM,精簡 ACE/ONG。維持 HYPE 倉位;空頭續抱 BTC、BEAT 與 LAB 作防守。",
-          "outcome": -3.5
+          "outcome": -3.5,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -3629,7 +3821,8 @@
             "1000PEPE": -2.0
           },
           "reason": "近日波動加大(-1.99%),持倉已98%。減碼GIGGLE(-20.8%虧損)、ZEC、ACE部分,加固定資產(BTC/SOL/ETH)。做空信號(ETH/CYS)維持但輕倉。總曝險92%,保留現金應對風險。",
-          "outcome": -4.03
+          "outcome": -4.03,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -3651,7 +3844,8 @@
             "ETH": 9.862037144029165
           },
           "reason": "",
-          "outcome": -1.5
+          "outcome": -1.5,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -3672,14 +3866,16 @@
             "BEAT": -1.0
           },
           "reason": "持守現有穩健配置,減輕擁擠(24.2%)。降低超波動(BTR/PROM/TUT),鎖定30日強勢(SOL/LINK)。做空冷面(LAB/BEAT),保護現金46%應對下跌。認錯減碼SKYAI/ACE,確保存活優先。",
-          "outcome": -1.07
+          "outcome": -1.07,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.17
+          "outcome": -0.17,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -3695,12 +3891,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -3.28
+          "outcome": -3.28,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -3726,7 +3924,8 @@
             "SKYAI": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 0.62
+          "outcome": 0.62,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -3752,7 +3951,8 @@
             "LAB": -1.1174398520032933
           },
           "reason": "",
-          "outcome": 0.11
+          "outcome": 0.11,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -3768,7 +3968,8 @@
             "LAB": -5.0
           },
           "reason": "平倉距關鍵價過遠的 DEXE 空單以防反彈。加碼強勢多頭(ACE, ONG)，保留 BTC 與 BEAT 避險，總曝險收縮至 77% 防守。",
-          "outcome": 1.18
+          "outcome": 1.18,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -3794,7 +3995,8 @@
             "HEMI": -3.0
           },
           "reason": "持倉績效+10.41%,主多頭配置核心不變。微調:減輕BTC/SOL等權重,加反向配置ETH(-8%)、CYS(-4%)、HEMI(-3%)以對沖近期高漲風險。總曝險93%,保留7%現金緩衝。近日震盪,降低信度。",
-          "outcome": -1.99
+          "outcome": -1.99,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -3816,7 +4018,8 @@
             "XRP": 4.939103235323517
           },
           "reason": "",
-          "outcome": 0.76
+          "outcome": 0.76,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -3847,14 +4050,16 @@
             "COTI": 0.5
           },
           "reason": "存活優先:縮減擁擠BTC(10→8),做空ETH對沖牛市風險。增配低波動主流(HYPE、XAG)穩定權益。新增高近期漲幅(SKYAI、ACE)但限制單位。做空超擁擠資產(BEAT跌幅深、ON距頂遠)。總曝險98%,現金2%,降風險同時保持靈活。",
-          "outcome": 0.38
+          "outcome": 0.38,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.58
+          "outcome": 0.58,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -3870,12 +4075,14 @@
             "BEAT": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 3.03
+          "outcome": 3.03,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -3901,7 +4108,8 @@
             "ENA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -2.61
+          "outcome": -2.61,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -3927,7 +4135,8 @@
             "ADA": 2.9295652262367677
           },
           "reason": "",
-          "outcome": -3.13
+          "outcome": -3.13,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -3943,7 +4152,8 @@
             "LAB": -5.0
           },
           "reason": "平倉BTC多單並反手做空順應信號。保留HYPE及ENA等強勢多頭，維持DEXE與BEAT空單，整體降曝險至83%防禦。",
-          "outcome": -6.56
+          "outcome": -6.56,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -3966,7 +4176,8 @@
             "DOGE": 2.0
           },
           "reason": "現況多頭強勢(+12.66%),減碼ETH(SHORT訊號弱)轉入ZEC/TRUMP/XRP強勢多單。維持BTC/AKE/SOL核心,曝險85%保留風險緩衝。短期波動大,信心中等。",
-          "outcome": 0.33
+          "outcome": 0.33,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -3988,7 +4199,8 @@
             "XAU": 9.711490693782544
           },
           "reason": "",
-          "outcome": -2.94
+          "outcome": -2.94,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4012,14 +4224,16 @@
             "GPS": -1.0
           },
           "reason": "持倉維持現況微調,保留核心BTC/ETH/BNB,減少超漲高波動(BTR/AKE/ONG),做空部位控制在3%內。總曝險48%,現金52%應對波動。近日跌-1.33%後反彈,謹慎不追高。",
-          "outcome": -1.67
+          "outcome": -1.67,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -3.26
+          "outcome": -3.26,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4035,12 +4249,14 @@
             "SKYAI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -4.53
+          "outcome": -4.53,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -4066,7 +4282,8 @@
             "ENA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -3.84
+          "outcome": -3.84,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -4092,7 +4309,8 @@
             "CYS": -1.9045713302758898
           },
           "reason": "",
-          "outcome": 1.76
+          "outcome": 1.76,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -4108,7 +4326,8 @@
             "LAB": -5.0
           },
           "reason": "降低超高波動小幣(TUT/ACE/ONG)及BEAT空頭曝險以控回撤，加碼穩健的BTC與HYPE。總曝險降至85%。",
-          "outcome": -1.55
+          "outcome": -1.55,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -4128,7 +4347,8 @@
             "ONDO": 1.5
           },
           "reason": "持倉表現穩健(+12.32%)。減碼ONDO(-0.5%)因負報酬。維持高波動多頭配置,現金9%緩衝。極端波動(年化800%+)幣種適量配置規避集中風險。無明顯反轉信號,續抱",
-          "outcome": 1.07
+          "outcome": 1.07,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -4150,7 +4370,8 @@
             "XAU": 9.691474674918501
           },
           "reason": "",
-          "outcome": 2.68
+          "outcome": 2.68,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4175,14 +4396,16 @@
             "ADA": 2.0
           },
           "reason": "持倉穩健近 3 日正報酬。配置維持核心(BTC/ETH/BNB/SOL)防守,加入低波動 DOGE/ADA 降杠杆,做空部位已最小化,維持 51% 曝險及 49% 現金緩衝。",
-          "outcome": 1.6
+          "outcome": 1.6,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 2.0
+          "outcome": 2.0,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4198,12 +4421,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.37
+          "outcome": -2.37,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -4229,7 +4454,8 @@
             "AKE": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -1.8
+          "outcome": -1.8,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -4255,7 +4481,8 @@
             "SUI": 2.0
           },
           "reason": "保留核心多頭，減弱高波動空單；加少量HYPE/ADA/SUI，控制總曝險並續抱趨勢。",
-          "outcome": 1.2
+          "outcome": 1.2,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -4272,7 +4499,8 @@
             "LAB": -5.0
           },
           "reason": "保留強勢多頭BTC/PUMP/ENA/HYPE，減碼超高波動TUT/ACE/AKE，納入新強勢ONG，續抱空單DEXE/BEAT並新增LAB對沖。",
-          "outcome": 0.81
+          "outcome": 0.81,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -4292,7 +4520,8 @@
             "HYPE": 2.0
           },
           "reason": "持倉強勢(+11.14%),近期連漲。加碼BTC、SOL、ETH等核心趨勢強、波動穩定品種。維持TUT、ACE等高波動多頭。保留10%現金緩衝。曝險90%,審慎穩健。",
-          "outcome": 1.55
+          "outcome": 1.55,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -4314,7 +4543,8 @@
             "ADA": 1.0
           },
           "reason": "保留核心多頭，減少高波動小幣；空DOGE/ONDO對沖，總曝險99%。",
-          "outcome": 1.38
+          "outcome": 1.38,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4337,14 +4567,16 @@
             "GPS": -1.0
           },
           "reason": "持久守護:核心藍籌(BTC/ETH/BNB)穩健,空倉(XAU/BEAT)對沖風險。減高波動雜項,保留現金48%應急。近日虧損訊號,維持低曝險52%,避免追高。",
-          "outcome": 0.81
+          "outcome": 0.81,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.31
+          "outcome": 0.31,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4360,12 +4592,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 3.06
+          "outcome": 3.06,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -4391,7 +4625,8 @@
             "SKYAI": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -2.54
+          "outcome": -2.54,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -4415,7 +4650,8 @@
             "XAU": 4.0
           },
           "reason": "保留核心多頭，減弱高波動小幣；續抱空頭對沖，少量加XAU降波動。",
-          "outcome": -2.23
+          "outcome": -2.23,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -4430,7 +4666,8 @@
             "BEAT": -10.0
           },
           "reason": "保留強勢多頭 AKE、PUMP 與極佳空頭 DEXE、BEAT。新增強勢股 ACE，並微減極高波動的 TUT 以控制風險。",
-          "outcome": -0.78
+          "outcome": -0.78,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -4450,7 +4687,8 @@
             "HYPE": 2.0
           },
           "reason": "持倉已獲利9.42%,維持核心多單(BTC/SOL/ETH)避免貪心。減ONDO(-1.9%)止損,增ENA/SKYAI低波動增速。曝險88%保留緩衝;近日波動加大,控風險優先。BEAT空1%止損出場。",
-          "outcome": -1.62
+          "outcome": -1.62,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -4472,7 +4710,8 @@
             "XRP": 4.89234030942966
           },
           "reason": "維持核心多頭、保留DOGE/ONDO小空對沖；略降高波動部位，總曝險100%內。",
-          "outcome": -2.01
+          "outcome": -2.01,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4495,14 +4734,16 @@
             "LAB": -1.0
           },
           "reason": "維持核心多頭(BTC/ETH/BNB穩定),精簡高波動微型幣(EUL/GIGGLE出場)。做空部位縮減(BEAT/LAB),對抗超漲擁擠。現金44%應對回調。近日獲利+2%,保守固守。",
-          "outcome": -1.33
+          "outcome": -1.33,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.47
+          "outcome": -0.47,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4518,12 +4759,14 @@
             "LAB": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.13
+          "outcome": -2.13,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -4549,7 +4792,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -6.44
+          "outcome": -6.44,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -4572,7 +4816,8 @@
             "ZEC": 4.0
           },
           "reason": "保留部分強勢多頭，減弱高風險空頭，分散到大盤與動能幣，總曝險80%內。",
-          "outcome": -0.08
+          "outcome": -0.08,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -4586,7 +4831,8 @@
             "BEAT": -10.0
           },
           "reason": "續抱強勢多頭(AKE,TUT,PUMP,ENA,HYPE)與顯著空頭(DEXE,BEAT)，微調並加碼BTC以防守。",
-          "outcome": -3.17
+          "outcome": -3.17,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -4606,7 +4852,8 @@
             "BEAT": -1.0
           },
           "reason": "持有強勢多頭(BTC +22.7%,SOL +32.9%),優化配置提高高信號資產占比。降低低流動性小幣曝險,維持BEAT微空對沖。曝險88%,現金12%緩衝高波動環境。",
-          "outcome": -2.12
+          "outcome": -2.12,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -4628,7 +4875,8 @@
             "ONDO": -2.0
           },
           "reason": "降高波動小幣，保留強勢主流與金銀對沖；續持BTC/ETH/SOL/LINK，減碼ACE/TUT，縮DOGE空、留ONDO空。",
-          "outcome": 0.43
+          "outcome": 0.43,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4653,14 +4901,16 @@
             "LAB": -1.5
           },
           "reason": "持續守護:維持核心多頭(BTC/ETH/SOL/BNB)穩定;減少超漲小市值(TUT/AKE下車);保留做空對沖(BEAT/LAB);增SUI低波動補充;現金維持30%緩衝",
-          "outcome": -0.02
+          "outcome": -0.02,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.77
+          "outcome": 1.77,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4676,12 +4926,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -7.11
+          "outcome": -7.11,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -4707,7 +4959,8 @@
             "ENA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 1.49
+          "outcome": 1.49,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -4721,7 +4974,8 @@
             "1000PEPE": 3.0
           },
           "reason": "保留核心多頭，增TRUMP/1000PEPE；減弱高風險空頭與重複曝險，總曝險控在100內。",
-          "outcome": 0.61
+          "outcome": 0.61,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -4735,7 +4989,8 @@
             "DEXE": -10.0
           },
           "reason": "汰弱留強。清空高波動的SKYAI與ACE以防回撤；保留強勢多頭動能，並加碼趨勢極弱的空頭BEAT與DEXE，降總曝險至80%。",
-          "outcome": 0.13
+          "outcome": 0.13,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -4760,7 +5015,8 @@
             "BEAT": -0.5
           },
           "reason": "強多數據,持續做多動能。持倉達+13.7%目標達成,曝險91%適度,現金9%緩衝。BEAT空單回補風險,保持原倉避免反向虧損。短期續抱優於調整。",
-          "outcome": 0.1
+          "outcome": 0.1,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -4784,7 +5040,8 @@
             "COTI": 2.0
           },
           "reason": "維持核心多頭，減弱高波動弱勢幣；保留DOGE/ZEC/ONDO空單對沖。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4810,14 +5067,16 @@
             "LAB": -2.0
           },
           "reason": "持續多頭佈局核心資產(BTC/ETH/BNB),增加ENA/TRUMP低波動中段多頭,做空BEAT(極度超買-95.9%)及LAB(獲利負轉),降低擁擠度,現金降至50%備用,總曝險100%。",
-          "outcome": 0.24
+          "outcome": 0.24,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.26
+          "outcome": 0.26,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4833,12 +5092,14 @@
             "HEMI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.23
+          "outcome": -0.23,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -4864,7 +5125,8 @@
             "ENA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 7.81
+          "outcome": 7.81,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -4891,7 +5153,8 @@
             "DEXE": -1.0
           },
           "reason": "保留核心多頭，減少高波動空單與弱勢短倉；總曝險84%，留現金應對波動。",
-          "outcome": 1.08
+          "outcome": 1.08,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -4907,7 +5170,8 @@
             "BEAT": -7.0
           },
           "reason": "平倉轉空的HEMI多單，減碼高波動TUT。續抱AKE、ACE等強勢多頭並引入ENA，空頭部位維持。",
-          "outcome": 7.01
+          "outcome": 7.01,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -4932,7 +5196,8 @@
             "BEAT": -0.5
           },
           "reason": "持續增強高動能贏家(TUT+334%、AKE+248%)與藍籌穩定器。微調減碼BEAT空頭(跌95%已極端),保留少量做空對沖。總曝險88%,現金12%緩衝波動。",
-          "outcome": 2.36
+          "outcome": 2.36,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -4955,7 +5220,8 @@
             "ACE": 1.0
           },
           "reason": "保留核心多頭，增配強勢低波動；縮減高波動空頭，總曝險控制在100內。",
-          "outcome": 0.08
+          "outcome": 0.08,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -4976,14 +5242,16 @@
             "GIGGLE": 1.0
           },
           "reason": "獲利部位(BTC+11.8%)落袋+1%,持續整理。清空虧損部位(ZEC空、LAB空、ON空、ONDO)釋出8.3%現金至35%,降風險。保留核心多頭,擁擠度降至42%。",
-          "outcome": 1.01
+          "outcome": 1.01,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.95
+          "outcome": -0.95,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -4999,12 +5267,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.98
+          "outcome": 0.98,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5030,7 +5300,8 @@
             "CYS": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 1.28
+          "outcome": 1.28,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -5057,7 +5328,8 @@
             "CYS": -1.0
           },
           "reason": "保留核心多頭，削減弱勢空單與高波動小幣，增配趨勢強但不過度集中，總曝險控制在100內。",
-          "outcome": 2.82
+          "outcome": 2.82,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -5073,7 +5345,8 @@
             "DEXE": -8.0
           },
           "reason": "平倉訊號轉多的LAB空單；微調並續抱強勢多頭(TUT、AKE、SKYAI)與BTC；加碼弱勢空頭BEAT、DEXE並新增強勢多頭PUMP。",
-          "outcome": 1.89
+          "outcome": 1.89,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -5099,7 +5372,8 @@
             "DEXE": -0.5
           },
           "reason": "微調主核心位(BTC+0.5%、AKE+0.4%、SKYAI+0.3%增強強勢多頭)。輕啟短倉BEAT/DEXE對沖極端多頭風險,保留現金緩衝。波動度高、近月漲幅驚人,鎖定部分收益同時維持進攻性。",
-          "outcome": 5.94
+          "outcome": 5.94,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -5118,7 +5392,8 @@
             "ONDO": -3.0
           },
           "reason": "保留核心多頭，降PUMP高波動；加ENA順勢，ONDO轉弱做空；總曝險82%",
-          "outcome": 3.64
+          "outcome": 3.64,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -5143,14 +5418,16 @@
             "ON": -1.0
           },
           "reason": "減碼擁擠部位(重疊37%),保留核心多頭(BTC/ETH/SOL),平衡做空信號不強的ADA/XRP,增持低波動穩健資產,維持40%現金緩衝抗波動。",
-          "outcome": 2.6
+          "outcome": 2.6,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 5.96
+          "outcome": 5.96,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -5166,12 +5443,14 @@
             "ON": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 7.95
+          "outcome": 7.95,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5197,7 +5476,8 @@
             "CYS": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 7.64
+          "outcome": 7.64,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -5218,7 +5498,8 @@
             "ZEC": -1.0
           },
           "reason": "保留核心多頭，減高波動小幣；空頭續抱但略降，總曝險76%控風險。",
-          "outcome": 2.03
+          "outcome": 2.03,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -5233,7 +5514,8 @@
             "DEXE": -5.0
           },
           "reason": "保留強勢多頭AKE、TUT，加碼ACE並新增SKYAI與HYPE；維持LAB、BEAT等空單對沖，總曝險控制在80%防範波動。",
-          "outcome": 3.53
+          "outcome": 3.53,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -5257,7 +5539,8 @@
             "ETH": 1.5
           },
           "reason": "持倉強勢多頭已+4.71%,保持核心配置。微調BTC/SOL/ACE細化風險,新增ETH小額多頭配置。曝險88%,現金12%,應對波動。規則訊號清晰,避免追高極端波動幣(TUT 798%年化)。",
-          "outcome": 4.33
+          "outcome": 4.33,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -5275,7 +5558,8 @@
             "ZEC": -3.0
           },
           "reason": "保留核心趨勢與低波資產，略減高波曝險；修正總曝險至79%，維持DOGE/ZEC對沖。",
-          "outcome": 2.92
+          "outcome": 2.92,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -5302,14 +5586,16 @@
             "XRP": -1.0
           },
           "reason": "近日波動加大(-0.53%/-0.39%)示風險升溫。減擁擠度(移除低信號部位XRP空轉多)、縮高波幅品(ACE/TUT/AKE暫停)、堅守穩定核心(BTC/ETH/BNB各減0.1-1%)。現金提升至40%備機會。",
-          "outcome": 2.07
+          "outcome": 2.07,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 5.83
+          "outcome": 5.83,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -5325,12 +5611,14 @@
             "KOMA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 4.16
+          "outcome": 4.16,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5356,7 +5644,8 @@
             "ON": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -9.1
+          "outcome": -9.1,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -5379,7 +5668,8 @@
             "ZEC": -1.0
           },
           "reason": "保留核心多頭、降高波動雜訊；小幅對沖弱空，總曝險54%留現金。",
-          "outcome": -0.38
+          "outcome": -0.38,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -5394,7 +5684,8 @@
             "BEAT": -4.0
           },
           "reason": "平倉逆勢的ON和XRP，續抱強勢AKE與TUT，增配BTC降低波動，總曝險降至62%以求穩健。",
-          "outcome": -3.7
+          "outcome": -3.7,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -5417,7 +5708,8 @@
             "GPS": 1.5
           },
           "reason": "平倉 ETH 空(高波動+逆趨勢)、減 ON 至 0(空訊號弱),轉增安全性資產 XAU/HYPE/GPS。持續偏多延續昨日漲勢。曝險 93%→91%,控管風險。",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -5435,7 +5727,8 @@
             "PUMP": 2.8363111226895175
           },
           "reason": "保留核心多頭，維持DOGE/ZEC對沖；因波動偏高，降杠桿感並提高現金緩衝。",
-          "outcome": 5.26
+          "outcome": 5.26,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -5462,14 +5755,16 @@
             "ADA": -1.5
           },
           "reason": "減曝險5%(60→55)降擁擠。平衡做空(ZEC/LAB超貴、ADA/ON/XRP反轉信號弱)。加貴金屬抗擁擠。認損ON多頭,強化防守。保留核心多頭(BTC/ETH/SOL)。現金35%。",
-          "outcome": 0.02
+          "outcome": 0.02,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 7.53
+          "outcome": 7.53,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -5485,12 +5780,14 @@
             "PUMP": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -8.3
+          "outcome": -8.3,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5516,7 +5813,8 @@
             "KOMA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 0.6
+          "outcome": 0.6,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -5540,7 +5838,8 @@
             "XAG": -2.0
           },
           "reason": "保留強勢低波核心，增配ON/GPS/KOMA；減碼高波弱勢與部分避險空頭，總曝險受控。",
-          "outcome": 1.58
+          "outcome": 1.58,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -5556,7 +5855,8 @@
             "XRP": -5.0
           },
           "reason": "保留並微調強勢多頭AKE/TUT/ON，續抱高動能空頭LAB/DEXE/BEAT，新增多頭ACE分散風險，總曝險控制在76%。",
-          "outcome": -2.49
+          "outcome": -2.49,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -5578,7 +5878,8 @@
             "ETH": -6.0
           },
           "reason": "多頭強勢(91%曝險+0.92%)。減ETH空單(8.2%→-6%)因回升動能弱;增BTC/AKE/SOL因遠離關鍵價。保留高波動多倉(AKE 355%、TUT 214%)乘勢,控制總曝險95%應對盤整風險。",
-          "outcome": -2.02
+          "outcome": -2.02,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -5596,7 +5897,8 @@
             "ZEC": -3.0
           },
           "reason": "降高波動小幣，保留強勢/低波動核心；續持DOGE空、加BTC/ETH對沖，總曝險91%。",
-          "outcome": 0.16
+          "outcome": 0.16,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -5619,14 +5921,16 @@
             "XAG": -2.0
           },
           "reason": "逆擁擠減碼高漲幅小幣(AKE/KOMA),保留核心雙向(BTC多/ETH空)。加入PUMP低波動多頭、LAB/XAG做空對沖。現金升至41%,控制總曝險58%,降風險偏離同向組合。認錯止損虧損小幣。",
-          "outcome": -0.39
+          "outcome": -0.39,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.31
+          "outcome": 0.31,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -5642,12 +5946,14 @@
             "CYS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.86
+          "outcome": -2.86,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5673,7 +5979,8 @@
             "BEAT": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 10.16
+          "outcome": 10.16,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -5696,7 +6003,8 @@
             "ACE": 4.0
           },
           "reason": "保留強勢多頭，減弱高波動空頭；加ACE/PUMP，避開弱勢與高風險反彈空。",
-          "outcome": 2.5
+          "outcome": 2.5,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -5711,7 +6019,8 @@
             "BEAT": -5.0
           },
           "reason": "平倉方向錯誤的BTC與PUMP空單並反手PUMP；加碼強勢AKE、TUT，新增DEXE、BEAT空單優化曝險。",
-          "outcome": -0.4
+          "outcome": -0.4,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -5733,7 +6042,8 @@
             "ETH": -8.0
           },
           "reason": "多倉勢強,持續加碼AKE/TUT超強動能;新增PUMP低波反彈機會;減碼ONDO弱勢(-3%);維持ETH空倉對沖(牛市空費用可控);總曝險88%→89%,保留現金應急。",
-          "outcome": 2.46
+          "outcome": 2.46,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -5747,7 +6057,8 @@
             "PUMP": 5.0
           },
           "reason": "維持核心低波多頭；加PUMP動能；清掉DEXE空單，DOGE保留對沖。",
-          "outcome": 0.79
+          "outcome": 0.79,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -5772,14 +6083,16 @@
             "AKE": 1.0
           },
           "reason": "減空曝險(ETH -8%→-7,XRP -4%→-3)降擁擠。清除小虧損部位PUMP、ADA。保護做多主軸BTC/SOL。現金留25%應對波動。近5日混跌,守穩優先。",
-          "outcome": 2.28
+          "outcome": 2.28,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 2.65
+          "outcome": 2.65,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -5795,12 +6108,14 @@
             "LAB": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.41
+          "outcome": -0.41,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5826,7 +6141,8 @@
             "DEXE": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 0.39
+          "outcome": 0.39,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -5849,7 +6165,8 @@
             "LAB": -3.0
           },
           "reason": "保留核心多頭，減弱弱勢空頭；加碼高動能LONG，整體曝險受控。",
-          "outcome": -0.43
+          "outcome": -0.43,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -5863,7 +6180,8 @@
             "XRP": -5.0
           },
           "reason": "平倉逆向WLD，PUMP反手做空。AKE與ON強勢加碼，增配多頭KOMA、TUT，維持BTC、LAB、XRP空單防禦。",
-          "outcome": -1.11
+          "outcome": -1.11,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -5883,7 +6201,8 @@
             "ACE": 4.0
           },
           "reason": "持續加碼爆發強勢幣(AKE+580%、ON+314%)與穩健頭部(BTC、ETH)。新增TUT/SKYAI/ACE分攤極端波動。削減做空倉位(做空費用侵蝕)。曝險98%,現金2%緩衝。",
-          "outcome": -1.17
+          "outcome": -1.17,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -5900,7 +6219,8 @@
             "DEXE": -3.0
           },
           "reason": "降高波動弱勢倉，增強BTC/ETH/XAU/XAG，保留少量DOGE/DEXE空單對沖。",
-          "outcome": -0.15
+          "outcome": -0.15,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -5931,14 +6251,16 @@
             "GIGGLE": 1.5
           },
           "reason": "修正過度配置(現金降至35%)。強化核心多頭BTC/ETH對冲,新增低位高波動LONG(TUT/AKE/KOMA)分散風險。止損WLD/LAB/APR超高波動部位,降低擁擠度。資金費成本考量縮小做空規模。",
-          "outcome": -0.53
+          "outcome": -0.53,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.49
+          "outcome": -0.49,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -5954,12 +6276,14 @@
             "PUMP": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.98
+          "outcome": -1.98,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -5985,7 +6309,8 @@
             "SKYAI": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -6.38
+          "outcome": -6.38,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -6005,7 +6330,8 @@
             "PUMP": 4.0
           },
           "reason": "降槓桿、保留核心多頭與避險空單；減少高波動曝險，總曝險74%內。",
-          "outcome": -0.1
+          "outcome": -0.1,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -6018,7 +6344,8 @@
             "BTC": -5.0
           },
           "reason": "平倉逆勢反彈的CYS空單。微幅加碼強勢多頭AKE及續跌空頭LAB，保留ON及WLD，維持約55%防守型曝險。",
-          "outcome": 2.41
+          "outcome": 2.41,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -6044,7 +6371,8 @@
             "LAB": -1.0
           },
           "reason": "持倉已獲利(+1.73%),鞏固強勢多頭(AKE 890%、ON 325%)並減弱低效空倉。輕調高曝險至82%,優化現金配置。BTC/ETH 微調,短期空倉風險管控。",
-          "outcome": -0.02
+          "outcome": -0.02,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -6065,7 +6393,8 @@
             "PUMP": 1.0
           },
           "reason": "降槓桿守現金，減弱勢高波動；保留BTC/XAU/BNB，略增LINK/ONDO，續空DOGE/DEXE。",
-          "outcome": 0.07
+          "outcome": 0.07,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -6093,14 +6422,16 @@
             "APR": -1.0
           },
           "reason": "虧損-5%需守活。減高波動(AKE/TUT/CYS)保命。鞏固大幣(BTC/ETH/SOL)核心。現金提高至40%應對空頭風險。做空部位縮量,注資費考量牛市環境。",
-          "outcome": -0.29
+          "outcome": -0.29,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.05
+          "outcome": 0.05,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -6116,12 +6447,14 @@
             "PUMP": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -14.84
+          "outcome": -14.84,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -6147,7 +6480,8 @@
             "DEXE": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 4.9
+          "outcome": 4.9,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -6165,7 +6499,8 @@
             "PUMP": 8.0
           },
           "reason": "保留核心多頭，減弱弱勢空頭；加PUMP、降高波動與逆勢部位。",
-          "outcome": -0.13
+          "outcome": -0.13,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -6179,7 +6514,8 @@
             "LAB": -5.0
           },
           "reason": "平倉趨勢轉空的CYS並反手做空；加碼強勢多頭ON與AKE；其餘符合訊號持倉維持不變以控制曝險。",
-          "outcome": 2.08
+          "outcome": 2.08,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -6207,7 +6543,8 @@
             "LINK": 2.0
           },
           "reason": "現有強多倉(AKE +1461%)保留主倉,近5日+5.19%確認上升趨勢。輕減ETH空倉(-4%)因技術面轉弱;降DEXE空倉(-3%)規避資金費損耗。總曝險87%維持激進,留13%現金緩衝高波動環境。",
-          "outcome": 6.0
+          "outcome": 6.0,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -6228,7 +6565,8 @@
             "ON": 2.0
           },
           "reason": "減持高波動山寨，保留核心與避險，略加低波動/相對強勢；縮減部分空單。",
-          "outcome": -0.29
+          "outcome": -0.29,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -6255,14 +6593,16 @@
             "XAU": -1.0
           },
           "reason": "持久守護:減空多做(ZEC-5、XRP-3改良),強化BTC12%做多,保留現金38%抗波動。認錯剪裁BEAT/GIGGLE,降擁擠至58%。近日負報酬需等待反轉信號。",
-          "outcome": 0.93
+          "outcome": 0.93,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.66
+          "outcome": -0.66,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -6278,12 +6618,14 @@
             "BICO": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 3.63
+          "outcome": 3.63,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -6309,7 +6651,8 @@
             "BICO": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -6.79
+          "outcome": -6.79,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -6328,7 +6671,8 @@
             "LINK": 3.0
           },
           "reason": "降噪去弱倉，保留低波核心，多頭偏強者加碼，空頭集中高信號，總曝險維持合規。",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -6342,7 +6686,8 @@
             "LAB": -5.0
           },
           "reason": "汰換高波動TUT並引入PUMP；保留強勢ON、CYS與AKE但適度減持AKE控險；維持WLD及大盤空單對沖。",
-          "outcome": -0.38
+          "outcome": -0.38,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -6369,7 +6714,8 @@
             "RIF": -1.0
           },
           "reason": "多數強勢幣近30日漲幅大,AKE/ON高波動已獲利,減碼獲利持倉防回撤;DEXE/BEAT空單超強跌趨維持;現金留8%應急,曝險保守控92%內。",
-          "outcome": 5.19
+          "outcome": 5.19,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -6391,7 +6737,8 @@
             "ZEC": 4.0
           },
           "reason": "減碼高波動追高，保留核心多頭；續持DOGE/DEXE空頭對沖，控制總曝險68%內。",
-          "outcome": -0.82
+          "outcome": -0.82,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -6421,14 +6768,16 @@
             "XAU": -1.0
           },
           "reason": "緩解擁擠過度(16.3%)。保留強勢多倉(BTC/SOL/BNB)、減空單數量、裁汰虧損部位(XAU轉空避免基差費)。現金升至32%防風險。",
-          "outcome": 0.69
+          "outcome": 0.69,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.28
+          "outcome": -0.28,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -6444,12 +6793,14 @@
             "PUMP": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -5.08
+          "outcome": -5.08,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -6475,7 +6826,8 @@
             "KOMA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 2.43
+          "outcome": 2.43,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -6509,7 +6861,8 @@
             "KAITO": -1.0
           },
           "reason": "降槓桿保留核心多頭，偏向低波動資產；加碼BTC/XAU，減少高波動山寨與弱空頭風險。",
-          "outcome": 1.19
+          "outcome": 1.19,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -6523,7 +6876,8 @@
             "LAB": -5.0
           },
           "reason": "遭遇連續回撤，主動將總曝險降至52%防禦。清理弱勢BICO與BLESS，減碼高波動AKE，保留強勢CYS、ON與空單對沖。",
-          "outcome": 2.11
+          "outcome": 2.11,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -6556,7 +6910,8 @@
             "BEAT": -0.4
           },
           "reason": "多數 LONG 訊號漲勢強勁(AKE+2056%),但近日連虧(-0.73%)反映高波動。微幅加碼高信心標的(BTC/SOL),控制 SHORT 部位(DEXE/-5.6%)防守,現金保留 4% 應變。風險高,謹慎。",
-          "outcome": 0.25
+          "outcome": 0.25,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -6574,7 +6929,8 @@
             "ON": 3.0
           },
           "reason": "降高波動山寨，保留BTC/ETH/XAU核心；加少量強勢中低波動，減DEXE與DOGE空，現金提升。",
-          "outcome": -0.78
+          "outcome": -0.78,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -6605,14 +6961,16 @@
             "GIGGLE": 2.0
           },
           "reason": "擁擠度27.5%↓:減BTC(12→10)、SOL、XRP、ADA做空額度。增PUMP、LINK、BLESS低波動長尾。保留核心ETH空單(對沖牛市)。現金升至28%應對波動。風險優先。",
-          "outcome": 0.22
+          "outcome": 0.22,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.22
+          "outcome": -0.22,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -6628,12 +6986,14 @@
             "PUMP": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 2.7
+          "outcome": 2.7,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -6659,7 +7019,8 @@
             "KOMA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -7.47
+          "outcome": -7.47,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -6689,7 +7050,8 @@
             "PUMP": 1.5
           },
           "reason": "保留核心多頭與避險空單；加PUMP、降部分高波動與弱勢空單，維持分散。",
-          "outcome": -1.57
+          "outcome": -1.57,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -6705,7 +7067,8 @@
             "LAB": -5.0
           },
           "reason": "汰弱留強：清空低動能ONDO、COTI，加碼強勢ON、TUT、CYS；維持WLD與XRP空單，新增LAB空單平衡風險。",
-          "outcome": -3.51
+          "outcome": -3.51,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -6739,7 +7102,8 @@
             "BEAT": -0.4
           },
           "reason": "持倉虧損8.96%,反轉超跌多頭(AKE/TUT極端漲幅);減碼高波動低相關資產(LAB/BEAT空方信號轉弱);維持核心BTC/SOL/ADA平衡;曝險90%穩健,保留10%現金應急。",
-          "outcome": 0.28
+          "outcome": 0.28,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -6762,7 +7126,8 @@
             "AKE": 3.0
           },
           "reason": "減少高波動舊倉，保留核心多頭；逢弱勢資產做空對沖，總曝險76%合規。",
-          "outcome": -0.26
+          "outcome": -0.26,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -6789,14 +7154,16 @@
             "RIF": -3.0
           },
           "reason": "減持重疊家族(ADA多改空,調降多數超跌幣單位)。增做空LAB、BEAT、RIF補強對沖。保留BTC/SOL核心,現金維持21%作緩衝。總曝險99%,符合規則。近日波動大,守住存活優先。",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.44
+          "outcome": -0.44,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -6812,12 +7179,14 @@
             "LAB": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -8.75
+          "outcome": -8.75,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -6843,7 +7212,8 @@
             "KOMA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -7.12
+          "outcome": -7.12,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -6872,7 +7242,8 @@
             "TUT": 2.0
           },
           "reason": "保留核心低波多頭，減碼高波/弱勢倉，補強相對強勢LONG，空頭維持小倉控風險。",
-          "outcome": 0.21
+          "outcome": 0.21,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -6889,7 +7260,8 @@
             "BTC": -5.0
           },
           "reason": "平倉轉空的BTC多單並反手做空；保留強勢ON、AKE，新增高動能TUT、CYS多單；維持WLD、XRP空單，總曝險降至74%防禦。",
-          "outcome": -0.65
+          "outcome": -0.65,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -6918,7 +7290,8 @@
             "SKYAI": 1.5
           },
           "reason": "持續多頭主軸(已賺回),加碼高波動LONG標的LAB/HEI/HYPE補現金;DEXE/ETH空單已獲利適度留守;總曝險維持83%,保持現金緩衝應對風險。",
-          "outcome": -0.73
+          "outcome": -0.73,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -6937,7 +7310,8 @@
             "ADA": 2.8808255700799705
           },
           "reason": "降BTC/金與高波動多倉，保留核心趨勢；少量對沖弱勢幣，總曝險92%，含現有倉位調整",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -6961,14 +7335,16 @@
             "HYPE": 2.0
           },
           "reason": "權益虧5.91%,降暴險至72%。減AKE/TUT超高波動(939%),止損BICO/ON,加強BTC/ETH對沖。縮空頭倉(XRP/ETH/ZEC)控制資金費,保留現金28%應急。優先存活。",
-          "outcome": -0.83
+          "outcome": -0.83,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.56
+          "outcome": -1.56,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -6984,12 +7360,14 @@
             "BLESS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -5.09
+          "outcome": -5.09,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -7015,7 +7393,8 @@
             "LAB": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 7.49
+          "outcome": 7.49,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -7040,7 +7419,8 @@
             "BANK": -1.0
           },
           "reason": "降空頭與弱勢高波動，增配強趨勢低波動及LAB/TUT；總曝險控制於79%內。",
-          "outcome": -0.75
+          "outcome": -0.75,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -7056,7 +7436,8 @@
             "CYS": 5.0
           },
           "reason": "維持WLD/XRP空頭避險。微調ON，加碼強勢BICO與COTI，並小幅試倉高動能新幣TUT與CYS以分散配置。",
-          "outcome": -2.47
+          "outcome": -2.47,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -7083,7 +7464,8 @@
             "BEAT": 2.0
           },
           "reason": "持倉虧8.57%,近日波動大。增碼高勢能新幣(TUT +1637%、AKE +2049%)平衡虧損,減碼低確定性做空(WLD、RIF、XRP),維持BTC/SOL/ADA核心多頭。曝險90%,保留10%現金避險。",
-          "outcome": 0.55
+          "outcome": 0.55,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -7102,7 +7484,8 @@
             "EUL": 2.0467249663600615
           },
           "reason": "降集中度，保留核心多頭；減弱高波動小盤，加入DOGE對沖風險。",
-          "outcome": 0.22
+          "outcome": 0.22,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -7126,14 +7509,16 @@
             "GIGGLE": 1.0
           },
           "reason": "減空(ETH -5%→-4%,XRP穩定,WLD-ZEC各-1%)降做空資金費損耗。AKE/TUT超高波動風險,AKE保留3%、TUT退出。DOGE近期走弱-1,現金提升到17%。總曝險82%,維持分散防擁擠。",
-          "outcome": -2.08
+          "outcome": -2.08,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.02
+          "outcome": 0.02,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -7149,12 +7534,14 @@
             "RIF": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 4.11
+          "outcome": 4.11,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -7180,7 +7567,8 @@
             "LAB": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 0.62
+          "outcome": 0.62,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -7206,7 +7594,8 @@
             "BLESS": 1.0
           },
           "reason": "保留核心多頭XAU/BTC/BNB；減少高波動空頭與弱勢倉，補強ADA/ONDO等趨勢多。",
-          "outcome": -0.08
+          "outcome": -0.08,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -7221,7 +7610,8 @@
             "BLESS": 5.0
           },
           "reason": "平倉逆勢的 SOL 空單，保留強勢多頭 ON、BICO，並調降總曝險至 78% 以防守控險。",
-          "outcome": -0.16
+          "outcome": -0.16,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -7246,7 +7636,8 @@
             "RIF": -1.0
           },
           "reason": "止損SOL空頭(虧損持續),強化主流多頭(BTC/ETH/SOL)與高波動小幣。削減虧損HYPE空頭。總曝險79%,現金保留應急。近期連跌需提降風險。",
-          "outcome": -0.22
+          "outcome": -0.22,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -7265,7 +7656,8 @@
             "EUL": 2.0
           },
           "reason": "保留核心多頭，減弱高波動與弱勢空頭，提升現金緩衝；總曝險80%內。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -7289,14 +7681,16 @@
             "ZEC": -2.0
           },
           "reason": "止損 SOL 空(虧損中),加碼 SOL 做多;鎖定 BICO/DOGE 獲利,減少 XRP 做空曝險;保留 ETH 對沖;現金 13%。曝險 87%,控制風險。",
-          "outcome": 1.01
+          "outcome": 1.01,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.13
+          "outcome": 0.13,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -7312,12 +7706,14 @@
             "BLESS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.72
+          "outcome": -0.72,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -7343,7 +7739,8 @@
             "LAB": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 4.63
+          "outcome": 4.63,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -7373,7 +7770,8 @@
             "BICO": 2.0
           },
           "reason": "降空頭集中度，保留強勢多頭；增配高動能LONG，縮減弱勢SHORT以控波動。",
-          "outcome": -1.37
+          "outcome": -1.37,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -7389,7 +7787,8 @@
             "WLD": -10.0
           },
           "reason": "平倉轉向幣種，BTC反手做多，XRP反手做空；續抱強勢多頭ON、BICO及弱勢空頭SOL、WLD，維持總曝險95%",
-          "outcome": -3.76
+          "outcome": -3.76,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -7415,7 +7814,8 @@
             "RIF": -1.0
           },
           "reason": "近期虧損8.85%,持倉極度分散(20個部位)。維持現倉避免止損鎖死。曝險81%適度。建議後續聚焦3-5強勢標的(AKE/ON/BTC),減少低效位置,待反彈訊號強化再加碼。",
-          "outcome": -0.52
+          "outcome": -0.52,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -7437,7 +7837,8 @@
             "EUL": 2.0
           },
           "reason": "保留核心低波多頭，減弱高波長尾曝險；維持少量對沖空單，總曝險82%。",
-          "outcome": 0.27
+          "outcome": 0.27,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -7461,14 +7862,16 @@
             "HYPE": 2.0
           },
           "reason": "固守核心多單(BTC/ETH/SOL平衡),裁減高波動小額部位。做空適度加碼(ETH-6防守),現金降至13%。37.5%重疊需漸進減量,優先止損LAB/BLESS,聚焦結構性部位。",
-          "outcome": 1.72
+          "outcome": 1.72,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.85
+          "outcome": 0.85,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -7484,12 +7887,14 @@
             "KOMA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 3.24
+          "outcome": 3.24,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -7515,7 +7920,8 @@
             "HEI": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 0.72
+          "outcome": 0.72,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -7541,7 +7947,8 @@
             "GIGGLE": 2.0
           },
           "reason": "保留強勢多頭，減碼高波動弱勢空單；新增ON/ONDO/ADA，降低總曝險並控風險。",
-          "outcome": 1.26
+          "outcome": 1.26,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -7557,7 +7964,8 @@
             "WLD": -10.0
           },
           "reason": "保留強勢ON、AKE多單並納入BLESS；加碼WLD空單，維持BTC與SOL空單對沖，提高曝險追逐動能。",
-          "outcome": 4.14
+          "outcome": 4.14,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -7583,7 +7991,8 @@
             "XAU": 2.0
           },
           "reason": "近5日虧損-3.27%,降低總曝險至100%。保留強勢多頭(AKE/ON/ONDO),減碼弱勢空倉(BTC短減、ETH減),止損HYPE/RIF空單,增強DOGE/EUL,保留現金機動性。",
-          "outcome": 0.71
+          "outcome": 0.71,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -7605,7 +8014,8 @@
             "EUL": 2.0
           },
           "reason": "降高波動小幣，保留主流多頭與黃金對沖；減ON/HYPE/WLD，增BTC/SOL/ETH與部分空單。",
-          "outcome": 0.76
+          "outcome": 0.76,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -7629,14 +8039,16 @@
             "ZEC": -1.0
           },
           "reason": "止損LAB/-97.7%,減空WLD/ZEC(回踩強),加碼BTC/DOGE多頭信號,新增BICO低點逢低,控制總曝險86%,現金14%應急。做空SOL/ETH避擁擠,抗跌後反彈風險。",
-          "outcome": 0.47
+          "outcome": 0.47,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.62
+          "outcome": -0.62,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -7652,12 +8064,14 @@
             "KOMA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.22
+          "outcome": 0.22,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -7683,7 +8097,8 @@
             "KOMA": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 0.28
+          "outcome": 0.28,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -7709,7 +8124,8 @@
             "DEXE": -1.0
           },
           "reason": "保留核心低波趨勢倉，減碼高波弱勢/對沖空單，總曝險受控。",
-          "outcome": 3.3
+          "outcome": 3.3,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -7723,7 +8139,8 @@
             "COTI": 5.0
           },
           "reason": "平倉趨勢不符的 BNB 空單；ON 強勢加碼；BTC、SOL、WLD 續空，ONDO 與 XRP 續多；微幅試單強勢多頭 AKE 與 COTI。",
-          "outcome": 0.36
+          "outcome": 0.36,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -7749,7 +8166,8 @@
             "RIF": -1.6
           },
           "reason": "虧損9%,持倉多為極高波動超跌資產(AKE +1238.9%已漲,DEXE空-92%極弱)。維持現倉,避免追高虧損資產。現金15%作緩衝。多空比例合理,總曝險85%適中。",
-          "outcome": 0.12
+          "outcome": 0.12,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -7771,7 +8189,8 @@
             "EUL": 1.0
           },
           "reason": "減少高波動小幣，保留低波動核心多頭並維持少量空頭對沖；整體曝險降至100內。",
-          "outcome": 1.07
+          "outcome": 1.07,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -7795,14 +8214,16 @@
             "HYPE": -1.0
           },
           "reason": "認錯 BNB 做空(-3%轉+5%),強化大盤多頭(BTC/ETH/SOL微調);降低擁擠度,落袋 1000RATS/BANK/RIF;保留現金35%應對波動,避免加槓桿傷害。",
-          "outcome": -0.19
+          "outcome": -0.19,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.87
+          "outcome": 0.87,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -7818,12 +8239,14 @@
             "COTI": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.59
+          "outcome": -2.59,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -7849,7 +8272,8 @@
             "HOME": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -7.83
+          "outcome": -7.83,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -7871,7 +8295,8 @@
             "ADA": 3.0
           },
           "reason": "降風險、保留強勢多頭；減BTC/ETH/SOL空與高波動倉，增ON/ADA，總曝險約71%",
-          "outcome": -0.94
+          "outcome": -0.94,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -7884,7 +8309,8 @@
             "ON": 5.0
           },
           "reason": "近期連續虧損，轉為防守策略。維持大盤主流空單與強勢多單，並減碼高波動的 ON 以控制組合波動度。",
-          "outcome": -0.59
+          "outcome": -0.59,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -7910,7 +8336,8 @@
             "RIF": -1.7
           },
           "reason": "持倉虧損9.14%,近日波動劇烈(-2.11%→+3.13%)。維持現有部位避免追高殺低;多頭AKE/ON超高波動需警戒;做空DEXE/BANK信號強但基本面弱。保留15%現金應對反轉。曝險85%適度。",
-          "outcome": -1.92
+          "outcome": -1.92,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -7932,7 +8359,8 @@
             "EUL": 1.0
           },
           "reason": "保留核心多頭，減少高波動與弱勢幣；小幅對沖DOGE。",
-          "outcome": 0.38
+          "outcome": 0.38,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -7958,14 +8386,16 @@
             "HYPE": -1.0
           },
           "reason": "降極端波動標的(AKE/ON/LAB減碼),鞏固核心多頭(BTC/ONDO/EUL),做空部位適度減輕(短期反彈跡象),現金留32%應對。總曝險68%,避免過度擁擠。",
-          "outcome": -1.13
+          "outcome": -1.13,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.2
+          "outcome": 1.2,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -7981,12 +8411,14 @@
             "EUL": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -4.5
+          "outcome": -4.5,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8012,7 +8444,8 @@
             "EUL": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -3.71
+          "outcome": -3.71,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8033,7 +8466,8 @@
             "LAB": -3.0
           },
           "reason": "保留強勢低波XAU/ONDO，減弱DOGE/XRP/ADA，增配多頭動能與部分空頭對沖；總曝險100內",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8046,7 +8480,8 @@
             "ONDO": 10.0
           },
           "reason": "現有持倉皆符合最新多空訊號。在近期微幅回撤下，維持65%中度曝險，暫不加碼，以控管風險。",
-          "outcome": -0.55
+          "outcome": -0.55,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -8072,7 +8507,8 @@
             "RIF": -1.8
           },
           "reason": "持倉已達85%曝險,近5日波動大(-7.36%)。維持現倉避免追高。DEXE空倉做空費持續消耗,但多空均衡策略有效。留15%現金應對反向突破。等待更清晰信號。",
-          "outcome": -1.36
+          "outcome": -1.36,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -8094,7 +8530,8 @@
             "WLD": 8.0
           },
           "reason": "降高波動小幣，保留核心多頭；加WLD對沖弱勢。現有DOGE空單維持。",
-          "outcome": -0.29
+          "outcome": -0.29,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -8121,14 +8558,16 @@
             "AKE": 2.0
           },
           "reason": "縮減 BTC 做空暴險(訊號矛盾),增加抗擁擠。減 ETH/SOL/BNB 做空部位應對牛市壓力。補小幣高波動搏收益,維持 18% 現金緩衝,總曝險 88%。近日虧損需控槓桿。",
-          "outcome": -0.15
+          "outcome": -0.15,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.02
+          "outcome": 0.02,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -8144,12 +8583,14 @@
             "BLESS": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.64
+          "outcome": -0.64,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8175,7 +8616,8 @@
             "COTI": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -7.75
+          "outcome": -7.75,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8187,7 +8629,8 @@
             "GIGGLE": 5.0
           },
           "reason": "保留低波多頭與黃金，減掉弱勢/高波空單，新增GIGGLE小倉，總曝險降至安全內",
-          "outcome": -0.58
+          "outcome": -0.58,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8200,7 +8643,8 @@
             "WLD": -5.0
           },
           "reason": "汰換弱勢空單(PEPE、ETH)，引入強勢多頭ON。保留BTC、SOL、BNB空單與XRP、ONDO多單，降低波動並維持均衡曝險。",
-          "outcome": -0.89
+          "outcome": -0.89,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -8226,7 +8670,8 @@
             "BNB": -3.0
           },
           "reason": "持倉已虧6%,策略調整:加碼高趨勢多頭(AKE1007%、ONDO指標穩)、減碼虧損空頭(SOL/ETH/BNB)、保留規則強空(DEXE/RIF)。總曝險100%,高波動環境下提高參與度尋求反彈。",
-          "outcome": -2.11
+          "outcome": -2.11,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -8247,7 +8692,8 @@
             "EUL": 2.0
           },
           "reason": "降WLD/舊弱勢，保留核心；加HYPE/ON/GIGGLE分散動能，維持總曝險98%。",
-          "outcome": 1.12
+          "outcome": 1.12,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -8272,14 +8718,16 @@
             "1000RATS": 3.0
           },
           "reason": "近5日虧損加速(-2.02%),降曝險至67%保命。替換虧損/低信號部位(DOGE空→多,增GIGGLE/LAB),強化趨勢多頭,維持空方軟著陸。擁擠度仍高需觀察。",
-          "outcome": -1.49
+          "outcome": -1.49,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.71
+          "outcome": 0.71,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -8295,12 +8743,14 @@
             "WLD": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -6.08
+          "outcome": -6.08,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8326,7 +8776,8 @@
             "BANK": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 3.13
+          "outcome": 3.13,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8349,7 +8800,8 @@
             "1000PEPE": -2.0
           },
           "reason": "保留防守核心，減弱高波動空頭與弱多，轉向低波動與強趨勢標的。",
-          "outcome": -0.28
+          "outcome": -0.28,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8363,7 +8815,8 @@
             "1000PEPE": -5.0
           },
           "reason": "維持現有配置並整數化。大盤距關鍵價近，保持防禦不追高波動幣，靜待趨勢確立。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -8387,7 +8840,8 @@
             "RIF": -0.5
           },
           "reason": "連4日淨虧損(-7.34%)表現弱。減碼高波動(AKE/LAB),止損做空DOGE/HYPE(持續虧),加碼穩健多頭(BTC/ONDO/ADA)。降曝險至65%,保護現金緩衝。",
-          "outcome": 3.13
+          "outcome": 3.13,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -8404,7 +8858,8 @@
             "WLD": 5.0
           },
           "reason": "降部分高相關多頭，保留核心趨勢；增WLD分散，維持DOGE空頭。總曝險82%",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -8426,14 +8881,16 @@
             "HYPE": -1.0
           },
           "reason": "近日連跌,降曝險至45%保現金優勢。保核心多頭(BTC/ONDO/EUL),鞏固短線空頭(ETH/SOL/BNB)。減超高波動(AKE/KOMA/LAB)風險。認錯DOGE從多改空。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.22
+          "outcome": -0.22,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -8449,12 +8906,14 @@
             "HYPE": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.7
+          "outcome": -1.7,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8480,7 +8939,8 @@
             "EUL": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 1.33
+          "outcome": 1.33,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8503,7 +8963,8 @@
             "1000PEPE": -2.0
           },
           "reason": "保留核心多空，降高波動弱勢空單；加碼ON/LAB，減少BNB、WLD、DEXE等低勝率倉位。",
-          "outcome": -0.05
+          "outcome": -0.05,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8517,7 +8978,8 @@
             "ETH": -5.0
           },
           "reason": "HYPE訊號轉空，清算其多單。鑒於近期淨值回撤，將總曝險降至65%防守，其餘主從持倉維持不變。",
-          "outcome": -0.26
+          "outcome": -0.26,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -8541,7 +9003,8 @@
             "HYPE": -0.9
           },
           "reason": "近5日連跌累積-7.34%,降低高波動做多(AKE/KOMA/LAB)敞口,加強核心多頭(BTC/ONDO/ADA)。維持空頭對沖(SOL/ETH/BNB)。曝險66%維持穩健。",
-          "outcome": 0.03
+          "outcome": 0.03,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -8558,7 +9021,8 @@
             "ADA": 2.0
           },
           "reason": "降高波動小幣，增配低波動主流與黃金；保留少量DOGE空頭對沖，控制總曝險與回撤。",
-          "outcome": -0.79
+          "outcome": -0.79,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -8580,14 +9044,16 @@
             "HYPE": -1.0
           },
           "reason": "止損 LAB(-98.3% 月虧),減碼 DEXE 空(過度離關鍵價1305%)。核心持倉減 BTC 至 6%,維持雙向平衡。風險:高波動率+近期連虧,現金保留 36% 應急。曝險 64% 無超標。",
-          "outcome": 1.19
+          "outcome": 1.19,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.8
+          "outcome": -2.8,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -8603,12 +9069,14 @@
             "ONDO": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 4.6
+          "outcome": 4.6,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8634,7 +9102,8 @@
             "ONDO": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -11.57
+          "outcome": -11.57,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8657,7 +9126,8 @@
             "COTI": 2.199970354428837
           },
           "reason": "保留核心多空，略增防守，減弱高波動空位，總曝險<=100",
-          "outcome": -2.0
+          "outcome": -2.0,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8672,7 +9142,8 @@
             "HYPE": 5.0
           },
           "reason": "平倉趨勢轉空的BANK。續抱主流空單(BTC,BNB,SOL,ETH)與多單(ONDO,XRP)以防範震盪回撤。",
-          "outcome": -3.14
+          "outcome": -3.14,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -8696,7 +9167,8 @@
             "RIF": -1.0
           },
           "reason": "減持虧損標的(AKE極波950%、LAB近30日-98.9%)、保護多單BTC/ONDO、縮短做空曝險(SOL/ETH/BNB均低動量)、保留現金12%應對黑天鵝。總曝險88%,規避過度槓桿。近期連損需謹慎。",
-          "outcome": -2.07
+          "outcome": -2.07,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -8718,7 +9190,8 @@
             "BANK": 1.0
           },
           "reason": "降高波動小幣，保留核心多頭；續持DOGE空，總曝險約73%留現金。",
-          "outcome": -3.11
+          "outcome": -3.11,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -8741,14 +9214,16 @@
             "HYPE": -2.0
           },
           "reason": "減低擁擠度(32.4%)。保留核心多頭(ONDO/BTC/ADA),增LAB低谷布局,降做空集中度,加RIF空單對沖高波動,現金維持37%防守。近期虧損,優先控風險。",
-          "outcome": -2.02
+          "outcome": -2.02,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.34
+          "outcome": 1.34,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -8764,12 +9239,14 @@
             "ETH": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -11.53
+          "outcome": -11.53,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8795,7 +9272,8 @@
             "RIF": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -3.19
+          "outcome": -3.19,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8818,7 +9296,8 @@
             "ON": 3.0
           },
           "reason": "降高波動多空，保留ONDO/XAU與低波動空頭，補強WLD/COTI/ON；總曝險約65。",
-          "outcome": -0.61
+          "outcome": -0.61,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8833,7 +9312,8 @@
             "HYPE": 5.0
           },
           "reason": "平倉1000PEPE多單並反手做空，維持BTC、BNB、SOL等主流幣空單，保留XRP、ONDO與強勢小幣BANK多單以應對市場分化。",
-          "outcome": -0.57
+          "outcome": -0.57,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -8859,7 +9339,8 @@
             "RIF": -1.0
           },
           "reason": "減碼高波動極端漲幅(AKE/BANK/ON);增持穩定多頭(COTI/HYPE);平衡做空避免資金費侵蝕;保留ETH/BTC空單對沖;總曝險99%充分利用,現金1%應急。",
-          "outcome": -0.86
+          "outcome": -0.86,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -8881,7 +9362,8 @@
             "EUL": 2.0
           },
           "reason": "降部分高波動舊倉，保留核心多頭；加碼強勢但控總曝險<100，DOGE續空對沖。",
-          "outcome": -0.12
+          "outcome": -0.12,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -8901,14 +9383,16 @@
             "ON": 3.0
           },
           "reason": "降做空曝險(空倉從18%→19%含費用);減SOL空(趨勢弱)轉COTI多(距關鍵近,波動高);裁PEPE(低權重);保留BTC多+ONDO核心;現金維持32%應急。",
-          "outcome": 0.14
+          "outcome": 0.14,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.12
+          "outcome": -0.12,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -8924,12 +9408,14 @@
             "WLD": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.57
+          "outcome": -0.57,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -8955,7 +9441,8 @@
             "ONDO": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -7.06
+          "outcome": -7.06,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -8978,7 +9465,8 @@
             "DEXE": -2.0
           },
           "reason": "保留核心多頭，削弱高波動/弱勢空單；總曝險降至64，留較多現金應對波動。",
-          "outcome": -3.23
+          "outcome": -3.23,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -8992,7 +9480,8 @@
             "1000PEPE": 5.0
           },
           "reason": "SOL訊號轉空，反手做空；BNB、BTC、ETH續空；ONDO、XRP、BANK持多；增配強勢PEPE多單，控總曝險在68%。",
-          "outcome": -2.71
+          "outcome": -2.71,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -9015,7 +9504,8 @@
             "WLD": -2.0
           },
           "reason": "減碼虧損頭寸(BTC/SOL),鎖定極端漲幅(AKE 982%入場風險),ON/LAB多頭補充,短端控風險。總曝險85%,現金15%。近4日-3.93%,降槓桿穩陣。",
-          "outcome": -3.15
+          "outcome": -3.15,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9031,7 +9521,8 @@
             "DOGE": -2.0
           },
           "reason": "維持核心多頭，減少高波動山寨暴露；DOGE小空對沖風險，總曝險79%不變。",
-          "outcome": -1.87
+          "outcome": -1.87,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -9050,14 +9541,16 @@
             "BNB": -4.0
           },
           "reason": "虧損-2.71%下調暴險至51%避免擁擠。減BTC/ONDO防高位,增EUL/DOGE低位反彈。空單(ETH/-6、ZEC/-5)對沖牛市風險,現金保留49%待機。",
-          "outcome": -1.74
+          "outcome": -1.74,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.09
+          "outcome": -2.09,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9073,12 +9566,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -4.05
+          "outcome": -4.05,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -9104,7 +9599,8 @@
             "ETH": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -6.68
+          "outcome": -6.68,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -9128,7 +9624,8 @@
             "DEXE": -2.0
           },
           "reason": "減碼弱勢高波動，保留強勢多頭；新增EUL，維持避險空單，總曝險受控。",
-          "outcome": -0.51
+          "outcome": -0.51,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -9141,7 +9638,8 @@
             "ETH": -5.0
           },
           "reason": "維持現有組合。多頭SOL、ONDO與XRP表現穩定，BANK高波動控倉；空頭BTC、ETH與BNB依信號續抱防守。",
-          "outcome": 0.85
+          "outcome": 0.85,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -9161,7 +9659,8 @@
             "EUL": 4.0
           },
           "reason": "減持虧損DOGE空單(-1.7%),降低高波動AKE(-1%)。補回安全資產XAU與EUL(多趨勢+規則LONG)。持續看空DEXE/BTC/BNB,獲利平倉部分BTC(+8.8%)。曝險96%→97%,控風險。",
-          "outcome": -1.26
+          "outcome": -1.26,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9178,7 +9677,8 @@
             "HYPE": 5.0
           },
           "reason": "降高波動小幣，保留BTC/ETH/BNB/XAU核心；續持DOGE小空對沖，總曝險控制內。",
-          "outcome": 1.4
+          "outcome": 1.4,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -9194,14 +9694,16 @@
             "XAU": 3.0
           },
           "reason": "近日跌勢(-1.54%,-0.49%)示警,擁擠度44%過高。減碼DOGE做空(資金費成本)、清ESPORTS多頭、縮BANK;強化ETH做空(近漲23.8%有回檔壓);保留BTC/SOL核心,現金升至45%防風險。",
-          "outcome": -0.42
+          "outcome": -0.42,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.08
+          "outcome": 1.08,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9217,12 +9719,14 @@
             "ZEC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -3.11
+          "outcome": -3.11,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -9248,7 +9752,8 @@
             "ZEC": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 8.63
+          "outcome": 8.63,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -9271,7 +9776,8 @@
             "1000PEPE": 4.0
           },
           "reason": "保留核心多頭，減少高波動空頭與弱勢倉，新增強勢LONG分散風險。",
-          "outcome": 1.03
+          "outcome": 1.03,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -9284,7 +9790,8 @@
             "ETH": -5.0
           },
           "reason": "現有持倉訊號未變。維持SOL、XRP、ONDO、BANK做多，BNB、BTC、ETH做空，微調比例控風險。",
-          "outcome": 0.77
+          "outcome": 0.77,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -9304,7 +9811,8 @@
             "XRP": 2.0
           },
           "reason": "持倉微調止損。HYPE跌9.4%轉空2%;DOGE規則空但止損做多8%;ZEC小幅加空-2%;新增1000PEPE+3%(近關鍵價)、XRP+2%平衡。總曝險99%,保守應對近期連跌。",
-          "outcome": 3.22
+          "outcome": 3.22,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9320,7 +9828,8 @@
             "ADA": 3.0
           },
           "reason": "保留核心多頭，降HYPE與ZEC，略減DOGE空頭；維持低波動與分散，總曝險80%",
-          "outcome": 0.16
+          "outcome": 0.16,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -9339,14 +9848,16 @@
             "1000PEPE": 2.0
           },
           "reason": "持倉重疊43.7%過高,減倉高波動品(BANK 5→4、ESPORTS 3→2),保留核心多頭(BTC/SOL/ONDO),做空部位適度縮減(ETH/ZEC/DOGE),增加1000PEPE小額多頭避免現金浪費。總曝險降至79%,風險可控。近4日連虧需謹慎。",
-          "outcome": 1.52
+          "outcome": 1.52,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.43
+          "outcome": 0.43,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9362,12 +9873,14 @@
             "ADA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 3.63
+          "outcome": 3.63,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -9393,7 +9906,8 @@
             "ZEC": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -28.18
+          "outcome": -28.18,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -9410,7 +9924,8 @@
             "HYPE": 8.0
           },
           "reason": "降BTC/ETH空單風險，保留強勢多頭XAU/SOL/ONDO，增配HYPE；總曝險受控，偏防守。",
-          "outcome": -0.25
+          "outcome": -0.25,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -9423,7 +9938,8 @@
             "BANK": 5.0
           },
           "reason": "BTC訊號轉空，平多反手建空。BNB及ETH空單與SOL、XRP、ONDO、BANK多單符合趨勢續抱。",
-          "outcome": -0.58
+          "outcome": -0.58,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -9441,7 +9957,8 @@
             "ZEC": -2.0
           },
           "reason": "減BTC/SOL曝險,加BANK/AKE(極度超漲超跌反轉機會)。縮HYPE負收益,控ETH空方資金費。總曝險91%,保留9%現金緩衝。持倉微幅對沖優化。",
-          "outcome": -0.96
+          "outcome": -0.96,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9458,7 +9975,8 @@
             "HYPE": 4.0
           },
           "reason": "降低高波動持倉，增配低波動主流與避險；保留DOGE空頭對沖，總曝險60%內。",
-          "outcome": -0.73
+          "outcome": -0.73,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -9476,14 +9994,16 @@
             "ESPORTS": 3.0
           },
           "reason": "減輕BTC過度曝險(27.8→22%)降風險;削弱擁擠部位;保留核心多頭(SOL、ONDO、ADA);維持空頭對衝(ETH、ZEC、BNB);加入低波動XAU與高景氣ESPORTS小位;現金5%應急。",
-          "outcome": -0.49
+          "outcome": -0.49,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -1.17
+          "outcome": -1.17,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9499,12 +10019,14 @@
             "ADA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 29.68
+          "outcome": 29.68,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -9530,7 +10052,8 @@
             "ETH": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 11.61
+          "outcome": 11.61,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -9547,7 +10070,8 @@
             "RIF": -4.0
           },
           "reason": "保留核心多頭BTC/SOL/XAU，減碼弱勢ETH/ZEC/BNB，補空DOGE/RIF對沖，總曝險96%",
-          "outcome": -1.73
+          "outcome": -1.73,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -9560,7 +10084,8 @@
             "ETH": -5.0
           },
           "reason": "微調持倉，維持BTC、SOL與BNB核心多空配置，適度降低高波動BANK與ONDO曝險以控回撤。",
-          "outcome": -0.64
+          "outcome": -0.64,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -9573,7 +10098,8 @@
             "ETH": -14.750785183628363
           },
           "reason": "總曝險100%。維持強勢多單(BTC/SOL/ADA),保留對沖空單(ETH/BNB)。加入高波動機會BANK(608%)、AKE(多頭+627%近月)小額測試。現況-2%損益後審慎增曝險,規避高槓桿風險。",
-          "outcome": -1.93
+          "outcome": -1.93,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9588,7 +10114,8 @@
             "ZEC": 4.0
           },
           "reason": "保留核心低波動多頭，減少零碎曝險；小幅加ZEC，維持DOGE空單對沖。",
-          "outcome": -2.1
+          "outcome": -2.1,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -9604,14 +10131,16 @@
             "BANK": 6.0
           },
           "reason": "降曝險至98%→78%。轉向防守:減BTC(高佔比)、轉DOGE做空(近日弱勢-12.3%)、加ONDO(波動低)。BANK多頭信號強+波動控制。ETH/ZEC縮空單保護。現金增至22%應對波動。",
-          "outcome": -1.54
+          "outcome": -1.54,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.13
+          "outcome": -2.13,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9627,12 +10156,14 @@
             "ADA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -2.08
+          "outcome": -2.08,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -9658,7 +10189,8 @@
             "DOGE": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 6.11
+          "outcome": 6.11,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -9673,7 +10205,8 @@
             "XRP": 5.0
           },
           "reason": "續抱核心多頭，減DOGE轉ONDO/ADA；保留ETH/ZEC空單，分散且總曝險100內。",
-          "outcome": 0.16
+          "outcome": 0.16,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -9686,7 +10219,8 @@
             "ETH": -5.0
           },
           "reason": "維持BTC、ONDO等強勢多頭與BNB空頭；因ETH近期強勢且逼近關鍵價，減碼其空單以防軋空，整體降低曝險。",
-          "outcome": 1.95
+          "outcome": 1.95,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {
@@ -9699,7 +10233,8 @@
             "BNB": -8.0
           },
           "reason": "多頭主軸:BTC/SOL穩健低波動基礎,ONDO中期強勢。對沖:做空ETH/BNB對沖系統性風險。總曝險85%,迴避極端波動幣(LAB/AKE)及深度反向(DEXE)。保留現金緩衝。",
-          "outcome": -0.1
+          "outcome": -0.1,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9714,7 +10249,8 @@
             "XRP": 5.0
           },
           "reason": "續持核心多頭，降BTC/ETH略增分散；保留DOGE空頭對沖，避免高波動小幣。",
-          "outcome": 0.35
+          "outcome": 0.35,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {
@@ -9728,14 +10264,16 @@
             "BNB": -5.0
           },
           "reason": "核心多頭(BTC/SOL/ONDO/XRP)穩健且波動可控;對沖做空ETH/ZEC避免過度擁擠;現金留20%應急。總曝險100%,風險平衡。",
-          "outcome": -0.1
+          "outcome": -0.1,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 0.37
+          "outcome": 0.37,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9751,12 +10289,14 @@
             "ADA": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": 1.02
+          "outcome": 1.02,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     },
@@ -9782,7 +10322,8 @@
             "HYPE": 12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": -0.16
+          "outcome": -0.16,
+          "outcome_status": "ok"
         },
         "gpt": {
           "alloc": {
@@ -9794,7 +10335,8 @@
             "DOGE": 5.0
           },
           "reason": "偏多主趨勢核心，少量空弱勢對沖；總曝險68%安全。",
-          "outcome": -0.07
+          "outcome": -0.07,
+          "outcome_status": "ok"
         },
         "gemini": {
           "alloc": {
@@ -9807,12 +10349,14 @@
             "BNB": -15.0
           },
           "reason": "建立初始倉位：多頭配置強勢的BTC、SOL與高動能的BANK；並做空趨勢偏弱的ETH與BNB進行對沖。",
-          "outcome": -0.08
+          "outcome": -0.08,
+          "outcome_status": "ok"
         },
         "claude": {
           "alloc": {},
           "reason": "核心多頭:BTC/SOL/ONDO穩健信號;空頭對沖:ETH/BNB/ZEC減風險。總曝險100%。迴避超高波動(BANK/AKE/LAB/HYPE)。現金0。",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         },
         "gpt_pure": {
           "alloc": {
@@ -9824,19 +10368,22 @@
             "DOGE": -5.0
           },
           "reason": "偏防守：配BTC/ETH/BNB/XAU，少量SOL；DOGE小空對沖高波動。",
-          "outcome": -0.08
+          "outcome": -0.08,
+          "outcome_status": "ok"
         },
         "guardian": {
           "alloc": {},
           "reason": "核心多:BTC/SOL/ONDO(趨勢強),分散低波動。防守空:ETH/BNB/ZEC(高位警訊),對沖牛市擁擠。資金費負荷管理,總曝險98%,保留2%緩衝。",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         },
         "bench_btc": {
           "alloc": {
             "BTC": 100.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.07
+          "outcome": -0.07,
+          "outcome_status": "ok"
         },
         "bench_eqw": {
           "alloc": {
@@ -9852,12 +10399,14 @@
             "BTC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -0.14
+          "outcome": -0.14,
+          "outcome_status": "ok"
         },
         "bench_cash": {
           "alloc": {},
           "reason": "市場基準(非 AI)",
-          "outcome": 0.0
+          "outcome": 0.0,
+          "outcome_status": "ok"
         }
       }
     }
