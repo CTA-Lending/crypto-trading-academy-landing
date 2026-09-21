@@ -100,7 +100,7 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🚫 紀律紀錄 <span class="foot" style="font-weight:400">— 違規一律記錄,不替 AI 擦屁股</span></h2>
   <p class="foot">總曝險上限 100%。若模型輸出超標或幻覺出不存在的幣種,系統<b>不會自動幫它縮到 100%</b>——會回饋錯誤讓它重試一次;仍違規就記錄違規並維持原倉。這是「指令遵循能力」的真實量測。</p>
-  <p class="foot" style="color:var(--down)"><b>⚠️ 適用範圍(2026-08-04 更正)</b>:此項檢查<b>僅套用於上表的 5 個 LLM 腦</b>。規則腦與 3 個市場基準的權重由程式直接產生,<b>不經過這道檢查</b>,因此它們在資料檔中的「違規 0」代表<b>未受檢查</b>,不代表未逾越——實測規則腦於 2026-07-25 的實際總曝險曾達 <b>174.6%</b>。依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 <a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。</p>
+  <p class="foot" style="color:var(--down)"><b>⚠️ 適用範圍(2026-08-04 更正)</b>:此項檢查<b>僅套用於上表的 5 個 LLM 腦</b>。規則腦與 3 個市場基準的權重由程式直接產生,<b>不經過這道檢查</b>,因此它們在資料檔中的「違規 0」代表<b>未受檢查</b>,不代表未逾越——2026-07-25 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>174.6%</b> ——<b>那是單一天的一次量測,不是整段實驗的上界</b>(當時沒有任何程式在持續量它,事後也重建不出來,因為帳本只存目標權重)。逐日量測已於 <b>2026-09-21</b> 開始,結果印在下方 §4 表下。依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 <a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。</p>
   <div id="disc"></div>
 </div>
 
@@ -128,6 +128,12 @@ python verify_chain.py</pre>
   而你正在看的是<b>這個網頁</b> —— 網頁本身<b>不會</b>在你的瀏覽器裡即時比對雜湊。
   所以「你螢幕上的數字 = 被錨定的那一份」這件事,我們目前<b>沒有</b>給你證明。
   要自己確認,請用上面的指令下載原始檔比對。</p>
+  <!-- 2026-09-21(稽核 M004):鏈忠實記錄了每一次程式碼變動,
+       而在此之前沒有任何東西去讀它。PROTOCOL 第 9 節寫著修補需記錄於 CHANGELOG
+       並標註生效日,這條規則從來沒有被任何程式、頁面或流程檢查過。
+       讀者若真的照這一頁邀請的方式去核對,會發現算公開績效的模組某天改過、
+       而揭露停在更早的日期。證據早就躺在鏈裡,只是沒有人讀。 -->
+  <div id="codeaudit"></div>
   <p class="foot">📌 錨點是每天 00:36 UTC 拍一次快照。
   我們當天稍後更新過檔案時,驗證器會顯示「不符」並說明它<b>分辨不出</b>
   「正常更新」與「被竄改」—— 那時請看 git 歷史。</p>
@@ -372,6 +378,17 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   }
 
   const alloc=d.current_alloc||{},reasons=d.current_reasons||{},viol=d.today_violation||{};
+  /* 🔴🔴 2026-09-21(稽核 M030):卡片上下兩半**屬於不同天的持倉**,而頁面一個字都沒說。
+     每日順序是 ①SETTLE(用昨天的 units 更新權益)→ ②DECIDE → ③REBALANCE,
+     而 `returns[b]` 是在換倉扣費之後才算。所以:
+       上半(權益 / 報酬)= **前一決策日**那組持倉的結算 + 今天換倉的成本
+       下半(幣種標籤 / 💭 理由)= **今天剛開**的新倉,明天才會有損益
+     ⭐ 兩者上下並排、沒有任何時間標示 —— 讀者(含 CEO)必然把 +X% 歸因給
+       看到的那組幣,再據此判斷「這個腦選幣準」。**歸錯了對象。**
+     🔴 修法是加時間標示,不是改數字:兩個數字各自都是對的。 */
+  const _recs=d.records||[];
+  const settleDay=m.last_date||(_recs.length?_recs[_recs.length-1].day:null);
+  const fromDay=(_recs.length>1)?_recs[_recs.length-2].day:null;
   const noDec=d.no_decision||{};
 
   /* 🔴🔴 2026-09-19:這段紅字以前**寫死**成「重試一次仍違反總曝險上限」,
@@ -470,8 +487,10 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
           <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
         <div><div class="eq">$${eq.toLocaleString()}</div>
           <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
-          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}</div></div>
+          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}${settleDay?`<br>截至 <b>${settleDay}</b> 結算${fromDay?`,由 <b>${fromDay}</b> 決定的那組持倉產生(含當日換倉成本)`:''}`:''}</div></div>
       </div>
+      ${((noDec[b]||{}).streak||0)>0?'':
+        `<div class="foot" style="font-size:10.5px;margin-top:6px">📅 下方是 <b>${settleDay||'今日'}</b> 的<b>新決策</b> —— 下一個決策日收盤才會有損益,<b>與上方報酬不是同一組持倉</b>。</div>`}
       <div class="pos">${tags}${moreTag}${grossTag}</div>
       ${viol[b]?vioBanner(b,viol[b]):''}
       ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
@@ -574,6 +593,17 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   // 🔴 2026-08-03:更正揭露。PROTOCOL §9 要求修補須記錄於 CHANGELOG,
   //    而一份沒有人看得到的 CHANGELOG 不算揭露。數字一律從資料讀,不寫死 ——
   //    寫死的話,未來出現新的不一致時頁面會顯示一個過期的假數字。
+  /* 🔴 M004:把「程式碼改過幾次 / 幾次找不到對應的 CHANGELOG」印出來。
+     分母是**全部**核心模組變動,不是只放已經補揭露的那幾筆。 */
+  (function(){
+    const host=document.getElementById("codeaudit"); if(!host) return;
+    const c=d.code_change_audit;
+    if(!c||!c.available){
+      host.innerHTML=`<p class="foot" style="color:var(--warn)">⚠️ <b>程式碼變動與揭露的比對沒有跑起來</b>(${(c&&c.error)||"後端沒有提供"})—— 空白<b>不等於沒有問題</b>,只代表我們沒比對。</p>`;
+      return; }
+    const bad=c.undisclosed||0;
+    host.innerHTML=`<p class="foot">🧾 <b>程式碼改過幾次,揭露了幾次</b>(這是我們自己查自己,你也可以用上面的指令自己查):<br>錨定鏈記錄到 <b>${c.core_changes}</b> 次動到會影響公開績效的模組(${(c.metric_files||[]).join("、")})。<br>其中 <b>${c.same_entry}</b> 次<b>當天就同步更新了 CHANGELOG</b>;另有 <b>${c.date_mentioned_only}</b> 次當天沒同步,但 CHANGELOG 裡有提到那個日期(<b>這只是「提到」,不等於那次變動被說明過</b>);${bad  ? `<br>🔴 還有 <b>${bad}</b> 次(錨點 ${(c.undisclosed_seqs||[]).join("、")})     <b>在 CHANGELOG 裡完全找不到對應</b> —— 那幾天算公開績效的程式改過,而我們沒有說。     依 PROTOCOL §9 這是<b>我們的揭露缺口</b>,列在這裡不是為了帶過,是為了讓它被看見。`  : `<br>✅ 目前沒有找不到對應的變動。`}</p>`;
+  })();
   const mm=d.returns_reconcile_mismatches;
   /* 🔴🔴 2026-09-21(稽核 M040):上面那個「不一致 N 筆」以前**沒有分母**。
      而後端的 `reconcile` 當時把「帳本根本沒有 returns 可比」當成通過 ——
@@ -654,7 +684,10 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
          而它**只被 `llm_allocation()` 呼叫** —— 規則腦與三個市場基準
          從來不經過它。資料檔早就有 `violation_checked` 這個欄位,
          而這一頁**一次都沒讀過**,於是那 4 個在表上印「0 日 / 0%」,
-         讀起來像「最守規矩」。實測規則腦 2026-07-25 的總曝險曾達 174.6%。
+         讀起來像「最守規矩」。2026-07-25 曾以人工抽樣量到規則腦總曝險 174.6%。
+         🔴 2026-09-21(稽核 M033):那個 174.6% **沒有任何程式在維護**,
+            而它被當成整段實驗的上界印在頁面上。逐日量測從 2026-09-21 開始,
+            由 `d.gross_exposure` 提供,**一律帶量測起始日與已量測日數當分母**。
          📌 「適用範圍」的說明在**兩張卡片之前**的紀律紀錄區 ——
            ⭐ **揭露要放在資料旁邊,不是另一個區塊**(這是第四次犯)。 */
       const checked=(d.violation_checked||{})[b];
@@ -682,6 +715,22 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         而這次<b>解析不到</b>(${th.mdd_pct==null?'最大回撤門檻':''}${(th.mdd_pct==null&&th.violation_rate_pct==null)?'、':''}${th.violation_rate_pct==null?'違規率門檻':''})。
         <b>讀不到規則 ≠ 沒有人違規</b> —— 所以上表不印「未觸發」,也不給「幾位已觸發」的數字。</div>`;
     }
+    /* 🔴 2026-09-21(稽核 M033):實際總曝險的**逐日**量測。
+       174.6% 那個數字是 2026-07-25 的人工抽樣,沒有任何程式在維護它,
+       事後也重建不出來(帳本只存目標權重,上限 100%,量不到市值漂移)。
+       ⭐ **沒有分母的「最高 X%」跟沒有量是一樣的** ——
+         所以這裡一律印出量測起始日與已量測日數,
+         而且「還沒開始量」要明講,不准安靜地什麼都不顯示。 */
+    function gxLine(){
+      const gx=d.gross_exposure;
+      if(!gx) return '<br>⚠️ <b>後端沒有提供曝險量測</b> —— 不要把上面那個 174.6% 當成上界。';
+      if(!gx.measured_days) return `<br>📏 <b>逐日量測尚未累積到資料</b>(${gx.note||''}) —— 在那之前,這一頁對「實際曝險最高到哪」<b>沒有答案</b>。`;
+      const rows=Object.entries(gx.per_brain||{})
+        .filter(([,v])=>v && v.max_pct!=null)
+        .sort((x,y)=>y[1].max_pct-x[1].max_pct).slice(0,3)
+        .map(([k,v])=>`${LABEL[k]||k} <b>${v.max_pct}%</b>(${v.max_day})`).join('、');
+      return `<br>📏 <b>逐日量測</b>:自 <b>${gx.measured_from}</b> 起共 <b>${gx.measured_days}</b> 個決策日,期間最高 ${rows||'—'}。<b>更早的日子沒有量測,那是「沒有量」,不是「沒超過」。</b>`;
+    }
     if(anyRestated){
       h+=`<div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">
         🔴 <b>2026-09-19 更正:我們先前公告錯了。</b>
@@ -693,7 +742,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         原始違規紀錄一筆未刪,只是改變歸類。詳見 CHANGELOG-023。</div>`;
     }
     h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>${(()=>{const u=(m.brains||[]).filter(x=>(d.violation_checked||{})[x]===false);
-      return u.length?`🔴 <b>「未受檢查」不等於「沒有違規」</b>:${u.map(x=>LABEL[x]||x).join('、')} 的權重由程式直接產生,<b>不經過曝險/幣種檢查</b>,所以這一欄沒有數字可以給你。實測規則腦於 2026-07-25 的實際總曝險曾達 <b>174.6%</b>。依 §9 不得於實驗進行中對受試者新增約束,故只更正陳述、不改變其行為。<br>`:'';})()}${(th.mdd_pct==null||th.violation_rate_pct==null)
+      return u.length?`🔴 <b>「未受檢查」不等於「沒有違規」</b>:${u.map(x=>LABEL[x]||x).join('、')} 的權重由程式直接產生,<b>不經過曝險/幣種檢查</b>,所以這一欄沒有數字可以給你。2026-07-25 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>174.6%</b>;<b>那是單一天的一次量測,不是上界</b>。${gxLine()}依 §9 不得於實驗進行中對受試者新增約束,故只更正陳述、不改變其行為。<br>`:'';})()}${(th.mdd_pct==null||th.violation_rate_pct==null)
         ? `目前 <b style="color:var(--warn)">無法判定</b>(門檻讀不到,見上方說明)。`
         : `目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。`}<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
     host.innerHTML=h;
