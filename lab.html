@@ -470,7 +470,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
           <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
         <div><div class="eq">$${eq.toLocaleString()}</div>
           <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
-          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':`自 ${m.epoch2_first_day} 起算(${m.epoch2_days} 日)`}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}</div></div>
+          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}</div></div>
       </div>
       <div class="pos">${tags}${moreTag}${grossTag}</div>
       ${viol[b]?vioBanner(b,viol[b]):''}
@@ -761,12 +761,28 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       ["強制平倉(爆倉)", ev.liquidation_days],
       ["連續無報價 → 強制出場折價", ev.stale_days],
       ["基建異常日(強制只減倉)", ev.infra_skip_days],
-      ["當日未能結算", ev.unsettled_days],
+      ["當日未能結算", ev.unsettled_days, ev.unsettled_implemented],
     ];
+    /* 🔴🔴 2026-09-21(稽核 M042):「當日未能結算」這一列**結構上永遠是 0**。
+       後端那個欄位全程沒有任何寫入端,61/61 天都是空的。
+       ⭐⭐ **一盞設計上不可能亮的燈,比沒有那盞燈更糟** ——
+         讀者會以為有一道「估不出價就不計入正式績效」的防線在運作、只是沒觸發。
+       真正走的是下面那一列:缺價 → 最後已知價估值 → 標記 stale。
+       所以這一列必須**自己說出它沒有啟用**,不准靜靜印一個漂亮的 0。 */
     host.innerHTML=`<table><tr><th>事件</th><th>發生天數</th><th>日期</th></tr>`
-      + rows.map(([name,days])=>{
+      + rows.map(([name,days,impl])=>{
           const n=(days||[]).length;
-          return `<tr><td>${name}</td><td style="color:${n?'var(--warn)':'var(--dim)'}"><b>${n}</b> / ${N} 個決策日</td><td style="text-align:left">${n?days.join("、"):"—"}</td></tr>`;
+          const off = (impl===false);
+          const cell = off
+            ? `<b style="color:var(--warn)">機制未啟用</b>`
+            : `<b>${n}</b> / ${N} 個決策日`;
+          const note = off
+            ? `<b style="color:var(--warn)">這道防線目前<b>沒有實作</b> —— 程式裡沒有任何地方會把某一天標成「未能結算」,`
+              + `所以這一格不是「沒發生過」,是<b>量不到</b>。</b>`
+              + `缺價時實際走的是上面那一列「連續無報價 → 強制出場折價」的路:以最後已知價估值並標記 stale,那一天照樣進入績效。`
+            : (n?days.join("、"):"—");
+          return `<tr><td>${name}</td><td style="color:${(n||off)?'var(--warn)':'var(--dim)'}">${cell}</td>`
+               + `<td style="text-align:left">${note}</td></tr>`;
         }).join("")
       + "</table>";
   })();
