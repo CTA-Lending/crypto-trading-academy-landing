@@ -140,7 +140,7 @@ python verify_chain.py</pre>
   <br>🔴 <b>這張表就是那條規則的執行結果,包含已經觸發的。</b>
   在 2026-09-06 之前,這一頁完全不顯示回撤與違規率 ——
   唯一出現「失格」兩個字的地方是「失格條件跑之前就寫死」那句話本身。
-  <br>門檻**從已錨定的 PROTOCOL 原文解析**,不是寫死在這一頁上。</p>
+  <br>門檻<b>從已錨定的 PROTOCOL 原文解析</b>,不是寫死在這一頁上。</p>
   <div id="gate"></div>
 </div>
 
@@ -528,22 +528,40 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      ⭐ 兩處都從 `violations_split` 讀,**不再各算各的**。 */
   const fv=d.first_attempt_violations||{},vsp=d.violations_split||{},tv=d.violations||{};
   const fvs=d.first_attempt_violations_split||{};
-  document.getElementById('disc').innerHTML='<table><tr><th>腦</th><th>今日首次違規<br><span style="font-weight:400;font-size:10px">(不含我方中斷)</span></th>'
-    +'<th>今日最終狀態</th><th>累計受試者違規</th><th>累計我方中斷<br><span style="font-weight:400;font-size:10px">(不計入 §4)</span></th></tr>'
+  /* 🔴🔴 2026-09-21(稽核 A022 複查):這張表只有「**今日**首次違規」,
+     而那個數字永遠是 0 或 1 —— 讀者看不出任何指令遵循能力的差別。
+     ⭐ 「首次違規率」才是這張表宣稱要量的東西:**第一次就寫對的比例**。
+       重試後的違規只量「改不改得回來」,那是另一回事。
+     🔴 累計清單一直好好躺在帳本裡 —— **不是量不到,是發佈時被過濾掉了。**
+       實測:純淨腦累計首次違規 14 次 / 61 個決策日 = **23.0%**,
+       而舊表上它只顯示「今日首次違規:1」。 */
+  const fcum=d.first_attempt_cumulative||{}, frate=d.first_attempt_rate_pct||{};
+  document.getElementById('disc').innerHTML='<table><tr><th>腦</th>'
+    +`<th>首次就違規<br><span style="font-weight:400;font-size:10px">(累計 / 分母 ${m.days} 日)</span></th>`
+    +'<th>今日首次</th><th>今日最終狀態</th><th>累計受試者違規<br><span style="font-weight:400;font-size:10px">(重試後仍違規)</span></th>'
+    +'<th>累計我方中斷<br><span style="font-weight:400;font-size:10px">(不計入 §4)</span></th></tr>'
     +m.thinkers.map(b=>{
       const s=vsp[b]||{}, subj=(s.subject==null?tv[b]:s.subject), infra=s.infra, unk=s.unknown;
       const isInfra=String(viol[b]||'').split(':')[0]==='no_response';
       const f=fvs[b]||{}, fSubj=(f.subject==null?fv[b]:f.subject);
-      return `<tr><td>${LABEL[b]}</td><td>${fSubj||0}`
+      const fc=fcum[b]||{}, fr=frate[b];
+      return `<tr><td>${LABEL[b]}</td>`
+        +`<td>${fc.subject==null?'—':`<b>${fc.subject}</b> 次 / ${fr==null?'—':fr+'%'}`}`
+        +`${fc.infra?` <span style="color:var(--warn);font-size:10px">(另 ${fc.infra} 次中斷)</span>`:''}</td>`
+        +`<td>${fSubj||0}`
         +`${f.infra?` <span style="color:var(--warn);font-size:10px">(+${f.infra} 中斷)</span>`:''}</td>`
         +`<td style="color:${viol[b]?(isInfra?'var(--warn)':'var(--down)'):'var(--dim)'}">`
         +`${viol[b]?(isInfra?'⚠️ 我方叫不到 API':'🚫 '+viol[b]):'—'}</td>`
         +`<td>${subj==null?'—':subj}${unk?` <span style="color:var(--warn)">+${unk} 未分類⚠️</span>`:''}</td>`
         +`<td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?'—':infra}</td></tr>`;
     }).join('')+'</table>'
-    +`<div class="foot" style="margin-top:8px">🔴 <b>2026-09-19 更正</b>:這一欄以前印的是兩者相加的總數,
+    +`<div class="foot" style="margin-top:8px">🔴 <b>2026-09-19 更正</b>:「累計受試者違規」以前印的是兩者相加的總數,
       把「<b>我們自己叫不到模型 API</b>」算成受試者不守紀律。現在分開列,
-      §4 失格判定只用左邊那欄。詳見 CHANGELOG-023。</div>`;
+      §4 失格判定只用「累計受試者違規」那一欄。詳見 CHANGELOG-023。
+      <br>🔴 <b>2026-09-21 更正</b>:以前只有「今日首次違規」一欄,而那個數字永遠是 0 或 1 ——
+      <b>看不出任何差別</b>。<b>首次就違規率</b>才是這張表宣稱要量的東西:
+      模型<b>第一次就把規則寫對</b>的比例;重試後的違規只量「改不改得回來」。
+      累計資料一直在帳本裡,是發佈時被過濾成只剩今天。詳見 CHANGELOG-038。</div>`;
 
   // 🔴 2026-08-03:更正揭露。PROTOCOL §9 要求修補須記錄於 CHANGELOG,
   //    而一份沒有人看得到的 CHANGELOG 不算揭露。數字一律從資料讀,不寫死 ——
@@ -845,7 +863,17 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     }
     h+=`<div class="pager">
         <button id="recPrev" ${recPage===0?'disabled':''}>← 較新</button>
-        <span>第 ${from+1}–${to} 筆 / <b>共 ${rec.length} 天</b>(第 ${recPage+1}/${pages} 頁)</span>
+        <span>第 ${from+1}–${to} 筆 / <b>共 ${rec.length} 天</b>(第 ${recPage+1}/${pages} 頁)${
+          /* 🔴🔴 2026-09-21(稽核 A020 複查):這個「共 X 天」**從來沒有跟 meta.days 對照過**。
+             `rec` 被部分截斷時,這裡會印一個比真實小的數字,而同一頁其他每一個分母
+             (副標第 N 日、事件表 /N、擁擠 N 天)還是對的 ——
+             ⭐ **一頁之內兩個分母不一致,而沒有任何一行程式會發現。**
+             舊的防線只擋得住 `rec.length === 0`(全空),擋不住少了 5 天。
+             🔴 這一頁的承諾是「公開每個決策與理由」,少掉的那幾天不會自己說話。 */
+          (m.days!=null && rec.length!==m.days)
+            ? `<br><b style="color:var(--down)">🔴 這個數字與後端不一致:後端說 ${m.days} 天,這裡只有 ${rec.length} 天 ——
+               少了 ${m.days-rec.length} 天 —— 不要把這張表當成完整紀錄。</b>`
+            : ''}</span>
         <button id="recNext" ${recPage>=pages-1?'disabled':''}>較舊 →</button>
         <span style="opacity:.7">${rec[to-1].day} ~ ${rec[from].day}</span>
       </div>`;

@@ -42,22 +42,7 @@
       "seq": 63,
       "utc": "2026-09-21T00:36:53Z",
       "protocol_sha256": "1b953e4d9e218ef0",
-      "genesis_utc": "2026-07-22T05:43:31Z",
-      "genesis_protocol_sha256": "48973c29afccb2d4",
-      "protocol_since_utc": "2026-09-06T00:36:56Z",
-      "protocol_since_seq": 48,
-      "protocol_versions": [
-        {
-          "sha256": "48973c29afccb2d4",
-          "since_seq": 0,
-          "since_utc": "2026-07-22T05:43:31Z"
-        },
-        {
-          "sha256": "1b953e4d9e218ef0",
-          "since_seq": 48,
-          "since_utc": "2026-09-06T00:36:56Z"
-        }
-      ]
+      "genesis_utc": "2026-07-22T05:43:31Z"
     }
   },
   "equity_curve": [
@@ -1445,6 +1430,45 @@
     "guardian": 0,
     "gpt": 1,
     "gpt_pure": 1
+  },
+  "first_attempt_cumulative": {
+    "gpt": {
+      "subject": 5,
+      "infra": 9,
+      "unknown": 0,
+      "total": 14
+    },
+    "gemini": {
+      "subject": 0,
+      "infra": 0,
+      "unknown": 0,
+      "total": 0
+    },
+    "claude": {
+      "subject": 3,
+      "infra": 0,
+      "unknown": 0,
+      "total": 3
+    },
+    "gpt_pure": {
+      "subject": 14,
+      "infra": 9,
+      "unknown": 0,
+      "total": 23
+    },
+    "guardian": {
+      "subject": 4,
+      "infra": 0,
+      "unknown": 0,
+      "total": 4
+    }
+  },
+  "first_attempt_rate_pct": {
+    "gpt": 8.2,
+    "gemini": 0.0,
+    "claude": 4.9,
+    "gpt_pure": 23.0,
+    "guardian": 6.6
   },
   "first_attempt_violations_split": {
     "claude": {
