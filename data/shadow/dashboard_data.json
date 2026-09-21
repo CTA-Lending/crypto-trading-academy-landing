@@ -24,25 +24,40 @@
       "bench_eqw",
       "bench_cash"
     ],
-    "days": 60,
+    "days": 61,
     "pilot_days": 365,
     "gate_days": 252,
-    "last_date": "2026-09-20",
-    "resolved_days": 60,
-    "pending_day": "2026-09-20",
+    "last_date": "2026-09-21",
+    "resolved_days": 61,
+    "pending_day": "2026-09-21",
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "epoch2_first_day": "2026-08-04",
-    "epoch2_days": 48,
+    "epoch2_days": 49,
     "voided_days": 12,
     "voided_reason": "資金費計算錯誤:被乘 3 倍(CHANGELOG-001)並有抓取分頁不足導致的時間軸錯位(CHANGELOG-002);該期間損益不得用於績效陳述",
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 62,
-      "utc": "2026-09-20T00:36:59Z",
+      "seq": 63,
+      "utc": "2026-09-21T00:36:53Z",
       "protocol_sha256": "1b953e4d9e218ef0",
-      "genesis_utc": "2026-07-22T05:43:31Z"
+      "genesis_utc": "2026-07-22T05:43:31Z",
+      "genesis_protocol_sha256": "48973c29afccb2d4",
+      "protocol_since_utc": "2026-09-06T00:36:56Z",
+      "protocol_since_seq": 48,
+      "protocol_versions": [
+        {
+          "sha256": "48973c29afccb2d4",
+          "since_seq": 0,
+          "since_utc": "2026-07-22T05:43:31Z"
+        },
+        {
+          "sha256": "1b953e4d9e218ef0",
+          "since_seq": 48,
+          "since_utc": "2026-09-06T00:36:56Z"
+        }
+      ]
     }
   },
   "equity_curve": [
@@ -777,194 +792,206 @@
       "bench_btc": 12116,
       "bench_eqw": 8532,
       "bench_cash": 10000
+    },
+    {
+      "day": "2026-09-21",
+      "rule": 7330,
+      "gpt": 11545,
+      "gemini": 9259,
+      "claude": 14647,
+      "gpt_pure": 12150,
+      "guardian": 10651,
+      "bench_btc": 12176,
+      "bench_eqw": 8451,
+      "bench_cash": 10000
     }
   ],
   "final_equity": {
-    "rule": 7385,
-    "gpt": 11248,
-    "gemini": 9193,
-    "claude": 14619,
-    "gpt_pure": 11814,
-    "guardian": 10449,
-    "bench_btc": 12116,
-    "bench_eqw": 8532,
+    "rule": 7330,
+    "gpt": 11545,
+    "gemini": 9259,
+    "claude": 14647,
+    "gpt_pure": 12150,
+    "guardian": 10651,
+    "bench_btc": 12176,
+    "bench_eqw": 8451,
     "bench_cash": 10000
   },
   "metrics": {
     "rule": {
-      "total_pct": 11.84,
+      "total_pct": 11.0,
       "mdd_pct": 30.81,
-      "sharpe": 1.3,
-      "days": 48,
+      "sharpe": 1.24,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": -26.15,
-      "full_days": 60
+      "full_total_pct": -26.7,
+      "full_days": 61
     },
     "gpt": {
-      "total_pct": 22.11,
+      "total_pct": 25.34,
       "mdd_pct": 5.77,
-      "sharpe": 3.99,
-      "days": 48,
+      "sharpe": 4.4,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": 12.48,
-      "full_days": 60
+      "full_total_pct": 15.45,
+      "full_days": 61
     },
     "gemini": {
-      "total_pct": -3.08,
+      "total_pct": -2.38,
       "mdd_pct": 20.44,
-      "sharpe": -0.14,
-      "days": 48,
+      "sharpe": -0.05,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": -8.07,
-      "full_days": 60
+      "full_total_pct": -7.41,
+      "full_days": 61
     },
     "claude": {
-      "total_pct": 55.67,
+      "total_pct": 55.97,
       "mdd_pct": 6.73,
-      "sharpe": 5.72,
-      "days": 48,
+      "sharpe": 5.68,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": 46.19,
-      "full_days": 60
+      "full_total_pct": 46.47,
+      "full_days": 61
     },
     "gpt_pure": {
-      "total_pct": 26.06,
+      "total_pct": 29.64,
       "mdd_pct": 8.17,
-      "sharpe": 4.32,
-      "days": 48,
+      "sharpe": 4.72,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": 18.14,
-      "full_days": 60
+      "full_total_pct": 21.5,
+      "full_days": 61
     },
     "guardian": {
-      "total_pct": 9.74,
+      "total_pct": 11.86,
       "mdd_pct": 7.92,
-      "sharpe": 2.89,
-      "days": 48,
+      "sharpe": 3.37,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": 4.49,
-      "full_days": 60
+      "full_total_pct": 6.51,
+      "full_days": 61
     },
     "bench_btc": {
-      "total_pct": 27.1,
+      "total_pct": 27.73,
       "mdd_pct": 6.95,
-      "sharpe": 4.4,
-      "days": 48,
+      "sharpe": 4.44,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": 21.16,
-      "full_days": 60
+      "full_total_pct": 21.76,
+      "full_days": 61
     },
     "bench_eqw": {
-      "total_pct": -18.62,
+      "total_pct": -19.39,
       "mdd_pct": 48.9,
-      "sharpe": -0.87,
-      "days": 48,
+      "sharpe": -0.92,
+      "days": 49,
       "undefined_returns": 0,
-      "full_total_pct": -14.68,
-      "full_days": 60
+      "full_total_pct": -15.49,
+      "full_days": 61
     },
     "bench_cash": {
       "total_pct": 0.0,
       "mdd_pct": 0.0,
       "sharpe": null,
-      "days": 48,
+      "days": 49,
       "undefined_returns": 0,
       "full_total_pct": 0.0,
-      "full_days": 60
+      "full_days": 61
     }
   },
   "current_alloc": {
     "rule": {
       "AKE": 12.5,
-      "ONE": 12.5,
-      "USELESS": 12.5,
-      "LSK": 12.5,
       "BR": 12.5,
-      "ZEC": 12.5,
+      "ONE": 12.5,
+      "LSK": 12.5,
+      "USELESS": 12.5,
+      "RAYSOL": 12.5,
       "SKR": 12.5,
-      "RAYSOL": 12.5
+      "ARB": 12.5
     },
     "gpt": {
-      "BTC": 18.0,
-      "SOL": 14.0,
-      "ETH": 10.0,
-      "BNB": 6.0,
-      "NEAR": 6.0,
-      "ZEC": 5.0,
-      "LINK": 4.0,
-      "HYPE": 4.0,
-      "XAU": -4.0,
-      "DOGE": -3.0,
-      "1000PEPE": -2.0,
-      "USELESS": 2.0,
-      "UNI": 2.0,
-      "ARB": 2.0,
-      "XRP": 2.0,
-      "RAYSOL": 2.0,
-      "PROM": 2.0,
-      "ENA": 2.0,
-      "SUI": 2.0,
-      "ADA": 2.0,
-      "ONDO": 2.0
+      "ONDO": 2.046679014242614,
+      "NEAR": 6.977775964087465,
+      "XRP": 1.9768833846737306,
+      "HYPE": 3.9691927329618855,
+      "ETH": 9.963167070116981,
+      "BNB": 5.9751077837912145,
+      "UNI": 1.9938294308986078,
+      "ARB": 2.1056664384988366,
+      "ZEC": 5.080105450973975,
+      "USELESS": 1.8436138880735513,
+      "ENA": 2.082962029755474,
+      "XAU": -3.894134716394551,
+      "PROM": 1.8382360880247441,
+      "BTC": 17.63843567316674,
+      "SUI": 2.124868162086397,
+      "RAYSOL": 1.9801790158124888,
+      "LINK": 3.977232979776751,
+      "SOL": 13.833484185717735,
+      "DOGE": -2.9517878802712216,
+      "ADA": 1.9685655984845996,
+      "1000PEPE": -1.9132618055390027
     },
     "gemini": {
-      "AKE": 10.0,
+      "BR": 10.0,
       "ONE": 10.0,
-      "USELESS": 10.0,
-      "LSK": 10.0,
+      "AKE": 8.0,
+      "LSK": 9.0,
+      "USELESS": 9.0,
       "NEAR": 10.0,
       "ARB": 10.0,
-      "PROM": 10.0,
-      "SOL": 10.0,
+      "SOL": 8.0,
       "CYS": -10.0,
       "BEAT": -10.0
     },
     "claude": {
-      "AKE": 18.0,
+      "AKE": 12.0,
       "BTC": 12.0,
       "SOL": 10.0,
-      "ARB": 6.0,
+      "ARB": 7.0,
       "ZEC": 5.0,
+      "NEAR": 5.0,
       "PROM": 5.0,
-      "NEAR": 4.0,
       "ENA": 4.0,
-      "UNI": -3.0,
       "SUI": 3.0,
+      "HYPE": 2.0,
+      "XRP": 2.0,
+      "DOGE": 2.0,
+      "TRUMP": 2.0,
+      "RAYSOL": 3.0,
+      "UNI": -3.0,
       "CYS": -2.0,
-      "BEAT": -2.0,
       "ETH": -2.0,
       "BNB": -2.0,
-      "HYPE": 2.0,
-      "TRUMP": 2.0,
-      "DOGE": 2.0,
-      "PUMP": 2.0,
-      "XRP": 2.0,
-      "1000PEPE": -1.0,
-      "LINK": -1.0
+      "BEAT": -2.0,
+      "LINK": -1.0,
+      "1000PEPE": -1.0
     },
     "gpt_pure": {
-      "BEAT": -1.8889705048959382,
-      "XRP": 3.888980070698527,
-      "PROM": 3.38158247592679,
-      "ZEC": 5.843150526529785,
-      "NEAR": 8.119860086534143,
-      "SUI": 3.3523689603824023,
-      "CYS": -3.1444766250976484,
-      "TRUMP": 1.983612929490286,
-      "ARB": 2.447064751610711,
-      "BNB": 5.667676741730382,
-      "LINK": 5.05295134265524,
-      "ETH": 9.702280649405127,
-      "XAU": 3.619660936870539,
-      "ADA": 2.088680457273883,
-      "XAG": -1.8492431090798664,
-      "ONDO": 2.2726355124907927,
-      "SOL": 9.127634254594573,
-      "HYPE": 2.1230768214008666,
-      "DOGE": -3.883106795677379,
-      "UNI": 4.817401025268335,
-      "USELESS": 2.069576511959807,
-      "BTC": 11.398612625699894
+      "ONDO": 2.3200548372032173,
+      "NEAR": 9.420263209252463,
+      "TRUMP": 1.928290391529582,
+      "XRP": 3.8347362037955794,
+      "HYPE": 2.101631773288322,
+      "ETH": 9.643173182786645,
+      "BNB": 5.630517155528009,
+      "UNI": 4.790926717192508,
+      "ARB": 2.5701221308619533,
+      "ZEC": 5.922410656779249,
+      "XAG": -1.7955485001867098,
+      "CYS": -3.1532304846745345,
+      "USELESS": 1.9031375695794932,
+      "XAU": 3.515342071505293,
+      "PROM": 3.100558978768741,
+      "BTC": 11.142644521277646,
+      "SUI": 3.5530598657142227,
+      "BEAT": -1.8143761925076392,
+      "LINK": 5.012044027881204,
+      "SOL": 8.997264588888076,
+      "DOGE": -3.8114650867197057,
+      "ADA": 2.050881745139318
     },
     "guardian": {
       "BTC": 12.0,
@@ -972,33 +999,36 @@
       "SOL": 6.0,
       "BNB": 5.0,
       "NEAR": 4.0,
-      "UNI": 3.0,
       "ARB": 3.0,
-      "ENA": 2.0,
+      "UNI": 3.0,
       "SUI": 2.0,
       "LINK": 2.0,
-      "ADA": 2.0,
-      "XRP": 2.0,
-      "DOGE": 2.0,
-      "RAYSOL": 2.0,
       "ZEC": 2.0,
-      "CYS": -5.0,
-      "BEAT": -3.0,
-      "XAU": -3.0
+      "RAYSOL": 2.0,
+      "ENA": 2.0,
+      "ADA": 2.0,
+      "DOGE": 2.0,
+      "XRP": 2.0,
+      "HYPE": 3.0,
+      "ONDO": 3.0,
+      "TRUMP": 2.0,
+      "CYS": -4.0,
+      "XAU": -2.0,
+      "BEAT": -2.0
     },
     "bench_btc": {
       "BTC": 100.0
     },
     "bench_eqw": {
       "AKE": 10.0,
-      "ONE": 10.0,
-      "USELESS": 10.0,
-      "LSK": 10.0,
       "BR": 10.0,
-      "ZEC": 10.0,
-      "SKR": 10.0,
+      "ONE": 10.0,
+      "LSK": 10.0,
+      "USELESS": 10.0,
       "RAYSOL": 10.0,
-      "PROM": 10.0,
+      "SKR": 10.0,
+      "ARB": 10.0,
+      "NEAR": 10.0,
       "UNI": 10.0
     },
     "bench_cash": {}
@@ -1008,7 +1038,7 @@
       "mdd_pct": 35.0,
       "violation_rate_pct": 10.0
     },
-    "denominator_days": 60,
+    "denominator_days": 61,
     "source": "PROTOCOL §4",
     "by_brain": {
       "rule": {
@@ -1028,11 +1058,11 @@
       "gpt": {
         "mdd_full_pct": 9.39,
         "mdd_epoch2_pct": 5.77,
-        "violation_days": 9,
-        "violation_rate_pct": 1.7,
-        "violation_rate_pct_as_published": 15.0,
+        "violation_days": 10,
+        "violation_rate_pct": 1.6,
+        "violation_rate_pct_as_published": 16.4,
         "subject_violations": 1,
-        "infra_no_response": 8,
+        "infra_no_response": 9,
         "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
@@ -1064,11 +1094,11 @@
       "gpt_pure": {
         "mdd_full_pct": 8.17,
         "mdd_epoch2_pct": 8.17,
-        "violation_days": 13,
-        "violation_rate_pct": 8.3,
-        "violation_rate_pct_as_published": 21.7,
+        "violation_days": 14,
+        "violation_rate_pct": 8.2,
+        "violation_rate_pct_as_published": 23.0,
         "subject_violations": 5,
-        "infra_no_response": 8,
+        "infra_no_response": 9,
         "unclassified_violations": 0,
         "liquidations": 0,
         "triggered": []
@@ -1077,8 +1107,8 @@
         "mdd_full_pct": 7.92,
         "mdd_epoch2_pct": 7.92,
         "violation_days": 1,
-        "violation_rate_pct": 1.7,
-        "violation_rate_pct_as_published": 1.7,
+        "violation_rate_pct": 1.6,
+        "violation_rate_pct_as_published": 1.6,
         "subject_violations": 1,
         "infra_no_response": 0,
         "unclassified_violations": 0,
@@ -1127,45 +1157,45 @@
     }
   },
   "ir_comparison": {
-    "denominator_days": 47,
+    "denominator_days": 48,
     "epoch2_first_day": "2026-08-04",
     "primary_benchmark": "bench_eqw",
     "by_brain": {
       "rule": {
-        "bench_eqw": 2.4233932907296967,
-        "bench_btc": -0.0947785378256885
+        "bench_eqw": 2.4118425358993756,
+        "bench_btc": -0.1580723051473247
       },
       "gpt": {
-        "bench_eqw": 2.2592249005565725,
-        "bench_btc": -0.6138867016851963
+        "bench_eqw": 2.466086806912805,
+        "bench_btc": -0.23713892236642964
       },
       "gemini": {
-        "bench_eqw": 0.7015134701484844,
-        "bench_btc": -2.4828734019177103
+        "bench_eqw": 0.7937970471752306,
+        "bench_btc": -2.434705206299021
       },
       "claude": {
-        "bench_eqw": 4.247457243500411,
-        "bench_btc": 2.492073661052146
+        "bench_eqw": 4.283607830930504,
+        "bench_btc": 2.4328469732108404
       },
       "gpt_pure": {
-        "bench_eqw": 2.3370665693144086,
-        "bench_btc": -0.1457109016574743
+        "bench_eqw": 2.543104166733372,
+        "bench_btc": 0.46270513607300817
       },
       "guardian": {
-        "bench_eqw": 1.3780840097047133,
-        "bench_btc": -2.8486788604516935
+        "bench_eqw": 1.5395590827412504,
+        "bench_btc": -2.529833924094287
       },
       "bench_btc": {
-        "bench_eqw": 2.253983084197293,
+        "bench_eqw": 2.3167403933789945,
         "bench_btc": null
       },
       "bench_eqw": {
         "bench_eqw": null,
-        "bench_btc": -2.253983084197293
+        "bench_btc": -2.3167403933789945
       },
       "bench_cash": {
-        "bench_eqw": 0.6926455253081815,
-        "bench_btc": -3.6920453544253786
+        "bench_eqw": 0.7394186727728522,
+        "bench_btc": -3.7251508616766746
       }
     },
     "positive_vs_bench_eqw": {
@@ -1173,7 +1203,7 @@
       "denominator": 8
     },
     "positive_vs_bench_btc": {
-      "n": 1,
+      "n": 2,
       "denominator": 8
     }
   },
@@ -1182,22 +1212,22 @@
       {
         "a": "claude",
         "b": "gemini",
-        "corr": 0.416
+        "corr": 0.414
       },
       {
         "a": "claude",
         "b": "gpt",
-        "corr": 0.565
+        "corr": 0.552
       },
       {
         "a": "claude",
         "b": "gpt_pure",
-        "corr": 0.455
+        "corr": 0.444
       },
       {
         "a": "claude",
         "b": "guardian",
-        "corr": 0.516
+        "corr": 0.5
       },
       {
         "a": "gemini",
@@ -1207,7 +1237,7 @@
       {
         "a": "gemini",
         "b": "gpt_pure",
-        "corr": 0.257
+        "corr": 0.259
       },
       {
         "a": "gemini",
@@ -1217,75 +1247,76 @@
       {
         "a": "gpt",
         "b": "gpt_pure",
-        "corr": 0.833
+        "corr": 0.837
       },
       {
         "a": "gpt",
         "b": "guardian",
-        "corr": 0.765
+        "corr": 0.771
       },
       {
         "a": "gpt_pure",
         "b": "guardian",
-        "corr": 0.756
+        "corr": 0.762
       }
     ],
-    "mean_corr": 0.538,
-    "max_corr": 0.833,
-    "denominator_days": 47,
+    "mean_corr": 0.536,
+    "max_corr": 0.837,
+    "denominator_days": 48,
     "denominator_pairs": 10,
     "warning_threshold_pct": 60.0,
     "threshold_source": "硬編碼於 shadow/multi.py,PROTOCOL 未定義"
   },
   "events": {
-    "denominator_days": 60,
+    "denominator_days": 61,
     "liquidation_days": [],
     "stale_days": [],
     "infra_skip_days": [
       "2026-08-10",
-      "2026-09-01"
+      "2026-09-01",
+      "2026-09-21"
     ],
     "unsettled_days": []
   },
   "current_cash": {
-    "rule": -4.93,
-    "gpt": 2470.57,
-    "gemini": 3675.66,
-    "claude": 5261.85,
-    "gpt_pure": 2812.79,
-    "guardian": 5642.45,
+    "rule": 80.15,
+    "gpt": 2468.76,
+    "gemini": 4256.95,
+    "claude": 5710.93,
+    "gpt_pure": 2811.12,
+    "guardian": 5642.01,
     "bench_btc": -0.0,
-    "bench_eqw": -4.44,
+    "bench_eqw": 73.75,
     "bench_cash": 10000.0
   },
   "current_cash_pct": {
-    "rule": -0.1,
-    "gpt": 22.0,
-    "gemini": 40.0,
-    "claude": 36.0,
-    "gpt_pure": 23.8,
-    "guardian": 54.0,
+    "rule": 1.1,
+    "gpt": 21.4,
+    "gemini": 46.0,
+    "claude": 39.0,
+    "gpt_pure": 23.1,
+    "guardian": 53.0,
     "bench_btc": -0.0,
-    "bench_eqw": -0.1,
+    "bench_eqw": 0.9,
     "bench_cash": 100.0
   },
   "current_reasons": {
     "rule": "wick-break 雙向等權(確定性規則,無 AI)",
-    "gpt": "順勢偏多大盤與強勢幣，保留少量空頭對沖；降XAU/BNB空頭並擴散配置，總曝險89%內。",
-    "gemini": "清退低效能BTC，換入極強勢新星ONE。其餘主力多單與CYS、BEAT空單微調至等權重，維持均衡對沖防禦。",
-    "claude": "獲利46%,保持主倉AKE/BTC/SOL不變。輕減過度曝險(88%→88%),減少低波動空單(BNB/ETH/-3%),穩健持有高漲幅多單。資金費控制,現金維持12%。",
-    "gpt_pure": "減碼高波動弱勢幣，保留核心多頭與貴金屬對沖；總曝險100%，含現有持倉調整。",
-    "guardian": "持續持有核心藍籌(BTC/ETH/SOL/BNB),現金保留32%應對高波動。減碼擁擠部位,維持做空對沖。年初以來持倉風險已足,優先守護利潤。",
+    "gpt": "",
+    "gemini": "清空弱勢多單 PROM，引入強勢動能幣 BR。保留表現優異的多頭與 CYS、BEAT 空單避險，總曝險控制在 94% 留有餘裕。",
+    "claude": "獲利46.5%,持倉穩健。降低AKE極端集中(653%波動),加碼RAYSOL穩定多頭,維持空單對沖(CYS/BEAT/空頭ETH),減碼UNI空單。總曝險100%,現金清零,保持曝險力度。",
+    "gpt_pure": "",
+    "guardian": "核心持倉(BTC/ETH/SOL)維持穩定。減少CYS做空風險(從5.1%→4%),加強ENA、ONDO、HYPE中段部位。保留XAU短部位應對通膨。現金維持28%,應對過熱風險。曝險68%,分散度提升,降低重疊。",
     "bench_btc": "市場基準(非 AI)",
     "bench_eqw": "市場基準(非 AI)",
     "bench_cash": "市場基準(非 AI)"
   },
   "violations": {
     "rule": 0,
-    "gpt": 9,
+    "gpt": 10,
     "gemini": 0,
     "claude": 2,
-    "gpt_pure": 13,
+    "gpt_pure": 14,
     "guardian": 1,
     "bench_btc": 0,
     "bench_eqw": 0,
@@ -1300,9 +1331,9 @@
     },
     "gpt": {
       "subject": 1,
-      "infra": 8,
+      "infra": 9,
       "unknown": 0,
-      "total": 9
+      "total": 10
     },
     "gemini": {
       "subject": 0,
@@ -1318,9 +1349,9 @@
     },
     "gpt_pure": {
       "subject": 5,
-      "infra": 8,
+      "infra": 9,
       "unknown": 0,
-      "total": 13
+      "total": 14
     },
     "guardian": {
       "subject": 1,
@@ -1350,48 +1381,48 @@
   "no_decision": {
     "rule": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     },
     "gpt": {
-      "streak": 0,
+      "streak": 1,
       "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "denominator_days": 61
     },
     "gemini": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     },
     "claude": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     },
     "gpt_pure": {
-      "streak": 0,
+      "streak": 1,
       "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "denominator_days": 61
     },
     "guardian": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     },
     "bench_btc": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     },
     "bench_eqw": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     },
     "bench_cash": {
       "streak": 0,
-      "last_decision_day": "2026-09-20",
-      "denominator_days": 60
+      "last_decision_day": "2026-09-21",
+      "denominator_days": 61
     }
   },
   "violation_checked": {
@@ -1406,12 +1437,13 @@
     "bench_cash": false
   },
   "today_violation": {
-    "gpt_pure": "gross_exceeded:109%"
+    "gpt": "no_response",
+    "gpt_pure": "no_response"
   },
   "first_attempt_violations": {
     "claude": 0,
     "guardian": 0,
-    "gpt": 0,
+    "gpt": 1,
     "gpt_pure": 1
   },
   "first_attempt_violations_split": {
@@ -1429,23 +1461,23 @@
     },
     "gpt": {
       "subject": 0,
-      "infra": 0,
+      "infra": 1,
       "unknown": 0,
-      "total": 0
+      "total": 1
     },
     "gpt_pure": {
-      "subject": 1,
-      "infra": 0,
+      "subject": 0,
+      "infra": 1,
       "unknown": 0,
       "total": 1
     }
   },
   "stability": {
-    "gpt": 0.923,
-    "gemini": 0.933,
-    "claude": 0.995,
+    "gpt": 1.0,
+    "gemini": 0.898,
+    "claude": 0.983,
     "gpt_pure": 1.0,
-    "guardian": 1.0
+    "guardian": 0.967
   },
   "crowding_history": [
     {
@@ -1867,6 +1899,13 @@
       "warning": false,
       "families": 3,
       "note": "跨家族組合分散=較健康"
+    },
+    {
+      "day": "2026-09-21",
+      "overlap_pct": 32.7,
+      "warning": false,
+      "families": 3,
+      "note": "跨家族持倉重疊度不高"
     }
   ],
   "records": [
@@ -2709,6 +2748,20 @@
       "bench_cash": 0.0,
       "voided": false,
       "infra_skip": false
+    },
+    {
+      "day": "2026-09-21",
+      "rule": -0.75,
+      "gpt": 2.65,
+      "gemini": 0.71,
+      "claude": 0.19,
+      "gpt_pure": 2.84,
+      "guardian": 1.93,
+      "bench_btc": 0.49,
+      "bench_eqw": -0.95,
+      "bench_cash": 0.0,
+      "voided": false,
+      "infra_skip": true
     }
   ],
   "returns_reconcile_mismatches": 22,
