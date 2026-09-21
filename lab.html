@@ -71,7 +71,7 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🧭 這個實驗在做什麼</h2>
   <div class="plan">
-    <div><b><span id="planN">9</span> 位競爭者,一樣的市場</b><br>規則腦+GPT+Gemini+Claude+純淨腦+持久腦,外加 BTC 持有／等權多頭／純現金三個市場基準,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。<br>🔴 <b>這句話只適用於 5 個 AI 腦。</b>規則腦與 3 個市場基準的權重由程式直接產生,<b>不經過這道檢查</b>;而且部位是按名目金額開的,淨值下跌時實際曝險會自己升上去 ——2026-07-25 曾以人工抽樣量到規則腦 <b>174.6%</b>(那是單一天的一次量測,不是上界;逐日量測自 2026-09-21 起,見下方「失格條件檢查」表下)。</div>
+    <div><b><span id="planN">9</span> 位競爭者,一樣的市場</b><br>規則腦+GPT+Gemini+Claude+純淨腦+持久腦,外加 BTC 持有／等權多頭／純現金三個市場基準,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。<span id="grossScope"></span></div>
     <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,每個腦各自的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
     <div><b>持久腦是特別角色</b><br>它的<b>設計目標</b>不是預測最準,是<b>活最久</b>:充分分散、抗擁擠、存活優先。<br>🔴 <b>2026-09-06 更正:實測與這個設計目標不符。</b>原本這裡寫「當大家擠在一起時,它反而降曝險」——拿它自己 45 個決策日的資料檢定,<b>方向是相反的</b>(相關 <b>+0.36</b>;最擁擠的三分之一天數,它的曝險反而比最不擁擠的高 <b>6.5</b> 個百分點)。<br>我們把這句話改成事實:<b>設計目標是抗擁擠,而目前的實測結果沒有支持它。</b>這正是這個實驗要量的東西 —— 不是拿設計目標當成果。</div>
     <div><b>連續持倉,不是每天失憶</b><br>每個腦每天都看得到<b>自己的權益、持倉與近期損益</b>,可以續抱、加碼、減碼或反手——這是連續的部位管理。</div>
@@ -100,7 +100,7 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🚫 紀律紀錄 <span class="foot" style="font-weight:400">— 違規一律記錄,不替 AI 擦屁股</span></h2>
   <p class="foot">總曝險上限 100%。若模型輸出超標或幻覺出不存在的幣種,系統<b>不會自動幫它縮到 100%</b>——會回饋錯誤讓它重試一次;仍違規就記錄違規並維持原倉。這是「指令遵循能力」的真實量測。</p>
-  <p class="foot" style="color:var(--down)"><b>⚠️ 適用範圍(2026-08-04 更正)</b>:此項檢查<b>僅套用於上表的 5 個 LLM 腦</b>。規則腦與 3 個市場基準的權重由程式直接產生,<b>不經過這道檢查</b>,因此它們在資料檔中的「違規 0」代表<b>未受檢查</b>,不代表未逾越——2026-07-25 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>174.6%</b> ——<b>那是單一天的一次量測,不是整段實驗的上界</b>(當時沒有任何程式在持續量它,事後也重建不出來,因為帳本只存目標權重)。逐日量測已於 <b>2026-09-21</b> 開始,結果印在下方 §4 表下。依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 <a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。</p>
+  <p class="foot" style="color:var(--down)" id="scopeNote">載入中…</p>
   <div id="disc"></div>
 </div>
 
@@ -314,14 +314,102 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      也就是**數字完全正確,錯的只有「截至哪一天」這個宣稱**。
      ⭐ 讀者拿自己的 BTC 線圖對照時會看到約 6.7pp 的缺口,
        然後合理推論「連基準都對不上,這頁不可信」—— 誤會的成本由我們承擔。 */
+  /* 🔴🔴 2026-09-21(稽核 M049 複查):「適用範圍」那整段原本是**寫死的散文**,
+     而且它裡面有一句**現在就是假的**:「逐日量測已於 2026-09-21 開始,結果印在下方 §4 表下」——
+     而同一份資料檔 `gross_exposure.measured_days = 0`、note = 「尚未開始逐日量測」,
+     下方由資料生成的那一行印的正是「尚未累積到資料」。
+     ⭐ **同一頁兩句話互相打臉,而其中一句是我昨天自己寫死的。**
+     → 整段改由資料生成:受檢查/未受檢查的名單與數量一律讀 `violation_checked`,
+       逐日量測那一句直接共用 §4 表下的同一個函式,保證兩處永遠說同一件事。
+     📌 174.6% / 2026-07-25 在資料檔裡沒有來源(它是人工抽樣),所以留在頁面上,
+       但收斂成**一個常數**供三處共用 —— 一頁三份手寫數字就是下一次分岔。 */
+  const SAMPLE={pct:174.6, day:'2026-07-25'};
+  function gxLine(){
+    const gx=d.gross_exposure;
+    if(!gx) return '<br>⚠️ <b>後端沒有提供曝險量測</b> —— 不要把上面那個 '+SAMPLE.pct+'% 當成上界。';
+    if(!gx.measured_days) return `<br>📏 <b>逐日量測尚未累積到資料</b>(${gx.note||''})`
+      +` —— 在那之前,這一頁對「實際曝險最高到哪」<b>沒有答案</b>。`;
+    const rows=Object.entries(gx.per_brain||{})
+      .filter(([,v])=>v&&v.max_pct!=null)
+      .sort((x,y)=>y[1].max_pct-x[1].max_pct).slice(0,3)
+      .map(([k,v])=>`${LABEL[k]||k} <b>${v.max_pct}%</b>(${v.max_day})`).join('、');
+    return `<br>📏 <b>逐日量測</b>:自 <b>${gx.measured_from}</b> 起共 <b>${gx.measured_days}</b>`
+      +` 個決策日,期間最高 ${rows||'—'}。`
+      +`<b>更早的日子沒有量測,那是「沒有量」,不是「沒超過」。</b>`;
+  }
+  /* 🔴 2026-09-21(M049 續):計畫卡那句「只適用於 5 個 AI 腦」也是手寫的。
+     它與 scopeNote 講的是**同一件事**,共用同一份資料,不准各寫各的。 */
+  (function(){
+    const el=document.getElementById('grossScope'); if(!el) return;
+    const ck=d.violation_checked||{};
+    const on=(m.brains||[]).filter(b=>ck[b]===true), off=(m.brains||[]).filter(b=>ck[b]===false);
+    if(!on.length&&!off.length){
+      el.innerHTML='<br>🔴 <b>適用範圍載入失敗</b> —— 不要把「總曝險上限 100%」'
+        +'當成對所有競爭者都成立。';
+      return;
+    }
+    el.innerHTML=`<br>🔴 <b>這句話只適用於 ${on.length} 位受檢查的競爭者。</b>`
+      +`${off.length?off.map(b=>LABEL[b]||b).join('、')+' 的權重由程式直接產生,<b>不經過這道檢查</b>;':''}`
+      +'而且部位是按名目金額開的,淨值下跌時實際曝險會自己升上去 ——'
+      +`${SAMPLE.day} 曾以<b>人工抽樣</b>量到規則腦 <b>${SAMPLE.pct}%</b>`
+      +'(那是單一天的一次量測,<b>不是上界</b>)。'
+      + gxLine();
+  })();
+  (function(){
+    const el=document.getElementById('scopeNote'); if(!el) return;
+    const ck=d.violation_checked||{};
+    const on=(m.brains||[]).filter(b=>ck[b]===true), off=(m.brains||[]).filter(b=>ck[b]===false);
+    if(!on.length&&!off.length){
+      el.innerHTML='🔴 <b>適用範圍載入失敗</b> —— 這一頁無法告訴你哪些競爭者受過曝險/幣種檢查。'
+        +'<b>不要把資料檔裡的「違規 0」當成沒有違規。</b>';
+      return;
+    }
+    el.innerHTML='<b>⚠️ 適用範圍(2026-08-04 更正,數字每天由資料重算)</b>:此項檢查'
+      +`<b>僅套用於 ${on.length} 位</b>:${on.map(b=>LABEL[b]||b).join('、')}。`
+      +`${off.length?`其餘 <b>${off.length}</b> 位(${off.map(b=>LABEL[b]||b).join('、')})`
+        +'的權重由程式直接產生,<b>不經過這道檢查</b>,因此它們在資料檔中的「違規 0」代表'
+        +'<b>未受檢查</b>,不代表未逾越。':''}`
+      +`——${SAMPLE.day} 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>${SAMPLE.pct}%</b>`
+      +'——<b>那是單一天的一次量測,不是整段實驗的上界</b>'
+      +'(當時沒有任何程式在持續量它,事後也重建不出來,因為帳本只存目標權重)。'
+      + gxLine()
+      +'<br>依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 '
+      +'<a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。';
+  })();
   const snapUTC=(m.anchor&&m.anchor.utc)||null;
   document.getElementById('sub').textContent=
     `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
-    +`｜快照 ${snapUTC||(m.last_date||'(後端未提供)')}`
+    /* 🔴🔴 2026-09-21(稽核 L013 複查):這裡的 fallback 本來是 `m.last_date` ——
+       那是**帳本的決策日**,不是發佈快照時刻。掛在「快照」兩個字後面就是假數字:
+       發佈凍住時決策日也不會前進,讀者看到一個長得完全正常的時間。 */
+    /* 🔴 資料日期與快照時刻是**兩件事**,分兩欄印:
+       `last_date` = 帳本最後一個決策日;`snapUTC` = 這份檔案被封存的時刻。
+       發佈凍住時前者不會前進、後者才會露餡 —— 混在一起就沒人看得出來。 */
+    /* 🔴 措辭不准寫「資料截至 X」—— 排程 00:36 UTC 跑,那一刻當天的日 K 還沒收,
+       那句話會讓讀者以為含當天行情(CHANGELOG-025 已為此更正過一次)。
+       這裡只陳述「最後一個決策日是哪一天」,不作任何新鮮度宣稱。 */
+    +`｜最後決策日 ${m.last_date||'(未提供)'}`
+    +`｜快照 ${snapUTC||'(後端未提供 ⚠️,見下方警告)'}`
     +`｜${(m.brains||[]).length} 位競爭者｜${m.market||''}${anc}`;
   (function(){
     const s=document.getElementById('sub');
-    if(!s||!snapUTC) return;
+    if(!s) return;
+    /* 🔴🔴 2026-09-21(稽核 L013 複查):這裡本來是 `if(!s||!snapUTC) return;` ——
+       **後端沒給快照時刻 → 整段新鮮度檢查直接跳過**,而副標照樣印一個時間。
+       結果:資料凍再久,畫面和正常時**一模一樣**。
+       ⭐⭐ 一個「拿不到資料就安靜放行」的守衛,正是它要防的那件事。
+       而這條岔路走得到:`emit_dashboard` 讀鏈時是 `except Exception: pass`,
+       anchor_chain.json 一壞就靜默出貨 anchor={}。
+       → 改成 fail-**loud**:拿不到就插一張紅牌,而不是什麼都不做。 */
+    function _noFresh(why){
+      const w=document.createElement('div');
+      w.style.cssText='border:1px solid var(--down);border-radius:8px;padding:10px;'
+        +'margin-top:8px;color:var(--down);font-size:12px;line-height:1.7';
+      w.innerHTML=`🔴 <b>這一頁無法判斷資料有多新</b>(${why})。`
+        +`<b>請勿當成即時資料</b> —— 我們沒辦法在這裡向你證明它是今天的。`;
+      s.parentNode.insertBefore(w,s.nextSibling);
+    }
+    if(!snapUTC){ _noFresh('後端沒有提供快照時刻'); return; }
     const n=document.createElement('div');
     n.className='foot';
     n.style.cssText='margin-top:6px;font-size:11px;line-height:1.6';
@@ -334,12 +422,31 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
          超過 **40 小時**才算異常(留足重跑與時區的餘裕)。
          會誤報的紅燈遲早被當成背景雜訊。 */
     const ageH=(Date.now()-Date.parse(snapUTC))/3.6e6;
-    if(isFinite(ageH)&&ageH>40){
+    /* 🔴 解不出來時 `isFinite(ageH)` 為 false —— 舊寫法會靜默放行。
+       格式壞掉跟「資料很新」是兩件事,要走同一條紅牌。 */
+    if(!isFinite(ageH)){ _noFresh(`快照時刻格式無法解析:${snapUTC}`); return; }
+    /* 🔴🔴 2026-09-21(稽核 A029/A001 複查):40 小時這個門檻**比它要防的那場事故還寬**。
+       2026-09-02~04 那次公開頁凍了 **33.5 小時** —— 紅燈不會亮。
+       ⭐ **一盞對唯一一次真實事故不會亮的燈,設計上就不可能紅。**
+       → 門檻改用**實測**的發佈間隔分布,不是我想一個數字:
+         鏈上 62 個相鄰間隔,**61 個 ≤ 24.0 小時**,唯一例外是 48.0 小時(2026-07-28 漏發)。
+         26h 與 30h 都有**零**歷史誤報;取 **30h** 留足重跑與時區的餘裕,
+         而 2026-09-02 那場 33.5h 仍然會被抓到(舊的 40h 抓不到)。
+       🔴 分兩級:30h 是「比正常晚」(黃,資訊性),40h 才是「可能停擺」(紅)——
+         假警報也是傷害,但**該亮不亮更糟**。 */
+    if(ageH>30){
+      const hard=ageH>40;
       const w=document.createElement('div');
-      w.style.cssText='border:1px solid var(--warn);border-radius:8px;padding:10px;margin-top:8px;color:var(--warn);font-size:12px;line-height:1.7';
-      w.innerHTML=`⚠️ <b>這一頁的資料已經 ${Math.floor(ageH)} 小時沒有更新了</b>
-        （正常是每 24 小時一次）。你看到的數字停在 ${snapUTC}。
-        這可能是發佈流程故障 —— <b>畫面看起來正常不代表資料是新的</b>。`;
+      w.style.cssText='border:1px solid var(--'+(hard?'down':'warn')+');border-radius:8px;'
+        +'padding:10px;margin-top:8px;color:var(--'+(hard?'down':'warn')+');'
+        +'font-size:12px;line-height:1.7';
+      w.innerHTML=(hard
+        ? `🔴 <b>這一頁的資料已經 ${Math.floor(ageH)} 小時沒有更新了</b>（正常是每 24 小時一次）。`
+          +`你看到的數字停在 ${snapUTC}。這可能是<b>發佈流程故障</b> —— `
+          +`<b>畫面看起來正常不代表資料是新的</b>。`
+        : `⚠️ <b>這一頁的資料比正常晚了</b>:已經 ${Math.floor(ageH)} 小時沒有更新`
+          +`(快照 ${snapUTC})。實測 62 次發佈間隔有 61 次在 24 小時內,`
+          +`所以這一次<b>不是常態</b>;若持續變久代表發佈流程出了問題。`);
       s.parentNode.insertBefore(w,s.nextSibling);
     }
     n.innerHTML=`📌 <b>怎麼讀這個時間</b>:排程每天 <b>00:36 UTC</b> 拍一次快照,
@@ -629,7 +736,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   const RC=d.returns_reconcile_codes||{}, CV=d.returns_coverage||{};
   const unchecked=(RC.missing_returns||0)+(RC.underivable||0);
   const covTxt = (CV.total==null) ? ('<br>⚠️ <b>後端沒有送出對帳涵蓋率</b> —— 上面那個筆數沒有分母,請勿當成「已全部比對」。'
-    ) : (`<br>對帳涵蓋率:已比對 <b>${CV.computable}/${CV.total}</b> 格(${CV.pct}%,9 位競爭者 × ${d.meta&&d.meta.days} 個決策日)` + (unchecked ? `。<b style="color:var(--down)">其中 ${unchecked} 格沒有比到(帳本缺 returns ${RC.missing_returns||0} 格 / 無法由淨值推導 ${RC.underivable||0} 格) —— 這些<b>不算通過</b>。</b>` : '。'));
+    ) : (`<br>對帳涵蓋率:已比對 <b>${CV.computable}/${CV.total}</b> 格(${CV.pct}%,${(m.brains||[]).length||'(載入失敗)'} 位競爭者 × ${m.days} 個決策日)${((m.brains||[]).length*(m.days||0)!==CV.total)?`<br><b style="color:var(--down)">⚠️ 分母對不上:後端說 ${CV.total} 格,而名單 × 天數是 ${(m.brains||[]).length*(m.days||0)} 格 —— 請勿把上面的涵蓋率當成已全部比對。</b>`:''}` + (unchecked ? `。<b style="color:var(--down)">其中 ${unchecked} 格沒有比到(帳本缺 returns ${RC.missing_returns||0} 格 / 無法由淨值推導 ${RC.underivable||0} 格) —— 這些<b>不算通過</b>。</b>` : '。'));
   document.getElementById('corrections').innerHTML=
     '<div style="border:1px solid var(--down);border-radius:8px;padding:12px;margin-bottom:14px">'
     +'<b style="color:var(--down)">⚠️ 更正聲明(2026-08-03)</b><br>'
@@ -685,8 +792,15 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        ⭐ 依 §9「修改前後的樣本必須分開統計」→ 原公告值保留在同一列,不偷偷抹掉。 */
     let h=`<table><tr><th>競爭者</th><th>最大回撤<br>全期</th><th>最大回撤<br>自 ${m.epoch2_first_day}</th><th>受試者違規<br>(分母 ${N} 日)</th><th>我方基建中斷<br>(不計入 §4)</th><th>爆倉</th><th>§4 判定</th></tr>`;
     let hit=0, anyRestated=false;
+    /* 🔴🔴 2026-09-21:後端整個 `by_brain` 不在時上面已經擋掉了,
+       但**少了其中某一位**沒有擋 —— 那一列會印出一排「—」,
+       而最右邊的 §4 判定欄會印**綠色的「未觸發」**。
+       ⭐ 「查不到」被畫成「沒有人觸發」,而且版面完全正常。
+       (這個洞是內部頁的同型守衛 parametrize 過來時抓到的。) */
+    const _absent=(m.brains||[]).filter(b=>!g.by_brain[b]);
     m.brains.forEach(b=>{
       const x=g.by_brain[b]||{};
+      const _has=!!g.by_brain[b];
       const t=(x.triggered||[]);
       if(t.length) hit++;
       const red=v=>(v!=null&&th.mdd_pct!=null&&v>th.mdd_pct)?"var(--down)":"var(--dim)";
@@ -722,7 +836,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       const verdict = t.length ? "🔴 已觸發:"+t.join("、")
                      : (noTh ? "⚠️ 無法判定(門檻讀不到)" : "未觸發");
       const vColor = t.length ? 'var(--down)' : (noTh ? 'var(--warn)' : 'var(--up)');
-      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${vCell}</td><td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?"—":infra+" 日"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${vColor}">${verdict}</td></tr>`;
+      h+=`<tr${t.length?' style="background:#2a1113"':''}><td>${LABEL[b]||b}</td><td style="color:${red(x.mdd_full_pct)}">${x.mdd_full_pct==null?"—":x.mdd_full_pct+"%"}</td><td style="color:${red(x.mdd_epoch2_pct)}">${x.mdd_epoch2_pct==null?"—":x.mdd_epoch2_pct+"%"}</td><td style="color:${(vr!=null&&th.violation_rate_pct!=null&&vr>th.violation_rate_pct)?'var(--down)':'var(--dim)'}">${vCell}</td><td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?"—":infra+" 日"}</td><td style="color:${x.liquidations?'var(--down)':'var(--dim)'}">${x.liquidations??"—"}</td><td style="text-align:left;color:${_has?vColor:'var(--down)'}">${_has?verdict:'🔴 <b>後端沒有給這一位的資料</b> —— 缺資料<b>不等於未觸發</b>'}</td></tr>`;
     });
     h+="</table>";
     if(th.mdd_pct==null||th.violation_rate_pct==null){
@@ -737,16 +851,6 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        ⭐ **沒有分母的「最高 X%」跟沒有量是一樣的** ——
          所以這裡一律印出量測起始日與已量測日數,
          而且「還沒開始量」要明講,不准安靜地什麼都不顯示。 */
-    function gxLine(){
-      const gx=d.gross_exposure;
-      if(!gx) return '<br>⚠️ <b>後端沒有提供曝險量測</b> —— 不要把上面那個 174.6% 當成上界。';
-      if(!gx.measured_days) return `<br>📏 <b>逐日量測尚未累積到資料</b>(${gx.note||''}) —— 在那之前,這一頁對「實際曝險最高到哪」<b>沒有答案</b>。`;
-      const rows=Object.entries(gx.per_brain||{})
-        .filter(([,v])=>v && v.max_pct!=null)
-        .sort((x,y)=>y[1].max_pct-x[1].max_pct).slice(0,3)
-        .map(([k,v])=>`${LABEL[k]||k} <b>${v.max_pct}%</b>(${v.max_day})`).join('、');
-      return `<br>📏 <b>逐日量測</b>:自 <b>${gx.measured_from}</b> 起共 <b>${gx.measured_days}</b> 個決策日,期間最高 ${rows||'—'}。<b>更早的日子沒有量測,那是「沒有量」,不是「沒超過」。</b>`;
-    }
     if(anyRestated){
       h+=`<div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">
         🔴 <b>2026-09-19 更正:我們先前公告錯了。</b>
@@ -757,8 +861,9 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         ⚠️ 依 §9 這屬於「修補會造成錯誤估值的 bug」,<b>不是修改判定指標</b>;
         原始違規紀錄一筆未刪,只是改變歸類。詳見 CHANGELOG-023。</div>`;
     }
+    if(_absent.length) h+=`<tr><td colspan="7" style="text-align:left;color:var(--down)">🔴 後端沒有給這幾位的失格資料:${_absent.map(x=>LABEL[x]||x).join('、')} —— <b>缺資料不等於未觸發</b>,這幾列不要當成「通過檢查」。</td></tr>`;
     h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>${(()=>{const u=(m.brains||[]).filter(x=>(d.violation_checked||{})[x]===false);
-      return u.length?`🔴 <b>「未受檢查」不等於「沒有違規」</b>:${u.map(x=>LABEL[x]||x).join('、')} 的權重由程式直接產生,<b>不經過曝險/幣種檢查</b>,所以這一欄沒有數字可以給你。2026-07-25 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>174.6%</b>;<b>那是單一天的一次量測,不是上界</b>。${gxLine()}依 §9 不得於實驗進行中對受試者新增約束,故只更正陳述、不改變其行為。<br>`:'';})()}${(th.mdd_pct==null||th.violation_rate_pct==null)
+      return u.length?`🔴 <b>「未受檢查」不等於「沒有違規」</b>:${u.map(x=>LABEL[x]||x).join('、')} 的權重由程式直接產生,<b>不經過曝險/幣種檢查</b>,所以這一欄沒有數字可以給你。${SAMPLE.day} 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>${SAMPLE.pct}%</b>;<b>那是單一天的一次量測,不是上界</b>。${gxLine()}依 §9 不得於實驗進行中對受試者新增約束,故只更正陳述、不改變其行為。<br>`:'';})()}${(th.mdd_pct==null||th.violation_rate_pct==null)
         ? `目前 <b style="color:var(--warn)">無法判定</b>(門檻讀不到,見上方說明)。`
         : `目前 <b style="color:${hit?'var(--down)':'var(--up)'}">${hit}</b> / ${m.brains.length} 位競爭者已觸發。`}<br>🔴 <b>全期回撤含已作廢的 ${m.voided_days} 個決策日</b>(那段期間的損益本身是錯的),所以兩個口徑都列出來,不替你選一個。<br>⚠️ 失格是<b>預先登記的機械判定</b>,不是我們事後的評價;觸發之後我們<b>不移除該競爭者、不停止記錄</b> —— PROTOCOL §9 禁止中途變更受試者名單。</div>`;
     host.innerHTML=h;
