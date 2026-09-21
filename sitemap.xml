@@ -1,94 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://crypto-trading-academy.com/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/lending.html</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/course.html</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://crypto-trading-academy.com/altseason.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/testimonials.html</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/14day-trial-claim-tutorial.html</loc>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://crypto-trading-academy.com/blog/altseason-2026-others-macd-reality-check.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/apr-vs-apy-explained.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/bitfinex-account-guide.html</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/bitfinex-daily-interest-variance.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/bitfinex-register-api-setup.html</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/why-bitfinex-lending-rate-so-high.html</loc>
-    <lastmod>2026-04-08</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/btc-bottom-or-bear-trap-2026.html</loc>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/why-bitfinex-best-for-beginners.html</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/why-cta-lending-bot.html</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/apr-vs-apy-explained.html</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/naked-k-trading-introduction.html</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/financial-market-dungeon.html</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/btc-bottom-structural-signals-2027.html</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/shiller-narrative-economics.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/btc-fib-double-confirmation-2026.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/btc-five-paths-2026.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/btc-spx-divergence-2026h2.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/buffett-2026-last-warning.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/dimon-warning-japan-repatriation-factcheck-2026.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/financial-market-dungeon.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/four-fuses-leverage-2026h2.html</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/kondratieff-wave-trader-notes-2026.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/korea-crash-us-margin-playbook-2026.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/liquidity-tide-1997-2026-playbook.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/loss-recovery-math-2026.html</loc>
@@ -98,79 +128,193 @@
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/mstr-mnav-below-1-risk-2026.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/spacex-ipo-spcx-rule-change-2026.html</loc>
-    <lastmod>2026-06-16</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/naked-k-trading-introduction.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/kondratieff-wave-trader-notes-2026.html</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/yield-curve-inversion-window-2026.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/btc-spx-divergence-2026h2.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/btc-bottom-structural-signals-2027.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://crypto-trading-academy.com/blog/liquidity-tide-1997-2026-playbook.html</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/petrodollar-paradigm-shift-2026.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/buffett-2026-last-warning.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/shiller-narrative-economics.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/spacex-ipo-spcx-rule-change-2026.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-00-overview.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-01-unwilling.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-02-greed.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-03-fear.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-04-impatience.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-05-fomo.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-06-envy.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-07-revenge.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-08-luck.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-09-outcome.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-10-hubris.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-11-attachment.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-12-regret.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-demons-13-leverage.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/trading-models-rebate-daytrade-trend.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/usdt-supply-btc-bottom-test-2026.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/blog/valuation-resonance-cape-buffett.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/blog/btc-fib-double-confirmation-2026.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://crypto-trading-academy.com/blog/why-bitfinex-best-for-beginners.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/why-bitfinex-lending-rate-so-high.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/why-cta-lending-bot.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/blog/yield-curve-inversion-window-2026.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/calculator.html</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/terms.html</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://crypto-trading-academy.com/course.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/lab.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/lending.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://crypto-trading-academy.com/privacy.html</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -181,9 +325,15 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://crypto-trading-academy.com/calculator.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://crypto-trading-academy.com/terms.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://crypto-trading-academy.com/testimonials.html</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
