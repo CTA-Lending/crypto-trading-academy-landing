@@ -1426,10 +1426,11 @@
     "gpt_pure": "no_response"
   },
   "first_attempt_violations": {
-    "claude": 0,
-    "guardian": 0,
     "gpt": 1,
-    "gpt_pure": 1
+    "gemini": 0,
+    "claude": 0,
+    "gpt_pure": 1,
+    "guardian": 0
   },
   "first_attempt_cumulative": {
     "gpt": {
