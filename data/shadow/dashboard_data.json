@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 66,
-      "utc": "2026-09-21T10:28:23Z",
+      "seq": 67,
+      "utc": "2026-09-21T10:56:52Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -1266,6 +1266,156 @@
     "denominator_pairs": 10,
     "warning_threshold_pct": 60.0,
     "threshold_source": "硬編碼於 shadow/multi.py,PROTOCOL 未定義"
+  },
+  "code_change_audit": {
+    "available": true,
+    "core_changes": 13,
+    "metric_files": [
+      "shadow/forward_multi.py",
+      "shadow/multi.py",
+      "shadow/universe.py",
+      "shadow/stats.py"
+    ],
+    "same_entry": 5,
+    "date_mentioned_only": 4,
+    "undisclosed": 4,
+    "undisclosed_seqs": [
+      14,
+      17,
+      31,
+      35
+    ],
+    "detail": [
+      {
+        "seq": 5,
+        "date": "2026-07-26",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 13,
+        "date": "2026-08-04",
+        "files": [
+          "shadow/forward_multi.py",
+          "shadow/multi.py",
+          "shadow/universe.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 14,
+        "date": "2026-08-05",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": false
+      },
+      {
+        "seq": 17,
+        "date": "2026-08-08",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": false
+      },
+      {
+        "seq": 31,
+        "date": "2026-08-22",
+        "files": [
+          "shadow/forward_multi.py",
+          "shadow/multi.py",
+          "shadow/universe.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": false
+      },
+      {
+        "seq": 35,
+        "date": "2026-08-26",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": false
+      },
+      {
+        "seq": 43,
+        "date": "2026-09-03",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 47,
+        "date": "2026-09-05",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": false,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 49,
+        "date": "2026-09-07",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 62,
+        "date": "2026-09-20",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 63,
+        "date": "2026-09-21",
+        "files": [
+          "shadow/forward_multi.py",
+          "shadow/multi.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 64,
+        "date": "2026-09-21",
+        "files": [
+          "shadow/forward_multi.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 66,
+        "date": "2026-09-21",
+        "files": [
+          "shadow/forward_multi.py",
+          "shadow/multi.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      }
+    ]
+  },
+  "gross_exposure": {
+    "measured_days": 0,
+    "measured_from": null,
+    "per_brain": {},
+    "note": "尚未開始逐日量測"
   },
   "events": {
     "denominator_days": 61,
