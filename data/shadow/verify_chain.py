@@ -33,9 +33,21 @@
 **不能證明**:
 - 🔴 **不能證明我們沒有整條重算。** 如果我們願意把整條鏈重寫一遍,
   這支驗證器一樣會說「通過」。雜湊鏈只防「改一筆」,不防「重寫全部」。
-  防重寫要靠**外部時間戳**(把 hash 推到我們控制不了的地方並留下時間紀錄)——
-  本專案的做法是每日推送到公開 git repo,commit 時間由 GitHub 記錄。
-  那份證據在 git 歷史裡,不在這支程式裡。
+  防重寫要靠**外部時間戳**(把 hash 推到我們控制不了的地方並留下時間紀錄)。
+
+  🔴🔴 2026-09-21 更正:這裡本來寫「commit 時間由 GitHub 記錄」—— **那是錯的**。
+  git 的 author 與 committer 時間**都是提交那台機器寫的**,GitHub 不背書;
+  而 GitHub 的 commits 頁預設顯示 **author** 時間,author 時間在 rebase 後**原樣保留**。
+  實例(可自行複驗):seq 43 在鏈上與 GitHub 上都標 2026-09-03,
+  而 `git log --format=%cd 03e2d9b` 的 committer 時間是 **2026-09-04 18:08:55 +0800**
+  —— 兩天份的證據同一晚落地,**差 33.5 小時**,而在此之前鏈上與頁面零揭露。
+
+  所以誠實的講法是:我們**目前無法向你證明**某一筆是當天推上去的。
+  能給你的是 `push_receipts.json`(自 2026-09-22 起側錄):
+  每一筆記「我們這邊在什麼時刻、推了哪一個 commit、成功與否」。
+  它仍然是**我們自己寫的**,但 `chain_utc` 與 `push_returned_utc` 的**差距**
+  會把「當天推的」與「事後補推的」分開 —— 而且它會被**下一筆**錨點的雜湊蓋住,
+  所以事後改它會讓下一筆對不上。
 - 不能證明 `ledger_head` 對應的帳本內容是對的(那要另外拿帳本來算)
 - 不能證明實驗本身有意義
 
@@ -48,6 +60,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import datetime
 import os
 import sys
 
@@ -169,9 +182,14 @@ def verify(chain: list) -> dict:
 
         expect_prev = chain[i - 1]["hash"] if i else "0" * 64
         if e["prev"] != expect_prev:
+            # 🔴 2026-09-21:這裡本來直接 `e['prev'][:16]` ——
+            #    prev 是 None(欄位缺失)時整支驗證器 **crash**。
+            #    ⭐ 一個遇到壞資料就掛掉的驗證器,等於把「鏈壞了」
+            #      變成「驗證器壞了」,而讀者分不出來。壞掉要**報出來**。
+            _s = (lambda v: (v[:16] + "…") if isinstance(v, str) else repr(v))
             problems.append({"kind": "prev 斷鏈", "seq": e["seq"],
-                             "detail": f"prev={e['prev'][:16]}… "
-                                       f"但前一筆的 hash 是 {expect_prev[:16]}…"})
+                             "detail": f"prev={_s(e['prev'])} "
+                                       f"但前一筆的 hash 是 {_s(expect_prev)}"})
 
         got = entry_hash(e)
         if got != e["hash"]:
@@ -199,8 +217,38 @@ def verify(chain: list) -> dict:
                 "帳本是否被重述": len(heads) > 1,
             }
 
+    # 🔴🔴 2026-09-21(稽核 M036):這支驗證器只驗 seq / prev / hash 三件事,
+    #    而 seq 與 days_recorded **都是計數器** —— 漏跑一天它們只是少加一次,
+    #    不會出現缺口。鏈裡唯一的日期欄位 `utc` **從來沒有被拿來比對相鄰日差**。
+    #    結果:真鏈裡 2026-07-28 整天沒有錨點,驗證器照樣印「✓ seq 連續」並 exit 0,
+    #    **連一個字都沒提**。
+    #    ⭐ 「少了一天」跟「改了一筆」一樣是造假的形狀,而這支只防得了後者。
+    days, bad_utc = [], []
+    for e in chain:
+        u = e.get("utc")
+        if not isinstance(u, str) or len(u) < 10:
+            bad_utc.append(e.get("seq"))
+            continue
+        try:
+            days.append(datetime.date.fromisoformat(u[:10]))
+        except Exception:                                # noqa: BLE001
+            bad_utc.append(e.get("seq"))
+    missing_days = []
+    if days:
+        uniq = sorted(set(days))
+        for a, b in zip(uniq, uniq[1:]):
+            gap = (b - a).days
+            for k in range(1, gap):
+                missing_days.append((a + datetime.timedelta(days=k)).isoformat())
+    if bad_utc:
+        problems.append("有 %d 筆的 utc 讀不出日期(seq %s)—— 那不是「沒問題」,是沒驗到"
+                        % (len(bad_utc), bad_utc[:8]))
     return {"ok": not problems, "n": len(chain), "checked": len(chain),
-            "problems": problems, "duplicates": duplicates}
+            "problems": problems, "duplicates": duplicates,
+            "missing_days": missing_days,
+            "distinct_days": len(set(days)),
+            "day_span": ([str(min(days)), str(max(days))] if days else None),
+            "bad_utc_seqs": bad_utc}
 
 
 def _find_default() -> str:
@@ -236,6 +284,24 @@ def main(argv: list) -> int:
             print(f"   [{p['kind']}] seq={p.get('seq')} — {p['detail']}")
     else:
         print("  ✓ seq 連續、prev 全部對得上、每一筆 hash 重算相符")
+
+    # 🔴 M036:缺日要**主動印出來**,不是等人去翻。
+    md = r.get("missing_days") or []
+    span = r.get("day_span")
+    if span:
+        print(chr(10)+"📅 錨點覆蓋:%s ~ %s,共 %d 個不同日曆日"
+              % (span[0], span[1], r.get("distinct_days", 0)))
+    if md:
+        print("   🔴 **中間有 %d 個日曆日完全沒有錨點**:%s"
+              % (len(md), "、".join(md[:12]) + ("…" if len(md) > 12 else "")))
+        print("      少一天跟改一筆一樣是造假的形狀,而 seq 與 days_recorded")
+        print("      都是計數器 —— 漏跑一天它們只是少加一次,不會出現缺口。")
+        print("      原因應記在 CHANGELOG;查不到對應條目就是揭露缺口。")
+    elif span:
+        print("   ✓ 沒有缺日")
+    if r.get("bad_utc_seqs"):
+        print("   ⚠️ 有 %d 筆的 utc 讀不出日期(seq %s)"
+              % (len(r["bad_utc_seqs"]), r["bad_utc_seqs"][:8]))
 
     if r["duplicates"]:
         print("\n⚠️ 同一個決策日有多筆錨點(不是錯誤,但要說清楚):")
@@ -282,15 +348,22 @@ def main(argv: list) -> int:
              
             print("       (a) 該時點之後檔案被正常更新過(下一次錨定就會涵蓋)")
             print("       (b) 內容被竄改")
-            print("     要分辨:看公開 repo 的 git 歷史 —— 每一次改動都有",
-                  "commit 時間與內容,由 GitHub 記錄,不是我們說了算。")
+            print("     要分辨:看公開 repo 的 git 歷史 —— 每一次改動都有 commit 與內容。")
+            print("     ⚠️ 但 commit 的時間戳是**提交那台機器**寫的,GitHub 不背書;")
+            print("        rebase 之後 author 時間還會原樣保留(2026-09-21 更正,")
+            print("        此前這裡誤稱『由 GitHub 記錄,不是我們說了算』)。")
         else:
             print("   ⚠️ 有 %d 個檔案沒有比對到(這不是通過,是沒驗)" % pub["missing"])
 
     print("\n🔴 這支驗證器**不能**證明我們沒有整條重算。")
-    print("   雜湊鏈只防「改一筆」。防「重寫全部」要靠外部時間戳 ——")
-    print("   本專案是每日推送到公開 git repo,commit 時間由 GitHub 記錄,")
-    print("   那份證據在 git 歷史裡,不在這支程式裡。")
+    print("   雜湊鏈只防「改一筆」。防「重寫全部」要靠外部時間戳。")
+    print("   ⚠️ 2026-09-21 更正:此前這裡寫「commit 時間由 GitHub 記錄」—— 那是錯的。")
+    print("      git 的 author/committer 時間都是**提交那台機器**寫的,GitHub 不背書,")
+    print("      而 GitHub 預設顯示 author 時間,它在 rebase 後原樣保留。")
+    print("      實例:seq 43 鏈上與 GitHub 都標 2026-09-03,而該 commit 的")
+    print("      committer 時間是 2026-09-04 18:08:55 +0800(差 33.5 小時)。")
+    print("   → 我們**目前無法向你證明**某一筆是當天推上去的。能給的是")
+    print("      push_receipts.json(自 2026-09-22 起側錄,會被下一筆錨點蓋住)。")
 
     # 🔴 公開檔案對不上也算失敗 —— 鏈自己自洽但數字被換掉,
     #   對讀者來說是更嚴重的一種壞掉。

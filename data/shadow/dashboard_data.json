@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 71,
-      "utc": "2026-09-21T14:37:57Z",
+      "seq": 72,
+      "utc": "2026-09-22T00:19:04Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -57,7 +57,11 @@
           "since_seq": 48,
           "since_utc": "2026-09-06T00:36:56Z"
         }
-      ]
+      ],
+      "receipts": {
+        "available": false,
+        "reason": "尚無收據(自 seq 72 起開始側錄)"
+      }
     }
   },
   "equity_curve": [
@@ -1267,6 +1271,11 @@
     "warning_threshold_pct": 60.0,
     "threshold_source": "硬編碼於 shadow/multi.py,PROTOCOL 未定義"
   },
+  "annualization": {
+    "sharpe": 365,
+    "ir": 252,
+    "note": "Sharpe 用 √365(PROTOCOL:73 加密貨幣全年無休);IR 用 √252(PROTOCOL:84 預先登記,§9 禁改)。**刻意不同,不是兩份實作漂移。**"
+  },
   "current_position": {
     "rule": {
       "SKR": 12.12,
@@ -1400,14 +1409,14 @@
   "position_priced_at": "2026-09-21",
   "code_change_audit": {
     "available": true,
-    "core_changes": 15,
+    "core_changes": 16,
     "metric_files": [
       "shadow/forward_multi.py",
       "shadow/multi.py",
       "shadow/universe.py",
       "shadow/stats.py"
     ],
-    "same_entry": 7,
+    "same_entry": 8,
     "date_mentioned_only": 4,
     "undisclosed": 4,
     "undisclosed_seqs": [
@@ -1557,6 +1566,16 @@
         ],
         "changelog_same_entry": true,
         "changelog_mentions_date": true
+      },
+      {
+        "seq": 72,
+        "date": "2026-09-22",
+        "files": [
+          "shadow/forward_multi.py",
+          "shadow/stats.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
       }
     ]
   },
@@ -1578,6 +1597,29 @@
     "unsettled_days": [],
     "unsettled_implemented": false,
     "today_infra_skip": true
+  },
+  "data_quality": {
+    "denominator_days": 61,
+    "quote_outage_days": [],
+    "funding_incomplete_days": [],
+    "funding_unreachable_days": [],
+    "funding_missing_days": [],
+    "stale_quote_days": [],
+    "min_quote_coverage": 1.0,
+    "invariant_issues": [],
+    "invariant_checks": [
+      "BALANCE_MISMATCH",
+      "COST_MAGNITUDE",
+      "COST_WITHOUT_TURNOVER",
+      "FUNDING_COVERAGE",
+      "FUNDING_INCOMPLETE",
+      "FUNDING_MAGNITUDE",
+      "FUNDING_UNREACHABLE",
+      "GROSS_OBSERVED",
+      "LEDGER_RECONCILE",
+      "NEGATIVE_CASH",
+      "RETURN_MAGNITUDE"
+    ]
   },
   "current_cash": {
     "rule": 80.15,
