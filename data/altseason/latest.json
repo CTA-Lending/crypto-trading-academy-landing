@@ -5,14 +5,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-09-20 這一天，比特幣以外的其他加密貨幣（大家習慣叫「山寨幣」）整體熱度是 61.5 分，滿分 100，狀態屬於升溫中——跑贏比特幣的幣明顯變多了，但還沒超過一半。跟 30 天前比多了 5.4 分，跟 7 天前比多了 6.8 分，等於這股熱度大多是最近一週才冒出來的。\n\n拆開來看，這 385 種幣裡面，市場廣度有 78.0 分最突出，意思是漲得比比特幣好的幣佔了不小比例；資金輪動 66.4 分，錢確實在從比特幣往其他幣移動；波動與結構 56.9 分、流動性 55.4 分都在中間地帶。比較弱的是現貨訂單流 44.2 分，也就是真正成交的買單沒那麼踴躍——場面看起來熱鬧，但實際掏錢買進的力道還沒跟上。"
+  "text": "2026-09-21 這一天，山寨市場的溫度是 65.2 分（滿分 100），狀態是全面擴張，也就是說在納入計算的 385 種幣裡，多數幣的表現都比比特幣好，而且這種「跟上來」的幣越來越多。\n\n分開來看，市場廣度拿到 81.8 分是最高的，意思是漲得比比特幣兇的幣佔了很大一部分；現貨訂單流 71.8 分，代表真的成交的買單佔比不低，換手也算熱絡；資金輪動 61.9 分和流動性 57.2 分屬於中間水準；波動與結構只有 45.0 分，也就是各種幣走勢比較各走各的，不太一致。\n\n拉長時間比，這個溫度在 30 天裡淨增加了 9.2 分，其中 7 天內就淨增加了 7.2 分。換句話說，這一天的熱度在整個市場裡分布得很廣，而且大部分的升溫是最近這一週才發生的。"
  },
- "asOf": "2026-09-20",
- "changeD1": -0.3,
- "changeD14": -9.0,
- "changeD30": 5.4,
- "changeD7": 6.8,
- "dataAsOfUtc": "2026-09-21T01:35:35Z",
+ "asOf": "2026-09-21",
+ "changeD1": 3.7,
+ "changeD14": 0.9,
+ "changeD30": 9.2,
+ "changeD7": 7.2,
+ "dataAsOfUtc": "2026-09-22T01:32:52Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -40,50 +40,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 21,
+ "forwardLogDays": 22,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 22,
+ "forwardLogRecords": 23,
  "layers": {
-  "B": 78.0,
-  "L": 55.4,
-  "R": 66.4,
-  "S": 44.2,
-  "V": 56.9
+  "B": 81.8,
+  "L": 57.2,
+  "R": 61.9,
+  "S": 71.8,
+  "V": 45.0
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 55.4
+   "score": 57.2
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 66.4
+   "score": 61.9
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 78.0
+   "score": 81.8
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 44.2
+   "score": 71.8
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 56.9
+   "score": 45.0
   }
  ],
- "publishedAtUtc": "2026-09-21T06:00:17Z",
+ "publishedAtUtc": "2026-09-22T06:00:19Z",
  "revision": 1,
- "score": 61.5,
+ "score": 65.2,
  "scoreVersion": "score-v1.0",
- "stageCode": "heating",
- "stageDesc": "跑贏比例明顯上升，但尚未過半",
- "stageName": "升溫中",
+ "stageCode": "expansion",
+ "stageDesc": "多數山寨正在跑贏 BTC，且廣度仍在擴大",
+ "stageName": "全面擴張",
  "universeCount": 385,
  "universeVersion": "universe-v1.1"
 }
