@@ -143,6 +143,30 @@ def check_published(chain: list, folder: str) -> dict:
                 if hashlib.sha256(variant).hexdigest()[:16] == want:
                     got = got + "(內容相同,只差換行:鏈上記的是 %s 版)" % label
                     break
+            # 🔴🔴 2026-09-22:`push_receipts.json` **結構上必然不符**,
+            #    而且差異是**可以精確預測**的 —— 它記的是「這一筆推送的結果」,
+            #    寫在雜湊封死**之後**,所以現在的檔案一定比鏈上記的**多恰好一列**。
+            #    ⭐ 一個每次都對同一個檔案印紅燈的驗證器,會訓練所有人忽略紅燈
+            #      —— 那正是本專案在 seq 48 那次學到的教訓。
+            #    🔴 但**不是**放行:改成驗那個可預測的不變式 ——
+            #      去掉最後一列之後,雜湊必須**完全吻合**。
+            #      吻合 → 這是預期中的結構差異;不吻合 → 那就是真的被改了。
+            if fn == "push_receipts.json":
+                try:
+                    rowsj = json.loads(raw.decode("utf-8"))
+                    if isinstance(rowsj, list) and rowsj:
+                        # 🔴 位元組必須**完全一致**:寫入端用 json.dump(indent=1)
+                        #    且**不加結尾換行**。差一個 byte 就不算吻合。
+                        trimmed = json.dumps(rowsj[:-1], ensure_ascii=False,
+                                             indent=1).encode("utf-8")
+                        if hashlib.sha256(trimmed).hexdigest()[:16] == want:
+                            got = ("去掉最後一列後完全吻合 = 預期中的結構差異"
+                                   "(收據寫在雜湊封死之後,見 CHANGELOG-048)")
+                            rows.append((fn, want, got))
+                            continue
+                        got += "(已試過去掉最後一列,仍然不吻合 → 這不是結構差異)"
+                except Exception:                            # noqa: BLE001
+                    got += "(收據檔解析不了 —— 那本身就是問題)"
         rows.append((fn, want, got))   # got 可能已附上換行差異的診斷
         if got != want:
             mismatch += 1

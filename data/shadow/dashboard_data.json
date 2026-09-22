@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 75,
-      "utc": "2026-09-22T00:45:11Z",
+      "seq": 76,
+      "utc": "2026-09-22T05:45:19Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -60,19 +60,19 @@
       ],
       "receipts": {
         "available": true,
-        "rows": 3,
-        "pushed_ok": 3,
+        "rows": 4,
+        "pushed_ok": 4,
         "push_failed": 0,
-        "last_commit": "5bf1ae59e4ae",
-        "last_push_returned_utc": "2026-09-22T00:37:18Z",
+        "last_commit": "06d88de14d4f",
+        "last_push_returned_utc": "2026-09-22T00:45:17Z",
         "max_lag_h": 0.0,
-        "measured_rows": 3
+        "measured_rows": 4
       },
       "external_timestamp": {
         "available": true,
-        "stamped_seqs": 2,
+        "stamped_seqs": 3,
         "first_seq": 73,
-        "last_seq": 74,
+        "last_seq": 75,
         "service": "OpenTimestamps(最終錨定於比特幣區塊)",
         "verify_with": "ots verify seq<N>.ots(需要 opentimestamps-client)",
         "note": "這裡列的是**已送出**的。今天這一筆要明天才出現在這個欄位(補寫跑在上鏈之前),但它的 .ots 檔已經在今天的 commit 裡。⚠️ 剛送出的是**待確認**證明,要等比特幣區塊確認後 `ots upgrade` 才完整。它只證明「這個雜湊當時就存在」,**不證明我們的數字是對的**。"
@@ -1415,14 +1415,14 @@
   "position_priced_at": "2026-09-22",
   "code_change_audit": {
     "available": true,
-    "core_changes": 16,
+    "core_changes": 17,
     "metric_files": [
       "shadow/forward_multi.py",
       "shadow/multi.py",
       "shadow/universe.py",
       "shadow/stats.py"
     ],
-    "same_entry": 8,
+    "same_entry": 9,
     "date_mentioned_only": 4,
     "undisclosed": 4,
     "undisclosed_seqs": [
@@ -1579,6 +1579,15 @@
         "files": [
           "shadow/forward_multi.py",
           "shadow/stats.py"
+        ],
+        "changelog_same_entry": true,
+        "changelog_mentions_date": true
+      },
+      {
+        "seq": 76,
+        "date": "2026-09-22",
+        "files": [
+          "shadow/forward_multi.py"
         ],
         "changelog_same_entry": true,
         "changelog_mentions_date": true
