@@ -149,23 +149,29 @@ python verify_chain.py</pre>
   而這是一個<b>每天結算一次</b>的實驗,
   ⭐ <b>24 小時的空窗,對日頻資料而言就是全部。</b><br>
   講白:<b>在 2026-09-22 之前,T−1 以前的帳本可驗證;當日那一筆只是「我們自己說的」。</b>
-  我們不用「不可竄改」四個字描述那段期間的當日資料,也請你不要這樣理解它。<br>
+  我們不會用打包票的字眼描述那段期間的當日資料,也請你不要這樣理解它。<br>
   (2026-09-22 起,當日那一筆改由下面那個外部時間戳蓋住 —— 見下一段。)<br>
-  📌 這個限制是結構性的:錨點的雜湊必須在推送**之前**封死,
+  📌 這個限制是結構性的:錨點的雜湊必須在推送<b>之前</b>封死,
   收據不可能塞回它自己那一筆。</p>
 
   <p class="foot" style="border-left:3px solid var(--up);padding-left:10px">
   ✅ <b>2026-09-22 起:已經有一個真的外部時間戳了。</b><br>
-  每一筆錨點的雜湊,在推送**之前**會送進
+  每一筆錨點的雜湊,在推送<b>之前</b>會送進
   <a href="https://opentimestamps.org" style="color:var(--acc)">OpenTimestamps</a>,
-  最終落在**比特幣區塊**上。比特幣的區塊時間<b>不是我們能控制的</b> ——
-  這是第一個**真的**外部的時間。證明檔就放在
-  <code>data/shadow/ots/seq&lt;N&gt;.ots</code>,而且**跟那一筆錨點在同一個 commit 裡**。<br>
-  驗證(需要 <code>opentimestamps-client</code>,那是**別人的**工具,不是我們寫的):
-  <br><code>pip install opentimestamps-client &amp;&amp; ots verify seq&lt;N&gt;.ots</code><br>
-  🔴 <b>它證明的、與不證明的</b>:它只證明「**這個雜湊在那個時間點之前就已經存在**」。
+  最終落在<b>比特幣區塊</b>上。比特幣的區塊時間<b>不是我們能控制的</b> ——
+  這是第一個<b>真的</b>外部的時間。證明檔就放在
+  <code>data/shadow/ots/seq&lt;N&gt;.ots</code>,而且<b>跟那一筆錨點在同一個 commit 裡</b>。<br>
+  驗證(需要 <code>opentimestamps-client</code>,那是<b>別人的</b>工具,不是我們寫的):
+  <br><code>pip install opentimestamps-client</code>
+  <br><code>ots verify -d &lt;那一筆錨點的 hash&gt; seq&lt;N&gt;.ots</code><br>
+  🔴 <b>一定要加 <code>-d</code></b>:我們蓋的是<b>錨點的雜湊</b>,不是某個檔案的雜湊。
+  不加 <code>-d</code> 的話 <code>ots</code> 會去找一個叫 <code>seq&lt;N&gt;</code> 的檔案 ——
+  那個檔案<b>不存在</b>,你會卡在那裡拿不到任何結論。
+  hash 去 <code>anchor_chain.json</code> 裡那一筆的 <code>hash</code> 欄位拿。<br>
+  📌 這句指令我們在 2026-09-22 印錯過一次(少了 <code>-d</code>),當天更正。<br>
+  🔴 <b>它證明的、與不證明的</b>:它只證明「<b>這個雜湊在那個時間點之前就已經存在</b>」。
   它<b>不證明我們的數字是對的</b>,也不證明我們沒有在更早以前算過別的版本再挑一個來蓋。
-  剛送出的是**待確認**證明,要等區塊確認後 <code>ots upgrade</code> 才完整。<br>
+  剛送出的是<b>待確認</b>證明,要等區塊確認後 <code>ots upgrade</code> 才完整。<br>
   ⚠️ <b>seq 73 以前的錨點沒有這個</b>(第一筆是 2026-09-22 的 seq 73)——
   在那之前的帳本,上面那段 24 小時空窗的說法<b>仍然成立</b>,我們不追溯補蓋
   (事後補蓋的時間戳證明不了當時,那會是另一句假話)。</p>
