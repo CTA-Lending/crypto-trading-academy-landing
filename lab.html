@@ -89,6 +89,11 @@ th:first-child,td:first-child{text-align:left}
 <div class="card">
   <h2>🤖 各腦現況 · 配置與「為什麼」</h2>
   <div class="agents" id="agents"></div>
+  <!-- 🔴 L006:這一頁打著「公開每個決策與理由」,而上面只渲染**今天**那一組。
+       其餘 60 天 × 9 位的理由住在 diaries.json —— 它被發佈、雜湊也在鏈裡,
+       但在 2026-09-21 之前**沒有任何地方連到它**。殭屍資料的定義不是「壞掉」,
+       是「還在對外發布,只是沒人看得到」。 -->
+  <p class="foot" id="diaryLink"></p>
 </div>
 
 <div class="card">
@@ -114,15 +119,31 @@ th:first-child,td:first-child{text-align:left}
   <pre style="background:var(--card2);border:1px solid var(--line);border-radius:8px;
 padding:12px;overflow-x:auto;font-size:12px;line-height:1.7"># 一次抓齊:驗證器 + 鏈 + 鏈所保護的四個檔案
 B=https://crypto-trading-academy.com/data/shadow
-for f in verify_chain.py anchor_chain.json dashboard_data.json CHANGELOG.md PROTOCOL.md diaries.json; do curl -sO $B/$f; done
+for f in verify_chain.py anchor_chain.json dashboard_data.json CHANGELOG.md PROTOCOL.md diaries.json anchor.json push_receipts.json; do curl -sO $B/$f; done
 
 python verify_chain.py</pre>
   <p class="foot">⚠️ 少下載任何一個檔,那一項會顯示「<b>本機沒有這個檔案</b>」—— 那是<b>沒有比對到</b>,不是「通過」。這支程式把三種結果分開:<b>通過 / 不符 / 沒有檔案可比對</b>。</p>
   <p class="foot">🔴 <b>它會自己印出它證明不了什麼</b>,請一起讀:
-  雜湊鏈只防「改掉其中一筆」,<b>防不了「整條重算」</b>。
-  防重算靠的是每日推到公開 git repo 留下的外部時間戳 ——
-  那份證據在 <a href="https://github.com/CTA-Lending/crypto-trading-academy-landing/commits/main/data/shadow"
-  style="color:var(--acc)">git 歷史</a>裡,不在那支程式裡。</p>
+  雜湊鏈只防「改掉其中一筆」,<b>防不了「整條重算」</b>。</p>
+  <p class="foot" style="border-left:3px solid var(--down);padding-left:10px">
+  🔴🔴 <b>2026-09-21 更正:我們先前在這裡寫錯了。</b>
+  這一段本來說「防重算靠的是推到公開 git repo 留下的<b>外部</b>時間戳」——
+  <b>那個時間戳不是外部的</b>。git 的 author 與 committer 時間
+  <b>都是提交那台機器寫的</b>,GitHub 不背書;而 GitHub 的 commits 頁
+  預設顯示 <b>author</b> 時間,它在 rebase 之後<b>原樣保留</b>。<br>
+  ⭐ 實例(你可以自己驗):第 43 號錨點在鏈上與 GitHub 上都標 <b>2026-09-03</b>,
+  而那個 commit(<code>03e2d9b</code>)的 committer 時間是
+  <b>2026-09-04 18:08:55 +0800</b> —— <b>差 33.5 小時</b>,
+  兩天份的證據同一晚落地,而在此之前這一頁一個字都沒說。
+  指令:<code>git log --format=%cd 03e2d9b</code><br>
+  所以誠實的講法是:<b>我們目前無法向你證明某一筆是當天推上去的。</b>
+  能給你的是 <a href="./data/shadow/push_receipts.json" style="color:var(--down)">push_receipts.json</a>
+  (自 2026-09-22 起側錄):每一筆記「我們這邊在什麼時刻、推了哪一個 commit、成功與否」。
+  它<b>仍然是我們自己寫的</b>,但 <code>chain_utc</code> 與 <code>push_returned_utc</code>
+  的<b>差距</b>會把「當天推的」與「事後補推的」分開;而且它會被<b>下一筆</b>錨點的雜湊蓋住
+  —— 事後改它會讓下一筆對不上。<b>晚一天才防得住,這個限制我們講清楚。</b>
+  <a href="https://github.com/CTA-Lending/crypto-trading-academy-landing/commits/main/data/shadow"
+  style="color:var(--down)">git 歷史在這裡</a>,請連同上面的限制一起看。</p>
   <p class="foot">⚠️ <b>還有一件我們現在做不到的事</b>:
   驗證程式證明的是「<b>GitHub 上那份檔案</b>沒被改」,
   而你正在看的是<b>這個網頁</b> —— 網頁本身<b>不會</b>在你的瀏覽器裡即時比對雜湊。
@@ -515,6 +536,20 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        而帳上 units 裡**沒有 ARB**,實際是 <b>ZEC 13.1%</b> ——
        **一份從未成交的購物清單,印在寫著「公開每個決策與理由」的頁面上。**
      61 個決策日裡已有 3 天如此(08-10 / 09-01 / 09-21)。 */
+  /* 🔴 L006:這一頁只渲染**今天**那一組理由,而標語寫著「公開每個決策與理由」。
+     其餘的住在 diaries.json —— 發佈了、雜湊也在鏈裡,但沒有任何地方連到它。
+     ⭐ 殭屍資料的定義不是「壞掉」,是「還在對外發布,只是沒人看得到」。
+     天數與腦數一律從資料算,不寫死。 */
+  (function(){
+    const el=document.getElementById('diaryLink'); if(!el) return;
+    const n=(m.brains||[]).length, dz=m.days;
+    el.innerHTML='⚠️ 上面只有<b>今天</b>這一組配置與理由。'
+      +(dz&&n?`全部 <b>${dz}</b> 個決策日 × <b>${n}</b> 位競爭者的配置與理由,`
+             :'全部歷史的配置與理由,')
+      +'發佈在 <a href="./data/shadow/diaries.json" style="color:var(--acc)">diaries.json</a>'
+      +'(原始 JSON,未經整理;它的雜湊也在錨點鏈裡,可用下方驗證器比對)。'
+      +'<br>📌 <b>2026-09-21 補上這個連結之前,這個檔案發佈了、但頁面沒有任何地方連到它。</b>';
+  })();
   const infraToday=!!(d.events&&d.events.today_infra_skip);
   const _recs=d.records||[];
   const settleDay=m.last_date||(_recs.length?_recs[_recs.length-1].day:null);
@@ -546,7 +581,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
     /* 🔴 2026-08-07:報酬**一律用後端算好的**,前端不得自己推算。
        📌 2026-09-20:這段的「未提交」標記同樣是**過期的**(整頁主體早就在跑)。
-          原本 (eq/m.start_capital-1)*100 把 44 天算成一段,而 CHANGELOG-002 明訂
+          原本 (eq/m.start_capital-1)*100 把 44 天算成一段,而 CHANGELOG-001 明訂
           第 1~12 決策日的損益不得用於任何對外績效陳述。
           同一段計算被複製在四個地方(日報/儀表板後端/內部儀表板/這裡),
           我修前三個時都以為修完了。**重複的指標實作一定會漂。**
@@ -731,18 +766,28 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     +'<th>今日首次</th><th>今日最終狀態</th><th>累計受試者違規<br><span style="font-weight:400;font-size:10px">(重試後仍違規)</span></th>'
     +'<th>累計我方中斷<br><span style="font-weight:400;font-size:10px">(不計入 §4)</span></th></tr>'
     +m.thinkers.map(b=>{
-      const s=vsp[b]||{}, subj=(s.subject==null?tv[b]:s.subject), infra=s.infra, unk=s.unknown;
+      /* 🔴🔴 2026-09-21(稽核 M024 複查):這張表**至今一次都沒讀過 `violation_checked`**。
+         它靠的是「m.thinkers 剛好等於受檢查集合」這個**沒人寫下來、也沒人測的巧合** ——
+         兩者只是碰巧同源自 `multi.THINKERS`。哪天名單分岔,這張表就會對
+         未受檢查的腦印出一排 0,讀起來像「最守規矩」(§4 表 09-20 就修過同一件事)。
+         🔴 而 `s.subject==null?tv[b]` 這個回退更糟:缺 split 時會把
+           **含我方 API 中斷的總數**當成受試者違規印出來。缺就印 `—`,不要頂替。 */
+      const ck=(d.violation_checked||{})[b];
+      const NC='<span style="color:var(--warn)">未受檢查</span>';
+      const s=vsp[b]||{}, subj=s.subject, infra=s.infra, unk=s.unknown;
       const isInfra=String(viol[b]||'').split(':')[0]==='no_response';
-      const f=fvs[b]||{}, fSubj=(f.subject==null?fv[b]:f.subject);
+      const f=fvs[b]||{}, fSubj=f.subject;
       const fc=fcum[b]||{}, fr=frate[b];
       return `<tr><td>${LABEL[b]}</td>`
-        +`<td>${fc.subject==null?'—':`<b>${fc.subject}</b> 次 / ${fr==null?'—':fr+'%'}`}`
+        +`<td>${ck===false?NC:(fc.subject==null?'⚠️ 後端未提供'
+            :`<b>${fc.subject}</b> 次 / ${fr==null?'—':fr+'%'}`)}`
         +`${fc.infra?` <span style="color:var(--warn);font-size:10px">(另 ${fc.infra} 次中斷)</span>`:''}</td>`
-        +`<td>${fSubj||0}`
+        +`<td>${ck===false?NC:(fSubj==null?'<span style="color:var(--warn)">⚠️ 後端未提供</span>':fSubj)}`
         +`${f.infra?` <span style="color:var(--warn);font-size:10px">(+${f.infra} 中斷)</span>`:''}</td>`
         +`<td style="color:${viol[b]?(isInfra?'var(--warn)':'var(--down)'):'var(--dim)'}">`
         +`${viol[b]?(isInfra?'⚠️ 我方叫不到 API':'🚫 '+viol[b]):'—'}</td>`
-        +`<td>${subj==null?'—':subj}${unk?` <span style="color:var(--warn)">+${unk} 未分類⚠️</span>`:''}</td>`
+        +`<td>${ck===false?NC:(subj==null?'<span style="color:var(--warn)">⚠️ 後端未提供</span>':subj)}`
+        +`${unk?` <span style="color:var(--warn)">+${unk} 未分類⚠️</span>`:''}</td>`
         +`<td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?'—':infra}</td></tr>`;
     }).join('')+'</table>'
     +`<div class="foot" style="margin-top:8px">🔴 <b>2026-09-19 更正</b>:「累計受試者違規」以前印的是兩者相加的總數,
@@ -803,7 +848,15 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     +covTxt
     +'<br>依 PROTOCOL §9,修補內容、生效日與影響範圍已完整記錄於 '
     +'<a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。'
-    +'<br><b>在重述數列完成獨立驗證之前,下表第 1~12 決策日的數字不應用於任何績效判斷。</b>'
+    /* 🔴🔴 2026-09-21(稽核 M047):這句話把一個 **2026-09-06 就已永久撤回**的承諾,
+       繼續當成「還沒完成、完成後就解除」的暫時性條件在對外陳述,掛了 15 天。
+       ⭐ 「還沒做」與「不會做」是兩件事,而讀者只會看到前者。 */
+    +'<br><b style="color:var(--down)">🔴 第 1~12 決策日的數字永久不得用於任何對外績效陳述。</b>'
+    +'我們原本承諾「重跑完成後補上重述數列、由本團隊獨立驗證」,'
+    +'該承諾已於 <b>2026-09-06 公開撤回</b>(CHANGELOG-017):'
+    +'重述需要的五樣輸入我們只保存了一樣(部位數量、成交價、資金費率、成本拆解都沒留),'
+    +'忠實的重跑做不出來;而「獨立驗證」在一人公司裡架構上無法兌現。'
+    +'<b>不是「還沒做」,是「不會做」。</b>原始紀錄保留在本頁、逐列標示作廢,不刪除。'
     +'</div>';
 
   /* 🔴 CEO 2026-08-27:「每日績效紀錄這裡有上限齁?可以變成一頁一頁那種,
@@ -1045,7 +1098,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     h+='</table></div>';
     if(voidedOnPage){
       h+=`<div class="foot" style="color:var(--warn);margin-top:8px">
-        ⚠️ 這一頁有 <b>${voidedOnPage}</b> 天標示為「作廢」:${m.voided_reason||'資金費計算錯誤(CHANGELOG-002)'}
+        ⚠️ 這一頁有 <b>${voidedOnPage}</b> 天標示為「作廢」:${m.voided_reason||'(作廢原因載入失敗 —— 請直接看 CHANGELOG-001 與 CHANGELOG-002)'}
         <br>仍然列出來,是因為<b>我們不刪紀錄</b>。</div>`;
     }
     /* 🔴 缺漏日也要說。2026-07-28 那天實際上**沒有跑**(啟動後遭手動中斷,CHANGELOG 有記),
