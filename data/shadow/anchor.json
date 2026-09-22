@@ -1,5 +1,5 @@
 {
-  "anchored_at_utc": "2026-09-22T00:19:04Z",
+  "anchored_at_utc": "2026-09-22T00:28:42Z",
   "protocol": {
     "sha256": "1b953e4d9e218ef06a14a5c457a8e377ab91c9e0d0b0448e8ce0be99e7757dad",
     "bytes": 12006,
@@ -11,14 +11,14 @@
       "shadow/universe.py": "685b1dc1bd351221",
       "shadow/forward_multi.py": "0d7ecc31b11fd0bf",
       "shadow/stats.py": "a4e154de4c5ef551",
-      "shadow/anchor.py": "15d2be0d36b5d5f8",
+      "shadow/anchor.py": "92e0456bc4a9df05",
       "core/key_level_engine.py": "a65db9d01fe36e56",
       "core/forward_v12_adapter.py": "ff00323c777c84d8"
     },
     "prompt_template_sha256_16": "997585fe795dd317",
     "tree": {
-      "root": "9f5f83e422f49a2ee1f45ec415b1b35b38903dec6ba9a4ff6143522ae89dca1d",
-      "n_files": 330,
+      "root": "30725f611c59cdb3db8ec4de38e42329f3c775be8af114e005995c115fdd6861",
+      "n_files": 332,
       "files": {
         "PROTOCOL.md": "1b953e4d9e218ef0",
         "README.md": "4f2eac507dff9048",
@@ -87,7 +87,7 @@
         "reference/interp.py": "99ae614fb60c9695",
         "reference/run.py": "19b4ac1f559b2227",
         "shadow/__init__.py": "e3b0c44298fc1c14",
-        "shadow/anchor.py": "15d2be0d36b5d5f8",
+        "shadow/anchor.py": "92e0456bc4a9df05",
         "shadow/arena.py": "2c2b36120dbdbdfc",
         "shadow/backup_state.py": "30045f0c45e4a30e",
         "shadow/brains.py": "c9cfc2f1e43305ab",
@@ -98,6 +98,7 @@
         "shadow/forward_multi.py": "0d7ecc31b11fd0bf",
         "shadow/invariants.py": "ca4c55c44d4c707c",
         "shadow/multi.py": "ee999125b0da0a91",
+        "shadow/ots.py": "b40fcd553487602c",
         "shadow/pilot.py": "98a2f16cd1935e8c",
         "shadow/report.py": "f2558dbdc38d2816",
         "shadow/run_forward_daily.bat": "8232f3ecf429c873",
@@ -309,6 +310,7 @@
         "tests/test_venue_outage.py": "892045058fbb13df",
         "tests/test_violation_classification.py": "cc3dd54678c86897",
         "tests/test_walkforward.py": "088e1420d0662401",
+        "tests/test_zz_probe_skipdetector.py": "f4f486c17daa0f7b",
         "tools/__init__.py": "e3b0c44298fc1c14",
         "tools/archetype_separation.py": "671ac5bd429f0668",
         "tools/baseline_gen.py": "bfb0ace2c0956f38",

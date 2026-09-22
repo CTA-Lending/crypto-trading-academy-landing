@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 72,
-      "utc": "2026-09-22T00:19:04Z",
+      "seq": 73,
+      "utc": "2026-09-22T00:28:42Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -59,8 +59,18 @@
         }
       ],
       "receipts": {
+        "available": true,
+        "rows": 1,
+        "pushed_ok": 1,
+        "push_failed": 0,
+        "last_commit": "803336df54fc",
+        "last_push_returned_utc": "2026-09-22T00:19:08Z",
+        "max_lag_h": 0.0,
+        "measured_rows": 1
+      },
+      "external_timestamp": {
         "available": false,
-        "reason": "尚無收據(自 seq 72 起開始側錄)"
+        "reason": "尚無任何外部時間戳(自 2026-09-22 起開始蓋)"
       }
     }
   },
