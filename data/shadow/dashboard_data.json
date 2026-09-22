@@ -39,8 +39,8 @@
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 76,
-      "utc": "2026-09-22T05:45:19Z",
+      "seq": 77,
+      "utc": "2026-09-22T05:54:44Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -60,19 +60,19 @@
       ],
       "receipts": {
         "available": true,
-        "rows": 4,
-        "pushed_ok": 4,
+        "rows": 5,
+        "pushed_ok": 5,
         "push_failed": 0,
-        "last_commit": "06d88de14d4f",
-        "last_push_returned_utc": "2026-09-22T00:45:17Z",
+        "last_commit": "d867b2b9f84a",
+        "last_push_returned_utc": "2026-09-22T05:45:26Z",
         "max_lag_h": 0.0,
-        "measured_rows": 4
+        "measured_rows": 5
       },
       "external_timestamp": {
         "available": true,
-        "stamped_seqs": 3,
+        "stamped_seqs": 4,
         "first_seq": 73,
-        "last_seq": 75,
+        "last_seq": 76,
         "service": "OpenTimestamps(最終錨定於比特幣區塊)",
         "verify_with": "ots verify seq<N>.ots(需要 opentimestamps-client)",
         "note": "這裡列的是**已送出**的。今天這一筆要明天才出現在這個欄位(補寫跑在上鏈之前),但它的 .ots 檔已經在今天的 commit 裡。⚠️ 剛送出的是**待確認**證明,要等比特幣區塊確認後 `ots upgrade` 才完整。它只證明「這個雜湊當時就存在」,**不證明我們的數字是對的**。"
