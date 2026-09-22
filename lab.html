@@ -141,7 +141,34 @@ python verify_chain.py</pre>
   (自 2026-09-22 起側錄):每一筆記「我們這邊在什麼時刻、推了哪一個 commit、成功與否」。
   它<b>仍然是我們自己寫的</b>,但 <code>chain_utc</code> 與 <code>push_returned_utc</code>
   的<b>差距</b>會把「當天推的」與「事後補推的」分開;而且它會被<b>下一筆</b>錨點的雜湊蓋住
-  —— 事後改它會讓下一筆對不上。<b>晚一天才防得住,這個限制我們講清楚。</b>
+  —— 事後改它會讓下一筆對不上。</p>
+  <p class="foot" style="border-left:3px solid var(--down);padding-left:10px">
+  🔴🔴 <b>所以請這樣讀這一頁:今天這一筆,你不該相信。</b><br>
+  一筆錨點要到<b>下一筆</b>出來、把它的雜湊蓋住之後,才有東西擋得住事後修改。
+  也就是說<b>最新的那一筆有大約 24 小時完全沒有被保護</b> ——
+  而這是一個<b>每天結算一次</b>的實驗,
+  ⭐ <b>24 小時的空窗,對日頻資料而言就是全部。</b><br>
+  講白:<b>在 2026-09-22 之前,T−1 以前的帳本可驗證;當日那一筆只是「我們自己說的」。</b>
+  我們不用「不可竄改」四個字描述那段期間的當日資料,也請你不要這樣理解它。<br>
+  (2026-09-22 起,當日那一筆改由下面那個外部時間戳蓋住 —— 見下一段。)<br>
+  📌 這個限制是結構性的:錨點的雜湊必須在推送**之前**封死,
+  收據不可能塞回它自己那一筆。</p>
+
+  <p class="foot" style="border-left:3px solid var(--up);padding-left:10px">
+  ✅ <b>2026-09-22 起:已經有一個真的外部時間戳了。</b><br>
+  每一筆錨點的雜湊,在推送**之前**會送進
+  <a href="https://opentimestamps.org" style="color:var(--acc)">OpenTimestamps</a>,
+  最終落在**比特幣區塊**上。比特幣的區塊時間<b>不是我們能控制的</b> ——
+  這是第一個**真的**外部的時間。證明檔就放在
+  <code>data/shadow/ots/seq&lt;N&gt;.ots</code>,而且**跟那一筆錨點在同一個 commit 裡**。<br>
+  驗證(需要 <code>opentimestamps-client</code>,那是**別人的**工具,不是我們寫的):
+  <br><code>pip install opentimestamps-client &amp;&amp; ots verify seq&lt;N&gt;.ots</code><br>
+  🔴 <b>它證明的、與不證明的</b>:它只證明「**這個雜湊在那個時間點之前就已經存在**」。
+  它<b>不證明我們的數字是對的</b>,也不證明我們沒有在更早以前算過別的版本再挑一個來蓋。
+  剛送出的是**待確認**證明,要等區塊確認後 <code>ots upgrade</code> 才完整。<br>
+  ⚠️ <b>seq 73 以前的錨點沒有這個</b>(第一筆是 2026-09-22 的 seq 73)——
+  在那之前的帳本,上面那段 24 小時空窗的說法<b>仍然成立</b>,我們不追溯補蓋
+  (事後補蓋的時間戳證明不了當時,那會是另一句假話)。</p>
   <a href="https://github.com/CTA-Lending/crypto-trading-academy-landing/commits/main/data/shadow"
   style="color:var(--down)">git 歷史在這裡</a>,請連同上面的限制一起看。</p>
   <p class="foot">⚠️ <b>還有一件我們現在做不到的事</b>:
@@ -203,7 +230,7 @@ python verify_chain.py</pre>
   <h2>🛡️ 我們刻意不做的事(這才是重點)</h2>
   <div class="nope">
     <div>✗ 不喊「AI 幫你賺 X%」</div><div>✓ 公開每個決策與理由</div>
-    <div>✗ 不給買賣建議</div><div>✓ 帳本可驗證(hash chain)—— <b><a href="#verify" style="color:var(--acc)">你可以自己驗</a></b></div>
+    <div>✗ 不給買賣建議</div><div>✓ <b>歷史</b>帳本可驗證(hash chain)· <b style="color:var(--warn)">當日那一筆還不可驗</b> —— <b><a href="#verify" style="color:var(--acc)">為什麼、以及你可以驗什麼</a></b></div>
     <div>✗ 不保證獲利</div><div>✓ 誠實標示模擬與樣本不足</div>
     <div>✗ 不碰你的錢</div><div>✓ 賺錢不加分,可靠才升級</div>
     <div>✗ 不事後換指標</div><div>✓ 判定標準跑之前就公開錨定</div>
