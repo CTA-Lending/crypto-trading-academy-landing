@@ -1,6 +1,31 @@
 {
- "days": 22,
+ "days": 23,
  "records": [
+  {
+   "asOf": "2026-09-22",
+   "changeD1": 7.0,
+   "changeD14": 6.8,
+   "changeD30": 19.0,
+   "changeD7": 22.5,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-09-23T01:33:15Z",
+   "layers": {
+    "B": 89.1,
+    "L": 65.1,
+    "R": 62.5,
+    "S": 86.2,
+    "V": 50.8
+   },
+   "revision": 1,
+   "score": 72.2,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "expansion",
+   "stageDesc": "多數山寨正在跑贏 BTC，且廣度仍在擴大",
+   "stageName": "全面擴張",
+   "universeCount": 386,
+   "universeVersion": "universe-v1.1"
+  },
   {
    "asOf": "2026-09-21",
    "changeD1": 3.7,
@@ -577,5 +602,5 @@
    "universeVersion": "universe-v1.1"
   }
  ],
- "records_total": 23
+ "records_total": 24
 }
