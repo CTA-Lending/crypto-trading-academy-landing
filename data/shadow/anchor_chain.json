@@ -1851,5 +1851,33 @@
       "verify_chain.py": "69d50d2b7804b2c6"
     },
     "hash": "5c4b3741772bbbd6813d08f01b44dfaa7e0d7d34a208e58f74057c5f81fb626c"
+  },
+  {
+    "seq": 84,
+    "utc": "2026-09-29T00:37:00Z",
+    "prev": "5c4b3741772bbbd6813d08f01b44dfaa7e0d7d34a208e58f74057c5f81fb626c",
+    "days_recorded": 69,
+    "ledger_head": "f4277b3c7862e67386355969c947fc7f4778634d2a50848ae803c6b11d0800ef",
+    "protocol_sha256": "1b953e4d9e218ef06a14a5c457a8e377ab91c9e0d0b0448e8ce0be99e7757dad",
+    "tree_root": "edf42f372a640ac4ccb0f880671e3d1956e62ecfa643a96a034ee3c162607202",
+    "code": {
+      "shadow/multi.py": "1058561c2e240363",
+      "shadow/universe.py": "685b1dc1bd351221",
+      "shadow/forward_multi.py": "a6f9524f9f9be15f",
+      "shadow/stats.py": "a4e154de4c5ef551",
+      "shadow/anchor.py": "8d86542aeb0444c4",
+      "core/key_level_engine.py": "a65db9d01fe36e56",
+      "core/forward_v12_adapter.py": "ff00323c777c84d8"
+    },
+    "published": {
+      "dashboard_data.json": "cc8dded65e9e25a0",
+      "CHANGELOG.md": "5602483825368638",
+      "diaries.json": "73fcf4d7cdf4aeff",
+      "push_receipts.json": "528cf2181efda75f",
+      "PROTOCOL.md": "603a62467f936a39",
+      "anchor.json": "59b25674d91f0e0e",
+      "verify_chain.py": "69d50d2b7804b2c6"
+    },
+    "hash": "4c91033026ff29921c5e05ff7fd840fa8f5ece10ce0e7a236991b4a62ee4059e"
   }
 ]
