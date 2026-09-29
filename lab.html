@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CTA AI 交易代理人｜公開研究實驗室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0e14;--card:#151a23;--card2:#0f141c;--line:#242b38;--txt:#e6edf3;--dim:#8b95a5;
 --rule:#8b95a5;--gpt:#10a37f;--gemini:#4285f4;--claude:#d97757;--guardian:#f2c94c;
@@ -58,19 +61,119 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}
 th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line)}
 th:first-child,td:first-child{text-align:left}
 @media(max-width:560px){.nope{grid-template-columns:1fr}.eq{font-size:19px}}
+/* ═══════════ 2026-09-29 改版:「賽況看板」—— 18 歲大學生一眼看懂 ═══════════
+   原則:先回答「現在誰贏、贏多少、算不算數」;所有細節一個字都不刪,收進可展開區塊。
+   會亮紅燈的警示(資料過期、沒拿到回答)**不准收起來**。 */
+:root{--num:"Big Shoulders Display","Microsoft JhengHei",system-ui,sans-serif;
+--head:"Noto Serif TC","PingFang TC","Microsoft JhengHei",serif}
+.brief{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#1a1606;border:1px solid #4a3c12;
+border-radius:10px;padding:9px 14px;font-size:13px;color:#f0d98a;margin-bottom:14px}
+.brief b{color:#ffe79a}.brief>span{flex:1;min-width:0}
+details.fine{margin-bottom:16px}
+details.fine>summary{font-size:12.5px;color:var(--dim);cursor:pointer;margin-bottom:8px}
+.hero{position:relative;border:1px solid var(--line);border-radius:18px;padding:24px 22px 20px;
+margin-bottom:18px;overflow:hidden;isolation:isolate;
+background:radial-gradient(110% 70% at 0% 0%,rgba(88,166,255,.13),transparent 55%),
+radial-gradient(80% 60% at 100% 0%,rgba(247,147,26,.10),transparent 60%),var(--card)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px;
+mask-image:linear-gradient(180deg,#000,transparent 75%)}
+.eyebrow{font-size:12px;letter-spacing:.2em;color:var(--acc);font-weight:700}
+.headline{display:block;font-family:var(--head);font-weight:900;font-size:clamp(23px,4.8vw,35px);line-height:1.28;
+margin:8px 0 10px;letter-spacing:.01em}
+.headline em{font-style:normal;color:var(--up)}
+.headline em.bad{color:var(--down)}
+.lede{color:#c8d3e0;font-size:15px;line-height:1.75;margin-bottom:18px;max-width:40em}
+.lede b{color:#fff}
+.race{display:flex;flex-direction:column;gap:8px;position:relative}
+.lane{display:grid;grid-template-columns:minmax(128px,32%) 1fr 78px;align-items:center;gap:12px;
+opacity:0;transform:translateY(6px);animation:rise .55s cubic-bezier(.2,.8,.2,1) forwards}
+.lane .who{display:flex;align-items:center;gap:8px;min-width:0;font-size:14.5px;font-weight:700;line-height:1.25}
+.lane .who small{display:block;font-weight:400;color:var(--dim);font-size:11.5px}
+.lane.ai .who{color:#fff}
+.lane.ref .who{color:#aeb8c6}
+.track{position:relative;height:24px;background:rgba(255,255,255,.035);border-radius:6px}
+.track .axis{position:absolute;top:-3px;bottom:-3px;width:1px;background:#3a4556}
+.track .btcline{position:absolute;top:-5px;bottom:-5px;border-left:2px dashed #f7931a;opacity:.85}
+.bar{position:absolute;top:3px;bottom:3px;border-radius:5px;width:0;
+transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.lane .val{font-family:var(--num);font-weight:800;font-size:25px;text-align:right;letter-spacing:.02em}
+.racenote{font-size:12px;color:var(--dim);margin-top:10px;line-height:1.7}
+.racenote .k{display:inline-block;width:14px;border-top:2px dashed #f7931a;vertical-align:middle;margin-right:4px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:18px}
+.fact{background:rgba(10,14,20,.6);border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+font-size:13.5px;line-height:1.7;color:#c8d3e0}
+.fact .k{display:block;font-size:15px;font-weight:700;color:#fff;margin-bottom:3px}
+.fact.alert{border-color:#6a5418;background:#1f1a09}
+.fact.alert .k{color:#ffd66b}
+.prog{height:9px;background:var(--card2);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:6px 0 4px}
+.prog>div{height:100%;background:linear-gradient(90deg,var(--acc),#8fc7ff);width:0;transition:width 1.2s .3s}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:var(--dim);
+background:rgba(10,14,20,.6);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--dim);display:inline-block}
+.status.ok i{background:var(--up);box-shadow:0 0 0 3px rgba(63,185,80,.18)}
+.status.warn i{background:var(--warn)} .status.red i{background:var(--down)}
+.simple{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:14px;line-height:1.75}
+.simple div{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#c8d3e0}
+.simple b{color:#fff}
+.deep-title{margin:30px 0 6px;font-family:var(--head);font-size:21px;color:#fff}
+.deep-lede{font-size:13.5px;color:var(--dim);margin-bottom:14px;line-height:1.75}
+details.deep>summary{list-style:none;cursor:pointer;display:block}
+details.deep>summary::-webkit-details-marker,details.more>summary::-webkit-details-marker{display:none}
+details.deep>summary h2{margin-bottom:4px}
+details.deep>summary .plain{display:block;font-size:13.5px;color:#aeb8c6;line-height:1.7}
+details.deep>summary::after{content:"展開看細節 ▾";display:inline-block;margin-top:8px;font-size:12px;
+color:var(--acc);border:1px solid #23446b;border-radius:999px;padding:2px 10px}
+details.deep[open]>summary::after{content:"收起 ▴"}
+details.deep[open]>summary{margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+details.more>summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--acc);margin-top:10px}
+details.more>summary::before{content:"▸ "} details.more[open]>summary::before{content:"▾ "}
+.badge{margin-top:10px;font-size:12.5px;background:#221c08;border:1px solid #5a4812;color:#f0d98a;
+border-radius:8px;padding:6px 9px;line-height:1.6}
+.agent .why{font-style:normal;color:#c8d3e0;font-size:13px}
+.alerts:empty{display:none}.alerts{margin-bottom:14px}details.tech{margin:-6px 0 18px}details.tech .sub{margin:6px 0 0}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.lane{animation:none;opacity:1;transform:none}.bar,.prog>div{transition:none}}
+@media(max-width:560px){.lane{grid-template-columns:1fr 66px;row-gap:4px}
+.lane .who{grid-column:1/-1}.lane .val{font-size:22px}.hero{padding:20px 16px 18px}}
 </style>
 </head>
 <body>
+<div class="brief">🔬 <span><b>這是模擬實驗</b>:每位選手用 $10,000 <b>模擬金</b>交易,<b>零真錢</b>、不是投資建議。</span></div>
+<details class="fine"><summary>完整聲明(樣本、資格門檻、我們公開什麼)</summary>
 <div class="warn">🔬 <b>公開研究實驗室｜非產品、非投資建議</b><br>
 <span id="capN">9</span> 位競爭者的<b>透明決策實驗</b>(5 個 AI 腦 + 規則腦 + 3 個市場基準):每個用 $10,000 <b>模擬</b>本金、<b>零真錢、零交易能力</b>。我們公開的是<b>「它們想得多不一樣、誰守紀律、誰活得久、什麼時候擠在一起」</b>——不是報酬保證。樣本未達預先登記的資格門檻(<span id="capGate">…</span>,且須涵蓋多空與高低波動 regime)前不具評估意義;過去表現不代表未來,不保證獲利。</div>
+</details>
 
 <div style="margin-bottom:14px"><a href="index.html" style="color:var(--acc);text-decoration:none;font-size:13px">← 返回 CTA 官網</a></div>
 <h1>CTA AI 交易代理人 · 公開研究實驗室</h1>
+<!-- 🔴 警示區:資料過期、今天沒重算、後端錯誤 —— **永遠看得見,不准收起來** -->
+<div class="alerts" data-slot="alerts"></div>
+
+<section class="hero" aria-labelledby="heroHead">
+  <div class="eyebrow">現在的實驗結果</div>
+  <h2 class="headline" id="heroHead">載入中…</h2>
+  <p class="lede" id="heroLede"></p>
+  <div class="race" id="race"></div>
+  <p class="racenote" id="raceNote"></p>
+  <div class="facts" id="facts"></div>
+  <div class="status" id="heroStatus"><i></i><span>資料載入中…</span></div>
+</section>
+
+<details class="fine tech"><summary>技術資訊(資料時間、實驗天數、協議版本)</summary>
 <div class="sub" id="sub">載入中…</div>
+</details>
 
 <div class="card">
   <h2>🧭 這個實驗在做什麼</h2>
-  <div class="plan">
+  <div class="simple">
+    <div><b>① 同一個市場,各自下決定</b><br>5 個 AI(GPT、Gemini、Claude 等)和 4 個對照組,每天看同一批加密貨幣,各自決定要買什麼、賣什麼。</div>
+    <div><b>② 用模擬金,每天記帳</b><br>每位從 $10,000 開始,手續費、價差都照算,每天的決定和理由全部公開。</div>
+    <div><b>③ 規則先寫死,時間到才判</b><br>怎麼算輸贏、要跑多久,開跑前就公開鎖定,<b>事後不能改規則說故事</b>。</div>
+  </div>
+  <details class="more"><summary>完整說明(每一位的角色、做多做空、門檻與更正紀錄)</summary>
+  <div class="plan" style="margin-top:10px">
     <div><b><span id="planN">9</span> 位競爭者,一樣的市場</b><br>規則腦+GPT+Gemini+Claude+純淨腦+持久腦,外加 BTC 持有／等權多頭／純現金三個市場基準,每天在同一個「安全掃描過的幣安幣海」裡各自決定怎麼配置 $10,000。<b>可做多也可做空</b>,總曝險上限 100%(不使用槓桿)。<span id="grossScope"></span></div>
     <div><b>看的是差異,不是誰賺最多</b><br>同一天、同一批幣,每個腦各自的答案——這才是重點:它們的個性、紀律、與風險偏好。</div>
     <div><b>持久腦是特別角色</b><br>它的<b>設計目標</b>不是預測最準,是<b>活最久</b>:充分分散、抗擁擠、存活優先。<br>🔴 <b>2026-09-06 更正:實測與這個設計目標不符。</b>原本這裡寫「當大家擠在一起時,它反而降曝險」——拿它自己 45 個決策日的資料檢定,<b>方向是相反的</b>(相關 <b>+0.36</b>;最擁擠的三分之一天數,它的曝險反而比最不擁擠的高 <b>6.5</b> 個百分點)。<br>我們把這句話改成事實:<b>設計目標是抗擁擠,而目前的實測結果沒有支持它。</b>這正是這個實驗要量的東西 —— 不是拿設計目標當成果。</div>
@@ -78,16 +181,17 @@ th:first-child,td:first-child{text-align:left}
     <div><b>這是觀察期,不是成績單</b><br>決策當下看不到未來,一天一天累積。<b>跑滿實驗天數也不等於取得真錢資格</b>——預先登記的門檻是 <b><span id="gateDays">…</span> 個決策日</b>且須涵蓋一次 ≥20% 回撤、一次 ≥30% 單邊上漲、高低波動各一段。<span id="pilotLen"></span></div>
     <div><b>先寫死規則,才開始跑</b><br>判定指標(相對等權多頭的 Information Ratio)、失格條件、成本假設在<b>看到任何結果之前</b>就寫死並推上公開 repo 留下紀錄——<b>事後不能換指標說故事</b>。<br>⚠️ <b>2026-09-21 更正</b>:這裡原本寫「取得<b>外部</b>時間戳」——那個時間戳<b>不是外部的</b>,是我們自己機器寫的。真正的外部時間戳自 2026-09-22(錨點 seq 73)才有,而寫死判準這件事發生在 <b>2026-07-22</b> —— <b>新加的外部時間戳救不了它</b>。限制見下方 <a href="#verify" style="color:var(--acc)">「自己驗」</a>。</div>
   </div>
+  </details>
 </div>
 
 <div class="card">
-  <h2>📈 權益走勢(每位 $10,000 起)</h2>
+  <h2>📈 每位選手的資金變化(權益走勢,每位 $10,000 起)</h2>
   <canvas id="chart"></canvas>
   <div class="legend" id="legend"></div>
 </div>
 
 <div class="card">
-  <h2>🤖 各腦現況 · 配置與「為什麼」</h2>
+  <h2>🤖 每位選手今天在做什麼(各腦現況 · 配置與「為什麼」)</h2>
   <div class="agents" id="agents"></div>
   <!-- 🔴 L006:這一頁打著「公開每個決策與理由」,而上面只渲染**今天**那一組。
        其餘 60 天 × 9 位的理由住在 diaries.json —— 它被發佈、雜湊也在鏈裡,
@@ -96,21 +200,33 @@ th:first-child,td:first-child{text-align:left}
   <p class="foot" id="diaryLink"></p>
 </div>
 
-<div class="card">
+<h2 class="deep-title">🔎 想深入的人看這裡:完整揭露</h2>
+<p class="deep-lede">上面是重點。下面每一塊都是<b>完整的原始揭露</b>(計算方法、更正紀錄、驗證方式),一個字都沒刪 —— 點開就能看。</p>
+
+<details class="card deep">
+  <summary>
   <h2>🚨 擁擠監控 <span class="foot" style="font-weight:400">— 這是特色不是 bug</span></h2>
+    <span class="plain">AI 們是不是都在買同一批幣?買得越像,一起賠的風險越高。</span>
+  </summary>
   <p class="foot">當多個 AI 的組合高度重疊,代表它們在<b>追同一批幣(擁擠)</b>。研究(BIS/FSB)顯示:AI 同源訓練會讓決策趨同,共識越高越是<b>風險警訊而非高信心</b>。我們把它公開量測。</p>
   <div id="crowd"></div>
-</div>
+</details>
 
-<div class="card">
+<details class="card deep">
+  <summary>
   <h2>🚫 紀律紀錄 <span class="foot" style="font-weight:400">— 違規一律記錄,不替 AI 擦屁股</span></h2>
+    <span class="plain">AI 有沒有亂來(超出上限、編出不存在的幣)?違規全部記下來,不幫它們擦屁股。</span>
+  </summary>
   <p class="foot">總曝險上限 100%。若模型輸出超標或幻覺出不存在的幣種,系統<b>不會自動幫它縮到 100%</b>——會回饋錯誤讓它重試一次;仍違規就記錄違規並維持原倉。這是「指令遵循能力」的真實量測。</p>
   <p class="foot" style="color:var(--down)" id="scopeNote">載入中…</p>
   <div id="disc"></div>
-</div>
+</details>
 
-<div class="card" id="verify">
+<details class="card deep" id="verify">
+  <summary>
   <h2>🔐 自己驗:不需要相信我們</h2>
+    <span class="plain">不用相信我們:下載帳本和驗證程式,自己檢查我們有沒有偷改紀錄。</span>
+  </summary>
   <p class="foot">這一頁以前寫著「帳本<b>不可竄改</b>」,而在 2026-09-05 之前,
   <b>那條鏈從來沒有被任何程式驗證過</b>,也沒有任何入口讓你自己驗。
   ⭐ 一條沒有人驗證的雜湊鏈是裝飾品,不是證據。</p>
@@ -199,10 +315,13 @@ python verify_chain.py</pre>
   <p class="foot">📌 錨點是每天 00:36 UTC 拍一次快照。
   我們當天稍後更新過檔案時,驗證器會顯示「不符」並說明它<b>分辨不出</b>
   「正常更新」與「被竄改」—— 那時請看 git 歷史。</p>
-</div>
+</details>
 
-<div class="card">
+<details class="card deep">
+  <summary>
   <h2>⚖️ 失格條件檢查(PROTOCOL §4)</h2>
+    <span class="plain">事先寫死的淘汰標準(虧太多、爆倉、違規太多),誰已經碰到了。</span>
+  </summary>
   <p class="foot" style="margin-bottom:10px">預先登記書 §4 寫著:<b>任一觸發即該腦當期失格</b>
   —— 最大回撤 &gt; 35% / 發生爆倉 / 正式違規率 &gt; 10% 的決策日。
   <br>🔴 <b>這張表就是那條規則的執行結果,包含已經觸發的。</b>
@@ -210,10 +329,13 @@ python verify_chain.py</pre>
   唯一出現「失格」兩個字的地方是「失格條件跑之前就寫死」那句話本身。
   <br>門檻<b>從已錨定的 PROTOCOL 原文解析</b>,不是寫死在這一頁上。</p>
   <div id="gate"></div>
-</div>
+</details>
 
-<div class="card">
+<details class="card deep">
+  <summary>
   <h2>📐 主指標,以及它換一個基準會變成什麼樣</h2>
+    <span class="plain">正式計分用的指標,以及換一個比較對象後結果會怎麼變。</span>
+  </summary>
   <p class="foot" style="margin-bottom:10px">
   預先登記書 §3 指定的<b>唯一主指標</b>是「相對<b>等權多頭</b>的 Information Ratio」,
   §9 禁止中途更換基準 —— 所以<b>我們不換</b>,下表左欄就是那個指標。
@@ -224,21 +346,27 @@ python verify_chain.py</pre>
   <br>⭐ 結果是:拿它當尺,<b>連「完全空手」和「賠錢的腦」都拿到正分</b>。
   所以右欄併列「相對 BTC 買進持有」的同一個算法,<b>不替你選一個</b>。</p>
   <div id="ircmp"></div>
-</div>
+</details>
 
-<div class="card">
+<details class="card deep">
+  <summary>
   <h2>🚨 事件揭露(爆倉 · 強制出場 · 基建異常)</h2>
+    <span class="plain">爆倉、被迫出場、報價異常這些意外,發生幾次、哪幾天。</span>
+  </summary>
   <p class="foot" style="margin-bottom:10px">這一頁寫著「不隱藏違規與爆倉」。
   下表就是那句話的<b>可檢查版本</b>:每一類事件的發生天數與分母,逐日從帳本算出。
   <b>零也列出來</b> —— 沒有分母的零,跟「這個欄位不存在」看起來一樣。</p>
   <div id="events"></div>
-</div>
+</details>
 
-<div class="card">
+<details class="card deep">
+  <summary>
   <h2>🧾 每日損益紀錄</h2>
+    <span class="plain">每一天、每一位的賺賠明細,可以一頁一頁往回翻。</span>
+  </summary>
   <div id="corrections"></div>
   <div id="records"></div>
-</div>
+</details>
 
 <div class="card">
   <h2>🛡️ 我們刻意不做的事(這才是重點)</h2>
@@ -253,6 +381,113 @@ python verify_chain.py</pre>
 </div>
 
 <script>
+/* ═══════════ 2026-09-29 改版:賽況看板 ═══════════
+   🔴 全部由資料算,不寫死任何數字;拿不到的標「資料缺」,不准安靜消失。 */
+const PLAIN={rule:'規則腦',gpt:'GPT',gpt_pure:'GPT 純淨版',gemini:'Gemini',claude:'Claude',
+  guardian:'持久腦',bench_btc:'只買比特幣放著',bench_eqw:'10 支熱門幣平均買',bench_cash:'全部拿現金'};
+const PLAIN_SUB={rule:'固定公式,不是 AI',gpt:'AI',gpt_pure:'AI · 只給它看價格(對照用)',gemini:'AI',claude:'AI',
+  guardian:'AI(Claude)· 目標是活最久',bench_btc:'對照組',bench_eqw:'對照組 · 下方稱「等權多頭」',
+  bench_cash:'對照組 · 什麼都不買'};
+function _tpe(utc){ /* UTC → 台北時間的「月/日 時:分」 */
+  const t=Date.parse(utc); if(!isFinite(t)) return null;
+  const x=new Date(t+8*3600e3);
+  const p=n=>String(n).padStart(2,'0');
+  return (x.getUTCMonth()+1)+'/'+x.getUTCDate()+' '+p(x.getUTCHours())+':'+p(x.getUTCMinutes());
+}
+function _renderHero(d,V){
+  const m=d.meta||{}, mt=d.metrics||{}, ais=m.thinkers||[], all=m.brains||[];
+  const val=b=>{const x=mt[b]; return (x&&x.total_pct!=null&&isFinite(x.total_pct))?x.total_pct:null;};
+  const rows=all.map(b=>({b,v:val(b)})).sort((x,y)=>(y.v==null?-1e9:y.v)-(x.v==null?-1e9:x.v));
+  const btc=val('bench_btc');
+  const aiRows=rows.filter(r=>ais.indexOf(r.b)>=0&&r.v!=null);
+  const beat=aiRows.filter(r=>btc!=null&&r.v>btc);
+  const top=rows.find(r=>r.v!=null);
+  const e2=m.epoch2_days, gate=m.gate_days;
+  const pct=v=>(v>=0?'+':'')+v.toFixed(1)+'%';
+  const H=document.getElementById('heroHead'), L=document.getElementById('heroLede');
+  if(btc==null||!aiRows.length){
+    H.textContent='目前的成績';
+  } else if(beat.length===0){
+    H.innerHTML=`${ais.length} 個 AI 裡,<em class="bad">沒有一個</em>跑贏「只買比特幣放著」`;
+  } else {
+    H.innerHTML=`${ais.length} 個 AI 裡,有 <em>${beat.length} 個</em>跑贏「只買比特幣放著」`;
+  }
+  const early=(e2!=null&&gate!=null&&e2<gate);
+  /* 🔴 盲測時記者一眼看出:GPT 只贏比特幣 0.4 個百分點,這種「跑贏」幾乎是誤差 —— 照實說 */
+  const thin=beat.filter(r=>r.v-btc<2);
+  L.innerHTML=(top?`目前第一名是 <b>${PLAIN[top.b]||top.b}(${pct(top.v)})</b>。`:'')
+    +(early?`但才跑了 <b>${e2}</b> 天,事先定好的規則要滿 <b>${gate}</b> 天才能判斷 ——
+      <b>現在的名次,可能只是運氣。</b>`:'')
+    +(thin.length?` 其中 ${thin.map(r=>PLAIN[r.b]||r.b).join('、')} 只比比特幣多 <b>${thin.map(r=>(r.v-btc).toFixed(1)).join('、')}</b> 個百分點,差距小到幾乎等於沒差。`:'');
+  /* 排名長條:以 0 為中線,賺往右、賠往左;比特幣畫成虛線當基準 */
+  const vs=rows.filter(r=>r.v!=null).map(r=>r.v);
+  const hi=Math.max(0,...vs), lo=Math.min(0,...vs), span=(hi-lo)||1;
+  const X=v=>((v-lo)/span*100);
+  const race=document.getElementById('race');
+  race.innerHTML=rows.map((r,i)=>{
+    const isAi=ais.indexOf(r.b)>=0;
+    const col=cvar(COLORS[r.b]||'--dim');
+    const who=`<div class="who"><span class="dot" style="background:${col}"></span>
+      <span>${PLAIN[r.b]||r.b}<small>${PLAIN_SUB[r.b]||''}</small></span></div>`;
+    if(r.v==null) return `<div class="lane ${isAi?'ai':'ref'}" style="animation-delay:${i*60}ms">${who}
+      <div class="track"></div><div class="val" style="color:var(--warn);font-size:14px">資料缺</div></div>`;
+    const a=X(Math.min(0,r.v)), w=Math.abs(X(r.v)-X(0));
+    return `<div class="lane ${isAi?'ai':'ref'}" style="animation-delay:${i*60}ms">${who}
+      <div class="track"><div class="axis" style="left:${X(0)}%"></div>
+        ${btc!=null?`<div class="btcline" style="left:${X(btc)}%"></div>`:''}
+        <div class="bar" data-w="${w}" style="left:${a}%;background:${col};opacity:${isAi?1:.55}"></div></div>
+      <div class="val" style="color:${r.v>=0?'var(--up)':'var(--down)'}">${pct(r.v)}</div></div>`;
+  }).join('');
+  /* 不用 requestAnimationFrame:背景分頁會暫停它,長條就永遠是 0;計時器最慢也會在約 1 秒內觸發 */
+  setTimeout(()=>race.querySelectorAll('.bar').forEach(el=>{el.style.width=el.dataset.w+'%';}),60);
+  document.getElementById('raceNote').innerHTML=
+    `<span class="k"></span>橘色虛線 = 「只買比特幣放著」的成績。`
+    +(m.epoch2_first_day?`報酬從 <b>${m.epoch2_first_day}</b> 算起(更早的 ${m.voided_days||'?'} 天因我們的計算錯誤作廢,細節在下方)。`:'')
+    +`亮色是 AI,淡色是對照組。`;
+  /* 重點卡 */
+  const F=[];
+  F.push(`<div class="fact"><span class="k">💵 全部是模擬金</span>每位從 $${(m.start_capital||10000).toLocaleString()} 開始,<b>零真錢</b>、沒有人真的下單。</div>`);
+  if(e2!=null&&gate!=null){
+    const left=Math.max(0,gate-e2), mo=(left/30.4);
+    F.push(`<div class="fact"><span class="k">⏳ 進度 ${e2} / ${gate} 天</span>
+      <div class="prog"><div data-w="${Math.min(100,e2/gate*100).toFixed(1)}"></div></div>
+      ${left?`還要大約 <b>${mo>=1?mo.toFixed(0)+' 個月':left+' 天'}</b> 才夠下結論。`:'已達天數門檻(仍須涵蓋指定市況)。'}</div>`);
+  }
+  F.push(`<div class="fact"><span class="k">🎲 名次還不算數</span>天數不夠時,好實力和好運氣分不出來。
+    這是<b>開跑前就寫死的規則</b>,不是我們事後才說的。</div>`);
+  const nd=d.no_decision||{};
+  const stuck=ais.filter(b=>((nd[b]||{}).streak||0)>0);
+  if(stuck.length){
+    const mx=Math.max(...stuck.map(b=>nd[b].streak));
+    F.push(`<div class="fact alert"><span class="k">⚠️ ${stuck.map(b=>PLAIN[b]||b).join('、')} 最近沒做決策</span>
+      已連續最多 <b>${mx}</b> 天拿不到它們的回答 —— <b>原因在我們這邊</b>(叫不到 AI 服務),不是它們的錯。這幾天它們的持倉維持不動。</div>`);
+  }
+  const ms=(d.model_segments||{}).by_brain||{};
+  const sw=ais.filter(b=>ms[b]&&(ms[b].switched||ms[b].pending_switch||
+    (ms[b].position_model_now&&ms[b].segments&&ms[b].segments.length&&ms[b].position_model_now!==ms[b].segments[ms[b].segments.length-1].model)));
+  if(sw.length){
+    F.push(`<div class="fact alert"><span class="k">🔁 ${sw.map(b=>PLAIN[b]||b).join('、')} 換了 AI 模型</span>
+      新舊模型的成績<b>分開計算</b>,不會混成一個數字 —— 各自的分段在選手卡的「看細節」裡。</div>`);
+  }
+  const fx=document.getElementById('facts'); fx.innerHTML=F.join('');
+  setTimeout(()=>fx.querySelectorAll('.prog>div').forEach(el=>{el.style.width=el.dataset.w+'%';}),60);
+  /* 資料新鮮度:判定沿用 _freshVerdict(同一份邏輯),這裡只負責白話說出來 */
+  const st=document.getElementById('heroStatus');
+  const when=m.generated_utc?_tpe(m.generated_utc):null;
+  const lv=V?V.level:null;
+  st.className='status '+(lv==='ok'?'ok':(lv==='warn'?'warn':(lv==='red'?'red':'')));
+  st.querySelector('span').innerHTML=
+    (when?`資料算出於 <b>${when}</b>(台北時間)· 每天早上更新一次`:'資料時間未提供')
+    +(lv==='red'?' · <b style="color:var(--down)">可能已過期,見上方紅色說明</b>':
+      (lv==='warn'?' · <b style="color:var(--warn)">比平常晚</b>':''));
+}
+/* 從頁內連結(例如 #verify)跳到收起來的區塊時,自動把它打開 */
+function _openTarget(){
+  const id=location.hash.slice(1); if(!id) return;
+  const el=document.getElementById(id); if(!el) return;
+  let p=el; while(p){ if(p.tagName==='DETAILS') p.open=true; p=p.parentElement; }
+}
+window.addEventListener('hashchange',_openTarget);
 const COLORS={rule:'--rule',gpt:'--gpt',gemini:'--gemini',claude:'--claude',guardian:'--guardian',
   gpt_pure:'--gpt_pure',bench_btc:'--bench_btc',bench_eqw:'--bench_eqw',bench_cash:'--bench_cash'};
 const LABEL={rule:'規則腦',gpt:'GPT',gemini:'Gemini',claude:'Claude',guardian:'持久腦',
@@ -296,7 +531,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         +'margin-top:8px;color:var(--down);font-size:12px;line-height:1.7';
       _ew.textContent='🔴 後端回報了一個錯誤：'+d.error
         +'　—— 以下數字可能不完整或過期，請一併看下方的資料新鮮度提示。';
-      _eb.parentNode.insertBefore(_ew,_eb.nextSibling);
+      (document.querySelector('.alerts')||_eb.parentNode).appendChild(_ew);
     }
   }
   const m=d.meta;
@@ -612,7 +847,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         +'margin-top:8px;color:var(--down);font-size:12px;line-height:1.7';
       w.innerHTML=`🔴 <b>這一頁無法判斷資料有多新</b>(${why})。`
         +`<b>請勿當成即時資料</b> —— 我們沒辦法在這裡向你證明它是今天的。`;
-      s.parentNode.insertBefore(w,s.nextSibling);
+      (document.querySelector('.alerts')||s.parentNode).appendChild(w);
     }
     /* 🔴 判定一律走 `_freshVerdict` —— 這裡只負責**把它說出來**。
        ⭐ 判斷與呈現分開,`tests/test_freshness_verdict_runs.py` 才驗得到
@@ -658,7 +893,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         +'這通常代表<b>當日的計算失敗了、而發佈流程照常跑完</b>。'
         +'<br>⚠️ 在此之前這一頁量的正是那個「新的時間」，所以這種情況'
         +'<b>一次都沒有被偵測到過</b>（2026-09-22 修正）。';
-      s.parentNode.insertBefore(w,s.nextSibling);
+      (document.querySelector('.alerts')||s.parentNode).appendChild(w);
     }
     /* 🔴🔴🔴 2026-09-22 更正:上面那段(09-21 寫的)**理由是錯的**,留著當證據。
        原文說「2026-09-02 那場凍了 33.5 小時,舊的 40h 門檻不會亮」。
@@ -703,7 +938,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         : `⚠️ <b>這一頁的資料比正常晚了</b>:已經 ${Math.floor(ageH)} 小時沒有更新`
           +`(資料算出於 ${snapUTC})。${_ivText()}`
           +`若持續變久代表發佈流程出了問題。`);
-      s.parentNode.insertBefore(w,s.nextSibling);
+      (document.querySelector('.alerts')||s.parentNode).appendChild(w);
     }
     n.innerHTML=`📌 <b>怎麼讀這個時間</b>:排程每天 <b>00:36 UTC</b> 拍一次快照,
       所以最新一列(${m.last_date})是<b>該時刻的真實淨值</b>,
@@ -725,7 +960,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     /* 🔴 `voided_reason` 本身就含 CHANGELOG 編號,這裡不要再講一遍。
        🔴 也不要寫「不計入下方數字」—— 卡片底下**就印著**含作廢期的全期數字。
           說「不計入」而畫面上明明有,那句話本身就是不準確的。 */
-    w.innerHTML=`<b>⚠️ 前 ${m.voided_days} 個決策日的損益已作廢</b><br>
+    w.innerHTML=`<b>⚠️ 前 ${m.voided_days} 個決策日的損益已作廢</b> —— 那段時間我們把一項交易成本算錯了(多算 3 倍),所以下面每張卡的報酬都從 <b>${m.epoch2_first_day}</b> 起算。
+      <details class="more"><summary>看完整說明(原因、基準也受影響、為什麼不放 Sharpe)</summary>
       原因:${m.voided_reason}。
       所以每張卡片的<b>大字報酬一律自 ${m.epoch2_first_day} 起算</b>
       (目前 ${m.epoch2_days} 個決策日),基準是作廢期最後一日的權益,<b>不是起始資金</b>。
@@ -751,7 +987,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       把它印在這裡只會變成行銷素材。
       <br>但我們<b>沒有把它藏起來</b>:Sharpe 與每日換手相似度(stability)
       都在公開資料檔 <code>dashboard_data.json</code> 的 <code>metrics</code>
-      與 <code>stability</code> 欄位裡,你可以自己取用(下載指令見本頁「🔐 自己驗」)。`;
+      與 <code>stability</code> 欄位裡,你可以自己取用(下載指令見本頁「🔐 自己驗」)。
+      </details>`;
     const host=document.getElementById('agents');
     host.parentNode.insertBefore(w, host);
   }
@@ -792,12 +1029,14 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     el.innerHTML='⚠️ 上面只有<b>今天</b>這一組配置與理由。'
       +(dz&&n?`全部 <b>${dz}</b> 個決策日 × <b>${n}</b> 位競爭者的配置與理由,`
              :'全部歷史的配置與理由,')
-      +'發佈在 <a href="./data/shadow/diaries.json" style="color:var(--acc)">diaries.json</a>'
-      +'<br>🔴 <b>那份檔案裡是各腦「要求的目標配置」，不是帳上的實際持倉。</b>'
+      +'發佈在 <a href="./data/shadow/diaries.json" style="color:var(--acc)">diaries.json</a>。'
+      +'<details class="more"><summary>這份檔案要注意什麼</summary>'
+      +'🔴 <b>那份檔案裡是各腦「要求的目標配置」，不是帳上的實際持倉。</b>'
       +'實際持倉由帳本的 units 換算，而帳本<b>只保留當下這一份</b>、不留歷史 ——'
       +'所以<b>我們無法向你出示過去任何一天的實際持倉</b>（2026-09-22 揭露）。'
       +'(原始 JSON,未經整理;它的雜湊也在錨點鏈裡,可用下方驗證器比對)。'
-      +'<br>📌 <b>2026-09-21 補上這個連結之前,這個檔案發佈了、但頁面沒有任何地方連到它。</b>';
+      +'<br>📌 <b>2026-09-21 補上這個連結之前,這個檔案發佈了、但頁面沒有任何地方連到它。</b>'
+      +'</details>';
   })();
   const infraToday=!!(d.events&&d.events.today_infra_skip);
   const _recs=d.records||[];
@@ -911,12 +1150,26 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
     const grossTag=gross>0?`<span class="tag">曝險 ${gross.toFixed(0)}%</span>`+cashTag:cashTag;
     return `<div class="agent">
       <div class="top">
-        <div><div class="name"><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</div>
+        <div><div class="name"><span class="dot" style="background:${cvar(COLORS[b])}"></span>${PLAIN[b]||LABEL[b]}${(PLAIN[b]&&PLAIN[b]!==LABEL[b])?`<small style="font-weight:400;color:var(--dim);font-size:11px">(${LABEL[b]})</small>`:''}</div>
           <div class="foot" style="font-size:11px">${DESC[b]}</div></div>
         <div><div class="eq">$${eq.toLocaleString()}</div>
           <div class="ret" style="color:${ret===null?'var(--warn)':(ret>=0?'var(--up)':'var(--down)')}">${ret===null?'報酬未提供 ⚠️':((ret>=0?'+':'')+ret.toFixed(1)+'%')}</div>
-          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${e2base===null?'':`<br>基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}`}${settleDay?`<br>截至 <b>${settleDay}</b> 結算${infraToday?'(<b style="color:var(--acc)">該日為基建異常日,換倉受我方基建限制,不是正常的 AI 成績</b>)':''}${fromDay?`,由 <b>${fromDay}</b> 決定的那組持倉產生(含當日換倉成本)`:''}`:''}</div></div>
+          <div class="foot" style="font-size:10.5px;text-align:right;line-height:1.45">${ret===null?'':(()=>{/* 🔴 2026-09-21(稽核 M019):這裡本來印 `m.epoch2_days` —— **全體共用的天數**,而這張卡上的報酬率是 `metrics[b].total_pct`,分母是**這個腦自己的** `metrics[b].days`。unsettled 日不計入該腦的 metrics(forward_multi._series),缺一格 equity 也不計入,所以兩者一旦分岔,讀者會拿一個大於真實樣本的分母去理解這個報酬率。⭐ 同一個語意(這個腦的樣本數)資料裡有逐腦版本,而頁面用了全體版本。📌 今天 9/9 都相同,所以這是**潛伏**的錯,不是正在發生的 —— 由下面這行每天自己比。 */const dn=(_mb&&_mb.days!=null)?_mb.days:null;if(dn===null) return `自 ${m.epoch2_first_day} 起算(<b style="color:var(--warn)">天數未提供</b>)`;const gap=(m.epoch2_days!=null&&dn!==m.epoch2_days)  ? `<br><b style="color:var(--warn)">⚠️ 此腦有 ${m.epoch2_days-dn} 日未計入(未結算或當日無淨值),上方報酬率的分母是 ${dn} 日</b>` : '';return `自 ${m.epoch2_first_day} 起算(${dn} 日)`+gap;})()}${(settleDay&&infraToday)?'<br><b style="color:var(--acc)">該日為基建異常日,換倉受我方基建限制,不是正常的 AI 成績</b>':''}</div></div>
       </div>
+      ${(()=>{
+        /* 🔴 2026-09-29 改版:一行白話狀態 —— 細節收進下面的「看細節」,
+           但「今天沒做決策 / 被駁回 / 報價異常」這種事**不准收起來**。 */
+        const sk=((noDec[b]||{}).streak||0), tg=[];
+        if(sk>0) tg.push(`⚠️ 已連續 <b>${sk}</b> 天沒有做出決策 —— 原因在我們這邊(沒拿到 AI 的回答),不是它的錯`);
+        else if(viol[b]) tg.push('🚫 今天的決定違反規則被駁回,維持原本的持倉');
+        if(infraToday) tg.push('⚙️ 今天市場報價異常,全體只准減倉 —— 「看細節」裡那份要求的目標今天<b>沒有執行</b>');
+        return tg.length?`<div class="badge">${tg.join('<br>')}</div>`:'';})()}
+      ${((m.thinkers||[]).indexOf(b)>=0)
+        ?(reasons[b]?`<div class="why">💭 它自己說:${reasons[b]}</div>`:'')
+        :`<div class="why">📏 ${b==='rule'?'固定公式(不是 AI):每天照同一套規則買賣,用來對照 AI':'對照組:不做任何判斷,用來當比較的尺'}</div>`}
+      <details class="more"><summary>看細節(持倉、目標對照、揭露說明)</summary>
+      ${((m.thinkers||[]).indexOf(b)<0&&reasons[b])?`<div class="why">原始說明:${reasons[b]}</div>`:''}
+      <div class="foot" style="font-size:11px;margin-top:6px">${e2base===null?'':`基準 $${e2base.toLocaleString()} → 現在 $${eq.toLocaleString()}(你可以自己驗算上面的報酬)`}${settleDay?`<br>截至 <b>${settleDay}</b> 結算${infraToday?'(<b style="color:var(--acc)">該日為基建異常日,換倉受我方基建限制,不是正常的 AI 成績</b>)':''}${fromDay?`,由 <b>${fromDay}</b> 決定的那組持倉產生(含當日換倉成本)`:''}`:''}</div>
       ${infraToday?`<div class="viol">⚙️ <b>${settleDay} 是基建異常日</b>
         (決策前後報價偏離超過保護門檻)。當日<b>強制只減倉</b>:
         只有會降低總曝險的調整才執行,其餘<b>一律維持原倉</b>。
@@ -996,17 +1249,26 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       })()}
       ${(d.model_segments&&(m.thinkers||[]).indexOf(b)>=0)?_modelNote((d.model_segments.by_brain||{})[b]):''}
       ${viol[b]?vioBanner(b,viol[b]):''}
-      ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
+      </details></div>`;
   }).join('');
 
+  try{
+    _renderHero(d,(typeof _freshVerdict==='function')?_freshVerdict(m.generated_utc||null,
+      (m.anchor&&m.anchor.utc)||null,(m.anchor&&m.anchor.data_age_at_anchor_h),Date.now()):null);
+  }catch(e){
+    /* 🔴 看板壞掉不能拖垮整頁,但也不准安靜 —— 明講「看板算不出來」 */
+    var _hh=document.getElementById('heroHead');
+    if(_hh) _hh.textContent='看板暫時算不出來('+e.message+')—— 下方的完整資料仍可查看';
+  }
+  _openTarget();
   document.getElementById('legend').innerHTML=m.brains.map(b=>
-    `<span><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</span>`).join('');
+    `<span><span class="dot" style="background:${cvar(COLORS[b])}"></span>${PLAIN[b]||LABEL[b]}</span>`).join('');
   /* 🔴 2026-09-29:整份資料沒有 model_segments 時,只在這裡說一次(不在每張卡上各說一次)。
      fail-loud 仍在 —— 只是不讓沒換模型的腦也跟著跳警告。 */
   if(!d.model_segments){
     var _lg=document.getElementById('legend');
     if(_lg) _lg.insertAdjacentHTML('afterend','<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">'
-      +'⚠️ 這份資料沒有附「每位 AI 腦的報酬是哪個模型產生的」分段資訊(舊格式)。</div>');
+      +'⚠️ 這份資料是舊格式:沒有標明每位 AI 的成績是用哪一版 AI 模型跑出來的。</div>');
   }
   /* 🔴🔴 2026-09-06:圖從 $10,000 畫起、還畫一條「$10,000 基準」虛線,
      而同一頁的橫幅說「我們不列出含那 12 日的報酬」—— **自己打自己**。
