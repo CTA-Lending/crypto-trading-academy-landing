@@ -477,6 +477,74 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      → `tests/test_position_diff_runs.py` 會把這段原始碼挖出來丟給 node 跑,
        而且**兩頁都挖、跑同一組案例** —— 只修一邊就會紅。
      ⚠️ 不准碰 DOM、不准讀全域:輸入只有參數,輸出只有比對結果。 */
+  /* 🔴🔴 2026-09-29(CHANGELOG-055):OpenAI 兩腦主動改用 gpt-6-sol。
+     PROTOCOL §9:修改前後的樣本**必須分開統計**,不得混為一談 ——
+     而卡片最顯眼的那個全期報酬,換模型之後就是**兩個模型的混合成績**。
+     這支純函式只負責「該對讀者說什麼」,兩頁逐字相同,
+     `tests/test_model_switch_disclosure.py` 會把它挖出來用 node 真的跑。
+     ⚠️ 不准碰 DOM、不准讀全域。 */
+  function _modelNote(ms){
+    /* 🔴 2026-09-29 第二版(對抗覆核):
+       ① 揭露來源(哪一條 CHANGELOG、屬於哪一類)由後端登記表給,**不准寫死** ——
+         第一版寫死「主動更換…CHANGELOG-055」,任何一次換模型都會印這句;
+       ② 換過一次之後再換,不准說「上方報酬全部來自 X」,要把分段表一起印出來;
+       ③ 用「被執行的決策」,不用「成功回話」—— 回了話但被規則駁回、
+         基建保護日被擋下,都不算被執行,而那不等於「沒回話」;
+       ④ 這段提示印在配置那兩排**下面**,用詞不准寫「下方」。 */
+    var box = '<div style="border:1px solid var(--warn);border-radius:8px;padding:8px;'
+            + 'margin-top:6px;font-size:11px;line-height:1.6">';
+    if (ms == null) {
+      return '<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">'
+           + '⚠️ 後端沒有提供這一位的「模型分段」資料 —— 無法告訴你這張卡的報酬是哪個模型產生的。</div>';
+    }
+    var segs = ms.segments || [];
+    var pct = function(v){ return (v == null) ? '<b>無法計算</b>'
+                                  : '<b>' + (v >= 0 ? '+' : '') + v.toFixed(2) + '%</b>'; };
+    var rows = segs.map(function(s){
+      var vd = s.violation_days || {};
+      return '<div style="margin-left:10px">· <b>' + (s.model || '(未記錄)') + '</b>:'
+           + s.first_day + ' → ' + s.last_day + '(' + s.settle_days + ' 個結算日)'
+           + ',報酬 ' + pct(s.ret_pct)
+           + ',最大回撤 ' + (s.mdd_pct == null ? '<b>無法計算</b>' : s.mdd_pct.toFixed(2) + '%')
+           + ',IR ' + (s.ir == null ? '<b>無法計算</b>' : s.ir.toFixed(2))
+           + '(' + (s.ir_n || 0) + ' 日' + ((s.ir_n || 0) < 30 ? ',樣本太少,只供描述' : '') + ')'
+           + ',該段違規 ' + (vd.subject == null ? '?' : vd.subject) + ' 日'
+           + '、我方沒拿到回答 ' + (vd.infra == null ? '?' : vd.infra) + ' 日</div>';
+    }).join('');
+    var disc = (ms.switch_disclosures || []).map(function(x){
+      return '<div style="margin-top:4px;font-size:10px;opacity:.9">⚠️ ' + x.from + ' → ' + x.to
+           + ':' + x.kind + (x.changelog ? '(見 ' + x.changelog + ')' : '') + '</div>';
+    }).join('');
+    var table = ms.switched
+      ? '<div style="margin-top:4px">依 PROTOCOL §9 分段列出(報酬歸給<b>產生那個部位</b>的模型):</div>' + rows
+      : '';
+    var mixed = ms.switched
+      ? '<div style="margin-top:4px">上方的全期報酬、下方失格表與首次違規率都是<b>全期混合計算</b>,'
+        + '只有這裡的分段是按模型拆開的。</div>'
+      : '';
+    var last = segs.length ? segs[segs.length - 1].model : null;
+    if (ms.pending_switch) {
+      var pd = ms.pending_detail || {};
+      var why = [];
+      if (pd.no_response_days) why.push('沒回話 ' + pd.no_response_days + ' 天');
+      if (pd.rejected_days) why.push('回話但被規則駁回 ' + pd.rejected_days + ' 天');
+      if (pd.not_executed_days) why.push('基建保護或強平而未執行 ' + pd.not_executed_days + ' 天');
+      return box + '🔁 <b>已設定改用 ' + ms.configured_now + '</b>,但它<b>還沒有任何一次決策被執行</b>'
+           + (why.length ? '(' + why.join('、') + ')' : '') + '。'
+           + (ms.switched ? '' : '目前的持倉與上方報酬,仍全部是 <b>' + ms.position_model_now
+                                  + '</b> 選的部位產生的。')
+           + table + mixed + disc + '</div>';
+    }
+    if (ms.position_model_now && last && ms.position_model_now !== last) {
+      return box + '🔁 <b>這張卡今天的配置由 ' + ms.position_model_now + ' 產生</b>(已換模型),'
+           + '從下一個結算日起它的成績才開始計入。'
+           + (ms.switched ? '' : '到今天為止,上方報酬仍全部來自 <b>' + last + '</b>。')
+           + table + mixed + disc + '</div>';
+    }
+    if (!ms.switched) return '';
+    return box + '🔁 <b>這個腦中途換過模型</b>。' + table + mixed + disc + '</div>';
+  }
+
   function _posDiff(want, have, wdiff){
     want = want || {}; have = have || {};
     var ow = Object.keys(want).filter(function(x){ return !(x in have); });
@@ -751,7 +819,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         <b>不是今天的決定</b>。`:'';
     if(isInfra){
       return `<div class="viol">⚠️ <b>今天沒有取得決策</b>(${type})<br>
-        原因在<b>我們這邊</b>:重試後仍叫不到該模型的 API。依規則<b>維持原本的目標權重</b>、不做新決策。⚠️ 這<b>不等於零成交</b>:價格已經動過,系統仍會做漂移校正而小額成交(見下方失格表的換手數字對照)。
+        原因在<b>我們這邊</b>:重試後仍沒有拿到可用的回答(叫不到 API、逾時或回應是空的 —— 每一天的原因原文列在下方失格表)。依規則<b>維持原本的目標權重</b>、不做新決策。⚠️ 這<b>不等於零成交</b>:價格已經動過,系統仍會做漂移校正而小額成交(見下方失格表的換手數字對照)。
         <b>沒有「被駁回的原案」</b> —— 模型沒有回話,所以下方不會有理由。<br>
         🔴 依 PROTOCOL §4 原文(「重試後仍違反曝險/幣種約束」),
         這<b>不計入該腦的正式違規率</b>;它記在失格表的「我方基建中斷」欄。${staleLine}</div>`;
@@ -926,12 +994,20 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
           +`與上排是<b>同一組幣</b>,便於逐檔對照)</div>`
           +`<div class="pos">${t2}${more2}</div>`+diff;
       })()}
+      ${(d.model_segments&&(m.thinkers||[]).indexOf(b)>=0)?_modelNote((d.model_segments.by_brain||{})[b]):''}
       ${viol[b]?vioBanner(b,viol[b]):''}
       ${reasons[b]?`<div class="why">💭 ${reasons[b]}</div>`:''}</div>`;
   }).join('');
 
   document.getElementById('legend').innerHTML=m.brains.map(b=>
     `<span><span class="dot" style="background:${cvar(COLORS[b])}"></span>${LABEL[b]}</span>`).join('');
+  /* 🔴 2026-09-29:整份資料沒有 model_segments 時,只在這裡說一次(不在每張卡上各說一次)。
+     fail-loud 仍在 —— 只是不讓沒換模型的腦也跟著跳警告。 */
+  if(!d.model_segments){
+    var _lg=document.getElementById('legend');
+    if(_lg) _lg.insertAdjacentHTML('afterend','<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">'
+      +'⚠️ 這份資料沒有附「每位 AI 腦的報酬是哪個模型產生的」分段資訊(舊格式)。</div>');
+  }
   /* 🔴🔴 2026-09-06:圖從 $10,000 畫起、還畫一條「$10,000 基準」虛線,
      而同一頁的橫幅說「我們不列出含那 12 日的報酬」—— **自己打自己**。
      ⭐ 拿掉那段又會變成「靜靜丟掉紀錄」(CEO 2026-08-27 抓過的同一個錯)。
@@ -1028,7 +1104,7 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         +`<td>${ck===false?NC:(fSubj==null?'<span style="color:var(--warn)">⚠️ 後端未提供</span>':fSubj)}`
         +`${f.infra?` <span style="color:var(--warn);font-size:10px">(+${f.infra} 中斷)</span>`:''}</td>`
         +`<td style="color:${viol[b]?(isInfra?'var(--warn)':'var(--down)'):'var(--dim)'}">`
-        +`${viol[b]?(isInfra?'⚠️ 我方叫不到 API':'🚫 '+viol[b]):'—'}</td>`
+        +`${viol[b]?(isInfra?'⚠️ 我方沒拿到回答':'🚫 '+viol[b]):'—'}</td>`
         +`<td>${ck===false?NC:(subj==null?'<span style="color:var(--warn)">⚠️ 後端未提供</span>':subj)}`
         +`${unk?` <span style="color:var(--warn)">+${unk} 未分類⚠️</span>`:''}</td>`
         +`<td style="color:${infra?'var(--warn)':'var(--dim)'}">${infra==null?'—':infra}</td></tr>`;
