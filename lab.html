@@ -282,7 +282,23 @@ const RENDER_TARGETS=[...document.querySelectorAll('div[id],canvas[id]')]
 fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json()})
   .then(d=>{
-  if(d.error){document.getElementById('sub').textContent=d.error;return}
+  /* 🔴🔴 2026-09-22(對抗覆核):這一行本來直接 `return` ——
+     後端 JSON 裡只要有 `error` 欄位,**整段新鮮度揭露就被跳過**,
+     頁面只剩後端自己寫的那句話。
+     ⭐ 而「後端在抱怨」跟「資料是新的」是兩件完全不同的事;
+       早退把這兩件事合併成同一個畫面。
+     → 改成插一張紅牌並**繼續往下跑**,讓新鮮度檢查照樣執行。 */
+  if(d.error){
+    var _eb=document.getElementById('sub');
+    if(_eb){
+      var _ew=document.createElement('div');
+      _ew.style.cssText='border:1px solid var(--down);border-radius:8px;padding:10px;'
+        +'margin-top:8px;color:var(--down);font-size:12px;line-height:1.7';
+      _ew.textContent='🔴 後端回報了一個錯誤：'+d.error
+        +'　—— 以下數字可能不完整或過期，請一併看下方的資料新鮮度提示。';
+      _eb.parentNode.insertBefore(_ew,_eb.nextSibling);
+    }
+  }
   const m=d.meta;
   const phase=m.phase==='formal_pilot'?'正式 pilot':'彩排';
   /* 🔴🔴 2026-09-20 更正:這一行本來印
@@ -438,7 +454,65 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
       +'<br>依 PROTOCOL §9 不得於實驗進行中對受試者新增約束,故僅更正陳述、不改變其行為。詳見 '
       +'<a href="./data/shadow/CHANGELOG.md" style="color:var(--down)">CHANGELOG</a>。';
   })();
-  const snapUTC=(m.anchor&&m.anchor.utc)||null;
+  /* 🔴🔴🔴 2026-09-22(對抗覆核 P0):**這個守衛以前量錯了對象。**
+     它量的是 `meta.anchor.utc` —— 那是**錨定那一步跑的時刻**,不是這份資料
+     被算出來的時刻。而錨定是無條件執行的:`emit_dashboard` 失敗時
+     (跑批只記一行 `_pub_fail`),下一步照樣把**今天的時刻**蓋到那份
+     **沒有重算過的舊 JSON** 上,再推上公開站。
+     ⭐⭐ 於是「公開頁整份停更」這件事,在讀者端**永遠不會亮燈** ——
+       而那正是這盞燈唯一的存在理由。
+     ⭐⭐⭐ 量錯對象的守衛,不是比較不靈敏,是**設計上不會響**。
+     → 新鮮度一律以 `meta.generated_utc`(資料算出來的時刻)為準;
+       `meta.anchor.utc` 只當「蓋章時刻」,而兩者的落差本身就是一盞燈。 */
+  /* 🔴🔴 2026-09-22:新鮮度的**判斷**抽成純函式。
+     為什麼要抽:守衛的測試如果去抄一份同樣的式子來跑,測到的是抄本不是頁面
+     —— 那是 gate_denominator 那一族最常見的形狀(判準與被判的東西不是同一份)。
+     抽成具名純函式之後,測試可以**把這段原始碼從 lab.html 裡挖出來丟給 node 跑**,
+     一旦有人改壞它,測試就會紅。
+     ⚠️ 這個函式**不准碰 DOM、不准讀全域**:輸入只有參數,輸出只有判定。 */
+  /* 🔴🔴 2026-09-22:目標 vs 實際的比對抽成純函式,兩頁共用同一份語意。
+     為什麼要抽:守衛原本寫 `assert "權重對不上" in 頁面` ——
+     把 `if(shareDiff.length)` 改成 `if(false)`,那句話還在檔案裡,守衛照樣綠。
+     ⭐ **釘「字串在檔案裡」釘不住「它會不會被執行」**(這個專案第 15 次)。
+     → `tests/test_position_diff_runs.py` 會把這段原始碼挖出來丟給 node 跑,
+       而且**兩頁都挖、跑同一組案例** —— 只修一邊就會紅。
+     ⚠️ 不准碰 DOM、不准讀全域:輸入只有參數,輸出只有比對結果。 */
+  function _posDiff(want, have, wdiff){
+    want = want || {}; have = have || {};
+    var ow = Object.keys(want).filter(function(x){ return !(x in have); });
+    var oh = Object.keys(have).filter(function(x){ return !(x in want); });
+    var shared = Object.keys(want).filter(function(x){ return x in have; });
+    var sd = shared.map(function(x){ return {k:x, dv:(have[x]||0)-(want[x]||0)}; })
+                   .filter(function(o){ return Math.abs(o.dv) >= wdiff; })
+                   .sort(function(x,y){ return Math.abs(y.dv)-Math.abs(x.dv); });
+    var maxDv = shared.reduce(function(mx,x){
+      return Math.max(mx, Math.abs((have[x]||0)-(want[x]||0))); }, 0);
+    return {onlyWant:ow, onlyHave:oh, shareDiff:sd, maxDv:maxDv,
+            consistent: (ow.length===0 && oh.length===0 && sd.length===0)};
+  }
+  function _freshVerdict(genUTC, stampUTC, lagH, nowMs){
+    /* 「資料算出時刻」缺席 = 舊版本的樣子,而舊版本的守衛永遠不會響 → 紅。 */
+    if(!genUTC) return {level:'red', code: stampUTC ? 'only_stamp' : 'no_time'};
+    var ageH=(nowMs-Date.parse(genUTC))/3.6e6;
+    if(!isFinite(ageH)) return {level:'red', code:'unparsable'};
+    /* 落在未來 = 時鐘或資料壞掉。以前 `ageH>30` 為 false 會靜靜放行。 */
+    if(ageH < -0.5) return {level:'red', code:'future', ageH:ageH};
+    var lag=lagH;
+    if(lag==null && stampUTC){
+      var v=(Date.parse(stampUTC)-Date.parse(genUTC))/3.6e6;
+      lag=isFinite(v)?v:null;
+    }
+    /* 🔴🔴🔴 這一條才是真正擋得住「發佈停擺」的:
+       資料沒重算而蓋章照樣前進 → 落差就是證據。
+       正常同一次跑批相差幾分鐘,2 小時是很寬的餘裕。 */
+    if(lag!=null && lag>2) return {level:'red', code:'stale_but_restamped', lag:lag, ageH:ageH};
+    if(ageH>40) return {level:'red', code:'too_old', ageH:ageH, lag:lag};
+    if(ageH>30) return {level:'warn', code:'late', ageH:ageH, lag:lag};
+    return {level:'ok', code:'ok', ageH:ageH, lag:lag};
+  }
+  const stampUTC=(m.anchor&&m.anchor.utc)||null;
+  const genUTC=m.generated_utc||null;
+  const snapUTC=genUTC||stampUTC;
   document.getElementById('sub').textContent=
     `${phase}:第 ${m.days} / ${m.pilot_days} 日(真錢資格門檻 ${m.gate_days} 日)`
     /* 🔴🔴 2026-09-21(稽核 L013 複查):這裡的 fallback 本來是 `m.last_date` ——
@@ -451,7 +525,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        那句話會讓讀者以為含當天行情(CHANGELOG-025 已為此更正過一次)。
        這裡只陳述「最後一個決策日是哪一天」,不作任何新鮮度宣稱。 */
     +`｜最後決策日 ${m.last_date||'(未提供)'}`
-    +`｜快照 ${snapUTC||'(後端未提供 ⚠️,見下方警告)'}`
+    +`｜資料算出於 ${genUTC||'(後端未提供 ⚠️)'}`
+    +`｜蓋章於 ${stampUTC||'(後端未提供 ⚠️)'}`
     +`｜${(m.brains||[]).length} 位競爭者｜${m.market||''}${anc}`;
   (function(){
     const s=document.getElementById('sub');
@@ -471,7 +546,19 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         +`<b>請勿當成即時資料</b> —— 我們沒辦法在這裡向你證明它是今天的。`;
       s.parentNode.insertBefore(w,s.nextSibling);
     }
-    if(!snapUTC){ _noFresh('後端沒有提供快照時刻'); return; }
+    /* 🔴 判定一律走 `_freshVerdict` —— 這裡只負責**把它說出來**。
+       ⭐ 判斷與呈現分開,`tests/test_freshness_verdict_runs.py` 才驗得到
+         **真正在線上跑的那一份**邏輯,而不是測試自己抄的一份式子。
+       🔴 「資料算出時刻」缺席不是小事:那正是舊版本沒有這個欄位的樣子,
+         而舊版本的守衛就是因此永遠不會響。缺它就紅牌,不准退回用蓋章時刻矇混。 */
+    const V=_freshVerdict(genUTC, stampUTC,
+                          (m.anchor&&m.anchor.data_age_at_anchor_h), Date.now());
+    if(V.code==='only_stamp'){
+      _noFresh('後端只給了「蓋章時刻」，沒給「資料算出時刻」——'
+        +'而蓋章時刻在資料沒更新時<b>照樣會前進</b>，拿它判新鮮度等於沒判');
+      return;
+    }
+    if(V.code==='no_time'){ _noFresh('後端沒有提供任何時間戳'); return; }
     const n=document.createElement('div');
     n.className='foot';
     n.style.cssText='margin-top:6px;font-size:11px;line-height:1.6';
@@ -483,21 +570,60 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
        🔴 門檻要寬到不會誤報:排程 00:36 UTC,正常最多 ~24h 前;
          超過 **40 小時**才算異常(留足重跑與時區的餘裕)。
          會誤報的紅燈遲早被當成背景雜訊。 */
-    const ageH=(Date.now()-Date.parse(snapUTC))/3.6e6;
-    /* 🔴 解不出來時 `isFinite(ageH)` 為 false —— 舊寫法會靜默放行。
-       格式壞掉跟「資料很新」是兩件事,要走同一條紅牌。 */
-    if(!isFinite(ageH)){ _noFresh(`快照時刻格式無法解析:${snapUTC}`); return; }
-    /* 🔴🔴 2026-09-21(稽核 A029/A001 複查):40 小時這個門檻**比它要防的那場事故還寬**。
-       2026-09-02~04 那次公開頁凍了 **33.5 小時** —— 紅燈不會亮。
-       ⭐ **一盞對唯一一次真實事故不會亮的燈,設計上就不可能紅。**
-       → 門檻改用**實測**的發佈間隔分布,不是我想一個數字:
-         鏈上 62 個相鄰間隔,**61 個 ≤ 24.0 小時**,唯一例外是 48.0 小時(2026-07-28 漏發)。
-         26h 與 30h 都有**零**歷史誤報;取 **30h** 留足重跑與時區的餘裕,
-         而 2026-09-02 那場 33.5h 仍然會被抓到(舊的 40h 抓不到)。
-       🔴 分兩級:30h 是「比正常晚」(黃,資訊性),40h 才是「可能停擺」(紅)——
-         假警報也是傷害,但**該亮不亮更糟**。 */
-    if(ageH>30){
-      const hard=ageH>40;
+    const ageH=V.ageH;
+    if(V.code==='unparsable'){ _noFresh(`資料算出時刻格式無法解析:${genUTC}`); return; }
+    if(V.code==='future'){ _noFresh(`資料算出時刻落在未來(${genUTC})，時鐘或資料有問題`); return; }
+    /* 🔴🔴🔴 這才是真正擋得住「發佈停擺」的那道檢查:
+       資料算出時刻 vs 蓋章時刻。正常情況兩者相差幾分鐘(同一次跑批);
+       一旦 `emit_dashboard` 失敗而錨定照跑,蓋章會前進而資料不會 —— 落差就是證據。
+       ⭐ 用後端算好的 `data_age_at_anchor_h`(缺了就自己算),**不寫死門檻的來源**。 */
+    if(V.code==='stale_but_restamped'){
+      var lag=V.lag;
+      var w=document.createElement('div');
+      w.style.cssText='border:1px solid var(--down);border-radius:8px;padding:10px;'
+        +'margin-top:8px;color:var(--down);font-size:12px;line-height:1.7';
+      w.innerHTML='🔴 <b>今天這一筆沒有重新計算。</b>'
+        +'這份資料是 <b>'+genUTC+'</b> 算出來的，'
+        +'而我們在 <b>'+stampUTC+'</b>（晚了 <b>'+lag.toFixed(1)+' 小時</b>）'
+        +'把它重新蓋章並推上這個網站。'
+        +'<br>也就是說：<b>你現在看到的是舊資料，但檔案上的時間是新的。</b>'
+        +'這通常代表<b>當日的計算失敗了、而發佈流程照常跑完</b>。'
+        +'<br>⚠️ 在此之前這一頁量的正是那個「新的時間」，所以這種情況'
+        +'<b>一次都沒有被偵測到過</b>（2026-09-22 修正）。';
+      s.parentNode.insertBefore(w,s.nextSibling);
+    }
+    /* 🔴🔴🔴 2026-09-22 更正:上面那段(09-21 寫的)**理由是錯的**,留著當證據。
+       原文說「2026-09-02 那場凍了 33.5 小時,舊的 40h 門檻不會亮」。
+       ⭐ 33.5h 是**故障持續時間**,而這盞燈量的是**讀者看到的那份快照有多舊**
+         —— 兩者差一個週期。故障期間公開頁服務的是第 42 決策日
+         (鏈上 seq 42 = 2026-09-02T00:37Z),到故障結束時它已經 **57.5 小時**大。
+         舊的 40h 其實會在 2026-09-03 16:37Z 亮,比故障結束早 17.5 小時。
+       ⭐⭐ 也就是說:我換門檻的**理由**不成立,只是換出來的門檻本身還算合理。
+         這種錯最危險 —— 結論碰巧對,所以沒有人會回頭檢查推導。
+       🔴🔴 而且那把校準尺本身是壞的:
+         「鏈上相鄰錨點間隔」**量不到發佈停擺** —— 09-03 那場在鏈上是
+         23.999h / 24.001h,完全看不見(錨點照跑,只是沒推出去)。
+         拿一把量不到該故障的尺算出「零歷史誤報」,正是 gate_denominator 那一族。
+       → 真正擋得住發佈停擺的是上面那道「資料算出時刻 vs 蓋章時刻」的比對。
+         下面這個 30h/40h 只負責「比正常晚」的資訊性提示,**不是停擺偵測器**,
+         而且數字一律由後端的實測分布填,不准寫死在這裡。 */
+    /* 🔴 這句話原本寫死「實測 62 次發佈間隔有 61 次在 24 小時內」。
+       寫下的當天鏈上其實已經是 69 次,今天是 77 次 —— 而這一頁自己另一處
+       明明寫著「寫死的話,未來出現新的不一致時頁面會顯示一個過期的假數字」。
+       ⭐ 那個過期的假數字,就長在這一行上。改成由後端的實測分布填。
+       ⚠️ 同時把「≤24.0」的口徑講清楚:四捨五入到小數一位才有 76/77,
+         **嚴格不四捨五入只有 51/77**。只印好看的那個就是挑數字。 */
+    function _ivText(){
+      const iv=(m.anchor&&m.anchor.publish_intervals)||null;
+      if(!iv||!iv.available||!iv.n) return '（後端沒有給發佈間隔的實測分布，所以這裡不給你比較基準。）';
+      return `實測 ${iv.n} 次錨定間隔有 ${iv.le_24h} 次在 24 小時內`
+           + `（嚴格不四捨五入是 ${iv.le_24h_strict} 次；最長 ${iv.max_h} 小時），`
+           + `所以這一次<b>不是常態</b>。`
+           + `⚠️ 但這個分布<b>量不到發佈停擺</b>——錨點照跑而沒推出去時，`
+           + `間隔仍然是正常的 24 小時。`;
+    }
+    if(V.level==='warn'||V.code==='too_old'){
+      const hard=(V.code==='too_old');
       const w=document.createElement('div');
       w.style.cssText='border:1px solid var(--'+(hard?'down':'warn')+');border-radius:8px;'
         +'padding:10px;margin-top:8px;color:var(--'+(hard?'down':'warn')+');'
@@ -507,8 +633,8 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
           +`你看到的數字停在 ${snapUTC}。這可能是<b>發佈流程故障</b> —— `
           +`<b>畫面看起來正常不代表資料是新的</b>。`
         : `⚠️ <b>這一頁的資料比正常晚了</b>:已經 ${Math.floor(ageH)} 小時沒有更新`
-          +`(快照 ${snapUTC})。實測 62 次發佈間隔有 61 次在 24 小時內,`
-          +`所以這一次<b>不是常態</b>;若持續變久代表發佈流程出了問題。`);
+          +`(資料算出於 ${snapUTC})。${_ivText()}`
+          +`若持續變久代表發佈流程出了問題。`);
       s.parentNode.insertBefore(w,s.nextSibling);
     }
     n.innerHTML=`📌 <b>怎麼讀這個時間</b>:排程每天 <b>00:36 UTC</b> 拍一次快照,
@@ -573,9 +699,14 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
      🔴 修法是加時間標示,不是改數字:兩個數字各自都是對的。 */
   /* 🔴🔴 2026-09-21(稽核 A019/L009 複查):基建保護日**整天不換倉**,
      而卡片照樣印新的目標配置、還主動宣稱「下方是今天的新決策」。
-     ⭐ 今天(09-21)實測:這一頁印規則腦持有 <b>ARB 12.5%</b>,
-       而帳上 units 裡**沒有 ARB**,實際是 <b>ZEC 13.1%</b> ——
-       **一份從未成交的購物清單,印在寫著「公開每個決策與理由」的頁面上。**
+     ⭐ 2026-09-21 實測 —— ⚠️ 2026-09-22 更正這個例子的細節:
+       **讀者其實沒看到 ARB**(它是目標裡的第 8 名,被「只顯示前 7 檔」截掉)。
+       當天真正看到的是 7 檔**全部印 13%**(目標都是 12.5%,被 `toFixed(0)` 進位),
+       而帳本上那 7 檔是 **10.65% ~ 14.16%**,另有一檔 **ZEC 13.05%** 完全沒出現。
+       ⭐⭐ 錯的例子被抄進四個地方(CHANGELOG-047 / 後端 docstring / 內部頁 / 這裡),
+         **同一份證據抄四份不會變成四個證據**。
+       —— 但結論不變:那仍是**一份從未成交的購物清單**,
+       印在寫著「公開每個決策與理由」的頁面上。
      61 個決策日裡已有 3 天如此(08-10 / 09-01 / 09-21)。 */
   /* 🔴 L006:這一頁只渲染**今天**那一組理由,而標語寫著「公開每個決策與理由」。
      其餘的住在 diaries.json —— 發佈了、雜湊也在鏈裡,但沒有任何地方連到它。
@@ -584,10 +715,19 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   (function(){
     const el=document.getElementById('diaryLink'); if(!el) return;
     const n=(m.brains||[]).length, dz=m.days;
+    /* 🔴🔴 2026-09-22(對抗覆核 P0-2):`diaries.json` 裡 100% 是 `alloc`
+       —— 各腦**要求的目標**,零 units,而且檔案裡沒有一個字說明這件事。
+       帳本 history 也不存 units,所以**實際持倉只存在於「今天」、不留存**。
+       ⭐ 一份被當成完整公開紀錄的檔案,內容全是從未成交的購物清單,
+         而連標籤都沒有 —— 這正是我們今天才在卡片上修掉的那個錯。
+       → 連結旁邊必須講清楚它是什麼、以及它**沒有**什麼。 */
     el.innerHTML='⚠️ 上面只有<b>今天</b>這一組配置與理由。'
       +(dz&&n?`全部 <b>${dz}</b> 個決策日 × <b>${n}</b> 位競爭者的配置與理由,`
              :'全部歷史的配置與理由,')
       +'發佈在 <a href="./data/shadow/diaries.json" style="color:var(--acc)">diaries.json</a>'
+      +'<br>🔴 <b>那份檔案裡是各腦「要求的目標配置」，不是帳上的實際持倉。</b>'
+      +'實際持倉由帳本的 units 換算，而帳本<b>只保留當下這一份</b>、不留歷史 ——'
+      +'所以<b>我們無法向你出示過去任何一天的實際持倉</b>（2026-09-22 揭露）。'
       +'(原始 JSON,未經整理;它的雜湊也在錨點鏈裡,可用下方驗證器比對)。'
       +'<br>📌 <b>2026-09-21 補上這個連結之前,這個檔案發佈了、但頁面沒有任何地方連到它。</b>';
   })();
@@ -611,13 +751,13 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         <b>不是今天的決定</b>。`:'';
     if(isInfra){
       return `<div class="viol">⚠️ <b>今天沒有取得決策</b>(${type})<br>
-        原因在<b>我們這邊</b>:重試後仍叫不到該模型的 API。依規則<b>維持原倉、不執行交易</b>。
+        原因在<b>我們這邊</b>:重試後仍叫不到該模型的 API。依規則<b>維持原本的目標權重</b>、不做新決策。⚠️ 這<b>不等於零成交</b>:價格已經動過,系統仍會做漂移校正而小額成交(見下方失格表的換手數字對照)。
         <b>沒有「被駁回的原案」</b> —— 模型沒有回話,所以下方不會有理由。<br>
         🔴 依 PROTOCOL §4 原文(「重試後仍違反曝險/幣種約束」),
         這<b>不計入該腦的正式違規率</b>;它記在失格表的「我方基建中斷」欄。${staleLine}</div>`;
     }
     return `<div class="viol">🚫 <b>今日決策被風控攔下</b>(${type})<br>
-      重試一次仍違反約束 → 依規則<b>維持原倉、不執行交易</b>。下方理由是它<b>被駁回</b>的原案。${staleLine}</div>`;
+      重試一次仍違反約束 → 依規則<b>維持原本的目標權重</b>、不採用它這次的輸出。⚠️ 這<b>不等於零成交</b>:漂移校正仍會小額成交。下方理由是它<b>被駁回</b>的原案。${staleLine}</div>`;
   }
   document.getElementById('agents').innerHTML=m.brains.map(b=>{
     /* 🔴 2026-08-07:報酬**一律用後端算好的**,前端不得自己推算。
@@ -659,12 +799,26 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
          不講才是。拿掉截斷或講出來,二選一。
        這裡選「講出來」:持倉多的腦印 7 檔會比印 30 檔好讀,
        但**必須把分母放在旁邊**。 */
-    const _n=Object.keys(a).length, SHOW=7;
-    const tags=Object.entries(a).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
-      .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('')
+    /* 🔴🔴 2026-09-22(對抗覆核 P1-2):兩排以前各自取自己的前 7 檔,
+       所以上下兩排**可能不是同一組幣**,而我們卻要讀者肉眼對照。
+       → 顯示集合在這裡算**一次**,上下兩排共用。
+       ⚠️ 下排的文案寫著「與上排是同一組幣」—— 那句話的真假就由這幾行決定,
+         所以這段不准只改一邊(這正是 `test_lab_page` 的兩頁 parametrize 要防的形狀)。 */
+    const _apU=(d.current_position||{})[b]||{};
+    const _uni={};
+    Object.keys(a).forEach(k=>{_uni[k]=Math.max(_uni[k]||0,Math.abs(a[k]||0));});
+    Object.keys(_apU).forEach(k=>{_uni[k]=Math.max(_uni[k]||0,Math.abs(_apU[k]||0));});
+    const SHOW=7;
+    const _order=Object.keys(_uni).sort((x,y)=>_uni[y]-_uni[x]);
+    const _shown=_order.slice(0,SHOW);
+    const _n=_order.length;
+    /* 🔴 `toFixed(0)` 會把 12.5 印成 13%、12.47 印成 12%:
+       0.03pp 的捨入被畫成 1pp 的落差。兩排都改 1 位小數,否則對照本身沒有意義。 */
+    const tags=_shown.filter(k=>a[k]!=null).map(k=>{const v=a[k];
+      return `<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(1)}%</span>`;}).join('')
       ||'<span class="tag">空手（全現金）</span>';
     const moreTag=_n>SHOW
-      ? `<span class="tag" style="opacity:.75">…只顯示前 ${SHOW} 檔,共 <b>${_n}</b> 檔</span>` : '';
+      ? `<span class="tag" style="opacity:.75">…只顯示前 ${SHOW} 檔,共 <b>${_n}</b> 檔（含帳上有而目標沒有的）</span>` : '';
     /* 🔴🔴 2026-09-06:現金**只能讀後端的真值**,不准在這裡估。
 
        原本寫 `Math.max(0, 100 − 總曝險)` —— 實測 9 個腦有 **6 個是錯的**:
@@ -710,25 +864,66 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         /* 🔴 實際部位一律讀後端由 units 換算的值;拿不到就**明講**,
            不准拿目標頂替 —— 估出來的數字看起來跟真的一模一樣。 */
         const ap=(d.current_position||{})[b];
-        if(ap===undefined) return '';
-        if(ap===null) return `<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">`
-          +`📦 <b>實際持倉 未提供 ⚠️</b>(該腦有持倉但取不到價)—— 上排是<b>要求的目標</b>,不是實際持倉。</div>`;
+        /* 🔴🔴 2026-09-22(對抗覆核 P2-4):`undefined` 以前是 `return ''` ——
+           **完全不印、不警示**。同一張卡的現金欄位拿不到時是「現金 未提供 ⚠️」,
+           兩套標準。而這一條 fail-open 的後果特別重:欄位一消失,
+           卡片就無聲無息退回「只有目標」那個**原本的假話**。 */
+        if(ap===undefined) return `<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">`
+          +`📦 <b>實際持倉 未提供 ⚠️</b> —— 後端這次沒有送出這個欄位,`
+          +`所以<b>上排只是要求的目標,我們無法告訴你帳上實際持有什麼</b>。</div>`;
+        /* 🔴 成因由後端給(帳本沒 units / 拿不到淨值 / 淨值≤0 / 取不到報價),
+           頁面**不准自己猜一句**。以前寫死「該腦有持倉但取不到價」,
+           而其中兩種成因下那句話是假的。 */
+        if(ap===null){
+          const w=(d.current_position_missing_reason||{})[b];
+          return `<div class="foot" style="font-size:10.5px;margin-top:6px;color:var(--warn)">`
+            +`📦 <b>實際持倉 未提供 ⚠️</b>(${w||'後端沒有說明原因'})`
+            +` —— 上排是<b>要求的目標</b>,不是實際持倉。</div>`;
+        }
         const ks=Object.keys(ap);
         if(!ks.length) return `<div class="foot" style="font-size:10.5px;margin-top:6px">`
           +`📦 <b>實際持倉</b>:空手(全現金)</div>`;
-        const t2=Object.entries(ap).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,7)
-          .map(([k,v])=>`<span class="tag ${v<0?'short':'long'}">${k} ${v<0?'空':'多'}${Math.abs(v).toFixed(0)}%</span>`).join('');
-        const more2=ks.length>7?`<span class="tag" style="opacity:.75">…共 <b>${ks.length}</b> 檔</span>`:'';
-        const want=new Set(Object.keys(a)), have=new Set(ks);
-        const onlyWant=[...want].filter(x=>!have.has(x)), onlyHave=[...have].filter(x=>!want.has(x));
-        const diff=(onlyWant.length||onlyHave.length)
+        /* 🔴🔴 2026-09-22(對抗覆核 P1-2):兩排以前**各自** slice(0,7),
+           所以上排顯示的 7 檔與下排顯示的 7 檔**可能不是同一組**
+           (2026-09-21 實例:上排有 AKE 沒 ZEC,下排有 ZEC 沒 AKE)。
+           ⭐ 把兩張成員不同的清單並排,再要讀者用肉眼比對 —— 那不是揭露,是考試。
+           → 顯示集合改成「兩邊取聯集、按 max(|目標|,|實際|) 排序」,
+             兩排永遠是**同一組幣**,缺的那邊印 0%。 */
+        /* 🔴 顯示集合用上面算好的那一份(`_shown`/`_order`)——
+           **同一個語意只准有一份實作**,在這裡再算一次,兩邊遲早走樣,
+           而走樣的後果就是下面那句「與上排是同一組幣」變成假話。 */
+        const order=_order, shown=_shown;
+        /* 🔴 2026-09-22(對抗覆核 P1-3):`toFixed(0)` 把 12.5 印成「13%」、
+           12.47 印成「12%」—— **0.03pp 的捨入被畫成 1pp 的落差**,
+           反過來 0.9pp 的真差距也可以被畫成同一個數字。改 1 位小數。 */
+        const fmt=(v)=>`${v<0?'空':'多'}${Math.abs(v).toFixed(1)}%`;
+        const t2=shown.map(k=>{const v=ap[k]||0;
+          return `<span class="tag ${v<0?'short':(v>0?'long':'')}">${k} ${fmt(v)}</span>`;}).join('');
+        const more2=order.length>SHOW
+          ? `<span class="tag" style="opacity:.75">…共 <b>${order.length}</b> 檔</span>`:'';
+        /* 🔴🔴🔴 2026-09-22(對抗覆核 P1-1):這段以前**只比幣種集合,完全不比權重**。
+           2026-09-21 實跑:規則腦 8 檔裡有 **7 檔的權重是錯的**
+           (AKE 目標 12.5% / 帳上 10.65%…),而紅字一個都沒提,
+           頁面等於在說「一致」。
+           ⭐ 一個「只檢查名字、不檢查數字」的對帳,對一頁**全是數字**的東西沒有用。 */
+        const WDIFF=0.5;   /* pp;低於這個當成換倉滑價,仍會在下面印出最大差 */
+        const D=_posDiff(a, ap, WDIFF);
+        const bits=[];
+        if(D.onlyWant.length) bits.push(`目標有而帳上沒有 <b>${D.onlyWant.join('、')}</b>`);
+        if(D.onlyHave.length) bits.push(`帳上有而目標沒有 <b>${D.onlyHave.join('、')}</b>`);
+        if(D.shareDiff.length) bits.push(`權重對不上 <b>${D.shareDiff.map(o=>
+          `${o.k} ${o.dv>0?'+':''}${o.dv.toFixed(1)}pp`).join('、')}</b>`);
+        const maxDv=D.maxDv;
+        const diff=bits.length
           ? `<div class="foot" style="font-size:10.5px;color:var(--down);margin-top:4px">`
-            +`🔴 目標與實際不一致:`
-            +`${onlyWant.length?`目標有而帳上沒有 <b>${onlyWant.join('、')}</b>`:''}`
-            +`${onlyWant.length&&onlyHave.length?';':''}`
-            +`${onlyHave.length?`帳上有而目標沒有 <b>${onlyHave.join('、')}</b>`:''}</div>` : '';
+            +`🔴 目標與實際不一致:${bits.join(';')}`
+            +`<span style="color:var(--dim)">(權重差 ≥${WDIFF}pp 才列出)</span></div>`
+          : `<div class="foot" style="font-size:10.5px;margin-top:4px">`
+            +`✓ 幣種一致,共同持有的最大權重差 <b>${maxDv.toFixed(2)}pp</b>`
+            +`<span style="color:var(--dim)">(≥${WDIFF}pp 會被列為不一致)</span></div>`;
         return `<div class="foot" style="font-size:10.5px;margin-top:6px">`
-          +`📦 <b>實際持倉</b>(帳本 units 換算,計價日 ${d.position_priced_at||'?'})</div>`
+          +`📦 <b>實際持倉</b>(帳本 units 換算,計價日 ${d.position_priced_at||'?'};`
+          +`與上排是<b>同一組幣</b>,便於逐檔對照)</div>`
           +`<div class="pos">${t2}${more2}</div>`+diff;
       })()}
       ${viol[b]?vioBanner(b,viol[b]):''}
@@ -765,16 +960,23 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   const ovs=ch.map(c=>c.overlap_pct).filter(v=>v!=null);
   const warnDays=ch.filter(c=>c.warning);
   document.getElementById('crowd').innerHTML= last&&last.overlap_pct!=null
-    ? `<div>思考腦<b>持倉重疊度</b>：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--dim')}">${last.overlap_pct}%</b>
+    ? `<div>思考腦<b>要求的目標重疊度</b>：<b style="font-size:18px;color:${last.warning?cvar('--warn'):cvar('--dim')}">${last.overlap_pct}%</b>
          <span class="foot" style="font-size:11px">（${last.day||'?'}，跨 <b>${last.families??'?'}</b> 個模型家族算出）</span></div>
        <div class="meter"><div style="width:${last.overlap_pct}%;background:${last.warning?cvar('--warn'):cvar('--dim')}"></div></div>
        <div class="foot">${last.note||''}</div>
+       <div class="foot" style="margin-top:6px;border-left:3px solid var(--warn);padding-left:10px">
+         🔴 <b>2026-09-22 更正:這個數字量的是「要求的目標」，不是帳上的實際持倉。</b>
+         它由各腦當日<b>提出</b>的配置算出，而且算在<b>成交之前</b>——
+         基建保護日（強制只減倉）當天完全沒有換倉，這個百分比仍然照算。
+         <br>⭐ 上方每張卡片的「🎯 要求的目標 / 📦 實際持倉」兩排就是為了分開這兩件事；
+         這張卡目前只用得到<b>上排</b>。我們<b>沒有</b>改動任何數字，只是把它的名字講對。
+       </div>
        ${ovs.length?`<div class="foot" style="margin-top:6px">共 <b>${ch.length}</b> 天紀錄：最低 ${Math.min(...ovs)}% ／ 最高 ${Math.max(...ovs)}% ／ 平均 ${(ovs.reduce((a,b)=>a+b,0)/ovs.length).toFixed(1)}%；
          其中達到警訊門檻的有 <b>${warnDays.length}</b> 天${warnDays.length?`（${warnDays.map(c=>c.day).join('、')}）`:''}。</div>`:''}
        ${(cr.mean_corr!=null)?`
        <div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">
          🔴 <b>這個數字會低估擁擠,而且我們知道。</b><br>
-         重疊度量的是「持倉像不像」。但同一批 AI 真正的風險是<b>賺賠會不會一起動</b> ——
+         重疊度量的是「<b>要求的購物清單</b>像不像」。但同一批 AI 真正的風險是<b>賺賠會不會一起動</b> ——
          同期實測它們的<b>日報酬相關係數平均 <span style="color:var(--warn)">+${cr.mean_corr.toFixed(2)}</span></b>
          （最高一對 +${cr.max_corr.toFixed(2)}，分母 ${cr.denominator_pairs} 對 ／ ${cr.denominator_days} 個報酬日）。
          <b>持倉看起來只重疊 ${last.overlap_pct}%，報酬卻明顯同向。</b><br>
@@ -995,6 +1197,74 @@ fetch('./data/shadow/dashboard_data.json?_='+Date.now())
         ⚠️ 依 §9 這屬於「修補會造成錯誤估值的 bug」,<b>不是修改判定指標</b>;
         原始違規紀錄一筆未刪,只是改變歸類。詳見 CHANGELOG-023。</div>`;
     }
+    /* 🔴🔴 2026-09-22:上一欄只告訴你「我方基建中斷 N 日」,沒告訴你**為什麼**。
+       而帳本裡其實躺著更精確的答案:2026-09-21/22 兩天是
+       `HTTP 429 You have no credits remaining` —— **我們的 API 帳戶沒錢了**。
+       ⭐ 「模型叫不到」聽起來像天災,「我們沒付錢」是我方疏失。
+         兩句都為真時自己挑好看的那一句講,就是在騙人。
+       ⭐⭐ 但更要緊的是**分母**:20 個「腦-日」裡只有 4 個記得住原因,
+         其餘永久查不出來了(記錄器是事後才裝的)。
+         少了這個分母,這張清單會看起來比事實乾淨得多。 */
+    (function(){
+      var IF=d.infra_failures;
+      if(!IF||!IF.by_brain){
+        /* 🔴 fail-loud:後端沒給就明講,不准安靜跳過 —— 上一欄還印著「10 日」,
+             這裡什麼都不顯示的話,讀者會以為那些日子沒有可講的原因。 */
+        if((d.gate_check&&d.gate_check.by_brain?Object.keys(d.gate_check.by_brain)
+             .some(function(b){return (d.gate_check.by_brain[b]||{}).infra_no_response;}):false)){
+          h+='<div class="foot" style="margin-top:10px;border-left:3px solid '
+           + 'var(--warn);padding-left:10px;color:var(--warn)">⚠️ 上表有「我方基建中斷」的日子,'
+           + '而<b>後端沒有提供這些日子的原因</b> —— 空白不等於查過了沒有原因。</div>';
+        }
+        return;
+      }
+      var bs=Object.keys(IF.by_brain);
+      if(!bs.length) return;
+      var rows=bs.map(function(b){
+        var x=IF.by_brain[b]||{};
+        var known=(x.reasons||[]).map(function(r){
+          return '<div style="margin-left:10px">· <b>'+r.date+'</b>:<code style="font-size:10px">'
+               + String(r.reason||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</code></div>';
+        }).join('');
+        var unk=(x.reason_unrecorded_days||[]);
+        var unkLine=unk.length
+          ? '<div style="margin-left:10px;color:var(--warn)">· <b>未記錄原因</b>('+unk.length
+            +' 日):'+unk.join('、')+'</div>'
+          : '';
+        return '<div style="margin-top:6px"><b>'+(LABEL[b]||b)+'</b>：共 <b>'+x.n_days
+             + '</b> 日（分母 '+x.denominator_days+' 個決策日）'+known+unkLine+'</div>';
+      }).join('');
+      /* 🔴🔴 2026-09-22:這一頁原本寫「維持原倉、**不執行交易**」——
+         後半句是**我們自己加的**,PROTOCOL 只寫「維持原倉」,而它是假的。
+         沒回話時系統用的是昨天的**目標權重**,價格已經動過 → 仍會漂移校正而成交。
+         ⭐ 「小到看不見」不等於「零」。要講零,就得真的是零。
+         → 印兩組實測中位數讓讀者自己比,**不用形容詞**,並帶各自的分母。 */
+      var tvs=bs.map(function(b){
+        var x=IF.by_brain[b]||{};
+        if(x.turnover_median_on_infra_days==null&&x.turnover_median_on_decision_days==null) return '';
+        var f=function(v,n){return (v==null?'(無資料)':('$'+v))+'（'+n+' 日）';};
+        return '<div style="margin-left:10px">· <b>'+(LABEL[b]||b)+'</b>：沒回話那幾天的換手中位數 <b>'
+             + f(x.turnover_median_on_infra_days,x.turnover_n_infra_days)
+             + '</b>，有決策那幾天 <b>'
+             + f(x.turnover_median_on_decision_days,x.turnover_n_decision_days)+'</b></div>';
+      }).filter(Boolean).join('');
+      var turnoverLine = tvs
+        ? '<div style="margin-top:6px">⚠️ 但<b>不是零成交</b>：'
+          + '維持的是<b>昨天的目標權重</b>，而價格已經動過，系統仍會做漂移校正。'
+          + '以下是實測中位數（不加形容詞，你自己比），重點是它<b>不是 0</b>：'+tvs
+          + '<div class="foot" style="margin-left:10px;font-size:10px">'
+          + '（換手金額自 2026-08-25 才開始留痕，所以分母小於 '
+          + (IF.denominator_days||'?')+' 個決策日。）</div></div>'
+        : '<div style="margin-top:6px;color:var(--warn)">⚠️ 後端沒有給換手金額，'
+          + '所以<b>無法告訴你那幾天是不是真的沒成交</b>。</div>';
+      h+='<div class="foot" style="margin-top:10px;border-left:3px solid var(--warn);padding-left:10px">'
+       + '🔴 <b>那些「我方基建中斷」的日子，原因是什麼？</b><br>'
+       + String(IF.note||'') + rows
+       + '<div style="margin-top:6px">⚠️ 這些日子依規則<b>維持原本的目標權重</b>、不做新決策，'
+       + '但倉位仍在市場裡承受漲跌 —— <b>它們的損益照算</b>。</div>'
+       + turnoverLine
+       + '</div>';
+    })();
     if(_absent.length) h+=`<tr><td colspan="7" style="text-align:left;color:var(--down)">🔴 後端沒有給這幾位的失格資料:${_absent.map(x=>LABEL[x]||x).join('、')} —— <b>缺資料不等於未觸發</b>,這幾列不要當成「通過檢查」。</td></tr>`;
     h+=`<div class="foot" style="margin-top:10px">門檻:最大回撤 &gt; <b>${tm}</b>、正式違規率 &gt; <b>${tv}</b>、發生爆倉 —— 任一觸發即該腦當期失格。<br>${(()=>{const u=(m.brains||[]).filter(x=>(d.violation_checked||{})[x]===false);
       return u.length?`🔴 <b>「未受檢查」不等於「沒有違規」</b>:${u.map(x=>LABEL[x]||x).join('、')} 的權重由程式直接產生,<b>不經過曝險/幣種檢查</b>,所以這一欄沒有數字可以給你。${SAMPLE.day} 曾以<b>人工抽樣</b>量到規則腦的實際總曝險 <b>${SAMPLE.pct}%</b>;<b>那是單一天的一次量測,不是上界</b>。${gxLine()}依 §9 不得於實驗進行中對受試者新增約束,故只更正陳述、不改變其行為。<br>`:'';})()}${(th.mdd_pct==null||th.violation_rate_pct==null)
