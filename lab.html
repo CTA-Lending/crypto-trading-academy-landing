@@ -137,6 +137,24 @@ border-radius:8px;padding:6px 9px;line-height:1.6}
 @media(prefers-reduced-motion:reduce){.lane{animation:none;opacity:1;transform:none}.bar,.prog>div{transition:none}}
 @media(max-width:560px){.lane{grid-template-columns:1fr 66px;row-gap:4px}
 .lane .who{grid-column:1/-1}.lane .val{font-size:22px}.hero{padding:20px 16px 18px}}
+/* ═══════════ 2026-09-29 學習組(獨立實驗)═══════════ */
+.learn{border:1px solid #2b3b2a;border-radius:18px;padding:22px 22px 18px;margin-bottom:22px;
+background:radial-gradient(90% 60% at 100% 0%,rgba(63,185,80,.10),transparent 60%),var(--card)}
+.learn .eyebrow{color:var(--up)}
+.lhead{font-family:var(--head);font-weight:900;font-size:clamp(20px,4vw,28px);line-height:1.3;margin:8px 0 10px}
+.pairs{display:flex;flex-direction:column;gap:8px}
+.pair{display:grid;grid-template-columns:minmax(90px,22%) 1fr 1fr minmax(84px,18%);gap:10px;align-items:center;
+background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.pair .fam{font-weight:800;color:#fff}
+.pair .cell small{display:block;color:var(--dim);font-size:11.5px}
+.pair .cell b{font-family:var(--num);font-size:22px;letter-spacing:.02em}
+.pair .gap{text-align:right;color:#c8d3e0;font-size:12.5px;line-height:1.5}
+.lnotes .who{margin-top:12px;font-weight:700;color:#fff}
+.lnotes ul{margin:6px 0 0 18px;padding:0;font-size:13px;line-height:1.7;color:#c8d3e0}
+.lnotes li small{color:var(--dim)}
+.lhow{font-size:13px;line-height:1.8;color:#c8d3e0;margin-top:8px}
+@media(max-width:560px){.pair{grid-template-columns:1fr 1fr}.pair .fam{grid-column:1/-1}
+.pair .gap{grid-column:1/-1;text-align:left}.learn{padding:18px 16px}}
 </style>
 </head>
 <body>
@@ -164,6 +182,19 @@ border-radius:8px;padding:6px 9px;line-height:1.6}
 <details class="fine tech"><summary>技術資訊(資料時間、實驗天數、協議版本)</summary>
 <div class="sub" id="sub">載入中…</div>
 </details>
+
+<!-- 🧪 學習組(PROTOCOL_LEARNING):**獨立實驗**,與上面 9 位分開記帳、分開統計、不合併排名。
+     公開原則:唯一一次正式檢定在第 365 天;之前只放描述數字,不放 p 值,不寫「有效/無效」。 -->
+<section class="learn" id="learnSec" aria-labelledby="learnHead">
+  <div class="eyebrow">🧪 另一個實驗:AI 自寫筆記 · 第一天就公開</div>
+  <h2 class="lhead" id="learnHead">給 AI 看它自己寫的筆記,隔天的模擬報酬會不會不一樣?</h2>
+  <p class="lede" id="learnLede">載入中…</p>
+  <div class="pairs" id="learnPairs"></div>
+  <p class="racenote" id="learnNote"></p>
+  <div class="status" id="learnStatus"><i></i><span>資料載入中…</span></div>
+  <details class="more"><summary>它們寫了哪些筆記(AI 自己寫的原文)</summary><div class="lnotes" id="learnNotes"></div></details>
+  <details class="more"><summary>怎麼比、規則寫在哪(開跑前寫死的登記書)</summary><div class="lhow" id="learnHow"></div></details>
+</section>
 
 <div class="card">
   <h2>🧭 這個實驗在做什麼</h2>
@@ -235,7 +266,7 @@ border-radius:8px;padding:6px 9px;line-height:1.6}
   <pre style="background:var(--card2);border:1px solid var(--line);border-radius:8px;
 padding:12px;overflow-x:auto;font-size:12px;line-height:1.7"># 一次抓齊:驗證器 + 鏈 + 鏈所保護的四個檔案
 B=https://crypto-trading-academy.com/data/shadow
-for f in verify_chain.py anchor_chain.json dashboard_data.json CHANGELOG.md PROTOCOL.md diaries.json anchor.json push_receipts.json; do curl -sO $B/$f; done
+for f in verify_chain.py anchor_chain.json dashboard_data.json CHANGELOG.md PROTOCOL.md diaries.json anchor.json push_receipts.json PROTOCOL_LEARNING.md learning_data.json; do curl -sO $B/$f; done
 
 python verify_chain.py</pre>
   <p class="foot">⚠️ 少下載任何一個檔,那一項會顯示「<b>本機沒有這個檔案</b>」—— 那是<b>沒有比對到</b>,不是「通過」。這支程式把三種結果分開:<b>通過 / 不符 / 沒有檔案可比對</b>。</p>
@@ -512,7 +543,8 @@ function cvar(v){return getComputedStyle(document.documentElement).getPropertyVa
 /* 🔴 在 fetch **之前**拍一張快照:此刻還空著的、有 id 的容器 = 等資料填的區塊。
    載入失敗時就填這些,不靠任何人維護一份手寫清單(那份清單已經漏過兩次)。 */
 const RENDER_TARGETS=[...document.querySelectorAll('div[id],canvas[id]')]
-  .filter(el=>el.tagName==='CANVAS'||!el.innerHTML.trim());
+  .filter(el=>el.tagName==='CANVAS'||!el.innerHTML.trim())
+  .filter(el=>!el.closest('#learnSec'));   // 學習組有自己的資料檔與失敗訊息,不由主實驗代填
 
 fetch('./data/shadow/dashboard_data.json?_='+Date.now())
   .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json()})
@@ -1920,6 +1952,119 @@ function drawChart(curve,brains,base,epoch2,voidedDays){
   if(curve.length<2){ctx.fillStyle=cvar('--dim');ctx.font='24px sans-serif';
     ctx.textAlign='center';ctx.fillText('實驗剛起跑,曲線將每日累積…',W/2,H/2+40);ctx.textAlign='left';}
 }
+</script>
+<script>
+/* ═══════════ 學習組(PROTOCOL_LEARNING)—— 與上面的主實驗**完全分開**的資料檔與邏輯 ═══════════
+   🔴 公開紀律(登記書 §5/§6、智囊團 R1):
+     · 唯一一次正式檢定在第 final_day 天;之前**只放描述數字**,不放 p 值、不寫「有效/無效/學會了」
+     · AI 寫的筆記是**外部文字**:一律跳脫,不准當 HTML 插入
+     · 資料過期要亮紅燈(以資料產生時間判斷),不准安靜顯示舊數字 */
+const _LFAM={gpt:'GPT',gemini:'Gemini',claude:'Claude'};
+function _lesc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function _lpct(v){return (v==null||!isFinite(v))?'—':((v>0?'+':'')+Number(v).toFixed(2)+'%');}
+function _lpct3(v){return (v==null||!isFinite(v))?'—':((v>0?'+':'')+Number(v).toFixed(3)+'%');}
+function _lpp(v){return (v>0?'+':'')+Number(v).toFixed(2)+' 個百分點';}
+const _LOUT=[['wrote','寫下筆記'],['chose_none','自己選擇不寫'],['all_rejected','寫了但全被系統拒收'],
+             ['parse_fail','格式壞掉'],['no_response','AI 沒回應']];
+function _learnRender(d, nowMs){
+  const m=(d&&d.meta)||{}, S=(d&&d.subjects)||{}, st=(d&&d.stats)||{};
+  const out={lede:'',pairs:'',note:'',status:{cls:'',text:''},notes:'',how:''};
+  const day=m.day_index||0, fin=m.final_day||365, aa=m.aa_days||7;
+  const gen=Date.parse(m.generated_utc||''), ageH=isFinite(gen)?(nowMs-gen)/3600e3:null;
+  /* 公開晚一天(本組每天跑完,隔天早上跟主實驗一起錨定推上來):正常情況資料最舊約 48 小時,
+     超過 54 小時才算停更 —— 門檻太緊會天天誤報,假警報也是傷害。 */
+  const stale=ageH==null||ageH>54;
+  const ageTxt=ageH==null?'沒有產生時間':'已經 '+Math.floor(ageH)+' 小時沒有更新';
+  const inTreat=!!m.d1 && day>aa;
+  const final=!!m.d1 && day>=fin && !!st.conclusion;
+  if(!m.d1){
+    out.lede=m.protocol_frozen
+      ?'規則已經在開跑前寫死並公開(下方連結)。開跑後,這裡每天更新(公開晚一天)。'
+      :'規則還在審查中,<b>凍結之後才會開跑</b>;審查中的草案也公開在下方連結。';
+    out.status=(m.protocol_frozen&&stale)
+      ?{cls:'red',text:'🔴 規則已凍結,但這份資料'+ageTxt+' —— 每日排程可能沒有在跑'}
+      :{cls:'',text:m.protocol_frozen?'尚未開跑':'規則審查中,尚未開跑'};
+  }else{
+    out.status=stale?{cls:'red',text:'🔴 這個實驗的資料'+ageTxt+' —— 下面的數字可能是舊的'}
+                    :{cls:'ok',text:'資料日期 '+_lesc(m.data_date)+'(每天更新,公開晚一天)'};
+    if(final){
+      out.lede=`第 <b>${fin}</b> / ${fin} 天,<b>唯一一次正式判定</b>(三句結論在開跑前就寫好,只能選一句):<br>「${_lesc(st.conclusion)}」`
+        +((st.notes||[]).length?'<br><small>'+st.notes.map(_lesc).join('<br>')+'</small>':'');
+    }else if(inTreat){
+      out.lede=`第 <b>${day}</b> / ${fin} 天。有筆記的分身每 7 天看一次自己的成績單、寫下筆記;另一個分身沒有筆記。`
+        +(st.T?`主要比較(同一天、同一個持倉狀態,「看筆記」與「拿掉筆記」各做一次決定,比隔天的模擬報酬):到目前 ${st.T} 天,平均每天差 <b>${_lpct3(st.mean_pct)}</b>。`:'')
+        +`<b>要到第 ${fin} 天才做唯一一次正式判定,現在的差距還不能下結論。</b>`;
+    }else{
+      out.lede=`第 <b>${day}</b> 天。前 ${aa} 天兩個分身都<b>還沒有筆記</b>,兩邊的差距只來自 AI 本身的隨機性(以及它造成的持倉不同)。第 ${aa+1} 天起,其中一個分身才開始看得到自己寫的筆記。`;
+    }
+  }
+  const fam=st.families||{};
+  out.pairs=Object.keys(_LFAM).map(f=>{
+    const a=S[f+'_notes']||{}, b=S[f+'_plain']||{}, fs=fam[f]||{};
+    const pick=x=>inTreat?((x.treatment||{}).total_pct):x.total_pct;
+    const va=pick(a), vb=pick(b);
+    const ga=(va!=null&&vb!=null)?(va-vb):null;
+    const ex=x=>{const e=x.exposure_latest;return (!e||e.gross_pct==null)?'':`<small>今天總曝險 ${e.gross_pct}%</small>`;};
+    // 雜訊參考:同單位(累計百分點)、逐家呈現(程式審查 P1:不能拿帶正負號的平均當雜訊大小)
+    const aaTxt=(inTreat&&fs.aa_cum_diff_pct!=null)?`<br><small>前 ${aa} 天還沒筆記時已差 ${_lpp(fs.aa_cum_diff_pct)}</small>`:'';
+    const gap=ga==null?'尚無資料'
+      :inTreat?(final?'整段期間差 ':'目前差 ')+_lpp(ga)+'<br><small>'+(final?'次要指標,判定看上面':'還不算數')+'</small>'+aaTxt
+      :'兩個分身差 '+_lpp(ga)+'<br><small>兩邊都還沒筆記,純隨機</small>';
+    return `<div class="pair"><div class="fam">${_LFAM[f]}<small style="display:block;font-weight:400;color:var(--dim);font-size:11px">${_lesc(a.model||'')}</small></div>`
+      +`<div class="cell"><small>${inTreat?'有筆記':'A 分身(尚無筆記)'}</small><b>${_lpct(va)}</b>${ex(a)}</div>`
+      +`<div class="cell"><small>${inTreat?'沒筆記':'B 分身'}</small><b>${_lpct(vb)}</b>${ex(b)}</div>`
+      +`<div class="gap">${gap}</div></div>`;
+  }).join('');
+  out.note=(inTreat?`上面是<b>第 ${aa+1} 天起</b>的累計報酬(前 ${aa} 天的隨機差距不帶進來)。兩個分身的持倉一旦不同就會各走各的路:<b>就算筆記完全沒作用,兩邊也會越差越遠</b>,所以這個累計差只是參考;正式比較用「同一天、同一個狀態」的比法。`:'')
+    +'每位從 $10,000 模擬金開始,報酬已扣模擬手續費與價差(依事先寫死的成本規則)。'
+    +' 結果只代表這三個型號、這段期間;三家型號等級與思考預算不同,<b>不比較哪一家比較好</b>。';
+  out.notes='<div class="badge">AI 自己寫給自己的筆記,<b>可能是錯的</b>;不是交易建議,也不是我們的看法。程式只檢查它有沒有引用成績單上的「第 N 日」或幣種,<b>不檢查內容對不對</b>。</div>'
+    +Object.keys(_LFAM).map(f=>{
+      const s=S[f+'_notes']||{}, ns=s.notes||[], r=s.reflections||{};
+      const act=ns.filter(n=>n.status==='active'), old=ns.filter(n=>n.status!=='active');
+      let h=`<div class="who">${_LFAM[f]} 有筆記的分身:使用中的筆記 ${act.length} 條</div>`;
+      if(r.expected){
+        const parts=_LOUT.filter(([k])=>r[k]).map(([k,t])=>`${t} ${r[k]} 次`);
+        h+=`<div style="font-size:12px;color:var(--dim)">每週檢討 ${r.done||0}/${r.expected} 次`
+          +(parts.length?':'+parts.join('、'):'')+(r.late?`(其中 ${r.late} 次是隔天補做)`:'')+'</div>';
+      }
+      if(act.length) h+='<ul>'+act.map(n=>`<li>「${_lesc(n.text)}」<br><small>第 ${_lesc(n.created_day)} 天寫(${_lesc(n.created)})· 引用:${_lesc(n.evidence)} · 到期 ${_lesc(n.expires)}</small></li>`).join('')+'</ul>';
+      if(old.length) h+=`<div style="font-size:12px;color:var(--dim);margin-top:4px">已退役或到期 ${old.length} 條(原文在公開資料檔)</div>`;
+      return h;
+    }).join('');
+  const warn=[];
+  if(m.protocol_changed_since_d1) warn.push('🔴 <b>登記書在開跑後被改過</b>(雜湊與開跑日不同)—— 修改內容必須列在登記書第 0 節');
+  if(m.code_changed_since_d1) warn.push('⚠️ 這個實驗的程式在開跑後有改動(雜湊與開跑日不同)—— 改了什麼見 CHANGELOG');
+  if(m.ledger&&m.ledger.ok===false) warn.push('🔴 <b>這個實驗的帳本雜湊鏈驗證失敗</b>');
+  if(m.input_parity_ok_today===false) warn.push('⚠️ 今天 6 位拿到的候選資料雜湊不一致');
+  if(st.error) warn.push('🔴 統計計算失敗(其他數字照常更新):'+_lesc(st.error));
+  const mm=m.models||{};
+  out.how=(warn.length?'<div class="badge">'+warn.join('<br>')+'</div>':'')
+    +'<b>一句話</b>:同一個 AI 分成兩個分身,每天看同一份行情、守同一套規則、都看得到自己的持倉;唯一差別是其中一個看得到自己寫的筆記。名字只說明它多做了什麼,<b>不代表它會變好</b> —— 外部研究裡,加了記憶反而變差的例子不少。'
+    +'<br><b>三家</b>:'+Object.keys(_LFAM).map(f=>`${_LFAM[f]}(${_lesc(mm[f]||'—')})`).join('、')+',每家一對,共 6 位;全部模擬金,零真錢。'
+    +`<br><b>怎麼判</b>:主要比較是「同一天、同一個持倉狀態」下,讓 AI 看筆記與拿掉筆記各做一次決定,比兩個決定隔天的模擬報酬(三家平均);<b>只在第 ${fin} 天檢定一次</b>,方法、參數與三種結論句都在開跑前寫死。兩個分身整段期間的報酬差是次要指標(持倉不同之後各走各的,運氣成分大)。`
+    +'<br><b>和上面 9 位的關係</b>:完全分開記帳、分開統計,不放在一起比,也不改動上面任何一位。'
+    +'<br><b>公開時間</b>:本組每天跑完後,隔天早上跟主實驗一起蓋時間章推上來,所以這裡的數字晚一天。'
+    +'<br>登記書全文:<a href="./data/shadow/PROTOCOL_LEARNING.md" style="color:var(--acc)">PROTOCOL_LEARNING.md</a>'
+    +(m.protocol_sha256?'(sha256 '+_lesc(String(m.protocol_sha256).slice(0,16))+'…,與每日錨定鏈一起蓋時間章)':'')
+    +';每日原始資料(含每一天的配置、反事實配置、所有反思原文與被拒原因):<a href="./data/shadow/learning_data.json" style="color:var(--acc)">learning_data.json</a>';
+  return out;
+}
+(function(){
+  const $=id=>document.getElementById(id);
+  fetch('./data/shadow/learning_data.json?_='+Date.now())
+  .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
+  .then(d=>{
+    const o=_learnRender(d, Date.now());
+    $('learnLede').innerHTML=o.lede; $('learnPairs').innerHTML=o.pairs; $('learnNote').innerHTML=o.note;
+    $('learnNotes').innerHTML=o.notes; $('learnHow').innerHTML=o.how;
+    const s=$('learnStatus'); s.className='status '+(o.status.cls||''); s.querySelector('span').innerHTML=o.status.text;
+  }).catch(e=>{
+    const s=$('learnStatus'); s.className='status red';
+    s.querySelector('span').textContent='🔴 學習組資料讀取失敗('+e.message+')—— 這不代表實驗沒在跑,是這一頁拿不到資料';
+    $('learnLede').textContent='';
+  });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,315 @@
+{
+ "meta": {
+  "generated_utc": "2026-09-29T21:45:50Z",
+  "data_date": null,
+  "d1": null,
+  "day_index": 0,
+  "phase": null,
+  "aa_days": 7,
+  "final_day": 365,
+  "plan_days": 365,
+  "reflect_every": 7,
+  "protocol_frozen": true,
+  "protocol_version": "L-v1.0",
+  "protocol_sha256": "5cab5eb17b5611e9deb65cad28bcca26eb507b57af22c0b81e59e88d9799f078",
+  "protocol_sha_d1": null,
+  "protocol_changed_since_d1": null,
+  "template_sha256": "bd5cb9f6b5eb1cf5436e3db6360549de759fb343433b539bcb86e1c7382a4fca",
+  "code_changed_since_d1": null,
+  "input_parity_ok_today": null,
+  "models": {
+   "gpt": "gpt-6-sol",
+   "gemini": "gemini-3.5-flash",
+   "claude": "claude-haiku-4-5-20251001"
+  },
+  "ledger": {
+   "ok": true,
+   "n": 0,
+   "head": "0000000000000000"
+  },
+  "infra_skip_today": null,
+  "first_on_odd": null,
+  "final_frozen": false,
+  "published_lag_days": 1
+ },
+ "subjects": {
+  "gpt_notes": {
+   "family": "gpt",
+   "arm": "notes",
+   "model": "gpt-6-sol",
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0,
+   "treatment": null,
+   "curve": [],
+   "violations": {
+    "output": 0,
+    "system": 0,
+    "format": 0
+   },
+   "exposure_latest": null,
+   "latest": {
+    "date": null,
+    "alloc": null,
+    "reason": null,
+    "adopted": null,
+    "counterfactual_alloc": null
+   },
+   "notes": [],
+   "reflections": {
+    "expected": 0,
+    "done": 0,
+    "late": 0,
+    "wrote": 0,
+    "chose_none": 0,
+    "all_rejected": 0,
+    "parse_fail": 0,
+    "no_response": 0
+   },
+   "cf_violations": 0
+  },
+  "gpt_plain": {
+   "family": "gpt",
+   "arm": "plain",
+   "model": "gpt-6-sol",
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0,
+   "treatment": null,
+   "curve": [],
+   "violations": {
+    "output": 0,
+    "system": 0,
+    "format": 0
+   },
+   "exposure_latest": null,
+   "latest": {
+    "date": null,
+    "alloc": null,
+    "reason": null,
+    "adopted": null
+   }
+  },
+  "gemini_notes": {
+   "family": "gemini",
+   "arm": "notes",
+   "model": "gemini-3.5-flash",
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0,
+   "treatment": null,
+   "curve": [],
+   "violations": {
+    "output": 0,
+    "system": 0,
+    "format": 0
+   },
+   "exposure_latest": null,
+   "latest": {
+    "date": null,
+    "alloc": null,
+    "reason": null,
+    "adopted": null,
+    "counterfactual_alloc": null
+   },
+   "notes": [],
+   "reflections": {
+    "expected": 0,
+    "done": 0,
+    "late": 0,
+    "wrote": 0,
+    "chose_none": 0,
+    "all_rejected": 0,
+    "parse_fail": 0,
+    "no_response": 0
+   },
+   "cf_violations": 0
+  },
+  "gemini_plain": {
+   "family": "gemini",
+   "arm": "plain",
+   "model": "gemini-3.5-flash",
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0,
+   "treatment": null,
+   "curve": [],
+   "violations": {
+    "output": 0,
+    "system": 0,
+    "format": 0
+   },
+   "exposure_latest": null,
+   "latest": {
+    "date": null,
+    "alloc": null,
+    "reason": null,
+    "adopted": null
+   }
+  },
+  "claude_notes": {
+   "family": "claude",
+   "arm": "notes",
+   "model": "claude-haiku-4-5-20251001",
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0,
+   "treatment": null,
+   "curve": [],
+   "violations": {
+    "output": 0,
+    "system": 0,
+    "format": 0
+   },
+   "exposure_latest": null,
+   "latest": {
+    "date": null,
+    "alloc": null,
+    "reason": null,
+    "adopted": null,
+    "counterfactual_alloc": null
+   },
+   "notes": [],
+   "reflections": {
+    "expected": 0,
+    "done": 0,
+    "late": 0,
+    "wrote": 0,
+    "chose_none": 0,
+    "all_rejected": 0,
+    "parse_fail": 0,
+    "no_response": 0
+   },
+   "cf_violations": 0
+  },
+  "claude_plain": {
+   "family": "claude",
+   "arm": "plain",
+   "model": "claude-haiku-4-5-20251001",
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0,
+   "treatment": null,
+   "curve": [],
+   "violations": {
+    "output": 0,
+    "system": 0,
+    "format": 0
+   },
+   "exposure_latest": null,
+   "latest": {
+    "date": null,
+    "alloc": null,
+    "reason": null,
+    "adopted": null
+   }
+  }
+ },
+ "refs": {
+  "bench_eqw_L": {
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0
+  },
+  "bench_btc_L": {
+   "equity": 10000.0,
+   "total_pct": null,
+   "mdd_pct": null,
+   "days": 0
+  }
+ },
+ "stats": {
+  "primary": "same_state_counterfactual",
+  "day_index": 0,
+  "final_day": 365,
+  "final": false,
+  "conclusion_allowed": false,
+  "T": 0,
+  "mean_pct": null,
+  "days_with_notes": 0,
+  "family_days_notes_changed_alloc": 0,
+  "cf_missing_family_days": 0,
+  "z": null,
+  "p": null,
+  "ci_pct": null,
+  "significant": null,
+  "sensitivity": null,
+  "aa": {
+   "T": 0,
+   "sd_diff_pct": null
+  },
+  "policy": {
+   "T": 0,
+   "mean_diff_pct": null,
+   "log_wealth_ratio_avg": null,
+   "z": null,
+   "p": null,
+   "ci_pct": null,
+   "p_uncalibrated": true,
+   "p_below_alpha": null,
+   "alpha_beta": null
+  },
+  "conclusion": null,
+  "conclusion_key": null,
+  "notes": [],
+  "families": {
+   "gpt": {
+    "exploratory": true,
+    "aa_days": 0,
+    "aa_sd_diff_pct": null,
+    "aa_cum_diff_pct": null,
+    "T_treatment": 0,
+    "mean_diff_pct": null,
+    "log_wealth_ratio": null,
+    "cf_T": 0,
+    "cf_mean_pct": null,
+    "cf_missing": 0,
+    "days_with_notes": 0,
+    "p": null,
+    "p_holm": null,
+    "significant": null
+   },
+   "gemini": {
+    "exploratory": true,
+    "aa_days": 0,
+    "aa_sd_diff_pct": null,
+    "aa_cum_diff_pct": null,
+    "T_treatment": 0,
+    "mean_diff_pct": null,
+    "log_wealth_ratio": null,
+    "cf_T": 0,
+    "cf_mean_pct": null,
+    "cf_missing": 0,
+    "days_with_notes": 0,
+    "p": null,
+    "p_holm": null,
+    "significant": null
+   },
+   "claude": {
+    "exploratory": true,
+    "aa_days": 0,
+    "aa_sd_diff_pct": null,
+    "aa_cum_diff_pct": null,
+    "T_treatment": 0,
+    "mean_diff_pct": null,
+    "log_wealth_ratio": null,
+    "cf_T": 0,
+    "cf_mean_pct": null,
+    "cf_missing": 0,
+    "days_with_notes": 0,
+    "p": null,
+    "p_holm": null,
+    "significant": null
+   }
+  }
+ },
+ "reflections": [],
+ "daily": []
+}
