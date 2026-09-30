@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>42 分鐘看懂全球經濟？那是 7 年前的演講：我們把答案對了一遍 — 交易幣修課</title>
+  <meta name="description" content="爆紅影片「一個億萬富翁用42分鐘講清楚全球經濟」其實是 Ray Dalio 2019 年 3 月的演講。本文用白話講清楚他的經濟機器框架（借錢循環、三個平衡、兩隻手），再用 2019–2026 的實際結果對答案：大方向猜中不少，但股市、企業獲利、央行印錢三個市場判斷全錯。最後整理新手能帶走的三個觀念。">
+  <meta name="keywords" content="Ray Dalio,達利歐,橋水基金,經濟機器,債務循環,景氣循環,央行,升息,降息,分散投資,預期,總體經濟,新手,加密貨幣,交易幣修課">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/dalio-2019-economic-machine-hindsight.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="42 分鐘看懂全球經濟？那是 7 年前的演講：我們把答案對了一遍">
+  <meta property="og:description" content="最近在 X 上被大量轉傳的「42 分鐘看懂全球經濟」，其實是 Ray Dalio 2019 年的演講。他教的經濟框架到今天還很好用，但他當年對市場的不少判斷，後來都沒有成立。我們把答案一條一條對了一遍。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/dalio-2019-economic-machine-hindsight.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/dalio-2019-scorecard.jpg">
+  <meta property="article:published_time" content="2026-09-30">
+  <meta property="article:author" content="交易幣修課研究室">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "42 分鐘看懂全球經濟？那是 7 年前的演講：我們把答案對了一遍",
+    "description": "最近在 X 上被大量轉傳的「42 分鐘看懂全球經濟」，其實是 Ray Dalio 2019 年的演講。他教的經濟框架到今天還很好用，但他當年對市場的不少判斷，後來都沒有成立。我們把答案一條一條對了一遍。",
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "image": "https://crypto-trading-academy.com/blog/assets/dalio-2019-scorecard.jpg",
+    "author": {"@type": "Organization", "name": "交易幣修課研究室", "url": "https://crypto-trading-academy.com/"},
+    "publisher": {"@type": "Organization", "name": "交易幣修課 Crypto Trading Academy", "url": "https://crypto-trading-academy.com/"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://crypto-trading-academy.com/blog/dalio-2019-economic-machine-hindsight.html"},
+    "inLanguage": "zh-TW"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="../index.html" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="../index.html" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+  <style>
+    /* 手機版:欄數多的表格改為可橫向捲動,避免整頁被撐出橫向捲軸 */
+    .article-body .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    @media (max-width: 640px) {
+      .article-body table.data-table { font-size: 0.8125rem; }
+      .article-body .data-table th,
+      .article-body .data-table td { padding: 0.55rem 0.4rem; white-space: nowrap; }
+      .article-body .data-table td:first-child,
+      .article-body .data-table th:first-child { white-space: normal; }
+      .article-body h2 { font-size: 1.45rem; }
+    }
+  </style>
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="../index.html" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">42 分鐘經濟課對答案</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">市場研究 ｜ 經濟框架 × 7 年後對答案</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">42 分鐘看懂全球經濟？<br class="hidden md:block"><span class="text-slate-400 text-2xl md:text-3xl">那是 7 年前的演講：我們把答案對了一遍</span></h1>
+      <p class="text-lg text-slate-400 mb-6">最近在 X 上被大量轉傳的「42 分鐘看懂全球經濟」，其實是 Ray Dalio 2019 年的演講。他教的經濟框架到今天還很好用，但他當年對市場的不少判斷，後來都沒有成立。我們把答案一條一條對了一遍。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-09-30</span><span>•</span><span>⏱ 閱讀約 12 分鐘</span><span>•</span><span>✍️ 交易幣修課研究室</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <p><strong>先講結論，三句話：</strong></p>
+
+    <ol>
+  <li>最近在 X 上被大量轉傳的「一個億萬富翁用 42 分鐘講清楚全球經濟」，講者是橋水基金創辦人<strong>達利歐（Ray Dalio）</strong>，時間是 <strong>2019 年 3 月</strong>，不是現在。</li>
+  <li>他教的「經濟是怎麼運作的」那套想法，到今天還是很好用，值得學。</li>
+  <li>但他當年對市場的不少判斷，後來都沒有成立。這正好說明一件事：<strong>看懂經濟，不等於知道什麼時候該買、什麼時候該賣。</strong></li>
+</ol>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/dalio-2019-scorecard.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/dalio-2019-scorecard.jpg?v=1" alt="三欄對照表：左欄綠色「猜對了」列出降息空間越來越小、中美科技衝突、民粹抬頭；中欄黃色「對一半」列出景氣走到後段、撐著股市的順風要轉成逆風、中國市場變大；右欄紅色「猜錯了」列出企業利潤率會下滑、央行印錢買資產的順風會減弱、柯賓上台。底部寫著他看對了政策方向，卻沒猜對市場：政府紓困和央行買債先撐住了股市，後來企業獲利也回升並創新高" class="w-full h-auto" loading="eager">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">Ray Dalio 2019 年 3 月演講裡的判斷，拿 2019–2026 年的實際結果對照。資料：聯準會、NBER、BEA、FRED、英國選舉結果等公開資料，本站整理，截至 2026-09-29。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>一、這支影片到底是什麼？</h2>
+
+    <ul>
+  <li><strong>講者</strong>：Ray Dalio，橋水基金的創辦人。橋水是全球規模最大的「避險基金」之一——簡單說，就是專門幫退休基金、大機構管理大筆資金的投資公司。</li>
+  <li><strong>時間地點</strong>：2019 年 3 月，阿布達比一家投資顧問公司（Liwa Capital）辦的活動，台下是他們的客戶。</li>
+  <li><strong>原片</strong>：主辦單位 2020 年就把完整影片放上 YouTube 了（<a href="https://www.youtube.com/watch?v=_hf5tCnJye0" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">原片連結&#8599;</a>）。</li>
+</ul>
+
+    <p>最近在網路上流傳的，是中文字幕的轉貼版本，<strong>沒有寫講者是誰，也沒有寫是哪一年</strong>。</p>
+
+    <p>這一點很重要。因為演講裡他說的「現在」，指的是 2019 年。拿來跟今天比，幾乎全部不一樣了：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>他在影片裡說的「現在」（2019 年）</th>
+    <th>2026 年的實際狀況</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>美國利率約 2.5%，再降到零就沒得降了</td>
+    <td>美國央行（聯準會）9 月剛<strong>升息</strong>到 3.75–4%</td>
+  </tr>
+  <tr>
+    <td>景氣已經好了 9 年，走到後段</td>
+    <td>那一輪景氣 <strong>2020 年 2 月就結束了</strong></td>
+  </tr>
+  <tr>
+    <td>歐洲利率是零，日本是負的</td>
+    <td>歐洲央行今年兩度升息到 2.5%，日本 2024 年就結束負利率</td>
+  </tr>
+  <tr>
+    <td>英國的柯賓很可能上台</td>
+    <td>柯賓在 <strong>2019 年 12 月的大選大敗</strong></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>所以看這支影片的第一件事：<strong>把它當成一堂 2019 年的經濟課，不要當成現在的新聞。</strong></p>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>二、他怎麼看經濟：一台會自己轉的機器</h2>
+
+    <p>這是整支影片最有價值的部分。我們用最白話的方式講一遍。</p>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/dalio-economic-machine.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <img src="assets/dalio-economic-machine.jpg?v=1" alt="左邊是六個步驟的循環圖：利率低借錢容易、大家借錢來花、景氣變好東西變貴、央行升息踩煞車、借錢變難開始還錢、景氣變差央行降息，再回到第一步，中央寫著今天多借明天就要多還。右邊是往下的階梯：每次景氣不好就降息、一輪輪常常越降越低、降到接近零傳統降息沒空間、央行改印錢買債政府也可能出手。底部說明央行調利率印錢、政府花錢課稅" class="w-full h-auto" loading="lazy">
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">Dalio 眼中的經濟：小循環是一般說的景氣好壞，大循環是一輪輪降息疊上去，直到傳統降息沒有空間。簡化示意，並非每一輪都照這個順序走。本站依 2019 年演講內容白話整理。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <h3>最重要的零件：借錢</h3>
+
+    <p>達利歐說，長期來看，最重要的是大家越來越會做事、做得越來越有效率。但這件事變得很慢，你每天感受不到。</p>
+
+    <p><strong>你每天感受到的景氣好壞，主要是「借錢」在推。</strong></p>
+
+    <p>道理很簡單：</p>
+
+    <ul>
+  <li>今天借錢，今天就可以<strong>多花</strong>，景氣就變好。</li>
+  <li>但借來的錢明天要還，明天就得<strong>少花</strong>，景氣就變差。</li>
+</ul>
+
+    <p>所以景氣會一上一下，像呼吸一樣。這叫<strong>小循環</strong>，也就是一般說的「景氣好、景氣壞」。他在這場演講裡說大約 7 到 10 年走一輪（他在其他場合也說過 5 到 8 年——<strong>這個循環沒有固定的時鐘</strong>，後面會再講到這點）。</p>
+
+    <h3>小循環疊起來，就是大循環</h3>
+
+    <p>景氣變差的時候，央行通常會降利率，讓大家比較容易借錢，把景氣拉回來。</p>
+
+    <p>達利歐觀察到的是：一輪一輪下來，利率常常越降越低。降到接近零的時候，<strong>傳統的降息就沒什麼空間了</strong>。這時候央行可能改成印錢去買債券——等於把錢放進金融市場（不是直接發給一般人）；政府也可能出手花錢。</p>
+
+    <p>他說，2008 年的金融海嘯，和 1930 年代的大蕭條，都走到了這一步。這叫<strong>大循環</strong>，幾十年才走一輪。</p>
+
+    <h3>三個要維持的平衡</h3>
+
+    <p>他看任何一個國家，都會先檢查三件事有沒有失衡：</p>
+
+    <ol>
+  <li><strong>借的錢，不能長得比賺的錢快。</strong></li>
+</ol>
+
+    <p>否則長期下來，還錢的壓力會愈來愈大，最後就得調整。</p>
+
+    <ol>
+  <li><strong>經濟不能太熱，也不能太冷。</strong></li>
+</ol>
+
+    <p>太熱，東西會一直變貴，央行就會踩煞車；太冷，大家沒工作，央行就會踩油門。</p>
+
+    <ol>
+  <li><strong>冒比較大的風險，應該要有機會賺比較多。</strong></li>
+</ol>
+
+    <p>一般來說，大家會期待股票賺得比債券多、債券（借錢給政府或公司、收利息的憑證）賺得比放銀行多。如果不是這樣，錢就不會往那邊流。<strong>但要注意：這是「期待」，不是保證。</strong></p>
+
+    <h3>兩隻可以出手的手</h3>
+
+    <p>當這三個平衡出問題，能出手調整的有兩隻手：</p>
+
+    <ul>
+  <li><strong>央行這隻手</strong>：調利率、印錢。</li>
+  <li><strong>政府這隻手</strong>：花錢、課稅。</li>
+</ul>
+
+    <p>他說，只要你知道現在走到循環的哪一段，就大概能猜到接下來會發生什麼。</p>
+
+    <p><strong>這句話，我們要打個問號。</strong> 下一節就是答案。</p>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>三、7 年後對答案</h2>
+
+    <p>我們把演講裡他對世界的具體判斷一條一條拿出來，用 2019 到 2026 年實際發生的事核對。</p>
+
+    <h3>他猜對的</h3>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>他在 2019 年說</th>
+    <th>後來發生的事</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>央行能降息的空間越來越小，美國從 2.5% 降到零就沒了</td>
+    <td class="safe">2020 年疫情爆發，聯準會兩週內就把利率降到接近零。接著美國國會通過了約 4 兆美元的紓困措施，央行也大量買進公債</td>
+  </tr>
+  <tr>
+    <td>中國會挑戰美國，主戰場是科技（他點名 5G 和華為）</td>
+    <td class="safe">兩個月後，華為就被美國列入制裁名單；2022 年美國再對先進運算晶片與相關設備實施出口管制</td>
+  </tr>
+  <tr>
+    <td>貧富差距會讓「民粹」抬頭（民粹：主打「一般人對抗菁英」的政治訴求）</td>
+    <td class="safe">方向對：2024 到 2025 年，美國和歐洲的民粹政黨在多場選舉大有斬獲，例如德國極右派得票翻倍</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>補充一點：「下一步光靠央行不夠，得靠政府和央行一起出手」這個判斷，他在這場演講裡只點到為止；<strong>同一年 7 月他另寫了一篇文章講得很明白</strong>。2020 年的政策組合，幾乎就是照這個方向走的。</p>
+
+    <h3>他對一半的</h3>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>他在 2019 年說</th>
+    <th>實際情況</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>景氣已經走到後段</td>
+    <td class="warn">11 個月後景氣真的結束了，但原因是<strong>疫情</strong>，不是他說的「央行踩煞車」。當時聯準會其實正在降息</td>
+  </tr>
+  <tr>
+    <td>民粹會左右兩邊一起來</td>
+    <td class="warn">並不是左右兩邊同步勝出：柯賓在 2019 年英國大選落敗，桑德斯沒有拿到 2020 年民主黨的總統提名；2024 到 2025 年，則是右派民粹在多國選舉表現特別突出</td>
+  </tr>
+  <tr>
+    <td>過去撐著股市的順風，要轉成逆風了</td>
+    <td class="warn">逆風後來確實出現了（例如 2022 年大幅升息、債券大跌），但沒有擋住股市：美國股市的代表指數「標普 500」，從 2019 年 3 月底的 2,834 點漲到 2026 年 9 月 28 日的 7,684 點，<strong>七年半漲了約 171%</strong>（不含股息）</td>
+  </tr>
+  <tr>
+    <td>中國市場會越來越大、越來越重要</td>
+    <td class="warn">規模確實擴大了（總市值 2019 年約 8.6 兆美元，2025 年約 15.5 兆美元）。但規模變大，不等於股價表現好：中國股市的代表指數「滬深 300」，從 2019 年底到 2026 年 9 月 29 日只漲了約 6%（未計股息）。至於是否「更重要」，光看一個指數沒辦法判斷</td>
+  </tr>
+  <tr>
+    <td>央行印錢買資產帶來的順風，會減弱</td>
+    <td class="warn">先是相反：演講後一年內，聯準會就大量買債，手上的資產（主要是買進的公債等）從約 4 兆美元<strong>擴大到 2022 年的約 9 兆</strong>。之後 2022 到 2025 年確實縮減了約 2.4 兆，但主要是為了對付高通膨，不是他當年講的理由；到 2026 年 9 月，規模仍比演講時大約 7 成</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <h3>他猜錯的</h3>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>他在 2019 年說</th>
+    <th>實際情況</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>企業的利潤率會下滑</td>
+    <td class="danger">相反。美國標普 500 大企業的淨利率（每賣 100 元，最後留下多少利潤），從 2019 年約 11%，升到 2026 年第一季的 <strong>14.8%</strong>，在當時創下 2009 年有統計以來新高（第二季的初步數字 15.7% 還更高）。換另一把尺（全美企業獲利占整體經濟的比例）看，2026 年第二季也創下 1947 年以來新高</td>
+  </tr>
+  <tr>
+    <td>英國的柯賓很可能上台</td>
+    <td class="danger">2019 年 12 月大選，柯賓的工黨只拿 202 席，保守黨拿 365 席，大敗</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <h3>值得注意的反差</h3>
+
+    <p>他在 3 月的演講指出降息空間有限，7 月又另文主張政府和央行要一起出手——這個政策方向，他看對了。</p>
+
+    <p>但政府紓困、央行買債，<strong>反而先把市場撐住了</strong>；後來企業獲利回升、不斷創新高，也推著股價往上走。</p>
+
+    <p><strong>猜對政策方向，不等於猜對股市。</strong> 這是這場演講留給我們最有價值的一課。</p>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>四、為什麼框架是對的，預測卻錯了？</h2>
+
+    <p>我們認為原因有三個。</p>
+
+    <p><strong>第一，這套框架是地圖，不是時鐘。</strong></p>
+
+    <p>它可以告訴你「現在大概在哪裡」，但沒辦法告訴你「幾月幾號會轉彎」。一個小例子：他在 2018 年 9 月就說景氣走到「第七局」，半年後的這場演講，還是說「第七局」。局數沒有前進，就代表這個比喻沒辦法拿來計時。</p>
+
+    <p><strong>第二，它沒辦法預料意外。</strong></p>
+
+    <p>2020 年的疫情、2022 年的俄烏戰爭，都不是從借錢的循環裡長出來的。達利歐本人在 2020 年的報告裡也承認，他沒料到把景氣打斷的會是疫情。</p>
+
+    <p><strong>第三，他借用的歷史劇本，後來沒有照著演。</strong></p>
+
+    <p>演講裡他把 2008 年之後的復甦，比作 1932 到 1937 年：經濟慢慢回升，央行一收緊，1937 年就再掉回衰退。</p>
+
+    <p>但 2022 到 2023 年，聯準會大幅升息，美國並沒有陷入衰退。2020 年代反而出了另一個問題：物價暴漲，2022 年 6 月美國通膨衝到 9.1%，是 40 年來最高。劇本不一樣，押注的方向自然也跟著偏了。</p>
+
+    <div class="insight-card my-8">
+<p><strong>達利歐現在在看什麼？</strong></p>
+
+    <p>他的重心已經從 2019 年的「利率到零、央行沒子彈」，轉到了「<strong>政府債務與利息負擔愈來愈重</strong>」。2025 年他出版的新書《How Countries Go Broke》（國家是怎麼破產的），講的就是這件事。</p>
+
+    <p>換句話說，連他本人都在更新自己的看法。<strong>7 年前的影片，不能當成他今天的觀點。</strong></p>
+</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>五、你可以帶走的三件事</h2>
+
+    <p>框架拿來預測會失準，但裡面有幾個觀念，到今天都很好用。這三件事，不管你是投資股票、加密貨幣，還是管理自己的錢，都用得上。</p>
+
+    <h3>第一件：看債，不只看賺多少</h3>
+
+    <p>判斷一個國家、一家公司，甚至你自己的財務狀況，先問一句：</p>
+
+    <div class="pull-quote"><strong>借的錢，是不是長得比賺的錢還快？</strong></div>
+
+    <p>如果是，現在看起來再風光，都可能只是在提前花未來的錢。這是整場演講最站得住、到今天也沒過時的一句話。</p>
+
+    <h3>第二件：重點不是好消息，是「比大家想的好還是差」</h3>
+
+    <p>很多新手會想：「新聞說經濟很好，那股票應該會漲吧？」</p>
+
+    <p>達利歐說，價格早就反映了大家的預期。真正會讓價格動的，是<strong>結果比預期好，還是比預期差</strong>。</p>
+
+    <p>2022 年和 2023 年就是很好的例子：</p>
+
+    <ul>
+  <li><strong>2022 年</strong>：聯準會在 2021 年底預估，2022 年通膨大約 2.6%；到 2022 年底，它自己估計實際約 5.6%（用另一個常用指標 CPI 看，年中最高衝到 9.1%）。遠比預期糟，那一年美國股票跌了約 18%（含股息）、債券跌了約 13%，一起跌。</li>
+  <li><strong>2023 年</strong>：聯準會原本預估經濟只會成長 0.5%（以「第四季比前一年第四季」計算）；用同一把尺量，實際成長約 3.4%，比原先預估好很多。同一年，美國股市即使在利率 5% 以上的高點，仍漲了約 26%（含股息）。</li>
+</ul>
+
+    <p>這兩個例子不能證明股市只因為一個原因漲跌，但都說明了一件事：<strong>只看新聞好不好、利率高不高，都不足以判斷漲跌；要看結果「比大家以為的」好還是差。</strong></p>
+
+    <h3>第三件：漲過的東西可能只是變貴了，不一定是好東西</h3>
+
+    <p>達利歐說，大部分投資人最大的錯誤，是<strong>把「最近漲很多」當成「這是好投資」</strong>。其實它可能只是變貴了。</p>
+
+    <p>有數據可以參考：研究機構晨星統計，截至 2024 年的十年間，投資人平均每年比自己買的基金少賺約 1.2 個百分點，主要原因之一就是買賣的時間點不好——常常漲完才進場。</p>
+
+    <p>幣圈的朋友應該很有感：2021 年 11 月比特幣在 6.9 萬美元左右的高點追進的人，隔年帳面一度跌了約 76%。</p>
+
+    <p><strong>但也要公平說</strong>：不是所有漲過的都會跌。這幾年美國的大型科技公司一直漲，是因為它們真的越賺越多。所以關鍵不是「漲過沒有」，而是<strong>賺錢的能力有沒有跟上價格</strong>。</p>
+
+    <h3>附帶一件：什麼才叫真的分散？</h3>
+
+    <p>達利歐很強調「分散投資」，但他講的分散，不是「多買幾樣」，而是<strong>找不會一起漲、一起跌的東西</strong>。</p>
+
+    <p>他舉了一個例子：美國的股票之間，大多數時候會一起動。所以你買 100 檔、1,000 檔，風險也不會比買 5 到 10 檔低多少，因為它們本來就常常一起漲跌。</p>
+
+    <p>套到幣圈來看（這是我們的延伸推論，不是他演講裡講的）：<strong>如果你手上有 15 個幣，但它們全都跟著比特幣一起漲、一起跌，那不叫分散，只是同一個賭注押了 15 次。</strong></p>
+
+    <p>不過也要提醒兩件事：</p>
+
+    <ul>
+  <li>他在演講裡說，找到 15 個完全不相關的投資，風險可以降將近 80%。在「每個投資的波動都一樣、彼此完全不相關」的理想情況下，實際算出來大約是 74%。他講得稍微滿了一點，而且現實中很難做到完全不相關。</li>
+  <li>真正遇到危機時，很多平常不會一起動的東西，會突然一起跌。2022 年股票和債券同時大跌，就是這樣。連他自家的「全天候」配置（他在演講裡稱為最理想的分散組合），那一年也跌了約 22%（以橋水其中一個常被引用的版本計），比常見的「六成股票、四成債券」全球組合（約 −16%）還多。一年的成績不足以否定整套方法，但足以說明：<strong>分散能降低風險，但沒辦法保證不虧。</strong></li>
+</ul>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>六、想看原版的話</h2>
+
+    <p>如果你想自己看，建議直接看原版，而不是轉了好幾手的剪輯：</p>
+
+    <ul>
+  <li><strong>這場演講的原片</strong>（2019 年，42 分鐘，英文）：<a href="https://www.youtube.com/watch?v=_hf5tCnJye0" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">YouTube 連結&#8599;</a></li>
+  <li><strong>達利歐官方動畫《經濟機器是怎麼運作的》</strong>（2013 年，31 分鐘）：演講前半段的完整版，講得更清楚。<a href="https://www.youtube.com/watch?v=PHe0bXAIuk0" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">YouTube 連結&#8599;</a></li>
+  <li><strong>官方動畫《變化中的世界秩序》</strong>（2022 年，43 分鐘）：演講裡「國家興衰、貨幣換位」那段的完整版。<a href="https://www.youtube.com/watch?v=xguam0TKMw8" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">YouTube 連結&#8599;</a></li>
+</ul>
+
+    <p>這些都是免費的。網路上說它「比讀 20 萬美元的 MBA 還值得」，是行銷的說法：一場 42 分鐘的演講，本來就不能跟一整套商學院課程比，而且同樣的內容，他自己早就免費公開了。</p>
+
+    <div class="pull-quote">大師的地圖值得收藏。<br>但地圖不會告訴你明天會不會下雨，<br>也不會告訴你什麼時候該出門。</div>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>資料來源</h2>
+
+    <ul>
+  <li>演講內容：<a href="https://www.youtube.com/watch?v=_hf5tCnJye0" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Liwa Capital 官方原片&#8599;</a>（2019 年 3 月），本站自行逐字轉錄</li>
+  <li>同年「政府和央行要一起出手」的文章：<a href="https://www.linkedin.com/pulse/its-time-look-more-carefully-monetary-policy-3-mp3-modern-ray-dalio" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Ray Dalio, It's Time to Look More Carefully at "Monetary Policy 3"（2019 年 7 月）&#8599;</a></li>
+  <li>美國升息與利率：<a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">聯準會 2026 年 9 月 16 日決議&#8599;</a></li>
+  <li>景氣起訖：<a href="https://www.nber.org/research/business-cycle-dating" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">美國經濟研究局（NBER）景氣循環日期&#8599;</a></li>
+  <li>標普 500 淨利率：<a href="https://insight.factset.com/sp-500-reporting-highest-net-profit-margin-in-more-than-15-years-2" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">FactSet（2026 年 7 月 28 日）&#8599;</a></li>
+  <li>全美企業獲利占經濟比例：<a href="https://fred.stlouisfed.org/series/CPATAX" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">FRED：CPATAX&#8599;</a> 除以 <a href="https://fred.stlouisfed.org/series/GDP" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">FRED：GDP&#8599;</a></li>
+  <li>2023 年實際經濟成長（第四季比前一年第四季）：<a href="https://fred.stlouisfed.org/series/A191RO1Q156NBEA" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">FRED：A191RO1Q156NBEA&#8599;</a></li>
+  <li>標普 500 點數：<a href="https://fred.stlouisfed.org/series/SP500" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">FRED：SP500&#8599;</a></li>
+  <li>聯準會資產規模：<a href="https://fred.stlouisfed.org/series/WALCL" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">FRED：WALCL&#8599;</a></li>
+  <li>2022、2023 年的預估與實際：<a href="https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20211215.htm" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">聯準會 2021 年 12 月經濟預測&#8599;</a>、<a href="https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20221214.htm" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">2022 年 12 月經濟預測&#8599;</a>、<a href="https://www.bls.gov/opub/ted/2022/consumer-prices-up-9-1-percent-over-the-year-ended-june-2022-largest-increase-in-40-years.htm" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">美國勞工統計局 CPI 9.1%&#8599;</a></li>
+  <li>英國 2019 年大選結果：<a href="https://electoral-reform.org.uk/2019-general-election-results/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Electoral Reform Society&#8599;</a></li>
+  <li>中國上市公司總市值（2019、2025 年）：<a href="https://data.worldbank.org/indicator/CM.MKT.LCAP.CD?locations=CN" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">世界銀行：上市公司總市值&#8599;</a></li>
+  <li>滬深 300 指數（2019 年底收 4,096.58；2026 年 9 月 29 日收 4,345.21）：<a href="https://www.csindex.com.cn/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">中證指數公司&#8599;</a></li>
+  <li>歐洲央行利率：<a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">ECB 主要利率&#8599;</a></li>
+  <li>投資人少賺的缺口：<a href="https://www.wealthmanagement.com/investing-strategies/morningstar-investors-miss-out-on-15-of-fund-total-returns" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">晨星 Mind the Gap 研究（報導）&#8599;</a></li>
+  <li>全天候配置 2022 年表現：<a href="https://www.markovprocesses.com/blog/risk-parity-not-performing-blame-the-weather/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Markov Processes&#8599;</a></li>
+  <li>達利歐承認沒料到疫情：<a href="https://asiabusinesscouncil.org/wp-content/uploads/2020/10/The-Changing-World-Order_Ray-Dalio.pdf" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">The Changing World Order（2020 年報告）&#8599;</a></li>
+</ul>
+
+    <hr class="border-slate-800 my-10">
+
+    <h2>風險提示</h2>
+
+    <ol>
+  <li><strong>本文是教育內容，不構成任何投資建議。</strong> 我們不推薦任何資產、基金、配置方式或買賣時點。</li>
+  <li>文中提到「全天候配置」與橋水基金，<strong>僅引用其歷史表現來說明分散投資的限制</strong>，不構成推薦、買賣建議，也不代表對其未來表現的判斷。</li>
+  <li>本文 2019 年的說法，出自達利歐 2019 年 3 月的演講（以及文中註明的同年文章）。2026 年的數字<strong>各自標了日期</strong>，多為 2026 年 9 月 28–29 日。來源見上方「資料來源」，由本站自行整理。</li>
+  <li>市場數字變動很快，閱讀時請留意日期。</li>
+  <li>歷史表現不代表未來。加密貨幣與股票都可能大幅波動，甚至損失全部本金。請只用你輸得起的錢，並自己做最後的決定。</li>
+</ol>
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href="liquidity-tide-1997-2026-playbook.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">市場研究 · 歷史劇本</div>
+        <div class="font-bold text-white text-sm">重讀 1997：當流動性退潮，誰先裸泳？</div>
+      </a>
+      <a href="kondratieff-wave-trader-notes-2026.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">市場研究 · 長週期</div>
+        <div class="font-bold text-white text-sm">我為什麼在直播中講康波——一個交易者的長週期思考札記</div>
+      </a>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">大師的地圖值得收藏，<span class="text-amber-400">但出門的時間要自己看</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">看懂經濟是一回事，知道什麼時候該動是另一回事。<br>後者靠的是看價格本身，不是看誰的名氣大。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../course.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">裸 K 關鍵價位課程 &rarr;</a>
+        <a href="trading-demons-05-fomo.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">交易心魔：FOMO</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文為<strong>教育內容，不構成任何投資建議</strong>，不推薦任何資產、基金、配置方式或買賣時點。文中對 Ray Dalio 2019 年演講的引述與 2019–2026 年的對照，僅用於說明經濟框架的用途與限制，<strong>不代表對任何人物、機構或金融商品的評價或推薦</strong>。所有數字均標明來源與日期，市場變化快速，請留意時效。<strong>過去績效不代表未來收益</strong>，加密貨幣與股票皆可能大幅波動，甚至損失全部本金。請參閱本站<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@qtk1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../course.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">裸 K 關鍵價位課程 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
