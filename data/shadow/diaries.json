@@ -1,6 +1,167 @@
 {
   "days": [
     {
+      "day": "2026-10-01",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 36.6,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "QNT": 12.5,
+            "AKE": 12.5,
+            "BR": 12.5,
+            "ONE": 12.5,
+            "LSK": 12.5,
+            "NEAR": 12.5,
+            "USELESS": -12.5,
+            "RAYSOL": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -0.98,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 22.0,
+            "ETH": 17.0,
+            "BNB": 12.0,
+            "LINK": 8.0,
+            "NEAR": 3.0,
+            "UNI": 5.0,
+            "ADA": 4.0,
+            "XAU": -3.0,
+            "ENA": 3.0,
+            "XRP": 3.0,
+            "SOL": -3.0,
+            "HYPE": -2.0
+          },
+          "reason": "續抱核心多單，小幅增持BNB、減持高波動的NEAR；保留小額空單及15%現金。",
+          "outcome": 0.69,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "NEAR": 10.0,
+            "UNI": 10.0,
+            "BTC": 10.0,
+            "TAO": 5.0,
+            "LINK": 5.0,
+            "QNT": 5.0,
+            "BEAT": -10.0,
+            "CYS": -10.0,
+            "ARB": -5.0
+          },
+          "reason": "汰弱留強：平倉HYPE，減持弱勢多頭TAO與LINK。保留強勢NEAR、UNI，引入做空弱勢CYS與做多強勢QNT，維持曝險70%。",
+          "outcome": 0.34,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 15.74573910514492,
+            "AKE": 5.856452133198745,
+            "SUI": 2.997589879689351,
+            "WLD": 3.2712039457520015,
+            "ARB": -5.960865550977862,
+            "SOL": -7.81968802008138,
+            "ENA": 4.129720686535284,
+            "ETH": 8.894051424880542,
+            "TAO": 3.858441734321516,
+            "DOGE": 1.9848988197819477,
+            "UNI": 6.89741126928804,
+            "RAYSOL": -1.9946872454215545,
+            "USELESS": -1.932772897254153,
+            "QNT": 4.273763908033882,
+            "AVAX": 4.969740102052747,
+            "NEAR": 9.743384952475754,
+            "LINK": 2.7344396130733215,
+            "ZEC": -3.8277673587812817,
+            "CYS": -3.0196357541412993
+          },
+          "reason": "維持多頭核心(BTC/ETH/NEAR)穩健配置。減少邊界小額高波動部位(SUI-3%→0%),新增ADA/BNB低風險做多。做空保留高位(SOL/ARB/ZEC)對沖。總曝險99%,迴旋空間應對波動。",
+          "outcome": 1.67,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 22.0,
+            "ETH": 18.0,
+            "BNB": 15.0,
+            "SOL": 12.0,
+            "LINK": 9.0,
+            "NEAR": 4.0,
+            "UNI": 3.0,
+            "SUI": 2.0
+          },
+          "reason": "保留核心持倉，減碼近期漲幅大、波動高的NEAR、UNI及SUI；提高BTC、ETH比重，留15%現金。",
+          "outcome": 0.58,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 8.0,
+            "BNB": 5.0,
+            "NEAR": 4.0,
+            "UNI": 3.0,
+            "AVAX": 3.0,
+            "TAO": 2.0,
+            "ENA": 2.0,
+            "ADA": 2.0,
+            "LINK": 2.0,
+            "WLD": 1.0,
+            "DOGE": 1.0,
+            "XRP": 1.0,
+            "SOL": -3.0,
+            "ZEC": -2.0,
+            "ARB": -1.0,
+            "ONDO": -1.0,
+            "XAU": -1.0,
+            "HYPE": -1.0
+          },
+          "reason": "保持核心多頭(BTC/ETH/BNB)穩定;微調超漲部位(SOL減做空)避免擁擠踩踏;ZEC/ARB維持防禦;現金42%預備低吸高波動機會。",
+          "outcome": 0.5,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.0,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "QNT": 10.0,
+            "AKE": 10.0,
+            "BR": 10.0,
+            "ONE": 10.0,
+            "LSK": 10.0,
+            "NEAR": 10.0,
+            "USELESS": 10.0,
+            "RAYSOL": 10.0,
+            "ARB": 10.0,
+            "ENA": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -1.06,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-09-30",
       "next_day": null,
       "crowding": {
@@ -12002,5 +12163,5 @@
       }
     }
   ],
-  "total_days": 70
+  "total_days": 71
 }
