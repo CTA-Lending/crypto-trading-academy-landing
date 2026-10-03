@@ -2004,7 +2004,11 @@ function _learnRender(d, nowMs){
     const pick=x=>inTreat?((x.treatment||{}).total_pct):x.total_pct;
     const va=pick(a), vb=pick(b);
     const ga=(va!=null&&vb!=null)?(va-vb):null;
-    const ex=x=>{const e=x.exposure_latest;return (!e||e.gross_pct==null)?'':`<small>今天總曝險 ${e.gross_pct}%</small>`;};
+    /* 登記書 §8:「叫不到 AI」屬我方基建事件,不算 AI 違規,但天數要另外揭露。
+       2026-10-03 GPT 帳戶額度用完時才發現:資料檔一直有這個數字,頁面沒印 → 讀者只看到報酬不動、不知道為什麼。 */
+    const ex=x=>{const e=x.exposure_latest, v=x.violations||{};
+      return ((!e||e.gross_pct==null)?'':`<small>今天總曝險 ${e.gross_pct}%</small>`)
+        +(v.system?`<small>我方叫不到 AI ${v.system} 天(當天維持原倉,不算 AI 違規)</small>`:'');};
     // 雜訊參考:同單位(累計百分點)、逐家呈現(程式審查 P1:不能拿帶正負號的平均當雜訊大小)
     const aaTxt=(inTreat&&fs.aa_cum_diff_pct!=null)?`<br><small>前 ${aa} 天還沒筆記時已差 ${_lpp(fs.aa_cum_diff_pct)}</small>`:'';
     const gap=ga==null?'尚無資料'
