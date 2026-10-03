@@ -1,6 +1,167 @@
 {
   "days": [
     {
+      "day": "2026-10-03",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 28.0,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "QNT": 12.5,
+            "LSK": 12.5,
+            "ONE": 12.5,
+            "BR": 12.5,
+            "NEAR": 12.5,
+            "MOVR": 12.5,
+            "RAYSOL": -12.5,
+            "AKE": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -1.55,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "LINK": 7.837180217591866,
+            "ENA": 1.9471547570579986,
+            "SOL": -2.020445903835877,
+            "XRP": 3.00975475818669,
+            "XAU": -3.0028529543262032,
+            "ADA": 4.034986578082637,
+            "BNB": 12.036295601382285,
+            "NEAR": 0.9809148552601347,
+            "BTC": 23.090151350218015,
+            "UNI": 5.0653933481935765,
+            "ETH": 16.913791885649136,
+            "HYPE": -2.0538694892863774
+          },
+          "reason": "",
+          "outcome": -0.53,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "QNT": 15.0,
+            "LSK": 5.0,
+            "NEAR": 10.0,
+            "UNI": 10.0,
+            "BTC": 10.0,
+            "CYS": -15.0,
+            "BEAT": -10.0
+          },
+          "reason": "平倉轉空之LINK與TAO；加碼強勢QNT與空頭CYS並增配LSK。維持BTC、NEAR、UNI與BEAT空頭控險。",
+          "outcome": -0.42,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 16.0,
+            "ETH": 9.0,
+            "NEAR": 9.0,
+            "SOL": -7.0,
+            "UNI": 7.0,
+            "AKE": 6.0,
+            "ARB": -6.0,
+            "AVAX": 5.0,
+            "TAO": -4.0,
+            "QNT": 4.0,
+            "ENA": 4.0,
+            "ZEC": -3.0,
+            "WLD": 3.0,
+            "CYS": -3.0,
+            "SUI": -3.0,
+            "LINK": -3.0,
+            "RAYSOL": -2.0,
+            "DOGE": 2.0,
+            "USELESS": -2.0
+          },
+          "reason": "持倉獲利45%,趨勢偏弱。調整:縮減高波動多單(QNT/LSK/ONE)避免峰值賣壓;做空信號強(ZEC/LINK/SUI/CYS)但資金費高,微幅加碼;TAO從多改空(7%反轉到-4%),降整體曝險至94%留緩衝。近日震盪加劇,保守應對。",
+          "outcome": -0.08,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "LINK": 8.812327557204048,
+            "BNB": 15.037690210827506,
+            "SOL": 12.116487901262927,
+            "NEAR": 2.941242562684803,
+            "BTC": 23.07836593084822,
+            "UNI": 3.0376847557266116,
+            "ETH": 17.899580049125344,
+            "SUI": 2.0148690777874707
+          },
+          "reason": "",
+          "outcome": -0.48,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 8.0,
+            "BNB": 5.0,
+            "SOL": 3.0,
+            "AVAX": 3.0,
+            "UNI": 3.0,
+            "NEAR": 3.0,
+            "ADA": 2.0,
+            "ENA": 2.0,
+            "WLD": 2.0,
+            "DOGE": 2.0,
+            "XRP": 1.0,
+            "PUMP": 2.0,
+            "MOVR": 2.0,
+            "LINK": -2.0,
+            "TAO": -2.0,
+            "HYPE": -1.0,
+            "ONDO": -1.0,
+            "ZEC": -1.0,
+            "ARB": -1.0,
+            "XAU": -1.0
+          },
+          "reason": "持久守護:降低擁擠(28%→分散)。增持基礎層(NEAR、SOL、PUMP、MOVR),清減低信號做空部位(TAO、LINK轉空)。保留BTC/ETH/BNB穩定,控總曝險53%。現金47%應對波動。",
+          "outcome": -0.28,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.16,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "QNT": 10.0,
+            "LSK": 10.0,
+            "ONE": 10.0,
+            "BR": 10.0,
+            "NEAR": 10.0,
+            "MOVR": 10.0,
+            "RAYSOL": 10.0,
+            "AKE": 10.0,
+            "USELESS": 10.0,
+            "ZEC": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -1.79,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-02",
       "next_day": null,
       "crowding": {
@@ -12323,5 +12484,5 @@
       }
     }
   ],
-  "total_days": 72
+  "total_days": 73
 }
