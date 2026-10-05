@@ -1,6 +1,165 @@
 {
   "days": [
     {
+      "day": "2026-10-05",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 28.6,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "QNT": 12.5,
+            "ONE": 12.5,
+            "LSK": 12.5,
+            "RAYSOL": 12.5,
+            "AKE": 12.5,
+            "NEAR": 12.5,
+            "MOVR": 12.5,
+            "SAND": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -4.17,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 24.0,
+            "ETH": 18.0,
+            "BNB": 12.0,
+            "SOL": 5.0,
+            "UNI": 3.0,
+            "ADA": 2.0,
+            "XRP": 2.0,
+            "XAU": -3.0,
+            "HYPE": -2.0
+          },
+          "reason": "小幅加碼BTC、ETH、SOL，微減ADA；其餘續抱。保留空單對沖及29%現金，因近期損益反覆。",
+          "outcome": 0.85,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "QNT": 10.0,
+            "ONE": 10.0,
+            "LSK": 10.0,
+            "RAYSOL": 5.0,
+            "NEAR": 10.0,
+            "BTC": 10.0,
+            "UNI": 10.0,
+            "CYS": -10.0,
+            "BEAT": -10.0
+          },
+          "reason": "加碼強勢幣 ONE 並建倉 RAYSOL；減持高波動空頭 CYS 並平倉 HYPE，以控管風險並維持多頭優勢。",
+          "outcome": -0.18,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 16.8,
+            "ETH": 9.6,
+            "SOL": 8.1,
+            "NEAR": 9.5,
+            "UNI": 7.5,
+            "AVAX": 5.4,
+            "ENA": 4.5,
+            "QNT": 4.4,
+            "WLD": 3.4,
+            "DOGE": 2.6,
+            "AKE": 4.0,
+            "RAYSOL": 3.5,
+            "ADA": 2.5,
+            "ARB": -5.5,
+            "TAO": -3.4,
+            "SUI": -2.6,
+            "LINK": -2.5,
+            "ZEC": -2.0,
+            "CYS": -1.5,
+            "USELESS": -1.0
+          },
+          "reason": "持倉近52週漲46%,強勢多頭環境。維持核心長倉(BTC/ETH/SOL),增持強勢小幣(QNT/RAYSOL/AKE)。減少ZEC/USELESS空單風險,降空曝險至16.5%,保留對沖。曝險98%→97%。",
+          "outcome": 0.19,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 28.0,
+            "ETH": 20.0,
+            "BNB": 14.0,
+            "SOL": 9.0,
+            "LINK": 6.0,
+            "UNI": 2.0,
+            "NEAR": 1.0,
+            "SUI": 1.0
+          },
+          "reason": "加碼相對低波動的BTC、ETH；減持BNB、LINK及漲幅過大的NEAR，其餘維持，留19%現金。",
+          "outcome": 0.85,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 8.0,
+            "BNB": 5.0,
+            "SOL": 3.0,
+            "UNI": 3.0,
+            "NEAR": 3.0,
+            "AVAX": 3.0,
+            "ADA": 2.0,
+            "DOGE": 2.0,
+            "ENA": 2.0,
+            "WLD": 2.0,
+            "PUMP": 1.5,
+            "MOVR": 1.5,
+            "XRP": 1.0,
+            "TAO": -1.5,
+            "LINK": -1.0,
+            "ZEC": -0.5,
+            "ARB": -0.5,
+            "ONDO": -0.5
+          },
+          "reason": "現金 43% 維持緩衝。減做空部位(TAO/LINK/ZEC)降風險,TAO信號轉弱。PUMP/MOVR小增強多頭布局。單位減量控制擁擠,保留現金應對黑天鵝。",
+          "outcome": 0.39,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 1.75,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "QNT": 10.0,
+            "ONE": 10.0,
+            "LSK": 10.0,
+            "RAYSOL": 10.0,
+            "AKE": 10.0,
+            "NEAR": 10.0,
+            "MOVR": 10.0,
+            "SAND": 10.0,
+            "SUI": 10.0,
+            "ARB": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -3.41,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-04",
       "next_day": null,
       "crowding": {
@@ -12643,5 +12802,5 @@
       }
     }
   ],
-  "total_days": 74
+  "total_days": 75
 }
