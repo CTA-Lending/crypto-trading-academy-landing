@@ -1,6 +1,158 @@
 {
   "days": [
     {
+      "day": "2026-10-08",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 21.7,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "QNT": 12.5,
+            "ONE": 12.5,
+            "MOVR": 12.5,
+            "NEAR": 12.5,
+            "LSK": 12.5,
+            "RAYSOL": 12.5,
+            "SAND": 12.5,
+            "AKE": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": 2.25,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 27.0,
+            "ETH": 20.0,
+            "BNB": 13.0,
+            "ADA": 4.0,
+            "HYPE": 3.0,
+            "XRP": 2.0,
+            "AVAX": 3.0,
+            "XAU": -3.0
+          },
+          "reason": "平掉轉為空訊號的SOL、UNI多單；續抱核心多倉與XAU空單，少量配置AVAX，保留25%現金。",
+          "outcome": -2.45,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "QNT": 10.0,
+            "ONE": 10.0,
+            "NEAR": 10.0,
+            "LSK": 8.0,
+            "RAYSOL": 10.0,
+            "BEAT": -10.0,
+            "CYS": -10.0
+          },
+          "reason": "維持強勢多頭QNT、ONE、NEAR、LSK及RAYSOL，續抱獲利空單BEAT與CYS，小幅微調比例以控制風險。",
+          "outcome": 0.84,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 16.0,
+            "NEAR": 10.0,
+            "ETH": 9.0,
+            "QNT": 8.0,
+            "AVAX": 5.0,
+            "RAYSOL": 5.0,
+            "ENA": 5.0,
+            "AKE": 5.0,
+            "WLD": 4.0,
+            "ADA": 3.0,
+            "DOGE": 2.0,
+            "HYPE": 3.0,
+            "PUMP": 1.0,
+            "ONE": 8.0,
+            "MOVR": 3.0
+          },
+          "reason": "平倉高風險空單(SOL/-8%、UNI/-6.8%、TAO/-1.9%、LINK/-1.5%),轉增配超高報酬多頭(QNT +280%、ONE +198%、MOVR +135%)。強化小額高波動資產,減輕獲利部位槓桿。總曝險92→87%,保留靈活度應對回調。",
+          "outcome": -2.21,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 32.0,
+            "ETH": 20.0,
+            "BNB": 15.0,
+            "SOL": 10.0,
+            "LINK": 4.0,
+            "SUI": 2.0,
+            "UNI": 2.0
+          },
+          "reason": "保留核心持倉，略增BTC與SOL；NEAR急漲且波動高，清倉並略減ETH、LINK，保留15%現金。",
+          "outcome": -2.63,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 8.0,
+            "BNB": 5.0,
+            "NEAR": 3.0,
+            "AVAX": 3.0,
+            "ADA": 2.0,
+            "WLD": 1.5,
+            "ENA": 1.5,
+            "PUMP": 1.0,
+            "DOGE": 1.0,
+            "XRP": 1.0,
+            "MOVR": 1.0,
+            "RAYSOL": 1.5,
+            "SAND": 1.5,
+            "SOL": -2.0,
+            "UNI": -2.0,
+            "TAO": -1.0,
+            "LINK": -0.5,
+            "ZEC": -0.5,
+            "ONDO": -0.5,
+            "ARB": -0.5
+          },
+          "reason": "多數部位浮盈,縮減擁擠(SOL/UNI空倉平半),補強距底遠的QNT/ONE/LSK小部位;現金維持35%防守。近5日波動偏負,不追高。",
+          "outcome": -1.21,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -2.68,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "QNT": 10.0,
+            "ONE": 10.0,
+            "MOVR": 10.0,
+            "NEAR": 10.0,
+            "LSK": 10.0,
+            "RAYSOL": 10.0,
+            "SAND": 10.0,
+            "AKE": 10.0,
+            "PUMP": 10.0,
+            "ENA": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 1.3,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-07",
       "next_day": null,
       "crowding": {
@@ -13109,5 +13261,5 @@
       }
     }
   ],
-  "total_days": 77
+  "total_days": 78
 }
