@@ -1,6 +1,153 @@
 {
   "days": [
     {
+      "day": "2026-10-11",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 24.6,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "QNT": 12.5,
+            "STRK": 12.5,
+            "RLC": 12.5,
+            "ONE": 12.5,
+            "MOVR": 12.5,
+            "NEAR": 12.5,
+            "LSK": 12.5,
+            "SAND": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -1.03,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 25.0,
+            "ETH": 12.0,
+            "BNB": 8.0
+          },
+          "reason": "近期連虧，減碼現有BTC、ETH、BNB，保留55%現金；暫不追高或放空。",
+          "outcome": 0.3,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "RLC": 10.0,
+            "RAYSOL": 10.0,
+            "NEAR": 10.0,
+            "QNT": 8.0,
+            "ONE": 5.0,
+            "BEAT": -5.0,
+            "CYS": -8.0,
+            "BTC": 10.0
+          },
+          "reason": "出清超高波動LSK並減碼BEAT與ONE控管風險，加碼BTC提高穩定度，續抱強勢多單。",
+          "outcome": 0.05,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 16.6,
+            "ETH": 9.1,
+            "NEAR": 10.3,
+            "QNT": 9.7,
+            "ONE": 7.9,
+            "RAYSOL": 5.2,
+            "AKE": 5.0,
+            "MOVR": 3.4,
+            "SAND": 2.9,
+            "PUMP": 1.0,
+            "XRP": 2.0,
+            "ENA": -3.0,
+            "AVAX": -3.0,
+            "WLD": -2.5,
+            "DOGE": -1.5,
+            "ADA": -1.5,
+            "HYPE": -1.5
+          },
+          "reason": "保留核心贏家(BTC+37%、QNT+272%)。減碼空倉規模(ENA/AVAX/WLD從12.3%降至8%)平衡多空。ONE/LSK/STRK極端波動(278-719%)維持低位。現金微調至5%,總曝險92%,應對高波動環境。",
+          "outcome": -0.53,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 30.0,
+            "BNB": 12.0,
+            "ETH": 10.0,
+            "SOL": 6.0,
+            "LINK": 4.0
+          },
+          "reason": "近期多日虧損，保留BTC、BNB、ETH及LINK；SOL由8%降至6%，清掉高波動SUI，留38%現金。判斷可能有誤。",
+          "outcome": 0.44,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 8.0,
+            "QNT": 6.0,
+            "BNB": 5.0,
+            "RLC": 5.0,
+            "NEAR": 4.0,
+            "MOVR": 3.0,
+            "RAYSOL": 2.0,
+            "XRP": 2.0,
+            "SAND": 2.0,
+            "PUMP": 1.0,
+            "STRK": 3.0,
+            "LINK": -2.0,
+            "SOL": -2.0,
+            "AVAX": -1.0,
+            "WLD": -1.0,
+            "TAO": -1.0,
+            "UNI": -1.0,
+            "ENA": -1.0,
+            "ADA": -1.0
+          },
+          "reason": "多頭堆積(QNT+RLC超漲)、空頭擁擠(SOL/AVAX/LINK同向)。增STRK高成長,減SOL/AVAX單邊做空,鎖利潤。現金保留30%應急。",
+          "outcome": -0.37,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.5,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "QNT": 10.0,
+            "STRK": 10.0,
+            "RLC": 10.0,
+            "ONE": 10.0,
+            "MOVR": 10.0,
+            "NEAR": 10.0,
+            "LSK": 10.0,
+            "SAND": 10.0,
+            "AKE": 10.0,
+            "RAYSOL": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.97,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-10",
       "next_day": null,
       "crowding": {
@@ -13552,5 +13699,5 @@
       }
     }
   ],
-  "total_days": 80
+  "total_days": 81
 }
