@@ -1,6 +1,155 @@
 {
   "days": [
     {
+      "day": "2026-10-13",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 23.7,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "QNT": 12.5,
+            "RLC": 12.5,
+            "STRK": 12.5,
+            "ONE": 12.5,
+            "NEAR": 12.5,
+            "MOVR": 12.5,
+            "SAND": -12.5,
+            "AKE": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -8.94,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 23.0,
+            "ETH": 8.0,
+            "XAU": 10.0,
+            "BNB": 6.0
+          },
+          "reason": "近期連虧，略減BTC、ETH、BNB，增持低波動XAU；保留53%現金，避免追逐暴漲幣。",
+          "outcome": -1.42,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": 10.0,
+            "QNT": 10.0,
+            "RLC": 10.0,
+            "NEAR": 10.0,
+            "RAYSOL": 8.0,
+            "STRK": 6.0,
+            "CYS": -6.0,
+            "BEAT": -5.0
+          },
+          "reason": "近期績效持續回升，維持多頭強勢幣(QNT、RLC、NEAR)與 BTC 核心，微調 RAYSOL 與做空部位適度加碼以鎖定收益。",
+          "outcome": -5.46,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 18.0,
+            "NEAR": 11.0,
+            "QNT": 10.0,
+            "ETH": 10.0,
+            "ONE": 8.0,
+            "RAYSOL": 5.0,
+            "AKE": 5.0,
+            "MOVR": 3.0,
+            "XRP": 2.0,
+            "PUMP": 2.0,
+            "AVAX": -3.0,
+            "ENA": -3.0,
+            "SAND": -3.0,
+            "WLD": -2.0,
+            "DOGE": -2.0,
+            "HYPE": -1.0,
+            "ADA": -1.0
+          },
+          "reason": "強多勢續抱領頭(BTC/QNT/NEAR/ETH),加碼高動能新秀(ONE/AKE),PUMP轉多接力;空頭維持小部位對沖,避免過度做多。曝險84%,現金緩衝應變。近期震盪,謹慎看待。",
+          "outcome": -3.44,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 30.0,
+            "BNB": 10.0,
+            "SOL": 5.0,
+            "ETH": 4.0,
+            "SUI": 3.0,
+            "LINK": 4.0
+          },
+          "reason": "小幅降低現有BTC、SOL、ETH、SUI倉位，維持BNB與LINK；不追高波動漲幅，保留44%現金。",
+          "outcome": -2.53,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": 8.0,
+            "BNB": 5.0,
+            "QNT": 5.0,
+            "RLC": 4.0,
+            "NEAR": 4.0,
+            "STRK": 2.0,
+            "XAU": 2.0,
+            "XRP": 2.0,
+            "MOVR": 2.0,
+            "RAYSOL": 2.0,
+            "ENA": -3.0,
+            "SOL": -2.0,
+            "LINK": -2.0,
+            "AVAX": -2.0,
+            "ADA": -2.0,
+            "TAO": -2.0,
+            "SAND": -2.0,
+            "UNI": -2.0,
+            "DOGE": -1.0
+          },
+          "reason": "止血擁擠(23.7%重疊過高)。PUMP平倉(獲利落袋)。減做空曝險(8%→16%),均衡牛熊。保留高勢多頭(QNT/RLC/STRK),增ENA做空(27.54%距關鍵價)。現金維持35%應急。",
+          "outcome": -2.89,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -2.71,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "QNT": 10.0,
+            "RLC": 10.0,
+            "STRK": 10.0,
+            "ONE": 10.0,
+            "NEAR": 10.0,
+            "MOVR": 10.0,
+            "SAND": 10.0,
+            "AKE": 10.0,
+            "ENA": 10.0,
+            "SUI": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -11.15,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-12",
       "next_day": null,
       "crowding": {
@@ -13848,5 +13997,5 @@
       }
     }
   ],
-  "total_days": 82
+  "total_days": 83
 }
