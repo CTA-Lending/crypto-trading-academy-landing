@@ -1,6 +1,31 @@
 {
- "days": 47,
+ "days": 48,
  "records": [
+  {
+   "asOf": "2026-10-17",
+   "changeD1": -9.4,
+   "changeD14": -23.5,
+   "changeD30": -27.3,
+   "changeD7": -19.3,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-10-18T01:36:28Z",
+   "layers": {
+    "B": 37.7,
+    "L": 42.2,
+    "R": 44.3,
+    "S": 6.0,
+    "V": 62.7
+   },
+   "revision": 1,
+   "score": 37.7,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "btc_led",
+   "stageDesc": "資金集中在 BTC，山寨普遍落後",
+   "stageName": "BTC 主導",
+   "universeCount": 390,
+   "universeVersion": "universe-v1.1"
+  },
   {
    "asOf": "2026-10-16",
    "changeD1": -5.3,
@@ -1202,5 +1227,5 @@
    "universeVersion": "universe-v1.1"
   }
  ],
- "records_total": 48
+ "records_total": 49
 }
