@@ -1,6 +1,146 @@
 {
   "days": [
     {
+      "day": "2026-10-19",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 18.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "Q": 12.5,
+            "AGT": 12.5,
+            "QNT": 12.5,
+            "RLC": 12.5,
+            "MOVR": 12.5,
+            "SAND": 12.5,
+            "STRK": 12.5,
+            "AKE": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -4.87,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": 27.0,
+            "XAU": 18.0,
+            "BNB": 7.0
+          },
+          "reason": "續抱現有三倉，維持52%曝險；近期損益震盪，不追高波動小幣，保留現金。",
+          "outcome": 0.38,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": 12.0,
+            "NEAR": 8.0,
+            "QNT": 5.0,
+            "BEAT": -5.0,
+            "CYS": -5.0
+          },
+          "reason": "整體權益回撤，控制曝險於35%。保留多頭強勢幣(BTC/NEAR/QNT)並微調BTC，續抱BEAT與CYS空單避險。",
+          "outcome": 0.8,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 18.0,
+            "QNT": 12.0,
+            "NEAR": 11.0,
+            "ETH": 10.0,
+            "AKE": 8.0,
+            "ONE": 7.0,
+            "RLC": 5.0,
+            "MOVR": 4.0,
+            "STRK": 3.0,
+            "XRP": 3.0,
+            "RAYSOL": -2.0,
+            "AVAX": -2.0,
+            "SAND": -1.0,
+            "ENA": -1.0
+          },
+          "reason": "保持核心多頭(BTC/QNT/NEAR/ETH)穩健配置,現金11%用於機會。近日波動大(-2.27%),降低高波幅AKE/ONE。做空部位輕倉管理,總曝險89%穩健。趨勢信號強但估值已深漲,守勢為主。",
+          "outcome": -0.31,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 30.0,
+            "BNB": 10.0,
+            "ETH": 5.0,
+            "SOL": 5.0,
+            "NEAR": 3.0,
+            "SUI": 2.0
+          },
+          "reason": "微調現有持倉，清掉LINK；避開暴漲且高波動幣，保留45%現金。",
+          "outcome": 0.53,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": -5.0,
+            "QNT": 8.0,
+            "BNB": 4.0,
+            "NEAR": 4.0,
+            "XRP": 3.0,
+            "RLC": 4.0,
+            "XAU": 2.0,
+            "SUI": -3.0,
+            "ENA": -2.0,
+            "STRK": 2.0,
+            "MOVR": 2.0,
+            "SAND": 2.0,
+            "SOL": -2.0,
+            "TAO": -2.0,
+            "LINK": -3.0,
+            "ZEC": -5.0,
+            "AVAX": -3.0
+          },
+          "reason": "減少擁擠(族群重疊 18.3%)。做空高波動 ETH/ZEC/LINK 收資金費。強化 QNT/RLC 多單(規則+趨勢)。維持 BTC 核心。現金留 35% 緩衝波動。總曝險 65%,抗回撤。",
+          "outcome": -0.09,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.88,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "Q": 10.0,
+            "AGT": 10.0,
+            "QNT": 10.0,
+            "RLC": 10.0,
+            "MOVR": 10.0,
+            "SAND": 10.0,
+            "STRK": 10.0,
+            "AKE": 10.0,
+            "NEAR": 10.0,
+            "ONE": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.9,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-18",
       "next_day": null,
       "crowding": {
@@ -14715,5 +14855,5 @@
       }
     }
   ],
-  "total_days": 88
+  "total_days": 89
 }
