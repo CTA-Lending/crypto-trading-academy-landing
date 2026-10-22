@@ -5,14 +5,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-10-20 這一天，山寨市場的溫度是 46.0 分（滿分 100），處在「收縮」的狀態，也就是比特幣以外的幣多半在跌，而且買賣的熱度也跟著縮小。從一個月來看，分數掉了 15.7 分，最近七天也再降了 8.8 分，整體是一路降溫的走勢。\n\n拆開來看，流動性只有 37.8 分、資金輪動 39.7 分、市場廣度 45.6 分，意思是市場上流動的錢變少、資金也沒怎麼往比特幣以外的幣跑，能跑贏比特幣的幣不多。相對高一點的是現貨訂單流 53.3 分和波動與結構 64.3 分，表示真正成交的買單還算有，各種幣的走勢也比較各走各的。這些數字是把 390 種幣一起算出來的結果。"
+  "text": "2026-10-21 這一天，比特幣以外的那些加密貨幣整體溫度只有 44.3 分（滿分 100），處在「收縮」的狀態，也就是這些幣普遍在跌，而且買賣的熱度也跟著縮水。往回看，這個溫度在過去 30 天掉了 21.1 分，光是最近 7 天就掉了 8.4 分，降溫的感覺相當明顯。\n\n拆開來看五個面向，流動性只有 34.6、資金輪動 38.4，代表市場上在流動的錢變少了，大家也沒什麼興趣把錢從比特幣挪到其他幣；現貨訂單流 45.2、市場廣度 48.1，表示真正成交的買單不算踴躍，能跑贏比特幣的幣也不到一半。相對高一點的是波動與結構 66.2，意思是這 389 種幣的走勢比較像是一起行動，而不是各走各的路。"
  },
- "asOf": "2026-10-20",
- "changeD1": 2.3,
- "changeD14": -11.0,
- "changeD30": -15.7,
- "changeD7": -8.8,
- "dataAsOfUtc": "2026-10-21T01:35:54Z",
+ "asOf": "2026-10-21",
+ "changeD1": -1.7,
+ "changeD14": -6.0,
+ "changeD30": -21.1,
+ "changeD7": -8.4,
+ "dataAsOfUtc": "2026-10-22T01:34:42Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -40,50 +40,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 51,
+ "forwardLogDays": 52,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 52,
+ "forwardLogRecords": 53,
  "layers": {
-  "B": 45.6,
-  "L": 37.8,
-  "R": 39.7,
-  "S": 53.3,
-  "V": 64.3
+  "B": 48.1,
+  "L": 34.6,
+  "R": 38.4,
+  "S": 45.2,
+  "V": 66.2
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 37.8
+   "score": 34.6
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 39.7
+   "score": 38.4
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 45.6
+   "score": 48.1
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 53.3
+   "score": 45.2
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 64.3
+   "score": 66.2
   }
  ],
- "publishedAtUtc": "2026-10-21T06:00:15Z",
+ "publishedAtUtc": "2026-10-22T06:00:16Z",
  "revision": 1,
- "score": 46.0,
+ "score": 44.3,
  "scoreVersion": "score-v1.0",
  "stageCode": "contraction",
  "stageDesc": "山寨普遍下跌且成交量萎縮",
  "stageName": "收縮",
- "universeCount": 390,
+ "universeCount": 389,
  "universeVersion": "universe-v1.1"
 }
