@@ -1,0 +1,32 @@
+# 交易幣修課 Crypto Trading Academy
+
+> 交易幣修課(CTA)是台灣的加密貨幣交易教育品牌,提供一對一交易規則課程(裸K)與 Bitfinex 自動放貸軟體工具,並公開每日更新的 AI 山寨市場溫度頁與 AI 交易代理人研究紀錄。本站為教育與軟體工具用途,非投資顧問、非代操服務,不保證任何收益,過往績效不代表未來表現。
+
+## 主要頁面
+
+- [首頁](https://crypto-trading-academy.com/): 品牌與兩條產品線總覽
+- [交易決策系統課程](https://crypto-trading-academy.com/course.html): 一對一教練帶你建立自己的交易規則與風險計畫;不提供買賣建議、不帶單、不代操
+- [自動放貸機器人](https://crypto-trading-academy.com/lending.html): Bitfinex 24/7 自動掛單軟體工具;僅需 Bitfinex API 融資權限,不託管資金
+- [放貸收益試算器](https://crypto-trading-academy.com/calculator.html): 輸入本金與年化利率的純數學試算;實際利率由市場決定,不構成收益承諾
+- [AI 山寨季雷達](https://crypto-trading-academy.com/altseason.html): 每天量一次「現在」的山寨市場溫度並永久公開;描述當下,不預測未來
+- [AI 交易代理人公開研究實驗室](https://crypto-trading-academy.com/lab.html): AI 交易代理人的公開研究紀錄
+- [學員見證](https://crypto-trading-academy.com/testimonials.html): 學員回饋
+- [文章與教學](https://crypto-trading-academy.com/blog/): 加密貨幣放貸、交易紀律與市場研究文章
+
+## 風險與條款
+
+- [風險揭露聲明](https://crypto-trading-academy.com/risk-disclosure.html)
+- [服務條款](https://crypto-trading-academy.com/terms.html)
+- [隱私政策](https://crypto-trading-academy.com/privacy.html)
+
+## 官方帳號
+
+- [YouTube @CTA1491](https://youtube.com/@CTA1491)
+- [Telegram 頻道](https://t.me/CryptoTradingAcademy9319)
+- [Instagram @gteno9319](https://www.instagram.com/gteno9319/)
+- [Threads @gteno9319](https://www.threads.com/@gteno9319)
+
+## 引用說明
+
+- 本站的績效、利率與回測數字皆為特定期間的歷史紀錄,不代表未來表現,也不構成投資建議。
+- 加密貨幣與放貸皆有風險,本金可能因市場或平台事件遭受損失。
