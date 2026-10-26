@@ -11,15 +11,15 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性 — 交易幣修課</title>
-  <meta name="description" content="深入分析 Bitfinex 放貸利率為何長期維持 12-17% 年化報酬，遠超銀行定存與其他交易所。了解背後的市場結構、安全機制、USD 與 USDT 差異，以及如何透過自動化工具最大化收益。">
+  <title>為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與風險 — 交易幣修課</title>
+  <meta name="description" content="解析影響 Bitfinex 放貸利率的因素，以及放貸方要承擔的風險。文中年化約 8%～15% 為過往經驗區間，非回測；過去表現不代表未來收益；浮動利率，不構成收益承諾。">
   <meta name="keywords" content="Bitfinex放貸利率,Bitfinex lending rate,放貸利率,融資放貸利率,Bitfinex被動收入,放貸安全性,USD放貸,USDT放貸,放貸機器人">
   <link rel="canonical" href="https://crypto-trading-academy.com/blog/why-bitfinex-lending-rate-so-high.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性">
-  <meta property="og:description" content="深入分析 Bitfinex 放貸利率為何長期維持 12-17% 年化報酬，了解背後的市場結構、安全機制與實務操作建議。">
+  <meta property="og:title" content="為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與風險">
+  <meta property="og:description" content="解析影響 Bitfinex 放貸利率的因素，以及放貸方要承擔的風險。文中年化約 8%～15% 為過往經驗區間，非回測；過去表現不代表未來收益；浮動利率，不構成收益承諾。">
   <meta property="og:url" content="https://crypto-trading-academy.com/blog/why-bitfinex-lending-rate-so-high.html">
   <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
   <meta property="og:locale" content="zh_TW">
@@ -32,8 +32,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性",
-    "description": "深入分析 Bitfinex 放貸利率為何長期維持 12-17% 年化報酬，了解背後的市場結構、安全機制與實務操作建議。",
+    "headline": "為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與風險",
+    "description": "解析影響 Bitfinex 放貸利率的因素，以及放貸方要承擔的風險。文中年化約 8%～15% 為過往經驗區間，非回測；過去表現不代表未來收益；浮動利率，不構成收益承諾。",
     "datePublished": "2026-04-08",
     "dateModified": "2026-04-08",
     "author": {
@@ -226,7 +226,7 @@
   <header class="relative hero-bg py-12 overflow-hidden">
     <div class="starfield"></div>
     <div class="relative max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性</h1>
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與風險</h1>
       <div class="flex items-center gap-4 text-sm text-slate-400">
         <time datetime="2026-04-08">2026 年 4 月 8 日</time>
         <span class="text-slate-600">|</span>
@@ -239,118 +239,117 @@
   <article class="py-12">
     <div class="max-w-3xl mx-auto px-4 article-body text-slate-300 leading-relaxed">
 
-      <p>如果你曾經在各大加密貨幣平台比較過放貸（Lending）利率，一定會注意到一件事：<strong class="text-white">Bitfinex 的放貸利率長期明顯高於其他平台</strong>。年化報酬率動輒 12% 以上，牛市時期甚至可以飆破三位數。這不禁讓人好奇 — 為什麼差這麼多？這麼高的利率安全嗎？本文將從市場結構、用戶組成和安全機制三個維度，帶你理解這個現象背後的真正原因。</p>
+      <p>如果你曾經在各大加密貨幣平台比較過放貸（Lending）利率，可能會覺得 <strong class="text-white">Bitfinex 的融資放貸利率，跟一般交易所的活期理財看起來差很多</strong>。不過兩者的資金用途、計息條件和風險都不同，不能只看表面利率比較優劣。牛市時，短期利率還可能大幅跳升。為什麼會這樣？這樣的利率又伴隨哪些風險？本文從市場結構、借款需求和風險機制三個角度，整理我們目前的理解。</p>
 
       <!-- Section 1 -->
       <h2 class="text-2xl font-bold text-white">Bitfinex 放貸利率到底有多高？</h2>
 
-      <p>先來看具體數字。以 USD（美元）放貸為例，Bitfinex 上的長期平均年化利率大約落在 <strong class="text-white">12% 至 17%</strong> 之間。這個數字在不同的市場周期會有波動，但即便是在 2022 到 2023 年的加密貨幣熊市期間，利率依然維持在年化 15% 到 30% 的區間。而到了牛市行情啟動時，短期利率衝上年化 100% 以上也並不罕見。</p>
+      <p>先來看數字。以 USD（美元）放貸為例，依我們的過往經驗，並參考同類工具公開的成績，Bitfinex 的年化利率大約落在 <strong class="text-white">8% 至 15%</strong> 之間。這是經驗區間，不是回測結果，也不是 Bitfinex 全市場的統計（過去表現不代表未來收益；浮動利率，不構成收益承諾）。實際利率會隨市場周期明顯波動，市場清淡時可能更低；需求突然升高時，短期利率也可能在短時間內大幅跳升，但短期高點換算成年化，不代表能持續一整年。</p>
 
-      <p>這個數字有多驚人？讓我們做個橫向比較：</p>
+      <p>放在其他常見選項旁邊看，比較容易看出它的位置。下面只比較性質，不比高低——各產品的期限、流動性和本金風險都不同：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">美國國債殖利率</strong> — 目前約 4-5%，被視為全球最安全的投資之一</li>
-        <li><strong class="text-white">Binance 活期理財</strong> — USDT 活期年化約 2-3%，鎖倉產品稍高但通常不超過 6%</li>
-        <li><strong class="text-white">其他主流交易所理財</strong> — 年化大多在 2-5% 之間徘徊</li>
-        <li><strong class="text-white">Bitfinex 放貸</strong> — 扣除平台手續費（15%）和資金閒置時間後，實際長期年化仍可達約 12%</li>
+        <li><strong class="text-white">美國公債</strong> — 殖利率隨利率環境變動，被視為信用風險很低的資產之一，但持有到期前價格與匯率仍會波動</li>
+        <li><strong class="text-white">交易所活期理財</strong> — 利率、額度上限、分級條件與優惠期限依平台及產品而異</li>
+        <li><strong class="text-white">銀行定存</strong> — 可能採固定或機動利率，最低存款、提前解約條件與適用保障依銀行和產品而異</li>
+        <li><strong class="text-white">Bitfinex 放貸</strong> — 利率浮動；一般融資掛單的手續費是利息的 15%（以官方當期費率表為準），資金也可能有閒置時間，實際到手會低於掛單利率</li>
       </ul>
 
-      <p>換句話說，即使考慮了所有摩擦成本，Bitfinex 放貸的實際報酬率仍然是其他主流平台的 <strong class="text-white">2 到 4 倍</strong>。這自然引出了下一個問題：為什麼？</p>
+      <p>換句話說，Bitfinex 放貸不是「比較好的存款」，而是另一種風險結構不同的工具。那它的利率會受哪些因素影響？</p>
 
       <!-- Section 2 -->
-      <h2 class="text-2xl font-bold text-white">為什麼利率能比其他平台高這麼多？</h2>
+      <h2 class="text-2xl font-bold text-white">哪些因素會影響 Bitfinex 的融資利率？</h2>
 
-      <p>答案藏在 Bitfinex 獨特的用戶結構和市場定位中。</p>
+      <p>常見的解釋有下面幾個。它們都是市場觀察與推論，不是官方說明，也還沒有足夠的公開資料可以證明哪一個是主因：</p>
 
-      <h3 class="text-xl font-bold text-amber-400">大戶主導的市場生態</h3>
+      <h3 class="text-xl font-bold text-amber-400">使用者結構（推論）</h3>
 
-      <p>與 Binance、OKX 等以散戶為主的交易所不同，Bitfinex 的用戶組成明顯偏向<strong class="text-white">大額交易者和機構用戶</strong>。一個有趣的數據可以佐證這一點：Bitfinex 的 BTC 儲備量大約是 Binance 的 60%，但其交易量市佔率卻不到 5%。這意味著 Bitfinex 上存放著大量資金，但交易頻率相對低 — 典型的機構和巨鯨行為模式。</p>
+      <p>一般認為，Bitfinex 的使用者較偏向<strong class="text-white">大額交易者與專業交易者</strong>，而且站內有成熟的保證金交易與融資市場，借款需求相對集中。我們沒有可公開核對的使用者組成統計，所以請把這點當成推論。</p>
 
-      <h3 class="text-xl font-bold text-amber-400">逆向操作的借款需求</h3>
+      <h3 class="text-xl font-bold text-amber-400">槓桿需求推動利率</h3>
 
-      <p>這些大戶的交易行為和散戶截然不同。當市場恐慌、散戶紛紛離場時，大戶往往反向操作 — 他們會在恐慌時期借入大量資金進行槓桿做多。這種「別人恐懼我貪婪」的操作風格，創造了<strong class="text-white">即使在熊市也持續存在的高額借款需求</strong>。</p>
+      <p>融資利率本質上是借款需求和放貸供給的價格。市場劇烈波動、想加槓桿的人變多時，借款需求上升，利率就可能跟著跳升；市場冷清時，利率也會下滑。有人觀察到大額交易者會在恐慌時逆向加槓桿，這可能是需求的來源之一，但現有資料不足以證明它是主因。</p>
 
-      <p>這正是 Bitfinex 放貸利率能長期維持高檔的核心原因：借款方不是容易被嚇跑的散戶，而是有明確策略的大額交易者。他們對利率的敏感度相對較低，更在意的是能否順利借到足夠的資金來執行交易計畫。</p>
 
-      <h3 class="text-xl font-bold text-amber-400">深厚的市場流動性</h3>
+      <h3 class="text-xl font-bold text-amber-400">市場規模與流動性</h3>
 
-      <p>Bitfinex 的融資放貸池規模超過 <strong class="text-white">10 億美元</strong>，是全球最大的加密貨幣融資市場之一。市場上也有人推測，部分大額借款需求可能與 Tether 相關實體有關，不過這一點並未經過官方證實。無論如何，充沛的借貸雙方流動性確保了這個市場能夠持續高效運作。</p>
+      <p>Bitfinex 很早就提供 P2P 融資市場，可放貸的幣種多，USD 與 USDT 的成交也較活躍。不過市場規模會隨時點變動，<strong class="text-white">規模大也不保證每一筆掛單都能立刻成交</strong>。</p>
 
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
-        <p class="text-amber-400 font-semibold mb-2">關鍵洞察</p>
-        <p class="mb-0">Bitfinex 放貸利率高的根本原因並非「風險溢價」，而是<strong class="text-white">市場結構差異</strong> — 大戶驅動的持續性借款需求，搭配相對有限的放貸供給，自然推高了均衡利率。</p>
+        <p class="text-amber-400 font-semibold mb-2">觀念提醒</p>
+        <p class="mb-0">利率高，通常代表需求強，也代表有風險需要被補償。<strong class="text-white">不要把高利率解讀成「沒有風險的超額報酬」</strong>——它同時反映了市場結構、借款需求，以及平台與交易對手風險。</p>
       </div>
 
       <!-- Section 3 -->
-      <h2 class="text-2xl font-bold text-white">安全性：你的錢借出去真的安全嗎？</h2>
+      <h2 class="text-2xl font-bold text-white">風險機制：借出去的錢有哪些保護、哪些沒有？</h2>
 
-      <p>高報酬總讓人聯想到高風險。那麼，Bitfinex 放貸的安全性究竟如何？讓我們逐一檢視保護機制。</p>
+      <p>高利率通常伴隨更高或不同的風險。下面逐一看 Bitfinex 放貸有哪些保護機制，以及它們保護不到的地方。</p>
 
       <h3 class="text-xl font-bold text-amber-400">資金封閉式運作</h3>
 
-      <p>首先必須理解一個關鍵機制：借款人借到的資金<strong class="text-white">只能在 Bitfinex 站內進行保證金交易，無法提領到外部錢包</strong>。這從根本上消除了借款人捲款跑路的可能性。你的資金始終在 Bitfinex 的系統內流轉。</p>
+      <p>首先要理解一個機制：借款人借到的資金<strong class="text-white">只能在 Bitfinex 站內進行保證金交易，無法提領到外部錢包</strong>。這降低了借款人把錢直接領走的可能性；但你的資金仍託管在 Bitfinex，平台本身的風險要由你承擔。</p>
 
       <h3 class="text-xl font-bold text-amber-400">保證金與強制平倉</h3>
 
-      <p>借款人必須提供足額的保證金才能借入資金。當其持倉虧損導致保證金比例低於安全線時，系統會<strong class="text-white">自動觸發強制平倉（Liquidation）</strong>，將借款人的倉位關閉並歸還放貸方的本金與利息。這個機制確保了在正常市場波動下，放貸方的資金有充分的保障。</p>
+      <p>借款人必須提供保證金才能借入資金。當保證金比例跌到平台規定的門檻，系統會<strong class="text-white">啟動強制平倉（Liquidation）</strong>，目的是先降低放貸方的損失。但價格跳空、流動性不足或系統異常時，平倉所得仍可能不足以清償本金與利息。</p>
 
-      <h3 class="text-xl font-bold text-amber-400">歷史驗證的可靠性</h3>
+      <h3 class="text-xl font-bold text-amber-400">過去發生過的事</h3>
 
-      <p>Bitfinex 已經營運超過十年，期間經歷了無數次極端行情 — 包括 2020 年 3 月 12 日的全球性暴跌（312 事件）、2021 年 5 月 19 日的中國監管衝擊（519 事件），以及多次劇烈的市場閃崩。在這些極端情境下，<strong class="text-white">Bitfinex 的放貸資金池歷史上未曾發生過本金損失事件</strong>。</p>
+      <p>Bitfinex 營運超過十年，經歷過 2020 年 3 月 12 日的全球暴跌（312）、2021 年 5 月 19 日的大跌（519）等多次極端行情；但「過去撐過」不代表未來一定撐得過。也要知道，<strong class="text-white">2016 年 Bitfinex 曾遭駭客入侵，當時全體用戶帳戶（包含放貸方）都按比例分攤了約 36% 的損失</strong>，之後依分攤金額發行 BFX 代幣，並在 2017 年贖回當時仍流通的代幣；但這不代表每位用戶最後都收回了全部損失（例如提前賣掉代幣的人）。這屬於交易所安全事件，卻是放貸方真正要面對的平台風險。</p>
 
-      <p>此外，Bitfinex 與 Tether（USDT 發行方）有密切的關聯，這在某種程度上提供了額外的財務後盾。Bitfinex 也設有保險基金機制，用於在極端行情下彌補可能的缺口。</p>
+      <p>此外，Bitfinex 與 Tether（USDT 發行方）有關聯，但這層關係<strong class="text-white">不代表 Tether 對放貸方的本金或利息提供任何保證</strong>；評估時反而要把關聯風險一起考慮進去。</p>
 
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">重要提醒</p>
-        <p class="mb-0">過往的安全紀錄<strong class="text-white">不代表未來保證</strong>。加密貨幣市場仍處於相對早期階段，黑天鵝事件始終存在可能性。在享受高利率的同時，務必保持風險意識。</p>
+        <p class="mb-0">過往的安全紀錄<strong class="text-white">不代表未來保證</strong>。加密貨幣市場仍處於相對早期階段，黑天鵝事件始終存在可能性。在看利率的同時，務必一起看風險。</p>
       </div>
 
       <!-- Section 4 -->
       <h2 class="text-2xl font-bold text-white">USD vs USDT 放貸：該選哪一個？</h2>
 
-      <p>Bitfinex 上最熱門的兩個放貸幣種是 USD（美元）和 UST（即 USDT/Tether）。雖然兩者都是穩定幣放貸，但在實際操作上有幾個值得注意的差異：</p>
+      <p>Bitfinex 上常見的兩個放貸幣種是 USD（美元）和 USDT（Tether 發行的美元穩定幣，Bitfinex 介面上的代碼是 UST）。兩者不是同一種資產：USD 是法幣，USDT 另有發行人、脫鉤與凍結等風險。實際操作上的差異如下：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">利率差距</strong> — USD 放貸的年化利率通常比 USDT 高出約 2 個百分點。這是因為 USD 的借款需求相對更高，而供給量卻更有限。</li>
-        <li><strong class="text-white">成交速度</strong> — USD 的每日撮合量更大，資金掛單後通常能更快被借走，減少閒置時間。</li>
-        <li><strong class="text-white">幣種轉換</strong> — 如果你持有 USDT，可以在 Bitfinex 站內直接兌換為 USD，操作流程很簡單。</li>
+        <li><strong class="text-white">利率差距</strong> — 依我們的觀察，USD 的放貸利率多數時候略高於 USDT，但不是每個時點都如此，選之前請先看當下的掛單利率。</li>
+        <li><strong class="text-white">成交速度</strong> — USD 的成交通常較活躍，但掛單能不能成交，仍取決於利率、金額、天期與當下需求。</li>
+        <li><strong class="text-white">幣種轉換</strong> — 持有 USDT 的話，可以在 Bitfinex 站內交易成 USD；兌換會有手續費和價差，價格也可能小幅偏離 1:1。</li>
         <li><strong class="text-white">錢包設定</strong> — 無論選擇哪個幣種，放貸前都需要先將資金移至 Funding Wallet（融資錢包），這是站內的即時轉帳，不收手續費。</li>
       </ul>
 
-      <p>綜合考量利率和成交效率，<strong class="text-white">USD 通常是放貸的首選</strong>。但如果你不想多做一步幣種轉換，直接使用 USDT 放貸也完全可行，報酬率依然遠超多數平台。</p>
+      <p>如果想多爭取一點利率、也接受兌換成本，可以考慮 USD；如果不想多做一步兌換，直接用 USDT 放貸也可以。兩者的利率都會浮動，沒有哪一個保證比較高。</p>
 
       <!-- Section 5 -->
-      <h2 class="text-2xl font-bold text-white">自動化放貸：讓機器人幫你省心</h2>
+      <h2 class="text-2xl font-bold text-white">自動化放貸：工具能做什麼、不能做什麼</h2>
 
-      <p>了解了 Bitfinex 放貸的優勢後，接下來的問題是：如何最大化你的放貸效率？</p>
+      <p>了解了 Bitfinex 放貸的機制後，接下來是執行面的問題：要手動，還是用工具？</p>
 
-      <p>如果選擇手動放貸，你需要不斷關注利率變化、在每筆放貸到期後重新掛單、判斷最佳的利率和天數組合。這在初期學習階段是有價值的，但長期下來，時間成本和因為未及時掛單而損失的利息非常可觀。</p>
+      <p>如果選擇手動放貸，你需要關注利率變化、在每筆放貸到期後重新掛單、判斷利率和天數組合。這在初期學習階段很有價值；但長期下來，時間成本和沒及時重掛造成的閒置，都是要考慮的成本。</p>
 
-      <p>Bitfinex 本身提供了 FRR（Flash Return Rate）自動放貸功能，但它的策略相對基礎，只是以市場平均利率自動掛單，缺乏進階的利率最佳化能力。</p>
+      <p>Bitfinex 本身有 FRR（Flash Return Rate）這個依融資市場資料計算的浮動參考利率，也有到期自動續借的設定；兩者是不同的功能，詳細規則以 Bitfinex 官方說明為準。</p>
 
-      <p>交易幣修課（CTA）開發的<strong class="text-white">智能放貸機器人</strong>則提供了更精細的自動化方案：</p>
+      <p>交易幣修課（CTA）開發的<strong class="text-white">放貸自動化工具</strong>（付費訂閱，CTA 因此有收入），可以依你的設定和市場資料自動掛單、調整或取消：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">動態多層拆單</strong> — 將資金拆成多筆不同金額、不同天期的訂單，分散利率風險同時提升整體收益</li>
-        <li><strong class="text-white">訂單簿深度定價</strong> — 即時分析放貸訂單簿的供需結構，精準定位最佳掛單利率</li>
-        <li><strong class="text-white">智慧天期選擇</strong> — 根據市場趨勢自動調整放貸天數，在高利率時期鎖定較長天期，利率走低時保持靈活</li>
-        <li><strong class="text-white">24 小時全自動運作</strong> — 到期即刻續貸，將資金閒置時間壓到最低</li>
+        <li><strong class="text-white">動態多層拆單</strong> — 把資金拆成多筆不同金額、不同天期的訂單</li>
+        <li><strong class="text-white">訂單簿深度定價</strong> — 參考目前市場上的借貸報價分布（訂單簿）來計算掛單利率</li>
+        <li><strong class="text-white">依市場調整天期</strong> — 利率較高時傾向較長天期，利率較低時維持較短天期</li>
+        <li><strong class="text-white">24 小時自動運作</strong> — 到期後自動重新掛單，減少手動重掛的空檔</li>
       </ul>
 
-      <p>想深入了解 CTA 放貸機器人的完整功能，可以參考<a href="https://crypto-trading-academy.com/lending.html" class="text-amber-400 hover:text-amber-300 underline">放貸機器人介紹頁面</a>。</p>
+      <p>工具不保證拿到最高利率、提高收益或持續成交；是否成交和成交利率，仍取決於市場需求與平台運作。想了解完整功能，可以參考<a href="https://crypto-trading-academy.com/lending.html" class="text-amber-400 hover:text-amber-300 underline">放貸機器人介紹頁面</a>。</p>
 
       <!-- Section 6 -->
-      <h2 class="text-2xl font-bold text-white">風險提醒：高報酬不等於零風險</h2>
+      <h2 class="text-2xl font-bold text-white">風險提醒：高利率伴隨實際風險</h2>
 
       <p>在結束之前，必須誠實地談談風險。任何投資都有風險，放貸也不例外。以下是你在開始放貸前應該充分了解的風險因素：</p>
 
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-3">完整風險揭露</p>
         <ul class="list-disc text-sm space-y-2 mb-0">
-          <li><strong class="text-white">平台風險</strong> — Bitfinex 是中心化交易所，你的資金託管在平台上。雖然 Bitfinex 營運歷史悠久且財務實力雄厚，但中心化平台始終存在駭客攻擊、系統故障或監管風險的可能性。</li>
-          <li><strong class="text-white">交易對手違約風險</strong> — 在極端行情下，借款人的保證金可能不足以覆蓋全部損失。雖然強制平倉機制和保險基金提供了多層保護，但無法保證在所有極端情境下都能完全免損。</li>
+          <li><strong class="text-white">平台風險</strong> — Bitfinex 是中心化交易所，你的資金託管在平台上。營運年資不能證明財務健全或資金安全；中心化平台始終存在駭客攻擊、系統故障、經營或監管風險，可能損失部分或全部本金。</li>
+          <li><strong class="text-white">交易對手違約風險</strong> — 在極端行情下，借款人的保證金可能不足以覆蓋損失；即使有保證金與強制平倉機制，也無法保證在所有情境下都能收回全部本金與利息。</li>
           <li><strong class="text-white">利率波動風險</strong> — 放貸利率並非固定收益，它隨市場供需即時變動。熊市低迷期的利率可能遠低於長期平均值，不應將放貸視為穩定的固定收入來源。</li>
-          <li><strong class="text-white">流動性鎖定風險</strong> — 放貸期間資金無法提前取回。如果你掛了 30 天的放貸單，這段期間即使急需用錢也無法動用。建議保留足夠的流動資金應急。</li>
+          <li><strong class="text-white">流動性鎖定風險</strong> — 已借出的資金，放貸方通常不能要求提前收回（借款人可能提前還款）；尚未成交的掛單則可以取消。如果你可能需要隨時動用資金，請保留足夠的應急資金，或選擇較短天期。</li>
           <li><strong class="text-white">黑天鵝事件</strong> — 極端市場崩盤、交易所遭受重大安全事件、或全球性金融危機等低概率高衝擊事件，可能對放貸資金造成影響。</li>
         </ul>
       </div>
@@ -359,13 +358,13 @@
 
       <!-- CTA -->
       <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/30 rounded-2xl p-8 md:p-10 text-center my-12">
-        <h2 class="text-2xl font-bold text-white mb-3">想讓閒置資金自動生息？</h2>
-        <p class="text-slate-400 mb-6 max-w-lg mx-auto">了解 CTA 放貸機器人如何幫你 24 小時自動管理 Bitfinex 放貸，最大化你的資金效率。</p>
+        <h2 class="text-2xl font-bold text-white mb-3">想讓放貸掛單更省事？</h2>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">了解 CTA 放貸自動化工具怎麼運作、需要哪些 API 權限、費用怎麼算。</p>
         <a href="https://crypto-trading-academy.com/lending.html"
            class="inline-block bg-amber-400 text-slate-900 font-bold px-8 py-3 rounded-lg hover:bg-amber-300 transition text-lg">
           了解放貸機器人 &rarr;
         </a>
-        <p class="text-xs text-slate-500 mt-4">本文僅為教學用途，不構成投資建議。放貸有風險，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
+        <p class="text-xs text-slate-500 mt-4">本文由交易幣修課（CTA）製作，文中介紹的放貸工具為 CTA 自營的付費服務。CTA 未持有金融牌照，本文為一般教學資訊，不構成投資建議，也不提供個別適合性判斷。放貸與 API 授權皆有風險，可能損失部分或全部本金，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
       </div>
 
     </div>

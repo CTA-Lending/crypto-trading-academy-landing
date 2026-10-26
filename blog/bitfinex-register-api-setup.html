@@ -12,14 +12,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版） — 交易幣修課</title>
-  <meta name="description" content="2026 最新 Bitfinex 註冊教學 — 從零開始手把手帶你完成開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟讓你立即開始自動放貸。">
+  <meta name="description" content="2026 最新 Bitfinex 註冊教學 — 從零開始手把手帶你完成開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟，教你設定自動放貸工具。">
   <meta name="keywords" content="Bitfinex註冊教學,Bitfinex開戶,Bitfinex KYC,Bitfinex API設定,Bitfinex入金,放貸機器人,加密貨幣放貸,CTA">
   <link rel="canonical" href="https://crypto-trading-academy.com/blog/bitfinex-register-api-setup.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）">
-  <meta property="og:description" content="從零開始手把手帶你完成 Bitfinex 開戶、KYC 驗證、入金到 API Key 設定，六步驟立即開始自動放貸。">
+  <meta property="og:description" content="從零開始手把手帶你完成 Bitfinex 開戶、KYC 驗證、入金到 API Key 設定，六步驟設定自動放貸工具。">
   <meta property="og:url" content="https://crypto-trading-academy.com/blog/bitfinex-register-api-setup.html">
   <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
   <meta property="og:locale" content="zh_TW">
@@ -32,7 +32,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）",
-    "description": "從零開始手把手帶你完成 Bitfinex 開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟讓你立即開始自動放貸。",
+    "description": "從零開始手把手帶你完成 Bitfinex 開戶、KYC 身分驗證、入金、Funding 錢包設定到 API Key 建立，完整六步驟，教你設定自動放貸工具。",
     "datePublished": "2026-04-08",
     "dateModified": "2026-04-08",
     "author": {
@@ -238,26 +238,26 @@
   <article class="py-12">
     <div class="max-w-3xl mx-auto px-4 article-body text-slate-300 leading-relaxed">
 
-      <p>這篇教學會帶你從零開始，一步一步完成 Bitfinex 的註冊、身分驗證（KYC）、入金、錢包設定，一直到建立 API Key 連接放貸機器人。不管你有沒有用過加密貨幣交易所，只要照著做，大約 10 分鐘就能完成所有設定（KYC 審核需額外等待 1-3 個工作天）。</p>
+      <p>這篇教學會帶你從零開始，一步一步完成 Bitfinex 的註冊、身分驗證（KYC）、入金、錢包設定，一直到建立 API Key 連接放貸工具。不管你有沒有用過加密貨幣交易所，都可以照著順序參考；能否完成並使用相關功能，仍取決於帳戶資格、平台當期要求與審核結果。實際花的時間會因文件準備和驗證要求而不同，KYC 審核時間以 Bitfinex 實際處理為準。</p>
 
-      <p>為什麼選擇 Bitfinex？因為它是全球最大的加密貨幣融資放貸（Funding）市場，長期維持年化 12-17% 的穩定報酬。而要使用 CTA 放貸機器人幫你 24 小時自動掛單、複利滾存，第一步就是在 Bitfinex 上開好帳號並設定 API。</p>
+      <p>為什麼選擇 Bitfinex？因為它很早就提供 P2P 融資市場，USD 與 USDT 的成交都較活躍；依我們對 USD 放貸的過往經驗，並參考同類工具公開的成績，年化利率大約落在 8%～15%（這是經驗觀察，非回測，也不是 Bitfinex 全市場統計；過去表現不代表未來收益；浮動利率，不構成收益承諾）。如果要使用 CTA 放貸工具自動掛單，第一步就是在 Bitfinex 上開好帳號並設定 API。</p>
 
       <!-- Section 0 — 地區限制（白做工提醒） -->
       <div class="bg-red-900/30 border-2 border-red-500/50 rounded-xl p-6 my-8">
         <p class="text-red-400 font-bold text-lg mb-3">⚠️ 先確認你的地區能不能用 Bitfinex（避免白做工 + 被關號）</p>
-        <p class="mb-3">Bitfinex 有明確的「不接受居民清單」與「制裁名單」，<strong class="text-white">用錯國籍／IP 註冊，輕則 KYC 不過，重則資金被凍結後關戶</strong>，先看清楚再動手：</p>
-        <p class="text-red-300 font-semibold mb-2">❌ Bitfinex 明確不接受的地區（註冊前請先確認最新政策）</p>
+        <p class="mb-3">Bitfinex 有明確的「不接受居民清單」與「制裁名單」，<strong class="text-white">用不實資料或規避手段註冊，可能導致 KYC 不過、帳戶被限制或關閉</strong>，先看清楚再動手：</p>
+        <p class="text-red-300 font-semibold mb-2">❌ 常見的受限地區（不是完整清單，以官方條款為準）</p>
         <ul class="list-disc text-sm space-y-1 mb-4">
-          <li><strong class="text-white">美國（含美屬領地）</strong> — Bitfinex 已退出美國市場，美國居民／使用美國 IP 註冊會被偵測並關戶</li>
-          <li><strong class="text-white">中國大陸</strong> — Bitfinex 服務條款排除中國大陸居民，KYC 階段就會被擋下</li>
+          <li><strong class="text-white">美國（含美屬領地）</strong> — 美國居民不在 Bitfinex 服務範圍內，帳戶可能被限制</li>
+          <li><strong class="text-white">中國大陸</strong> — Bitfinex 服務條款排除中國大陸居民</li>
           <li><strong class="text-white">受國際制裁地區</strong> — 包含但不限於：伊朗、北韓、敘利亞、古巴、克里米亞、頓內次克、盧甘斯克、蘇丹</li>
-          <li><strong class="text-white">加拿大安大略省</strong> — 部分產品（含 Funding）功能受限</li>
+          <li><strong class="text-white">加拿大安大略省</strong> — 部分產品可能受限（以官方說明為準）</li>
         </ul>
-        <p class="text-amber-300 font-semibold mb-2">🚨 三個最容易踩雷的行為（會被風控掃到關號）</p>
+        <p class="text-amber-300 font-semibold mb-2">🚨 三個不要做的事（可能導致驗證失敗、功能受限或帳戶關閉）</p>
         <ul class="list-disc text-sm space-y-1 mb-3">
-          <li><strong class="text-white">用 VPN 翻牆假裝其他國家</strong> — Bitfinex 風控會交叉比對 IP、手機門號、付款來源，假身分被抓到就是<strong class="text-red-400">資金凍結 + 永久關戶</strong>，本金可能拿不回來</li>
-          <li><strong class="text-white">出差到禁止地區時登入</strong> — 即使你是台灣帳號，臨時用美國／中國 IP 登入也會觸發警示，建議出差期間不要登入</li>
-          <li><strong class="text-white">KYC 填假地址</strong> — 證件、地址證明、自填地址三者必須一致，任何一個對不上就 KYC 退件甚至列觀察名單</li>
+          <li><strong class="text-white">用 VPN 翻牆假裝其他國家</strong> — 用不實資料或規避限制，被平台認定時，<strong class="text-red-400">帳戶可能被限制或關閉</strong>，資金處理要依平台通知辦理</li>
+          <li><strong class="text-white">出差到禁止地區時登入</strong> — 即使你是台灣帳號，在受限地區登入也可能觸發風控審查，出差前請先看官方規定</li>
+          <li><strong class="text-white">KYC 填假地址</strong> — 證件、地址證明和自己填的地址要一致；不一致時可能被退件或要求補件，處理方式依官方通知為準</li>
         </ul>
         <p class="text-xs text-slate-400 mb-0">本清單為一般公開資訊整理，<strong class="text-white">最終以 <a href="https://www.bitfinex.com/legal/terms" target="_blank" rel="noopener" class="text-amber-400 underline">Bitfinex 官方服務條款</a>為準</strong>。法規與限制清單會更新，註冊前請再次確認。</p>
       </div>
@@ -269,14 +269,14 @@
 
       <ul class="list-disc">
         <li><strong class="text-white">一個常用的 Email 信箱</strong> — Gmail、Outlook 都可以。建議用你平常在用的主要信箱，因為之後登入通知、安全警示都會寄到這裡。</li>
-        <li><strong class="text-white">身分證件（建議準備雙證件）</strong> — 護照是必備的（Bitfinex 以護照為主要身分文件），再加上一張身分證作為輔助。兩份證件上的姓名拼寫必須一致。</li>
-        <li><strong class="text-white">地址證明文件（90 天內，必須是英文或拉丁字母）</strong> — 這是很多人卡關的地方。Bitfinex 要求地址證明必須是英文版，純中文的文件不被接受。台灣用戶最簡單的方式是到你的銀行網銀下載英文版對帳單，或是去銀行臨櫃申請英文版存摺對帳。水電費帳單如果有英文版也可以，但台灣大多數公用事業帳單都是中文，所以銀行對帳單是最穩的選擇。</li>
+        <li><strong class="text-white">身分證件（建議準備雙證件）</strong> — 通常以護照為主要身分文件，建議再準備一張身分證；實際可接受的文件以驗證頁面要求為準。兩份證件的中文姓名與出生日期要一致；台灣身分證上沒有英文姓名，英文拼寫請以護照為準，並和你在 Bitfinex 填寫的資料完全相同。</li>
+        <li><strong class="text-white">地址證明文件（90 天內，必須是英文或拉丁字母）</strong> — 這是很多人卡關的地方。地址證明通常需要英文或拉丁字母版本，純中文文件可能不被接受（以驗證頁面要求為準）。台灣用戶常見的做法是向銀行申請英文版對帳單，各銀行是否提供請先確認。水電費帳單如果有英文版也可以，但台灣大多數公用事業帳單都是中文，所以銀行對帳單是最推薦的選擇。</li>
         <li><strong class="text-white">手機（用於 2FA 雙重驗證）</strong> — 需要安裝 Google Authenticator 或類似的驗證 App。iOS 和 Android 都有免費版本。</li>
       </ul>
 
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">預計所需時間</p>
-        <p class="mb-0">註冊 + 設定約 <strong class="text-white">10 分鐘</strong>，KYC 審核需要額外 <strong class="text-white">1-3 個工作天</strong>。建議趁現在有空就把資料送出，審核通過後就能馬上開始放貸。</p>
+        <p class="mb-0">註冊本身通常不需要太久；KYC 審核時間不一定，以 Bitfinex 實際處理為準。建議把文件一次準備齊全再送出，可以減少退件。</p>
       </div>
 
       <!-- Section 2 -->
@@ -297,7 +297,7 @@
 
       <h3 class="text-xl font-bold text-amber-400">設定 2FA 雙重驗證（強烈建議）</h3>
 
-      <p>帳號啟用後，第一件事就是開啟 2FA 雙重驗證。這不是選配，而是保護你資金安全的<strong class="text-white">必要步驟</strong>。就算有人知道了你的密碼，沒有 2FA 驗證碼也無法登入你的帳號。</p>
+      <p>帳號啟用後，第一件事就是開啟 2FA 雙重驗證。這不是選配，而是保護你資金安全的<strong class="text-white">必要步驟</strong>。啟用 2FA 可以降低密碼外洩後被別人登入的風險，但仍要提防釣魚網站和惡意程式，並妥善保管驗證器與備份資料。</p>
 
       <ol class="list-decimal">
         <li>在手機上下載 <strong class="text-white">Google Authenticator</strong>（iOS 到 App Store 搜尋，Android 到 Google Play 搜尋）</li>
@@ -310,7 +310,7 @@
 
       <div class="bg-red-900/30 border border-red-500/40 rounded-xl p-6 my-6">
         <p class="text-red-400 font-semibold mb-2">極重要：備份恢復碼</p>
-        <p class="mb-0">設定 2FA 時，Bitfinex 會顯示一組<strong class="text-white">恢復碼（Recovery Code）</strong>。請你立刻把它抄寫在紙上，或存到密碼管理器裡。如果手機遺失、損壞或重置，這組恢復碼是你唯一能找回帳號的方式。沒有恢復碼 = 帳號可能永久鎖死。</p>
+        <p class="mb-0">設定 2FA 時，如果畫面提供<strong class="text-white">驗證器設定金鑰或其他備份資料</strong>，請依官方指示抄寫在紙上或存進密碼管理器。手機遺失、損壞或重置時，能不能自己恢復，取決於你保留的備份資料；無法恢復的話，就要走 Bitfinex 官方的 2FA 復原程序，可能需要額外身分查核、花上不少時間。</p>
       </div>
 
       <!-- Section 3 -->
@@ -318,21 +318,21 @@
 
       <h3 class="text-xl font-bold text-amber-400">為什麼要做 KYC？</h3>
 
-      <p>Bitfinex 的 KYC 驗證在業界是出了名的嚴格，但換個角度想，這其實代表平台對合規非常重視，也是對用戶資金安全的一種保障。沒通過 KYC 的帳號功能會受到嚴格限制，無法進行放貸操作。</p>
+      <p>Bitfinex 的 KYC 驗證要求較嚴格，這是身分與合規程序的一部分（但完成 KYC 不代表平台不會發生資金損失）。沒通過 KYC 的帳號功能會受到限制，無法進行放貸操作。</p>
 
       <h3 class="text-xl font-bold text-amber-400">驗證等級說明</h3>
 
-      <p>Bitfinex 的身分驗證分為三個等級，功能權限不同：</p>
+      <p>Bitfinex 目前常見的身分驗證等級如下，功能權限不同（以官方驗證頁面為準）：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">Basic Plus</strong> — 最基礎的驗證，只需填寫個人資料。<strong class="text-red-400">不能放貸</strong>，做了也用不到，跳過。</li>
-        <li><strong class="text-white">Intermediate（中階驗證）</strong> — 需要上傳證件和地址證明。<strong class="text-amber-300 underline">⭐ 要放貸就一定要做到這級，這是放貸功能的最低門檻。</strong></li>
+        <li><strong class="text-white">Basic Plus</strong> — 最基礎的驗證等級。<strong class="text-red-400">不能放貸</strong>。</li>
+        <li><strong class="text-white">Intermediate（中階驗證）</strong> — 需要上傳證件和地址證明。<strong class="text-amber-300 underline">⭐ 依我們目前了解，要使用放貸功能需要做到這一級。</strong></li>
         <li><strong class="text-white">Full（完整驗證）</strong> — 最高等級，可以使用法幣電匯出入金等完整功能。如果你未來打算用電匯入金大額資金，再升級到這個等級即可。</li>
       </ul>
 
       <div class="bg-red-900/30 border-2 border-amber-400/60 rounded-xl p-6 my-6">
         <p class="text-amber-300 font-bold text-lg mb-2">🔑 一句話記住：放貸 = 中階驗證（Intermediate）</p>
-        <p class="mb-2">只完成 Basic Plus 的帳號，<strong class="text-white">看得到 Funding 頁面但下不了單</strong>，API 也會回 <code class="bg-slate-800 px-2 py-0.5 rounded text-amber-300">verification level insufficient</code> 錯誤。本文以下所有步驟（入金、Funding wallet 轉帳、API 建立）<strong class="text-white">都必須在通過中階驗證後才能正常運作</strong>，所以請務必把第二步的 6 個欄位一次填完整，等審核通過再進下一步。</p>
+        <p class="mb-2">只完成 Basic Plus 的帳號，<strong class="text-white">看得到 Funding 頁面但下不了單</strong>，API 也會回 <code class="bg-slate-800 px-2 py-0.5 rounded text-amber-300">verification level insufficient</code> 錯誤。實際使用放貸功能（包含用 API 掛融資單）<strong class="text-white">需要通過中階驗證</strong>；入金、轉帳等其他功能的要求可能不同，以官方規則為準。建議把第二步的 6 個欄位一次填完整，等審核通過再進下一步。</p>
         <p class="text-xs text-slate-400 mb-0">如果你只想體驗 CTA 機器人介面、暫時還沒做完 KYC，可以先到會員後台註冊探索功能，等中階驗證通過後再貼 API Key 啟動實單。</p>
       </div>
 
@@ -348,16 +348,16 @@
           <strong class="text-white">上傳證件照片</strong> — 上傳護照的照片頁（有照片和個人資訊那一頁），另外再上傳身分證正反面。拍照時確保四個角都完整入鏡，字體清晰可讀，光線充足不反光。
         </li>
         <li>
-          <strong class="text-white">自拍驗證</strong> — 這一步需要你拍一張自拍照，照片中必須包含：你本人的臉、手持護照（打開到照片頁）、以及一張手寫紙條。紙條上要寫上：當天的日期（例如 2026/04/08）和「Bitfinex」字樣。三個元素都要在同一張照片中清楚呈現。
+          <strong class="text-white">自拍驗證</strong> — 這一步需要你拍一張自拍照，照片中必須包含：你本人的臉、手持護照（打開到照片頁）、以及一張手寫紙條。紙條上要寫上：當天的日期（例如 2026/04/08）和「Bitfinex」字樣。三個元素都要在同一張照片中清楚呈現；紙條上是否還要其他內容（例如簽名），請以驗證頁面當下的指示為準。
         </li>
         <li>
-          <strong class="text-white">上傳地址證明</strong> — 上傳一份 90 天內開立的英文版地址證明文件。最推薦的是銀行英文對帳單（上面會有你的姓名和地址）。台灣的銀行網銀通常可以直接下載英文版 PDF，或是親自到銀行臨櫃申請。
+          <strong class="text-white">上傳地址證明</strong> — 上傳一份 90 天內開立的英文版地址證明文件。最推薦的是銀行英文對帳單（上面會有你的姓名和地址）。可以向銀行申請英文版對帳單，各銀行是否提供請先確認。
         </li>
         <li>
           <strong class="text-white">填寫財務問卷</strong> — Bitfinex 會問你幾個關於資金來源、年收入級距、投資經驗等問題。這不是考試，但請<strong class="text-white">如實填寫</strong>。這些資料會影響你之後的出入金額度上限，如果隨便亂填，後續可能會被要求補充資料。
         </li>
         <li>
-          <strong class="text-white">提交等待審核</strong> — 全部資料填完後，點擊送出。審核時間通常是 <strong class="text-white">1-3 個工作天</strong>，快的話隔天就通過，慢的話可能到一週。審核結果會透過 Email 通知你。
+          <strong class="text-white">提交等待審核</strong> — 全部資料填完後，點擊送出。審核時間不一定，以 Bitfinex 實際處理為準。審核結果會透過 Email 通知你。
         </li>
       </ol>
 
@@ -367,14 +367,14 @@
 
       <ul class="list-disc">
         <li><strong class="text-white">照片模糊或不完整</strong> — 用手機相機直接拍攝，確保對焦清晰。不要用螢幕截圖代替拍照，也不要裁切到證件的邊角。</li>
-        <li><strong class="text-white">地址證明不是英文</strong> — Bitfinex 只接受英文或拉丁字母的文件。台灣用戶最快的方式是到銀行網銀下載英文版對帳單。如果你的銀行沒有提供線上英文版，就到臨櫃申請一份。</li>
+        <li><strong class="text-white">地址證明不是英文</strong> — 地址證明通常需要英文或拉丁字母版本。可以向銀行申請英文版對帳單，各銀行是否提供請先確認。</li>
         <li><strong class="text-white">姓名拼寫不一致</strong> — 你在表格中填的英文名字必須和護照上的拼寫完全相同。例如護照上是「WANG, HSIAO-MING」，就不要填成「Xiaoming Wang」。</li>
-        <li><strong class="text-white">自拍照不符合要求</strong> — 確保照片中同時出現你的臉、打開的護照照片頁、以及手寫紙條（紙條上寫當天日期 + "Bitfinex"）。三者都要清楚可辨識，不能被遮擋。</li>
+        <li><strong class="text-white">自拍照不符合要求</strong> — 確保照片中同時出現你的臉、打開的護照照片頁、以及手寫紙條（紙條內容依驗證頁面指示，常見為當天日期 + "Bitfinex"）。三者都要清楚可辨識，不能被遮擋。</li>
       </ul>
 
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">小提醒</p>
-        <p class="mb-0">KYC 審核期間你可以先完成後面的 2FA 設定。等審核通過後就能立即進入入金和放貸環節，不浪費時間。</p>
+        <p class="mb-0">KYC 審核期間，可以先準備入金需要的資料；如果 2FA 還沒設定，也可以趁這時完成。審核通過後，請先確認放貸等功能已經開放，再進入入金和放貸環節。</p>
       </div>
 
       <!-- Section 4 -->
@@ -384,27 +384,27 @@
 
       <h3 class="text-xl font-bold text-amber-400">方式一：加密貨幣入金（推薦新手用這個）</h3>
 
-      <p>這是最快、最方便的入金方式。整體流程是：先在你熟悉的加密貨幣交易所用法幣買 USDT，再把 USDT 轉到 Bitfinex。</p>
+      <p>這是新手常用的入金方式之一；適不適合你，取決於你現有的資產、兩端平台支援的網路、費用與處理時間。整體流程是：先在你熟悉的加密貨幣交易所用法幣買 USDT，再把 USDT 轉到 Bitfinex。</p>
 
       <ol class="list-decimal">
         <li><strong class="text-white">在加密貨幣交易所買 USDT</strong> — 如果你還沒有當地加密貨幣交易所帳號，可以選擇你所在地區合規的交易所完成註冊與身分驗證。用法幣入金後，購買 USDT（泰達幣）。</li>
         <li><strong class="text-white">在 Bitfinex 取得你的 USDT 入金地址</strong> — 登入 Bitfinex，點擊上方的 <strong class="text-white">Deposit（入金）</strong>，搜尋選擇 <strong class="text-white">USDT</strong>，然後選擇 <strong class="text-white">TRC-20（Tron）網路</strong>。頁面會顯示一組入金地址，把它複製下來。</li>
         <li><strong class="text-white">從加密貨幣交易所發送 USDT</strong> — 回到原本交易所的提幣頁面，選擇 USDT，網路一定要選 <strong class="text-white">TRC-20</strong>（與 Bitfinex 那邊一致），貼上剛才複製的 Bitfinex 入金地址，輸入金額後送出。</li>
-        <li><strong class="text-white">等待區塊鏈確認</strong> — TRC-20 網路通常 1-5 分鐘就到帳，手續費大約只要 1 USDT，是所有網路中最便宜的。到帳後你會在 Bitfinex 的 Wallets 頁面看到餘額。</li>
+        <li><strong class="text-white">等待區塊鏈確認</strong> — 到帳時間和手續費依發送平台與網路狀況而定，送出前請看兩端當次顯示的費用與條件。到帳後你會在 Bitfinex 的 Wallets 頁面看到餘額。</li>
       </ol>
 
       <div class="bg-red-900/30 border border-red-500/40 rounded-xl p-6 my-6">
         <p class="text-red-400 font-semibold mb-2">轉帳前務必確認</p>
         <ul class="list-disc text-sm space-y-1 mb-0">
-          <li>發送端和接收端的<strong class="text-white">網路必須一致</strong>（都選 TRC-20），選錯網路資金會遺失且無法找回</li>
-          <li>地址要用<strong class="text-white">複製貼上</strong>，不要手動輸入，一個字元打錯就會轉到別人的地址</li>
-          <li>第一次轉帳建議先<strong class="text-white">小額測試</strong>（例如 $20 USDT），確認流程沒問題再轉大額</li>
+          <li>發送端和接收端的<strong class="text-white">網路必須一致</strong>（都選 TRC-20），選錯網路可能導致轉帳失敗或資產損失，不保證能追回</li>
+          <li>地址要用<strong class="text-white">複製貼上</strong>，不要手動輸入；地址錯誤可能導致轉帳失敗或資產損失，也要小心剪貼簿被惡意程式竄改</li>
+          <li>第一次轉帳建議先<strong class="text-white">小額測試</strong>（金額要符合兩端的最低入金與手續費規則），確認流程沒問題再轉大額</li>
         </ul>
       </div>
 
       <h3 class="text-xl font-bold text-amber-400">方式二：法幣電匯入金（大額用戶適用）</h3>
 
-      <p>如果你要轉入較大金額（例如 $10,000 USD 以上），可以考慮用國際電匯直接匯美元到 Bitfinex。這需要完成 Full 等級的 KYC 驗證，且電匯通常需要 2-5 個工作天才會到帳，手續費也比較高（銀行端收費約 $15-30 USD）。對新手來說，先用加密貨幣入金就好，等熟悉流程後再考慮電匯。</p>
+      <p>如果你要轉入較大金額，也可以考慮用國際電匯直接匯美元到 Bitfinex。電匯的使用資格、最低金額、到帳時間與費用（平台、匯出銀行與中轉行都可能收費），請以 Bitfinex 與你的銀行當期規則為準。對新手來說，先用加密貨幣入金比較單純，等熟悉流程後再考慮電匯。</p>
 
       <!-- Section 5 -->
       <h2 class="text-2xl font-bold text-white">第四步：把資金轉到 Funding 錢包</h2>
@@ -417,7 +417,7 @@
         <li><strong class="text-white">Funding Wallet（融資錢包）</strong> — 用於放貸，你的錢必須在這個錢包裡才能進行放貸</li>
       </ul>
 
-      <p>入金後，你的資金預設會出現在 <strong class="text-white">Exchange Wallet</strong>。要做放貸，你必須手動把資金轉到 Funding Wallet。操作方式如下：</p>
+      <p>入金時資金會進到哪個錢包，取決於你入金時的選擇（很多人是 <strong class="text-white">Exchange Wallet</strong>）。要做放貸，資金必須在 Funding Wallet；如果不在，就要做一次站內轉帳。操作方式如下：</p>
 
       <ol class="list-decimal">
         <li>登入 Bitfinex，點擊上方的 <strong class="text-white">Wallets</strong></li>
@@ -427,18 +427,18 @@
         <li>點擊 <strong class="text-white">Transfer</strong> 確認 — 站內轉帳即時到帳、不需手續費</li>
       </ol>
 
-      <h3 class="text-xl font-bold text-amber-400">進階技巧：把 USDT 換成 USD 賺更高利率</h3>
+      <h3 class="text-xl font-bold text-amber-400">進階操作：把 USDT 換成 USD 的流程、成本與風險</h3>
 
-      <p>如果你想追求更高的放貸收益，可以考慮把 USDT 換成 USD 來放貸。在 Bitfinex 上，USD 的平均放貸利率通常比 USDT 高出約 2 個百分點，而且 USD 的借貸需求量更大，你的資金被借出的速度也更快。</p>
+      <p>如果你持有 USDT、又想放 USD，可以在站內把 USDT 換成 USD 再放貸。依我們的觀察，USD 的放貸利率多數時候略高於 USDT、成交也較活躍，但不是每個時點都如此；換之前請先比較當下的掛單利率，並把兌換手續費與價差算進去。</p>
 
       <p>操作方式：在 Exchange Wallet 中，進入 <strong class="text-white">Trading</strong> 頁面，找到 <strong class="text-white">USDT/USD</strong> 交易對，把你的 USDT 以接近 1:1 的價格賣成 USD。完成後再把 USD 從 Exchange Wallet 轉到 Funding Wallet 即可。</p>
 
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">USD vs USDT 放貸比較</p>
         <ul class="list-disc text-sm space-y-1 mb-0">
-          <li>USD 平均年化利率約 <strong class="text-white">14-17%</strong>，USDT 約 <strong class="text-white">12-15%</strong></li>
-          <li>USD 的市場深度更大，資金更快被借出，閒置時間更短</li>
-          <li>兩者都由 CTA 機器人支援，切換幣種不影響自動化操作</li>
+          <li>利率：USD 多數時候略高於 USDT，但會隨市場浮動，不保證</li>
+          <li>成交：USD 的成交通常較活躍，但能否成交仍取決於利率、金額、天期與當下需求</li>
+          <li>兩者都由 CTA 工具支援，切換幣種不影響自動化操作</li>
         </ul>
       </div>
 
@@ -447,24 +447,24 @@
 
       <h3 class="text-xl font-bold text-amber-400">為什麼需要 API Key？</h3>
 
-      <p>API Key 就像是一把「有限權限的鑰匙」。你把這把鑰匙交給 CTA 放貸機器人，讓它可以代替你在 Bitfinex 上執行放貸掛單操作。有了 API Key，機器人就能 24 小時不間斷地幫你在最佳利率掛單、到期自動續掛、複利滾存，你完全不需要盯著螢幕。</p>
+      <p>API Key 就像是一把「有限權限的鑰匙」。你把這把鑰匙授權給 CTA 放貸工具，讓它在你授權的有限權限內，依你設定的條件在 Bitfinex 上自動掛放貸單。有了 API Key，工具就能依你的設定 24 小時自動掛單、到期後重新掛單、把利息一起投入下一輪，你不需要一直盯著螢幕（但仍建議定期檢查）。</p>
 
-      <p>重要的是，你可以精確控制這把鑰匙的權限範圍。我們只需要開放「放貸」相關權限，不開放提幣和交易權限，這樣即使 API Key 不慎外洩，任何人都無法動你帳戶裡的資金。</p>
+      <p>你可以精確控制這把鑰匙的權限範圍。CTA 工具需要的是融資相關權限、讀取權限，以及錢包間轉移資金（用來把資金轉到融資錢包）；<strong class="text-white">不需要</strong>提幣和下單交易權限。關掉提幣權限後，即使 API Key 外洩，對方也不能用它把資金提領到外部；但仍可能被拿來亂掛或取消融資單、在你的錢包之間搬移資金，所以金鑰一樣要妥善保管，發現異常就立刻刪除。</p>
 
       <h3 class="text-xl font-bold text-amber-400">API Key 建立步驟</h3>
 
       <ol class="list-decimal">
         <li>
-          <strong class="text-white">進入 API 管理頁面</strong> — 登入 Bitfinex 後，點擊右上角的帳戶圖示，進入 <strong class="text-white">Account &gt; API Keys</strong>（或直接在網址列輸入 setting/api）。
+          <strong class="text-white">進入 API 管理頁面</strong> — 登入 Bitfinex 後，點擊右上角的帳戶圖示，進入 <strong class="text-white">Account &gt; API Keys</strong>。
         </li>
         <li>
           <strong class="text-white">點擊「Create New Key」</strong> — 開始建立一組新的 API 金鑰。
         </li>
         <li>
-          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。Bitfinex 中文介面有 <strong class="text-white">14 個獨立開關</strong>（每個都是「關 / 開」切換），請完全按照下圖設定：
+          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。Bitfinex 中文介面有 <strong class="text-white">15 個獨立開關</strong>（每個都是「關 / 開」切換），請按照下圖設定（介面可能更新，請以實際畫面上的權限名稱對照）：
           <div class="my-4 rounded-xl overflow-hidden border border-slate-700">
             <img src="assets/bitfinex-api-permissions-recommended.png" alt="Bitfinex API 權限建議設定（8 開 6 關）" class="w-full" />
-            <p class="bg-slate-800 text-xs text-slate-400 px-4 py-2 mb-0">↑ CTA 放貸機器人最小必要權限：8 個開、6 個關（截圖最上方「VPS」是 Key 的備註名稱，幫自己記得這把 Key 是給 VPS 機器人用的，可自由命名）</p>
+            <p class="bg-slate-800 text-xs text-slate-400 px-4 py-2 mb-0">↑ CTA 放貸機器人最小必要權限：8 個開、7 個關（截圖最上方「VPS」是 Key 的備註名稱，只是示範用的備註名稱，你可以自由命名，例如「CTA」，方便日後辨識這把金鑰的用途）</p>
           </div>
           <div class="bg-slate-800 rounded-xl p-5 my-4">
             <p class="text-green-400 font-semibold text-sm mb-3">✅ 這 8 個請打開（開）：</p>
@@ -476,9 +476,9 @@
               <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">錢包 → 查閱錢包餘額及地址</strong></div></div>
               <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">錢包 → 於錢包間轉移資金</strong>（自動把現貨錢包資金轉到融資錢包用）</div></div>
               <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">Settings → Read account settings</strong></div></div>
-              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">IP位址限制 → 允許從任何IP位址訪問</strong>（CTA 機器人 IP 會浮動，必須開）</div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">IP位址限制 → 允許從任何IP位址訪問</strong>（CTA 工具伺服器的 IP 可能變動，需要開；代價是金鑰不受來源 IP 限制，見下一步說明）</div></div>
             </div>
-            <p class="text-red-400 font-semibold text-sm mt-5 mb-3">❌ 這 6 個請關閉（關）：</p>
+            <p class="text-red-400 font-semibold text-sm mt-5 mb-3">❌ 這 7 個請關閉（關）：</p>
             <div class="space-y-2 text-sm">
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">帳戶資訊 → 編輯帳戶訊息</strong></div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">訂單 → 查閱訂單及訂單狀態</strong>（放貸機器人不需要交易權限）</div></div>
@@ -488,11 +488,11 @@
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">提款 → 建立提款請求</strong>（<strong class="text-red-400">絕對不要開</strong>，這是提幣權限）</div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">Settings → Write account settings</strong></div></div>
             </div>
-            <p class="text-amber-300/80 text-xs mt-4 mb-0">💡 找不到「Offers: Write」這種子項目？那是舊版命名。Bitfinex 現在就是把每一個動作做成獨立的「關 / 開」開關，照上圖逐一切換即可。</p>
+            <p class="text-amber-300/80 text-xs mt-4 mb-0">💡 找不到「Offers: Write」這種子項目？那可能是舊版命名。Bitfinex 現在就是把每一個動作做成獨立的「關 / 開」開關，照上圖逐一切換即可。</p>
           </div>
         </li>
         <li>
-          <strong class="text-white">IP 白名單欄位請<span class="text-amber-300">跳過不填</span></strong> — Bitfinex 在權限頁面下方還會有一個「IP 白名單」輸入框，<strong class="text-red-400">請保持空白</strong>。CTA 機器人伺服器可能會更新 IP，如果你填了自己家裡的 IP，機器人就會被擋在外面（會看到 <code class="text-amber-300">ip: invalid</code> 錯誤）。安全保護由上面的「不開提款 + 不開交易 + 強密碼 + 2FA」來做就足夠了。
+          <strong class="text-white">IP 白名單欄位請<span class="text-amber-300">跳過不填</span></strong> — Bitfinex 在權限頁面下方還會有一個「IP 白名單」輸入框，<strong class="text-red-400">請保持空白</strong>。CTA 機器人伺服器可能會更新 IP，如果你填了自己家裡的 IP，機器人就會被擋在外面（會看到 <code class="text-amber-300">ip: invalid</code> 錯誤）。這代表這把金鑰不受來源 IP 限制，安全性主要靠「不開提款、不開交易、只給必要權限」加上妥善保管金鑰；萬一懷疑外洩，請立即到 Bitfinex 刪除這組 API Key。
         </li>
         <li>
           <strong class="text-white">輸入 2FA 驗證碼確認</strong> — 打開你的 Google Authenticator，輸入當前顯示的 6 位數驗證碼來確認建立。
@@ -508,8 +508,8 @@
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">API Key 安全三原則</p>
         <ul class="list-disc text-sm space-y-1 mb-0">
-          <li><strong class="text-white">只開 Funding 權限</strong> — 機器人只能幫你掛放貸單，不能交易、不能提幣</li>
-          <li><strong class="text-white">不開 Withdraw 權限</strong> — 即使 API Key 被洩露，沒有提幣權限就無法轉走你的資金</li>
+          <li><strong class="text-white">只給必要權限</strong> — 融資相關、讀取，以及錢包間轉移；不開交易、不開提幣</li>
+          <li><strong class="text-white">不開 Withdraw 權限</strong> — 即使 API Key 外洩，也不能用它把資金提領到外部；但仍可能被用來亂掛融資單或搬移錢包資金，發現異常請立即刪除金鑰</li>
           <li><strong class="text-white">API Secret 只顯示一次</strong> — 如果忘記保存，只能刪除舊的 Key 重新建立</li>
         </ul>
       </div>
@@ -517,14 +517,14 @@
       <!-- Section 7 -->
       <h2 class="text-2xl font-bold text-white">第六步：連接 CTA 放貸機器人，開始自動放貸</h2>
 
-      <p>恭喜你完成了所有前置作業！現在只要把 API Key 連接到 CTA 放貸機器人，就能開始 24 小時自動賺取利息。</p>
+      <p>恭喜你完成了所有前置作業！現在只要把 API Key 連接到 CTA 放貸工具，就能讓它開始 24 小時自動掛單；是否成交、利率多少，仍取決於市場。</p>
 
       <ol class="list-decimal">
         <li><strong class="text-white">前往 CTA 官網免費註冊</strong> — 到 <a href="https://app.crypto-trading-academy.com/register" class="text-amber-400 hover:text-amber-300 underline">crypto-trading-academy.com</a> 建立帳號，只需要 Email 就能註冊。</li>
         <li><strong class="text-white">在會員後台輸入 API Key 和 Secret</strong> — 登入後進入 API 設定頁面，把剛才記下的 API Key 和 API Secret 貼上去。</li>
         <li><strong class="text-white">選擇方案</strong> — CTA 提供不同的方案等級，請在會員中心商城查看完整費用。根據你的資金規模選擇適合的方案。</li>
-        <li><strong class="text-white">機器人開始運作</strong> — 設定完成後，機器人會立即開始 24 小時不間斷運作，自動在最佳利率掛單、到期自動續掛、複利滾存。</li>
-        <li><strong class="text-white">每天收到 Telegram 收益報告</strong> — 連結 Telegram 後，機器人會每天自動推送你的放貸收益摘要，讓你隨時掌握獲利狀況。</li>
+        <li><strong class="text-white">機器人開始運作</strong> — 設定完成後，工具會依你的設定 24 小時自動掛單、到期後重新掛單；是否成交、成交利率仍取決於市場需求，工具不保證取得最高利率或提高收益。</li>
+        <li><strong class="text-white">每天收到 Telegram 收益報告</strong> — 連結 Telegram 後，機器人會每天自動推送你的放貸收益摘要，讓你隨時掌握成交與利息狀況。</li>
       </ol>
 
       <!-- Section 8 -->
@@ -533,27 +533,27 @@
       <div class="space-y-6 my-6">
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：KYC 審核需要多久？</h3>
-          <p>通常 1-3 個工作天。如果資料完整正確，有些用戶隔天就收到通過通知。假日期間或申請量大時可能會延長到 5-7 天。如果超過一週沒有消息，可以透過 Bitfinex 的客服信箱詢問進度。</p>
+          <p>審核時間不一定，以 Bitfinex 實際處理為準；資料完整正確可以減少退件。如果等很久都沒有消息，可以透過 Bitfinex 客服詢問進度。</p>
         </div>
 
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：最低需要多少錢才能開始放貸？</h3>
-          <p>Bitfinex 的最低放貸金額約為 $150 USDT（或等值 USD）。不過建議至少準備 $500 以上，這樣機器人可以更靈活地分散掛單到不同利率和天期，收益最佳化的效果更明顯。</p>
+          <p>Bitfinex 對單筆融資掛單有最低金額限制，約 150 美元等值（以官方當期規則為準）。最低門檻不等於建議投入金額，請依自己的財務狀況與可承受的損失決定。</p>
         </div>
 
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：放貸可以隨時停止嗎？</h3>
-          <p>可以。你可以隨時在 CTA 後台暫停機器人。不過要注意，已經被借出的放貸單要等到到期才能取回。尚未被借出的掛單可以立即取消。</p>
+          <p>可以暫停 CTA 工具，但不代表所有資金立刻恢復可用。尚未成交的掛單可以取消，請確認工具已撤單、平台上也沒有另外開自動續借；已借出的資金通常不能由放貸方要求提前收回，但借款人可能提前還款。實際可用餘額以平台紀錄與融資狀態為準。</p>
         </div>
 
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：API Key 交給機器人安全嗎？</h3>
-          <p>只要你按照本文的設定方式，只開放 Funding（放貸）的讀取和寫入權限、不開放 Withdraw（提幣）權限，機器人就只能幫你掛放貸單，完全無法把你的錢轉走。你的資金始終在你自己的 Bitfinex 帳戶中。如果你想取消授權，隨時可以到 Bitfinex 後台刪除該組 API Key。</p>
+          <p>照本文的設定，工具拿到的是融資、讀取與錢包間轉移權限，沒有提幣和下單交易權限，所以不能用這把金鑰把資金提領到外部；你的資金一直在你自己的 Bitfinex 帳戶。但金鑰外洩仍可能被拿來亂掛或取消融資單、搬移錢包資金，請妥善保管；想取消授權時，隨時可以到 Bitfinex 後台刪除該組 API Key。</p>
         </div>
 
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：哪些國家或地區不能使用 Bitfinex？</h3>
-          <p>明確排除的有：<strong class="text-white">美國（含領地）、中國大陸</strong>，以及國際制裁地區（伊朗、北韓、敘利亞、古巴、克里米亞、頓內次克、盧甘斯克、蘇丹等）。加拿大安大略省部分功能受限。最重要的事：<strong class="text-red-400">不要用 VPN 假裝其他國家註冊</strong>，Bitfinex 風控會交叉比對 IP / 手機門號 / 付款來源，被抓到等於資金凍結 + 永久關戶，本金可能拿不回來。台灣、香港、新加坡、馬來西亞用戶正常註冊都沒問題。完整最新清單以 <a href="https://www.bitfinex.com/legal/terms" target="_blank" rel="noopener" class="text-amber-400 underline">Bitfinex 官方服務條款</a>為準。</p>
+          <p>可使用的地區、身分與功能，請依 <a href="https://www.bitfinex.com/legal/terms" target="_blank" rel="noopener" class="text-amber-400 underline">Bitfinex 官方服務條款</a>確認；常見的受限例子包括美國（含領地）與受國際制裁的地區，但本文不提供完整或即時的清單。<strong class="text-red-400">請勿使用 VPN 或不實資料規避限制</strong>，可能造成驗證失敗、功能受限或帳戶關閉。</p>
         </div>
 
         <div>
@@ -565,12 +565,12 @@
       <!-- CTA -->
       <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/30 rounded-2xl p-8 md:p-10 text-center my-12">
         <h2 class="text-2xl font-bold text-white mb-3">API Key 設好了？</h2>
-        <p class="text-slate-400 mb-6 max-w-lg mx-auto">到 CTA 官網免費註冊，輸入你的 API Key，讓放貸機器人 24 小時自動幫你掛單、複利滾存。</p>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">到 CTA 官網免費註冊，輸入你的 API Key，讓放貸工具依你的設定 24 小時自動掛單。</p>
         <a href="https://app.crypto-trading-academy.com/register"
            class="inline-block bg-amber-400 text-slate-900 font-bold px-8 py-3 rounded-lg hover:bg-amber-300 transition text-lg">
-          免費註冊，開始自動放貸 &rarr;
+          免費註冊帳號，查看工具與方案 &rarr;
         </a>
-        <p class="text-xs text-slate-500 mt-4">本文僅為教學用途，不構成投資建議。放貸有風險，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
+        <p class="text-xs text-slate-500 mt-4">本文由交易幣修課（CTA）製作，文中介紹的放貸工具為 CTA 自營的付費服務。CTA 未持有金融牌照，本文為一般教學資訊，不構成投資建議，也不提供個別適合性判斷。放貸與 API 授權皆有風險，可能損失部分或全部本金，請詳閱<a href="../risk-disclosure.html" class="text-slate-400 hover:underline">風險揭露聲明</a>。</p>
       </div>
 
     </div>
@@ -587,7 +587,7 @@
         </a>
         <a href="why-bitfinex-lending-rate-so-high.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/40 transition">
           <div class="text-sm text-slate-500 mb-1">2026-04-08</div>
-          <h3 class="text-base font-semibold text-white">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與安全性</h3>
+          <h3 class="text-base font-semibold text-white">為什麼 Bitfinex 放貸利率這麼高？深入解析背後原因與風險</h3>
         </a>
       </div>
     </div>
