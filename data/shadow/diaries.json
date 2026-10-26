@@ -1,6 +1,150 @@
 {
   "days": [
     {
+      "day": "2026-10-26",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 13.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "JCT": 12.5,
+            "AGT": 12.5,
+            "Q": -12.5,
+            "IRYS": 12.5,
+            "QNT": 12.5,
+            "RLC": -12.5,
+            "ONE": 12.5,
+            "CYS": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -0.16,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "ETH": -12.0,
+            "BNB": 10.0,
+            "BTC": -12.0,
+            "SOL": -7.0,
+            "DOGE": -5.0,
+            "XAU": -3.0
+          },
+          "reason": "續抱ETH、SOL空單與BNB多單；小增BTC空單，減DOGE、XAU空單，保留現金控風險。",
+          "outcome": 0.34,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "QNT": 10.0,
+            "ETH": -10.0,
+            "CYS": -8.0,
+            "HYPE": -8.0,
+            "BEAT": -8.0
+          },
+          "reason": "現有持倉皆符合當前趨勢訊號。續抱QNT多單及ETH/CYS/HYPE/BEAT空單，維持44%低曝險控制風險。",
+          "outcome": 0.8,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "QNT": 8.0,
+            "ETH": -8.0,
+            "AGT": 6.0,
+            "JCT": 5.0,
+            "IRYS": 5.0,
+            "AKE": 4.0,
+            "WLD": -4.0,
+            "NEAR": -3.0,
+            "BNB": 3.0,
+            "SOL": -3.0,
+            "ENA": -2.0,
+            "AVAX": -2.0,
+            "RLC": -2.0,
+            "STRK": -2.0,
+            "LINK": -3.0,
+            "XRP": 3.0,
+            "ZEC": 3.0,
+            "TAO": -3.0
+          },
+          "reason": "利潤已達+17%,近日波動大(-2.7%日虧)。降低高波動多頭JCT/IRYS曝險,減弱WLD做空(費率重),強化穩健LINK/TAO空單對沖,保留BTC/QNT核心多頭。總曝險72%,風險可控。",
+          "outcome": -2.36,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 20.0,
+            "BNB": 5.0
+          },
+          "reason": "多數幣近30日下跌；BTC多倉由29.8%降至20%，保留BNB 5%，其餘持現金，暫不追漲或做空。",
+          "outcome": -0.26,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 8.0,
+            "ETH": -6.0,
+            "SOL": -5.0,
+            "AGT": 6.0,
+            "QNT": 5.0,
+            "JCT": 5.0,
+            "IRYS": 5.0,
+            "TAO": -8.0,
+            "ENA": -4.0,
+            "DOGE": -3.0,
+            "WLD": -3.0,
+            "LINK": -3.0,
+            "ZEC": 3.0,
+            "MOVR": 2.0,
+            "AKE": 2.0,
+            "RLC": -2.0,
+            "XAU": -2.0,
+            "STRK": -2.0
+          },
+          "reason": "降總曝險至 80%→76%避擁擠。TAO做空虧損止損改淺,WLD多轉空(距關鍵價遠),強化BTC多頭,弱化高波動小幣(JCT減半)。保留核心獲利部位(AGT、QNT、IRYS)。",
+          "outcome": -2.56,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.82,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "JCT": 10.0,
+            "AGT": 10.0,
+            "Q": 10.0,
+            "IRYS": 10.0,
+            "QNT": 10.0,
+            "RLC": 10.0,
+            "ONE": 10.0,
+            "CYS": 10.0,
+            "BEAT": 10.0,
+            "ENA": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -6.28,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-25",
       "next_day": null,
       "crowding": {
@@ -15691,5 +15835,5 @@
       }
     }
   ],
-  "total_days": 95
+  "total_days": 96
 }
