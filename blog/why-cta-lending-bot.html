@@ -300,7 +300,7 @@
               <td class="py-3 px-4 font-medium text-white">資金閒置率</td>
               <td class="py-3 px-4">中-高</td>
               <td class="py-3 px-4">低</td>
-              <td class="py-3 px-4">v3.2 達 0%</td>
+              <td class="py-3 px-4">到期自動重掛，減少空窗</td>
             </tr>
             <tr>
               <td class="py-3 px-4 font-medium text-white">學習成本</td>
@@ -346,9 +346,9 @@
           <p class="text-sm mb-0">採用<strong class="text-white">多條件交叉偵測</strong>，結合利率變化、買方堆疊與前段需求等多個訊號，必須多個條件同時確認才會行動，避免單一指標誤判。</p>
         </div>
         <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
-          <h4 class="text-white font-semibold mb-1">6. 0% 資金閒置率</h4>
+          <h4 class="text-white font-semibold mb-1">6. 到期自動重新掛單</h4>
           <p class="text-sm mb-2"><span class="text-amber-400 font-medium">解決什麼問題：</span>放貸到期後資金回到 Funding Wallet，不重新掛單就是空轉。</p>
-          <p class="text-sm mb-0">v3.2 升級後<strong class="text-white">資金利用率達 100%</strong>，到期即重新進入演算法決策，不留空窗。</p>
+          <p class="text-sm mb-0">放貸到期、資金回到融資錢包後，會自動重新進入演算法決策，減少手動重掛的空窗（另有約 5% 預留資金，見上一點）。</p>
         </div>
       </div>
 
@@ -358,9 +358,9 @@
       <p>放貸機器人最常被問的一句話是：「我的錢會不會被你拿走？」這個問題很合理，所以我把架構講清楚：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">API Key AES-256 加密存儲</strong>：你的 Key 不是明文躺在資料庫，是工業級加密。</li>
-        <li><strong class="text-white">僅需 Funding 權限</strong>：建立 API Key 時只開放 Funding 相關權限，<strong>不能提幣、不能交易</strong>。即使最壞情況 Key 外洩，攻擊者也搬不走錢。（不過攻擊者仍可能掛出異常的放貸單，建議用戶每 3-6 個月在 Bitfinex 後台輪換 API Key，這是最佳實踐。）</li>
-        <li><strong class="text-white">不開提款 / 不開交易 + 2FA</strong>：建立 API Key 時嚴格只勾 Funding 與 Wallets 相關權限，提款（Withdraw）、訂單、保證金交易這幾項全部關掉，搭配 Bitfinex 帳號的 2FA — 即使 Key 外洩，攻擊者既無法提幣也無法下單交易，最多只能做放貸這件事。</li>
+        <li><strong class="text-white">API Key 加密存放</strong>：你的 Key 加密後才存進資料庫，不以明文保存。</li>
+        <li><strong class="text-white">只給必要權限</strong>：建立 API Key 時只開放融資相關、讀取與錢包間轉移權限，<strong>不開提幣、不開交易</strong>。即使 Key 外洩，對方也不能用它把資金提領到外部。（不過攻擊者仍可能掛出異常的放貸單，建議用戶每 3-6 個月在 Bitfinex 後台輪換 API Key，這是最佳實踐。）</li>
+        <li><strong class="text-white">不開提款 / 不開交易 + 2FA</strong>：建立 API Key 時嚴格只勾 Funding 與 Wallets 相關權限，提款（Withdraw）、訂單、保證金交易這幾項全部關掉，搭配 Bitfinex 帳號的 2FA — 即使 Key 外洩，對方也無法提幣或下單交易；但仍可能亂掛融資單、在你的錢包之間搬移資金，所以金鑰一樣要妥善保管。</li>
         <li><strong class="text-white">資金始終在你的 Bitfinex 帳戶</strong>：CTA 不託管你的資金，本金與利息都直接進你自己的 Funding Wallet。</li>
         <li><strong class="text-white">不從利息扣款</strong>：CTA 採訂閱制月費，不會從你的放貸利息中抽成。Bitfinex 平台手續費 15% 是平台收，跟我們無關。</li>
       </ul>
@@ -414,11 +414,11 @@
       <!-- CEO 自己也在用 -->
       <h2 class="text-2xl font-bold text-white">為什麼 CEO 自己也在用</h2>
 
-      <p>我（CTA 創辦人）目前有<strong class="text-white">超過 $60,000 美元的自有資金</strong>跑在這套系統上，以近期盤整期市場利率為基準，產生穩定的小額週收益。具體數字會隨市場狀況波動 —— 行情熱絡時收益會明顯提升，盤整期則回到較保守區間。重點不是某週賺了多少，是這套系統不需要 CEO 動手，每週都在工作。我用的是同一套 codebase、同樣的參數、同樣的訂閱方案 —— 沒有「老闆專用版」這種東西。過往表現不代表未來收益。</p>
+      <p>我（CTA 創辦人）自己的資金也跑在這套系統上。重點不是某週賺了多少——收益會隨市場狀況波動——而是這套系統不需要我動手，每週都在運作。我用的是同一套 codebase、同樣的參數、同樣的訂閱方案 —— 沒有「老闆專用版」這種東西。過往表現不代表未來收益。</p>
 
       <p>為什麼這件事重要？因為很多自動化工具的開發者自己根本不用，那種工具我不敢碰。當開發者每週看著自己的本金跑這套系統，每一次 bug、每一次行為異常，都會直接影響到他自己的口袋，這時候你才能相信這套系統會被認真維護。</p>
 
-      <p class="text-sm text-slate-500"><em>免責聲明：上述為個人實測數字，過往表現不代表未來收益。放貸利率受市場供需波動影響，請依自身風險承受能力評估。</em></p>
+      <p class="text-sm text-slate-500"><em>免責聲明：個人使用情況不代表工具績效或一般使用者的結果，過去表現不代表未來收益；浮動利率，不構成收益承諾。放貸利率受市場供需波動影響，請依自身風險承受能力評估。</em></p>
 
       <!-- 真實使用流程 -->
       <h2 class="text-2xl font-bold text-white">從註冊到開始收息的實際流程</h2>
@@ -428,8 +428,8 @@
       <ol class="list-decimal">
         <li><strong class="text-white">註冊 CTA 帳號</strong>（crypto-trading-academy.com，免費）</li>
         <li><strong class="text-white">確認你的 Bitfinex 帳號已通過 KYC</strong>，並把資金轉到 Funding Wallet</li>
-        <li><strong class="text-white">在 Bitfinex 建立 API Key</strong>，只勾 Funding 權限，不勾 Withdraw、不勾 Trade</li>
-        <li><strong class="text-white">回到 CTA 後台貼上 API Key 與 Secret</strong>（系統立即 AES-256 加密）</li>
+        <li><strong class="text-white">在 Bitfinex 建立 API Key</strong>，只開融資相關、讀取與錢包間轉移權限，不開提款、不開交易（細節見 API 設定教學）</li>
+        <li><strong class="text-white">回到 CTA 後台貼上 API Key 與 Secret</strong>（系統加密後存放）</li>
         <li><strong class="text-white">選擇方案、選擇放貸幣種</strong>（USD / UST）</li>
         <li><strong class="text-white">啟動機器人</strong>，演算法開始運作；首批掛單通常 5 分鐘內出現在 Bitfinex 上</li>
       </ol>
@@ -462,7 +462,7 @@
 
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：本金多少才划算？</h3>
-          <p>純粹算數學：入門版月費 13 鎂，等於每年 156 鎂訂閱費。以盤整期年化 6-10% 估算，本金約 $3,000-5,000 USDT 以上時，機器人帶來的效率提升通常足以覆蓋訂閱費。實際情況依市場利率波動而異。低於這個金額建議先用 FRR 累積本金，等本金到位再轉用機器人。</p>
+          <p>純粹算數學：用「一年的訂閱費 ÷ 你預估一年的利息」看佔多少（各方案費用在會員中心商城查看）。資金越小，訂閱費佔利息的比例越高；如果算下來不划算，可以先用 Bitfinex 內建的功能累積本金，等本金到位再考慮用工具（過去表現不代表未來收益；浮動利率，不構成收益承諾）。</p>
         </div>
 
         <div>

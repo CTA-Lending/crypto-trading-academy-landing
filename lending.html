@@ -321,7 +321,7 @@
         </span>
         <span class="flex items-center gap-2">
           <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          資金安全
+          不託管資金
         </span>
       </div>
     </div>
@@ -389,7 +389,7 @@
             <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <h3 class="text-xl font-bold mb-2 text-white">資金安全掌控</h3>
-          <p class="text-slate-400">API 僅開放融資權限，無法提領或交易。搭配 IP 白名單與 AES-256 加密，資金始終在你帳戶。</p>
+          <p class="text-slate-400">API 不開提款與交易權限，只給放貸需要的融資、讀取與錢包間轉移權限；API Key 加密後存放，資金始終在你的 Bitfinex 帳戶。</p>
         </div>
         <div class="hud-card rounded-2xl p-8 reveal reveal-delay-3">
           <div class="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-5">
@@ -744,22 +744,22 @@
           <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
-          <h3 class="font-bold mb-2 text-white">AES-256 加密</h3>
-          <p class="text-slate-400 text-sm">API Key 以業界最高標準加密存儲</p>
+          <h3 class="font-bold mb-2 text-white">金鑰加密存放</h3>
+          <p class="text-slate-400 text-sm">API Key 加密後存放，不以明文保存</p>
         </div>
         <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-2">
           <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="font-bold mb-2 text-white">僅融資權限</h3>
-          <p class="text-slate-400 text-sm">API 無法提領、無法交易，只能放貸</p>
+          <h3 class="font-bold mb-2 text-white">不開提款與交易</h3>
+          <p class="text-slate-400 text-sm">API 拿不到提款與下單交易權限；金鑰仍要妥善保管</p>
         </div>
         <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-2">
           <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <svg class="w-7 h-7 text-ice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
           </div>
-          <h3 class="font-bold mb-2 text-white">IP 白名單</h3>
-          <p class="text-slate-400 text-sm">只有我們的伺服器能使用你的 API</p>
+          <h3 class="font-bold mb-2 text-white">隨時可撤銷</h3>
+          <p class="text-slate-400 text-sm">到 Bitfinex 刪除 API Key，工具就失去權限</p>
         </div>
         <div class="hud-card text-center rounded-2xl p-6 reveal reveal-delay-3">
           <div class="w-14 h-14 bg-ice/10 border border-ice/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -783,12 +783,12 @@
 
         <details class="hud-card rounded-xl px-6 py-5">
           <summary class="font-semibold text-lg text-white">你們能碰我的資金嗎？</summary>
-          <p class="mt-4 text-slate-400 leading-relaxed">不能。API 只開放「融資」權限，無法提領、無法交易。你的資金始終在你自己的 Bitfinex 帳戶裡，我們的系統只能幫你掛放貸單。</p>
+          <p class="mt-4 text-slate-400 leading-relaxed">不能提領。API 只給放貸需要的融資、讀取與錢包間轉移權限，不開提款與下單交易，資金始終在你自己的 Bitfinex 帳戶裡。但金鑰外洩仍可能被拿來亂掛融資單或搬移錢包資金，請妥善保管，發現異常就到 Bitfinex 刪除該組 API Key。</p>
         </details>
 
         <details class="hud-card rounded-xl px-6 py-5">
           <summary class="font-semibold text-lg text-white">放貸有風險嗎？</summary>
-          <p class="mt-4 text-slate-400 leading-relaxed">Bitfinex 放貸有平台擔保機制（保險基金），歷史上未發生過放貸方損失本金的情況。但任何金融操作都有風險，利率會因市場波動而變化，過往績效不代表未來表現。請閱讀我們的<a href="risk-disclosure.html" class="text-ice hover:underline">風險揭露聲明</a>。</p>
+          <p class="mt-4 text-slate-400 leading-relaxed">有。Bitfinex 有保證金與強制平倉機制，但極端行情或平台事件仍可能造成損失；2016 年 Bitfinex 曾遭駭客入侵，當時全體用戶帳戶（包含放貸方）都按比例分攤了約 36% 的損失。利率也會隨市場波動，過去表現不代表未來收益；浮動利率，不構成收益承諾。請閱讀我們的<a href="risk-disclosure.html" class="text-ice hover:underline">風險揭露聲明</a>。</p>
         </details>
 
         <details class="hud-card rounded-xl px-6 py-5">
