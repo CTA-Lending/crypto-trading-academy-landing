@@ -1,6 +1,154 @@
 {
   "days": [
     {
+      "day": "2026-10-27",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 11.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "Q": 12.5,
+            "JCT": 12.5,
+            "AGT": 12.5,
+            "IRYS": 12.5,
+            "RLC": -12.5,
+            "ONE": 12.5,
+            "QNT": 12.5,
+            "CYS": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -29.54,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -14.0,
+            "ETH": -13.0,
+            "BNB": 10.0,
+            "SOL": -7.0,
+            "DOGE": -5.0,
+            "XAU": -3.0
+          },
+          "reason": "續抱BNB多單及其餘空單，小幅加碼BTC、ETH空單；保留48%現金防範反彈。",
+          "outcome": 0.04,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "QNT": 10.0,
+            "ETH": -10.0,
+            "BEAT": -8.0,
+            "CYS": -8.0,
+            "HYPE": -8.0
+          },
+          "reason": "大盤趨勢偏空，續抱ETH與弱勢山寨空單(BEAT/CYS/HYPE)；僅保留相對強勢之QNT多單，維持低曝險穩健防守。",
+          "outcome": -0.66,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 10.0,
+            "QNT": 7.0,
+            "AGT": 6.0,
+            "JCT": 5.0,
+            "IRYS": 4.0,
+            "AKE": 3.0,
+            "ZEC": 3.0,
+            "XRP": 2.0,
+            "BNB": 2.0,
+            "MOVR": 2.0,
+            "ETH": -6.0,
+            "WLD": -4.0,
+            "TAO": -3.0,
+            "LINK": -3.0,
+            "SOL": -3.0,
+            "NEAR": -2.0,
+            "STRK": -2.0,
+            "ENA": -2.0,
+            "AVAX": -2.0,
+            "RLC": -1.0,
+            "1000PEPE": -1.0
+          },
+          "reason": "連跌5日(-12.7%),降低總曝險至71%。核心多單(BTC/QNT/AGT/JCT)維持高權重,穩空頭策略。增加現金緩衝,等待反彈訊號。風險偏高,謹慎加倉。",
+          "outcome": 2.55,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 20.0,
+            "BNB": 5.0
+          },
+          "reason": "維持現有BTC與BNB多倉；多數幣近30日下跌，保留75%現金，不追逐高波動漲幅。",
+          "outcome": 0.05,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 6.0,
+            "ETH": -4.0,
+            "TAO": -6.0,
+            "AGT": 5.0,
+            "JCT": 4.0,
+            "QNT": 4.0,
+            "IRYS": 3.0,
+            "SOL": -4.0,
+            "ZEC": 2.0,
+            "MOVR": 2.0,
+            "AKE": 1.5,
+            "LINK": -2.0,
+            "DOGE": -2.0,
+            "ENA": -3.0,
+            "WLD": -2.0,
+            "RLC": -1.5,
+            "STRK": -1.0,
+            "XAU": -1.5,
+            "ONE": 2.0,
+            "XRP": 1.5
+          },
+          "reason": "損益連虧4天,降暴險至67%。減BTC/ETH空頭(資金費成本高),保留高波動多頭LONG訊號(Q缺流動性故剔除)。分散擁擠部位,新增ONE抄底。現金28%保留彈性。",
+          "outcome": 2.32,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.07,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "Q": 10.0,
+            "JCT": 10.0,
+            "AGT": 10.0,
+            "IRYS": 10.0,
+            "RLC": 10.0,
+            "ONE": 10.0,
+            "QNT": 10.0,
+            "CYS": 10.0,
+            "BEAT": 10.0,
+            "ZEC": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 33.35,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-26",
       "next_day": null,
       "crowding": {
@@ -15835,5 +15983,5 @@
       }
     }
   ],
-  "total_days": 96
+  "total_days": 97
 }
