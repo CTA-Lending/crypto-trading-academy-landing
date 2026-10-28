@@ -1,6 +1,152 @@
 {
   "days": [
     {
+      "day": "2026-10-28",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 13.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "JCT": 12.5,
+            "AGT": 12.5,
+            "Q": -12.5,
+            "IRYS": 12.5,
+            "ONE": 12.5,
+            "RLC": -12.5,
+            "AKE": 12.5,
+            "QNT": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -16.17,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -12.0,
+            "ETH": -10.0,
+            "BNB": 10.0,
+            "SOL": -7.0,
+            "DOGE": -4.0,
+            "XAU": -3.0
+          },
+          "reason": "續抱原有多空方向，小幅減少ETH、DOGE空單；近期虧損後降低曝險，保留現金。",
+          "outcome": -0.32,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "CYS": -8.438350349698762,
+            "ETH": -10.333928443681852,
+            "BEAT": -10.056856460746657,
+            "QNT": 10.03917419123787,
+            "HYPE": -8.475318410122112
+          },
+          "reason": "",
+          "outcome": -2.51,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "QNT": 8.0,
+            "JCT": 7.0,
+            "AGT": 5.0,
+            "ZEC": 4.0,
+            "IRYS": 4.0,
+            "BNB": 3.0,
+            "XRP": 3.0,
+            "MOVR": 2.0,
+            "AKE": 2.0,
+            "ENA": -3.0,
+            "ETH": -8.0,
+            "WLD": -4.0,
+            "LINK": -3.0,
+            "SOL": -3.0,
+            "TAO": -3.0,
+            "NEAR": -2.0,
+            "AVAX": -2.0,
+            "STRK": -2.0,
+            "1000PEPE": -1.0,
+            "RLC": -1.0
+          },
+          "reason": "續抱強勢多頭(BTC/QNT/JCT/AGT獲利穩健),加碼IRYS/-54%強支撐。保持空頭部位控制曝險於76%。近5日振盪,維持現金26%緩衝。減碼弱勢做空(RLC/STRK)降風險。",
+          "outcome": -3.61,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 20.0,
+            "BNB": 5.0
+          },
+          "reason": "保留現有BTC、BNB多倉，約75%留現金；多數幣近30日下跌，暫不加碼或追逐高波動幣。",
+          "outcome": 0.1,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 8.0,
+            "ETH": -6.0,
+            "SOL": -5.0,
+            "JCT": 5.0,
+            "AGT": 4.0,
+            "QNT": 4.0,
+            "IRYS": 3.0,
+            "TAO": -4.0,
+            "ENA": -3.0,
+            "ZEC": 2.0,
+            "XRP": 2.0,
+            "MOVR": 2.0,
+            "ONE": 2.0,
+            "DOGE": -2.0,
+            "LINK": -2.0,
+            "WLD": -2.0,
+            "AKE": 1.0,
+            "BEAT": 1.0
+          },
+          "reason": "近日連跌調整,降總曝險至54%增加現金緩衝。保留核心贏家JCT/AGT/BTC多單,壓制虧損部位(TAO/ETH/SOL空單),減少重疊度至8%。謹慎應對波動市。",
+          "outcome": -2.61,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.6,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "JCT": 10.0,
+            "AGT": 10.0,
+            "Q": 10.0,
+            "IRYS": 10.0,
+            "ONE": 10.0,
+            "RLC": 10.0,
+            "AKE": 10.0,
+            "QNT": 10.0,
+            "CYS": 10.0,
+            "ENA": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -24.12,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-27",
       "next_day": null,
       "crowding": {
@@ -15983,5 +16129,5 @@
       }
     }
   ],
-  "total_days": 97
+  "total_days": 98
 }
