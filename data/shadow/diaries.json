@@ -1,6 +1,153 @@
 {
   "days": [
     {
+      "day": "2026-10-29",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 13.7,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "JCT": 12.5,
+            "Q": -12.5,
+            "AGT": 12.5,
+            "RLC": -12.5,
+            "ONE": 12.5,
+            "IRYS": 12.5,
+            "AKE": 12.5,
+            "LINK": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -2.36,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -12.0,
+            "BNB": 10.0,
+            "ETH": -10.0,
+            "SOL": -7.0,
+            "DOGE": -4.0,
+            "XAU": -3.0
+          },
+          "reason": "現有空單與訊號一致，BNB多單續抱；微調至整數權重，保留54%現金應對波動。",
+          "outcome": 0.04,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "ETH": -10.0,
+            "BTC": -10.0,
+            "HYPE": -8.0,
+            "CYS": -8.0
+          },
+          "reason": "平倉訊號衝突之BEAT空單與弱勢QNT多單。維持ETH/HYPE/CYS空單，增持BTC空單順應大盤空頭，降低總曝險防守。",
+          "outcome": 0.37,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "QNT": 8.0,
+            "JCT": 8.0,
+            "AGT": 6.0,
+            "IRYS": 5.0,
+            "ZEC": 4.0,
+            "BNB": 3.0,
+            "XRP": 3.0,
+            "MOVR": 2.0,
+            "AKE": 2.0,
+            "1000PEPE": 1.0,
+            "ETH": -8.0,
+            "LINK": -3.0,
+            "TAO": -2.0,
+            "SOL": -2.0,
+            "WLD": -3.0,
+            "ENA": -3.0,
+            "NEAR": -2.0,
+            "STRK": -2.0,
+            "AVAX": -2.0,
+            "RLC": -1.0
+          },
+          "reason": "基地持倉獲利+15.66%,守住多頭核心(BTC/QNT/JCT/AGT)。加碼IRYS(強趨勢-51%反彈空間)、ZEC,空單維持防禦(ETH/LINK/TAO/SOL),總曝險83%穩健配置。",
+          "outcome": -0.09,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": 20.1,
+            "BNB": 5.1
+          },
+          "reason": "保留現有BTC、BNB多倉；多數幣近30日走弱，暫不加倉，保留74.8%現金。",
+          "outcome": 0.21,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": 6.0,
+            "ETH": -4.0,
+            "JCT": 8.0,
+            "SOL": -4.0,
+            "AGT": 6.0,
+            "TAO": -3.0,
+            "QNT": 5.0,
+            "ENA": -2.0,
+            "IRYS": 4.0,
+            "LINK": -1.0,
+            "DOGE": -2.0,
+            "ZEC": 3.0,
+            "ONE": 3.0,
+            "WLD": -2.0,
+            "XRP": 3.0,
+            "MOVR": 3.0,
+            "AKE": 2.0,
+            "BEAT": 1.0,
+            "RLC": -3.0,
+            "AVAX": 2.0
+          },
+          "reason": "虧損-4.91%,優化止血:縮減BTC虧損部位(8→6),保護穩定做空(ETH降至-4)。提高確信度高的LONG(JCT 8%,AGT/ZEC/IRYS增)。降低高波動做空(TAO-3)。總曝險100%,現金轉零,分散風險。",
+          "outcome": -0.18,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.46,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "JCT": 10.0,
+            "Q": 10.0,
+            "AGT": 10.0,
+            "RLC": 10.0,
+            "ONE": 10.0,
+            "IRYS": 10.0,
+            "AKE": 10.0,
+            "LINK": 10.0,
+            "CYS": 10.0,
+            "1000PEPE": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 2.27,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-10-28",
       "next_day": null,
       "crowding": {
@@ -16129,5 +16276,5 @@
       }
     }
   ],
-  "total_days": 98
+  "total_days": 99
 }
