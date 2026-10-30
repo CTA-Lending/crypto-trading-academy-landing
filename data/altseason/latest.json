@@ -5,14 +5,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-10-28 這一天，比特幣以外的那些幣（俗稱山寨幣）整體市場溫度是 38.5 分（滿分 100），狀態被歸類為「收縮」，也就是這些幣普遍在跌，而且買賣的熱度跟著變小。把它拆成五個面向來看，流動性只有 20.4、資金輪動 31.8、市場廣度 36.3，都偏低；相對來說，現貨訂單流 61.2 和波動與結構 58.6 的分數比較高一些。\n\n跟一個月前比，這個溫度掉了 28.0 分，跟一週前比也少了 5.8 分。以上是把 382 種幣一起納入計算後得到的結果。"
+  "text": "2026-10-29 這一天，比特幣以外那些比較小的加密貨幣（俗稱山寨幣）整體氣氛偏冷，溫度只有 35.3 分（滿分 100），狀態被歸類為「收縮」，也就是這些幣普遍在跌，而且買賣的熱度跟著變少。拆開來看，流動性 28.2、資金輪動 32.5、市場廣度 30.1 都偏低，意思是市場上流通的錢不多、錢也沒怎麼從比特幣流到其他幣、真正漲得比比特幣好的幣只佔少數；相對來說現貨訂單流 43.2 和波動與結構 53.8 沒那麼糟。\n\n跟一個月前比，溫度掉了 31.6 分，降幅不小；但跟一週前比只差 1.0 分，近期算是平平。以上是從 380 種幣的資料整理出來的狀況。"
  },
- "asOf": "2026-10-28",
- "changeD1": -1.7,
- "changeD14": -14.2,
- "changeD30": -28.0,
- "changeD7": -5.8,
- "dataAsOfUtc": "2026-10-29T01:35:47Z",
+ "asOf": "2026-10-29",
+ "changeD1": -3.2,
+ "changeD14": -17.0,
+ "changeD30": -31.6,
+ "changeD7": 1.0,
+ "dataAsOfUtc": "2026-10-30T01:36:21Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -40,50 +40,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 59,
+ "forwardLogDays": 60,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 60,
+ "forwardLogRecords": 61,
  "layers": {
-  "B": 36.3,
-  "L": 20.4,
-  "R": 31.8,
-  "S": 61.2,
-  "V": 58.6
+  "B": 30.1,
+  "L": 28.2,
+  "R": 32.5,
+  "S": 43.2,
+  "V": 53.8
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 20.4
+   "score": 28.2
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 31.8
+   "score": 32.5
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 36.3
+   "score": 30.1
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 61.2
+   "score": 43.2
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 58.6
+   "score": 53.8
   }
  ],
- "publishedAtUtc": "2026-10-29T06:00:13Z",
+ "publishedAtUtc": "2026-10-30T06:00:15Z",
  "revision": 1,
- "score": 38.5,
+ "score": 35.3,
  "scoreVersion": "score-v1.0",
  "stageCode": "contraction",
  "stageDesc": "山寨普遍下跌且成交量萎縮",
  "stageName": "收縮",
- "universeCount": 382,
+ "universeCount": 380,
  "universeVersion": "universe-v1.1"
 }
