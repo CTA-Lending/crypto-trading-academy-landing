@@ -1,6 +1,31 @@
 {
- "days": 62,
+ "days": 63,
  "records": [
+  {
+   "asOf": "2026-11-01",
+   "changeD1": -8.0,
+   "changeD14": -1.4,
+   "changeD30": -31.7,
+   "changeD7": -8.7,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-11-02T01:35:24Z",
+   "layers": {
+    "B": 40.1,
+    "L": 16.3,
+    "R": 43.0,
+    "S": 19.9,
+    "V": 57.5
+   },
+   "revision": 1,
+   "score": 33.7,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "contraction",
+   "stageDesc": "山寨普遍下跌且成交量萎縮",
+   "stageName": "收縮",
+   "universeCount": 381,
+   "universeVersion": "universe-v1.1"
+  },
   {
    "asOf": "2026-10-31",
    "changeD1": -5.3,
@@ -1577,5 +1602,5 @@
    "universeVersion": "universe-v1.1"
   }
  ],
- "records_total": 63
+ "records_total": 64
 }
