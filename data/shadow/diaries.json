@@ -1,6 +1,154 @@
 {
   "days": [
     {
+      "day": "2026-11-05",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 11.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "AIN": 12.5,
+            "JCT": -12.5,
+            "AKE": -12.5,
+            "ONE": 12.5,
+            "INTC": -12.5,
+            "MOVR": 12.5,
+            "CYS": -12.5,
+            "Q": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": 1.76,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -10.0,
+            "SOL": -6.0,
+            "LINK": -5.0,
+            "BNB": -5.0,
+            "ETH": 7.0,
+            "XAU": 10.0
+          },
+          "reason": "小幅減持BTC、SOL、LINK、BNB空單；平DOGE空單，ETH與XAU由空轉多。總曝險43%，留現金防波動。",
+          "outcome": -2.2,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": -10.0,
+            "SOL": -10.0,
+            "CYS": -5.0
+          },
+          "reason": "ETH訊號轉多平倉；BTC、SOL與CYS維持空頭訊號，續抱空單並維持低曝險控管風險。",
+          "outcome": -1.57,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": -8.0,
+            "QNT": 7.0,
+            "SOL": -6.0,
+            "AIN": 5.0,
+            "IRYS": 4.0,
+            "UNI": 3.5,
+            "ZEC": 3.5,
+            "LINK": -3.5,
+            "XRP": 2.5,
+            "BNB": -2.5,
+            "1000PEPE": 2.0,
+            "BEAT": 2.0,
+            "WLD": -2.0,
+            "HYPE": 2.0,
+            "NEAR": -4.0,
+            "ENA": -3.0,
+            "MOVR": 2.0
+          },
+          "reason": "鎖定強多BTC/ETH對沖;加碼AIN(413%漲幅確認)與高波動多頭(IRYS/BEAT);減持虛弱空倉(TAO/DOGE/AVAX→0);新增NEAR/ENA做空(空訊號+負報酬);總曝險65%,保留現金應對回撤。近5日波動輕微(±0.5%內),謹慎加倉。",
+          "outcome": 0.24,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "XAU": 15.0,
+            "SOL": -8.0,
+            "BTC": 5.0
+          },
+          "reason": "小幅增持低波動XAU，保留BTC多單與SOL空單；市場偏弱，維持低曝險並防範空單反彈。",
+          "outcome": 0.28,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": -5.0,
+            "ETH": -3.0,
+            "SOL": -3.0,
+            "QNT": 8.0,
+            "TAO": 6.0,
+            "IRYS": 5.0,
+            "ZEC": 4.0,
+            "XRP": 4.0,
+            "AVAX": 4.0,
+            "UNI": 3.0,
+            "BEAT": 2.0,
+            "DOGE": 2.0,
+            "1000PEPE": 2.0,
+            "XAU": 2.0,
+            "LINK": -2.0,
+            "NEAR": -2.0,
+            "GOOGL": -2.0,
+            "ENA": -2.0,
+            "WLD": -2.0,
+            "HYPE": 1.0,
+            "INTC": -1.0,
+            "ONE": 1.0,
+            "MOVR": 1.0,
+            "CYS": -1.0
+          },
+          "reason": "減輕空方擁擠(BTC/ETH/SOL超買空單),強化多頭高信心部位(QNT/TAO/IRYS),保留現金28%應急。認錯TAO/DOGE做空轉多。曝險92%,應對連跌保留緩衝。",
+          "outcome": -0.83,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 4.74,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "AIN": 10.0,
+            "JCT": 10.0,
+            "AKE": 10.0,
+            "ONE": 10.0,
+            "INTC": 10.0,
+            "MOVR": 10.0,
+            "CYS": 10.0,
+            "Q": 10.0,
+            "WLD": 10.0,
+            "IRYS": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.54,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-11-04",
       "next_day": null,
       "crowding": {
@@ -17138,5 +17286,5 @@
       }
     }
   ],
-  "total_days": 105
+  "total_days": 106
 }
