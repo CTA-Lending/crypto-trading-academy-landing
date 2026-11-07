@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_utc": "2026-11-06T00:36:54Z",
+    "generated_utc": "2026-11-07T00:37:02Z",
     "start_capital": 10000.0,
     "brains": [
       "rule",
@@ -25,23 +25,23 @@
       "bench_eqw",
       "bench_cash"
     ],
-    "days": 107,
+    "days": 108,
     "pilot_days": 365,
     "gate_days": 252,
-    "last_date": "2026-11-06",
-    "resolved_days": 107,
-    "pending_day": "2026-11-06",
+    "last_date": "2026-11-07",
+    "resolved_days": 108,
+    "pending_day": "2026-11-07",
     "market": "USDT-M 永續合約",
     "phase": "formal_pilot",
     "epoch2_first_day": "2026-08-04",
-    "epoch2_days": 95,
+    "epoch2_days": 96,
     "voided_days": 12,
     "voided_reason": "資金費計算錯誤:被乘 3 倍(CHANGELOG-001)並有抓取分頁不足導致的時間軸錯位(CHANGELOG-002);該期間損益不得用於績效陳述",
     "sharpe_min_days": 20,
     "protocol_pilot_days": 365,
     "anchor": {
-      "seq": 122,
-      "utc": "2026-11-06T00:36:54Z",
+      "seq": 123,
+      "utc": "2026-11-07T00:37:02Z",
       "protocol_sha256": "1b953e4d9e218ef0",
       "genesis_utc": "2026-07-22T05:43:31Z",
       "genesis_protocol_sha256": "48973c29afccb2d4",
@@ -61,29 +61,29 @@
       ],
       "receipts": {
         "available": true,
-        "rows": 50,
-        "pushed_ok": 50,
+        "rows": 51,
+        "pushed_ok": 51,
         "push_failed": 0,
-        "last_commit": "bef961fb864b",
-        "last_push_returned_utc": "2026-11-05T00:37:08Z",
+        "last_commit": "2c3227cd551e",
+        "last_push_returned_utc": "2026-11-06T00:37:03Z",
         "max_lag_h": 0.0,
-        "measured_rows": 50
+        "measured_rows": 51
       },
       "external_timestamp": {
         "available": true,
-        "stamped_seqs": 49,
+        "stamped_seqs": 50,
         "first_seq": 73,
-        "last_seq": 121,
+        "last_seq": 122,
         "service": "OpenTimestamps(最終錨定於比特幣區塊)",
         "verify_with": "ots verify seq<N>.ots(需要 opentimestamps-client)",
         "note": "這裡列的是**已送出**的。今天這一筆要明天才出現在這個欄位(補寫跑在上鏈之前),但它的 .ots 檔已經在今天的 commit 裡。⚠️ 剛送出的是**待確認**證明,要等比特幣區塊確認後 `ots upgrade` 才完整。它只證明「這個雜湊當時就存在」,**不證明我們的數字是對的**。"
       },
-      "data_generated_utc": "2026-11-06T00:36:54Z",
+      "data_generated_utc": "2026-11-07T00:37:02Z",
       "data_age_at_anchor_h": 0.0,
       "publish_intervals": {
         "available": true,
-        "n": 122,
-        "le_24h": 121,
+        "n": 123,
+        "le_24h": 122,
         "rounding": "le_24h 是四捨五入到小數一位之後才比的;le_24h_strict 沒有四捨五入",
         "le_24h_strict": 76,
         "max_h": 48.0,
@@ -1390,183 +1390,197 @@
       "bench_btc": 11299,
       "bench_eqw": 2767,
       "bench_cash": 10000
+    },
+    {
+      "day": "2026-11-07",
+      "rule": 2851,
+      "gpt": 11228,
+      "gemini": 7691,
+      "claude": 10834,
+      "gpt_pure": 11751,
+      "guardian": 8905,
+      "bench_btc": 11243,
+      "bench_eqw": 3155,
+      "bench_cash": 10000
     }
   ],
   "final_equity": {
-    "rule": 3183,
-    "gpt": 11230,
-    "gemini": 7688,
-    "claude": 10945,
-    "gpt_pure": 11771,
-    "guardian": 8878,
-    "bench_btc": 11299,
-    "bench_eqw": 2767,
+    "rule": 2851,
+    "gpt": 11228,
+    "gemini": 7691,
+    "claude": 10834,
+    "gpt_pure": 11751,
+    "guardian": 8905,
+    "bench_btc": 11243,
+    "bench_eqw": 3155,
     "bench_cash": 10000
   },
   "metrics": {
     "rule": {
-      "total_pct": -51.79,
+      "total_pct": -56.83,
       "mdd_pct": 69.24,
-      "sharpe": -1.7,
-      "days": 95,
+      "sharpe": -2.0,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": -68.17,
-      "full_days": 107
+      "full_total_pct": -71.49,
+      "full_days": 108
     },
     "gpt": {
-      "total_pct": 21.92,
+      "total_pct": 21.9,
       "mdd_pct": 9.9,
-      "sharpe": 2.45,
-      "days": 95,
+      "sharpe": 2.44,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": 12.3,
-      "full_days": 107
+      "full_total_pct": 12.28,
+      "full_days": 108
     },
     "gemini": {
-      "total_pct": -18.95,
+      "total_pct": -18.91,
       "mdd_pct": 22.74,
-      "sharpe": -1.46,
-      "days": 95,
+      "sharpe": -1.45,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": -23.12,
-      "full_days": 107
+      "full_total_pct": -23.09,
+      "full_days": 108
     },
     "claude": {
-      "total_pct": 16.55,
-      "mdd_pct": 27.47,
-      "sharpe": 1.37,
-      "days": 95,
+      "total_pct": 15.36,
+      "mdd_pct": 28.21,
+      "sharpe": 1.29,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": 9.45,
-      "full_days": 107
+      "full_total_pct": 8.34,
+      "full_days": 108
     },
     "gpt_pure": {
-      "total_pct": 25.61,
+      "total_pct": 25.39,
       "mdd_pct": 10.27,
-      "sharpe": 2.62,
-      "days": 95,
+      "sharpe": 2.59,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": 17.71,
-      "full_days": 107
+      "full_total_pct": 17.51,
+      "full_days": 108
     },
     "guardian": {
-      "total_pct": -6.76,
+      "total_pct": -6.48,
       "mdd_pct": 19.56,
-      "sharpe": -0.91,
-      "days": 95,
+      "sharpe": -0.86,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": -11.22,
-      "full_days": 107
+      "full_total_pct": -10.95,
+      "full_days": 108
     },
     "bench_btc": {
-      "total_pct": 18.53,
-      "mdd_pct": 12.39,
-      "sharpe": 1.8,
-      "days": 95,
+      "total_pct": 17.94,
+      "mdd_pct": 12.83,
+      "sharpe": 1.74,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": 12.99,
-      "full_days": 107
+      "full_total_pct": 12.43,
+      "full_days": 108
     },
     "bench_eqw": {
-      "total_pct": -73.61,
+      "total_pct": -69.91,
       "mdd_pct": 73.61,
-      "sharpe": -3.27,
-      "days": 95,
+      "sharpe": -2.77,
+      "days": 96,
       "undefined_returns": 0,
-      "full_total_pct": -72.33,
-      "full_days": 107
+      "full_total_pct": -68.45,
+      "full_days": 108
     },
     "bench_cash": {
       "total_pct": 0.0,
       "mdd_pct": 0.0,
       "sharpe": null,
-      "days": 95,
+      "days": 96,
       "undefined_returns": 0,
       "full_total_pct": 0.0,
-      "full_days": 107
+      "full_days": 108
     }
   },
   "current_alloc": {
     "rule": {
-      "AIN": 12.5,
-      "AKE": -12.5,
+      "AIN": -12.5,
       "JCT": -12.5,
+      "AKE": -12.5,
       "INTC": -12.5,
-      "ONE": 12.5,
-      "MOVR": -12.5,
+      "MOVR": 12.5,
       "CYS": -12.5,
-      "WLD": -12.5
+      "WLD": -12.5,
+      "IRYS": 12.5
     },
     "gpt": {
-      "XAU": 14.0,
+      "XAU": 15.0,
       "BTC": -12.0,
-      "ETH": -5.0,
-      "SOL": -7.0,
+      "SOL": -6.0,
+      "LINK": -4.0,
       "BNB": -5.0,
-      "LINK": -5.0
+      "ETH": -5.0
     },
     "gemini": {
       "BTC": -10.0,
       "SOL": -10.0,
       "CYS": -5.0,
-      "ENA": -5.0
+      "ENA": -5.0,
+      "WLD": -5.0
     },
     "claude": {
       "BTC": 12.0,
       "ETH": -8.0,
       "QNT": 7.0,
       "SOL": -6.0,
-      "NEAR": -4.0,
       "IRYS": 4.0,
+      "TAO": -4.0,
       "ZEC": 4.0,
+      "NEAR": -4.0,
+      "AVAX": -3.0,
       "LINK": -3.0,
-      "AIN": 3.0,
-      "UNI": -3.0,
       "ENA": -3.0,
       "BNB": -3.0,
-      "XRP": 2.0,
-      "1000PEPE": 2.0,
+      "UNI": -3.0,
       "BEAT": 2.0,
-      "MOVR": -2.0,
+      "1000PEPE": 2.0,
+      "XRP": 2.0,
+      "XAU": 2.0,
+      "DOGE": -2.0,
       "HYPE": -2.0,
-      "WLD": -2.0,
-      "TAO": -4.0,
-      "AVAX": -3.0
+      "WLD": -2.0
     },
     "gpt_pure": {
-      "XAU": 20.0,
-      "BTC": 8.0,
-      "SOL": -10.0
+      "XAU": 25.0,
+      "SOL": -10.0,
+      "BTC": 5.0
     },
     "guardian": {
-      "BTC": -12.0,
-      "ETH": -10.0,
-      "SOL": -8.0,
-      "LINK": -6.0,
-      "DOGE": -5.0,
-      "QNT": 8.0,
-      "XRP": 6.0,
+      "BTC": -8.0,
+      "ETH": -7.0,
+      "SOL": -6.0,
+      "LINK": -4.0,
+      "DOGE": -3.0,
+      "QNT": 6.0,
+      "XRP": 5.0,
       "XAU": 5.0,
-      "IRYS": 4.0,
-      "ZEC": 4.0,
-      "1000PEPE": 3.0,
+      "IRYS": 3.0,
+      "ZEC": 3.0,
+      "1000PEPE": 2.0,
       "BEAT": 2.0,
-      "UNI": 2.0
+      "AVAX": -4.0,
+      "BNB": -3.0
     },
     "bench_btc": {
       "BTC": 100.0
     },
     "bench_eqw": {
       "AIN": 10.0,
-      "AKE": 10.0,
       "JCT": 10.0,
+      "AKE": 10.0,
       "INTC": 10.0,
-      "ONE": 10.0,
       "MOVR": 10.0,
       "CYS": 10.0,
       "WLD": 10.0,
-      "ENA": 10.0,
-      "TAO": 10.0
+      "IRYS": 10.0,
+      "NEAR": 10.0,
+      "ENA": 10.0
     },
     "bench_cash": {}
   },
@@ -1575,7 +1589,7 @@
       "mdd_pct": 35.0,
       "violation_rate_pct": 10.0
     },
-    "denominator_days": 107,
+    "denominator_days": 108,
     "source": "PROTOCOL §4",
     "by_brain": {
       "rule": {
@@ -1598,7 +1612,7 @@
         "mdd_epoch2_pct": 9.9,
         "violation_days": 19,
         "violation_rate_pct": 0.9,
-        "violation_rate_pct_as_published": 17.8,
+        "violation_rate_pct_as_published": 17.6,
         "subject_violations": 1,
         "infra_no_response": 18,
         "unclassified_violations": 0,
@@ -1618,8 +1632,8 @@
         "triggered": []
       },
       "claude": {
-        "mdd_full_pct": 27.47,
-        "mdd_epoch2_pct": 27.47,
+        "mdd_full_pct": 28.21,
+        "mdd_epoch2_pct": 28.21,
         "violation_days": 3,
         "violation_rate_pct": 2.8,
         "violation_rate_pct_as_published": 2.8,
@@ -1633,8 +1647,8 @@
         "mdd_full_pct": 10.27,
         "mdd_epoch2_pct": 10.27,
         "violation_days": 23,
-        "violation_rate_pct": 4.7,
-        "violation_rate_pct_as_published": 21.5,
+        "violation_rate_pct": 4.6,
+        "violation_rate_pct_as_published": 21.3,
         "subject_violations": 5,
         "infra_no_response": 18,
         "unclassified_violations": 0,
@@ -1654,8 +1668,8 @@
         "triggered": []
       },
       "bench_btc": {
-        "mdd_full_pct": 12.39,
-        "mdd_epoch2_pct": 12.39,
+        "mdd_full_pct": 12.83,
+        "mdd_epoch2_pct": 12.83,
         "violation_days": 0,
         "violation_rate_pct": 0.0,
         "violation_rate_pct_as_published": 0.0,
@@ -1695,45 +1709,45 @@
     }
   },
   "ir_comparison": {
-    "denominator_days": 94,
+    "denominator_days": 95,
     "epoch2_first_day": "2026-08-04",
     "primary_benchmark": "bench_eqw",
     "by_brain": {
       "rule": {
-        "bench_eqw": 1.2473034792642426,
-        "bench_btc": -1.7625857585483309
+        "bench_eqw": 0.7085758656944071,
+        "bench_btc": -1.987628052586852
       },
       "gpt": {
-        "bench_eqw": 3.453150654641624,
-        "bench_btc": 0.23713205910774357
+        "bench_eqw": 2.9807561721272147,
+        "bench_btc": 0.2771963030918358
       },
       "gemini": {
-        "bench_eqw": 2.407133840236767,
-        "bench_btc": -2.0770571174130006
+        "bench_eqw": 1.978675692564251,
+        "bench_btc": -2.034454682970276
       },
       "claude": {
-        "bench_eqw": 3.8276322436736625,
-        "bench_btc": 0.06372914641771829
+        "bench_eqw": 3.2306733959992466,
+        "bench_btc": 0.029044240841596635
       },
       "gpt_pure": {
-        "bench_eqw": 3.5268363426072673,
-        "bench_btc": 0.6783197289177295
+        "bench_eqw": 3.046048919996563,
+        "bench_btc": 0.713166165584984
       },
       "guardian": {
-        "bench_eqw": 2.850150955301017,
-        "bench_btc": -2.495716407656523
+        "bench_eqw": 2.3899641527347266,
+        "bench_btc": -2.398396061440423
       },
       "bench_btc": {
-        "bench_eqw": 3.362711935486447,
+        "bench_eqw": 2.879301882828967,
         "bench_btc": null
       },
       "bench_eqw": {
         "bench_eqw": null,
-        "bench_btc": -3.362711935486447
+        "bench_btc": -2.879301882828967
       },
       "bench_cash": {
-        "bench_eqw": 2.718507716340396,
-        "bench_btc": -1.5009985486095356
+        "bench_eqw": 2.3007650998950235,
+        "bench_btc": -1.4535510839598238
       }
     },
     "positive_vs_bench_eqw": {
@@ -1750,7 +1764,7 @@
       {
         "a": "claude",
         "b": "gemini",
-        "corr": 0.473
+        "corr": 0.472
       },
       {
         "a": "claude",
@@ -1760,12 +1774,12 @@
       {
         "a": "claude",
         "b": "gpt_pure",
-        "corr": 0.528
+        "corr": 0.529
       },
       {
         "a": "claude",
         "b": "guardian",
-        "corr": 0.622
+        "corr": 0.62
       },
       {
         "a": "gemini",
@@ -1785,22 +1799,22 @@
       {
         "a": "gpt",
         "b": "gpt_pure",
-        "corr": 0.848
+        "corr": 0.849
       },
       {
         "a": "gpt",
         "b": "guardian",
-        "corr": 0.676
+        "corr": 0.675
       },
       {
         "a": "gpt_pure",
         "b": "guardian",
-        "corr": 0.731
+        "corr": 0.729
       }
     ],
     "mean_corr": 0.574,
-    "max_corr": 0.848,
-    "denominator_days": 94,
+    "max_corr": 0.849,
+    "denominator_days": 95,
     "denominator_pairs": 10,
     "warning_threshold_pct": 60.0,
     "threshold_source": "硬編碼於 shadow/multi.py,PROTOCOL 未定義"
@@ -1812,90 +1826,92 @@
   },
   "current_position": {
     "rule": {
-      "AIN": 12.48,
-      "AKE": -12.54,
-      "CYS": -12.53,
-      "MOVR": -12.5,
-      "INTC": -12.51,
-      "WLD": -12.51,
-      "ONE": 12.51,
-      "JCT": -12.52
+      "IRYS": 12.52,
+      "AKE": -12.58,
+      "AIN": -12.5,
+      "INTC": -12.52,
+      "WLD": -12.52,
+      "JCT": -12.52,
+      "MOVR": 12.52,
+      "CYS": -12.52
     },
     "gpt": {
-      "BTC": -12.0,
+      "LINK": -4.0,
       "BNB": -5.0,
-      "XAU": 14.0,
-      "LINK": -5.0,
-      "SOL": -7.0,
+      "XAU": 15.0,
+      "SOL": -6.0,
+      "BTC": -12.0,
       "ETH": -5.0
     },
     "gemini": {
-      "BTC": -10.0,
+      "ENA": -5.0,
+      "WLD": -5.0,
       "SOL": -10.0,
-      "CYS": -5.01,
-      "ENA": -5.0
+      "BTC": -10.0,
+      "CYS": -5.0
     },
     "claude": {
-      "QNT": 7.0,
-      "ETH": -8.0,
-      "MOVR": -2.0,
-      "BNB": -3.0,
-      "NEAR": -3.99,
-      "LINK": -3.0,
-      "TAO": -4.0,
-      "1000PEPE": 2.0,
-      "AIN": 2.99,
-      "ZEC": 3.99,
       "IRYS": 4.0,
-      "HYPE": -2.0,
-      "SOL": -6.0,
-      "WLD": -2.0,
-      "ENA": -3.0,
-      "BTC": 12.01,
       "UNI": -3.0,
+      "ENA": -3.0,
+      "TAO": -4.0,
+      "BNB": -3.0,
+      "WLD": -2.0,
+      "SOL": -6.0,
+      "QNT": 6.99,
+      "ETH": -8.0,
+      "BTC": 12.0,
+      "1000PEPE": 2.0,
       "XRP": 2.0,
+      "LINK": -3.0,
+      "NEAR": -4.0,
       "AVAX": -3.0,
-      "BEAT": 2.0
+      "HYPE": -2.0,
+      "ZEC": 4.0,
+      "BEAT": 2.0,
+      "DOGE": -2.0,
+      "XAU": 2.0
     },
     "gpt_pure": {
-      "BTC": 8.0,
       "SOL": -10.0,
-      "XAU": 20.01
+      "BTC": 5.0,
+      "XAU": 25.0
     },
     "guardian": {
-      "ZEC": 4.0,
-      "QNT": 8.01,
-      "IRYS": 4.01,
-      "XAU": 5.0,
-      "SOL": -8.0,
-      "ETH": -10.01,
-      "DOGE": -5.0,
-      "BTC": -12.01,
-      "LINK": -6.0,
-      "UNI": 2.0,
-      "XRP": 6.0,
-      "1000PEPE": 3.0,
-      "BEAT": 2.0
+      "LINK": -4.0,
+      "IRYS": 3.0,
+      "BNB": -3.0,
+      "SOL": -6.0,
+      "BTC": -8.0,
+      "QNT": 6.0,
+      "ETH": -7.0,
+      "AVAX": -4.0,
+      "1000PEPE": 2.0,
+      "ZEC": 3.0,
+      "BEAT": 2.0,
+      "DOGE": -3.0,
+      "XRP": 5.0,
+      "XAU": 5.0
     },
     "bench_btc": {
-      "BTC": 100.02
+      "BTC": 100.0
     },
     "bench_eqw": {
-      "AIN": 9.98,
-      "CYS": 10.02,
-      "INTC": 10.01,
-      "WLD": 10.0,
-      "ONE": 10.01,
+      "IRYS": 10.01,
       "ENA": 10.0,
-      "AKE": 10.03,
-      "MOVR": 10.0,
-      "TAO": 10.0,
-      "JCT": 10.01
+      "INTC": 10.01,
+      "NEAR": 10.01,
+      "WLD": 10.01,
+      "CYS": 10.01,
+      "AKE": 10.05,
+      "AIN": 10.0,
+      "JCT": 10.01,
+      "MOVR": 10.01
     },
     "bench_cash": {}
   },
   "current_position_missing_reason": {},
-  "position_priced_at": "2026-11-06",
+  "position_priced_at": "2026-11-07",
   "code_change_audit": {
     "available": true,
     "core_changes": 20,
@@ -2110,59 +2126,59 @@
     ]
   },
   "gross_exposure": {
-    "measured_days": 46,
+    "measured_days": 47,
     "measured_from": "2026-09-22",
     "per_brain": {
       "rule": {
         "max_pct": 204.85,
         "max_day": "2026-10-27",
-        "days": 46
+        "days": 47
       },
       "gpt": {
         "max_pct": 97.91,
         "max_day": "2026-09-22",
-        "days": 46
+        "days": 47
       },
       "gemini": {
         "max_pct": 97.2,
         "max_day": "2026-09-23",
-        "days": 46
+        "days": 47
       },
       "claude": {
         "max_pct": 100.39,
         "max_day": "2026-10-06",
-        "days": 46
+        "days": 47
       },
       "gpt_pure": {
         "max_pct": 100.21,
         "max_day": "2026-09-26",
-        "days": 46
+        "days": 47
       },
       "guardian": {
         "max_pct": 94.96,
         "max_day": "2026-11-01",
-        "days": 46
+        "days": 47
       },
       "bench_btc": {
         "max_pct": 100.03,
         "max_day": "2026-11-06",
-        "days": 46
+        "days": 47
       },
       "bench_eqw": {
         "max_pct": 100.16,
         "max_day": "2026-10-31",
-        "days": 46
+        "days": 47
       },
       "bench_cash": {
         "max_pct": 0,
-        "max_day": "2026-11-06",
-        "days": 46
+        "max_day": "2026-11-07",
+        "days": 47
       }
     },
     "note": "自量測起始日起逐日重算;更早的日子沒有量測,不是沒超過"
   },
   "events": {
-    "denominator_days": 107,
+    "denominator_days": 108,
     "liquidation_days": [],
     "stale_days": [],
     "infra_skip_days": [
@@ -2177,7 +2193,7 @@
     "today_infra_skip": false
   },
   "data_quality": {
-    "denominator_days": 107,
+    "denominator_days": 108,
     "quote_outage_days": [],
     "funding_incomplete_days": [],
     "funding_unreachable_days": [],
@@ -2200,34 +2216,34 @@
     ]
   },
   "current_cash": {
-    "rule": 4776.87,
-    "gpt": 13476.2,
-    "gemini": 9994.07,
-    "claude": 11711.66,
-    "gpt_pure": 9652.32,
-    "guardian": 9499.53,
+    "rule": 4278.9,
+    "gpt": 13137.08,
+    "gemini": 10383.4,
+    "claude": 11700.5,
+    "gpt_pure": 9400.51,
+    "guardian": 9706.33,
     "bench_btc": -0.0,
-    "bench_eqw": -2.44,
+    "bench_eqw": -3.28,
     "bench_cash": 10000.0
   },
   "current_cash_pct": {
     "rule": 150.1,
-    "gpt": 120.0,
-    "gemini": 130.0,
-    "claude": 107.0,
-    "gpt_pure": 82.0,
-    "guardian": 107.0,
+    "gpt": 117.0,
+    "gemini": 135.0,
+    "claude": 108.0,
+    "gpt_pure": 80.0,
+    "guardian": 109.0,
     "bench_btc": -0.0,
     "bench_eqw": -0.1,
     "bench_cash": 100.0
   },
   "current_reasons": {
     "rule": "wick-break 雙向等權(確定性規則,無 AI)",
-    "gpt": "黃金多單小幅加碼，延續其餘空單；ETH多單反手小空。近期有回撤，總曝險控制在48%。",
-    "gemini": "整體維持偏空格局。續抱BTC、SOL與CYS空單，增配跌幅較大且空頭明確的ENA，總曝險控制在30%。",
-    "claude": "維持做多強勢(AIN+461%、IRYS+18.6%)、鞏固短期漲勢。反轉做空過度持倉MOVR/HYPE為中立。加碼BTC/QNT核心多頭,降低UNI空單風險。總曝險71%,現金29%緩衝。",
-    "gpt_pure": "XAU近30日相對抗跌，BTC跌幅較小：現有多倉小幅加碼。SOL較弱，略增原有空倉；保留現金防反彈。",
-    "guardian": "連跌5日止損。強化空頭(BTC/ETH/SOL)應對弱勢,總曝險72%。減輕擁擠(AVAX/TAO/NEAR出場),保留高信心多頭(QNT/XRP/XAU)。現金28%備彈藥。",
+    "gpt": "續抱黃金與主要空單，略增黃金、減碼SOL及LINK；保留53%現金防範反彈。",
+    "gemini": "加密空頭趨勢延續。續抱 SOL、BTC、CYS、ENA 空單，小幅加碼趨勢疲軟的 WLD 擴大獲利，總曝險提升至 35%。",
+    "claude": "持倉已盈利+8.35%,維持強多頭BTC/QNT/ZEC核心,降低AIN高波動(593%)風險,增加XAU避險(低波動21.9%),保留空頭部位收資金費。曝險78%,現金22%緩衝。",
+    "gpt_pure": "增持低波動黃金，縮減下跌中的BTC；維持SOL空倉，但留意反彈及資金費。保留六成現金。",
+    "guardian": "連5日虧損,降低空頭曝險(BTC/ETH/SOL各減3%),減持擁擠部位(DOGE/LINK/UNI),強化多頭價值股(QNT/XRP),維持現金25%緩衝。總曝險72%,防守優先。",
     "bench_btc": "市場基準(非 AI)",
     "bench_eqw": "市場基準(非 AI)",
     "bench_cash": "市場基準(非 AI)"
@@ -2302,48 +2318,48 @@
   "no_decision": {
     "rule": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "gpt": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "gemini": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "claude": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "gpt_pure": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "guardian": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "bench_btc": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "bench_eqw": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     },
     "bench_cash": {
       "streak": 0,
-      "last_decision_day": "2026-11-06",
-      "denominator_days": 107
+      "last_decision_day": "2026-11-07",
+      "denominator_days": 108
     }
   },
   "infra_failures": {
@@ -2371,10 +2387,10 @@
         ],
         "n_days": 18,
         "turnover_median_on_infra_days": 4.84,
-        "turnover_median_on_decision_days": 1302.59,
+        "turnover_median_on_decision_days": 1265.04,
         "turnover_n_infra_days": 18,
-        "turnover_n_decision_days": 55,
-        "denominator_days": 107,
+        "turnover_n_decision_days": 56,
+        "denominator_days": 108,
         "reasons": [
           {
             "date": "2026-09-21",
@@ -2434,10 +2450,10 @@
         ],
         "n_days": 1,
         "turnover_median_on_infra_days": 3.28,
-        "turnover_median_on_decision_days": 1152.73,
+        "turnover_median_on_decision_days": 1146.51,
         "turnover_n_infra_days": 1,
-        "turnover_n_decision_days": 72,
-        "denominator_days": 107,
+        "turnover_n_decision_days": 73,
+        "denominator_days": 108,
         "reasons": [
           {
             "date": "2026-10-28",
@@ -2469,10 +2485,10 @@
         ],
         "n_days": 18,
         "turnover_median_on_infra_days": 5.18,
-        "turnover_median_on_decision_days": 710.36,
+        "turnover_median_on_decision_days": 782.87,
         "turnover_n_infra_days": 18,
-        "turnover_n_decision_days": 55,
-        "denominator_days": 107,
+        "turnover_n_decision_days": 56,
+        "denominator_days": 108,
         "reasons": [
           {
             "date": "2026-09-21",
@@ -2527,7 +2543,7 @@
         ]
       }
     },
-    "denominator_days": 107,
+    "denominator_days": 108,
     "first_recorded_reason_day": "2026-09-21",
     "reasons_recorded_brain_days": 21,
     "infra_brain_days_total": 37,
@@ -2557,14 +2573,14 @@
           {
             "model": "gpt-6-sol",
             "first_day": "2026-10-01",
-            "last_day": "2026-11-06",
-            "settle_days": 37,
+            "last_day": "2026-11-07",
+            "settle_days": 38,
             "start_equity": 11943.67,
-            "end_equity": 11229.82,
-            "ret_pct": -5.98,
+            "end_equity": 11228.21,
+            "ret_pct": -5.99,
             "mdd_pct": 8.19,
-            "ir": 4.088,
-            "ir_n": 37,
+            "ir": 3.186,
+            "ir_n": 38,
             "violation_days": {
               "subject": 0,
               "infra": 1,
@@ -2595,7 +2611,7 @@
         ],
         "adopted_decisions_by_model_epoch2": {
           "gpt-5.4-mini": 39,
-          "gpt-6-sol": 36
+          "gpt-6-sol": 37
         }
       },
       "gemini": {
@@ -2603,14 +2619,14 @@
           {
             "model": "gemini-3.5-flash",
             "first_day": "2026-08-04",
-            "last_day": "2026-11-06",
-            "settle_days": 95,
+            "last_day": "2026-11-07",
+            "settle_days": 96,
             "start_equity": 9484.81,
-            "end_equity": 7687.57,
-            "ret_pct": -18.95,
+            "end_equity": 7691.23,
+            "ret_pct": -18.91,
             "mdd_pct": 22.74,
-            "ir": 2.407,
-            "ir_n": 94,
+            "ir": 1.979,
+            "ir_n": 95,
             "violation_days": {
               "subject": 0,
               "infra": 1,
@@ -2632,7 +2648,7 @@
         },
         "switch_disclosures": [],
         "adopted_decisions_by_model_epoch2": {
-          "gemini-3.5-flash": 91
+          "gemini-3.5-flash": 92
         }
       },
       "claude": {
@@ -2640,14 +2656,14 @@
           {
             "model": "claude-haiku-4-5-20251001",
             "first_day": "2026-08-04",
-            "last_day": "2026-11-06",
-            "settle_days": 95,
+            "last_day": "2026-11-07",
+            "settle_days": 96,
             "start_equity": 9391.28,
-            "end_equity": 10945.18,
-            "ret_pct": 16.55,
-            "mdd_pct": 27.47,
-            "ir": 3.828,
-            "ir_n": 94,
+            "end_equity": 10833.67,
+            "ret_pct": 15.36,
+            "mdd_pct": 28.21,
+            "ir": 3.231,
+            "ir_n": 95,
             "violation_days": {
               "subject": 1,
               "infra": 0,
@@ -2669,7 +2685,7 @@
         },
         "switch_disclosures": [],
         "adopted_decisions_by_model_epoch2": {
-          "claude-haiku-4-5-20251001": 90
+          "claude-haiku-4-5-20251001": 91
         }
       },
       "gpt_pure": {
@@ -2694,14 +2710,14 @@
           {
             "model": "gpt-6-sol",
             "first_day": "2026-10-01",
-            "last_day": "2026-11-06",
-            "settle_days": 37,
+            "last_day": "2026-11-07",
+            "settle_days": 38,
             "start_equity": 12578.0,
-            "end_equity": 11771.45,
-            "ret_pct": -6.41,
+            "end_equity": 11750.96,
+            "ret_pct": -6.58,
             "mdd_pct": 8.94,
-            "ir": 4.159,
-            "ir_n": 37,
+            "ir": 3.221,
+            "ir_n": 38,
             "violation_days": {
               "subject": 0,
               "infra": 1,
@@ -2732,7 +2748,7 @@
         ],
         "adopted_decisions_by_model_epoch2": {
           "gpt-5.4-mini": 35,
-          "gpt-6-sol": 36
+          "gpt-6-sol": 37
         }
       },
       "guardian": {
@@ -2740,14 +2756,14 @@
           {
             "model": "claude-haiku-4-5-20251001",
             "first_day": "2026-08-04",
-            "last_day": "2026-11-06",
-            "settle_days": 95,
+            "last_day": "2026-11-07",
+            "settle_days": 96,
             "start_equity": 9521.56,
-            "end_equity": 8877.6,
-            "ret_pct": -6.76,
+            "end_equity": 8904.64,
+            "ret_pct": -6.48,
             "mdd_pct": 19.56,
-            "ir": 2.85,
-            "ir_n": 94,
+            "ir": 2.39,
+            "ir_n": 95,
             "violation_days": {
               "subject": 0,
               "infra": 0,
@@ -2769,7 +2785,7 @@
         },
         "switch_disclosures": [],
         "adopted_decisions_by_model_epoch2": {
-          "claude-haiku-4-5-20251001": 91
+          "claude-haiku-4-5-20251001": 92
         }
       }
     },
@@ -3527,6 +3543,13 @@
         "p0_p1_max_dev_pct": 0.314,
         "infra_skip": false,
         "gpt_model": "gpt-6-sol"
+      },
+      {
+        "date": "2026-11-07",
+        "latency_s": 29.9,
+        "p0_p1_max_dev_pct": 0.555,
+        "infra_skip": false,
+        "gpt_model": "gpt-6-sol"
       }
     ],
     "note": "latency_s 是當日全部 AI 腦依序決策的總時間;p0_p1_max_dev_pct 是決策前後報價的最大偏離。偏離超過門檻的日子為基建保護日(全體只准減倉)。"
@@ -3583,10 +3606,10 @@
     }
   },
   "first_attempt_rate_pct": {
-    "gpt": 4.7,
+    "gpt": 4.6,
     "gemini": 0.0,
     "claude": 3.7,
-    "gpt_pure": 13.1,
+    "gpt_pure": 13.0,
     "guardian": 3.7
   },
   "first_attempt_violations_split": {
@@ -3622,11 +3645,11 @@
     }
   },
   "stability": {
-    "gpt": 0.815,
-    "gemini": 0.949,
-    "claude": 0.885,
-    "gpt_pure": 0.998,
-    "guardian": 0.703
+    "gpt": 0.997,
+    "gemini": 0.953,
+    "claude": 0.982,
+    "gpt_pure": 0.984,
+    "guardian": 0.949
   },
   "crowding_history": [
     {
@@ -4418,6 +4441,14 @@
     {
       "day": "2026-11-06",
       "overlap_pct": 14.3,
+      "warning": false,
+      "families": 3,
+      "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+      "note": "跨家族要求的目標重疊度不高"
+    },
+    {
+      "day": "2026-11-07",
+      "overlap_pct": 15.3,
       "warning": false,
       "families": 3,
       "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
@@ -5922,6 +5953,20 @@
       "bench_cash": 0.0,
       "voided": false,
       "infra_skip": false
+    },
+    {
+      "day": "2026-11-07",
+      "rule": -10.45,
+      "gpt": -0.01,
+      "gemini": 0.05,
+      "claude": -1.02,
+      "gpt_pure": -0.17,
+      "guardian": 0.3,
+      "bench_btc": -0.5,
+      "bench_eqw": 14.03,
+      "bench_cash": 0.0,
+      "voided": false,
+      "infra_skip": false
     }
   ],
   "returns_reconcile_mismatches": 22,
@@ -5931,8 +5976,8 @@
     "underivable": 0
   },
   "returns_coverage": {
-    "computable": 963,
-    "total": 963,
+    "computable": 972,
+    "total": 972,
     "missing": 0,
     "pct": 100.0
   },
