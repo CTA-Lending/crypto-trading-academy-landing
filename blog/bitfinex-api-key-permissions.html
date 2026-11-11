@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitfinex API 權限怎麼開才安全？放貸工具要哪幾個 — 交易幣修課</title>
+  <meta name="description" content="Bitfinex API 權限怎麼開才安全？以交易幣修課的放貸程式為例，只用到 4 個開關：保證金融資讀寫、錢包讀取、帳戶歷史讀取；提款、訂單、保證金交易、錢包間轉移都不用開。附 IP 限制設定、關掉提款後的剩餘風險與官方出處。">
+  <meta name="keywords" content="Bitfinex API,Bitfinex API 權限,Bitfinex API Key,Bitfinex API 金鑰,Bitfinex 放貸機器人,Bitfinex IP 白名單,API 金鑰安全,保證金融資,交易幣修課">
+  <link rel="canonical" href="https://crypto-trading-academy.com/blog/bitfinex-api-key-permissions.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bitfinex API 權限怎麼開才安全？放貸工具要哪幾個">
+  <meta property="og:description" content="Bitfinex API 權限怎麼開才安全？以交易幣修課的放貸程式為例，只用到 4 個開關：保證金融資讀寫、錢包讀取、帳戶歷史讀取；提款、訂單、保證金交易、錢包間轉移都不用開。附 IP 限制設定、關掉提款後的剩餘風險與官方出處。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/blog/bitfinex-api-key-permissions.html">
+  <meta property="og:site_name" content="交易幣修課 Crypto Trading Academy">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://crypto-trading-academy.com/blog/assets/bitfinex-api-permission-summary.jpg">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="article:author" content="交易幣修課研究室">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitfinex API 權限怎麼開才安全？放貸工具要哪幾個",
+  "description": "Bitfinex API 權限怎麼開才安全？以交易幣修課的放貸程式為例，只用到 4 個開關：保證金融資讀寫、錢包讀取、帳戶歷史讀取；提款、訂單、保證金交易、錢包間轉移都不用開。附 IP 限制設定、關掉提款後的剩餘風險與官方出處。",
+  "datePublished": "2026-11-11",
+  "dateModified": "2026-11-11",
+  "image": "https://crypto-trading-academy.com/blog/assets/bitfinex-api-permission-summary.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "交易幣修課研究室",
+    "url": "https://crypto-trading-academy.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "交易幣修課 Crypto Trading Academy",
+    "url": "https://crypto-trading-academy.com/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://crypto-trading-academy.com/blog/bitfinex-api-key-permissions.html"
+  },
+  "inLanguage": "zh-TW"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Bitfinex 放貸要開哪幾個 API 權限？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "以我們的放貸程式為例，只要開 4 個：保證金融資的「提供、取消及關閉融資」與「查閱融資狀態及信息」、錢包的「查閱錢包餘額及地址」、帳戶歷史的「查閱歷史餘額及交易紀錄」；其餘都不用開。別家工具可能不同，請以該工具的說明為準。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "把 API Key 交給放貸工具安全嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "要看你開了哪些權限、有沒有設 IP 限制，以及金鑰有沒有保管好。照這篇的設定，我們的工具拿到的是 4 個開關（保證金融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取），沒有提款、錢包間轉移和下單交易的權限，所以不能用這把金鑰把資金提領到外部；我們也不託管你的資金。但金鑰外洩時，你的帳戶資料仍可能被看到、放貸單仍可能被亂掛或取消，所以金鑰要妥善保管；懷疑外洩或想取消授權時，到 Bitfinex 撤銷這把金鑰。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "放貸機器人需要開提款權限嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不需要。放貸是把 Funding 錢包裡的錢掛出去借給別人，用到的是「保證金融資」這一類，不需要把錢領到外部。如果有放貸工具要你開提款，先停下來問清楚。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "「於錢包間轉移資金」要不要開？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "我們的程式沒有用到，不用開；資金請自己在 Bitfinex 的錢包頁轉到 Funding 錢包。它跟提款是兩個獨立的開關。不過依官方 API 文件，轉移功能還可以把 USDT 轉成 USDT0，也有參數可以把資金轉到主帳戶或子帳戶；只開這個開關是不是就做得到這些，官方沒有寫明。用不到就不要開。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "IP 限制要填什麼？不填可以嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "用我們的工具，建議填我們放貸伺服器的 IP（只有一組，登入會員後台的 API Key 設定頁可以看到），畫面上有「允許從任何IP位址訪問」的話把它關掉。不填也能用，但金鑰就不受來源 IP 限制，比較不安全。不要填你自己家裡或手機的 IP。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "金鑰建好之後，還能改權限嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。到 My API Keys 分頁點 Permissions > Edit，調整後按 Update Permissions，再輸入 2FA 驗證碼，不用重建金鑰。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "懷疑金鑰外洩怎麼辦？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "立刻到 Bitfinex 的 My API Keys 分頁撤銷（Revoke）那把金鑰。接著到 Funding 頁檢查有沒有不是你掛的放貸單，把不想留的取消；再確認 Bitfinex 的自動續借設定；已經借出去的資金，到 Funding 頁查看各筆的狀態與到期日。之後需要的話，重建一把新的金鑰。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "忘記存 API Secret 怎麼辦？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "金鑰資訊只完整顯示一次，找不回來。撤銷舊的金鑰，重新建立一把；新的金鑰產生後，當場貼到工具裡設定好。要另外留備份的話，照第六節的方式離線保管。"
+      }
+    }
+  ]
+}
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .article-body h2 { margin-top: 3rem; margin-bottom: 1.25rem; font-size: 1.75rem; font-weight: 700; color: #fbbf24; line-height: 1.4; }
+    .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #ffffff; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.85; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .article-body ul li::marker { color: #fbbf24; }
+    .article-body ol li::marker { color: #fbbf24; font-weight: 600; }
+    .article-body strong { color: #ffffff; font-weight: 600; }
+    .lead { font-size: 1.125rem; line-height: 1.85; color: #e2e8f0; margin-bottom: 1.5rem; }
+    .pull-quote { border-left: 4px solid #fbbf24; padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(251,191,36,0.05); font-size: 1.125rem; color: #ffffff; font-weight: 500; }
+
+    .warning-card { background: rgba(127,29,29,0.2); border: 1px solid rgba(248,113,113,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .recommend-card { background: rgba(20,83,45,0.2); border: 1px solid rgba(74,222,128,0.4); border-radius: 0.75rem; padding: 1.25rem; }
+    .insight-card { background: rgba(30,58,138,0.2); border: 1px solid rgba(96,165,250,0.4); border-radius: 0.75rem; padding: 1.5rem; }
+    .ceo-card { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0.4) 100%); border: 1px solid rgba(251,191,36,0.3); border-radius: 0.75rem; padding: 1.5rem; }
+
+    .formula-box { background: rgba(15,23,42,0.85); border: 1px solid rgba(251,191,36,0.45); border-radius: 0.75rem; padding: 1.75rem 1.25rem; margin: 2rem 0; text-align: center; }
+    .formula { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 1.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 0.02em; }
+    .formula-note { color: #8b949e; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    table.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(30,41,59,0.4); border-radius: 0.75rem; overflow: hidden; font-size: 0.875rem; }
+    .data-table th { background: rgba(15,23,42,0.8); color: #fbbf24; padding: 0.75rem; text-align: center; font-weight: 700; font-size: 0.8125rem; border-bottom: 1px solid rgba(71,85,105,0.5); }
+    .data-table th:first-child { text-align: left; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid rgba(71,85,105,0.3); color: #cbd5e1; text-align: center; vertical-align: middle; }
+    .data-table td:first-child { text-align: left; font-weight: 600; color: #fff; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.safe { color: #4ade80; font-weight: 700; }
+    .data-table td.warn { color: #fbbf24; font-weight: 700; }
+    .data-table td.danger { color: #f85149; font-weight: 700; }
+    .data-table tr.death-zone { background: rgba(248,81,73,0.08); }
+
+    .final-quote { font-size: 1.6rem; font-weight: 700; color: #fbbf24; text-align: center; line-height: 1.6; padding: 2.5rem 1rem; margin: 3rem 0 2rem; border-top: 1px solid rgba(251,191,36,0.3); border-bottom: 1px solid rgba(251,191,36,0.3); }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-white antialiased">
+
+  <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="../assets/logo-full.png" alt="CTA Logo" class="h-10 w-10 rounded-full brightness-0 invert opacity-90">
+        <span class="text-lg font-bold text-white">交易幣修課</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="/" class="hover:text-white transition">首頁</a>
+        <a href="../course.html" class="hover:text-white transition">交易課程</a>
+        <a href="../lending.html" class="hover:text-white transition">放貸機器人</a>
+        <a href="../testimonials.html" class="hover:text-white transition">學員見證</a>
+        <a href="../blog/" class="text-white font-semibold">文章</a>
+        <a href="https://app.crypto-trading-academy.com/login" class="text-amber-400 hover:text-amber-300 font-medium transition">會員登入</a>
+        <a href="https://app.crypto-trading-academy.com/register" class="bg-amber-400 text-slate-900 font-semibold px-5 py-2 rounded-lg hover:bg-amber-300 transition flex items-center gap-1"><span>&#x1F449;</span> 免費註冊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="/" class="block text-slate-300 hover:text-white py-2">首頁</a>
+      <a href="../course.html" class="block text-slate-300 hover:text-white py-2">交易課程</a>
+      <a href="../lending.html" class="block text-slate-300 hover:text-white py-2">放貸機器人</a>
+      <a href="../testimonials.html" class="block text-slate-300 hover:text-white py-2">學員見證</a>
+      <a href="../blog/" class="block text-white font-semibold py-2">文章</a>
+      <a href="https://app.crypto-trading-academy.com/login" class="block text-center text-amber-400 font-semibold py-2 border border-amber-400 rounded-lg">會員登入</a>
+      <a href="https://app.crypto-trading-academy.com/register" class="block text-center bg-amber-400 text-slate-900 font-semibold py-3 rounded-lg mt-2">免費註冊</a>
+    </div>
+  </nav>
+  <style>
+    .article-body .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .article-body .data-table th,
+    .article-body .data-table td { white-space: normal; vertical-align: top; text-align: left; line-height: 1.7; }
+    .article-body .data-table td:first-child,
+    .article-body .data-table th:first-child { width: auto; min-width: 5.5em; }
+    /* 樣板用的 Tailwind 會把清單符號清掉（list-style: none），編號清單的 1、2、3 不見；這裡補回來 */
+    .article-body ol { list-style: decimal; }
+    .article-body ul { list-style: disc; }
+    .article-body code { word-break: break-word; }
+    @media (max-width: 640px) {
+      .article-body table.data-table { font-size: 0.875rem; }
+      .article-body .data-table th,
+      .article-body .data-table td { padding: 0.6rem 0.5rem; }
+      .article-body h2 { font-size: 1.45rem; }
+    }
+  </style>
+  <div class="max-w-3xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-slate-500" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-amber-400 transition">首頁</a>
+      <span class="mx-2">/</span>
+      <a href="./" class="hover:text-amber-400 transition">文章</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">Bitfinex API 權限</span>
+    </nav>
+  </div>
+
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-amber-400 text-sm font-semibold tracking-wider uppercase mb-4">放貸專區 ｜ API 安全</p>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">Bitfinex API 權限怎麼開才安全？<br class="hidden md:block"><span class="text-slate-400 text-2xl md:text-3xl">放貸工具要哪幾個</span></h1>
+      <p class="text-lg text-slate-400 mb-6">Bitfinex 的 API 金鑰可以一項一項設定權限。放貸工具的核心是「保證金融資」這一類；以我們自己的放貸程式為例，只用到 4 個開關：保證金融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取。提款、訂單、保證金交易、錢包間轉移都不用開。這篇把官方分的九項權限逐項講清楚，附上 IP 限制怎麼設、關掉提款後還剩哪些風險；官方說法都附 Bitfinex 原文出處。</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500 mb-8">
+        <span>📅 2026-11-11</span><span>•</span><span>⏱ 閱讀約 8 分鐘</span><span>•</span><span>✍️ 交易幣修課研究室</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-body max-w-3xl mx-auto px-4 pb-8">
+    <h2>先講答案</h2>
+
+    <ol>
+  <li>以我們自己的放貸程式為例，只用到 4 個開關：保證金融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取。放貸在 Bitfinex 叫「保證金融資」（Margin Funding），這一類是放貸工具的核心。</li>
+  <li>提款、訂單、保證金交易、錢包間轉移，我們的程式都沒有用到，不用開。</li>
+  <li>Bitfinex 的 API 金鑰（API Key）可以一項一項設定權限。官方說明文章把權限分成九項：帳戶資訊、帳戶歷史紀錄、訂單、保證金交易、保證金融資、錢包、提款、Bitfinex Pay 這八類功能，加上 IP 位址訪問限制。不少類別底下有讀、寫兩個開關，所以畫面上的開關數比九多。</li>
+  <li>IP 限制：每把金鑰最多可以填 20 個 IP，填了以後金鑰只能從這些 IP 使用。Bitfinex 官方部落格建議，用自動化工具時把金鑰限制在白名單 IP。</li>
+  <li>關掉提款不等於沒有風險。拿到金鑰的人仍然可以亂掛或取消你的放貸單。金鑰要當成密碼保管，懷疑外洩就立刻到 Bitfinex 撤銷。</li>
+</ol>
+
+    <figure class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-amber-400/10 my-8">
+        <a href="assets/bitfinex-api-permission-summary.jpg" data-mobile="assets/bitfinex-api-permission-summary-m.jpg" target="_blank" rel="noopener" aria-label="開啟原尺寸圖片">
+          <picture><source media="(max-width: 640px)" srcset="assets/bitfinex-api-permission-summary-m.jpg?v=1"><img src="assets/bitfinex-api-permission-summary.jpg?v=1" alt="重點整理：放貸工具要開的 4 個開關（保證金融資的提供取消及關閉融資、查閱融資狀態及信息，錢包的查閱錢包餘額及地址，賬戶歷史的查閱歷史餘額及交易紀錄），不用開的有提款、錢包間轉移、訂單、保證金交易、帳戶資訊與 Settings；IP 限制建議填放貸伺服器的 IP" class="w-full h-auto" loading="eager"></picture>
+        </a>
+        <figcaption class="bg-slate-900 text-slate-500 text-xs text-center py-3 px-4 italic leading-relaxed">重點整理：以交易幣修課的放貸程式為例，要開 4 個、其餘不用開。紅色區塊依功能合併列示，設定時請按開關名稱逐項確認。開關字樣出自我們帳戶 2026 年 5 月的中文介面；別家工具用到的權限可能不同。<span class="not-italic text-slate-600"> · 圖看不清楚？點一下開原圖</span></figcaption>
+      </figure>
+
+    <div class="insight-card my-8">
+<p><strong>先揭露</strong>：交易幣修課（CTA）自己提供 Bitfinex 放貸自動化工具，是付費訂閱服務，我們因此有收入。這篇裡「放貸工具要開哪幾個」講的是我們自己的程式；別家工具用到的權限可能不同，請以該工具的說明為準。Bitfinex 官方的說法，在正文各段附上出處，文末有完整清單，查閱日是 2026 年 11 月 11 日。</p>
+</div>
+
+    <h2>一、API 金鑰是什麼</h2>
+
+    <p>API 金鑰是你在 Bitfinex 帳戶裡自己建立的一組憑證，由兩串字組成：API Key 和 API Key Secret。把這兩串字交給一個程式，那個程式就能用你的帳戶做事。能做哪些事，由你建立金鑰時打開的權限決定。</p>
+
+    <p>可以把它想成一把能設定「開得了哪幾扇門」的鑰匙。能開的門越少，鑰匙外洩後，別人能做的事就越少。</p>
+
+    <p>Bitfinex 的 API 文件把權限分成「讀」和「寫」：只想讓程式看帳戶資料，勾「讀」就夠；要讓程式交易或申請出入金，才需要另外勾對應的「寫」（出處：<a href="https://docs.bitfinex.com/docs/requirements-and-limitations" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Requirements and Limitations&#8599;</a>）。</p>
+
+    <p>「只給用得到的權限」這件事，官方自己示範過：Bitfinex 的報表程式只需要讀取權限，官方在說明裡寫明，為了帳戶安全，不建議給它寫入權限（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/900001124983" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Full Tax Report — Bitfinex Reporting Application&#8599;</a>）。</p>
+
+    <p>建立金鑰的流程，官方說明是這樣的（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/115003363429-How-to-create-and-revoke-a-Bitfinex-API-Key" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to create and revoke a Bitfinex API Key&#8599;</a>）：</p>
+
+    <ol>
+  <li>選好權限，幫金鑰取一個備註名稱，按下產生。</li>
+  <li>輸入兩步驟驗證（2FA）的驗證碼。</li>
+  <li>到信箱點確認信裡的按鈕。官方提醒，要用開著 Bitfinex 的同一個瀏覽器打開確認連結；如果點下去開到別的瀏覽器（手機上常會開在郵件 App 裡），把連結複製回原本的瀏覽器打開。</li>
+  <li>頁面顯示 API Key 和 API Key Secret。官方寫明金鑰資訊只會顯示這一次，並提醒不要把金鑰存放在網路上，以免被盜用。</li>
+</ol>
+
+    <p>每一步的畫面截圖，在 <a href="bitfinex-register-api-setup.html" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Bitfinex 註冊開戶 + API 設定完整教學</a>。這篇只講權限怎麼選。</p>
+
+    <h2>二、Bitfinex 有哪些權限：官方列的九項</h2>
+
+    <p>下表前兩欄是官方說明文章的分類與描述（中文描述是我們的轉述，不是官方譯文），第三欄是我們的放貸程式有沒有用到。</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>分類（官方繁中用詞／英文）</th>
+    <th>官方怎麼描述</th>
+    <th>我們的放貸程式</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>帳戶資訊 Account Info</td>
+    <td>接收帳戶手續費資訊；另可編輯帳戶資訊</td>
+    <td class="danger">沒有用到，不用開</td>
+  </tr>
+  <tr>
+    <td>帳戶歷史紀錄 Account History</td>
+    <td>檢視與下載帳戶的交易活動明細</td>
+    <td class="safe">讀取：有用到</td>
+  </tr>
+  <tr>
+    <td>訂單 Orders</td>
+    <td>看帳戶的訂單；另可選建立與取消訂單</td>
+    <td class="danger">沒有用到，不用開</td>
+  </tr>
+  <tr>
+    <td>保證金交易 Margin Trading</td>
+    <td>看保證金倉位與相關資訊；另可使用贖回功能（這是槓桿交易的倉位，跟放貸無關）</td>
+    <td class="danger">沒有用到，不用開</td>
+  </tr>
+  <tr>
+    <td>保證金融資 Margin Funding</td>
+    <td>提供狀態資訊；並可給予提供、取消、關閉融資的權限</td>
+    <td class="safe">讀取、寫入都有用到（放貸的核心）</td>
+  </tr>
+  <tr>
+    <td>錢包 Wallets</td>
+    <td>看餘額與地址；另有在自己的錢包之間轉移的選項</td>
+    <td class="warn">讀取有用到；轉移沒有用到，不用開</td>
+  </tr>
+  <tr>
+    <td>提款 Withdrawals</td>
+    <td>透過 API 啟用提款</td>
+    <td class="danger">沒有用到，絕對不要開</td>
+  </tr>
+  <tr>
+    <td>Bitfinex Pay</td>
+    <td>Bitfinex Pay 發票的狀態資訊；另可選建立發票</td>
+    <td class="danger">沒有用到，不用開</td>
+  </tr>
+  <tr>
+    <td>IP 位址訪問限制 IP Access restrictions</td>
+    <td>每把金鑰最多列 20 個 IP，金鑰只能從這些 IP 使用</td>
+    <td class="warn">建議設定，見第五節</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>出處同上一節的建立金鑰說明，官方另有繁體中文版：<a href="https://support.bitfinex.com/hc/zh-tw/articles/115003363429" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">如何建立和移除 Bitfinex API 金鑰？&#8599;</a></p>
+
+    <p>設定時請注意兩件事：</p>
+
+    <ul>
+  <li><strong>按名稱逐項對照，不要只數個數。</strong> 實際畫面上有幾個開關，可能隨介面版本不同。官方說明文章列了 Bitfinex Pay、沒有列 Settings；官方 API 文件的權限代號裡兩個都有；我們 2026 年 5 月截到的中文介面有 Settings、沒有 Bitfinex Pay，一共 15 個開關。</li>
+  <li><strong>Settings 這一類</strong>（Read account settings、Write account settings）：我們的程式沒有用到，兩個都不用開。</li>
+</ul>
+
+    <h2>三、放貸工具要開哪幾個：以我們的程式為例，4 個</h2>
+
+    <p>放貸程式做的事很單純：看你的 Funding 錢包（放貸用的錢包；<a href="https://support.bitfinex.com/hc/en-us/articles/115003283809" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Bitfinex 帳戶預設有三個錢包&#8599;</a>，要借出去的錢得先放在這一個）有多少錢，依你的設定掛出放貸單，該取消的取消，把每天收到的利息記下來。對應到 Bitfinex 中文介面，我們的程式只用到這 4 個開關：</p>
+
+    <div class="table-wrap">
+<table class="data-table">
+  <thead><tr>
+    <th>開關（中文介面上的字樣）</th>
+    <th>屬於哪一類</th>
+    <th>程式拿它做什麼</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td>提供、取消及關閉融資</td>
+    <td>保證金融資（寫入）</td>
+    <td>掛出放貸單、取消放貸單</td>
+  </tr>
+  <tr>
+    <td>查閱融資狀態及信息</td>
+    <td>保證金融資（讀取）</td>
+    <td>看哪些單還在掛、哪些已經借出</td>
+  </tr>
+  <tr>
+    <td>查閱錢包餘額及地址</td>
+    <td>錢包（讀取）</td>
+    <td>看 Funding 錢包有多少錢可以掛</td>
+  </tr>
+  <tr>
+    <td>查閱歷史餘額及交易紀錄</td>
+    <td>帳戶歷史（讀取）；介面上寫「賬戶歷史」</td>
+    <td>讀每天的利息入帳紀錄，用來算收益</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    <p>用英文介面的話：保證金融資請找 Margin Funding 這一類底下的兩個開關；錢包的讀取是 Wallets 底下的 <code class="text-amber-300 bg-slate-800/70 px-1.5 py-0.5 rounded text-[0.9em]">Get wallet balances and addresses</code>；帳戶歷史是 Account History 這一類（只有一個開關）。</p>
+
+    <p>這 4 個是怎麼來的、適用到哪裡，有兩點要說清楚：</p>
+
+    <ul>
+  <li><strong>這是查我們自己的程式碼確認的，不是 Bitfinex 公布的對照。</strong> 2026 年 11 月 11 日，我們查閱自家放貸程式在線上執行的程式碼，確認它只用到上表這 4 類功能。Bitfinex 的 API 文件沒有逐一寫明「哪個功能要開哪個開關」，所以功能對應到哪個開關，是我們依官方對各分類的描述推得的。綁定後如果出現權限相關的錯誤，請回到 Bitfinex 的 API Keys 頁，對照這 4 個開關有沒有打開。</li>
+  <li><strong>別家工具可能不一樣。</strong> 有的工具會多要「錢包間轉移」（幫你把錢搬進 Funding 錢包）或其他項目。多出來的每一項，都值得先問清楚用途再開。怎麼比較不同的放貸工具，可以看 <a href="bitfinex-lending-bot-how-to-choose.html" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Bitfinex 放貸機器人怎麼選</a>。</li>
+</ul>
+
+    <h2>四、哪些不要開，為什麼</h2>
+
+    <h3>提款：絕對不要開</h3>
+
+    <p>官方對這一類的描述只有一句：透過 API 啟用提款。它在畫面上是獨立的一區、獨立的開關，中文介面寫「建立提款請求」，英文介面寫 <code class="text-amber-300 bg-slate-800/70 px-1.5 py-0.5 rounded text-[0.9em]">Create a new withdrawal</code>。</p>
+
+    <p>放貸不需要把錢領到外部。如果有放貸工具要你開這一項，先停下來問清楚。</p>
+
+    <h3>訂單、保證金交易：放貸用不到</h3>
+
+    <p>這兩類管的是下單買賣和槓桿倉位。放貸不是交易，掛放貸單走的是「保證金融資」那一類。</p>
+
+    <h3>錢包間轉移：跟提款是兩回事，但用不到就別開</h3>
+
+    <p>「於錢包間轉移資金」跟提款是兩個獨立的開關，分屬錢包、提款兩類。官方的錢包說明也寫，要把資金送到外部錢包得走提款（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/115003291305-How-to-transfer-funds-between-Bitfinex-wallets" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to transfer funds between Bitfinex wallets&#8599;</a>）。</p>
+
+    <p>不過轉移能做的事，比名字聽起來多。官方 API 文件寫到，轉移這個功能除了在幾個錢包之間搬錢，還可以把 USDT 轉成衍生品用的 USDT0，另有參數可以把資金轉到以 email 或使用者編號指定的主帳戶或子帳戶（出處：<a href="https://docs.bitfinex.com/reference/rest-auth-transfer" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Transfer Between Wallets&#8599;</a>）。只開「於錢包間轉移資金」這一個開關，是不是就做得到這些，官方文件沒有寫明。</p>
+
+    <p>我們的程式沒有用到這個開關。資金請自己在 Bitfinex 的錢包頁轉到 Funding 錢包，官方說明寫錢包之間搬移免費、幾秒就完成。</p>
+
+    <h3>其餘幾項</h3>
+
+    <p>編輯帳戶訊息、查閱帳戶手續費、Settings 的兩個開關、Bitfinex Pay：我們的程式都沒有用到，全部關著就好。</p>
+
+    <h2>五、IP 限制：讓金鑰只能從指定的地方使用</h2>
+
+    <p>權限管的是「這把鑰匙開得了哪些門」，IP 限制管的是「從哪裡來的人拿這把鑰匙才有用」。</p>
+
+    <p>官方說明：每把 API 金鑰最多可以列 20 個 IP 位址，設了之後金鑰只能從這些 IP 使用。Bitfinex 官方部落格的安全清單也建議，使用自動化交易或整合工具時，把 API 金鑰限制在白名單 IP（出處：<a href="https://blog.bitfinex.com/products/lock-down-your-crypto-the-ultimate-security-checklist-for-bitfinex-traders/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Lock Down Your Crypto: The Ultimate Security Checklist for Bitfinex Traders&#8599;</a>）。</p>
+
+    <p>以我們的工具為例：</p>
+
+    <ul>
+  <li>建議在金鑰的 IP 限制填我們放貸伺服器的 IP，只有一組。這組 IP 請登入會員後台，到 API Key 設定頁查看（Telegram 放貸機器人的金鑰教學裡也有），照頁面上顯示的原樣貼上，前後不要多出空格。</li>
+  <li>填了之後，把「允許從任何IP位址訪問」這個開關關掉。這個開關在我們 2026 年 5 月看到的畫面上，就在權限清單最下面；如果你的畫面沒有這個開關，只要填好 IP 就可以。</li>
+  <li>不填也能用，但這把金鑰就不受來源 IP 限制，比較不安全；不填的話，「允許從任何IP位址訪問」要保持打開。</li>
+  <li>不要填你自己家裡或手機的 IP。工具是從我們的伺服器連到 Bitfinex 的，填你家的 IP 會把工具擋在外面。</li>
+  <li>這個 IP 限制只套用在這一把金鑰上，不會影響你自己用網站或手機 App 登入 Bitfinex。</li>
+</ul>
+
+    <div class="warning-card my-8">
+<p><strong>別跟「帳號登入的 IP 白名單」搞混。</strong> Bitfinex 另外有一個帳號層級的 IP 設定，在帳戶的安全設定頁，限制的是哪些 IP 可以存取你的帳戶。官方說明提醒，多數人的網路不是固定 IP，設錯會把自己鎖在帳戶外面；IP 會變動、或需要在多個裝置和地點登入的人，官方不建議開這個功能（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/115004554809" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Getting Set Up: Securing Your Bitfinex Account&#8599;</a>）。這篇講的是建立 API 金鑰時的 IP 限制，是另一個功能。</p>
+</div>
+
+    <h2>六、關掉提款，不等於沒有風險</h2>
+
+    <p>只開上面 4 個開關、關掉提款，拿到金鑰的人沒辦法用這把金鑰送出提款請求。如果你照第五節設了 IP 限制，官方說明是金鑰只能從列出的 IP 使用，這也能擋掉一部分風險；沒設的話，這道阻擋就不存在。能用這把金鑰的人，還有兩件事做得到：</p>
+
+    <ul>
+  <li><strong>看得到你的資料</strong>：錢包餘額、歷史紀錄、放貸狀態。</li>
+  <li><strong>動得了你的放貸單</strong>：可以掛出放貸單，也可以取消放貸單。例如用很低的利率、很長的天期把你的資金借出去，或把你原本掛好的單取消。</li>
+</ul>
+
+    <p>Bitfinex 官方部落格有一篇談 AI 交易代理人的風險，講的是同一個道理：限制權限、關掉提款是重要的第一步，但只解決一部分問題，有執行權的程式仍然可能用錯誤的操作造成損失。那篇談的是交易機器人；套用到放貸是我們的類推，不是官方原話（出處：<a href="https://blog.bitfinex.com/industry-news/ai-trading-agents-useful-tool-or-security-liability/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">AI Trading Agents: Useful Tool or Security Liability?&#8599;</a>）。</p>
+
+    <p>所以金鑰本身要保管好。官方的提醒散在幾個地方：</p>
+
+    <ul>
+  <li><strong>懷疑外洩就立刻撤銷。</strong> 官方 API 文件寫，依權限設定不同，外洩的金鑰可能讓人取得帳戶的完整存取並造成資金損失（出處：<a href="https://docs.bitfinex.com/docs/requirements-and-limitations" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Requirements and Limitations&#8599;</a>）。</li>
+  <li><strong>不要把金鑰存放在網路上。</strong> 這是建立金鑰說明裡的提醒（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/115003363429-How-to-create-and-revoke-a-Bitfinex-API-Key" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to create and revoke a Bitfinex API Key&#8599;</a>）。要留備份的話，存在不連網的地方，例如寫在紙上鎖好；不要貼在聊天訊息、信箱草稿或共用的雲端文件裡。其實金鑰交給工具之後，你自己不一定要留：哪天需要，撤銷舊的、重建一把就好。</li>
+  <li><strong>小心要你交出金鑰的網站。</strong> 官方的防詐說明把「要求你交出帳戶 API 金鑰的詐騙網站」列為釣魚手法之一（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/4407584392857" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to protect a Bitfinex account from phishing scams&#8599;</a>）。輸入金鑰之前，先確認網址是你要用的那個工具的官方網址。</li>
+  <li><strong>定期換一把新的。</strong> 上面那篇官方部落格建議金鑰要定期輪換，舊的憑證要從交易所和工具兩邊都刪掉。多久換一次，官方沒有給數字。</li>
+</ul>
+
+    <h2>七、建好之後：檢查、修改、撤銷</h2>
+
+    <p>下面修改與撤銷的步驟，出自官方的建立金鑰說明（出處：<a href="https://support.bitfinex.com/hc/en-us/articles/115003363429-How-to-create-and-revoke-a-Bitfinex-API-Key" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to create and revoke a Bitfinex API Key&#8599;</a>）。</p>
+
+    <p><strong>修改權限。</strong> 到 API 頁的 My API Keys 分頁，點 Permissions &gt; Edit，調整後按頁面底部的 Update Permissions，再輸入 2FA 驗證碼。也就是說，建好之後才發現多開了幾項，不用重建，把多的關掉就可以。</p>
+
+    <p><strong>撤銷金鑰。</strong> 同一個分頁的 Action 欄選 Revoke。官方說明寫，撤銷會自動移除這把金鑰使用的所有權限。</p>
+
+    <p>撤銷之後，請自己再檢查兩件事。官方說明沒有寫撤銷金鑰會不會連帶處理它們：</p>
+
+    <ol>
+  <li>還沒成交的放貸掛單：到 Funding 頁看一下，不想留的自己取消。</li>
+  <li>Bitfinex 本身的到期自動續借設定：如果你也想停止自動續借，記得一併關掉。</li>
+</ol>
+
+    <p>已經借出去的資金，請到 Funding 頁查看各筆的狀態與到期日。</p>
+
+    <p><strong>忘了存 Secret。</strong> 金鑰資訊只完整顯示一次，之後找不回來。官方 API 文件寫，只要還能登入帳戶和信箱，隨時可以再產生新的金鑰；所以做法是撤銷舊的、重建一把（出處：<a href="https://docs.bitfinex.com/docs/requirements-and-limitations" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Requirements and Limitations&#8599;</a>）。</p>
+
+    <h3>設定完的檢查清單</h3>
+
+    <ul>
+  <li>打開的只有工具用得到的開關（我們的工具是 4 個）</li>
+  <li>提款是關的</li>
+  <li>訂單、保證金交易是關的</li>
+  <li>錢包間轉移是關的（除非你用的工具需要，而且你清楚它的用途）</li>
+  <li>IP 限制填了工具伺服器的 IP；畫面上有「允許從任何IP位址訪問」的話，它是關的。或者你清楚不填的代價</li>
+  <li>自己另外留的 Key 和 Secret 備份沒有存在網路上，也沒有貼在聊天訊息或共用文件裡</li>
+  <li>金鑰的備註名稱看得出是給哪個工具用的（之後要撤銷時才不會刪錯）</li>
+  <li>帳戶的兩步驟驗證（2FA）開著</li>
+</ul>
+
+    <h2>常見問題</h2>
+
+    <h3>Bitfinex 放貸要開哪幾個 API 權限？</h3>
+
+    <p>以我們的放貸程式為例，只要開 4 個：保證金融資的「提供、取消及關閉融資」與「查閱融資狀態及信息」、錢包的「查閱錢包餘額及地址」、帳戶歷史的「查閱歷史餘額及交易紀錄」；其餘都不用開。別家工具可能不同，請以該工具的說明為準。</p>
+
+    <h3>把 API Key 交給放貸工具安全嗎？</h3>
+
+    <p>要看你開了哪些權限、有沒有設 IP 限制，以及金鑰有沒有保管好。照這篇的設定，我們的工具拿到的是 4 個開關（保證金融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取），沒有提款、錢包間轉移和下單交易的權限，所以不能用這把金鑰把資金提領到外部；我們也不託管你的資金。但金鑰外洩時，你的帳戶資料仍可能被看到、放貸單仍可能被亂掛或取消，所以金鑰要妥善保管；懷疑外洩或想取消授權時，到 Bitfinex 撤銷這把金鑰。</p>
+
+    <h3>放貸機器人需要開提款權限嗎？</h3>
+
+    <p>不需要。放貸是把 Funding 錢包裡的錢掛出去借給別人，用到的是「保證金融資」這一類，不需要把錢領到外部。如果有放貸工具要你開提款，先停下來問清楚。</p>
+
+    <h3>「於錢包間轉移資金」要不要開？</h3>
+
+    <p>我們的程式沒有用到，不用開；資金請自己在 Bitfinex 的錢包頁轉到 Funding 錢包。它跟提款是兩個獨立的開關。不過依官方 API 文件，轉移功能還可以把 USDT 轉成 USDT0，也有參數可以把資金轉到主帳戶或子帳戶；只開這個開關是不是就做得到這些，官方沒有寫明。用不到就不要開。</p>
+
+    <h3>IP 限制要填什麼？不填可以嗎？</h3>
+
+    <p>用我們的工具，建議填我們放貸伺服器的 IP（只有一組，登入會員後台的 API Key 設定頁可以看到），畫面上有「允許從任何IP位址訪問」的話把它關掉。不填也能用，但金鑰就不受來源 IP 限制，比較不安全。不要填你自己家裡或手機的 IP。</p>
+
+    <h3>金鑰建好之後，還能改權限嗎？</h3>
+
+    <p>可以。到 My API Keys 分頁點 Permissions &gt; Edit，調整後按 Update Permissions，再輸入 2FA 驗證碼，不用重建金鑰。</p>
+
+    <h3>懷疑金鑰外洩怎麼辦？</h3>
+
+    <p>立刻到 Bitfinex 的 My API Keys 分頁撤銷（Revoke）那把金鑰。接著到 Funding 頁檢查有沒有不是你掛的放貸單，把不想留的取消；再確認 Bitfinex 的自動續借設定；已經借出去的資金，到 Funding 頁查看各筆的狀態與到期日。之後需要的話，重建一把新的金鑰。</p>
+
+    <h3>忘記存 API Secret 怎麼辦？</h3>
+
+    <p>金鑰資訊只完整顯示一次，找不回來。撤銷舊的金鑰，重新建立一把；新的金鑰產生後，當場貼到工具裡設定好。要另外留備份的話，照第六節的方式離線保管。</p>
+
+    <h2>資料來源</h2>
+
+    <p>Bitfinex 官方頁面，查閱日都是 2026 年 11 月 11 日；括號裡是該頁自己標示的最後編輯日。中文內容是我們的轉述，請以官方原文為準。</p>
+
+    <ul>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/115003363429-How-to-create-and-revoke-a-Bitfinex-API-Key" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to create and revoke a Bitfinex API Key&#8599;</a>（2023-11-16）；繁體中文版 <a href="https://support.bitfinex.com/hc/zh-tw/articles/115003363429" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">如何建立和移除 Bitfinex API 金鑰？&#8599;</a>（2023-12-28）：九項權限的分類與描述、建立流程、修改與撤銷。</li>
+  <li>API 文件 <a href="https://docs.bitfinex.com/docs/requirements-and-limitations" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Requirements and Limitations&#8599;</a>（2025-06-10）：讀與寫的區別、金鑰只完整顯示一次、懷疑外洩立刻撤銷。</li>
+  <li>API 文件 <a href="https://docs.bitfinex.com/reference/key-permissions" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Key Permissions&#8599;</a>（2025-06-10）：權限代號，含 settings 與 bfxpay。</li>
+  <li>API 文件 <a href="https://docs.bitfinex.com/reference/rest-auth-transfer" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Transfer Between Wallets&#8599;</a>（2025-06-10）：錢包間轉移、USDT 轉 USDT0、轉到主帳戶或子帳戶的參數。</li>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/115003291305-How-to-transfer-funds-between-Bitfinex-wallets" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to transfer funds between Bitfinex wallets&#8599;</a>（2026-11-07）：錢包間搬移免費、幾秒完成；送到外部要走提款。</li>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/115003283809" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Why are there different wallets at Bitfinex&#8599;</a>（2026-10-17）：帳戶預設有 Exchange、Margin、Funding 三個錢包，Funding 錢包用來提供融資。</li>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/16287313163033" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to make a withdrawal using the Bitfinex Mobile App&#8599;</a>（2026-06-01）、<a href="https://support.bitfinex.com/hc/en-us/articles/16287311586585" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to make a deposit or buy crypto using the Bitfinex Mobile App&#8599;</a>（2026-05-30）：提款與錢包讀取兩個開關的英文名稱。</li>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/900001124983" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Full Tax Report — Bitfinex Reporting Application&#8599;</a>（2025-09-19）：官方報表程式只需要讀取權限。</li>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/115004554809" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Getting Set Up: Securing Your Bitfinex Account&#8599;</a>（2026-10-14）、<a href="https://support.bitfinex.com/hc/en-us/articles/115004524669" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to whitelist an IP address at Bitfinex&#8599;</a>（2025-04-08）：帳號層級的 IP 白名單與官方的提醒。</li>
+  <li>說明中心 <a href="https://support.bitfinex.com/hc/en-us/articles/4407584392857" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">How to protect a Bitfinex account from phishing scams&#8599;</a>（2026-10-19）：要求交出 API 金鑰的詐騙網站。</li>
+  <li>官方部落格 <a href="https://blog.bitfinex.com/products/lock-down-your-crypto-the-ultimate-security-checklist-for-bitfinex-traders/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Lock Down Your Crypto: The Ultimate Security Checklist for Bitfinex Traders&#8599;</a>（2025-03-18 發布，2026-06-09 修改）：把金鑰限制在白名單 IP 的建議。</li>
+  <li>官方部落格 <a href="https://blog.bitfinex.com/industry-news/ai-trading-agents-useful-tool-or-security-liability/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">AI Trading Agents: Useful Tool or Security Liability?&#8599;</a>（2026-04-17 發布，2026-05-28 修改）：關掉提款只解決一部分問題、金鑰定期輪換。</li>
+  <li>官方部落格 <a href="https://blog.bitfinex.com/announcements/change-log-version-1-72/" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Change Log: Version 1.72&#8599;</a>（2023-05-24）：API 金鑰可列最多 20 個 IP。</li>
+</ul>
+
+    <p>不是官方資料的部分：中文介面上各開關的字樣，出自我們自己帳戶 2026 年 5 月的畫面；「我們的程式用到哪 4 個開關」是我們對自家程式的說明，不是 Bitfinex 的規定。Bitfinex 的介面與文件會更新，設定時請以你當下看到的畫面為準。</p>
+<script>try{if(window.matchMedia('(max-width: 640px)').matches){document.querySelectorAll('a[data-mobile]').forEach(function(a){a.href=a.getAttribute('data-mobile');});}}catch(e){}</script>
+
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href="bitfinex-register-api-setup.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">放貸專區 · 開戶教學</div>
+        <div class="font-bold text-white text-sm">Bitfinex 註冊開戶 + API 設定完整教學（2026 最新圖文版）</div>
+      </a>
+      <a href="bitfinex-lending-bot-how-to-choose.html" class="block bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-amber-400/50 transition">
+        <div class="text-xs text-slate-500 mb-1">放貸專區 · 工具選擇</div>
+        <div class="font-bold text-white text-sm">放貸機器人怎麼選？挑 Bitfinex 放貸工具前，先看這 6 件事</div>
+      </a>
+    </div>
+  </div>
+
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 reveal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">權限設好了，<span class="text-amber-400">再來挑工具</span></h2>
+      <p class="text-slate-400 mb-8 text-lg">不管用哪一家放貸工具，都可以拿這篇的清單，<br class="hidden md:block">對照它要你開哪些權限、每一項拿去做什麼。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../lending.html" class="inline-block bg-amber-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-xl hover:bg-amber-300 transition shadow-lg shadow-amber-400/20">了解放貸機器人 &rarr;</a>
+        <a href="bitfinex-lending-bot-how-to-choose.html" class="inline-block border border-slate-600 text-slate-300 font-semibold text-lg px-8 py-4 rounded-xl hover:border-amber-400 hover:text-amber-400 transition">放貸機器人怎麼選</a>
+      </div>
+      <p class="mt-6 text-xs text-slate-600 max-w-2xl mx-auto leading-relaxed">本文由交易幣修課（CTA）製作，文中介紹的放貸工具為 CTA 自營的付費服務。CTA 未持有金融牌照，本文為一般教學資訊，不構成投資建議，也不提供個別適合性判斷。文中 Bitfinex 官方內容為我們的中文轉述，權限設計、介面與文件以 Bitfinex 官方網站當下公布的為準。放貸與 API 授權皆有風險，可能損失部分或全部本金，請詳閱<a href="../risk-disclosure.html" class="hover:text-slate-400 underline">風險揭露聲明</a>。</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/logo-full.png" alt="CTA Logo" class="h-12">
+          <div><div class="font-bold text-white">交易幣修課</div><div class="text-xs text-slate-500">Crypto Trading Academy</div></div>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <a href="../terms.html" class="hover:text-white transition">服務條款</a>
+          <a href="../privacy.html" class="hover:text-white transition">隱私政策</a>
+          <a href="../risk-disclosure.html" class="hover:text-white transition">風險揭露</a>
+          <a href="https://youtube.com/@CTA1491" target="_blank" rel="noopener" class="hover:text-white transition">YouTube</a>
+          <a href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener" class="hover:text-white transition">聯繫我們</a>
+          <a href="https://t.me/CryptoTradingAcademy9319" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-slate-600 text-center">&copy; 2026 交易幣修課 Crypto Trading Academy. All rights reserved.</div>
+      <div class="mt-3 text-xs text-slate-600 text-center max-w-3xl mx-auto">本網站提供交易教育課程及自動化放貸工具（SaaS），非投資顧問、非代操服務。不保證任何收益率，過往績效不代表未來表現。使用前請閱讀<a href="../risk-disclosure.html" class="text-slate-500 hover:underline">風險揭露聲明</a>。</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 p-3 md:hidden z-40">
+    <a href="../lending.html" class="block text-center bg-amber-400 text-slate-900 font-bold py-3 rounded-xl">了解放貸機器人 &rarr;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else { reveals.forEach(function(el) { el.classList.add('visible'); }); }
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
