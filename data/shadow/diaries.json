@@ -1,6 +1,149 @@
 {
   "days": [
     {
+      "day": "2026-11-11",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 12.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "JCT": 12.5,
+            "AIN": -12.5,
+            "AKE": -12.5,
+            "CYS": -12.5,
+            "INTC": -12.5,
+            "WLD": -12.5,
+            "MOVR": -12.5,
+            "NEAR": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -8.93,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -8.0,
+            "ETH": -5.0,
+            "SOL": -4.0,
+            "LINK": -3.0,
+            "XAU": -5.0
+          },
+          "reason": "平掉與訊號相反的XAU多倉，轉為小額做空；平掉接近關鍵價的BNB空倉，其餘空倉小幅調整，保留75%現金。",
+          "outcome": 0.15,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": -10.0,
+            "SOL": -10.0,
+            "ENA": -5.0,
+            "WLD": -5.0,
+            "CYS": -5.0
+          },
+          "reason": "整體市場延續空頭趨勢，現有空單近期獲利良好，繼續持倉 BTC、SOL、ENA、WLD、CYS 空單並控制曝險。",
+          "outcome": 0.76,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "QNT": 8.0,
+            "ETH": -8.0,
+            "SOL": -6.0,
+            "IRYS": 5.0,
+            "NEAR": -4.0,
+            "TAO": -4.0,
+            "AVAX": 4.0,
+            "ZEC": -3.0,
+            "1000PEPE": 4.0,
+            "ENA": -3.0,
+            "XAU": -3.0,
+            "UNI": -3.0,
+            "XRP": 3.0,
+            "BNB": -3.0,
+            "LINK": -2.0,
+            "WLD": -2.0,
+            "DOGE": -2.0,
+            "HYPE": -2.0,
+            "AIN": -1.0,
+            "BEAT": -1.0,
+            "JCT": 1.0
+          },
+          "reason": "持倉已獲利8.3%,近日震盪加碼優勢多頭(BTC/QNT/IRYS),並強化高波動空頭部位(TAO/NEAR)對沖。總曝險98%,保留2%現金緩衝,應對市場變化靈活調整。",
+          "outcome": -0.16,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "XAU": 29.5,
+            "SOL": -4.9
+          },
+          "reason": "維持黃金多倉與SOL小額空倉；黃金相對抗跌，SOL偏弱，但訊號有限，保留66%現金。",
+          "outcome": -0.46,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": -8.0,
+            "ETH": -6.0,
+            "SOL": -5.0,
+            "NEAR": -4.0,
+            "LINK": -3.0,
+            "TAO": -3.0,
+            "BNB": -2.0,
+            "DOGE": -2.0,
+            "XAU": -2.0,
+            "QNT": 8.0,
+            "XRP": 6.0,
+            "AVAX": 5.0,
+            "IRYS": 4.0,
+            "1000PEPE": 3.0,
+            "JCT": 2.0
+          },
+          "reason": "空頭占優(28/30幣SHORT),減持逆向多單(XAU出場),集中JCT多頭信號。做空主流(BTC/ETH/SOL)規避擁擠,保留QNT/AVAX/IRYS高波動多頭。現金保留30%待機。總曝險70%,控風險。",
+          "outcome": 0.23,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -1.84,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "JCT": 10.0,
+            "AIN": 10.0,
+            "AKE": 10.0,
+            "CYS": 10.0,
+            "INTC": 10.0,
+            "WLD": 10.0,
+            "MOVR": 10.0,
+            "NEAR": 10.0,
+            "ENA": 10.0,
+            "1000PEPE": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -2.51,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-11-10",
       "next_day": null,
       "crowding": {
@@ -17998,5 +18141,5 @@
       }
     }
   ],
-  "total_days": 111
+  "total_days": 112
 }
