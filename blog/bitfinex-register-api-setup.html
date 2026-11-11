@@ -449,7 +449,7 @@
 
       <p>API Key 就像是一把「有限權限的鑰匙」。你把這把鑰匙授權給 CTA 放貸工具，讓它在你授權的有限權限內，依你設定的條件在 Bitfinex 上自動掛放貸單。有了 API Key，工具就能依你的設定 24 小時自動掛單、到期後重新掛單、把利息一起投入下一輪，你不需要一直盯著螢幕（但仍建議定期檢查）。</p>
 
-      <p>你可以精確控制這把鑰匙的權限範圍。CTA 工具需要的是融資相關權限、讀取權限，以及錢包間轉移資金（用來把資金轉到融資錢包）；<strong class="text-white">不需要</strong>提幣和下單交易權限。關掉提幣權限後，即使 API Key 外洩，對方也不能用它把資金提領到外部；但仍可能被拿來亂掛或取消融資單、在你的錢包之間搬移資金，所以金鑰一樣要妥善保管，發現異常就立刻刪除。</p>
+      <p>你可以精確控制這把鑰匙的權限範圍。我們的程式只用到 4 類權限：融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取；<strong class="text-white">不需要</strong>提幣、錢包間轉移和下單交易權限。關掉提幣權限後，即使 API Key 外洩，對方也不能用它把資金提領到外部；但仍可能被拿來亂掛或取消融資單，所以金鑰一樣要妥善保管，發現異常就立刻刪除。</p>
 
       <h3 class="text-xl font-bold text-amber-400">API Key 建立步驟</h3>
 
@@ -461,38 +461,41 @@
           <strong class="text-white">點擊「Create New Key」</strong> — 開始建立一組新的 API 金鑰。
         </li>
         <li>
-          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。Bitfinex 中文介面有 <strong class="text-white">15 個獨立開關</strong>（每個都是「關 / 開」切換），請按照下圖設定（介面可能更新，請以實際畫面上的權限名稱對照）：
+          <strong class="text-white">設定權限（最關鍵的步驟）</strong> — 這一步決定了機器人能做什麼、不能做什麼。Bitfinex 中文介面有 <strong class="text-white">15 個獨立開關</strong>（每個都是「關 / 開」切換），請照圖片下面的清單設定（介面可能更新，請以實際畫面上的權限名稱對照）：
           <div class="my-4 rounded-xl overflow-hidden border border-slate-700">
-            <img src="assets/bitfinex-api-permissions-recommended.png" alt="Bitfinex API 權限建議設定（8 開 6 關）" class="w-full" />
-            <p class="bg-slate-800 text-xs text-slate-400 px-4 py-2 mb-0">↑ CTA 放貸機器人最小必要權限：8 個開、7 個關（截圖最上方「VPS」是 Key 的備註名稱，只是示範用的備註名稱，你可以自由命名，例如「CTA」，方便日後辨識這把金鑰的用途）</p>
+            <img src="assets/bitfinex-api-permissions-4on.png" alt="Bitfinex API 金鑰權限畫面（標註版）：只開 4 個權限，其餘都關" class="w-full" />
+            <p class="bg-slate-800 text-xs text-slate-400 px-4 py-2 mb-0">↑ 開關位置對照圖。畫面是舊版設定的截圖，已加上標註：綠框 4 個要開，紅框 3 個現在請關，最下面 IP 那一個看下一步；以下方清單為準。（截圖最上方「VPS」是 Key 的備註名稱，只是示範用的備註名稱，你可以自由命名，例如「CTA」，方便日後辨識這把金鑰的用途）</p>
           </div>
           <div class="bg-slate-800 rounded-xl p-5 my-4">
-            <p class="text-green-400 font-semibold text-sm mb-3">✅ 這 8 個請打開（開）：</p>
+            <p class="text-green-400 font-semibold text-sm mb-3">✅ 這 4 個請打開（我們的程式只用到這 4 個）：</p>
             <div class="space-y-2 text-sm">
-              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">帳戶資訊 → 查閱帳戶手續費</strong></div></div>
-              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">賬戶歷史 → 查閱歷史餘額及交易紀錄</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">賬戶歷史 → 查閱歷史餘額及交易紀錄</strong>（每天的收益紀錄要用）</div></div>
               <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">保證金融資 → 查閱融資狀態及信息</strong></div></div>
               <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">保證金融資 → 提供、取消及關閉融資</strong>（核心放貸權限）</div></div>
               <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">錢包 → 查閱錢包餘額及地址</strong></div></div>
-              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">錢包 → 於錢包間轉移資金</strong>（自動把現貨錢包資金轉到融資錢包用）</div></div>
-              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">Settings → Read account settings</strong></div></div>
-              <div class="flex items-start gap-3"><span class="text-green-400 font-bold leading-none mt-0.5">&#10003;</span><div><strong class="text-white">IP位址限制 → 允許從任何IP位址訪問</strong>（CTA 工具伺服器的 IP 可能變動，需要開；代價是金鑰不受來源 IP 限制，見下一步說明）</div></div>
             </div>
-            <p class="text-red-400 font-semibold text-sm mt-5 mb-3">❌ 這 7 個請關閉（關）：</p>
+            <p class="text-red-400 font-semibold text-sm mt-5 mb-3">❌ 這 10 個請關閉（關）：</p>
             <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">帳戶資訊 → 查閱帳戶手續費</strong>（我們的程式沒有用到）</div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">帳戶資訊 → 編輯帳戶訊息</strong></div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">訂單 → 查閱訂單及訂單狀態</strong>（放貸機器人不需要交易權限）</div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">訂單 → 新增及取消訂單</strong></div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">保證金交易 → 查閱倉位及保證金交易</strong></div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">保證金交易 → 贖回倉位</strong></div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">錢包 → 於錢包間轉移資金</strong>（我們的程式沒有用到；資金請照第四步自己轉到 Funding 錢包）</div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">提款 → 建立提款請求</strong>（<strong class="text-red-400">絕對不要開</strong>，這是提幣權限）</div></div>
+              <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">Settings → Read account settings</strong>（我們的程式沒有用到）</div></div>
               <div class="flex items-start gap-3"><span class="text-red-400 font-bold leading-none mt-0.5">&#10007;</span><div><strong class="text-white">Settings → Write account settings</strong></div></div>
             </div>
-            <p class="text-amber-300/80 text-xs mt-4 mb-0">💡 找不到「Offers: Write」這種子項目？那可能是舊版命名。Bitfinex 現在就是把每一個動作做成獨立的「關 / 開」開關，照上圖逐一切換即可。</p>
+            <p class="text-amber-300 font-semibold text-sm mt-5 mb-3">⚙️ 剩下 1 個跟 IP 限制有關，看下一步再決定：</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-3"><span class="text-amber-300 font-bold leading-none mt-0.5">&#9656;</span><div><strong class="text-white">IP位址限制 → 允許從任何IP位址訪問</strong>（有填我們的伺服器 IP 就關；沒填就要開）</div></div>
+            </div>
+            <p class="text-amber-300/80 text-xs mt-4 mb-0">💡 找不到「Offers: Write」這種子項目？那可能是舊版命名。Bitfinex 現在就是把每一個動作做成獨立的「關 / 開」開關，照上面的清單逐一切換即可。綁定後如果出現權限相關的錯誤，請回到 Bitfinex 的 API Keys 頁，對照這 4 個開關有沒有打開。</p>
           </div>
         </li>
         <li>
-          <strong class="text-white">IP 白名單欄位請<span class="text-amber-300">跳過不填</span></strong> — Bitfinex 在權限頁面下方還會有一個「IP 白名單」輸入框，<strong class="text-red-400">請保持空白</strong>。CTA 機器人伺服器可能會更新 IP，如果你填了自己家裡的 IP，機器人就會被擋在外面（會看到 <code class="text-amber-300">ip: invalid</code> 錯誤）。這代表這把金鑰不受來源 IP 限制，安全性主要靠「不開提款、不開交易、只給必要權限」加上妥善保管金鑰；萬一懷疑外洩，請立即到 Bitfinex 刪除這組 API Key。
+          <strong class="text-white">IP 限制<span class="text-amber-300">建議設定</span></strong> — 建議把這把金鑰限制成只有我們的放貸伺服器能用：在 IP 限制的欄位填入我們放貸伺服器的 IP（只有一組），並把上一步最後那個「允許從任何IP位址訪問」關掉。這組 IP 請登入會員後台，到 API Key 設定頁查看（TG 放貸機器人的金鑰教學裡也有）。<strong class="text-white">不填也能用</strong>，但這把金鑰就不受來源 IP 限制，安全性較低；不填的話，「允許從任何IP位址訪問」要保持打開。請不要填你自己家裡或手機的 IP，否則機器人會被擋在外面（會看到 <code class="text-amber-300">ip: invalid</code> 錯誤）。萬一懷疑金鑰外洩，請立即到 Bitfinex 刪除這組 API Key。
         </li>
         <li>
           <strong class="text-white">輸入 2FA 驗證碼確認</strong> — 打開你的 Google Authenticator，輸入當前顯示的 6 位數驗證碼來確認建立。
@@ -508,8 +511,8 @@
       <div class="bg-slate-800 border border-amber-400/30 rounded-xl p-6 my-6">
         <p class="text-amber-400 font-semibold mb-2">API Key 安全三原則</p>
         <ul class="list-disc text-sm space-y-1 mb-0">
-          <li><strong class="text-white">只給必要權限</strong> — 融資相關、讀取，以及錢包間轉移；不開交易、不開提幣</li>
-          <li><strong class="text-white">不開 Withdraw 權限</strong> — 即使 API Key 外洩，也不能用它把資金提領到外部；但仍可能被用來亂掛融資單或搬移錢包資金，發現異常請立即刪除金鑰</li>
+          <li><strong class="text-white">只給必要權限</strong> — 只開程式用到的 4 類（融資讀寫、錢包讀取、帳戶歷史讀取）；不開交易、不開提幣、不開錢包間轉移</li>
+          <li><strong class="text-white">不開 Withdraw 權限</strong> — 即使 API Key 外洩，也不能用它把資金提領到外部；但仍可能被用來亂掛或取消融資單，發現異常請立即刪除金鑰</li>
           <li><strong class="text-white">API Secret 只顯示一次</strong> — 如果忘記保存，只能刪除舊的 Key 重新建立</li>
         </ul>
       </div>
@@ -548,7 +551,7 @@
 
         <div>
           <h3 class="text-lg font-semibold text-white mb-2">Q：API Key 交給機器人安全嗎？</h3>
-          <p>照本文的設定，工具拿到的是融資、讀取與錢包間轉移權限，沒有提幣和下單交易權限，所以不能用這把金鑰把資金提領到外部；你的資金一直在你自己的 Bitfinex 帳戶。但金鑰外洩仍可能被拿來亂掛或取消融資單、搬移錢包資金，請妥善保管；想取消授權時，隨時可以到 Bitfinex 後台刪除該組 API Key。</p>
+          <p>照本文的設定，工具拿到的是 4 類權限（融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取），沒有提幣、錢包間轉移和下單交易權限，所以不能用這把金鑰把資金提領到外部；你的資金一直在你自己的 Bitfinex 帳戶。但金鑰外洩仍可能被拿來亂掛或取消融資單，請妥善保管；想取消授權時，隨時可以到 Bitfinex 後台刪除該組 API Key。</p>
         </div>
 
         <div>

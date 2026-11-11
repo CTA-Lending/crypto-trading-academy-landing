@@ -6,7 +6,7 @@
 
 - [首頁](https://crypto-trading-academy.com/): 品牌與兩條產品線總覽
 - [交易決策系統課程](https://crypto-trading-academy.com/course.html): 一對一教練帶你建立自己的交易規則與風險計畫;不提供買賣建議、不帶單、不代操
-- [自動放貸機器人](https://crypto-trading-academy.com/lending.html): Bitfinex 24/7 自動掛單軟體工具;僅需 Bitfinex API 融資權限,不託管資金
+- [自動放貸機器人](https://crypto-trading-academy.com/lending.html): Bitfinex 24/7 自動掛單軟體工具;API 不用開提款、轉帳與交易權限,不託管資金
 - [放貸收益試算器](https://crypto-trading-academy.com/calculator.html): 輸入本金與年化利率的純數學試算;實際利率由市場決定,不構成收益承諾
 - [AI 山寨季雷達](https://crypto-trading-academy.com/altseason.html): 每天量一次「現在」的山寨市場溫度並永久公開;描述當下,不預測未來
 - [AI 交易代理人公開研究實驗室](https://crypto-trading-academy.com/lab.html): AI 交易代理人的公開研究紀錄

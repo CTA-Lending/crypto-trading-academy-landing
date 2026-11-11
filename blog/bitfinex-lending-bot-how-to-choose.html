@@ -374,7 +374,7 @@
       <p>先揭露：交易幣修課（CTA）也提供 Bitfinex 放貸自動化工具，是付費訂閱服務，CTA 因此有收入。照上面的清單，我們的答案是：</p>
 
       <ul class="list-disc">
-        <li><strong class="text-white">API 權限</strong> — 需要融資相關、讀取，以及錢包間轉移（用來把資金轉進融資錢包）；不需要提款和下單交易權限。我們的伺服器 IP 可能變動，所以 IP 目前要設成不限制，這是我們的取捨。</li>
+        <li><strong class="text-white">API 權限</strong> — 我們的程式只用到 4 類：融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取；提款、錢包間轉移、下單交易都不用開。建議在金鑰的 IP 限制填我們放貸伺服器的 IP（一組，登入會員後台的 API Key 設定頁可以看到）；不填也能用，但較不安全。</li>
         <li><strong class="text-white">資金</strong> — 不託管，資金一直在你自己的 Bitfinex 帳戶。</li>
         <li><strong class="text-white">收費</strong> — 訂閱制，依方案的最大掛單金額分級，不從你的利息抽成；費用在會員中心商城查看。</li>
         <li><strong class="text-white">掛單邏輯</strong> — 參考訂單簿上的報價分布定價，把資金拆成多筆不同金額與天期的掛單，並依市場需求調整天期（利率低時偏短天期，需求高時可設較長天期，依方案最長 120 天）。</li>

@@ -359,8 +359,8 @@
 
       <ul class="list-disc">
         <li><strong class="text-white">API Key 加密存放</strong>：你的 Key 加密後才存進資料庫，不以明文保存。</li>
-        <li><strong class="text-white">只給必要權限</strong>：建立 API Key 時只開放融資相關、讀取與錢包間轉移權限，<strong>不開提幣、不開交易</strong>。即使 Key 外洩，對方也不能用它把資金提領到外部。（不過攻擊者仍可能掛出異常的放貸單，建議用戶每 3-6 個月在 Bitfinex 後台輪換 API Key，這是最佳實踐。）</li>
-        <li><strong class="text-white">不開提款 / 不開交易 + 2FA</strong>：建立 API Key 時嚴格只勾 Funding 與 Wallets 相關權限，提款（Withdraw）、訂單、保證金交易這幾項全部關掉，搭配 Bitfinex 帳號的 2FA — 即使 Key 外洩，對方也無法提幣或下單交易；但仍可能亂掛融資單、在你的錢包之間搬移資金，所以金鑰一樣要妥善保管。</li>
+        <li><strong class="text-white">只給必要權限</strong>：建立 API Key 時只開我們程式用到的 4 類權限（融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取），<strong>不開提幣、不開錢包間轉移、不開交易</strong>。即使 Key 外洩，對方也不能用它把資金提領到外部。（不過攻擊者仍可能掛出異常的放貸單，建議用戶每 3-6 個月在 Bitfinex 後台輪換 API Key，這是最佳實踐。）</li>
+        <li><strong class="text-white">不開提款 / 不開交易 + 2FA</strong>：建立 API Key 時，提款（Withdraw）、錢包間轉移、訂單、保證金交易這幾項全部關掉，搭配 Bitfinex 帳號的 2FA — 即使 Key 外洩，對方也無法提幣或下單交易；但仍可能亂掛或取消融資單，所以金鑰一樣要妥善保管。</li>
         <li><strong class="text-white">資金始終在你的 Bitfinex 帳戶</strong>：CTA 不託管你的資金，本金與利息都直接進你自己的 Funding Wallet。</li>
         <li><strong class="text-white">不從利息扣款</strong>：CTA 採訂閱制月費，不會從你的放貸利息中抽成。Bitfinex 平台手續費 15% 是平台收，跟我們無關。</li>
       </ul>
@@ -428,7 +428,7 @@
       <ol class="list-decimal">
         <li><strong class="text-white">註冊 CTA 帳號</strong>（crypto-trading-academy.com，免費）</li>
         <li><strong class="text-white">確認你的 Bitfinex 帳號已通過 KYC</strong>，並把資金轉到 Funding Wallet</li>
-        <li><strong class="text-white">在 Bitfinex 建立 API Key</strong>，只開融資相關、讀取與錢包間轉移權限，不開提款、不開交易（細節見 API 設定教學）</li>
+        <li><strong class="text-white">在 Bitfinex 建立 API Key</strong>，只開程式用到的 4 類權限（融資讀寫、錢包讀取、帳戶歷史讀取），不開提款、不開錢包間轉移、不開交易（細節見 API 設定教學）</li>
         <li><strong class="text-white">回到 CTA 後台貼上 API Key 與 Secret</strong>（系統加密後存放）</li>
         <li><strong class="text-white">選擇方案、選擇放貸幣種</strong>（USD / UST）</li>
         <li><strong class="text-white">啟動機器人</strong>，演算法開始運作；首批掛單通常 5 分鐘內出現在 Bitfinex 上</li>
