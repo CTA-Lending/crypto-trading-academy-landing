@@ -215,6 +215,7 @@
           <!-- 2026-09-03 複查：讀者無法從頁面核對「當天寫入」這個宣稱 → 加「產出時間」欄，直接印資料庫的寫入時間。 -->
           <span class="block mt-1 text-xs text-slate-500">「產出時間」是資料庫寫入的時間（UTC），通常在資料日的隔天早上。
           「修訂」是同一天重新產出的版本；若兩版數字相同，代表重跑後結果不變。</span>
+          <span class="block mt-1 text-xs text-slate-500">2026-11-13 更正：「收縮」的說明文字改為「山寨整體近 30 天下跌超過一成」。頁面上的說明是發佈時統一套用的，所以過去標成「收縮」的日子也一起換成新說明。舊說明「山寨普遍下跌且成交量萎縮」裡的成交量從來不是判定條件，是說明寫錯；這次只改說明文字，判定條件、每天的狀態名稱和分數都沒有改。</span>
         </p>
         <div id="log-count" class="font-mono text-xs text-slate-500 mb-2"></div>
         <div class="md:hidden text-xs text-slate-600 mb-1">← 表格可左右滑動 →</div>
@@ -411,10 +412,10 @@ fetch('./data/altseason/latest.json?_=' + Date.now())
           '<div class="inline-block border border-slate-500/60 text-slate-200 rounded-full px-4 py-1 text-sm">' + esc(d.stageName) + '</div>' +
           '<div class="mt-3 text-slate-200 text-lg">' + esc(d.stageDesc) + '</div>' +
           // 🔴 狀態**不是**按總分切的（複查：57.3 分是「BTC 主導」、55.3 分卻是「輪動初期」，讀者以為矛盾）。
-          //    引擎規則：看「過去 30 天跑贏比特幣的幣佔幾成」以及這個比例最近 7 天升或降。這句由程式產生，不是模型寫的。
+          //    引擎規則：看「過去 30 天跑贏比特幣的幣佔幾成」、這個比例最近 7 天的升幅，以及山寨整體 30 天報酬(擴張要 >0、收縮要 < -10%)。這句由程式產生，不是模型寫的。
           '<div class="mt-3 text-xs text-slate-500 leading-relaxed max-w-md mx-auto">' + '上面這個名稱和分數，看的不是同一件事。' +
           '分數是把五類數字合起來算的。' +
-          '名稱只看一件事：最近 30 天漲得比比特幣多的幣有幾成，以及這個比例這 7 天在升還是在降。' +
+          '名稱只看三個數字：最近 30 天漲得比比特幣多的幣有幾成、這個比例這 7 天升了多少，以及山寨整體這 30 天有沒有上漲，或是跌超過一成。' +
           '所以會出現「分數不低，名稱卻還是 BTC 主導」，那不是寫錯。</div>' +
           '<div class="mt-2 text-slate-500 text-sm">' +
             '比前一天 ' + delta(d.changeD1, '分') +
@@ -619,7 +620,7 @@ function buildChart(series, forwardRows, dist, relNote, latest) {
     heroPct.innerHTML = '跟過去 ' + nDist.toLocaleString() + ' 天比，這天' +
       (k >= 50 ? '<b class="text-white">偏高</b>' : '<b class="text-white">偏低</b>') +
       '：有 <b class="text-white">' + k + '%</b> 的日子分數比它低。' +
-      '<div class="text-xs text-slate-500 mt-1">偏高只是位置，不代表接下來會漲。</div>';
+      '<div class="text-xs text-slate-500 mt-1">這只是位置，不代表接下來會漲，也不代表會跌。</div>';
   }
 
   var posHost = document.getElementById('pos-body');
