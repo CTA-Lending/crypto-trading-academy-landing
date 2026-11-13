@@ -1,6 +1,147 @@
 {
   "days": [
     {
+      "day": "2026-11-13",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 12.7,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "AIN": -12.5,
+            "AKE": -12.5,
+            "CYS": -12.5,
+            "WLD": -12.5,
+            "INTC": 12.5,
+            "SNDK": -12.5,
+            "ENA": -12.5,
+            "NEAR": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -3.33,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -8.0,
+            "XAU": -5.0,
+            "ETH": -6.0,
+            "SOL": -4.0,
+            "LINK": -3.0
+          },
+          "reason": "續抱現有空單並小幅加碼；趨勢仍偏空，但保留74%現金防範反彈。",
+          "outcome": 0.7,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": -10.0,
+            "SOL": -10.0,
+            "WLD": -5.0,
+            "ENA": -5.0,
+            "CYS": -5.0
+          },
+          "reason": "全市場空頭趨勢持續，近期短倉穩定獲利。續抱現有空單（BTC、SOL、WLD、ENA、CYS），持倉比例微調至35%。",
+          "outcome": 1.5,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "ETH": -8.0,
+            "QNT": 7.0,
+            "SOL": -6.0,
+            "IRYS": 5.0,
+            "TAO": -4.0,
+            "AVAX": 4.0,
+            "NEAR": -4.0,
+            "1000PEPE": 3.0,
+            "XRP": 3.0,
+            "XAU": -3.0,
+            "ZEC": -3.0,
+            "BNB": -3.0,
+            "ENA": -3.0,
+            "HYPE": -2.0,
+            "LINK": -2.0,
+            "DOGE": -2.0,
+            "UNI": -2.0,
+            "WLD": -2.0,
+            "BEAT": -1.0,
+            "AIN": -1.0,
+            "JCT": 0.5,
+            "INTC": 2.0,
+            "NVDA": -2.0
+          },
+          "reason": "持倉+7.19%,近5日波動負(-0.65%),加碼低波動強信號(BTC+1%、ETH-0.2%、QNT+0.2%),新增INTC多+2%(反向唯一LONG訊號),減低極高波波動JCT、AIN曝險。曝險維持78%平衡。",
+          "outcome": -0.38,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "XAU": 29.0,
+            "SOL": -5.0
+          },
+          "reason": "保留XAU多倉與SOL小空；市場普跌但僅憑30日表現難判後市，維持約66%現金。",
+          "outcome": -0.65,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": -8.0,
+            "ETH": -6.0,
+            "SOL": -5.0,
+            "LINK": -3.0,
+            "DOGE": -2.0,
+            "TAO": -2.0,
+            "QNT": 4.0,
+            "XRP": 4.0,
+            "AVAX": 3.0,
+            "IRYS": 2.0,
+            "1000PEPE": 1.0
+          },
+          "reason": "認賠JCT/NEAR/PEPE近期高波動虧損部位,降低空頭曝險從5.8%→8%(減做空擁擠),增強LONG權重QNT/XRP護盤,保留現金42%應對變數,總曝險39%符合守護原則。",
+          "outcome": -0.95,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -4.29,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "AIN": 10.0,
+            "AKE": 10.0,
+            "CYS": 10.0,
+            "WLD": 10.0,
+            "INTC": 10.0,
+            "SNDK": 10.0,
+            "ENA": 10.0,
+            "NEAR": 10.0,
+            "MOVR": 10.0,
+            "NVDA": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -8.29,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-11-12",
       "next_day": null,
       "crowding": {
@@ -18282,5 +18423,5 @@
       }
     }
   ],
-  "total_days": 113
+  "total_days": 114
 }
