@@ -87,7 +87,7 @@
     <div class="font-mono text-xs tracking-[0.35em] text-gold uppercase mb-4"><span class="text-slate-500">— </span>LEGAL / PRIVACY</div>
     <h1 class="font-serif text-3xl md:text-4xl font-bold mb-2 text-white">隱私政策</h1>
     <p class="font-mono text-slate-400 mb-2">Privacy Policy</p>
-    <p class="text-sm text-slate-500 mb-12">最後更新日期：2026 年 7 月 8 日 ｜ 生效日期：2026 年 3 月 11 日</p>
+    <p class="text-sm text-slate-500 mb-12">最後更新日期：2026 年 11 月 15 日 ｜ 生效日期：2026 年 11 月 15 日</p>
 
     <div class="hud-card rounded-2xl p-6 md:p-10">
     <div class="prose prose-invert prose-slate max-w-none space-y-10 text-slate-300 leading-relaxed">
@@ -146,7 +146,7 @@
       <p>所有用戶的 Bitfinex API Key 與 API Secret 均以 <strong>AES-256</strong> 加密後存儲。加密金鑰與加密資料分開存儲，降低單點洩露風險。</p>
 
       <h3 class="text-lg font-semibold text-white">3.2 存取控制</h3>
-      <p>僅系統管理員具備存取用戶資料的權限。系統以最小權限原則運作。API Key 僅限 Funding 權限，即使洩露也無法進行交易或提款。</p>
+      <p>僅系統管理員具備存取用戶資料的權限。系統以最小權限原則運作。本服務的程式只會用到四類 API 權限（融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取）；API Key 不開啟交易與提款權限，錢包間轉移也不需要開啟。沒有開提款與交易權限的金鑰，不能用來提款或交易；但金鑰外洩仍可能被拿來查看帳戶資料、擅自掛出或取消放貸單（如果另外開了錢包間轉移，也可能被用來搬移錢包資金），請妥善保管。</p>
 
       <h3 class="text-lg font-semibold text-white">3.3 伺服器安全</h3>
       <p>服務運行於具備基本安全防護的 VPS，定期進行系統更新與安全修補，資料庫定期自動備份。</p>
@@ -154,7 +154,7 @@
       <h3 class="text-lg font-semibold text-white">3.4 用戶端安全建議</h3>
       <ul class="list-disc pl-6 space-y-1">
         <li>為 API Key 設定 <strong>IP 白名單</strong></li>
-        <li>確保 API Key <strong>僅開啟 Funding 權限</strong></li>
+        <li>API Key <strong>只要開啟本服務用到的四類權限</strong>（融資的讀取與寫入、錢包的讀取、帳戶歷史的讀取），不開啟交易與提款權限；錢包間轉移也不需要開啟</li>
         <li>啟用 Bitfinex 帳戶的<strong>二因素驗證 (2FA)</strong></li>
         <li>確保 Telegram 帳戶已啟用二步驟驗證</li>
       </ul>
