@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LV2CXP5WN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9LV2CXP5WN');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 分鐘交易規則檢查 | 交易幣修課</title>
+  <meta name="description" content="免費 1 分鐘交易規則自我檢查：5 個問題，看看你的交易規則缺哪一塊。教學分享，不是投資建議。">
+  <link rel="canonical" href="https://crypto-trading-academy.com/check.html">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="1 分鐘交易規則檢查 — 交易幣修課">
+  <meta property="og:description" content="5 個問題，看看你的交易規則缺哪一塊。">
+  <meta property="og:url" content="https://crypto-trading-academy.com/check.html">
+  <meta property="og:locale" content="zh_TW">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { void:'#05080F', deep:'#0A111E', panel:'#0D1626', line:'#1B2A44', gold:'#E5B84B', 'gold-soft':'#F2D38B', ice:'#8FC7E8' },
+      fontFamily: { serif:['"Noto Serif TC"','serif'], sans:['"Noto Sans TC"','sans-serif'] }
+    }}};
+  </script>
+  <style>
+    body { background:#05080F; font-family:"Noto Sans TC",sans-serif; }
+    .hud-card { background:linear-gradient(160deg, rgba(13,22,38,.85), rgba(10,17,30,.65)); border:1px solid #1B2A44; }
+    .cta-primary { background:linear-gradient(135deg,#E5B84B,#D9A833); color:#0A111E; }
+    .cta-ghost { border:1px solid #2B405F; color:#C9D6E8; }
+    .cta-ghost:hover { border-color:#E5B84B; color:#F2D38B; }
+    .hidden-step { display:none; }
+  </style>
+</head>
+<body class="text-slate-200 min-h-screen">
+  <main class="max-w-xl mx-auto px-4 py-10">
+    <a href="/" class="text-sm text-slate-400 hover:text-gold">← 交易幣修課</a>
+    <h1 class="font-serif text-3xl text-white mt-4">1 分鐘交易規則檢查</h1>
+    <p class="mt-3 text-slate-300">5 個問題，看看你的交易規則缺哪一塊。每題的答案只在你的瀏覽器裡算，不會自動送出。</p>
+
+    <section id="quiz" class="hud-card rounded-xl p-6 mt-6">
+      <p id="qnum" class="text-sm text-gold"></p>
+      <p id="qtext" class="text-lg text-white mt-2"></p>
+      <div class="flex gap-3 mt-5">
+        <button id="btnA" class="cta-ghost rounded-lg px-5 py-3 flex-1"></button>
+        <button id="btnB" class="cta-ghost rounded-lg px-5 py-3 flex-1"></button>
+      </div>
+      <p id="reply" class="text-slate-300 mt-4 min-h-[1.5rem]"></p>
+    </section>
+
+    <section id="result" class="hud-card rounded-xl p-6 mt-6 hidden-step">
+      <h2 class="font-serif text-xl text-white">你的檢查結果</h2>
+      <p id="summary" class="mt-3 text-slate-200"></p>
+      <ul id="todo" class="mt-3 space-y-3 text-slate-300"></ul>
+      <p class="mt-4 text-xs text-slate-500">※ 這是交易規則的自我檢查，不是投資建議，也不評論你現在的持倉。</p>
+      <div class="mt-6 flex flex-col gap-3">
+        <button id="btnWant" class="cta-primary rounded-lg px-5 py-3 font-bold">我想找教練聊聊</button>
+        <a href="/" class="cta-ghost rounded-lg px-5 py-3 text-center">先繼續看</a>
+      </div>
+    </section>
+
+    <section id="coach" class="hud-card rounded-xl p-6 mt-6 hidden-step">
+      <p class="text-slate-200">本次只幫你看規則、討論怎麼補，你主動問時才說明課程或方案。按下面的按鈕，會打開 LINE 對話並把要補的項目帶入開場白（有要補的才會帶入）；請確認或修改後<b>自己按送出</b>。這個頁面不會自動把你的答案傳給教練。</p>
+      <button id="lineBtn" type="button" class="cta-primary rounded-lg px-5 py-3 font-bold block w-full text-center mt-5">LINE 找教練</button>
+      <p class="mt-4 text-sm text-slate-400">若沒有帶入文字，可以複製這行再送出：</p>
+      <p id="prefill" class="mt-1 text-sm text-white bg-deep border border-line rounded p-3 select-all"></p>
+      <p class="mt-4 text-sm text-slate-400">用電腦開的話，LINE 按鈕可能打不開聊天：可以在電腦打開 <a class="text-ice underline" href="https://lin.ee/pFIDbQO" target="_blank" rel="noopener">https://lin.ee/pFIDbQO</a>，用手機 LINE 掃畫面上的 QR 碼加好友（或搜尋 @168sywnn），再傳一句「我想找教練」給我們。</p>
+      <p class="mt-4 text-sm text-slate-400">有 Telegram 的話，也可以用機器人：<a id="tgLink" class="text-ice underline" target="_blank" rel="noopener">t.me/CTA_RuleCheck_bot</a></p>
+    </section>
+
+    <p class="mt-8 text-xs text-slate-500">※ 教學分享，不是投資建議；交易有虧損風險，過去表現不代表未來。官方聯絡方式都列在官網首頁 <a class="underline" href="/">crypto-trading-academy.com</a> 最下面那一排（有「聯繫我們」）；教練不會主動私訊你要錢，也不會跟你要 API 金鑰、密碼或驗證碼。本頁使用網站統計（Google Analytics），說明見<a class="underline" href="/privacy.html">隱私政策</a>。</p>
+  </main>
+
+  <script>
+  // 題目與回覆：逐字取自 TG 接客機器人 texts.py CHECK(2026-11-10 版);改這裡要跟機器人一起改
+  const CHECK = [
+    ["進場前，你會先想好「價格到哪裡，代表我看錯了」嗎？", ["有", "沒有"],
+     "沒有先想好，虧損擴大時就沒有處理的依據。", "很好，這是規則裡最重要的一條。", "看錯在哪",
+     "進場前先寫下：什麼情況代表我原本的想法不成立，到時候怎麼處理。"],
+    ["每一筆最多賠多少，你有一個固定、賠得起的上限嗎？", ["有", "沒有"],
+     "先訂上限，有助於控制願意承擔的風險；沒有上限，一次看錯可能傷很重。（有上限，實際虧損也可能超過預期）",
+     "很好，每一筆都照它算倉位，不看心情。", "單筆上限", "每筆最多賠一個固定金額，倉位照它算。"],
+    ["賠錢的時候，你會再加碼攤平嗎？", ["不會", "會"],
+     "攤平是在已經看錯的時候放大部位，虧損會跟著放大。", "很好，不在賠錢時加碼，可以避免部位繼續擴大。", "不攤平",
+     "賠錢的單不加碼。（第一筆有賺，也不代表一定適合加碼）"],
+    ["你說得出上一筆「為什麼進、為什麼出」嗎？", ["有", "沒有"],
+     "沒有紀錄，賺賠都不知道原因，就沒辦法改進。", "很好，這樣的交易才能檢討。", "交易紀錄",
+     "每筆記三件事：為什麼進、在哪出、結果。"],
+    ["你下單主要靠自己的規則，還是跟群組、網紅的訊號？", ["自己的規則", "跟訊號"],
+     "跟訊號，對了是別人厲害，錯了沒人負責，自己也學不會判斷。", "很好，接下來是讓規則更完整、更守得住。", "靠自己判斷",
+     "下單前問自己：這筆符合我的哪一條規則？說不出來就不下。"]
+  ];
+  // 來源代碼：只認行銷總分工 v7 第 5 段的代碼，其他一律記 web
+  const CODES = ["yt_live","yt_short","yt_ch","ig_qtk","ig_qtk_kw","ig_qtk_cm","ig_bio","fb","ig_ai","x","threads","dm","line_re","site"];
+  const raw = new URLSearchParams(location.search).get("src") || "";
+  const src = CODES.includes(raw) ? raw : "web";
+  const LINE_ID = "@168sywnn";
+  const send = (name, extra) => { try { gtag('event', name, Object.assign({ src: src }, extra || {})); } catch (e) {} };
+
+  let i = 0; const todo = []; let lineUrl = "";
+  const $ = id => document.getElementById(id);
+  function show() {
+    const q = CHECK[i];
+    $("qnum").textContent = "第 " + (i + 1) + " / 5 題";
+    $("qtext").textContent = q[0];
+    $("btnA").textContent = q[1][0];
+    $("btnB").textContent = q[1][1];
+  }
+  function answer(ok) {
+    const q = CHECK[i];
+    $("reply").textContent = ok ? q[3] : q[2];
+    if (!ok) todo.push(q);
+    i += 1;
+    $("btnA").disabled = $("btnB").disabled = true;
+    setTimeout(() => {
+      $("btnA").disabled = $("btnB").disabled = false;
+      $("reply").textContent = "";
+      if (i < CHECK.length) { show(); } else { finish(); }
+    }, 1200);
+  }
+  function finish() {
+    $("quiz").classList.add("hidden-step");
+    $("result").classList.remove("hidden-step");
+    if (todo.length === 0) {
+      $("summary").textContent = "依你的回答，這 5 項你都有在做。想讓教練幫你看細節，一樣可以找教練。";
+    } else {
+      $("summary").textContent = "依你的回答，有 " + todo.length + " 項可以補：";
+      todo.forEach(q => {
+        const li = document.createElement("li");
+        li.innerHTML = "<b class='text-gold'></b><br><span></span>";
+        li.querySelector("b").textContent = q[4];
+        li.querySelector("span").textContent = "可以這樣寫（示意）：" + q[5];
+        $("todo").appendChild(li);
+      });
+    }
+    send("check_done");  // 不帶答案、也不帶要補幾項(頁首寫了「每題的答案只在你的瀏覽器裡算，不會自動送出」)
+  }
+  $("btnA").onclick = () => answer(true);
+  $("btnB").onclick = () => answer(false);
+  $("btnWant").onclick = () => {
+    let text = "你好，我從網頁檢查來，想請教練看規則";
+    if (todo.length) text += "，還可補：" + todo.map(q => q[4]).join("、");
+    text += "（代碼 " + src + "）";
+    $("prefill").textContent = text;
+    lineUrl = "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(text);  // 11-13:不放進 <a href>(GA4 外連點擊會記下整條網址),按下才開
+    $("tgLink").href = "https://t.me/CTA_RuleCheck_bot?start=" + src;  // 11-13:不明來源帶 web(原本帶 site,會跟官網頁尾混)
+    $("coach").classList.remove("hidden-step");
+    send("want_coach_link");
+  };
+  $("lineBtn").addEventListener("click", () => {
+    send("line_click");
+    if (!lineUrl) return;
+    const w = window.open(lineUrl, "_blank");
+    if (w) { w.opener = null; } else { location.href = lineUrl; }  // App 內瀏覽器擋新分頁 → 改同頁開
+  });
+  show();
+  send("check_open");
+  </script>
+</body>
+</html>
