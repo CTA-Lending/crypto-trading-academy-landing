@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated_utc": "2026-11-15T01:06:54Z",
-  "data_date": "2026-11-15",
+  "generated_utc": "2026-11-16T01:06:56Z",
+  "data_date": "2026-11-16",
   "d1": "2026-10-02",
-  "day_index": 45,
+  "day_index": 46,
   "phase": "處理期",
   "aa_days": 7,
   "final_day": 365,
@@ -24,8 +24,8 @@
   },
   "ledger": {
    "ok": true,
-   "n": 92,
-   "head": "98518943e834aff4"
+   "n": 93,
+   "head": "a20da5e8d85c936c"
   },
   "infra_skip_today": false,
   "first_on_odd": "notes",
@@ -37,14 +37,14 @@
    "family": "gpt",
    "arm": "notes",
    "model": "gpt-6-sol",
-   "equity": 9809.741694897577,
-   "total_pct": -1.9,
+   "equity": 9740.892479746344,
+   "total_pct": -2.59,
    "mdd_pct": 7.27,
-   "days": 45,
+   "days": 46,
    "treatment": {
-    "total_pct": 0.33,
+    "total_pct": -0.38,
     "mdd_pct": 4.12,
-    "days": 38
+    "days": 39
    },
    "curve": [
     [
@@ -271,6 +271,11 @@
      "2026-11-15",
      45,
      9809.741694897577
+    ],
+    [
+     "2026-11-16",
+     46,
+     9740.892479746344
     ]
    ],
    "violations": {
@@ -279,18 +284,18 @@
     "format": 0
    },
    "exposure_latest": {
-    "gross_pct": 20.5,
-    "net_pct": -20.5
+    "gross_pct": 21.3,
+    "net_pct": -21.3
    },
    "latest": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "alloc": {
-     "BTC": -9.0,
-     "ETH": -4.4,
-     "SOL": -4.4,
-     "BNB": -2.7
+     "BTC": -9.3,
+     "ETH": -4.6,
+     "SOL": -4.6,
+     "BNB": -2.8
     },
-    "reason": "續抱現有空單；趨勢仍偏空，但須防反彈及資金費，維持80%現金。",
+    "reason": "續抱現有空單，不加碼；趨勢仍偏空，但須防急跌後反彈，維持低曝險。",
     "adopted": true,
     "counterfactual_alloc": null
    },
@@ -311,14 +316,14 @@
    "family": "gpt",
    "arm": "plain",
    "model": "gpt-6-sol",
-   "equity": 9754.114505962532,
-   "total_pct": -2.46,
+   "equity": 9683.125442156805,
+   "total_pct": -3.17,
    "mdd_pct": 7.64,
-   "days": 45,
+   "days": 46,
    "treatment": {
-    "total_pct": 0.19,
+    "total_pct": -0.54,
     "mdd_pct": 4.27,
-    "days": 38
+    "days": 39
    },
    "curve": [
     [
@@ -545,6 +550,11 @@
      "2026-11-15",
      45,
      9754.114505962532
+    ],
+    [
+     "2026-11-16",
+     46,
+     9683.125442156805
     ]
    ],
    "violations": {
@@ -553,18 +563,18 @@
     "format": 0
    },
    "exposure_latest": {
-    "gross_pct": 22.0,
-    "net_pct": -22.0
+    "gross_pct": 22.8,
+    "net_pct": -22.8
    },
    "latest": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "alloc": {
-     "BTC": -12.0,
-     "ETH": -4.0,
-     "SOL": -3.0,
-     "BNB": -3.0
+     "BTC": -12.4,
+     "ETH": -4.2,
+     "SOL": -3.1,
+     "BNB": -3.1
     },
-    "reason": "續抱ETH、SOL、BNB空單，小幅加碼BTC；跌幅已深，保留現金防反彈。",
+    "reason": "續抱現有四幣空單，不加碼；趨勢偏弱，但須防跌深反彈與資金費風險。",
     "adopted": true
    }
   },
@@ -572,14 +582,14 @@
    "family": "gemini",
    "arm": "notes",
    "model": "gemini-3.5-flash",
-   "equity": 8861.894695158308,
-   "total_pct": -11.38,
+   "equity": 8779.963439891388,
+   "total_pct": -12.2,
    "mdd_pct": 19.74,
-   "days": 45,
+   "days": 46,
    "treatment": {
-    "total_pct": -11.03,
+    "total_pct": -11.85,
     "mdd_pct": 19.24,
-    "days": 38
+    "days": 39
    },
    "curve": [
     [
@@ -806,6 +816,11 @@
      "2026-11-15",
      45,
      8861.894695158308
+    ],
+    [
+     "2026-11-16",
+     46,
+     8779.963439891388
     ]
    ],
    "violations": {
@@ -818,16 +833,16 @@
     "net_pct": -30.0
    },
    "latest": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "alloc": {
      "BTC": -20.0,
      "SOL": -10.0
     },
-    "reason": "市場全面下行，現有 BTC 與 SOL 空單帶來穩定正收益。微微加碼續抱 BTC(-20%) 與 SOL(-10%)，低曝險穩健因應。",
+    "reason": "大盤持續全面走空，續抱BTC與SOL空單以延續近期獲利趨勢，維持低曝險控制風險。",
     "adopted": true,
     "counterfactual_alloc": {
      "notes": {
-      "BTC": -18.0,
+      "BTC": -20.0,
       "SOL": -10.0
      },
      "plain": {
@@ -953,14 +968,14 @@
    "family": "gemini",
    "arm": "plain",
    "model": "gemini-3.5-flash",
-   "equity": 10016.291802189226,
-   "total_pct": 0.16,
+   "equity": 9906.975008215395,
+   "total_pct": -0.93,
    "mdd_pct": 11.2,
-   "days": 45,
+   "days": 46,
    "treatment": {
-    "total_pct": -1.15,
+    "total_pct": -2.23,
     "mdd_pct": 9.34,
-    "days": 38
+    "days": 39
    },
    "curve": [
     [
@@ -1187,6 +1202,11 @@
      "2026-11-15",
      45,
      10016.291802189226
+    ],
+    [
+     "2026-11-16",
+     46,
+     9906.975008215395
     ]
    ],
    "violations": {
@@ -1199,13 +1219,13 @@
     "net_pct": -30.0
    },
    "latest": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "alloc": {
      "BTC": -10.0,
      "ETH": -10.0,
      "SOL": -10.0
     },
-    "reason": "全面空頭趨勢持續且持倉穩定獲利，維持BTC/ETH/SOL空單共30%曝險順勢操作。",
+    "reason": "整體市場續呈空頭，主流幣空單持續獲利。續抱 BTC、ETH 與 SOL 空單各 10%，維持低曝險順勢操作。",
     "adopted": true
    }
   },
@@ -1213,14 +1233,14 @@
    "family": "claude",
    "arm": "notes",
    "model": "claude-haiku-4-5-20251001",
-   "equity": 6231.428056310321,
-   "total_pct": -37.69,
-   "mdd_pct": 41.42,
-   "days": 45,
+   "equity": 6115.494717210831,
+   "total_pct": -38.85,
+   "mdd_pct": 41.5,
+   "days": 46,
    "treatment": {
-    "total_pct": -38.38,
-    "mdd_pct": 39.45,
-    "days": 38
+    "total_pct": -39.53,
+    "mdd_pct": 39.53,
+    "days": 39
    },
    "curve": [
     [
@@ -1447,6 +1467,11 @@
      "2026-11-15",
      45,
      6231.428056310321
+    ],
+    [
+     "2026-11-16",
+     46,
+     6115.494717210831
     ]
    ],
    "violations": {
@@ -1455,59 +1480,67 @@
     "format": 0
    },
    "exposure_latest": {
-    "gross_pct": 99.0,
-    "net_pct": -59.0
+    "gross_pct": 86.0,
+    "net_pct": -60.0
    },
    "latest": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "alloc": {
-     "QNT": 12.0,
-     "IRYS": 8.0,
-     "BTC": -18.0,
-     "ETH": -15.0,
-     "XRP": -12.0,
-     "WLD": -8.0,
-     "ZEC": -6.0,
-     "BNB": -6.0,
-     "DOGE": -5.0,
-     "SOL": -4.0,
-     "XAU": -3.0,
-     "MOVR": -2.0
+     "BTC": -12.0,
+     "ETH": -10.0,
+     "QNT": 8.0,
+     "XRP": -8.0,
+     "WLD": -5.0,
+     "IRYS": 5.0,
+     "ZEC": -4.0,
+     "BNB": -4.0,
+     "DOGE": -3.0,
+     "SOL": -2.0,
+     "XAU": -2.0,
+     "NEAR": -8.0,
+     "INTC": -5.0,
+     "HYPE": -3.0,
+     "ENA": -3.0,
+     "AKE": -2.0,
+     "AIN": -2.0
     },
-    "reason": "持倉虧37%,風險過高。縮減總曝險至79%,清減高波動弱勢(AIN、NEAR)。加碼QNT、IRYS強多頭信號,強化BTC/ETH空單對衝,保留現金緩衝。",
+    "reason": "權益跌38.79%,總曝險超100%違規。大幅降槓桿至98%並重新配置:保留虧損多頭QNT、IRYS核心倉位,減碼BTC/ETH等弱勢空單,增加NEAR對沖。資金費壓力下降低做空規模,控制風險。",
     "adopted": true,
     "counterfactual_alloc": {
      "notes": {
-      "QNT": 12.0,
-      "IRYS": 8.0,
-      "BTC": -18.0,
-      "ETH": -12.0,
+      "BTC": -12.0,
+      "ETH": -10.0,
+      "QNT": 8.0,
       "XRP": -8.0,
-      "WLD": -8.0,
-      "ZEC": -6.0,
-      "BNB": -6.0,
-      "DOGE": -6.0,
-      "SOL": -5.0,
-      "XAU": -4.0,
-      "MOVR": -4.0,
-      "NEAR": -3.0
+      "WLD": -6.0,
+      "IRYS": 6.0,
+      "ZEC": -4.0,
+      "BNB": -4.0,
+      "DOGE": -3.0,
+      "SOL": -3.0,
+      "XAU": -2.0,
+      "MOVR": -1.0,
+      "NEAR": -8.0,
+      "INTC": -5.0,
+      "ENA": -4.0,
+      "NVDA": -3.0
      },
      "plain": {
-      "QNT": 8.0,
-      "IRYS": 4.0,
-      "1000PEPE": 2.0,
       "BTC": -12.0,
-      "ETH": -8.0,
-      "XRP": -6.0,
-      "WLD": -6.0,
-      "ZEC": -5.0,
+      "ETH": -10.0,
+      "QNT": 8.0,
+      "XRP": -8.0,
+      "WLD": -5.0,
+      "IRYS": 5.0,
+      "ZEC": -4.0,
       "BNB": -4.0,
-      "DOGE": -4.0,
-      "SOL": -4.0,
-      "XAU": -3.0,
-      "MOVR": -2.0,
-      "AIN": -2.0,
-      "NEAR": -2.0
+      "DOGE": -3.0,
+      "SOL": -3.0,
+      "XAU": -2.0,
+      "MOVR": -1.0,
+      "INTC": -8.0,
+      "NVDA": -6.0,
+      "NEAR": -5.0
      }
     }
    },
@@ -1548,14 +1581,14 @@
    "family": "claude",
    "arm": "plain",
    "model": "claude-haiku-4-5-20251001",
-   "equity": 6098.398435893907,
-   "total_pct": -39.02,
+   "equity": 6113.793942262531,
+   "total_pct": -38.86,
    "mdd_pct": 41.09,
-   "days": 45,
+   "days": 46,
    "treatment": {
-    "total_pct": -38.45,
+    "total_pct": -38.29,
     "mdd_pct": 38.94,
-    "days": 38
+    "days": 39
    },
    "curve": [
     [
@@ -1782,6 +1815,11 @@
      "2026-11-15",
      45,
      6098.398435893907
+    ],
+    [
+     "2026-11-16",
+     46,
+     6113.793942262531
     ]
    ],
    "violations": {
@@ -1790,61 +1828,61 @@
     "format": 0
    },
    "exposure_latest": {
-    "gross_pct": 89.0,
-    "net_pct": -15.0
+    "gross_pct": 91.7,
+    "net_pct": -14.7
    },
    "latest": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "alloc": {
-     "IRYS": 12.0,
-     "QNT": 10.0,
-     "BTC": -8.0,
-     "XRP": 8.0,
-     "ETH": -6.0,
-     "HYPE": -5.0,
+     "IRYS": 12.2,
+     "QNT": 10.9,
+     "XRP": 8.3,
+     "BTC": -8.2,
+     "ETH": -6.3,
+     "HYPE": -5.3,
      "1000PEPE": 5.0,
-     "NVDA": -4.0,
-     "BNB": -4.0,
-     "SOL": -4.0,
+     "SOL": -4.1,
+     "BNB": -4.1,
+     "NVDA": -4.1,
+     "NEAR": -3.1,
+     "DOGE": -3.1,
+     "ENA": -3.1,
      "SNDK": -3.0,
-     "DOGE": -3.0,
-     "NEAR": -3.0,
-     "ENA": -3.0,
-     "JCT": 2.0,
+     "AIN": -2.9,
+     "WLD": -2.1,
+     "JCT": 2.1,
      "XAU": -2.0,
-     "WLD": -2.0,
-     "AIN": -3.0,
-     "AKE": -2.0
+     "AKE": -1.8
     },
-    "reason": "多數短信號未反轉,持續高波動虧損。微增IRYS/QNT長部位,減碼做空規模至75%曝險。保留現金緩衝。市場弱勢,守住頭寸等待反轉信號。",
+    "reason": "權益大幅回檔(-38.88%),持倉多頭IRYS/QNT/JCT漲幅弱,空頭部位仍虧損中。維持現倉位觀察,曝險92%已接近上限,不加碼防進一步虧損。近日波動大,待趨勢確認再動。",
     "adopted": true
    }
   }
  },
  "refs": {
   "bench_eqw_L": {
-   "equity": 4983.50644406803,
-   "total_pct": -50.16,
+   "equity": 5056.08500703036,
+   "total_pct": -49.44,
    "mdd_pct": 62.14,
-   "days": 45
+   "days": 46
   },
   "bench_btc_L": {
-   "equity": 7388.884958454701,
-   "total_pct": -26.11,
+   "equity": 7596.264451090256,
+   "total_pct": -24.04,
    "mdd_pct": 27.65,
-   "days": 45
+   "days": 46
   }
  },
  "stats": {
   "primary": "same_state_counterfactual",
-  "day_index": 45,
+  "day_index": 46,
   "final_day": 365,
   "final": false,
   "conclusion_allowed": false,
-  "T": 37,
-  "mean_pct": -0.0823,
-  "days_with_notes": 37,
-  "family_days_notes_changed_alloc": 60,
+  "T": 38,
+  "mean_pct": -0.0843,
+  "days_with_notes": 38,
+  "family_days_notes_changed_alloc": 62,
   "cf_missing_family_days": 0,
   "z": null,
   "p": null,
@@ -1856,9 +1894,9 @@
    "sd_diff_pct": 1.0329
   },
   "policy": {
-   "T": 38,
-   "mean_diff_pct": -0.0822,
-   "log_wealth_ratio_avg": -0.034252,
+   "T": 39,
+   "mean_diff_pct": -0.0965,
+   "log_wealth_ratio_avg": -0.040704,
    "z": null,
    "p": null,
    "ci_pct": null,
@@ -1875,10 +1913,10 @@
     "aa_days": 7,
     "aa_sd_diff_pct": 0.0605,
     "aa_cum_diff_pct": 0.416,
-    "T_treatment": 38,
-    "mean_diff_pct": 0.0034,
-    "log_wealth_ratio": 0.001423,
-    "cf_T": 37,
+    "T_treatment": 39,
+    "mean_diff_pct": 0.004,
+    "log_wealth_ratio": 0.001684,
+    "cf_T": 38,
     "cf_mean_pct": 0.0,
     "cf_missing": 0,
     "days_with_notes": 0,
@@ -1891,13 +1929,13 @@
     "aa_days": 7,
     "aa_sd_diff_pct": 1.2782,
     "aa_cum_diff_pct": -1.7247,
-    "T_treatment": 38,
-    "mean_diff_pct": -0.2535,
-    "log_wealth_ratio": -0.105285,
-    "cf_T": 37,
-    "cf_mean_pct": -0.0784,
+    "T_treatment": 39,
+    "mean_diff_pct": -0.2427,
+    "log_wealth_ratio": -0.1036,
+    "cf_T": 38,
+    "cf_mean_pct": -0.0749,
     "cf_missing": 0,
-    "days_with_notes": 37,
+    "days_with_notes": 38,
     "p": null,
     "p_holm": null,
     "significant": null
@@ -1907,13 +1945,13 @@
     "aa_days": 7,
     "aa_sd_diff_pct": 1.3183,
     "aa_cum_diff_pct": 2.0494,
-    "T_treatment": 38,
-    "mean_diff_pct": 0.0035,
-    "log_wealth_ratio": 0.001106,
-    "cf_T": 37,
-    "cf_mean_pct": -0.1685,
+    "T_treatment": 39,
+    "mean_diff_pct": -0.0508,
+    "log_wealth_ratio": -0.020195,
+    "cf_T": 38,
+    "cf_mean_pct": -0.1779,
     "cf_missing": 0,
-    "days_with_notes": 37,
+    "days_with_notes": 38,
     "p": null,
     "p_holm": null,
     "significant": null
@@ -11522,6 +11560,230 @@
     "gemini_plain",
     "claude_notes",
     "claude_plain"
+   ]
+  },
+  {
+   "date": "2026-11-16",
+   "i": 46,
+   "phase": "處理期",
+   "ret": {
+    "gpt_notes": -0.007018453420342796,
+    "gpt_plain": -0.007277858360421496,
+    "gemini_notes": -0.009245342907502896,
+    "gemini_plain": -0.010913898689526746,
+    "claude_notes": -0.018604618083023272,
+    "claude_plain": 0.0025245163185811936,
+    "bench_eqw_L": 0.014563754211399216,
+    "bench_btc_L": 0.028066412429153198
+   },
+   "alloc": {
+    "gpt_notes": {
+     "BTC": -9.3,
+     "ETH": -4.6,
+     "SOL": -4.6,
+     "BNB": -2.8
+    },
+    "gpt_plain": {
+     "BTC": -12.4,
+     "ETH": -4.2,
+     "SOL": -3.1,
+     "BNB": -3.1
+    },
+    "gemini_notes": {
+     "BTC": -20.0,
+     "SOL": -10.0
+    },
+    "gemini_plain": {
+     "BTC": -10.0,
+     "ETH": -10.0,
+     "SOL": -10.0
+    },
+    "claude_notes": {
+     "BTC": -12.0,
+     "ETH": -10.0,
+     "QNT": 8.0,
+     "XRP": -8.0,
+     "WLD": -5.0,
+     "IRYS": 5.0,
+     "ZEC": -4.0,
+     "BNB": -4.0,
+     "DOGE": -3.0,
+     "SOL": -2.0,
+     "XAU": -2.0,
+     "NEAR": -8.0,
+     "INTC": -5.0,
+     "HYPE": -3.0,
+     "ENA": -3.0,
+     "AKE": -2.0,
+     "AIN": -2.0
+    },
+    "claude_plain": {
+     "IRYS": 12.2,
+     "QNT": 10.9,
+     "XRP": 8.3,
+     "BTC": -8.2,
+     "ETH": -6.3,
+     "HYPE": -5.3,
+     "1000PEPE": 5.0,
+     "SOL": -4.1,
+     "BNB": -4.1,
+     "NVDA": -4.1,
+     "NEAR": -3.1,
+     "DOGE": -3.1,
+     "ENA": -3.1,
+     "SNDK": -3.0,
+     "AIN": -2.9,
+     "WLD": -2.1,
+     "JCT": 2.1,
+     "XAU": -2.0,
+     "AKE": -1.8
+    },
+    "bench_eqw_L": {
+     "AIN": 10.0,
+     "AKE": 10.0,
+     "WLD": 10.0,
+     "ENA": 10.0,
+     "MOVR": 10.0,
+     "NEAR": 10.0,
+     "INTC": 10.0,
+     "SNDK": 10.0,
+     "SOL": 10.0,
+     "DOGE": 10.0
+    },
+    "bench_btc_L": {
+     "BTC": 100.0
+    }
+   },
+   "adopted": {
+    "gpt_notes": true,
+    "gpt_plain": true,
+    "gemini_notes": true,
+    "gemini_plain": true,
+    "claude_notes": true,
+    "claude_plain": true
+   },
+   "violations": {},
+   "cf_alloc": {
+    "gemini_notes": {
+     "notes": {
+      "BTC": -20.0,
+      "SOL": -10.0
+     },
+     "plain": {
+      "BTC": -20.0,
+      "SOL": -10.0
+     }
+    },
+    "claude_notes": {
+     "notes": {
+      "BTC": -12.0,
+      "ETH": -10.0,
+      "QNT": 8.0,
+      "XRP": -8.0,
+      "WLD": -6.0,
+      "IRYS": 6.0,
+      "ZEC": -4.0,
+      "BNB": -4.0,
+      "DOGE": -3.0,
+      "SOL": -3.0,
+      "XAU": -2.0,
+      "MOVR": -1.0,
+      "NEAR": -8.0,
+      "INTC": -5.0,
+      "ENA": -4.0,
+      "NVDA": -3.0
+     },
+     "plain": {
+      "BTC": -12.0,
+      "ETH": -10.0,
+      "QNT": 8.0,
+      "XRP": -8.0,
+      "WLD": -5.0,
+      "IRYS": 5.0,
+      "ZEC": -4.0,
+      "BNB": -4.0,
+      "DOGE": -3.0,
+      "SOL": -3.0,
+      "XAU": -2.0,
+      "MOVR": -1.0,
+      "INTC": -8.0,
+      "NVDA": -6.0,
+      "NEAR": -5.0
+     }
+    }
+   },
+   "cf_meta": {
+    "gemini_notes": {
+     "notes_first": true,
+     "parity_ok": true,
+     "notes": {
+      "prompt_sha": "b93f72348d28bb16",
+      "ok": true,
+      "violation": null,
+      "reason": "全市場持續空頭，近幾日 BTC 與 SOL 空單帶來穩定正收益，續抱 BTC -20% 與 SOL -10% 順勢獲利。",
+      "latency_s": 4.2
+     },
+     "plain": {
+      "prompt_sha": "d7e3a2f5f6486afe",
+      "ok": true,
+      "violation": null,
+      "reason": "大盤空頭趨勢持續且持倉穩定獲利，維持BTC -20%與SOL -10%空單續抱，嚴格控制曝險。",
+      "latency_s": 3.5
+     }
+    },
+    "claude_notes": {
+     "notes_first": true,
+     "parity_ok": true,
+     "notes": {
+      "prompt_sha": "107268924cfa30d4",
+      "ok": true,
+      "violation": null,
+      "reason": "權益跌38.79%,現貨曝險105%已違規。減碼空單集中度(BTC/ETH減量),增持QNT/IRYS多頭避險。NEAR空頭加碼應對強勢反彈信號。總曝險壓降至100%內,留現金緩衝。保守應對高波動環境。",
+      "latency_s": 3.3
+     },
+     "plain": {
+      "prompt_sha": "a5068430eebf2c45",
+      "ok": true,
+      "violation": null,
+      "reason": "虧損38%,現金歸零致過度槓桿105%。緊急調整:減空頭曝險至70%,保留QNT/IRYS多頭抄底。所有空信號一致但跌勢未見底,降低敞口防爆倉。現金化解風險。",
+      "latency_s": 3.4
+     }
+    }
+   },
+   "c": {
+    "gemini_notes": 0.000575299492350078,
+    "claude_notes": -0.005258710788951741
+   },
+   "c_detail": {
+    "gemini_notes": {
+     "decision_day_index": 45,
+     "same_alloc": false,
+     "c": 0.000575299492350078
+    },
+    "claude_notes": {
+     "decision_day_index": 45,
+     "same_alloc": false,
+     "c": -0.005258710788951741
+    }
+   },
+   "c_decision_day": {
+    "gemini_notes": 45,
+    "claude_notes": 45
+   },
+   "n_notes": {
+    "gpt_notes": 0,
+    "gemini_notes": 3,
+    "claude_notes": 1
+   },
+   "infra_skip": false,
+   "liquidations": [],
+   "call_order": [
+    "gpt_plain",
+    "gpt_notes",
+    "gemini_plain",
+    "gemini_notes",
+    "claude_plain",
+    "claude_notes"
    ]
   }
  ]
