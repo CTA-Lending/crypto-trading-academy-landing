@@ -1,6 +1,31 @@
 {
- "days": 83,
+ "days": 84,
  "records": [
+  {
+   "asOf": "2026-11-22",
+   "changeD1": -3.6,
+   "changeD14": 7.1,
+   "changeD30": -2.3,
+   "changeD7": -3.3,
+   "dataOk": true,
+   "eventDefVersion": "event-definition-v1.0",
+   "generatedAtUtc": "2026-11-23T01:35:56Z",
+   "layers": {
+    "B": 39.7,
+    "L": 6.8,
+    "R": 32.0,
+    "S": 65.1,
+    "V": 26.6
+   },
+   "revision": 1,
+   "score": 33.1,
+   "scoreVersion": "score-v1.0",
+   "stageCode": "rotation",
+   "stageDesc": "一部分幣種開始轉強，整體仍由比特幣主導",
+   "stageName": "輪動初期",
+   "universeCount": 377,
+   "universeVersion": "universe-v1.1"
+  },
   {
    "asOf": "2026-11-21",
    "changeD1": 7.8,
@@ -2102,5 +2127,5 @@
    "universeVersion": "universe-v1.1"
   }
  ],
- "records_total": 84
+ "records_total": 85
 }
