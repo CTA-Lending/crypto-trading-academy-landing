@@ -1,6 +1,151 @@
 {
   "days": [
     {
+      "day": "2026-11-24",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 11.0,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "EVAA": -12.5,
+            "AIN": -12.5,
+            "SNDK": -12.5,
+            "AKE": -12.5,
+            "IRYS": 12.5,
+            "WLD": -12.5,
+            "MMT": 12.5,
+            "CYS": -12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": -8.26,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -10.0,
+            "ETH": -8.0,
+            "BNB": -4.0
+          },
+          "reason": "續抱並小幅加碼BTC、ETH空單；LINK、SOL轉多，平掉逆勢空單。小倉做空BNB，其餘留現金防反彈。",
+          "outcome": -0.04,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": -15.0,
+            "ETH": -10.0,
+            "CYS": -7.0,
+            "WLD": -5.0,
+            "ENA": -5.0
+          },
+          "reason": "SOL轉多訊號即刻平倉避險；續抱BTC、CYS、WLD、ENA空單，並加碼ETH空單順應主導空頭趨勢。",
+          "outcome": -2.36,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 12.0,
+            "QNT": 9.0,
+            "IRYS": 8.0,
+            "XRP": 4.0,
+            "AVAX": 4.0,
+            "INTC": 2.0,
+            "1000PEPE": 2.0,
+            "LINK": 1.0,
+            "MOVR": 1.0,
+            "ETH": -5.0,
+            "SOL": -4.0,
+            "NEAR": -3.0,
+            "TAO": -3.0,
+            "ENA": -2.0,
+            "BNB": -2.0,
+            "NVDA": -1.0,
+            "UNI": -1.0,
+            "DOGE": -1.0,
+            "WLD": -1.0,
+            "HYPE": -1.0,
+            "ZEC": -1.0,
+            "BEAT": -0.5,
+            "AIN": -0.5
+          },
+          "reason": "趨勢分歧:LONG 訊號偏弱(IRYS -58%、QNT -13.9%)但價格支撐;SHORT 籠罩主流(BTC/ETH)。減碼高風險 EVAA(+472%),鎖利潤;維持 BTC/QNT 長倉;均衡做空主流抗跌。曝險 72%。",
+          "outcome": 0.41,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": -12.0,
+            "SOL": -5.1
+          },
+          "reason": "維持現有BTC、SOL空倉；近月普跌，但反彈風險高，保留82.9%現金。",
+          "outcome": -0.04,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "BTC": -6.0,
+            "ETH": -5.0,
+            "SOL": 1.0,
+            "BNB": -2.0,
+            "DOGE": -1.5,
+            "TAO": -1.5,
+            "UNI": -1.5,
+            "NEAR": -1.5,
+            "CL": -1.5,
+            "BZ": -1.5,
+            "WLD": -1.5,
+            "ENA": -1.5,
+            "QNT": 6.0,
+            "LINK": 4.0,
+            "IRYS": 4.0,
+            "MMT": 3.0,
+            "MOVR": 2.0,
+            "XRP": 2.0
+          },
+          "reason": "持久守護-權益虧13.38%,降低高波動空單(EVAA/AIN/AKE),強化QNT多頭,LINK止損轉多,現金保留45%應對極端風險。總曝險55%。",
+          "outcome": -0.92,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": -0.39,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "EVAA": 10.0,
+            "AIN": 10.0,
+            "SNDK": 10.0,
+            "AKE": 10.0,
+            "IRYS": 10.0,
+            "WLD": 10.0,
+            "MMT": 10.0,
+            "CYS": 10.0,
+            "ENA": 10.0,
+            "ZEC": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 4.5,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-11-23",
       "next_day": null,
       "crowding": {
@@ -19893,5 +20038,5 @@
       }
     }
   ],
-  "total_days": 124
+  "total_days": 125
 }
