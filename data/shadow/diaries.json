@@ -1,6 +1,152 @@
 {
   "days": [
     {
+      "day": "2026-11-26",
+      "next_day": null,
+      "crowding": {
+        "overlap_pct": 13.3,
+        "warning": false,
+        "families": 3,
+        "measures": "各腦**要求的目標配置**,不是帳本上的實際持倉;算在成交之前",
+        "note": "跨家族要求的目標重疊度不高"
+      },
+      "entries": {
+        "rule": {
+          "alloc": {
+            "EVAA": -12.5,
+            "MMT": 12.5,
+            "AKE": -12.5,
+            "SNDK": -12.5,
+            "CYS": -12.5,
+            "ENA": -12.5,
+            "WLD": -12.5,
+            "IRYS": 12.5
+          },
+          "reason": "wick-break 雙向等權(確定性規則,無 AI)",
+          "outcome": 2.28,
+          "outcome_status": "ok"
+        },
+        "gpt": {
+          "alloc": {
+            "BTC": -10.0,
+            "ETH": -8.0,
+            "BNB": -4.0
+          },
+          "reason": "三者空頭訊號未變，續抱現有空單並小幅減碼；防範跌深反彈，維持高現金。",
+          "outcome": -0.41,
+          "outcome_status": "ok"
+        },
+        "gemini": {
+          "alloc": {
+            "BTC": -15.0,
+            "ETH": -10.0,
+            "ENA": -5.0,
+            "WLD": -5.0,
+            "CYS": -5.0
+          },
+          "reason": "整體市場空頭趨勢明確，近期空單獲利回升。續抱BTC、ETH及弱勢山寨幣空單，總曝險維持40%穩健操作。",
+          "outcome": -0.97,
+          "outcome_status": "ok"
+        },
+        "claude": {
+          "alloc": {
+            "BTC": 10.0,
+            "QNT": 8.0,
+            "IRYS": 6.0,
+            "MMT": 5.0,
+            "SOL": -8.0,
+            "ETH": -8.0,
+            "NEAR": -5.0,
+            "TAO": -5.0,
+            "NVDA": -6.0,
+            "UNI": -4.0,
+            "DOGE": -4.0,
+            "BNB": -3.0,
+            "LINK": 3.0,
+            "MOVR": 2.0,
+            "CL": 2.0,
+            "BZ": 2.0,
+            "1000PEPE": -2.0,
+            "XRP": -3.0,
+            "AVAX": -3.0,
+            "ENA": -1.0,
+            "EVAA": -1.0,
+            "MU": -1.0,
+            "BEAT": -1.0,
+            "INTC": -1.0,
+            "ZEC": -1.0,
+            "WLD": -1.0,
+            "CYS": -1.0,
+            "HYPE": -1.0
+          },
+          "reason": "持倉獲利+7.55%,減碼過度風險(做空BTC/ETH/SOL調整),鎖定強勢多倉(BTC/QNT/IRYS),利用弱勢信號做空NEAR/TAO/NVDA,總曝險控制80%,保留現金應對風險。",
+          "outcome": 0.51,
+          "outcome_status": "ok"
+        },
+        "gpt_pure": {
+          "alloc": {
+            "BTC": -12.0,
+            "SOL": -5.0
+          },
+          "reason": "維持現有空倉；近30日仍偏弱，但反彈及資金費風險使我保留83%現金。",
+          "outcome": -0.32,
+          "outcome_status": "ok"
+        },
+        "guardian": {
+          "alloc": {
+            "QNT": 6.0,
+            "MMT": 4.0,
+            "LINK": 4.0,
+            "MOVR": 2.0,
+            "SOL": 2.0,
+            "IRYS": 3.0,
+            "BTC": -3.0,
+            "ETH": -2.0,
+            "BNB": -2.0,
+            "ENA": -1.5,
+            "WLD": -1.5,
+            "XRP": -1.0,
+            "BZ": 1.0,
+            "CL": 1.0
+          },
+          "reason": "持倉虧損12.39%,近5日波動劇烈(-5.53%)。保留多頭核心(QNT/MMT/LINK),降低空頭曝險(BTC/ETH減檔)降風險。現金保留66%待穩定。總曝險38%,避免擁擠加碼。",
+          "outcome": 1.24,
+          "outcome_status": "ok"
+        },
+        "bench_btc": {
+          "alloc": {
+            "BTC": 100.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 1.97,
+          "outcome_status": "ok"
+        },
+        "bench_eqw": {
+          "alloc": {
+            "EVAA": 10.0,
+            "MMT": 10.0,
+            "AKE": 10.0,
+            "SNDK": 10.0,
+            "CYS": 10.0,
+            "ENA": 10.0,
+            "WLD": 10.0,
+            "IRYS": 10.0,
+            "INTC": 10.0,
+            "ZEC": 10.0
+          },
+          "reason": "市場基準(非 AI)",
+          "outcome": 8.05,
+          "outcome_status": "ok"
+        },
+        "bench_cash": {
+          "alloc": {},
+          "reason": "市場基準(非 AI)",
+          "outcome": 0.0,
+          "outcome_status": "ok"
+        }
+      }
+    },
+    {
       "day": "2026-11-25",
       "next_day": null,
       "crowding": {
@@ -608,7 +754,7 @@
             "NEAR": -12.5
           },
           "reason": "wick-break 雙向等權(確定性規則,無 AI)",
-          "outcome": 22.61,
+          "outcome": 13.04,
           "outcome_status": "ok"
         },
         "gpt": {
@@ -719,7 +865,7 @@
             "INTC": 10.0
           },
           "reason": "市場基準(非 AI)",
-          "outcome": -14.59,
+          "outcome": -6.9,
           "outcome_status": "ok"
         },
         "bench_cash": {
@@ -20183,5 +20329,5 @@
       }
     }
   ],
-  "total_days": 126
+  "total_days": 127
 }
