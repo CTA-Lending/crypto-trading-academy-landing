@@ -5,14 +5,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-11-24 這一天，山寨市場的溫度是 30.3 分（滿分 100），狀態被歸類為「收縮」，也就是這 375 種幣整體在近 30 天裡跌掉超過一成。拆開來看，五個面向裡最冷的是流動性，只有 14.4 分，代表市場一天成交的金額和可用來買幣的美元代幣都偏少；現貨訂單流 29.5 分，真正成交的買單也不多。其他三項稍微高一些，市場廣度 35.9 分、資金輪動 37.3 分、波動與結構 38.2 分，但都還在中間偏低的位置。整體溫度比 30 天前少了 12.2 分，比 7 天前少了 5.8 分，是一個持續降溫的狀態。"
+  "text": "2026-11-25 這一天，山寨市場的溫度是 39.4 分（滿分 100），狀態被歸類為「收縮」，因為這些幣整體在近 30 天裡跌掉超過一成。拆開來看，五個面向裡最弱的是流動性 13.9，也就是整個市場一天成交的金額、還有能拿來買幣的美元代幣都偏少；資金輪動 39.8、市場廣度 43.6、波動與結構 44.8 都在中間偏低的位置，而現貨訂單流 63.8 相對高一些，表示真正成交的買單比例還不算差。\n\n跟前一段時間比，30 日淨變化是 2.2 分、7 日淨變化是 8.1 分，分數本身是往上挪的。以上是把 374 種幣納入計算後的結果。"
  },
- "asOf": "2026-11-24",
- "changeD1": -8.2,
- "changeD14": 0.9,
- "changeD30": -12.2,
- "changeD7": -5.8,
- "dataAsOfUtc": "2026-11-25T01:37:14Z",
+ "asOf": "2026-11-25",
+ "changeD1": 9.1,
+ "changeD14": 10.6,
+ "changeD30": 2.2,
+ "changeD7": 8.1,
+ "dataAsOfUtc": "2026-11-26T01:35:55Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -40,50 +40,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 86,
+ "forwardLogDays": 87,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 87,
+ "forwardLogRecords": 88,
  "layers": {
-  "B": 35.9,
-  "L": 14.4,
-  "R": 37.3,
-  "S": 29.5,
-  "V": 38.2
+  "B": 43.6,
+  "L": 13.9,
+  "R": 39.8,
+  "S": 63.8,
+  "V": 44.8
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 14.4
+   "score": 13.9
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 37.3
+   "score": 39.8
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 35.9
+   "score": 43.6
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 29.5
+   "score": 63.8
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 38.2
+   "score": 44.8
   }
  ],
- "publishedAtUtc": "2026-11-25T06:00:11Z",
+ "publishedAtUtc": "2026-11-26T06:00:13Z",
  "revision": 1,
- "score": 30.3,
+ "score": 39.4,
  "scoreVersion": "score-v1.0",
  "stageCode": "contraction",
  "stageDesc": "山寨整體近 30 天下跌超過一成",
  "stageName": "收縮",
- "universeCount": 375,
+ "universeCount": 374,
  "universeVersion": "universe-v1.1"
 }
