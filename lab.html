@@ -178,6 +178,16 @@ background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:
   <p class="racenote" id="raceNote"></p>
   <div class="facts" id="facts"></div>
   <div class="status" id="heroStatus"><i></i><span>資料載入中…</span></div>
+  <!-- 🔴 2026-11-25 SNDK 拆股更正(CHANGELOG-063):平常只露一行白話,細節收進折疊、預設收起。 -->
+  <details class="more" id="fixSndk"><summary>11-21 有一筆股票拆股算錯,已更正(點開看細節)</summary>
+  <div style="font-size:12.5px;line-height:1.75;color:var(--dim);margin-top:6px">
+  2026-11-20 美股 SanDisk(SNDK)一股拆成八股,交易所把 SNDK 合約的價格除以 8、持有數量乘以 8,持有的人那一刻部位價值沒有變。我們的模擬沒有處理這件事,把價格從 743 變成 81 當成跌了 89%。
+  <br>受影響的只有兩位對照組,而且只有 2026-11-21 那一列:
+  <br>· <b>10 支熱門幣平均買</b>(持有 SNDK 10%):那天記成 -14.59%,更正為 <b>-6.90%</b>。
+  <br>· <b>規則腦</b>(放空 SNDK 12.5%):那天記成 +22.61%,更正為 <b>+13.04%</b>。
+  <br>5 個 AI 都沒有持有 SNDK,它們自己的帳沒有變。但「10 支熱門幣平均買」是主要比較基準,所以大家相對它的主指標都跟著變:5 個 AI 各少約 0.1(GPT 兩位換模型後那一段各少約 0.2),沒有一位由正轉負。以上以 2026-11-25 的資料算。
+  <br>更正前的數字保留在 <a href="./data/shadow/CHANGELOG.md" style="color:var(--acc)">CHANGELOG-063</a>,沒有刪除。2026-07-22 起兩個實驗持有過的 79 檔合約我們全部查過,只有 SNDK 這一次。
+  </div></details>
 </section>
 
 <details class="fine tech"><summary>技術資訊(資料時間、實驗天數、協議版本)</summary>
