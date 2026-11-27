@@ -5,14 +5,14 @@
   "model": "claude-opus-5",
   "ok": true,
   "source": "claude",
-  "text": "2026-11-25 這一天，山寨市場的溫度是 39.4 分（滿分 100），狀態被歸類為「收縮」，因為這些幣整體在近 30 天裡跌掉超過一成。拆開來看，五個面向裡最弱的是流動性 13.9，也就是整個市場一天成交的金額、還有能拿來買幣的美元代幣都偏少；資金輪動 39.8、市場廣度 43.6、波動與結構 44.8 都在中間偏低的位置，而現貨訂單流 63.8 相對高一些，表示真正成交的買單比例還不算差。\n\n跟前一段時間比，30 日淨變化是 2.2 分、7 日淨變化是 8.1 分，分數本身是往上挪的。以上是把 374 種幣納入計算後的結果。"
+  "text": "2026-11-26 這一天，比特幣以外那些幣的整體熱度是 36.7 分（滿分 100），算是偏冷的狀態，市場仍然以比特幣為主角，只有一部分幣種開始轉強。拆開來看，流動性只有 12.1 分，也就是整個市場一天成交的錢不多、能用來買幣的美元代幣也沒變多；相對地，資金輪動 43.7、市場廣度 43.8、現貨訂單流 46.7、波動與結構 43.1，都落在中間偏下的位置。跟一個月前比，分數掉了 3.5 分，但最近七天回升了 4.1 分。這些都是從 373 種幣算出來的結果。"
  },
- "asOf": "2026-11-25",
- "changeD1": 9.1,
- "changeD14": 10.6,
- "changeD30": 2.2,
- "changeD7": 8.1,
- "dataAsOfUtc": "2026-11-26T01:35:55Z",
+ "asOf": "2026-11-26",
+ "changeD1": -2.7,
+ "changeD14": 4.8,
+ "changeD30": -3.5,
+ "changeD7": 4.1,
+ "dataAsOfUtc": "2026-11-27T01:34:13Z",
  "dataOk": true,
  "derivatives": {
   "coverage": {
@@ -40,50 +40,50 @@
   }
  },
  "eventDefVersion": "event-definition-v1.0",
- "forwardLogDays": 87,
+ "forwardLogDays": 88,
  "forwardLogFirstDay": "2026-08-31",
- "forwardLogRecords": 88,
+ "forwardLogRecords": 89,
  "layers": {
-  "B": 43.6,
-  "L": 13.9,
-  "R": 39.8,
-  "S": 63.8,
-  "V": 44.8
+  "B": 43.8,
+  "L": 12.1,
+  "R": 43.7,
+  "S": 46.7,
+  "V": 43.1
  },
  "layersDetail": [
   {
    "code": "L",
    "name": "流動性",
-   "score": 13.9
+   "score": 12.1
   },
   {
    "code": "R",
    "name": "資金輪動",
-   "score": 39.8
+   "score": 43.7
   },
   {
    "code": "B",
    "name": "市場廣度",
-   "score": 43.6
+   "score": 43.8
   },
   {
    "code": "S",
    "name": "現貨訂單流",
-   "score": 63.8
+   "score": 46.7
   },
   {
    "code": "V",
    "name": "波動與結構",
-   "score": 44.8
+   "score": 43.1
   }
  ],
- "publishedAtUtc": "2026-11-26T06:00:13Z",
+ "publishedAtUtc": "2026-11-27T06:00:20Z",
  "revision": 1,
- "score": 39.4,
+ "score": 36.7,
  "scoreVersion": "score-v1.0",
- "stageCode": "contraction",
- "stageDesc": "山寨整體近 30 天下跌超過一成",
- "stageName": "收縮",
- "universeCount": 374,
+ "stageCode": "rotation",
+ "stageDesc": "一部分幣種開始轉強，整體仍由比特幣主導",
+ "stageName": "輪動初期",
+ "universeCount": 373,
  "universeVersion": "universe-v1.1"
 }
